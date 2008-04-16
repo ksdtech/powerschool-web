@@ -8,8 +8,8 @@
 $(document).ready(function() {
 	// do stuff when DOM is ready
 	$("#attSubmitButton").bind("click", function(e) { 
-		$("#upd_by").val($("userid").val()); 
-		$("#upd_at").val(timestamp_now()); });
+		$("#upd_by").val($("#userid").val()); 
+		$("#upd_at").val(timestamp_now()); return true; });
 	$("input.first").bind("blur", function(e) { 
 		this.value = ucfirst(this.value); });
 	$("input.last").bind("blur", function(e) { 
