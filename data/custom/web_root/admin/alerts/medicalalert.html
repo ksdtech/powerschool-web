@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Medical Alert</title>
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
+</head>
+
+<body marginwidth="10" marginheight="10" topmargin="10" leftmargin="10" bgcolor="#ffffff">
+
+<!-- Start of shaded content table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
+<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
+<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
+</tr>
+<tr>
+<td width="20" valign="top" background="/images/box_white_lft_bg.gif"><img src="/images/spacer.gif" width="20" height="1"></td>
+<td valign="top">
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="42"><img src="/images/alert_medicalwhite.gif" width="42" height="42" alt="" border="0"></td>
+<td width="5"><img src="/images/misc_trans.gif" width="5" height="1"></td>
+<td width="100%"><span class="header">Medical Alert</span><br>~(studentname)</td>
+</tr>
+<tr>
+<td colspan="3" background="/images/bullet_repeat.gif"><img src="/images/transparent.gif" width="4" height="8" alt="" border="0"></td>
+</tr>
+<tr>
+<td colspan="3"><img src="/images/misc_trans.gif" width="1" height="8"></td>
+</tr>
+<tr>
+<td colspan="3">~(alert_medical)<br>&nbsp;<br>
+  What: ~(alert_medical_what)<br>
+  Symptoms: ~(alert_medical_symptoms)<br>
+  Alert Expires: ~[if.~(alert_medicalexpires)=0/0/0]Never[else]~(alert_medicalexpires)[/if]<br>&nbsp;<br></td>
+</tr>
+</table>
+<center><a href="javascript:window.close()">Close</a></center>
+
+</td>
+<td width="20" valign="top" background="/images/box_white_rt_bg.gif"><img src="/images/spacer.gif" width="20" height="1"></td>
+</tr>
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
+<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
+<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="center"><span class="disclaimer">&nbsp;<br>&copy; 2006 Pearson School Systems. All rights reserved.</span></td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<!-- End of shaded content table -->
+
+</body>
+</html>
