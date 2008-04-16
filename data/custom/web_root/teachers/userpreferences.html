@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Personalize - ~[x:username]</title>
+~[wc:commonscripts]
+<link rel="stylesheet" href="/images/powerschool.css">
+</head>
+
+<body marginwidth=12 marginheight=12 topmargin=12 leftmargin=12 bgcolor="#ffffff">
+
+~[wc:teachers_header]~[wc:teachers_navigation]
+
+<!-- start gel tabs navigation -->
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td colspan="2" align="right" valign="top"><img src="/images/nav_top_shadow.gif" width="131" height="4" border="0"><br>
+<a href="/teachers/home.html"><img src="/images/nav_start.gif" alt="Start Page" width="131" height="23" border="0"></a><br>
+<a href="/teachers/bulletin.html"><img src="/images/nav_daily.gif" alt="Daily Bulletin" width="131" height="23" border="0"></a><br>
+<a href="/teachers/facultydirectory.html"><img src="/images/nav_faculty.gif" alt="Staff Directory" width="131" height="23" border="0"></a><br>
+<a href="/teachers/lunchtransactions.html?frn=~(userfrn)"><img src="/images/nav_meals.gif" alt="Meals" width="131" height="23" border="0"></a><br>
+<a href="/teachers/userpreferences.html?frn=~(userfrn)"><img src="/images/nav_personalize_on.gif" alt="Personalize" width="131" height="23" border="0"></a><br>
+~[if.~(gradebookType)="1"]
+<a href="/teachers/gradebook/home.html"><img src="/images/nav_wgb.gif" alt="Gradebook" width="131" height="23" border="0"><br>
+[else]
+<a href="/teachers/powergrade/home.html"><img src="/images/nav_powergrade.gif" alt="PowerGrade" width="131" height="23" border="0"></a><br>
+[/if]
+<a href="/teachers/reportsall.html?ac=selectstudentsforteacher&teacherid=~[x:userid]"><img src="/images/nav_reports.gif" alt="Reports" width="131" height="23" border="0"></a><br>
+<img src="/images/nav_bot_shadow.gif" width="131" height="7" border="0"><br><img src="/images/transparent.gif" width="1" height="140" alt="" border="0">
+</td>
+</tr>
+</table>
+<!-- end gel tabs navigation -->
+
+</td>
+<td width="20" background="/images/admin_mid_right_side.gif"><img src="/images/transparent.gif" width="20" height="1" alt="" border="0"></td>
+<td width="100%" valign="top">
+<br>
+<span class="header">Personalize - ~[x:username]</span>
+<br><br>
+
+<!-- Start of shaded content table -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="4">
+<tr bgcolor="#f6f6f6">
+<td class="bold">Function</td>
+<td class="bold">Description</td>
+</tr>
+<!-- pscustom_begin -->
+<tr>
+<td><a href="/teachers/contactinfo.html?frn=~[gpv:frn]">Update Contact Information</a></td>
+<td>Change address, email, phone, emergency contact and medical information.</td>
+</tr>
+<!-- pscustom_end -->
+<tr bgcolor="#edf3fe">
+<td><a href="/teachers/userprefpassword.html?frn=~[gpv:frn]">Change Password</a></td>
+<td>Change current password to a new one.</td>
+</tr>
+<tr>
+<td><a href="/teachers/userprefscreen.html?frn=~[gpv:frn]">Default Student Screen</a></td>
+<td>Sets the initial student screen.</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td><a href="/teachers/userdisplaysectionnum.html?frn=~[gpv:frn]">Display Section Number</a></td>
+<td>Show or hide the Section Number on the Teachers home page.</td>
+</tr>
+</table>
+
+</td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+</table>
+<br>
+<!-- End of shaded content table -->
+
+~[wc:teachers_footer_nf]
+
+</body>
+</html>
