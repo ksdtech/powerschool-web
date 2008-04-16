@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>Reg (0): Logins and ID Numbers</title>
+<link href="/images/powerschool.css" rel="stylesheet" type="text/css">
+~[wc:commonscripts]
+<script language="JavaScript" type="text/javascript" src="/admin/javascript/jx.js"></script>
+<script language="JavaScript" type="text/javascript" src="/admin/javascript/user_stamp.js"></script>
+<script language="JavaScript" type="text/javascript">
+function init_form() {
+	var gl = document.getElementById("grade_level");
+	var ed = document.getElementById("entry_date");
+	var inputs = document.getElementsByTagName('input');
+	var i, el;
+	stamp_form("ps-admin");
+	for (i = inputs.length-1; i >= 0; i--) {
+		el = inputs[i];
+		if (el.id) {
+			if (gl && el.id.indexOf("EntryGradeLevel") > 0 && el.value == "") {
+				el.value = gl.innerHTML;
+			}
+			if (ed && el.id.indexOf("EntryDate") > 0 && el.value == "") {
+				el.value = ed.innerHTML;
+			}
+		}
+	}
+	return true;
+}
+function id_check(which_id) {
+	var st_id = document.getElementById(which_id).value;
+	if (st_id != "") {
+		jx.load('http://10.4.202.14:3000/accounts/' + st_id + '.json', 
+			function(data) { 
+     alert("returned with csis id " + data["state_studentnumber"]); 
+           }, 'json', 'get');
+	}
+	var login = document.getElementById(which_id.replace(/_id/, "_login"));
+	var passwd = document.getElementById(which_id.replace(/_id/, "_password"));
+   return true;
+}
+</script>
+</head>
+<body marginwidth="10" marginheight="10" topmargin="10" leftmargin="10" background="/images/bg3.gif" onload="init_form();">
+<form action="/admin/students/home.html" method="post" target="_top">
+~[no.update]
+~[wc:admin_header_frame]
+<!-- breadcrumb start -->
+<a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Logins and ID Numbers
+<!-- breadcrumb end -->
+~[wc:admin_navigation_frame]
+<!-- Beginning of title of page -->
+~[wc:title_student_begin]Logins and ID Numbers~[wc:title_student_end]
+<!-- Ending of title of page -->
+<br>
+<!-- start of content and bounding box -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1" alt=""></td>
+<td><table border="0" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr bgcolor="#FFFFFF">
+<td><table border="0" width="100%">
+	<tr><td colspan="3"><b>1. Student Transfer Info</b></td></tr>
+	<tr>
+		<td>Current Grade Level</td>
+		<td>School Entry Grade Level</td>
+		<td>District Entry Grade Level</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td><b><span id="grade_level">~([01]Grade_Level)</span></b></td>
+		<td><input type="text" id="SchoolEntryGradeLevel" name="[01]SchoolEntryGradeLevel" value="" size="20"></td>
+		<td><input type="text" id="DistrictEntryGradeLevel" name="[01]DistrictEntryGradeLevel" value="" size="20"></td>
+	</tr>
+	<tr>
+		<td>Current Entry Date</td>
+		<td>School Entry Date</td>
+		<td>District Entry Date</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td><b><span id="entry_date">~([01]EntryDate)</span></b></td>
+		<td><input type="text" id="SchoolEntryDate" name="[01]SchoolEntryDate" value="" size="20"></td>
+		<td><input type="text" id="DistrictEntryDate" name="[01]DistrictEntryDate" value="" size="20"></td>
+	</tr>
+	<tr><td colspan="3"><b>2. Home Room</b></td></tr>
+	<tr>
+		<td>Room Number</td>
+		<td>Teacher Last</td>
+		<td>Teacher First</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td><input type="text" name="[01]Home_Room" value="" size="20"></td>
+		<td><input type="text" name="[01]HomeRoom_Teacher" value="" size="20"></td>
+		<td><input type="text" name="[01]HomeRoom_TeacherFirst" value="" size="20"></td>
+	</tr>
+	<tr><td colspan="3"><b>3. Student Account</b></td></tr>
+	<tr>
+		<td>Network Login</td>
+		<td>Network Password</td>
+		<td>Student Number</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td><input type="text" id="st_login" name="[01]Network_ID" value="" size="20" onfocus="return id_check('st_id');"></td>
+		<td><input type="text" id="st_password" name="[01]Network_Password" value="" size="20"></td>
+		<td><input type="text" id="st_id" name="[01]Student_Number" value="" size="20"></td>
+	</tr>
+	<tr><td colspan="3"><b>4. Primary Family Account</b></td></tr>
+	<tr><td bgcolor="#FFCC99" colspan="3">Parent Web Access <input type="checkbox" name="[01]AllowWebAccess" value=""></td></tr>
+	<tr>
+		<td>Login</td>
+		<td>Password</td>
+		<td>Family Number</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td><input type="text" id="h1_login" name="[01]Web_ID" value="" size="20"></td>
+		<td><input type="text" id="h1_password" name="[01]Web_Password" value="" size="20"></td>
+		<td><input type="text" id="h1_id" name="[01]Home_ID" value="" size="20"></td>
+	</tr>
+	<tr>
+		<td colspan="2">Mother Last, First</td>
+		<td>Mother Teacher Number</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td colspan="2"><b>~([01]Mother_Last), ~([01]Mother_First)</b></td>
+		<td><input type="text" name="[01]Mother_Staff_ID" value="" size="20"></td>
+	</tr>
+	<tr>
+		<td colspan="2">Father Last, First</td>
+		<td>Father Teacher Number</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td colspan="2"><b>~([01]Father_Last), ~([01]Father_First)</b></td>
+		<td><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
+	</tr>
+	<tr><td colspan="3"><b>4. Second Family Account</b></td></tr>
+	<tr><td bgcolor="#FFCC99" colspan="3">Parent Web Access <input type="checkbox" name="[01]Student_AllowWebAccess" value=""></td></tr>
+	<tr>
+		<td>Login</td>
+		<td>Password</td>
+		<td>Family Number</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td><input type="text" id="h2_login" name="[01]Student_Web_ID" value="" size="20"></td>
+		<td><input type="text" id="h2_password" name="[01]Student_Web_Password" value="" size="20"></td>
+		<td><input type="text" id="h2_id" name="[01]Home2_ID" value="" size="20"></td>
+	</tr>
+	<tr>
+		<td colspan="2">Mother Last, First</td>
+		<td>Mother Teacher Number</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td colspan="2"><b>~([01]Mother2_Last), ~([01]Mother2_First)</b></td>
+		<td><input type="text" name="[01]Mother2_Staff_ID" value="" size="20"></td>
+	</tr>
+	<tr>
+		<td colspan="2">Father Last, First</td>
+		<td>Father Teacher Number</td>
+	</tr>
+	<tr bgcolor="#FFCC99">
+		<td colspan="2"><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
+		<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
+	</tr>
+</table><br></td>
+</tr>
+</table></td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1" alt=""></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+<tr>
+<td colspan="2" align="right">
+<input id="user_updated_at" type="text" name="[01]Reg0_Updated_At" value="">
+<input id="user_updated_by" type="text" name="[01]Reg0_Updated_By" value="">
+<input type="hidden" name="frn" value="~(studentfrn)">
+<input type="hidden" name="ac" value="prim">
+~[submitbutton]
+</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<br>
+<!-- end of content of bounding box -->
+~[wc:admin_footer_frame]
+</form>
+</body>
+</html>

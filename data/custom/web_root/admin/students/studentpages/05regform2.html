@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>Reg (2): Second Fam.</title>
+<link href="/images/powerschool.css" rel="stylesheet" type="text/css">
+~[wc:commonscripts]  
+</head>
+<body marginwidth="10" marginheight="10" topmargin="10" leftmargin="10" background="/images/bg3.gif">
+<form action="/admin/students/home.html" method="post" target="_top">
+~[no.update] 
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Reg Form Page 2<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+<!-- Beginning of title of page -->
+~[wc:title_student_begin]Registration Form Page 2 of 4~[wc:title_student_end]
+<!-- Ending of title of page -->
+<br>
+<!-- start of content and bounding box -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr><td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td></tr>
+<tr><td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1" alt=""></td>
+<td>
+<table border="0" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr bgcolor="#FFFFFF"><td>
+<table border="0" width="100%">
+<tr><td colspan="3" width="50%"><b>Student's Legal Name:</b> Last, First MI</td>
+<td width="50%">Grade Level</td></tr>
+<tr bgcolor="#FFCC99"><td colspan="3" width="50%"><input readonly="yes" disabled="yes" type="text" name="[01]Lastfirst" value="" size="40" maxlength="90"></td>
+<td width="50%">Current:&nbsp;<b>~([01]Grade_Level)</b><br>Next:&nbsp;<b>~([01]Reg_Grade_Level)</b></td></tr>
+</table><br>
+<br>
+</td></tr>
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td colspan="3"><b>3. Second Residence</b></td>
+<td><input type="text" name="[01]home2_id" value="" size="10" disabled="disabled"></td></tr>
+<tr><td width="40%"><b>Physical</b> Number &amp; Street</td>
+<td width="25%">City</td>
+<td width="10%">State</td>
+<td width="25%">Zip</td></tr>
+<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Home2_Street" value="" size="30"></td>
+<td><input type="text" name="[01]Home2_City" value="" size="20"></td>
+<td><input type="text" name="[01]Home2_State" value="CA" size="4"></td>
+<td><input type="text" name="[01]Home2_Zip" value="" size="10"></td></tr>
+<tr><td><b>Mailing</b> Number &amp; Street</td>
+<td>City</td>
+<td>State</td>
+<td>Zip</td></tr>
+<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Mailing2_Street" value="" size="30"></td>
+<td><input type="text" name="[01]Mailing2_City" value="" size="20"></td>
+<td><input type="text" name="[01]Mailing2_State" value="" size="4"></td>
+<td><input type="text" name="[01]Mailing2_Zip" value="" size="10"></td></tr>
+<tr><td>Home Phone</td><td>Student's Phone</td><td colspan="2"></td></tr>
+<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Home2_Phone" value="" size="16"></td>
+<td><input type="text" name="[01]Home2_Student_Phone" value="" size="16"></td><td colspan="2"></td></tr></table><br>
+<br></td></tr>
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td colspan="4"><b><i>(Mother)</i> Parent or Guardian (living at Second Residence)</b></td></tr>
+<tr><td colspan="2">Last</td>
+  <td colspan="2">First</td></tr>
+<tr bgcolor="#FFCC99"><td colspan="2"><input type="text" name="[01]Mother2_Last" value="" size="30"></td>
+  <td colspan="2"><input type="text" name="[01]Mother2_First" value="" size="30"></td></tr>
+<tr><td colspan="4">Relationship</td></tr>
+<tr bgcolor="#FFCC99"><td><select name="[01]Mother2_Ident">
+<option value="N/A">N/A</option>
+<option value="Mother">Mother</option>
+<option value="Father">Father</option>
+<option value="Stepmother">Stepmother</option>
+<option value="Stepfather">Stepfather</option>
+<option value="Grandmother">Grandmother</option>
+<option value="Grandfather">Grandfather</option>
+<option value="Aunt">Aunt</option>
+<option value="Uncle">Uncle</option>
+<option value="Guardian">Guardian</option>
+<option value="Other">Other</option>
+</select></td>
+  <td colspan="2"><input type="checkbox" name="[01]Mother2_IsGuardian">
+    Parent is legal guardian</td>
+  <td>&nbsp;</td>
+</tr>
+<tr><td>Day Phone</td>
+<td>Home Phone</td>
+<td>Cell Phone</td>
+<td>Pager</td></tr>
+<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Mother2_Day_Phone" value="" size="16"></td>
+<td><input type="text" name="[01]Mother2_Home_Phone" value="" size="16"></td>
+<td><input type="text" name="[01]Mother2_Cell" value="" size="16"></td>
+<td><input type="text" name="[01]Mother2_Pager" value="" size="16"></td></tr>
+<tr><td colspan="2">Email Address 1</td><td colspan="2">Email Address 2</td></tr>
+<tr bgcolor="#FFCC99"><td colspan="2"><input type="text" name="[01]Mother2_Email" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Mother2_Email2" value="" size="30"></td></tr>
+<tr><td colspan="2">Employer Name</td><td colspan="2">Employer City</td></tr>
+<tr bgcolor="#FFCC99"><td colspan="2"><input type="text" name="[01]Mother2_Employer" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Mother2_Employer_Address" value="" size="20"></td></tr>
+</table>
+<br>
+<br></td></tr>
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td colspan="4"><b><i>(Father)</i> Parent or Guardian (living at Second Residence)</b></td></tr>
+<tr><td colspan="2">Last</td>
+  <td colspan="2">First</td>
+</tr>
+<tr bgcolor="#FFCC99"><td colspan="2"><input type="text" name="[01]Father2_Last" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Father2_First" value="" size="30"></td></tr>
+<tr><td colspan="4">Relationship</td></tr>
+<tr bgcolor="#FFCC99"><td><select name="[01]Father2_Ident">
+<option value="N/A">N/A</option>
+<option value="Father">Father</option>
+<option value="Mother">Mother</option>
+<option value="Stepmother">Stepmother</option>
+<option value="Stepfather">Stepfather</option>
+<option value="Grandmother">Grandmother</option>
+<option value="Grandfather">Grandfather</option>
+<option value="Aunt">Aunt</option>
+<option value="Uncle">Uncle</option>
+<option value="Guardian">Guardian</option>
+<option value="Other">Other</option>
+</select></td>
+  <td colspan="2"><input type="checkbox" name="[01]Father2_IsGuardian">
+    Parent is legal guardian</td>
+  <td>&nbsp;</td>
+</tr>
+<tr><td>Day Phone</td>
+<td>Home Phone</td>
+<td>Cell Phone</td>
+<td>Pager</td></tr>
+<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Father2_Day_Phone" value="" size="16"></td>
+<td><input type="text" name="[01]Father2_Home_Phone" value="" size="16"></td>
+<td><input type="text" name="[01]Father2_Cell" value="" size="16"></td>
+<td><input type="text" name="[01]Father2_Pager" value="" size="16"></td></tr>
+<tr><td colspan="2">Email Address 1</td><td colspan="2">Email Address 2</td></tr>
+<tr bgcolor="#FFCC99"><td colspan="2"><input type="text" name="[01]Father2_Email" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Father2_Email2" value="" size="30"></td></tr>
+<tr><td colspan="2">Employer Name</td><td colspan="2">Employer City</td></tr>
+<tr bgcolor="#FFCC99"><td colspan="2"><input type="text" name="[01]Father2_Employer" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Father2_Employer_Address" value="" size="20"></td></tr>
+</table>
+<br>
+<br></td></tr>
+</table></td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1" alt=""></td></tr>
+<tr><td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td></tr>
+<tr><td colspan="2" align="right"><input type="hidden" name="frn" value="~(studentfrn)"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
+<td>&nbsp;</td></tr>
+</table><br>
+<!-- end of content of bounding box -->
+~[wc:admin_footer_frame]
+</form>
+</body>
+</html>
