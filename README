@@ -1,0 +1,9 @@
+powerschool-web project
+
+Copyright (c) 2008 Kentfield School District.
+Please contact pzingg AT kentfieldschools FULLSTOP org if you would like
+to contribute or have commments.
+
+The data/custom/web_root tree contains custom HTML pages, CSS stylesheets,
+javascript files, and "wildcard" text files that override the factory
+default files installed by PowerSchool.
