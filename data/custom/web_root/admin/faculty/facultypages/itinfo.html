@@ -1,0 +1,208 @@
+<html>
+<!-- start right frame -->
+<head>
+<!-- pscustom_begin -->
+<title>IT Information</title>
+<script src="http://ps.kentfieldschools.org/scripts/fmt_date.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/formatters.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/selectlists.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<style type="text/css">
+.secheader { background-color: #ccccff;}
+</style>
+<!-- pscustom_end -->
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
+</head>
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/faculty/search.html" target="_top">Staff</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">Select A Staff Member</a> &gt; 
+<!-- pscustom_begin -->
+IT Information - ~(lastfirst) &nbsp; ~(teachernumber)
+<!-- pscustom_end -->
+<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
+<!-- Beginning of title of page -->
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<!-- pscustom_begin -->
+<td class="header">IT Information - ~(lastfirst) &nbsp; ~(teachernumber)</td>
+<!-- pscustom_end -->
+</tr>
+</table>
+<!-- Ending of title of page -->
+<br>
+
+<!-- start of content and bounding box -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="4">
+<!-- pscustom_begin -->
+<tr class="secheader">
+<td class="bold" colspan="2" align="center">Name and School Info</td>
+</tr>
+<tr>
+<td class="bold">Name: First Middle Last</td>
+<td><input class="first" type="text" name="[05]first_name" value="" size="20"> 
+<input class="first" type="text" name="[05]middle_name" value="" size="20"> 
+<input class="last" type="text" name="[05]last_name" value="" size="20"></td> 
+</tr>
+<tr>
+<td class="bold">School Voice Mail &amp; Ext</td>
+<td><input type="text" class="phone" name="[05]voice_mail" value="" size="20">
+<input type="text" name="[05]vm_ext" value="" size="5"></td>
+</tr>
+<tr>
+<td class="bold">School Direct Line &amp; Ext</td>
+<td><input type="text" class="phone" name="[05]school_phone" value="" size="20">
+<input type="text" name="[05]school_ext" value="" size="5"></td>
+</tr>
+<tr>
+<td class="bold">Primary Site</td>
+<td><select name="[05]site_primary">
+<option value="">Choose...</option>
+<option value="district">District</option>
+<option value="bacich">Bacich</option>
+<option value="kent">Kent</option>
+</select></td>
+</tr>
+<tr>
+<td class="bold">Homeroom</td>
+<td><input type="text" name="[05]homeroom" value="" size="20"></td>
+</tr>
+<tr>
+<td class="bold">Sites for Directory</td>
+<td><input type="hidden" name="[05]sites" value="" id="sites_data"><select class="mselect" id="sites" multiple="multiple">
+<option value="">Choose Multiple...</option>
+<option value="district">District</option>
+<option value="bacich">Bacich</option>
+<option value="kent">Kent</option>
+</select></td>
+</tr>
+<tr>
+<td class="bold">Mailing Lists</td>
+<td><input type="hidden" name="[05]groups" value="" id="groups_data"><select class="mselect" id="groups" multiple="multiple">
+<option value="">Choose Multiple...</option>
+<option value="administrators">administrators</option>
+<option value="aides-bacich">aides-bacich</option>
+<option value="aides-kent">aides-kent</option>
+<option value="arts">arts</option>
+<option value="classified-all">classified-all</option>
+<option value="classified-bacich">classified-bacich</option>
+<option value="classified-district">classified-district</option>
+<option value="classified-kent">classified-kent</option>
+<option value="communications">communications</option>
+<option value="connections">connections</option>
+<option value="ela">ela</option>
+<option value="eld">eld</option>
+<option value="enrichment">enrichment</option>
+<option value="glcs-bacich">glcs-bacich</option>
+<option value="glcs-kent">glcs-kent</option>
+<option value="guidance-kent">guidance-kent</option>
+<option value="history">history</option>
+<option value="kta">kta</option>
+<option value="library">library</option>
+<option value="math">math</option>
+<option value="math-bacich">math-bacich</option>
+<option value="pe">pe</option>
+<option value="pslogs-bacich">pslogs-bacich</option>
+<option value="pslogs-kent">pslogs-kent</option>
+<option value="rsp">rsp</option>
+<option value="rsp-bacich">rsp-bacich</option>
+<option value="rsp-kent">rsp-kent</option>
+<option value="science">science</option>
+<option value="spanish">spanish</option>
+<option value="staff-5">staff-5</option>
+<option value="staff-all">staff-all</option>
+<option value="staff-bacich">staff-bacich</option>
+<option value="staff-district">staff-district</option>
+<option value="staff-kent">staff-kent</option>
+<option value="teachers-1">teachers-1</option>
+<option value="teachers-2">teachers-2</option>
+<option value="teachers-3">teachers-3</option>
+<option value="teachers-4">teachers-4</option>
+<option value="teachers-5">teachers-5</option>
+<option value="teachers-6">teachers-6</option>
+<option value="teachers-7">teachers-7</option>
+<option value="teachers-8">teachers-8</option>
+<option value="teachers-all">teachers-all</option>
+<option value="teachers-bacich">teachers-bacich</option>
+<option value="teachers-kent">teachers-kent</option>
+<option value="teachers-kg">teachers-kg</option>
+<option value="trustees">trustees</option>
+<option value="tug">tug</option>
+<option value="tug-bacich">tug-bacich</option>
+<option value="tug-kent">tug-kent</option>
+<option value="vanguard">vanguard</option>
+</select></td>
+</tr>
+<tr class="secheader">
+<td class="bold" colspan="2" align="center">Login Information</td>
+</tr>
+<tr>
+<td class="bold">Network Login</td>
+<td><input type="text" name="[05]network_id" value="" size="20"></td>
+</tr>
+<tr>
+<td class="bold">Network Password</td>
+<td><input type="text" name="[05]network_password" value="" size="20"></td>
+</tr>
+<tr>
+<td class="bold">MCOE Login</td>
+<td><input type="text" name="[05]mcoe_id" value="" size="20"></td>
+</tr>
+<tr>
+<td class="bold">MCOE Password</td>
+<td><input type="text" name="[05]mcoe_password" value="" size="20"></td>
+</tr>
+<tr class="secheader">
+<td class="bold" colspan="2" align="center">Laptop Information</td>
+</tr>
+<tr>
+<td class="bold">Laptop Tag</td>
+<td><input type="text" name="[05]laptop_tag" value="" size="20"></td>
+</tr>
+<tr>
+<td class="bold">Laptop Name</td>
+<td><input type="text" name="[05]laptop_name" value="" size="20"></td>
+</tr>
+
+<tr>
+<td class="bold">Last updated at</td>
+<td class="bold"><input type="text" id="upd_at" name="[05]form1_updated_at" value="">
+by <input type="text" id="upd_by" name="[05]form1_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+</tr>
+<!-- pscustom_end -->
+</table>
+<br>
+
+</td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+<tr>
+<td colspan="2" align="right"><input type="hidden" name="ac" value="prim"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame]
+</form>
+
+</body>
+</html><!-- end right frame -->
