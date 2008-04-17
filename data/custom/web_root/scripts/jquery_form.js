@@ -1,5 +1,5 @@
 // jquery calls to set up a PowerSchool form
-// requires jquery.js, fmt_date.js and formatters.js
+// requires jquery.js, fmt_date.js, formatters.js and selectlists.js
 // encode the field type in the class of the input (text field)
 // form should also have three hidden fields with these ids:
 //  #userid (no name) should have a value of ~[x:userid]
@@ -7,9 +7,9 @@
 //  #upd_at should use a custom field name like [05]form0_updated_at
 $(document).ready(function() {
 	// do stuff when DOM is ready
-	$("#attSubmitButton").bind("click", function(e) { 
-		$("#upd_by").val($("#userid").val()); 
-		$("#upd_at").val(timestamp_now()); return true; });
+	$("select.mselect").each( function() {
+		init_multi_select(this, $("#"+this.id+"_data").val()); });
+	// do stuff when user blurs
 	$("input.first").bind("blur", function(e) { 
 		this.value = ucfirst(this.value); });
 	$("input.last").bind("blur", function(e) { 
@@ -24,4 +24,10 @@ $(document).ready(function() {
 		this.value = this.value.toLowerCase(); });
 	$("input.phone").bind("blur", function(e) { 
 		this.value = na_phone(this.value, "415"); });
+	// do stuff when user submits
+	$("#attSubmitButton").bind("click", function(e) { 
+		$("select.mselect").each( function() {
+			$("#"+this.id+"_data").val(pack_multi_select(this)); });
+		$("#upd_by").val($("#userid").val()); 
+		$("#upd_at").val(timestamp_now()); return true; });
 });
