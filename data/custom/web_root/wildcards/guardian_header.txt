@@ -1,6 +1,16 @@
 <html>
 <head>
 <title>PowerSchool</title>
+<!-- pscustom_begin -->
+<script src="http://ps.kentfieldschools.org/scripts/fmt_date.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/formatters.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/selectlists.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<style type="text/css">
+.secheader { background-color: #ccccff;}
+</style>
+<!-- pscustom_end -->
 ~[wc:commonscripts]
 <link rel="stylesheet" href="/images/powerschool.css">
 </head>
@@ -24,7 +34,7 @@
 <td rowspan="5" align="left"><a href="/guardian/home.html"><img src="/images/pss_powerschool_publogo.gif" width="195" height="23" alt="PowerSchool"  border="0"></a></td>
 <td>&nbsp;</td>
 <td align="left">~(studentname), ~(grade_level)<br>~[schoolname] - ~[schoolordistrictname]<br></td>
-<td align="right"><a href="home.html?ac=logoff"><img src="/images/btn_logout.gif" width="68" height="43" alt="" border="0"></a></td>
+<td align="right"><a href="home.html?ac=logoff"><img src="/images/btn_logout.gif" width="68" height="43" alt="" border="0"></a><a href="javascript:helpwindow('~[x:help_pagelink]')" onMouseOver="window.status='Help'; return true"><img src="/images/guardian_help.gif" width="25" height="43" alt="" border="0"></a></td>
 <td>&nbsp;</td>
 </tr>
 <tr>
@@ -48,7 +58,9 @@
 ~[if.isguardian]<td><a href="autoemailsetup.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_email_not.gif" width="63" height="61" alt="Email Notification" border="0"></a></td>[/if]
 <td><a href="teachercomments.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_teacher_comm.gif" width="60" height="61" alt="Teacher Comments" border="0"></a></td>
 <td><a href="bulletin.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_school_bull.gif" width="42" height="61" alt="School Bulletin" border="0"></a></td>
-<td><a href="requestform.html?schedulerequestyearid=~(schedule.yearidfuture)&subtitle=Future&~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_class_reg.gif" width="65" height="61" alt="Class Registration" border="0"></a></td>
+<!-- pscustom_begin -->
+~[if.isguardian]<td><a href="regforms.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_class_reg.gif" width="65" height="61" alt="Registration Forms" border="0"></a></td>[/if]
+<!-- pscustom_end -->
 ~[if.pref.nolunchdisplay=1][else]<td><a href="lunchbal.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_meal_bal.gif" width="42" height="61" alt="Balances" border="0"></a></td>[/if.pref.nolunchdisplay=1]
 <td><a href="mycalendars.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_mycalendars.gif" width="55" height="61" alt="My Calendars" border="0"></a></td>
 </tr>
@@ -78,54 +90,3 @@
 <tr>
 <td background="/images/box_side_content.gif" width="20">&nbsp;</td>
 <td background="/images/wht_spacer.gif" valign="top" width="100%">
-    
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="99%">
-<tr>
-<td>
-<span class="header">Quick Links</span><br>
-
-<ul>
-<li><a href="http://www.kentfieldschools.org" target="ksorg">Kentfield
-School District website</a></li>
-<li><a href="http://www.kentfieldschools.org/Kent" target="ksorg">Kent
-Middle School website</a></li>
-<li><a href="http://www.kentfieldschools.org/Protected/Kent_Falcon_Fax">Kent
-Falcon Fax</a> (login
-required)</li>
-<li><a href="http://www.kentfieldschools.org/Bacich" target="ksorg">Bacich
-Elementary School website</a></li>
-<li><a href="http://www.kentfieldschools.org/Protected/Bacich_Weekly_Bulletin">
-Bacich Weekly Bulletin</a> (login
-required)</li>
-</ul>
-
-<br>
-Need help? Send an email to <a href="mailto:webmaster@kentfieldschools.org">webmaster@kentfieldschools.org</a><br>
-<br>
-<span class="header">Disclaimer</span><br>
-<br>
-This system is provided as a convenience.
-Grades and other information provided by this system are not official
-records and may or may not be accurate. Neither the Kentfield School District nor
-PowerSchool accepts any responsibility for information
-provided by this system and/or for any damages resulting from
-information provided by this system. For official grades and student
-records contact the school office.
-<ul>
-<li>Teachers will update information at least
-twice per trimester, i.e., at mid-term and at the end of the trimester;
-information viewed, therefore, may not be current.</li>
-<li>Different classes may use different
-factoring methods to weight assignment scores; the current percentage
-and grade, therefore, may not be equivalent to the average of all
-scores reported.</li>
-<li>If errors are suspected in any assignment
-scores, the student must show the assignment to the teacher for review.</li>
-<li>Inappropriate use of the family-access
-component of PowerSchool (e.g., accessing records of non-family
-members, or inappropriate communication via the system) will result in
-loss of access.</li>
-</ul>
-</td>
-</tr>
-</table>
