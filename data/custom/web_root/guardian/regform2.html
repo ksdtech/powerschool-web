@@ -1,0 +1,200 @@
+~[wc:guardian_header]
+
+<!-- start of title and student content -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td background="/images/transparent.gif">
+<br>
+
+<!-- title -->
+<!-- pscustom_begin -->
+&nbsp;&nbsp;<span class="header">Qualifying Residence Information</span><br><br>
+<!-- pscustom_end -->
+<!-- title -->
+
+~[if.isstudent]
+<!-- don't allow students to change guardian email settings. -->
+
+<!-- start of content and bounding box -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td>Your account does not allow access to this page.</td>
+</tr>
+</table>
+
+</td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+</table>
+<br>
+<!-- end of content of bounding box -->
+
+[else]
+
+<!-- start student content -->
+<form action="changesrecorded.html" method="POST">
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
+<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
+<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
+</tr>
+<tr>
+<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
+<td>
+
+<!-- pscustom_begin -->  
+<table border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td colspan="4"><b>2. Qualifying Residence (required for District verification)</b></td>
+<tr><td width="40%"><b>Physical</b> Number &amp; Street</td>
+<td width="25%">City</td>
+<td width="10%">State</td>
+<td width="25%">Zip</td></tr>
+<tr><td><input class="street" type="text" name="[01]Street" value="" size="30"></td>
+<td><input class="city" type="text" name="[01]City" value="" size="20"></td>
+<td><input class="state" type="text" name="[01]State" value="CA" size="4"></td>
+<td><input class="zip" type="text" name="[01]Zip" value="" size="10"></td></tr>
+<tr><td><b>Mailing</b> Number &amp; Street</td>
+<td>City</td>
+<td>State</td>
+<td>Zip</td></tr>
+<tr><td><input class="street" type="text" name="[01]Mailing_Street" value="" size="30"></td>
+<td><input class="city" type="text" name="[01]Mailing_City" value="" size="20"></td>
+<td><input class="state" type="text" name="[01]Mailing_State" value="" size="4"></td>
+<td><input class="zip" type="text" name="[01]Mailing_Zip" value="" size="10"></td></tr>
+<tr><td>Home Phone</td><td>Student's Phone</td><td colspan="2"></td></tr>
+<tr><td><input class="phone" type="text" name="[01]Home_Phone" value="" size="16"></td>
+<td><input class="phone" type="text" name="[01]Home_Student_Phone" value="" size="16"></td><td colspan="2"></td></tr></table><br>
+<br></td></tr>
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td colspan="4"><b><i>(Mother)</i> Parent or Guardian (living at Qualifying Residence)</b></td></tr>
+<tr><td colspan="2">Last</td>
+  <td colspan="2">First</td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Mother_Last" value="" size="30"></td>
+  <td colspan="2"><input type="text" name="[01]Mother_First" value="" size="30"></td></tr>
+<tr><td colspan="4">Relationship</td></tr>
+<tr><td><select name="[01]Mother_Ident">
+<option value="N/A">N/A</option>
+<option value="Mother">Mother</option>
+<option value="Father">Father</option>
+<option value="Stepmother">Stepmother</option>
+<option value="Stepfather">Stepfather</option>
+<option value="Grandmother">Grandmother</option>
+<option value="Grandfather">Grandfather</option>
+<option value="Aunt">Aunt</option>
+<option value="Uncle">Uncle</option>
+<option value="Guardian">Guardian</option>
+<option value="Other">Other</option>
+</select></td>
+  <td colspan="2"><input type="checkbox" name="[01]Mother_IsGuardian">
+    Parent is legal guardian</td>
+  <td>&nbsp;</td>
+</tr>
+<tr><td>Day Phone</td>
+<td>Home Phone</td>
+<td>Cell Phone</td>
+<td>Pager</td></tr>
+<tr><td><input class="phone" type="text" name="[01]Mother_Day_Phone" value="" size="16"></td>
+<td><input class="phone" type="text" name="[01]Mother_Home_Phone" value="" size="16"></td>
+<td><input class="phone" type="text" name="[01]Mother_Cell" value="" size="16"></td>
+<td><input class="phone" type="text" name="[01]Mother_Pager" value="" size="16"></td></tr>
+<tr><td colspan="2">Email Address 1</td><td colspan="2">Email Address 2</td></tr>
+<tr><td colspan="2"><input class="email" type="text" name="[01]Mother_Email" value="" size="30"></td>
+<td colspan="2"><input class="email" type="text" name="[01]Mother_Email2" value="" size="30"></td></tr>
+<tr><td colspan="2">Employer Name</td><td colspan="2">Employer City</td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Mother_Employer" value="" size="30"></td>
+<td colspan="2"><input class="city" type="text" name="[01]Mother_Employer_Address" value="" size="20"></td></tr>
+</table>
+<br>
+<br></td></tr>
+<tr><td>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr><td colspan="4"><b><i>(Father)</i> Parent or Guardian (living at Qualifying Residence)</b></td></tr>
+<tr><td colspan="2">Last</td>
+  <td colspan="2">First</td>
+</tr>
+<tr><td colspan="2"><input type="text" name="[01]Father_Last" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Father_First" value="" size="30"></td></tr>
+<tr><td colspan="4">Relationship</td></tr>
+<tr><td><select name="[01]Father_Ident">
+<option value="N/A">N/A</option>
+<option value="Father">Father</option>
+<option value="Mother">Mother</option>
+<option value="Stepmother">Stepmother</option>
+<option value="Stepfather">Stepfather</option>
+<option value="Grandmother">Grandmother</option>
+<option value="Grandfather">Grandfather</option>
+<option value="Aunt">Aunt</option>
+<option value="Uncle">Uncle</option>
+<option value="Guardian">Guardian</option>
+<option value="Other">Other</option>
+</select></td>
+  <td colspan="2"><input type="checkbox" name="[01]Father_IsGuardian">
+    Parent is legal guardian</td>
+  <td>&nbsp;</td>
+</tr>
+<tr><td>Day Phone</td>
+<td>Home Phone</td>
+<td>Cell Phone</td>
+<td>Pager</td></tr>
+<tr><td><input class="phone" type="text" name="[01]Father_Day_Phone" value="" size="16"></td>
+<td><input class="phone" type="text" name="[01]Father_Home_Phone" value="" size="16"></td>
+<td><input class="phone" type="text" name="[01]Father_Cell" value="" size="16"></td>
+<td><input class="phone" type="text" name="[01]Father_Pager" value="" size="16"></td></tr>
+<tr><td colspan="2">Email Address 1</td><td colspan="2">Email Address 2</td></tr>
+<tr><td colspan="2"><input class="email" type="text" name="[01]Father_Email" value="" size="30"></td>
+<td colspan="2"><input class="email" type="text" name="[01]Father_Email2" value="" size="30"></td></tr>
+<tr><td colspan="2">Employer Name</td><td colspan="2">Employer City</td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Father_Employer" value="" size="30"></td>
+<td colspan="2"><input class="city" type="text" name="[01]Father_Employer_Address" value="" size="20"></td></tr>
+</table>
+<br>
+<br>
+</td></tr>
+<tr>
+<td class="bold">Last updated at 
+<input type="text" id="upd_at" name="[05]form2_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[05]form2_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+</tr>
+</table>
+<!-- pscustom_end -->
+
+</td>
+<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
+</tr>
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
+<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
+<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
+</tr>
+<tr>
+<td colspan="3" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
+</tr>
+</table>
+</form>
+<!-- end student content -->
+
+[/if]
+
+</td>
+</tr>
+</table>
+<!-- end of title and student content -->
+
+~[wc:guardian_footer]
