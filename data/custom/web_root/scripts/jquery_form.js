@@ -1,16 +1,30 @@
 // jquery calls to set up a PowerSchool form
 // requires jquery.js, fmt_date.js, formatters.js and selectlists.js
 
+function init_checklist(obj) {
+	var a = $("#"+obj.id).val().split(/[, \t\r\n]+/);
+	var alen = a.length;
+	for (var i = 0; i < alen; i++) {
+		var val = a[i].replace(/^\s+|\s+$/g, '').toLowerCase();
+		if (val != "") {
+			$("."+obj.id+"_list").each( function() { 
+				if ($(this).val().toLowerCase() == val) {
+					$(this).attr("checked", "checked");
+				}
+			});
+		}
+	}
+}
+
 function pack_checklist(obj) {
 	var ret = "";
 	$("."+obj.id+"_list:checked").each( function() {
 		var val = $(this).val();
 		if (val != "") {
 			if (ret != "") { ret = ret + ","; }
-			ret = ret + val;
+			ret = ret + val.toLowerCase();
 		}
 	});
-	alert("returning "+ret);
 	return ret;
 }
 
@@ -23,8 +37,11 @@ $(document).ready(function() {
 	// do stuff when DOM is ready
 	$("select.mselect").each( function() {
 		init_multi_select(this, $("#"+this.id+"_data").val()); });
+	$(".checklist").each( function() { init_checklist(this); });
+	// blank contents have &nbsp; in them; how do I search for these?
+	// :contains('&nbsp;') doesn't work
 	$(".hideblank .contents").each( function() {
-		if ($(this).is(":empty")) { $(this).parent().hide(); } });
+		if ($(this).is(":not(:contains('@'))")) { $(this).parent().hide(); } });
 	// do stuff when user blurs
 	$("input.first").bind("blur", function(e) { 
 		this.value = ucfirst(this.value); });
