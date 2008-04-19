@@ -10,12 +10,14 @@
 &nbsp;&nbsp;<span class="header">Grades and Attendance</span><br><br>
 <!-- title -->
 
+<!-- pscustom_begin -->
 ~[x:insertfile;includes/links.html]
 ~[x:insertfile;includes/disclaimer.html]
+<!-- pscustom_end -->
 
 <!-- start student content -->
 ~[SetPostValue:skipDontPrintFilter=1]
-~[SetPostValue:att_quicklookuphide_t=~[x:GetQuickLookupHidePref]]    
+~[SetPostValue:att_quicklookuphide_t=~[x:GetQuickLookupHidePref]]
 ~[wc:att_quicklookmeet_guardian]
 ~[wc:att_quicklookupdaily]
 ~[wc:att_quicklookupprogram]
