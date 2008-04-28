@@ -8,7 +8,8 @@
 
 <!-- title -->
 <!-- pscustom_begin -->
-&nbsp;&nbsp;<span class="header">Name and Birth Information</span><br><br>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_itr.js" type="text/javascript"></script>
+&nbsp;&nbsp;<span class="header">Name, Birth and Enrollment Information</span><br><br>
 <!-- pscustom_end -->
 <!-- title -->
 
@@ -61,11 +62,12 @@
 <!-- pscustom_begin -->  
 <table border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
 <tr><td>
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
-<tr><td colspan="3"><b>1. Student Identification</b></td></tr>
-<tr><td colspan="2"><b>Student's Legal Name:</b> Last, First Middle</td><td>Grade Level</td>
-</tr>
-<tr><td colspan="2"><b>~([01]Lastfirst)</b></td><td>Current:&nbsp;<b>~([01]Grade_Level)</b><br>Next:&nbsp;<b>~([01]Reg_Grade_Level)</b></td></tr>
+<table border="0" cellspacing="0" cellpadding="2" width="100%">
+<tr><td colspan="3" class="bold">Student's Legal Name</td></tr>
+<tr><td class="bold">Last, First Middle</td><td colspan="2" class="bold">([01]Lastfirst)</td></tr>
+<tr><td class="bold">Current Grade</td><td colspan="2" class="bold">~([01]Grade_Level)</td></tr>
+
+<tr class="secheader"><td colspan="3" class="bold">1a. Name and Birth Information</td></tr>
 <tr><td>Date of Birth</td><td>Gender</td>
 <td>Nickname</td>
 </tr>
@@ -408,7 +410,89 @@
 <option value="ZM">Zambia</option>
 <option value="ZW">Zimbabwe</option>
 <option value="ZZ">Unspecified or Unknown</option>
-</select></td></tr></table>
+</select></td></tr>
+
+<tr class="secheader"><td colspan="3" class="bold">1b. Enrollment Information</td></tr>
+
+<tr><td class="bold">Status for 2008-9</td><td colspan="2"><select id="reg_enroll" name="[01]reg_will_attend">
+<option value="">Choose:</option>
+<option value="attending">Student will be attending a District school</option>
+<option value="nr-graduated">Student will have graduated</option>
+<option value="nr-permanent">Student will not be attending a District school</option>
+<option value="nr-temporary">Student is temporarily leaving the District, but may return later</option>
+<option value="unknown">Not sure if student will attend; don't know at this time</option>
+</select></td></tr>
+
+<tr class="enrolling"><td class="bold">Grade Level for 2008-9</td><td colspan="2"><select id="reg_grade_level" name="[01]reg_grade_level">
+<option value="">Choose:</option>
+<option value="0">Kindergarten - Bacich Elementary School</option>
+<option value="1">1st Grade - Bacich Elementary School</option>
+<option value="2">2nd Grade - Bacich Elementary School</option>
+<option value="3">3rd Grade - Bacich Elementary School</option>
+<option value="4">4th Grade - Bacich Elementary School</option>
+<option value="5">5th Grade - Kent Middle School</option>
+<option value="6">6th Grade - Kent Middle School</option>
+<option value="7">7th Grade - Kent Middle School</option>
+<option value="8">8th Grade - Kent Middle School</option>
+<option value="-1">Student will not be attending</option>
+</select></td></tr>
+
+<tr class="not_enrolling"><td class="bold">If not enrolling</td><td colspan="2"><select id="reg_exitcode" name="[01]ExitCode">
+<option value="">Choose:</option>
+<option value="160">Student will attend another public school in California</option>
+<option value="180">Student will attend a private school in California</option>
+<option value="200">Student will attend a US school outside California</option>
+<option value="460">Student will be home schooled</option>
+<option value="240">Student is moving to another country</option>
+<option value="400">Other reason for not attending, or don't know</option>
+</select></td></tr>
+
+<tr class="enrolling by_grade grade_5"><td colspan="3" class="bold">Music Choice for 5th Grade Students</td></tr>
+<tr class="enrolling by_grade grade_5"><td>&nbsp;</td>
+<td><input type="radio" name="[01]electives_5_music" value="chorus">&nbsp;5th Grade Chorus</td>
+<td><input type="radio" name="[01]electives_5_music" value="band">&nbsp;5th Grade Beginning Band</td></tr>
+
+<tr class="enrolling by_grade grade_6"><td colspan="3" class="bold">Enrichment Choice for 6th Grade Students</td></tr>
+<tr class="enrolling by_grade grade_6"><td>&nbsp;</td>
+<td><input type="radio" name="[01]electives_6_music" value="chorus">&nbsp;6th Grade Int. Band</td>
+<td><input type="radio" name="[01]electives_6_music" value="band">&nbsp;Other Elective</td></tr>
+
+<tr class="enrolling by_grade grade_7"><td colspan="3" class="bold">Zero-Period Advanced Band Option for 7th Grade Students</td></tr>
+<tr class="enrolling by_grade grade_7"><td>&nbsp;</td>
+<td><input type="radio" name="[01]electives_7_band" value="band">&nbsp;Zero-Period Adv. Band</td>
+<td><input type="radio" name="[01]electives_7_band" value="">&nbsp;No Zero Period class</td></tr>
+
+<tr class="enrolling by_grade grade_8"><td colspan="3" class="bold">Zero-Period Advanced Band Option for 8th Grade Students</td></tr>
+<tr class="enrolling by_grade grade_8"><td>&nbsp;</td>
+<td><input type="radio" name="[01]electives_8_band" value="band">&nbsp;Zero-Period Adv. Band</td>
+<td><input type="radio" name="[01]electives_8_band" value="">&nbsp;No Zero Period class</td></tr>
+
+<tr class="enrolling by_grade grade_8"><td colspan="3" class="bold">Enrichment Preferences for 8th Grade Students</td></tr>
+<tr class="enrolling by_grade grade_8"><td class="bold">1st Choice Elective</td><td colspan="2"><select name="[01]electives_8_enrich1">
+<option value="">Choose:</option>
+<option value="art">Art</option>
+<option value="drama">Drama</option>
+<option value="shop">Shop</option>
+<option value="video">Video</option>
+</select></td></tr>
+
+<tr class="enrolling by_grade grade_8"><td class="bold">2nd Choice Elective</td><td colspan="2"><select name="[01]electives_8_enrich2">
+<option value="">Choose:</option>
+<option value="art">Art</option>
+<option value="drama">Drama</option>
+<option value="shop">Shop</option>
+<option value="video">Video</option>
+</select></td></tr>
+
+<tr class="enrolling by_grade grade_8"><td class="bold">3rd Choice Elective</td><td colspan="2"><select name="[01]electives_8_enrich3">
+<option value="">Choose:</option>
+<option value="art">Art</option>
+<option value="drama">Drama</option>
+<option value="shop">Shop</option>
+<option value="video">Video</option>
+</select></td></tr>
+
+</table>
 <br>
 <br>
 </td></tr>

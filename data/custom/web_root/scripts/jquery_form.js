@@ -34,15 +34,15 @@ function pack_checklist(obj) {
 //  #upd_by should use a custom field name like [05]form0_updated_by
 //  #upd_at should use a custom field name like [05]form0_updated_at
 $(document).ready(function() {
-	// do stuff when DOM is ready
-	$("select.mselect").each( function() {
-		init_multi_select(this, $("#"+this.id+"_data").val()); });
-	$(".checklist").each( function() { init_checklist(this); });
-	// blank contents have &nbsp; in them; how do I search for these?
-	// :contains('&nbsp;') doesn't work
-	$(".hideblank .contents").each( function() {
-		if ($(this).is(":not(:contains('@'))")) { $(this).parent().hide(); } });
-	// do stuff when user blurs
+	// do stuff when user submits
+	$("#attSubmitButton").bind("click", function(e) { 
+		$("select.mselect").each( function() {
+			$("#"+this.id+"_data").val(pack_multi_select(this)); });
+		$(".checklist").each( function() { 
+			$(this).val(pack_checklist(this)); });
+		$("#upd_by").val($("#userid").val()); 
+		$("#upd_at").val(timestamp_now()); return true; });
+	// format field values for specific input types
 	$("input.first").bind("blur", function(e) { 
 		this.value = ucfirst(this.value); });
 	$("input.last").bind("blur", function(e) { 
@@ -57,12 +57,12 @@ $(document).ready(function() {
 		this.value = this.value.toLowerCase(); });
 	$("input.phone").bind("blur", function(e) { 
 		this.value = na_phone(this.value, "415"); });
-	// do stuff when user submits
-	$("#attSubmitButton").bind("click", function(e) { 
-		$("select.mselect").each( function() {
-			$("#"+this.id+"_data").val(pack_multi_select(this)); });
-		$(".checklist").each( function() { 
-			$(this).val(pack_checklist(this)); });
-		$("#upd_by").val($("#userid").val()); 
-		$("#upd_at").val(timestamp_now()); return true; });
+	// do stuff when page is loaded
+	$("select.mselect").each( function() {
+		init_multi_select(this, $("#"+this.id+"_data").val()); });
+	$(".checklist").each( function() { init_checklist(this); });
+	// blank contents have &nbsp; in them; how do I search for these?
+	// :contains('&nbsp;') doesn't work
+	$(".hideblank .contents").each( function() {
+		if ($(this).is(":not(:contains('@'))")) { $(this).parent().hide(); } });
 });
