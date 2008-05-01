@@ -48,8 +48,8 @@
 <!-- start student content -->
 <!-- pscustom_begin -->  
 <form action="regforms.html" method="POST">
+<table width="700" cellpadding="0" cellspacing="0" border="0" align="center">
 <!-- pscustom_end -->
-<table cellpadding="0" cellspacing="0" border="0" align="center">
 <tr>
 <td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
 <td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
@@ -60,11 +60,11 @@
 <td>
 
 <!-- pscustom_begin -->  
-<table border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
 <tr><td>
-<table border="0" cellspacing="0" cellpadding="2" width="100%">
+<table width="100%" border="0" cellspacing="0" cellpadding="2" width="100%">
 <tr><td colspan="3" class="bold">Student's Legal Name</td></tr>
-<tr><td class="bold">Last, First Middle</td><td colspan="2" class="bold">([01]Lastfirst)</td></tr>
+<tr><td class="bold">Last, First Middle</td><td colspan="2" class="bold">~([01]Lastfirst)</td></tr>
 <tr><td class="bold">Current Grade</td><td colspan="2" class="bold">~([01]Grade_Level)</td></tr>
 
 <tr class="secheader"><td colspan="3" class="bold">1a. Name and Birth Information</td></tr>
@@ -491,13 +491,10 @@
 <option value="shop">Shop</option>
 <option value="video">Video</option>
 </select></td></tr>
-
-</table>
-<br>
-<br>
+</table><br><br>
 </td></tr>
-<tr>
-<td class="bold">Last updated at 
+
+<tr><td class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form1_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form1_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
