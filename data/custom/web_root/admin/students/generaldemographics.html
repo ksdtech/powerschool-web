@@ -1,0 +1,158 @@
+<html>
+<!-- start right frame -->
+<head>
+<title>General Demographics</title>
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
+<script language="JavaScript" src="/admin/javascript/student_copyAddress.js"></script>
+
+</head>
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; General Demographics<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
+<!-- Beginning of title of page -->
+~[wc:title_student_begin]General Demographics~[wc:title_student_end]
+<!-- Ending of title of page -->
+<br>
+
+<!-- Start of shaded content table and bounding box -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="4">
+<tr bgcolor="#edf3fe">
+<td class="bold">Name (last, first MI)</td>
+<td><input type="text" name="[01]lastfirst" value="" size="30"></td>
+</tr>
+<tr>
+<td class="bold">Address</td>
+<td><input type="text" name="[01]street" value="" size="30" id="pstreet"><br> 
+ <input type="text" name="[01]city" value="" size="14" id="pcity">, 
+ <input type="text" name="[01]state" value="" size="3" id="pstate"> 
+ <input type="text" name="[01]zip" value="" size="10" id="pzip"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Home phone</td>
+<td><input type="text" name="[01]home_phone" value="" size="17"></td>
+</tr>
+<tr>
+<td class="bold">Age</td>
+<td>~(age)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Aggregate days of membership (YTD)</td>
+<td>~(aggmemdaysytd)</td>
+</tr>
+<tr>
+<td class="bold">Area/neighborhood</td>
+<td><input type="text" name="[01]area" value="" size="27"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">DOB</td>
+<td><input type="text" name="[01]dob" value="" size="11" onChange="checkDates('~(JSFieldParam;[01]dob)');"></td>
+</tr>
+<tr>
+<td class="bold">Ethnicity</td>
+<td><select name="[01]ethnicity" special="lists.ethnicity"><option></select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Father (last, first)</td>
+<td><input type="text" name="[01]father" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">Father's Day Phone</td>
+<td><input type="text" name="[01]fatherdayphone" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Father's Employer</td>
+<td><input type="text" name="[01]Father_Employer" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">Father's Home Phone</td>
+<td><input type="text" name="[01]Father_home_phone" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Gender</td>
+<td><select name="[01]gender"><option value=""><option value="M">Male<option value="F">Female</select></td>
+</tr>
+<tr>
+<td class="bold">Grade Level</td>
+<td>~(grade_level)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Graduation Year</td>
+<td><input type="text" name="[01]graduation_year" value="" size="5"></td>
+</tr>
+<tr>
+<td class="bold">Guardianship</td>
+<td><input type="text" name="[01]guardianship" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold"><a href="mailto:~(guardianemail)">Guardian Email</a></td>
+<td><input type="text" name="[01]guardianemail" value="" size="30"></td>
+</tr>
+<tr>
+<td class="bold">Mailing Address<br />&nbsp;<a href="javascript:void(copyAddress())" onClick="copyAddress()">Copy Street Address</a></td>
+<td><input type="text" name="[01]mailing_street" value="" size="30" id="mstreet"><br>  <input type="text" name="[01]mailing_city" value="" size="14" id="mcity">, <input type="text" name="[01]mailing_state" value="" size="3" id="mstate"> <input type="text" name="[01]mailing_zip" value="" size="10" id="mzip"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Mother (last, first)</td>
+<td><input type="text" name="[01]mother" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">Mother's Day Phone</td>
+<td><input type="text" name="[01]motherdayphone" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Mother's Employer</td>
+<td><input type="text" name="[01]Mother_Employer" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">Mother's Home Phone</td>
+<td><input type="text" name="[01]Mother_home_phone" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Previous Student ID</td>
+<td><input type="text" name="[01]prevstudentid" value="" size=10></td>
+</tr>
+<tr>
+<td class="bold">SSN</td>
+<td><input type="text" name="[01]ssn" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Student Number</td>
+<td><input type="text" name="[01]student_number" value="" size="13"></td>
+</tr>
+<!-- Start insert state specific section information -->
+~[x:insertfile;state/demographics~[displaypref:districtstate].html]
+<!-- End insert state specific section information -->
+</table>
+
+</td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+<tr>
+<td colspan="2" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<!-- End of shaded content table and bounding box -->
+
+~[wc:admin_footer_frame]
+</form>
+
+</body>
+</html><!-- end right frame -->
