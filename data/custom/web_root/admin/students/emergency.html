@@ -9,7 +9,6 @@
 <body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
 
 <form action="/admin/changesrecorded.white.html" method="POST">
-~[no.update]
 ~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Emergency Contact/Medical<!-- breadcrumb end -->~[wc:admin_navigation_frame]
 
 <!-- Beginning of title of page -->
@@ -29,83 +28,41 @@
 
 <table border="0" cellspacing="0" cellpadding="4">
 <tr bgcolor="#edf3fe">
-<td class="bold" rowspan="4">Contact #1</td>
-<td>Contact Name (last, first)<br><input type="text" name="[01]Emergency1_Last" value="" size="20">, <input type="text" name="[01]Emergency1_First" value="" size="25"></td>
+<td class="bold" rowspan="2">Contact #1</td>
+<td>Contact Name (last, first)<br><input type="text" name="[01]Emerg_Contact_1" value="" size="25"></td>
 <td>Relationship<br><select name="[01]Emerg_1_Rel"><option><option value="Aunt">Aunt<option value="Brother">Brother<option value="Father">Father<option value="Friend">Friend<option value="Grandfather">Grandfather<option value="Grandmother">Grandmother<option value="Mother">Mother<option value="Neighbor">Neighbor<option value="Other">Other<option value="Sister">Sister<option value="Uncle">Uncle</select></td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td>Day Phone<br><input type="text" name="[01]Emergency1_Day_Phone" value="" size="15"></td>
-<td>Home Phone<br><input type="text" name="[01]Emergency1_Home_Phone" value="" size="15"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td>Cell Phone<br><input type="text" name="[01]Emergency1_Cell" value="" size="15"></td>
-<td>Pager<br><input type="text" name="[01]Emergency1_Pager" value="" size="15"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td colspan="2">Notes<br><input type="text" name="[01]Emerg_1_Notes" value="" size="40"></td>
+<td>Phone<br><input type="text" name="[01]Emerg_Phone_1" value="" size="15"></td>
+<td>Phone Type<br><select name="[01]Emerg_1_Ptype"><option><option value="Cell">Cell<option value="Home">Home<option value="Work">Work</select></td>
 </tr>
 <tr>
-<td class="bold" rowspan="4">Contact #2</td>
-<td>Contact Name (last, first)<br><input type="text" name="[01]Emergency2_Last" value="" size="20">, <input type="text" name="[01]Emergency2_First" value="" size="25"></td>
+<td class="bold" rowspan="2">Contact #2</td>
+<td>Contact Name (last, first)<br><input type="text" name="[01]Emerg_Contact_2" value="" size="25"></td>
 <td>Relationship<br><select name="[01]Emerg_2_Rel"><option><option value="Aunt">Aunt<option value="Brother">Brother<option value="Father">Father<option value="Friend">Friend<option value="Grandfather">Grandfather<option value="Grandmother">Grandmother<option value="Mother">Mother<option value="Neighbor">Neighbor<option value="Other">Other<option value="Sister">Sister<option value="Uncle">Uncle</select></td>
 </tr>
 <tr>
-<td>Day Phone<br><input type="text" name="[01]Emergency2_Day_Phone" value="" size="15"></td>
-<td>Home Phone<br><input type="text" name="[01]Emergency2_Home_Phone" value="" size="15"></td>
-</tr>
-<tr>
-<td>Cell Phone<br><input type="text" name="[01]Emergency2_Cell" value="" size="15"></td>
-<td>Pager<br><input type="text" name="[01]Emergency2_Pager" value="" size="15"></td>
-</tr>
-<tr>
-<td colspan="2">Notes<br><input type="text" name="[01]Emerg_2_Notes" value="" size="40"></td>
+<td>Phone<br><input type="text" name="[01]Emerg_Phone_2" value="" size="15"></td>
+<td>Phone Type<br><select name="[01]Emerg_2_Ptype"><option><option value="Cell">Cell<option value="Home">Home<option value="Work">Work</select></td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold" rowspan="4">Contact #3</td>
-<td>Contact Name (last, first)<br><input type="text" name="[01]Emergency3_Last" value="" size="20">, <input type="text" name="[01]Emergency3_First" value="" size="25"></td>
-<td>Relationship<br><select name="[01]Emerg_2_Rel"><option><option value="Aunt">Aunt<option value="Brother">Brother<option value="Father">Father<option value="Friend">Friend<option value="Grandfather">Grandfather<option value="Grandmother">Grandmother<option value="Mother">Mother<option value="Neighbor">Neighbor<option value="Other">Other<option value="Sister">Sister<option value="Uncle">Uncle</select></td>
+<td class="bold" rowspan="2">Contact #3</td>
+<td>Contact Name (last, first)<br><input type="text" name="[01]Emerg_Contact_3" value="" size="25"></td>
+<td>Relationship<br><select name="[01]Emerg_3_Rel"><option><option value="Aunt">Aunt<option value="Brother">Brother<option value="Father">Father<option value="Friend">Friend<option value="Grandfather">Grandfather<option value="Grandmother">Grandmother<option value="Mother">Mother<option value="Neighbor">Neighbor<option value="Other">Other<option value="Sister">Sister<option value="Uncle">Uncle</select></td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td>Day Phone<br><input type="text" name="[01]Emergency3_Day_Phone" value="" size="15"></td>
-<td>Home Phone<br><input type="text" name="[01]Emergency3_Home_Phone" value="" size="15"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td>Cell Phone<br><input type="text" name="[01]Emergency3_Cell" value="" size="15"></td>
-<td>Pager<br><input type="text" name="[01]Emergency3_Pager" value="" size="15"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td colspan="2">Notes<br><input type="text" name="[01]Emerg_3_Notes" value="" size="40"></td>
+<td>Phone<br><input type="text" name="[01]Emerg_3_Phone" value="" size="15"></td>
+<td>Phone Type<br><select name="[01]Emerg_3_Ptype"><option><option value="Cell">Cell<option value="Home">Home<option value="Work">Work</select></td>
 </tr>
 <tr>
-<td class="bold" rowspan="4">Out of State Contact</td>
-<td>Contact Name (last, first)<br><input type="text" name="[01]EmergencyX_Last" value="" size="20">, <input type="text" name="[01]EmergencyX_First" value="" size="25"></td>
-<td>Relationship<br><select name="[01]Emerg_X_Rel"><option><option value="Aunt">Aunt<option value="Brother">Brother<option value="Father">Father<option value="Friend">Friend<option value="Grandfather">Grandfather<option value="Grandmother">Grandmother<option value="Mother">Mother<option value="Neighbor">Neighbor<option value="Other">Other<option value="Sister">Sister<option value="Uncle">Uncle</select></td>
-</tr>
-<tr>
-<td>Day Phone<br><input type="text" name="[01]EmergencyX_Day_Phone" value="" size="15"></td>
-<td>Home Phone<br><input type="text" name="[01]EmergencyX_Home_Phone" value="" size="15"></td>
-</tr>
-<tr>
-<td>Cell Phone<br><input type="text" name="[01]EmergencyX_Cell" value="" size="15"></td>
-<td>Pager<br><input type="text" name="[01]EmergencyX_Pager" value="" size="15"></td>
-</tr>
-<tr>
-<td colspan="2">Notes<br><input type="text" name="[01]Emerg_X_Notes" value="" size="40"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">Doctor #1</td>
-<td>Name<br><input type="text" name="[01]Doctor_Name" value="" size="25"></td>
-<td>Phone<br><input type="text" name="[01]Doctor_Phone" value="" size="15"></td>
-</tr>
-<tr>
-<td class="bold">Doctor #2</td>
-<td>Name<br><input type="text" name="[01]Doctor2_Name" value="" size="25"></td>
-<td>Phone<br><input type="text" name="[01]Doctor2_Phone" value="" size="15"></td>
+<td class="bold">Doctor</td>
+<td><input type="text" name="[01]Doctor_Name" value="" size="25"></td>
+<td><input type="text" name="[01]Doctor_Phone" value="" size="15"></td>
 </tr>
 <tr bgcolor="#edf3fe">
 <td class="bold">Dentist</td>
-<td>Name<br><input type="text" name="[01]Dentist_Name" value="" size="25"></td>
-<td>Phone<br><input type="text" name="[01]Dentist_Phone" value="" size="15"></td>
+<td><input type="text" name="[01]Dentist_Name" value="" size="25"></td>
+<td><input type="text" name="[01]Dentist_Phone" value="" size="15"></td>
 </tr>
 <tr>
 <td class="bold">Special Medical<br>Considerations</td>
@@ -116,30 +73,33 @@
 <td colspan="2"><input type="text" name="[01]allergies" value="" size="25"></td>
 </tr>
 <tr>
-<td class="bold" colspan="3"><a href="/admin/students/studentpages/05emerg2.html?frn=~(studentfrn)" target="_self">Emergency Card Medical Info</a></td>
+<td class="bold">Immunizations</td>
+<td colspan="2">
+<table border="0" cellpadding="4" cellspacing="0">
+<tr align="center">
+<td>Polio</td>
+<td>MMR</td>
+<td>DPT</td>
 </tr>
-<tr>
-<td class="bold" colspan="3"><a href="/admin/students/studentpages/physicals.html?frn=~(studentfrn)" target="_self">Physicals, Hearing and Vision</a></td>
+<tr align="center">
+<td><input type="text" name="[01]immunizaton_polio" value="" size="3"></td>
+<td><input type="text" name="[01]immunizaton_mmr" value="" size="3"></td>
+<td><input type="text" name="[01]immunizaton_dpt" value="" size="3"></td>
 </tr>
-<tr>
-<td class="bold" colspan="3"><a href="/admin/students/studentpages/immunizations.html?frn=~(studentfrn)" target="_self">Immunizations</a></td>
+</table>
+</td>
 </tr>
 <tr bgcolor="#edf3fe">
 <td class="bold">Medical Alert Text</td>
 <td colspan="2"><textarea name="[01]Alert_Medical" rows="4" cols="40"></textarea></td>
 </tr>
 <tr>
-<td class="bold">Medical Alert: What</td>
-<td colspan="2"><input type="text" name="[01]Alert_Medical_What" value="" size="40"></input></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">Medical Alert: Symptoms</td>
-<td colspan="2"><input type="text" name="[01]Alert_Medical_Symptoms" value="" size="40"></input></td>
-</tr>
-<tr>
 <td class="bold">Alert Expires (date)</td>
-<td colspan="2"><input type="text" name="[01]Alert_MedicalExpires" value="" size="10"> (0/0/0 to never expire)</td>
+<td colspan="2"><input type="text" name="[01]Alert_MedicalExpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]Alert_MedicalExpires)');"> (0/0/0 to never expire)</td>
 </tr>
+<!-- Start insert state specific section information -->
+~[x:insertfile;state/emergency~[displaypref:districtstate].html]
+<!-- End insert state specific section information -->
 </table>
 <br>
 
