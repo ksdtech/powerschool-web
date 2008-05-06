@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$("#reg_enroll").bind("change", function() { on_enrollment_change(); });
 	$("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
 	// do stuff when page is loaded
+	$(".private").hide();
 	on_enrollment_change();
 });
 
@@ -26,14 +27,10 @@ function on_enrollment_change() {
 }
 
 function on_grade_level_change() {
+	$("tr.by_grade").hide();
 	var grade = $("#reg_grade_level option:selected").val();
-	if (grade == "" || grade == "-1") { 
-		$("tr.by_grade").hide();
-	} else { 
-		grade = ".grade_" + grade; 
-		var not_grade = ':not("' + grade + '")';
-		$("tr.by_grade").filter(grade).show();
-		$("tr.by_grade").filter(not_grade).hide();
+	if (grade != "" && grade != "-1") {
+		$("tr.by_grade").filter(".grade_" + grade).show();
 	}
 	return true;
 }
