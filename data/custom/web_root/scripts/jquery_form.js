@@ -58,6 +58,7 @@ $(document).ready(function() {
 	$("input.phone").bind("blur", function(e) { 
 		this.value = na_phone(this.value, "415"); });
 	// do stuff when page is loaded
+	$(".private").hide();
 	$("select.mselect").each( function() {
 		init_multi_select(this, $("#"+this.id+"_data").val()); });
 	$(".checklist").each( function() { init_checklist(this); });
