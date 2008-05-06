@@ -64,15 +64,19 @@
 <tr><td>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr class="secheader"><td colspan="2" class="bold">10. Guardianship</td></tr>
-<tr><td>Student lives with</td><td><select name="[01]Lives_With_Rel">
+<tr class="secheader"><td colspan="3" class="bold">10. Guardianship</td></tr>
+<tr><td>Student lives with</td><td colspan="2"><select name="[01]Lives_With_Rel">
 <option value="">Chose one:</option>
 <option value="Both">Both Parents</option>
 <option value="Mother">Mother</option>
 <option value="Father">Father</option>
 <option value="Guardian">Legal Guardian</option>
 </select></td></tr>
-<tr><td colspan="2"><input type="checkbox" name="[01]Custody_Orders">COURT-MANDATED custody/visitation orders limiting access to this student</td></tr>
+<tr><td colspan="3">Are there any <b>court-mandated</b> custody or visitation orders limiting access to this student?
+If you answer <b>Yes</b>, you must submit paper copies of the legal documents to the school office.</td></tr>
+<tr><td>&nbsp;</td>
+<td><input type="radio" name="[01]Custody_Orders" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Custody_Orders" value="">No&nbsp;&nbsp;</td></tr>
 </table><br>
 <br>
 </td></tr>
@@ -104,8 +108,8 @@
 <td><input type="text" class="phone" name="[01]Emergency1_Day_Phone" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]Emergency1_Cell" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]Emergency1_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr><td colspan="4"><input type="text" name="[01]Emergency1_Notes" value="" size="60"></td></tr>
+<tr class="private"><td colspan="4">Notes</td></tr>
+<tr class="private"><td colspan="4"><input type="text" name="[01]Emergency1_Notes" value="" size="60"></td></tr>
 <tr><td colspan="4">&nbsp;</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
 <tr><td colspan="3"><input type="text" name="[01]Emergency2_Last" value="" size="20">, 
@@ -131,8 +135,8 @@
 <td><input type="text" class="phone" name="[01]Emergency2_Day_Phone" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]Emergency2_Cell" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]Emergency2_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr><td colspan="4"><input type="text" name="[01]Emergency2_Notes" value="" size="60"></td></tr>
+<tr class="private"><td colspan="4">Notes</td></tr>
+<tr class="private"><td colspan="4"><input type="text" name="[01]Emergency2_Notes" value="" size="60"></td></tr>
 <tr><td colspan="4">&nbsp;</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
 <tr><td colspan="3"><input type="text" name="[01]Emergency3_Last" value="" size="20">, 
@@ -158,8 +162,8 @@
 <td><input type="text" class="phone" name="[01]Emergency3_Day_Phone" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]Emergency3_Cell" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]Emergency3_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr><td colspan="4"><input type="text" name="[01]Emergency3_Notes" value="" size="60"></td></tr>
+<tr class="private"><td colspan="4">Notes</td></tr>
+<tr class="private"><td colspan="4"><input type="text" name="[01]Emergency3_Notes" value="" size="60"></td></tr>
 <tr><td colspan="4" class="bold">Out-of-state</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
 <tr><td colspan="3"><input type="text" name="[01]EmergencyX_Last" value="" size="20">, 
@@ -185,12 +189,12 @@
 <td><input type="text" class="phone" name="[01]EmergencyX_Day_Phone" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]EmergencyX_Cell" value="" size="16"></td>
 <td><input type="text" class="phone" name="[01]EmergencyX_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr><td colspan="4"><input type="text" name="[01]EmergencyX_Notes" value="" size="60"></td></tr>
+<tr class="private"><td colspan="4">Notes</td></tr>
+<tr class="private"><td colspan="4"><input type="text" name="[01]EmergencyX_Notes" value="" size="60"></td></tr>
 </table><br><br>
 </td></tr>
 
-<tr><td class="bold">Last updated at 
+<tr class="private"><td class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form6_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form6_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
