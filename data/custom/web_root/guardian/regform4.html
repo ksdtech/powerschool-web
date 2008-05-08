@@ -81,22 +81,23 @@
 <td><input class="city" type="text" name="[01]Mailing2_City" value="" size="20"></td>
 <td><input class="state" type="text" name="[01]Mailing2_State" value="" size="4"></td>
 <td><input class="zip" type="text" name="[01]Mailing2_Zip" value="" size="10"></td></tr>
-<tr><td>Home Phone</td><td>Student's Phone</td><td colspan="2"></td></tr>
-<tr><td><input class="phone" type="text" name="[01]Home2_Phone" value="" size="16"></td>
-<td><input class="phone" type="text" name="[01]Home2_Student_Phone" value="" size="16"></td><td colspan="2"></td></tr></table><br>
-<br></td></tr>
+<tr><td class="bold">Home Phone</td><td><input class="phone" type="text" name="[01]Home2_Phone" value="" size="16"></td>
+<td colspan="2">&nbsp;</td></tr>
+</table><br><br>
+</td></tr>
+
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr class="secheader"><td colspan="4" class="bold">6b. Mother/Parent/Guardian at Additional Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td></tr>
 <tr><td colspan="2"><input type="text" name="[01]Mother2_Last" value="" size="30"></td>
-  <td colspan="2"><input type="text" name="[01]Mother2_First" value="" size="30"></td></tr>
-<tr><td colspan="4">Relationship</td></tr>
-<tr><td><select name="[01]Mother2_Ident">
-<option value="N/A">N/A</option>
-<option value="Mother">Mother</option>
+<td colspan="2"><input type="text" name="[01]Mother2_First" value="" size="30"></td></tr>
+<tr><td>Relationship</td>
+<td><select name="[01]Mother2_Ident">
+<option value="">Choose:</option>
 <option value="Father">Father</option>
+<option value="Mother">Mother</option>
 <option value="Stepmother">Stepmother</option>
 <option value="Stepfather">Stepfather</option>
 <option value="Grandmother">Grandmother</option>
@@ -106,15 +107,16 @@
 <option value="Guardian">Guardian</option>
 <option value="Other">Other</option>
 </select></td>
-  <td colspan="2"><input type="checkbox" name="[01]Mother2_IsGuardian">
-    Parent is legal guardian</td>
-  <td>&nbsp;</td>
-</tr>
-<tr><td>Day Phone</td>
+<td colspan="2">&nbsp;</td></tr>
+<tr><td>Parent is legal guardian?</td>
+<td><input type="radio" name="[01]Mother2_IsGuardian" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Mother2_IsGuardian" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td></tr>
+<tr><td>Work Phone</td>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>Pager</td></tr>
-<tr><td><input class="phone" type="text" name="[01]Mother2_Day_Phone" value="" size="16"></td>
+<tr><td><input class="phone" type="text" name="[01]Mother2_Work_Phone" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Mother2_Home_Phone" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Mother2_Cell" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Mother2_Pager" value="" size="16"></td></tr>
@@ -124,9 +126,9 @@
 <tr><td colspan="2">Employer Name</td><td colspan="2">Employer City</td></tr>
 <tr><td colspan="2"><input type="text" name="[01]Mother2_Employer" value="" size="30"></td>
 <td colspan="2"><input class="city" type="text" name="[01]Mother2_Employer_Address" value="" size="20"></td></tr>
-</table>
-<br>
-<br></td></tr>
+</table><br><br>
+</td></tr>
+
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr class="secheader"><td colspan="4" class="bold">6c. Father/Parent/Guardian at Additional Residence</td></tr>
@@ -135,9 +137,9 @@
 </tr>
 <tr><td colspan="2"><input type="text" name="[01]Father2_Last" value="" size="30"></td>
 <td colspan="2"><input type="text" name="[01]Father2_First" value="" size="30"></td></tr>
-<tr><td colspan="4">Relationship</td></tr>
-<tr><td><select name="[01]Father2_Ident">
-<option value="N/A">N/A</option>
+<tr><td>Relationship</td>
+<td><select name="[01]Father2_Ident">
+<option value="">Choose:</option>
 <option value="Father">Father</option>
 <option value="Mother">Mother</option>
 <option value="Stepmother">Stepmother</option>
@@ -149,15 +151,16 @@
 <option value="Guardian">Guardian</option>
 <option value="Other">Other</option>
 </select></td>
-  <td colspan="2"><input type="checkbox" name="[01]Father2_IsGuardian">
-    Parent is legal guardian</td>
-  <td>&nbsp;</td>
-</tr>
-<tr><td>Day Phone</td>
+<td colspan="2">&nbsp;</td></tr>
+<tr><td>Parent is legal guardian?</td>
+<td><input type="radio" name="[01]Father2_IsGuardian" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Father2_IsGuardian" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td></tr>
+<tr><td>Work Phone</td>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>Pager</td></tr>
-<tr><td><input class="phone" type="text" name="[01]Father2_Day_Phone" value="" size="16"></td>
+<tr><td><input class="phone" type="text" name="[01]Father2_Work_Phone" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Father2_Home_Phone" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Father2_Cell" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Father2_Pager" value="" size="16"></td></tr>
