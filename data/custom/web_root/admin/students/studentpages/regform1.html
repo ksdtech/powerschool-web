@@ -1,56 +1,25 @@
 <html>
+<!-- start right frame -->
 <head>
-<title>Reg (0): Logins and ID Numbers</title>
-<link href="/images/powerschool.css" rel="stylesheet" type="text/css">
+<!-- pscustom_begin -->
+<title>Page 1: Logins and ID Numbers</title>
+<!-- pscustom_end -->
 ~[wc:commonscripts]
-<script language="JavaScript" type="text/javascript" src="/admin/javascript/jx.js"></script>
-<script language="JavaScript" type="text/javascript" src="/admin/javascript/user_stamp.js"></script>
-<script language="JavaScript" type="text/javascript">
-function init_form() {
-	var gl = document.getElementById("grade_level");
-	var ed = document.getElementById("entry_date");
-	var inputs = document.getElementsByTagName('input');
-	var i, el;
-	stamp_form("ps-admin");
-	for (i = inputs.length-1; i >= 0; i--) {
-		el = inputs[i];
-		if (el.id) {
-			if (gl && el.id.indexOf("EntryGradeLevel") > 0 && el.value == "") {
-				el.value = gl.innerHTML;
-			}
-			if (ed && el.id.indexOf("EntryDate") > 0 && el.value == "") {
-				el.value = ed.innerHTML;
-			}
-		}
-	}
-	return true;
-}
-function id_check(which_id) {
-	var st_id = document.getElementById(which_id).value;
-	if (st_id != "") {
-		jx.load('http://10.4.202.14:3000/accounts/' + st_id + '.json', 
-			function(data) { 
-     alert("returned with csis id " + data["state_studentnumber"]); 
-           }, 'json', 'get');
-	}
-	var login = document.getElementById(which_id.replace(/_id/, "_login"));
-	var passwd = document.getElementById(which_id.replace(/_id/, "_password"));
-   return true;
-}
-</script>
+<link href="/images/powerschool.css" rel="stylesheet">
 </head>
-<body marginwidth="10" marginheight="10" topmargin="10" leftmargin="10" background="/images/bg3.gif" onload="init_form();">
-<form action="/admin/students/home.html" method="post" target="_top">
-~[no.update]
-~[wc:admin_header_frame]
-<!-- breadcrumb start -->
-<a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Logins and ID Numbers
-<!-- breadcrumb end -->
-~[wc:admin_navigation_frame]
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+<!-- pscustom_begin -->
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Logins and ID Numbers<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
 <!-- Beginning of title of page -->
 ~[wc:title_student_begin]Logins and ID Numbers~[wc:title_student_end]
+<!-- pscustom_end -->
 <!-- Ending of title of page -->
 <br>
+
 <!-- start of content and bounding box -->
 <table border="0" cellspacing="0" cellpadding="0" align="center">
 <tr>
@@ -59,9 +28,12 @@ function id_check(which_id) {
 </tr>
 <tr>
 <td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1" alt=""></td>
-<td><table border="0" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr bgcolor="#FFFFFF">
-<td><table border="0" width="100%">
+<td>
+
+<!-- pscustom_begin -->
+<table border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr><td>
+<table border="0" width="100%">
 	<tr><td colspan="3"><b>1. Student Transfer Info</b></td></tr>
 	<tr>
 		<td>Current Grade Level</td>
@@ -161,29 +133,31 @@ function id_check(which_id) {
 		<td colspan="2"><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
 		<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
 	</tr>
-</table><br></td>
-</tr>
-</table></td>
+</td></tr>
+<tr class="private"><td class="bold">Last updated at 
+<input type="text" id="upd_at" name="[01]form0_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[01]form0_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td></tr>
+</table>
+<!-- pscustom_end -->
+
+</td>
 <td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1" alt=""></td>
 </tr>
 <tr>
 <td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
 <td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
 </tr>
+
 <tr>
-<td colspan="2" align="right">
-<input id="user_updated_at" type="text" name="[01]Reg0_Updated_At" value="">
-<input id="user_updated_by" type="text" name="[01]Reg0_Updated_By" value="">
-<input type="hidden" name="frn" value="~(studentfrn)">
-<input type="hidden" name="ac" value="prim">
-~[submitbutton]
-</td>
+<td colspan="2" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
 <td>&nbsp;</td>
 </tr>
 </table>
 <br>
 <!-- end of content of bounding box -->
+
 ~[wc:admin_footer_frame]
 </form>
+
 </body>
-</html>
+</html><!-- end right frame -->

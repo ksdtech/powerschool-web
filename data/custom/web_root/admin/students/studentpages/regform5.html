@@ -1,57 +1,48 @@
 <html>
+<!-- start right frame -->
 <head>
-<title>Reg (5): Emerg.Contacts</title>
-<link href="/images/powerschool.css" rel="stylesheet" type="text/css">
-~[wc:commonscripts]  
+<!-- pscustom_begin -->
+<title>Page 5: Emergency Contacts</title>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<!-- pscustom_end -->
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
 </head>
-<body marginwidth="10" marginheight="10" topmargin="10" leftmargin="10" background="/images/bg3.gif">
-<form action="/admin/students/home.html" method="post" target="_top">
-~[no.update] 
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Emergency Card Page 1<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+<!-- pscustom_begin -->
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Emergency Contacts<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
 <!-- Beginning of title of page -->
-~[wc:title_student_begin]Emergency Card Page 1 of 2~[wc:title_student_end]
+~[wc:title_student_begin]Emergency Contacts~[wc:title_student_end]
+<!-- pscustom_end -->
 <!-- Ending of title of page -->
 <br>
+
 <!-- start of content and bounding box -->
 <table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr><td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td></tr>
-<tr><td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1" alt=""></td>
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1" alt=""></td>
 <td>
-<table border="0" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr bgcolor="#FFFFFF"><td>
-<table border="0" width="100%">
-<tr><td colspan="3" width="50%"><b>Student's Legal Name:</b> Last, First MI</td>
-<td width="50%">Grade Level</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3" width="50%"><input readonly="yes" disabled="yes" type="text" name="[01]Lastfirst" value="" size="40" maxlength="90"></td>
-<td width="50%">Current:&nbsp;<b>~([01]Grade_Level)</b><br>Next:&nbsp;<b>~([01]Reg_Grade_Level)</b></td></tr>
-</table><br>
-<br>
-</td></tr>
+
+<!-- pscustom_begin -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
 
 <tr><td>
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
-<tr><td colspan="2"><b>9. Guardianship</b></td></tr>
-<tr><td>Student lives with</td><td><select name="[01]Lives_With_Rel">
-<option value="">Chose one:</option>
-<option value="Both">Both Parents</option>
-<option value="Mother">Mother</option>
-<option value="Father">Father</option>
-<option value="Guardian">Legal Guardian</option>
-</select></td></tr>
-<tr><td colspan="2"><input type="checkbox" name="[01]Custody_Orders">COURT-MANDATED custody/visitation orders limiting access to this student</td></tr>
-</table><br>
-<br>
-</td></tr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-<tr><td>
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
-<tr><td colspan="4"><b>10. Contacts</b></td></tr>
+<tr class="secheader"><td colspan="4" class="bold">7a. Emergency Contact No. 1</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3"><input type="text" name="[01]Emergency1_Last" value="" size="30">, 
-<input type="text" name="[01]Emergency1_First" value="" size="30"></td>
+<tr><td colspan="3"><input type="text" name="[01]Emerg_Contact_1" value="" size="20">, 
+<input type="text" name="[01]Emerg_1_First" value="" size="20"></td>
 <td><select name="[01]Emerg_1_Rel">
-<option value="N/A">N/A</option>
+<option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
 <option value="Babysitter">Babysitter</option>
@@ -65,20 +56,30 @@
 <option value="Uncle">Uncle</option>
 <option value="Other">Other</option>
 </select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr bgcolor="#FFCC99">
-<td><input type="text" name="[01]Emergency1_Home_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency1_Day_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency1_Cell" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency1_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="4"><input type="text" name="[01]Emergency1_Notes" value="" size="60"></td></tr>
+<tr><td>Primary Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_Phone_1" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_1_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
+<tr><td>Alternate Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_1_Alt_Phone" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_1_Alt_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
 <tr><td colspan="4">&nbsp;</td></tr>
+
+<tr class="secheader"><td colspan="4" class="bold">7b. Emergency Contact No. 2</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3"><input type="text" name="[01]Emergency2_Last" value="" size="30">, 
-<input type="text" name="[01]Emergency2_First" value="" size="30"></td>
+<tr><td colspan="3"><input type="text" name="[01]Emerg_Contact_2" value="" size="20">, 
+<input type="text" name="[01]Emerg_2_First" value="" size="20"></td>
 <td><select name="[01]Emerg_2_Rel">
-<option value="N/A">N/A</option>
+<option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
 <option value="Babysitter">Babysitter</option>
@@ -92,20 +93,30 @@
 <option value="Uncle">Uncle</option>
 <option value="Other">Other</option>
 </select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr bgcolor="#FFCC99">
-<td><input type="text" name="[01]Emergency2_Home_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency2_Day_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency2_Cell" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency2_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="4"><input type="text" name="[01]Emergency2_Notes" value="" size="60"></td></tr>
+<tr><td>Primary Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_Phone_2" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_2_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
+<tr><td>Alternate Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_2_Alt_Phone" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_2_Alt_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
 <tr><td colspan="4">&nbsp;</td></tr>
+
+<tr class="secheader"><td colspan="4" class="bold">7c. Emergency Contact No. 3</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3"><input type="text" name="[01]Emergency3_Last" value="" size="30">, 
-<input type="text" name="[01]Emergency3_First" value="" size="30"></td>
+<tr><td colspan="3"><input type="text" name="[01]Emerg_Contact_3" value="" size="20">, 
+<input type="text" name="[01]Emerg_3_First" value="" size="20"></td>
 <td><select name="[01]Emerg_3_Rel">
-<option value="N/A">N/A</option>
+<option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
 <option value="Babysitter">Babysitter</option>
@@ -119,20 +130,30 @@
 <option value="Uncle">Uncle</option>
 <option value="Other">Other</option>
 </select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr bgcolor="#FFCC99">
-<td><input type="text" name="[01]Emergency3_Home_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency3_Day_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency3_Cell" value="" size="16"></td>
-<td><input type="text" name="[01]Emergency3_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="4"><input type="text" name="[01]Emergency3_Notes" value="" size="60"></td></tr>
-<tr><td colspan="4"><b>Out-of-state</b></td></tr>
+<tr><td>Primary Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_Phone_3" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_3_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
+<tr><td>Alternate Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_3_Alt_Phone" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_3_Alt_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
+<tr><td colspan="4">&nbsp;</td></tr>
+
+<tr class="secheader"><td colspan="4" class="bold">7d. Out of State Emergency Contact</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3"><input type="text" name="[01]EmergencyX_Last" value="" size="30">, 
-<input type="text" name="[01]EmergencyX_First" value="" size="30"></td>
+<tr><td colspan="3"><input type="text" name="[01]Emerg_Contact_X" value="" size="20">, 
+<input type="text" name="[01]Emerg_X_First" value="" size="20"></td>
 <td><select name="[01]Emerg_X_Rel">
-<option value="N/A">N/A</option>
+<option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
 <option value="Babysitter">Babysitter</option>
@@ -146,27 +167,50 @@
 <option value="Uncle">Uncle</option>
 <option value="Other">Other</option>
 </select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr bgcolor="#FFCC99">
-<td><input type="text" name="[01]EmergencyX_Home_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]EmergencyX_Day_Phone" value="" size="16"></td>
-<td><input type="text" name="[01]EmergencyX_Cell" value="" size="16"></td>
-<td><input type="text" name="[01]EmergencyX_Pager" value="" size="16"></td></tr>
-<tr><td colspan="4">Notes</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="4"><input type="text" name="[01]EmergencyX_Notes" value="" size="60"></td></tr>
-</table><br>
-<br>
+<tr><td>Primary Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_Phone_X" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_X_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
+<tr><td>Alternate Phone</td>
+<td><input type="text" class="phone" name="[01]Emerg_X_Alt_Phone" value="" size="16"></td>
+<td>Phone Type<br><select name="[01]Emerg_X_Alt_Ptype">
+<option value="">Choose:</option>
+<option value="Cell">Cell</option>
+<option value="Home">Home</option>
+<option value="Work">Work</option>
+</select></td></tr>
+</table><br><br>
 </td></tr>
+
+<tr class="private"><td class="bold">Last updated at 
+<input type="text" id="upd_at" name="[01]form5_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[01]form5_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+</tr>
 </table>
+<!-- pscustom_end -->
+
 </td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1" alt=""></td></tr>
-<tr><td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td></tr>
-<tr><td colspan="2" align="right"><input type="hidden" name="frn" value="~(studentfrn)"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
-<td>&nbsp;</td></tr>
-</table><br>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1" alt=""></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+
+<tr>
+<td colspan="2" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<br>
 <!-- end of content of bounding box -->
+
 ~[wc:admin_footer_frame]
 </form>
+
 </body>
-</html>
+</html><!-- end right frame -->

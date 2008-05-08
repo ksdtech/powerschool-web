@@ -1,194 +1,271 @@
 <html>
+<!-- start right frame -->
 <head>
-<title>Reg (6): Medical</title>
-<link href="/images/powerschool.css" rel="stylesheet" type="text/css">
-~[wc:commonscripts]  
+<!-- pscustom_begin -->
+<title>Page 8: Medical Information</title>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<!-- pscustom_end -->
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
 </head>
-<body marginwidth="10" marginheight="10" topmargin="10" leftmargin="10" background="/images/bg3.gif">
-<form action="/admin/students/home.html" method="post" target="_top">
-~[no.update] 
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Emergency Card Page 2<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+<!-- pscustom_begin -->
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Additional Residence<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
 <!-- Beginning of title of page -->
-~[wc:title_student_begin]Emergency Card Page 2 of 2~[wc:title_student_end]
+~[wc:title_student_begin]Additional Residence~[wc:title_student_end]
+<!-- pscustom_end -->
 <!-- Ending of title of page -->
 <br>
+
 <!-- start of content and bounding box -->
 <table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr><td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td></tr>
-<tr><td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1" alt=""></td>
-<td>
-<table border="0" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr bgcolor="#FFFFFF"><td>
-<table border="0" width="100%">
-<tr><td colspan="3" width="50%"><b>Student's Legal Name:</b> Last, First MI</td>
-<td width="50%">Grade Level</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3" width="50%"><input readonly="yes" disabled="yes" type="text" name="[01]Lastfirst" value="" size="40" maxlength="90"></td>
-<td width="50%">Current:&nbsp;<b>~([01]Grade_Level)</b><br>Next:&nbsp;<b>~([01]Reg_Grade_Level)</b></td></tr>
-</table><br>
-<br>
-</td></tr>
-
-<tr><td>
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
-<tr><td colspan="3"><b>11a. Medications</b></td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3"><input type="checkbox" name="[01]Requires_Meds" value="1">Student requires medication?</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="3"><input type="checkbox" name="[01]Taking_Meds" value="1">Medications will be taken at school?</td></tr>
-<tr><td colspan="3">Instructions: copy existing data from this field to Medication table below.
-<br><textarea style="background-color: #FFCCCC" name="[01]Prescriptions" wrap="soft" cols="40" rows="3"></textarea></td></tr>
-<tr><td>Medication</td><td>Dosage</td><td>Hours Given</td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Med1_Name" size="30"></td>
-<td><input type="text" name="[01]Med1_Dosage"></td>
-<td><input type="text" name="[01]Med1_Hours"></td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Med2_Name" size="30"></td>
-<td><input type="text" name="[01]Med2_Dosage"></td>
-<td><input type="text" name="[01]Med2_Hours"></td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Med3_Name" size="30"></td>
-<td><input type="text" name="[01]Med3_Dosage"></td>
-<td><input type="text" name="[01]Med3_Hours"></td></tr>
-</table><br>
-<br>
-</td></tr>
-
-<tr><td>
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
-<tr><td colspan="2"><b>12. Health Insurance and Providers</b></td></tr>
-<tr><td>Health Insurance Type</td><td>Medi-Cal # (if Applicable)</td></tr>
-<tr bgcolor="#FFCC99"><td><select name="[01]Health_Ins_Type">
-<option value="">Family Health Insurance
-<option value="hfamilies">Healthy Families
-<option value="calkids">California Kids
-<option value="medi-cal">Medi-Cal
-<option value="none">No Health Insurance
-</select></td><td><input type="text" name="[01]Medi_Cal_Num"></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><b>Preferred Emergency Hospital</b></td></tr>
-<tr><td colspan="2">Name</td></tr>
-<tr bgcolor="#FFCC99"><td colspan="2"><input type="text" name="[01]Emergency_Hospital" value="" size="30"></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><b>Primary Physician</b></td></tr>
-<tr><td>Name</td><td>Phone</td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Doctor_Name" value="" size="30"></td>
-<td><input type="text" name="[01]Doctor_Phone" value="" size="16"></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><b>Secondary Physician</b></td></tr>
-<tr><td>Name</td><td>Phone</td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Doctor2_Name" value="" size="30"></td>
-<td><input type="text" name="[01]Doctor2_Phone" value="" size="16"></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><b>Dentist</b></td></tr>
-<tr><td>Name</td><td>Phone</td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Dentist_Name" value="" size="30"></td>
-<td><input type="text" name="[01]Dentist_Phone" value="" size="16"></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><b>Health Plan/Group</b></td></tr>
-<tr><td>Name</td><td>Policy #</td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Medical_Carrier" value="" size="30"></td>
-<td><input type="text" name="[01]Medical_Policy" value="" size="16"></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><b>Dental Plan</b></td></tr>
-<tr><td>Name</td><td>Policy #</td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Dental_Carrier" value="" size="30"></td>
-<td><input type="text" name="[01]Dental_Policy" value="" size="16"></td></tr>
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><b>Vision Plan</b></td></tr>
-<tr><td>Name</td><td>Policy #</td></tr>
-<tr bgcolor="#FFCC99"><td><input type="text" name="[01]Optical_Carrier" value="" size="30"></td>
-<td><input type="text" name="[01]Optical_Policy" value="" size="16"></td></tr>
-</table><br>
-<br>
-</td></tr>
-<tr><td>
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
-<tr><td colspan="3"><b>12. Medical Conditions</b></td></tr>
-<tr><td colspan="3"><b>Vision and Hearing</b></td></tr>
-<tr valign="top" bgcolor="#FFCC99">
-<td width="40%"><input type="checkbox" name="[01]Eyeglasses" value="1">Wears eyeglasses</td>
-<td><input type="checkbox" name="[01]Eyeglasses_Board" value="1">For board work<br>
-<input type="checkbox" name="[01]Eyeglasses_Reading" value="1">For reading<br>
-<input type="checkbox" name="[01]Eyeglasses_Always" value="1">All the time</td>
-<td>Date of last eye exam<br><input type="text" name="[01]h_Last_Eye_Exam" value="" size="16"></td>
-</tr>
-<tr bgcolor="#FFCC99"><td>&nbsp;</td>
-<td colspan="2"><input type="checkbox" name="[01]h_Hearing_Aid" value="1">Wears hearing aid(s)</td>
-</tr>
-<tr><td colspan="3">&nbsp;</td></tr>
 <tr>
-  <td colspan="3"><b>Medical Conditions</b></td>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
 </tr>
-<tr valign="top" bgcolor="#FFCC99">
-<td><input type="checkbox" name="[01]Allergies_Severe" value="1">Has severe allergies</td>
-<td><input type="checkbox" name="[01]Allergies_Epi_Pen" value="1">Requires Epi-Pen<br>
-<input type="checkbox" name="[01]Allergies_Benadryl" value="1">Requires Benadryl</td>
-<td><input type="checkbox" name="[01]Allergies_Food" value="1">
-  Food/Environmental<br>
-  <input type="checkbox" name="[01]Allergies_Insects" value="1">
-  Stinging Insects/Bees<br>
-  <input type="checkbox" name="[01]Allergies_Drugs" value="1">
-  Medicines/Drugs<br>
-  <input type="checkbox" name="[01]Allergies_Other" value="1">
-  Other</td>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1" alt=""></td>
+<td>
+
+<!-- pscustom_begin -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr><td>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="4" class="bold">11. Medications</td></tr>
+<tr><td width="150" class="bold">Medication required?</td>
+<td width="75"><input type="radio" name="[01]Requires_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td colspan="2"><input type="radio" name="[01]Requires_Meds" value="">No&nbsp;&nbsp;</td>
 </tr>
-<tr valign="top" bgcolor="#FFCC99"><td>Describe allergies</td>
-<td colspan="2"><textarea name="[01]Allergies" wrap="soft" cols="40" rows="3"></textarea></td>
+<tr><td width="150" class="bold">Taken at school?</td>
+<td width="75"><input type="radio" name="[01]Taking_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td colspan="2"><input type="radio" name="[01]Taking_Meds" value="">No&nbsp;&nbsp;</td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Asthma" value="1">Current Asthma</td>
-<td colspan="2"><input type="checkbox" name="[01]Asthma_Inhaler" value="1">Uses inhaler<br>
-<input type="checkbox" name="[01]Asthma_Medication" value="1">On daily medication</td>
+<tr><td colspan="4">List each medication, dosage and when it should be given to student</td></tr>
+<tr><td colspan="2" class="bold">Medication</td>
+<td class="bold">Dosage</td>
+<td class="bold">Hours Given</td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Seizures" value="1">Current Seizures</td>
-<td colspan="2"><input type="checkbox" name="[01]Seizures_Medication" value="1">On medication</td>
+<tr><td colspan="2"><input type="text" name="[01]Med1_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med1_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med1_Hours" value="" size="16"></td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Med2_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med2_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med2_Hours" value="" size="16"></td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Med3_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med3_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med3_Hours" value="" size="16"></td></tr>
+</table></td></tr>
+
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="4" class="bold">12. Health Insurance and Providers</td></tr>
+<tr><td colspan="4">Select <b>Private Health Insurance</b> for HMO's, PPO's, Kaiser, etc.<br>
+Follow these links to get online information about these insurance programs:
+<ul>
+<li>California Healthy Families - <a href="http://www.healthyfamilies.ca.gov">http://www.healthyfamilies.ca.gov</a></li>
+<li>CaliforniaKids Healthcare Foundation - <a href="http://www.californiakids.org">http://www.californiakids.org</a></li>
+<li>Medi-Cal - <a href="http://www.calmedicare.org">http://www.calmedicare.org</a></li>
+</ul></td></tr>
+<tr><td width="150" class="bold">Health Insurance Type</td>
+<td width="260"><select name="[01]Health_Ins_Type">
+  <option value="">Choose...</option>
+  <option value="hfamilies">Healthy Families</option>
+  <option value="calkids">California Kids</option>
+  <option value="medi-cal">Medi-Cal</option>
+  <option value="none">No Health Insurance</option>
+</select></td>  
+<td width="102" class="bold">Medi-Cal #<br>
+  (if Applicable)</td>
+<td width="162"><input type="text" name="[01]Medi_Cal_Num" value="" size="16"></td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Diabetes" value="1">Diabetes</td>
-<td colspan="2"><input type="checkbox" name="[01]Diabetes_Insulin" value="1">Insulin-dependent</td>
+<tr><td class="bold">Preferred Hospital</td>
+<td><input type="text" name="[01]Emergency_Hospital" value="" size="30"></td>
+<td colspan="2">&nbsp;</td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Behavior_Problems" value="1">Behavior problems</td>
-<td colspan="2"><textarea name="[01]Behavior_Issues" wrap="soft" cols="40" rows="3"></textarea></td>
+<tr><td class="bold">Primary Physician Name</td>
+<td><input type="text" name="[01]Doctor_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Doctor_Phone" value="" size="16"></td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Movement_Limits" value="1">Movement limitations</td>
-<td colspan="2"><textarea name="[01]Movement_Limits_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+<tr><td class="bold">Secondary Physician Name</td>
+<td><input type="text" name="[01]Doctor2_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Doctor2_Phone" value="" size="16"></td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Medical_Other" value="1">Other conditions (please explain)</td>
-<td colspan="2"><textarea name="[01]Medical_Considerations" wrap="soft" cols="40" rows="3"></textarea></td>
+<tr><td class="bold">Dentist Name</td>
+<td><input type="text" name="[01]Dentist_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Dentist_Phone" value="" size="16"></td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Illness_Recent" value="1">Recent illness or hospitalization</td>
-<td colspan="2"><textarea name="[01]Illness_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+<tr><td class="bold">Health Plan/Group Name</td>
+<td><input type="text" name="[01]Medical_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Medical_Policy" value="" size="16"></td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td><input type="checkbox" name="[01]Medical_Accom" value="1">Med condition requiring accommodation</td>
-<td colspan="2"><textarea name="[01]Medical_Accom_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+<tr><td class="bold">Dental Plan Name</td>
+<td><input type="text" name="[01]Dental_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Dental_Policy" value="" size="16"></td>
 </tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td>Medical Alert (for staff only)</td>
-<td colspan="2"><textarea name="[01]Alert_Medical" wrap="soft" cols="40" rows="3"></textarea></td>
-</tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td>Health Alert: What (for staff only)</td>
-<td colspan="2"><input type="text" name="[01]Alert_Medical_What" value="" size="40"></input></td>
-</tr>
-<tr><td colspan="3">&nbsp;</td></tr>
-<tr valign="top" bgcolor="#FFCC99"><td>Health Alert: Symptoms (for staff only)</td>
-  <td colspan="2"><input type="text" name="[01]Alert_Medical_Symptoms" value="" size="40"></input></td>
+<tr><td class="bold">Vision Plan Name</td>
+<td><input type="text" name="[01]Optical_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Optical_Policy" value="" size="16"></td>
 </tr>
 </table>
 </td></tr>
+
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="5" class="bold">13. Vision and Hearing</td></tr>
+<tr><td width="150" class="bold">Wears Eyeglasses?</td>
+<td width="100">&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Eyeglasses" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Eyeglasses" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td class="bold">Eyeglasses are needed for</td>
+<td><input type="checkbox" name="[01]Eyeglasses_Board" value="1">Board work</td>
+<td><input type="checkbox" name="[01]Eyeglasses_Reading" value="1">Reading&nbsp;</td>
+<td colspan="2"><input type="checkbox" name="[01]Eyeglasses_Always" value="1">All the time&nbsp;</td>
+</tr>
+<tr><td class="bold">Date of Last Eye Exam</td>
+<td colspan="4"><input type="text" name="[01]h_Last_Eye_Exam" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Wears Hearing Aid?</td>
+<td>&nbsp;</td>
+<td><input type="radio" name="[01]h_Hearing_Aid" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]h_Hearing_Aid" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
 </table>
+</td></tr>
+
+<tr><td>
+<table width="674" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="7" class="bold">14. Medical Conditions</td></tr>
+<tr><td colspan="8">Does the student have any of the following conditions?</td></tr>
+<tr><td width="150" class="bold">Severe Allergies?</td>
+<td width="75"><input type="radio" name="[01]Allergies_Severe" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Allergies_Severe" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td width="130" class="bold">Treatment:</td>
+<td width="75"><input type="checkbox" name="[01]Allergies_Epi_Pen" value="1">Epi-Pen&nbsp;</td>
+<td><input type="checkbox" name="[01]Allergies_Benadryl" value="1">Benadryl&nbsp;</td>
+</tr>
+<tr><td class="bold">Allergic To:</td>
+<td><input type="checkbox" name="[01]Allergies_Food" value="1">Food&nbsp;</td>
+<td colspan="3"><input type="checkbox" name="[01]Allergies_Insects" value="">Bees or stinging insects&nbsp;</td>
+<td><input type="checkbox" name="[01]Allergies_Drugs" value="1">Drugs&nbsp;</td>
+<td><input type="checkbox" name="[01]Allergies_Other" value="1">Other&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description of Allergies:</td>
+<td colspan="5"><textarea name="[01]Allergies" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td class="bold">Asthma?</td>
+<td><input type="radio" name="[01]Asthma" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Asthma" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Treatment:</td>
+<td><input type="checkbox" name="[01]Asthma_Inhaler" value="1">Inhaler&nbsp;</td>
+<td><input type="checkbox" name="[01]Asthma_Medication" value="1">Daily medication&nbsp;</td>
+</tr>
+<tr><td class="bold">Seizures?</td>
+<td><input type="radio" name="[01]Seizures" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Seizures" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Daily Medication?</td>
+<td><input type="radio" name="[01]Seizures_Medication" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Seizures_Medication" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr><td class="bold">Diabetes?</td>
+<td><input type="radio" name="[01]Diabetes" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Diabetes" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Insulin Dependent?</td>
+<td><input type="radio" name="[01]Diabetes_Insulin" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Diabetes_Insulin" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr class="secheader"><td class="bold" colspan="7">15. Other Medical Conditions</td></tr>
+<tr><td colspan="7">Check any applicable boxes and provide details in the text fields.</td></tr>
+<tr><td colspan="5" class="bold">Behavior Problems</td>
+<td><input type="radio" name="[01]Behavior_Problems" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Behavior_Problems" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Behavior_Issues" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Movement Limitations</td>
+<td><input type="radio" name="[01]Movement_Limits" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Movement_Limits" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Movement_Limits_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Other Conditions</td>
+<td><input type="radio" name="[01]Medical_Other" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Medical_Other" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Medical_Considerations" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Recent Illness, Hospitalization or Surgery</td>
+<td><input type="radio" name="[01]Illness_Recent" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Illness_Recent" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Dates and Description:</td>
+<td colspan="5"><textarea name="[01]Illness_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Medical condition requiring care or accommodation at school</td>
+<td><input type="radio" name="[01]Medical_Accom" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Medical_Accom" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description and Accommodations:</td>
+<td colspan="5"><textarea name="[01]Medical_Accom_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold office_use_only">Medical Alert (for staff only)</td>
+<td colspan="5"><textarea name="[01]Alert_Medical" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold office_use_only">Health Alert: What (for staff only)</td>
+<td colspan="5"><input type="text" name="[01]Alert_Medical_What" value="" size="40"></input></td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold office_use_only">Health Alert: Symptoms (for staff only)</td>
+<td colspan="5"><input type="text" name="[01]Alert_Medical_Symptoms" value="" size="40"></input></td>
+</tr>
+</table><br><br>
+</td></tr>
+
+<tr class="private"><td class="bold">Last updated at 
+<input type="text" id="upd_at" name="[01]form8_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[01]form8_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+</tr>
+</table>
+<!-- pscustom_end -->
+
 </td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1" alt=""></td></tr>
-<tr><td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td></tr>
-<tr><td colspan="2" align="right"><input type="hidden" name="frn" value="~(studentfrn)"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
-<td>&nbsp;</td></tr>
-</table><br>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1" alt=""></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+
+<tr>
+<td colspan="2" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<br>
 <!-- end of content of bounding box -->
+
 ~[wc:admin_footer_frame]
 </form>
+
 </body>
-</html>
+</html><!-- end right frame -->
+
