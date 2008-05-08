@@ -1,0 +1,196 @@
+~[wc:guardian_header]
+
+<!-- start of title and student content -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td background="/images/transparent.gif">
+<br>
+
+<!-- title -->
+<!-- pscustom_begin -->
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+&nbsp;&nbsp;<span class="header">Agreements</span><br><br>
+<!-- pscustom_end -->
+<!-- title -->
+
+~[if.isstudent]
+<!-- don't allow students to change guardian email settings. -->
+
+<!-- start of content and bounding box -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td>Your account does not allow access to this page.</td>
+</tr>
+</table>
+
+</td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+</table>
+<br>
+<!-- end of content of bounding box -->
+
+[else]
+
+<!-- start student content -->
+<!-- pscustom_begin -->
+<form action="regforms.html" method="POST">
+<table widith="700" cellpadding="0" cellspacing="0" border="0" align="center">
+<!-- pscustom_end -->
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
+<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
+<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
+</tr>
+<tr>
+<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
+<td>
+
+<!-- pscustom_begin -->  
+<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">  
+<td colspan="6">Please select the answers below and enter your name(s) into the signature fields to 
+indicate your understanding and agreement.<br><br>
+After entering the information, click the <b>Submit</b> button to save your changes.</td><tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr class="secheader"><td class="bold" colspan="6">15. Emergency Treatment Authorization</td></tr>
+<tr><td colspan="6">I (we), the undersigned parent(s) or legal guardian(s) of 
+<b>~([01]First_Name) ~([01]Middle_Name) ~([01]Last_Name)</b>, a minor, do hereby give 
+  authorization and consent to the school to obtain emergency medical care and 
+  necessary transportation, including x-ray examination, anesthetic, medical or 
+  surgical diagnosis and emergency hospital which is deemed advisable by and is 
+  to be rendered under the general or specific supervision of medical and 
+  emergency room staff licensed under the provisions of the medicine practice 
+  act and the State of California Department of Public Health.<br><br>
+It is understood that effort shall be made to contact the undersigned prior to 
+  rendering treatment to the student, but that any of the above treatment will 
+  not be withheld if the undersigned or authorized adults cannot be reached.<br><br>
+<input type="text" name="[01]Emergency_Hospital" value="" size="30"> is the 
+  hospital I (we) prefer for emergency medical treatment of my (our) child.<br><br>
+I (we) understand that the school district does not provide accident/medical 
+  insurance for students, and I (we) further understand that all costs related 
+  to medical treatment may be my (our) responsibility and not that of the school 
+  district.
+</td></tr>
+<tr><td>&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Release_Authorization" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Release_Authorization" value="">No&nbsp;&nbsp;</td>
+<td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="6">By selecting <b>Yes</b> I (we) give authorization for emergency treatment.</td></tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr class="secheader"><td class="bold" colspan="6">16. Contacting Student's Previous School</td></tr>
+<tr><td colspan="6">I hereby grant permission to the Kentfield School District to contact my (our) child's 
+previous school regarding recommendations for placement.</td></tr>
+<tr><td>&nbsp;</td>
+<td><input type="radio" name="[01]Prev_School_Permission" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Prev_School_Permission" value="">No&nbsp;&nbsp;</td>
+<td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="6">By selecting <b>Yes</b> I (we) grant permission to contact previous school.</td></tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr class="secheader"><td class="bold" colspan="6">17. Publication Permissions</td></tr>
+<tr><td colspan="6">I hereby grant permission to the Kentfield School District to 
+  allow the publication of work created by my (our) child, articles mentioning my 
+  (our) child, or group photos containing images of my (our) child on the publicly 
+  accessible internet, based on the guidelines contained in the "Kentfield School 
+  District Internet Publishing Guidelines". The school office will keep a copy of 
+  this permission on file, and I may revoke it in writing at any time.</td></tr>
+<tr><td>&nbsp;</td>
+<td><input type="radio" name="[01]Pub_Waiver_Public" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Pub_Waiver_Public" value="">No&nbsp;&nbsp;</td>
+<td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="6">By selecting <b>Yes</b> I (we) grant permission for internet publication.</td></tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr><td colspan="6">I hereby grant permission to the Kentfield School District to 
+  allow the presentation or publication of work created by my (our) child, articles 
+  mentioning my (our) child or other family members, or individual or group photos 
+  of my (our) child or other family members, at school or district meetings, 
+  in documents, on CD and DVD disks, in e-mails, on web sites or on other media 
+  that are restricted to viewing by District staff, students and parents, based 
+  on the guidelines contained in the "Kentfield School District Private 
+  Distribution Publishing Guidelines". The school office will keep a copy of 
+  this permission on file, and I may revoke it in writing at any time.</td></tr>
+<tr><td>&nbsp;</td>
+<td><input type="radio" name="[01]Pub_Waiver_Restricted" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Pub_Waiver_Restricted" value="">No&nbsp;&nbsp;</td>
+<td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="6">By selecting <b>Yes</b> I (we) grant permission for restricted publication.</td></tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr class="secheader"><td class="bold" colspan="6">18. Responsibility for Student</td></tr>
+<tr><td colspan="6">To the best of my (our) knowledge, all the information reported 
+  on this registration form is true and correct. I (we) assume full responsibility 
+  for my (our) student in all school matters. I (we) will notify the school office 
+  immediately if there is a change in any of the information reported on this form.</td></tr>
+<tr><td>&nbsp;</td>
+<td><input type="radio" name="[01]Responsibility_Signed" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Responsibility_Signed" value="">No&nbsp;&nbsp;</td>
+<td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="6">By selecting <b>Yes</b> I (we) agree to the previous statement.</td></tr>
+<tr><td>Agreement date</td><td colspan="3"><input type="text" class="todayifblank" name="[01]Responsibility_Date" value="" size="15"></td></tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+
+<tr class="secheader"><td class="bold" colspan="6">19. Volunteer Assistance</td></tr>
+<tr><td colspan="6">If you live close to school and feel that, if called, you can 
+  offer volunteer assistance during an emergency, check the box below and provide your name, 
+  phone number and expertise.</td></tr>
+<tr><td colspan="6"><input type="checkbox" name="[01]Vol_Help" value="1">&nbsp;I would like to help in an emergency.  Please contact me.</td><tr>
+<tr><td class="bold">Name (Last, First)</td>
+<td><input type="text" name="[01]Vol_First" value="" size="15"></td>
+<td><input type="text" name="[01]Vol_Last" value="" size="15"></td>
+<td width="10">&nbsp;</td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Vol_Phone" value="" size="15"></td></tr>
+<tr><td class="bold">Skills or qualifications<br>for emergency help</td><td colspan="6"><textarea name="[01]Vol_Qualifications" value="" rows="4" cols="50"></textarea></td></tr>
+<tr><td colspan="6">&nbsp;</td></tr>
+</table><br><br>
+</td></tr>
+
+<tr class="private"><td class="bold">Last updated at 
+<input type="text" id="upd_at" name="[01]form8_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[01]form8_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+</tr>
+</table>
+<!-- pscustom_end -->
+
+</td>
+<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
+</tr>
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
+<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
+<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
+</tr>
+<tr>
+<td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td>
+</tr>
+</table>
+</form>
+<!-- end student content -->
+
+[/if]
+
+</td>
+</tr>
+</table>
+<!-- end of title and student content -->
+
+~[wc:guardian_footer]

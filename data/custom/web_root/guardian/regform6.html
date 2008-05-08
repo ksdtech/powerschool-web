@@ -9,7 +9,7 @@
 <!-- title -->
 <!-- pscustom_begin -->
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
-&nbsp;&nbsp;<span class="header">Emergency Contact Information</span><br><br>
+&nbsp;&nbsp;<span class="header">Previous School, Special Programs and Demographics</span><br><br>
 <!-- pscustom_end -->
 <!-- title -->
 
@@ -48,7 +48,7 @@
 <!-- start student content -->
 <!-- pscustom_begin -->
 <form action="regforms.html" method="POST">
-<table width="600" cellpadding="0" cellspacing="0" border="0" align="center">
+<table width="700" cellpadding="0" cellspacing="0" border="0" align="center">
 <!-- pscustom_end -->
 <tr>
 <td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
@@ -64,139 +64,105 @@
 <tr><td>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr class="secheader"><td colspan="3" class="bold">10. Guardianship</td></tr>
-<tr><td>Student lives with</td><td colspan="2"><select name="[01]Lives_With_Rel">
-<option value="">Chose one:</option>
-<option value="Both">Both Parents</option>
-<option value="Mother">Mother</option>
-<option value="Father">Father</option>
-<option value="Guardian">Legal Guardian</option>
-</select></td></tr>
-<tr><td colspan="3">Are there any <b>court-mandated</b> custody or visitation orders limiting access to this student?
-If you answer <b>Yes</b>, you must submit paper copies of the legal documents to the school office.</td></tr>
-<tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Custody_Orders" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Custody_Orders" value="">No&nbsp;&nbsp;</td></tr>
+<tr class="secheader"><td colspan="3" class="bold">4. Previous School Enrollment</td></tr>
+<tr><td>Name</td><td>Street</td><td>City</td></tr>
+<tr><td><input type="text" name="[01]Previous_School_Name" value="" size="20" maxlength="30"></td>
+<td><input type="text" name="[01]Previous_School_Address" value="" size="20" maxlength="50"></td>
+<td><input type="text" name="[01]Previous_School_City" value="" size="20"></td></tr>
+<tr><td>Phone</td><td>Grade Level Completed</td><td>&nbsp;</td></tr>
+<tr><td><input type="text" name="[01]Previous_School_Phone" value="" size="16"></td>
+<td><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10"></td><td>&nbsp;</td></tr>
+<tr><td colspan="3" class="bold">Date student first enrolled</td></tr>
+<tr><td>In U.S. School</td><td>In Calif. School</td><td>&nbsp;</td></tr>
+<tr><td><input type="text" name="[01]CA_FirstUSASchooling" value="" size="16"></td>
+<td><input type="text" name="[01]SchoolEntryDate_CA" value="" size="16"></td><td>&nbsp;</td></tr>
+</table><br>
+<br></td></tr>
+
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="2" class="bold">5. Programs</td></tr>
+<tr><td colspan="2"><select name="[01]CA_SpEd504">
+<option value="">Select if applicable</option>
+<option value="001">001-Special Ed./Disability</option>
+<option value="010">010-Section 504</option></select></td></tr>
 </table><br>
 <br>
 </td></tr>
 
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr class="secheader"><td colspan="4" class="bold">11. Contacts</td></tr>
-<tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" name="[01]Emergency1_Last" value="" size="20">, 
-<input type="text" name="[01]Emergency1_First" value="" size="20"></td>
-<td><select name="[01]Emerg_1_Rel">
-<option value="N/A">N/A</option>
-<option value="Friend">Friend</option>
-<option value="Neighbor">Neighbor</option>
-<option value="Babysitter">Babysitter</option>
-<option value="Mother">Mother</option>
-<option value="Father">Father</option>
-<option value="Stepmother">Stepmother</option>
-<option value="Stepfather">Stepfather</option>
-<option value="Grandmother">Grandmother</option>
-<option value="Grandfather">Grandfather</option>
-<option value="Aunt">Aunt</option>
-<option value="Uncle">Uncle</option>
-<option value="Other">Other</option>
+<tr class="secheader"><td colspan="3" class="bold">6. State Required Demographics: Ethnicity</td></tr>
+<tr><td valign="bottom">Primary Ethnicity</td>
+<td colspan="2" valign="bottom">Secondary Ethnicity (check any applicable)</td></tr>
+<tr><td valign="bottom"><select name="[01]Ethnicity" special="lists.ethnicity">
+<option>
+</option>
+</select></td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAA" value="1"> African American</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnFi" value="1"> Filipino</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAI" value="1"> Native American</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnLa" value="1"> Hispanic</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPICh" value="1"> Chinese</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIHa" value="1"> Native Hawaiian</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIJa" value="1"> Japanese</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIGu" value="1"> Guamanian</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIKo" value="1"> Korean</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPISa" value="1"> Samoan</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIVi" value="1"> Vietnamese</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPITa" value="1"> Tahitian</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIAI" value="1"> Asian Indian</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIOPI" value="1"> Other Pac. Islander</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPILa" value="1"> Laotian</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnWh" value="1"> White</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPICa" value="1"> Cambodian</td>
+<td valign="bottom">&nbsp;</td></tr>
+<tr><td valign="bottom">&nbsp;</td>
+<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIOA" value="1"> Other Asian</td>
+<td valign="bottom">&nbsp;</td></tr>
+</table><br>
+<br>
+</td></tr>
+
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td class="bold">7. State Required Demographics: Parent Education</td></tr>
+<tr><td>Highest Level of Parent Education</td></tr>
+<tr><td valign="bottom"><select name="[01]CA_ParentEd">
+<option value="">Select One:</option>
+<option value="14">14-Not a High School Graduate</option>
+<option value="13">13-High School Graduate</option>
+<option value="12">12-Some College (includes AA Degree)</option>
+<option value="11">11-College Graduate</option>
+<option value="10">10-Graduate School</option>
+<option value="15">15-Decline to State or Unknown</option>
 </select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr>
-<td><input type="text" class="phone" name="[01]Emergency1_Home_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency1_Day_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency1_Cell" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency1_Pager" value="" size="16"></td></tr>
-<tr class="private"><td colspan="4">Notes</td></tr>
-<tr class="private"><td colspan="4"><input type="text" name="[01]Emergency1_Notes" value="" size="60"></td></tr>
-<tr><td colspan="4">&nbsp;</td></tr>
-<tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" name="[01]Emergency2_Last" value="" size="20">, 
-<input type="text" name="[01]Emergency2_First" value="" size="20"></td>
-<td><select name="[01]Emerg_2_Rel">
-<option value="N/A">N/A</option>
-<option value="Friend">Friend</option>
-<option value="Neighbor">Neighbor</option>
-<option value="Babysitter">Babysitter</option>
-<option value="Mother">Mother</option>
-<option value="Father">Father</option>
-<option value="Stepmother">Stepmother</option>
-<option value="Stepfather">Stepfather</option>
-<option value="Grandmother">Grandmother</option>
-<option value="Grandfather">Grandfather</option>
-<option value="Aunt">Aunt</option>
-<option value="Uncle">Uncle</option>
-<option value="Other">Other</option>
-</select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr>
-<td><input type="text" class="phone" name="[01]Emergency2_Home_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency2_Day_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency2_Cell" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency2_Pager" value="" size="16"></td></tr>
-<tr class="private"><td colspan="4">Notes</td></tr>
-<tr class="private"><td colspan="4"><input type="text" name="[01]Emergency2_Notes" value="" size="60"></td></tr>
-<tr><td colspan="4">&nbsp;</td></tr>
-<tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" name="[01]Emergency3_Last" value="" size="20">, 
-<input type="text" name="[01]Emergency3_First" value="" size="20"></td>
-<td><select name="[01]Emerg_3_Rel">
-<option value="N/A">N/A</option>
-<option value="Friend">Friend</option>
-<option value="Neighbor">Neighbor</option>
-<option value="Babysitter">Babysitter</option>
-<option value="Mother">Mother</option>
-<option value="Father">Father</option>
-<option value="Stepmother">Stepmother</option>
-<option value="Stepfather">Stepfather</option>
-<option value="Grandmother">Grandmother</option>
-<option value="Grandfather">Grandfather</option>
-<option value="Aunt">Aunt</option>
-<option value="Uncle">Uncle</option>
-<option value="Other">Other</option>
-</select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr>
-<td><input type="text" class="phone" name="[01]Emergency3_Home_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency3_Day_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency3_Cell" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]Emergency3_Pager" value="" size="16"></td></tr>
-<tr class="private"><td colspan="4">Notes</td></tr>
-<tr class="private"><td colspan="4"><input type="text" name="[01]Emergency3_Notes" value="" size="60"></td></tr>
-<tr><td colspan="4" class="bold">Out-of-state</td></tr>
-<tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" name="[01]EmergencyX_Last" value="" size="20">, 
-<input type="text" name="[01]EmergencyX_First" value="" size="20"></td>
-<td><select name="[01]Emerg_X_Rel">
-<option value="N/A">N/A</option>
-<option value="Friend">Friend</option>
-<option value="Neighbor">Neighbor</option>
-<option value="Babysitter">Babysitter</option>
-<option value="Mother">Mother</option>
-<option value="Father">Father</option>
-<option value="Stepmother">Stepmother</option>
-<option value="Stepfather">Stepfather</option>
-<option value="Grandmother">Grandmother</option>
-<option value="Grandfather">Grandfather</option>
-<option value="Aunt">Aunt</option>
-<option value="Uncle">Uncle</option>
-<option value="Other">Other</option>
-</select></td></tr>
-<tr><td>Home</td><td>Work</td><td>Cell</td><td>Pager</td></tr>
-<tr>
-<td><input type="text" class="phone" name="[01]EmergencyX_Home_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]EmergencyX_Day_Phone" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]EmergencyX_Cell" value="" size="16"></td>
-<td><input type="text" class="phone" name="[01]EmergencyX_Pager" value="" size="16"></td></tr>
-<tr class="private"><td colspan="4">Notes</td></tr>
-<tr class="private"><td colspan="4"><input type="text" name="[01]EmergencyX_Notes" value="" size="60"></td></tr>
+</table><br>
+<br>
+</td></tr>
+
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="3" class="bold">8. Future Siblings</td></tr>
+<tr><td>&nbsp;</td><td>First Name</td><td>Birth Date</td></tr>
+<tr><td>Sibling 1</td><td><input type="text" name="[01]Sibling1_First_Name" value="" size="20"></td><td><input type="text" name="[01]Sibling1_DOB" value="" size="16"></td></tr>
+<tr><td>Sibling 2</td><td><input type="text" name="[01]Sibling2_First_Name" value="" size="20"></td><td><input type="text" name="[01]Sibling2_DOB" value="" size="16"></td></tr>
+<tr><td>Sibling 3</td><td><input type="text" name="[01]Sibling3_First_Name" value="" size="20"></td><td><input type="text" name="[01]Sibling3_DOB" value="" size="16"></td></tr>
+<tr><td>Sibling 4</td><td><input type="text" name="[01]Sibling4_First_Name" value="" size="20"></td><td><input type="text" name="[01]Sibling4_DOB" value="" size="16"></td></tr>
 </table><br><br>
 </td></tr>
 
 <tr class="private"><td class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form6_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form6_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form4_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[01]form4_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
 </table>
 <!-- pscustom_end -->

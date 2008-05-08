@@ -9,7 +9,7 @@
 <!-- title -->
 <!-- pscustom_begin -->
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
-&nbsp;&nbsp;<span class="header">Agreements</span><br><br>
+&nbsp;&nbsp;<span class="header">Medical Providers, Insurance and Health Information</span><br><br>
 <!-- pscustom_end -->
 <!-- title -->
 
@@ -46,9 +46,9 @@
 [else]
 
 <!-- start student content -->
-<!-- pscustom_begin -->
+<!-- pscustom_begin -->  
 <form action="regforms.html" method="POST">
-<table widith="700" cellpadding="0" cellspacing="0" border="0" align="center">
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
 <!-- pscustom_end -->
 <tr>
 <td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
@@ -61,112 +61,207 @@
 
 <!-- pscustom_begin -->  
 <table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr><td>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="4" class="bold">12. Medications</td></tr>
+<tr><td width="150" class="bold">Medication required?</td>
+<td width="75"><input type="radio" name="[01]Requires_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td colspan="2"><input type="radio" name="[01]Requires_Meds" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr><td width="150" class="bold">Taken at school?</td>
+<td width="75"><input type="radio" name="[01]Taking_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td colspan="2"><input type="radio" name="[01]Taking_Meds" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr><td colspan="4">List each medication, dosage and when it should be given to student</td></tr>
+<tr><td colspan="2" class="bold">Medication</td>
+<td class="bold">Dosage</td>
+<td class="bold">Hours Given</td>
+</tr>
+<tr><td colspan="2"><input type="text" name="[01]Med1_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med1_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med1_Hours" value="" size="16"></td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Med2_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med2_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med2_Hours" value="" size="16"></td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Med3_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med3_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med3_Hours" value="" size="16"></td></tr>
+</table></td></tr>
 
 <tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">  
-<td colspan="6">Please select the answers below and enter your name(s) into the signature fields to 
-indicate your understanding and agreement.<br><br>
-After entering the information, click the <b>Submit</b> button to save your changes.</td><tr>
-<tr><td colspan="6">&nbsp;</td></tr>
-
-<tr class="secheader"><td class="bold" colspan="6">15. Emergency Treatment Authorization</td></tr>
-<tr><td colspan="6">I (we), the undersigned parent(s) or legal guardian(s) of 
-<b>~([01]First_Name) ~([01]Middle_Name) ~([01]Last_Name)</b>, a minor, do hereby give 
-  authorization and consent to the school to obtain emergency medical care and 
-  necessary transportation, including x-ray examination, anesthetic, medical or 
-  surgical diagnosis and emergency hospital which is deemed advisable by and is 
-  to be rendered under the general or specific supervision of medical and 
-  emergency room staff licensed under the provisions of the medicine practice 
-  act and the State of California Department of Public Health.<br><br>
-It is understood that effort shall be made to contact the undersigned prior to 
-  rendering treatment to the student, but that any of the above treatment will 
-  not be withheld if the undersigned or authorized adults cannot be reached.<br><br>
-<input type="text" name="[01]Emergency_Hospital" value="" size="30"> is the 
-  hospital I (we) prefer for emergency medical treatment of my (our) child.<br><br>
-I (we) understand that the school district does not provide accident/medical 
-  insurance for students, and I (we) further understand that all costs related 
-  to medical treatment may be my (our) responsibility and not that of the school 
-  district.
-</td></tr>
-<tr><td>&nbsp;</td>
-<td width="75"><input type="radio" name="[01]Release_Authorization" value="1">Yes&nbsp;&nbsp;</td>
-<td width="75"><input type="radio" name="[01]Release_Authorization" value="">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="6">By selecting <b>Yes</b> I (we) give authorization for emergency treatment.</td></tr>
-<tr><td colspan="6">&nbsp;</td></tr>
-
-<tr class="secheader"><td class="bold" colspan="6">16. Contacting Student's Previous School</td></tr>
-<tr><td colspan="6">I hereby grant permission to the Kentfield School District to contact my (our) child's 
-previous school regarding recommendations for placement.</td></tr>
-<tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Prev_School_Permission" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Prev_School_Permission" value="">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="6">By selecting <b>Yes</b> I (we) grant permission to contact previous school.</td></tr>
-<tr><td colspan="6">&nbsp;</td></tr>
-
-<tr class="secheader"><td class="bold" colspan="6">17. Publication Permissions</td></tr>
-<tr><td colspan="6">I hereby grant permission to the Kentfield School District to 
-  allow the publication of work created by my (our) child, articles mentioning my 
-  (our) child, or group photos containing images of my (our) child on the publicly 
-  accessible internet, based on the guidelines contained in the "Kentfield School 
-  District Internet Publishing Guidelines". The school office will keep a copy of 
-  this permission on file, and I may revoke it in writing at any time.</td></tr>
-<tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Public" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Public" value="">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="6">By selecting <b>Yes</b> I (we) grant permission for internet publication.</td></tr>
-<tr><td colspan="6">&nbsp;</td></tr>
-
-<tr><td colspan="6">I hereby grant permission to the Kentfield School District to 
-  allow the presentation or publication of work created by my (our) child, articles 
-  mentioning my (our) child or other family members, or individual or group photos 
-  of my (our) child or other family members, at school or district meetings, 
-  in documents, on CD and DVD disks, in e-mails, on web sites or on other media 
-  that are restricted to viewing by District staff, students and parents, based 
-  on the guidelines contained in the "Kentfield School District Private 
-  Distribution Publishing Guidelines". The school office will keep a copy of 
-  this permission on file, and I may revoke it in writing at any time.</td></tr>
-<tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Restricted" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Restricted" value="">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="6">By selecting <b>Yes</b> I (we) grant permission for restricted publication.</td></tr>
-<tr><td colspan="6">&nbsp;</td></tr>
-
-<tr class="secheader"><td class="bold" colspan="6">18. Responsibility for Student</td></tr>
-<tr><td colspan="6">To the best of my (our) knowledge, all the information reported 
-  on this registration form is true and correct. I (we) assume full responsibility 
-  for my (our) student in all school matters. I (we) will notify the school office 
-  immediately if there is a change in any of the information reported on this form.</td></tr>
-<tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Responsibility_Signed" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Responsibility_Signed" value="">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-<tr><td colspan="6">By selecting <b>Yes</b> I (we) agree to the previous statement.</td></tr>
-<tr><td>Agreement date</td><td colspan="3"><input type="text" class="todayifblank" name="[01]Responsibility_Date" value="" size="15"></td></tr>
-<tr><td colspan="6">&nbsp;</td></tr>
-
-<tr class="secheader"><td class="bold" colspan="6">19. Volunteer Assistance</td></tr>
-<tr><td colspan="6">If you live close to school and feel that, if called, you can 
-  offer volunteer assistance during an emergency, check the box below and provide your name, 
-  phone number and expertise.</td></tr>
-<tr><td colspan="6"><input type="checkbox" name="[01]Vol_Help" value="1">&nbsp;I would like to help in an emergency.  Please contact me.</td><tr>
-<tr><td class="bold">Name (Last, First)</td>
-<td><input type="text" name="[01]Vol_First" value="" size="15"></td>
-<td><input type="text" name="[01]Vol_Last" value="" size="15"></td>
-<td width="10">&nbsp;</td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="4" class="bold">13. Health Insurance and Providers</td></tr>
+<tr><td colspan="4">Select <b>Private Health Insurance</b> for HMO's, PPO's, Kaiser, etc.<br>
+Follow these links to get online information about these insurance programs:
+<ul>
+<li>California Healthy Families - <a href="http://www.healthyfamilies.ca.gov">http://www.healthyfamilies.ca.gov</a></li>
+<li>CaliforniaKids Healthcare Foundation - <a href="http://www.californiakids.org">http://www.californiakids.org</a></li>
+<li>Medi-Cal - <a href="http://www.calmedicare.org">http://www.calmedicare.org</a></li>
+</ul></td></tr>
+<tr><td width="150" class="bold">Health Insurance Type</td>
+<td width="260"><select name="[01]Health_Ins_Type">
+  <option value="">Choose...</option>
+  <option value="hfamilies">Healthy Families</option>
+  <option value="calkids">California Kids</option>
+  <option value="medi-cal">Medi-Cal</option>
+  <option value="none">No Health Insurance</option>
+</select></td>  
+<td width="102" class="bold">Medi-Cal #<br>
+  (if Applicable)</td>
+<td width="162"><input type="text" name="[01]Medi_Cal_Num" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Preferred Hospital</td>
+<td><input type="text" name="[01]Emergency_Hospital" value="" size="30"></td>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr><td class="bold">Primary Physician Name</td>
+<td><input type="text" name="[01]Doctor_Name" value="" size="30"></td>
 <td class="bold">Phone</td>
-<td><input type="text" name="[01]Vol_Phone" value="" size="15"></td></tr>
-<tr><td class="bold">Skills or qualifications<br>for emergency help</td><td colspan="6"><textarea name="[01]Vol_Qualifications" value="" rows="4" cols="50"></textarea></td></tr>
-<tr><td colspan="6">&nbsp;</td></tr>
+<td><input type="text" name="[01]Doctor_Phone" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Secondary Physician Name</td>
+<td><input type="text" name="[01]Doctor2_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Doctor2_Phone" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Dentist Name</td>
+<td><input type="text" name="[01]Dentist_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Dentist_Phone" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Health Plan/Group Name</td>
+<td><input type="text" name="[01]Medical_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Medical_Policy" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Dental Plan Name</td>
+<td><input type="text" name="[01]Dental_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Dental_Policy" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Vision Plan Name</td>
+<td><input type="text" name="[01]Optical_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Optical_Policy" value="" size="16"></td>
+</tr>
+</table>
+</td></tr>
+
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="5" class="bold">14. Vision and Hearing</td></tr>
+<tr><td width="150" class="bold">Wears Eyeglasses?</td>
+<td width="100">&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Eyeglasses" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Eyeglasses" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td class="bold">Eyeglasses are needed for</td>
+<td><input type="checkbox" name="[01]Eyeglasses_Board" value="1">Board work</td>
+<td><input type="checkbox" name="[01]Eyeglasses_Reading" value="1">Reading&nbsp;</td>
+<td colspan="2"><input type="checkbox" name="[01]Eyeglasses_Always" value="1">All the time&nbsp;</td>
+</tr>
+<tr><td class="bold">Date of Last Eye Exam</td>
+<td colspan="4"><input type="text" name="[01]h_Last_Eye_Exam" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Wears Hearing Aid?</td>
+<td>&nbsp;</td>
+<td><input type="radio" name="[01]h_Hearing_Aid" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]h_Hearing_Aid" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+</td></tr>
+
+<tr><td>
+<table width="674" border="0" cellspacing="0" cellpadding="0">
+<tr class="secheader"><td colspan="7" class="bold">15. Medical Conditions</td></tr>
+<tr><td colspan="8">Does the student have any of the following conditions?</td></tr>
+<tr><td width="150" class="bold">Severe Allergies?</td>
+<td width="75"><input type="radio" name="[01]Allergies_Severe" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" name="[01]Allergies_Severe" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td width="130" class="bold">Treatment:</td>
+<td width="75"><input type="checkbox" name="[01]Allergies_Epi_Pen" value="1">Epi-Pen&nbsp;</td>
+<td><input type="checkbox" name="[01]Allergies_Benadryl" value="1">Benadryl&nbsp;</td>
+</tr>
+<tr><td class="bold">Allergic To:</td>
+<td><input type="checkbox" name="[01]Allergies_Food" value="1">Food&nbsp;</td>
+<td colspan="3"><input type="checkbox" name="[01]Allergies_Insects" value="">Bees or stinging insects&nbsp;</td>
+<td><input type="checkbox" name="[01]Allergies_Drugs" value="1">Drugs&nbsp;</td>
+<td><input type="checkbox" name="[01]Allergies_Other" value="1">Other&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description of Allergies:</td>
+<td colspan="5"><textarea name="[01]Allergies" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td class="bold">Asthma?</td>
+<td><input type="radio" name="[01]Asthma" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Asthma" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Treatment:</td>
+<td><input type="checkbox" name="[01]Asthma_Inhaler" value="1">Inhaler&nbsp;</td>
+<td><input type="checkbox" name="[01]Asthma_Medication" value="1">Daily medication&nbsp;</td>
+</tr>
+<tr><td class="bold">Seizures?</td>
+<td><input type="radio" name="[01]Seizures" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Seizures" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Daily Medication?</td>
+<td><input type="radio" name="[01]Seizures_Medication" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Seizures_Medication" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr><td class="bold">Diabetes?</td>
+<td><input type="radio" name="[01]Diabetes" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Diabetes" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Insulin Dependent?</td>
+<td><input type="radio" name="[01]Diabetes_Insulin" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Diabetes_Insulin" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr class="secheader"><td class="bold" colspan="7">16. Other Medical Conditions</td></tr>
+<tr><td colspan="7">Check any applicable boxes and provide details in the text fields.</td></tr>
+<tr><td colspan="5" class="bold">Behavior Problems</td>
+<td><input type="radio" name="[01]Behavior_Problems" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Behavior_Problems" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Behavior_Issues" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Movement Limitations</td>
+<td><input type="radio" name="[01]Movement_Limits" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Movement_Limits" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Movement_Limits_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Other Conditions</td>
+<td><input type="radio" name="[01]Medical_Other" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Medical_Other" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Medical_Considerations" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Recent Illness, Hospitalization or Surgery</td>
+<td><input type="radio" name="[01]Illness_Recent" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Illness_Recent" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Dates and Description:</td>
+<td colspan="5"><textarea name="[01]Illness_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">Medical condition requiring care or accommodation at school</td>
+<td><input type="radio" name="[01]Medical_Accom" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Medical_Accom" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description and Accommodations:</td>
+<td colspan="5"><textarea name="[01]Medical_Accom_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
 </table><br><br>
 </td></tr>
 
 <tr class="private"><td class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form8_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form8_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form7_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[01]form7_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
 </table>
 <!-- pscustom_end -->
