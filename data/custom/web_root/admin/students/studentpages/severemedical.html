@@ -12,9 +12,7 @@
 
 <table border="0" cellspacing="0" cellpadding="4" width="100%">
 
-~[if.~(alert_medical)=]
-<tr><td colspan="2" class="header">No Medical Alert for This Student</td></tr>
-[else]
+~[if.~(alert_medical)#]
 <tr>
 <td colspan="2" class="header">Severe Medical Condition</td>
 </tr>
@@ -47,6 +45,8 @@ Contact: ~(doctor_phone)</td>
 <tr>
 <td colspan="2" align="left">~(alert_medical)</td>
 </tr>
+[else]
+<tr><td colspan="2" class="header">No Medical Alert for This Student</td></tr>
 [/if]
 
 </table>
