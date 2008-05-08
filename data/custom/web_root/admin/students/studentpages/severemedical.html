@@ -21,9 +21,27 @@
 </tr>
 <tr>
 <td colspan="2" align="center">
-  <b>~(lastfirst) ~(student_number)</b><br>
-  <b>Grade ~(grade_level)<br>Homeroom ~(home_room)</b><br>
-  <b>DOB: ~(dob)</b></td>
+<b>~(lastfirst) ~(student_number)</b><br>
+<b>Grade ~(grade_level)<br>Homeroom ~(home_room)</b><br>
+<b>DOB: ~(dob)</b></td>
+</tr>
+<tr>
+<td colspan="2" align="left"><b>Medical Condition and Instructions for Treatment</b></td>
+</tr>
+<tr>
+<td colspan="2" align="left">~(alert_medical)</td>
+</tr>
+<tr>
+<td colspan="2">Doctor: ~(doctor_name)<br>
+Contact: ~(doctor_phone)</td>
+</tr>
+[else]
+<tr>
+<td colspan="2" class="header">No Medical Alert</td>
+</tr>
+[/if]
+<tr>
+<td colspan="2" class="header">Parent Contacts</td>
 </tr>
 <tr>
 <td>~[if.~(mother)#]~(Mother_Rel): ~(mother_first) ~(mother)<br>
@@ -37,17 +55,6 @@ Contacts: ~(mother2_home_phone) (H), ~(mother2_Work_Phone) (W), ~(mother2_cell) 
 <td>~[if.~(father2_last)#]~(Father2_Rel): ~(father2_first) ~(father2_last)<br>
 Contacts: ~(father2_home_phone) (H), ~(father2_Work_Phone) (W), ~(father2_cell) (C)[else]&nbsp;[/if]</td>
 </tr>
-<tr>
-<td colspan="2">Doctor: ~(doctor_name)<br>
-Contact: ~(doctor_phone)</td>
-</tr>
-<tr>
-<td colspan="2" align="left"><b>Medical Condition and Instructions for Treatment</b></td>
-</tr>
-<tr>
-<td colspan="2" align="left">~(alert_medical)</td>
-</tr>
-[/if]
 
 </table>
 <br>
