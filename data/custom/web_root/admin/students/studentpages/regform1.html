@@ -40,7 +40,7 @@
 		<td>School Entry Grade Level</td>
 		<td>District Entry Grade Level</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td><b><span id="grade_level">~([01]Grade_Level)</span></b></td>
 		<td><input type="text" id="SchoolEntryGradeLevel" name="[01]SchoolEntryGradeLevel" value="" size="20"></td>
 		<td><input type="text" id="DistrictEntryGradeLevel" name="[01]DistrictEntryGradeLevel" value="" size="20"></td>
@@ -50,7 +50,7 @@
 		<td>School Entry Date</td>
 		<td>District Entry Date</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td><b><span id="entry_date">~([01]EntryDate)</span></b></td>
 		<td><input type="text" id="SchoolEntryDate" name="[01]SchoolEntryDate" value="" size="20"></td>
 		<td><input type="text" id="DistrictEntryDate" name="[01]DistrictEntryDate" value="" size="20"></td>
@@ -61,7 +61,7 @@
 		<td>Teacher Last</td>
 		<td>Teacher First</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td><input type="text" name="[01]Home_Room" value="" size="20"></td>
 		<td><input type="text" name="[01]HomeRoom_Teacher" value="" size="20"></td>
 		<td><input type="text" name="[01]HomeRoom_TeacherFirst" value="" size="20"></td>
@@ -72,19 +72,19 @@
 		<td>Network Password</td>
 		<td>Student Number</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td><input type="text" id="st_login" name="[01]Network_ID" value="" size="20" onfocus="return id_check('st_id');"></td>
 		<td><input type="text" id="st_password" name="[01]Network_Password" value="" size="20"></td>
 		<td><input type="text" id="st_id" name="[01]Student_Number" value="" size="20"></td>
 	</tr>
 <tr class="secheader"><td colspan="3" class="bold">Primary Family Account</td></tr>
-	<tr><td bgcolor="#FFCC99" colspan="3">Parent Web Access <input type="checkbox" name="[01]AllowWebAccess" value=""></td></tr>
+	<tr><td colspan="3">Parent Web Access <input type="checkbox" name="[01]AllowWebAccess" value=""></td></tr>
 	<tr>
 		<td>Login</td>
 		<td>Password</td>
 		<td>Family Number</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td><input type="text" id="h1_login" name="[01]Web_ID" value="" size="20"></td>
 		<td><input type="text" id="h1_password" name="[01]Web_Password" value="" size="20"></td>
 		<td><input type="text" id="h1_id" name="[01]Home_ID" value="" size="20"></td>
@@ -93,7 +93,7 @@
 		<td colspan="2">Mother Last, First</td>
 		<td>Mother Teacher Number</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td colspan="2"><b>~([01]Mother), ~([01]Mother_First)</b></td>
 		<td><input type="text" name="[01]Mother_Staff_ID" value="" size="20"></td>
 	</tr>
@@ -101,18 +101,18 @@
 		<td colspan="2">Father Last, First</td>
 		<td>Father Teacher Number</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td colspan="2"><b>~([01]Father), ~([01]Father_First)</b></td>
 		<td><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
 	</tr>
 <tr class="secheader"><td colspan="3" class="bold">Second Family Account</td></tr>
-	<tr><td bgcolor="#FFCC99" colspan="3">Parent Web Access <input type="checkbox" name="[01]Student_AllowWebAccess" value=""></td></tr>
+	<tr><td colspan="3">Parent Web Access <input type="checkbox" name="[01]Student_AllowWebAccess" value=""></td></tr>
 	<tr>
 		<td>Login</td>
 		<td>Password</td>
 		<td>Family Number</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td><input type="text" id="h2_login" name="[01]Student_Web_ID" value="" size="20"></td>
 		<td><input type="text" id="h2_password" name="[01]Student_Web_Password" value="" size="20"></td>
 		<td><input type="text" id="h2_id" name="[01]Home2_ID" value="" size="20"></td>
@@ -121,7 +121,7 @@
 		<td colspan="2">Mother Last, First</td>
 		<td>Mother Teacher Number</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td colspan="2"><b>~([01]Mother2_Last), ~([01]Mother2_First)</b></td>
 		<td><input type="text" name="[01]Mother2_Staff_ID" value="" size="20"></td>
 	</tr>
@@ -129,7 +129,7 @@
 		<td colspan="2">Father Last, First</td>
 		<td>Father Teacher Number</td>
 	</tr>
-	<tr bgcolor="#FFCC99">
+	<tr>
 		<td colspan="2"><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
 		<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
 	</tr>
@@ -170,7 +170,7 @@
 </select></td></tr>
 
 <tr class="enrolling by_grade grade_5"><td colspan="3" class="bold">Music Choice for 5th Grade Students</td></tr>
-<tr class="enrolling by_grade grade_5"><td>&nbsp;</td>
+<tr class="enrolling by_grade grade_5"><td><input type="radio" name="[01]electives_5_music" value="">No Music</td>
 <td><input type="radio" name="[01]electives_5_music" value="chorus">5th Grade Chorus</td>
 <td><input type="radio" name="[01]electives_5_music" value="band">5th Grade Beginning Band</td></tr>
 
