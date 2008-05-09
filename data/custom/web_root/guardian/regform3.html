@@ -64,17 +64,35 @@
 <tr><td>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
-<tr class="secheader"><td colspan="4" class="bold">5a. Qualifying Residence Information</td>
+<tr class="secheader"><td colspan="4" class="bold">3a. Qualifying Residence Information</td>
 <tr><td colspan="4"><b>Please note</b> that the District requires all families 
-  to submit proof of residency each year a child is attending a district school.  
-  Proof must be provided to the District Office prior to August 1st.<br><br>
+  to submit proof of residency at an address that is within District boundaries. 
+  Proof must be provided to the District Office each year, prior to August 1st.<br><br>
 Proof of Residency documents (1 of each document is required):
-  <ul><li>Copy of Property Tax Bill or copy of Rental/Lease/Purchase
+<ul>
+<li>Copy of Property Tax Bill or copy of Rental/Lease/Purchase
   Agreeement</li>
-  <li>Copy of most recent PG&amp;E bill (page 3 indicating service
+<li>Copy of most recent PG&amp;E bill (page 3 indicating service
   address) or letter of initiation of service</li>
-  <li>Copy of most recent Marin Municipal Water District bill or
-  letter of initiation of service</li></ul></li></td></tr>
+<li>Copy of most recent Marin Municipal Water District bill or
+  letter of initiation of service</li>
+</ul>
+<b>Notes</b>: In case of emergency, students may only be released to parents,
+  legal guardians, or emergency contacts (listed on Page 5) designated by
+  a parent or legal guardian. If some of the student's parents or legal 
+  guardians live at another address, use the
+  <b>Additional Residence</b> form (Page 4) to list their names and contact
+  information.  This page is only for information about those parents who
+  live at the residence that qualifies the student for enrollment in the District.<br><br>
+Legal Guardianship is legally defined in 
+  Section 20 of the <i>Family Law Act<i>; 
+  Part 5 of the <i>Child Welfare Act</i>; 
+  Part 1, Division 5 of the <i>Child, Youth and Family Enhancement Act</i>; or 
+  Section 23 of the <i>Family Law Act</i>.  Legal 
+  Guardianship may also be established by a temporary or permanent guardianship
+  order under the <i>Child Welfare Act</i>, or by way of a court order or 
+  agreement in accordance with the <i>Family Law Act</i>.
+</td></tr>
 <tr><td width="40%" class="bold">Physical Number &amp; Street</td>
 <td width="25%">City</td>
 <td width="10%">State</td>
@@ -98,7 +116,7 @@ Proof of Residency documents (1 of each document is required):
   be provided if staffing and budget permits.</td></tr>
 <tr><td class="bold">Do you have internet access at this residence?</td>
 <td><input type="radio" name="[01]Home_No_Inet_Access" value="">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Home_No_Inet_Access" value="1">No&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Home_Inet_Access" value="no">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td></tr>
 <tr><td class="bold">Do you require printed copies of school communications?</td>
 <td><input type="radio" name="[01]Home_Printed_Material" value="1">Yes&nbsp;&nbsp;</td>
@@ -113,7 +131,7 @@ Proof of Residency documents (1 of each document is required):
 
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
-<tr class="secheader"><td colspan="4" class="bold">5b. Mother/Parent/Guardian at Qualifying Residence</td></tr>
+<tr class="secheader"><td colspan="4" class="bold">3b. Mother/Parent/Guardian at Qualifying Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td></tr>
 <tr><td colspan="2"><input type="text" name="[01]Mother" value="" size="30"></td>
@@ -133,9 +151,9 @@ Proof of Residency documents (1 of each document is required):
 <option value="Other">Other</option>
 </select></td>
 <td colspan="2">&nbsp;</td></tr>
-<tr><td>Parent is legal guardian?</td>
-<td><input type="radio" name="[01]Mother_IsGuardian" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Mother_IsGuardian" value="">No&nbsp;&nbsp;</td>
+<tr><td>Is this person the student's parent or legal guardian?</td>
+<td><input type="radio" name="[01]Mother_IsGuardian" value="yes">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Mother_IsGuardian" value="-1">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td></tr>
 <tr><td>Work Phone</td>
 <td>Home Phone</td>
@@ -145,7 +163,7 @@ Proof of Residency documents (1 of each document is required):
 <td><input class="phone" type="text" name="[01]Mother_Home_Phone" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Mother_Cell" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Mother_Pager" value="" size="16"></td></tr>
-<tr><td colspan="2">Email Address 1</td><td colspan="2">Email Address 2</td></tr>
+<tr><td colspan="2">Mother's Primary Email Address</td><td colspan="2">Mother's Additional Email Address</td></tr>
 <tr><td colspan="2"><input class="email" type="text" name="[01]Mother_Email" value="" size="30"></td>
 <td colspan="2"><input class="email" type="text" name="[01]Mother_Email2" value="" size="30"></td></tr>
 <tr><td colspan="2">Employer Name</td><td colspan="2">Employer City</td></tr>
@@ -156,7 +174,7 @@ Proof of Residency documents (1 of each document is required):
 
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
-<tr class="secheader"><td colspan="4" class="bold">5c. Father/Parent/Guardian at Qualifying Residence</td></tr>
+<tr class="secheader"><td colspan="4" class="bold">3c. Father/Parent/Guardian at Qualifying Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td>
 </tr>
@@ -177,9 +195,9 @@ Proof of Residency documents (1 of each document is required):
 <option value="Other">Other</option>
 </select></td>
 <td colspan="2">&nbsp;</td></tr>
-<tr><td>Parent is legal guardian?</td>
-<td><input type="radio" name="[01]Father_IsGuardian" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Father_IsGuardian" value="">No&nbsp;&nbsp;</td>
+<tr><td>Is this person the student's parent or legal guardian?</td>
+<td><input type="radio" name="[01]Father_IsGuardian" value="yes">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Father_IsGuardian" value="-1">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td></tr>
 <tr><td>Work Phone</td>
 <td>Home Phone</td>
@@ -189,7 +207,7 @@ Proof of Residency documents (1 of each document is required):
 <td><input class="phone" type="text" name="[01]Father_Home_Phone" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Father_Cell" value="" size="16"></td>
 <td><input class="phone" type="text" name="[01]Father_Pager" value="" size="16"></td></tr>
-<tr><td colspan="2">Email Address 1</td><td colspan="2">Email Address 2</td></tr>
+<tr><td colspan="2">Father's Primary Email Address</td><td colspan="2">Father's Additional Email Address</td></tr>
 <tr><td colspan="2"><input class="email" type="text" name="[01]Father_Email" value="" size="30"></td>
 <td colspan="2"><input class="email" type="text" name="[01]Father_Email2" value="" size="30"></td></tr>
 <tr><td colspan="2">Employer Name</td><td colspan="2">Employer City</td></tr>
