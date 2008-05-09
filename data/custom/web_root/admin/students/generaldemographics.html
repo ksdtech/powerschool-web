@@ -33,6 +33,42 @@
 <td class="bold">Name (last, first MI)</td>
 <td><input type="text" name="[01]lastfirst" value="" size="30"></td>
 </tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">DOB</td>
+<td><input type="text" name="[01]dob" value="" size="11" onChange="checkDates('~(JSFieldParam;[01]dob)');"></td>
+</tr>
+<tr>
+<td class="bold">Age</td>
+<td>~(age)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Gender</td>
+<td><select name="[01]gender"><option value=""><option value="M">Male<option value="F">Female</select></td>
+</tr>
+<tr>
+<td class="bold">Ethnicity</td>
+<td><select name="[01]ethnicity" special="lists.ethnicity"><option></select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Entry Date (Current Year)</td>
+<td><input type="text" name="[01]EntryDate" value="" size="11"></td>
+</tr>
+<tr>
+<td class="bold">Grade Level</td>
+<td>~(grade_level)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">School Entry Date</td>
+<td><input type="text" name="[01]SchoolEntryDate" value="" size="11"></td>
+</tr>
+<tr>
+<td class="bold">School Entry Grade Level</td>
+<td><input type="text" name="[01]SchoolEntryGradeLevel" value="" size="11"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Graduation Year</td>
+<td><input type="text" name="[01]graduation_year" value="" size="5"></td>
+</tr>
 <tr>
 <td class="bold">Address</td>
 <td><input type="text" name="[01]street" value="" size="30" id="pstreet"><br> 
@@ -41,32 +77,28 @@
  <input type="text" name="[01]zip" value="" size="10" id="pzip"></td>
 </tr>
 <tr bgcolor="#edf3fe">
+<td class="bold">Mailing Address<br />&nbsp;<a href="javascript:void(copyAddress())" onClick="copyAddress()">Copy Street Address</a></td>
+<td><input type="text" name="[01]mailing_street" value="" size="30" id="mstreet"><br>  <input type="text" name="[01]mailing_city" value="" size="14" id="mcity">, <input type="text" name="[01]mailing_state" value="" size="3" id="mstate"> <input type="text" name="[01]mailing_zip" value="" size="10" id="mzip"></td>
+</tr>
+<tr>
 <td class="bold">Home phone</td>
 <td><input type="text" name="[01]home_phone" value="" size="17"></td>
 </tr>
-<tr>
-<td class="bold">Age</td>
-<td>~(age)</td>
-</tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Aggregate days of membership (YTD)</td>
-<td>~(aggmemdaysytd)</td>
-</tr>
-<tr>
-<td class="bold">Area/neighborhood</td>
-<td><input type="text" name="[01]area" value="" size="27"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">DOB</td>
-<td><input type="text" name="[01]dob" value="" size="11" onChange="checkDates('~(JSFieldParam;[01]dob)');"></td>
-</tr>
-<tr>
-<td class="bold">Ethnicity</td>
-<td><select name="[01]ethnicity" special="lists.ethnicity"><option></select></td>
+<td class="bold"><a href="mailto:~(guardianemail)">Guardian Email<br>(separate multiple by commas)</a></td>
+<td><textarea name="[01]guardianemail" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
 <tr bgcolor="#edf3fe">
 <td class="bold">Father (last, first)</td>
 <td><input type="text" name="[01]father" value="" size="25">,&nbsp;<input type="text" name="[01]father_first" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">Father's Home Phone</td>
+<td><input type="text" name="[01]Father_home_phone" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Father's Cell Phone</td>
+<td><input type="text" name="[01]Father_Cell" value="" size="13"></td>
 </tr>
 <tr>
 <td class="bold">Father's Work Phone</td>
@@ -76,33 +108,17 @@
 <td class="bold">Father's Employer</td>
 <td><input type="text" name="[01]Father_Employer" value="" size="25"></td>
 </tr>
-<tr>
-<td class="bold">Father's Home Phone</td>
-<td><input type="text" name="[01]Father_home_phone" value="" size="13"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">Gender</td>
-<td><select name="[01]gender"><option value=""><option value="M">Male<option value="F">Female</select></td>
-</tr>
-<tr>
-<td class="bold">Grade Level</td>
-<td>~(grade_level)</td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">Graduation Year</td>
-<td><input type="text" name="[01]graduation_year" value="" size="5"></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold"><a href="mailto:~(guardianemail)">Guardian Email</a></td>
-<td><textarea name="[01]guardianemail" wrap="soft" cols="40" rows="3"></textarea></td>
-</tr>
-<tr>
-<td class="bold">Mailing Address<br />&nbsp;<a href="javascript:void(copyAddress())" onClick="copyAddress()">Copy Street Address</a></td>
-<td><input type="text" name="[01]mailing_street" value="" size="30" id="mstreet"><br>  <input type="text" name="[01]mailing_city" value="" size="14" id="mcity">, <input type="text" name="[01]mailing_state" value="" size="3" id="mstate"> <input type="text" name="[01]mailing_zip" value="" size="10" id="mzip"></td>
-</tr>
 <tr bgcolor="#edf3fe">
 <td class="bold">Mother (last, first)</td>
 <td><input type="text" name="[01]mother" value="" size="25">,&nbsp;<input type="text" name="[01]mother_first" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">Mother's Home Phone</td>
+<td><input type="text" name="[01]Mother_home_phone" value="" size="13"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Mother's Cell Phone</td>
+<td><input type="text" name="[01]Mother_cell" value="" size="13"></td>
 </tr>
 <tr>
 <td class="bold">Mother's Work Phone</td>
@@ -112,21 +128,17 @@
 <td class="bold">Mother's Employer</td>
 <td><input type="text" name="[01]Mother_Employer" value="" size="25"></td>
 </tr>
-<tr>
-<td class="bold">Mother's Home Phone</td>
-<td><input type="text" name="[01]Mother_home_phone" value="" size="13"></td>
-</tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Previous Student ID</td>
-<td><input type="text" name="[01]prevstudentid" value="" size=10></td>
+<td class="bold">Local Student ID (Student Number)</td>
+<td><input type="text" name="[01]student_number" value="" size="13"></td>
 </tr>
 <tr>
 <td class="bold">Calif. Student ID (SSID)</td>
 <td>~(state_studentnumber) - Modify only with SSID Import</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Local Student ID (Student Number)</td>
-<td><input type="text" name="[01]student_number" value="" size="13"></td>
+<td class="bold">Previous Student ID</td>
+<td><input type="text" name="[01]prevstudentid" value="" size=10></td>
 </tr>
 <!-- Start insert state specific section information -->
 ~[x:insertfile;state/demographics~[displaypref:districtstate].html]
