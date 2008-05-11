@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>PowerSchool: Kentfield Schools Parent Portal</title>
+<link rel="stylesheet" href="/images/powerschool.css">
+
+<script type="text/javascript" language="JavaScript"><!--
+//var netscape = ((navigator.appName.indexOf("Netscape") != -1) && (navigator.appVersion.charAt(0) > 3));
+//var explorer = (navigator.appName.indexOf("Microsoft") != -1);
+//function CheckEnterKey(evtObj)
+// {
+// if (netscape) asciiVal = evtObj.which;
+// if (explorer) { evtObj = window.event; asciiVal  = evtObj.keyCode; }
+// if (asciiVal == 13) document.forms[0].submit();
+// }
+//if (netscape) document.captureEvents(Event.KEYPRESS);
+//document.onkeypress=CheckEnterKey;
+// -->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" onload="document.forms[0].account.focus();">
+<iframe style="height:0px;width:0px;visibility:hidden" src="javascript:false" id="disablecache"></iframe>
+<script language="JavaScript" src="/admin/javascript/md5.js"></script>
+<script language="JavaScript"><!--
+var pskey = "~[x:pskey]";
+//-->
+</script>
+
+<form name="LoginForm" action="/guardian/home.html" method="POST" target="_top" onsubmit="doStudentLogin(this);">
+<input type="hidden" name="pstoken" value="~[x:pstoken]">
+~[x:ldapguardianpassword]
+<img src="/images/spacer.gif" width="1" height="92" border="0">
+
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="3" align="center"><img src="/images/pss_logo.gif" alt="PowerSchool"  width="201" height="25" alt="PowerSchool" ><br></td>
+</tr>
+<tr>
+<td class="header" colspan="3" align="center">Kentfield Schools Parent Portal Login<br><br><br></td>
+</tr>
+<tr>
+<td><img src="/images/admin_login_top_left.gif" width="8" height="8" alt="" border="0"></td>
+<td background="/images/admin_login_top_side.gif"><img src="/images/transparent.gif" width="8" height="1" alt="" border="0"></td>
+<td><img src="/images/admin_login_top_right.gif" width="8" height="8" alt="" border="0"></td>
+</tr>
+<tr>
+<td background="/images/admin_login_left_side.gif"><img src="/images/transparent.gif" width="4" height="1" alt="" border="0"></td>
+<td>
+
+<!--box content-->
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td rowspan="7"><img src="/images/spacer.gif" width="5" height="1"></td>
+<td class="body">~[loginerror]<script language="JavaScript" type="text/javascript">document.write('<b>Username</b>');</script></td>
+</tr>
+<tr>
+<td><img src="/images/spacer.gif" width="1" height="5"></td>
+</tr>
+<tr>
+<td class="body"><script language="JavaScript" type="text/javascript">document.write('<input type="text" name="account" value="" size="35">');</script><noscript>To log in to PowerSchool, you must use a browser that supports and has JavaScript enabled.</noscript></td>
+</tr>
+<tr>
+<td class="body"><img src="/images/spacer.gif" width="1" height="15"><script language="JavaScript" type="text/javascript">document.write('<br><b>Password</b>');</script></td>
+</tr>
+<tr>
+<td><img src="/images/spacer.gif" width="1" height="5"></td>
+</tr>
+<tr>
+<td class="body">
+<script language="JavaScript" type="text/javascript">document.write('<input type="password" name="pw" value="" size="35">');</script></td>
+</tr>
+<tr>
+<td class="body"><img src="/images/spacer.gif" width="1" height="10" border="0"><br><a href="/public/logonhelp.html">Forget your member name or password?</a></td>
+</tr>
+</table>
+<!-- box content-->
+
+</td>
+<td background="/images/admin_login_right_side.gif"><img src="/images/transparent.gif" width="4" height="1" alt="" border="0"></td>
+</tr>
+<tr>
+<td><img src="/images/admin_login_bottom_left.gif" width="8" height="8" alt="" border="0"></td>
+<td background="/images/admin_login_bottom_side.gif"><img src="/images/transparent.gif" width="8" height="1" alt="" border="0"></td>
+<td><img src="/images/admin_login_bottom_right.gif" width="8" height="8" alt="" border="0"></td>
+</tr>
+<tr>
+<td colspan="3" align="right">
+<script language="JavaScript" type="text/javascript">document.write('<input type="image" src="/images/btn_enter.gif" width="89" height="27" border="0" alt="Enter">');</script></td>
+</tr>
+</table>
+<p align="center" class="disclaimer">&copy; 2006 Pearson School Systems. All rights reserved.</p>
+
+</form>
+</body>
+</html>
