@@ -1,5 +1,5 @@
-// user_stamp.js
-// Date formatting and attaching timestamps to custom powerschool forms
+// fmt_date.js
+// Date formatting 
 
 String.escape = function(string) {
     return string.replace(/('|\\)/g, "\\$1");
