@@ -71,7 +71,7 @@
 <tr><td colspan="2"><input type="text" name="[01]Previous_School_Name" value="" size="30" maxlength="30"></td>
 <td><input type="text" name="[01]Previous_School_Address" value="" size="30" maxlength="50"></td>
 <td><input type="text" name="[01]Previous_School_City" value="" size="20"></td></tr>
-<tr><td class="bold">Phone</td>
+<tr><td class="bold">Phone (with area code)</td>
 <td colspan="3"><input type="text" name="[01]Previous_School_Phone" value="" size="16"></td></tr>
 <tr><td class="bold">Last Grade Level</td>
 <td colspan="3"><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10"></td></tr>
@@ -85,40 +85,40 @@
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr class="secheader"><td colspan="3" class="bold">6b. State Required Demographics: Ethnicity</td></tr>
-<tr><td class="bold">Primary Ethnicity</td>
-<td colspan="2" class="bold">Secondary Ethnicity (check any applicable)</td></tr>
-<tr><td valign="bottom"><select name="[01]Ethnicity" special="lists.ethnicity">
+<tr><td><b>Primary Ethnicity</b><br>(or choose Decline to State)</td>
+<td colspan="2"><b>Secondary Ethnicity</b><br>(check any applicable ethnicities other than the primary ethnicity)</td></tr>
+<tr><td valign="bottom"><select id="ethnicity" name="[01]Ethnicity" special="lists.ethnicity">
 <option>
 </option>
 </select></td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAA" value="1">African American</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnFi" value="1">Filipino</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_600" name="[01]CA_ethnAA" value="1">African American</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_400" name="[01]CA_ethnFi" value="1">Filipino</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAI" value="1">Native American</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnLa" value="1">Hispanic</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_100" name="[01]CA_ethnAI" value="1">Native American</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_500" name="[01]CA_ethnLa" value="1">Hispanic</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPICh" value="1">Chinese</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIHa" value="1">Native Hawaiian</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_201" name="[01]CA_ethnAsPICh" value="1">Chinese</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_301" name="[01]CA_ethnAsPIHa" value="1">Native Hawaiian</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIJa" value="1">Japanese</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIGu" value="1">Guamanian</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_202" name="[01]CA_ethnAsPIJa" value="1">Japanese</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_302" name="[01]CA_ethnAsPIGu" value="1">Guamanian</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIKo" value="1">Korean</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPISa" value="1">Samoan</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_203" name="[01]CA_ethnAsPIKo" value="1">Korean</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_303" name="[01]CA_ethnAsPISa" value="1">Samoan</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIVi" value="1">Vietnamese</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPITa" value="1">Tahitian</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_204" name="[01]CA_ethnAsPIVi" value="1">Vietnamese</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_304" name="[01]CA_ethnAsPITa" value="1">Tahitian</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIAI" value="1">Asian Indian</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIOPI" value="1">Other Pac. Islander</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_205" name="[01]CA_ethnAsPIAI" value="1">Asian Indian</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_399" name="[01]CA_ethnAsPIOPI" value="1">Other Pac. Islander</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPILa" value="1">Laotian</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnWh" value="1">White</td></tr>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_206" name="[01]CA_ethnAsPILa" value="1">Laotian</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_700" name="[01]CA_ethnWh" value="1">White</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPICa" value="1">Cambodian</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_207" name="[01]CA_ethnAsPICa" value="1">Cambodian</td>
 <td valign="bottom">&nbsp;</td></tr>
 <tr><td valign="bottom">&nbsp;</td>
-<td valign="bottom"><input type="checkbox" name="[01]CA_ethnAsPIOA" value="1">Other Asian</td>
+<td valign="bottom"><input type="checkbox" class="ethn2" id="ethn2_299" name="[01]CA_ethnAsPIOA" value="1">Other Asian</td>
 <td valign="bottom">&nbsp;</td></tr>
 </table><br>
 <br>
