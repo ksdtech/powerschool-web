@@ -28,6 +28,13 @@ function pack_checklist(obj) {
 	return ret;
 }
 
+function ethn2_allowed() {
+	var primary_ethn;
+	$(".ethn2").removeAttr("disabled");
+ 	primary_ethn = $("#ethnicity option:selected").val();
+	$("#ethn2_" + primary_ethn).removeAttr("checked").attr("disabled", "disabled");
+}
+
 // encode the field type in the class of the input (text field)
 // form should also have three hidden fields with these ids:
 //  #userid (no name) should have a value of ~[x:userid]
@@ -43,6 +50,7 @@ $(document).ready(function() {
 		$("#upd_by").val($("#userid").val()); 
 		$("#upd_at").val(timestamp_now()); return true; });
 	// format field values for specific input types
+	$("#ethnicity").bind("change", function(e) { ethn2_allowed(); } );
 	$("input.first").bind("blur", function(e) { 
 		this.value = ucfirst(this.value); });
 	$("input.last").bind("blur", function(e) { 
@@ -61,6 +69,7 @@ $(document).ready(function() {
 	$(".private").hide();
 	$("select.mselect").each( function() {
 		init_multi_select(this, $("#"+this.id+"_data").val()); });
+	ethn2_allowed();
 	$(".checklist").each( function() { init_checklist(this); });
 	// blank contents have &nbsp; in them; how do I search for these?
 	// :contains('&nbsp;') doesn't work
