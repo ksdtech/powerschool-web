@@ -6,12 +6,21 @@
 <td background="/images/transparent.gif">
 <br>
 
+<!-- pscustom_begin -->
 <!-- title -->
 &nbsp;&nbsp;<span class="header">~[if.~(schoolid)=104]Kent[else]Bacich[/if] PowerSchool Home Page</span><br><br>
 <!-- title -->
 
-<!-- pscustom_begin -->
-<table border="0" cellspacing="0" cellpadding="2" width="100%">
+<!-- start student content -->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+~[if.~(student_number)=111719]
+<tr><td class="header">Online Registration for the 2008-2009 School Year</td></tr>
+<tr><td>Registration for returning students will be open beginning May 9, 2008.  Click the
+  <a href="regforms.html">Class Registration icon</a> at the top of this page to go to the registration forms.</td></tr>
+<tr><td>&nbsp;</td></tr>
+[/if]
+
 <tr><td class="header">Quick Links</td></tr>
 <tr><td><ul>
 <li><a target="ksorg" href="http://www.kentfieldschools.org">Kentfield
@@ -21,11 +30,15 @@ Middle School website</a></li>
 <li><a target="ksorg" href="http://www.kentfieldschools.org/Bacich">Bacich
 Elementary School website</a></li>
 </ul></td></tr>
+</table><br>
+
+~[if.~(schoolid)=103]
+</td>
+</tr>
 </table>
+[else]
 <!-- pscustom_end -->
 
-~[if.~(student_number)#111719]
-<!-- start student content -->
 ~[SetPostValue:skipDontPrintFilter=1]
 ~[SetPostValue:att_quicklookuphide_t=~[x:GetQuickLookupHidePref]]
 ~[wc:att_quicklookmeet_guardian]
@@ -47,6 +60,8 @@ Elementary School website</a></li>
     Citizenship Codes: &nbsp;~[x:CitizenshipCodeLegend]</td>
 <td align="right" valign="top" width="30%"><br><a href="/guardian/text/summary.html?~[randomnumber;20]" target="_blank"><img src="/images/icon_printpage.gif" width="79" height="22" alt="" border="0"></a>&nbsp; &nbsp;</td>
 </tr>
+
+<!-- pscustom_begin -->
 <tr><td colspan="2">&nbsp;</td></tr>
 <tr><td colspan="2" class="header">Disclaimer</td><tr>
 <tr><td colspan="2">This system is provided as a convenience.
@@ -70,22 +85,10 @@ scores, the student must show the assignment to the teacher for review.</li>
 component of PowerSchool (e.g., accessing records of non-family
 members, or inappropriate communication via the system) will result in
 loss of access.</li>
-</ul></td></tr>
+</ul>
+</td></tr>
 </table>
-<!-- end of legend, miscellaneous info, and print icon -->
-[else]
-<!-- start student content -->
-<table border="0" cellspacing="0" cellpadding="2" width="100%">
-<tr><td class="header">Online Registration for the 2008-2009 School Year</td></tr>
-<tr><td>Registration for returning students will be open beginning May 9, 2008.  Click the
-  <a href="regforms.html">Class Registration icon</a> at the top of this page to go to the registration forms.</td></tr>
-</table>
-<!-- end student content -->
-
-</td>
-</tr>
-</table>
-<!-- end of title and student content -->
 [/if]
+<!-- pscustom_end -->
 
 ~[wc:guardian_footer]
