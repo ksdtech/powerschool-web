@@ -29,10 +29,13 @@ function pack_checklist(obj) {
 }
 
 function ethn2_allowed() {
-	var primary_ethn;
-	$(".ethn2").removeAttr("disabled");
- 	primary_ethn = $("#ethnicity option:selected").val();
-	$("#ethn2_" + primary_ethn).removeAttr("checked").attr("disabled", "disabled");
+	var primary_ethn = $("#ethnicity option:selected").val();
+	if (prmary_ethn == "" || primary_ethn == "999") {
+		$(".ethn2").attr("disabled", "disabled");
+	} else {
+		$(".ethn2").removeAttr("disabled");
+		$("#ethn2_" + primary_ethn).removeAttr("checked").attr("disabled", "disabled");
+	}
 }
 
 // encode the field type in the class of the input (text field)
