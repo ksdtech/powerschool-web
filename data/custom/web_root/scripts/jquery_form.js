@@ -30,7 +30,7 @@ function pack_checklist(obj) {
 
 function ethn2_allowed() {
 	var primary_ethn = $("#ethnicity option:selected").val();
-	if (prmary_ethn == "" || primary_ethn == "999") {
+	if (primary_ethn == "" || primary_ethn == "999") {
 		$(".ethn2").attr("disabled", "disabled");
 	} else {
 		$(".ethn2").removeAttr("disabled");
