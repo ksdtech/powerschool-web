@@ -35,12 +35,7 @@ Elementary School website</a></li>
 </ul></td></tr>
 </table><br>
 
-~[if.~(schoolid)=103]
-Grades and attendance are not posted for Bacich students.
-</td>
-</tr>
-</table>
-[else]
+~[if.~(schoolid)#103]
 <!-- pscustom_end -->
 
 ~[SetPostValue:skipDontPrintFilter=1]
@@ -64,11 +59,14 @@ Grades and attendance are not posted for Bacich students.
     Citizenship Codes: &nbsp;~[x:CitizenshipCodeLegend]</td>
 <td align="right" valign="top" width="30%"><br><a href="/guardian/text/summary.html?~[randomnumber;20]" target="_blank"><img src="/images/icon_printpage.gif" width="79" height="22" alt="" border="0"></a>&nbsp; &nbsp;</td>
 </tr>
+</table>
 
 <!-- pscustom_begin -->
-<tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2" class="header">Disclaimer</td><tr>
-<tr><td colspan="2">This system is provided as a convenience.
+[/if]
+
+<br><table>
+<tr><td class="header">Disclaimer</td><tr>
+<tr><td>This system is provided as a convenience.
 Grades and other information provided by this system are not official
 records and may or may not be accurate. Neither the Kentfield School District nor
 PowerSchool accepts any responsibility for information
@@ -76,6 +74,7 @@ provided by this system and/or for any damages resulting from
 information provided by this system. For official grades and student
 records contact the school office.
 <ul>
+<li>Grades and attendance are not posted for Bacich students.</li>
 <li>Teachers will update information at least
 twice per trimester, i.e., at mid-term and at the end of the trimester;
 information viewed, therefore, may not be current.</li>
@@ -92,7 +91,6 @@ loss of access.</li>
 </ul>
 </td></tr>
 </table>
-[/if]
 <!-- pscustom_end -->
 
 ~[wc:guardian_footer]
