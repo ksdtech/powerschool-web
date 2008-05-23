@@ -8,14 +8,14 @@ function rand_chars(str, len) {
 }
 
 function new_ps_username(last_name, secondary_family) {
-  var prefix;
-  if (secondary_family) { prefix = '6789'; }
+	var prefix;
+	if (secondary_family) { prefix = '6789'; }
 	else { prefix = '2345'; }
-  var last = last_name.toUpperCase().replace(/[^ABCDEFGHJKMNPQRSTUVWXYZ]/, '');
-  var len = last.length;
-  if (len > 3) { last = last.substring(0, 3); }
-  if (len < 3) { last = last + Array(3 - len).join('Y'); }
-  var numbers = '23456789';
+	var last = last_name.toUpperCase().replace(/[^ABCDEFGHJKMNPQRSTUVWXYZ]/, '');
+	var len = last.length;
+	if (len > 3) { last = last.substring(0, 3); }
+	if (len < 3) { last = last + Array(3 - len).join('Y'); }
+	var numbers = '23456789';
 	var username;
 	for (var i=0; i < 100; i++) {
 		username = rand_chars(prefix, 1) + last + rand_chars(numbers, 2);
@@ -41,11 +41,11 @@ function new_student_username(last_name, first_name, middle_school) {
 	var last_len = 0;
 	var i;
 	if (middle_school) { 
-    // stop last name on hyphen, then remove spaces (vanliere, dhaiti, peltereau)
-    var words = last_name.toLowerCase().split(/[^a-z]/);
+		// stop last name on hyphen, then remove spaces (vanliere, dhaiti, peltereau)
+		var words = last_name.toLowerCase().split(/[^a-z]/);
 		for (i=0; i < words.length; i++) {
 			var w = words[i];
-      if (first.length == 0 && w.length > 4) {
+			if (first.length == 0 && w.length > 4) {
 				first = first + w;
 				break;
 			}
@@ -54,26 +54,26 @@ function new_student_username(last_name, first_name, middle_school) {
 		}
 		if (first.length > 10) { first = first.substring(0, 10); }
 		last = first_name.toLowerCase().replace(/[^a-z]/, '').substring(0, 1);
-    if (last.length > 0) { last_len = 1; }
+		if (last.length > 0) { last_len = 1; }
 	} else {
-    // stop first name on any non-alpha character
-    first = first_name.toLowerCase().replace(/[^a-z].*$/, '');
-    last  = last_name.toLowerCase().replace(/[^a-z]/, '');
-    last_len = last.length;
-	}	
-  var last_i = 0;
+		// stop first name on any non-alpha character
+		first = first_name.toLowerCase().replace(/[^a-z].*$/, '');
+		last	= last_name.toLowerCase().replace(/[^a-z]/, '');
+		last_len = last.length;
+	} 
+	var last_i = 0;
 	var last_part, username;
 	for (i=0; i < 100; i++) {
-    if (i < last_len) { last_part = last.substring(0, i + 1); }
-    else {
-      last_i = last_i + 1;
-      last_part = last + (last_i + '');
+		if (i < last_len) { last_part = last.substring(0, i + 1); }
+		else {
+			last_i = last_i + 1;
+			last_part = last + (last_i + '');
 		}
-    username = first + last_part;
+		username = first + last_part;
 		// todo: check uniqueness
 		if (1) { return username; }
-  }
-  return undefined;
+	}
+	return undefined;
 }
 
 function new_student_password(middle_school) {
@@ -95,7 +95,8 @@ function generate_h1_login() {
 
 function generate_h2_login() {
 	if ($("#h2_id").val() == '') {
-		$("#h2_id").val(parseInt($("#st_id").val()) + 100000);
+		var st_id = $("#st_id").val();
+		if (st_id != '') { $("#h2_id").val(parseInt(st_id) + 100000); }
 	}
 	if ($("#h2_login").val() == '') {
 		$("#h2_login").val(new_ps_username($("#st_last").val(), 1));
@@ -124,7 +125,6 @@ fptrs['generate_st_login'] = generate_st_login;
 function bind_login_generators() {
 	$(".pwgen").bind("click", function() {
 		var func_name = $(this).attr("id");
-		alert(func_name);
 		fptrs[func_name]();
 	});
 }
