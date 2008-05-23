@@ -19,10 +19,8 @@
 <br />
 </td></tr>
 
-<tr class="~[evenoddrow]"><td class="bold">Family ID</td><td><input type="text" name="FamilyID_T" maxlength="60"></td></tr>
-<tr class="~[evenoddrow]"><td class="bold">Mother's Name <br />&nbsp;</td><td><input type="text" name="MomsName_t"></td></tr>
-<tr class="~[evenoddrow]"><td class="bold">Father's Name <br />&nbsp;</td><td><input type="text" name="DadsName_t"></td></tr>
-<tr class="~[evenoddrow]"><td class="bold">Guardian's Name <br />&nbsp;</td><td><input type="text" name="GuardianLastName_t">,&nbsp;<input type="text" name="GuardianFirstName_t"></td></tr>
-<tr class="~[evenoddrow]"><td class="bold">Address<br /> (Street, City) </td><td><input type="text" name="Street_t">,&nbsp;<input type="text" name="City_t"></td></tr>
 <tr class="~[evenoddrow]"><td class="bold">Sibling's Name <br />&nbsp;(Last, First)</td><td><input type="text" name="SiblingLastName_t">,&nbsp;<input type="text" name="SiblingFirstName_t"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Mother's Last Name <br />&nbsp;</td><td><input type="text" name="MomsName_t"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Father's Last Name <br />&nbsp;</td><td><input type="text" name="DadsName_t"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Address<br /> (Street, City) </td><td><input type="text" name="Street_t">,&nbsp;<input type="text" name="City_t"></td></tr>
 <tr class="~[evenoddrow]"><th class="bold" colspan="2"><input name="includeStudentLastName" id="includeStudentLastName" type="checkbox" value="Yes" checked> Include Student's Last Name <span id="insertlastnamehere"></span> In Search.</td></tr>
