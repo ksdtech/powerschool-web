@@ -7,6 +7,7 @@
 <script src="http://ps.kentfieldschools.org/scripts/formatters.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/selectlists.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/jquery.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/genpass.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/jquery_itr.js" type="text/javascript"></script>
 <!-- pscustom_end -->
 ~[wc:commonscripts]
@@ -36,109 +37,114 @@
 <td>
 
 <!-- pscustom_begin -->
+<input type="hidden" id="st_last" value="~([01]last_name)">
+<input type="hidden" id="st_first" value="~([01]first_name)">
+<input type="hidden" id="st_school", value="~([01]schoolid)">
 <table border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="2" align="left">
 <tr class="secheader"><td colspan="3" class="bold">Student Transfer Info</td></tr>
-	<tr>
-		<td>Current Grade Level</td>
-		<td>School Entry Grade Level</td>
-		<td>District Entry Grade Level</td>
-	</tr>
-	<tr>
-		<td><b><span id="grade_level">~([01]Grade_Level)</span></b></td>
-		<td><input type="text" id="SchoolEntryGradeLevel" name="[01]SchoolEntryGradeLevel" value="" size="20"></td>
-		<td><input type="text" id="DistrictEntryGradeLevel" name="[01]DistrictEntryGradeLevel" value="" size="20"></td>
-	</tr>
-	<tr>
-		<td>Current Entry Date</td>
-		<td>School Entry Date</td>
-		<td>District Entry Date</td>
-	</tr>
-	<tr>
-		<td><b><span id="entry_date">~([01]EntryDate)</span></b></td>
-		<td><input type="text" id="SchoolEntryDate" name="[01]SchoolEntryDate" value="" size="20"></td>
-		<td><input type="text" id="DistrictEntryDate" name="[01]DistrictEntryDate" value="" size="20"></td>
-	</tr>
+<tr>
+	<td>Current Grade Level</td>
+	<td>School Entry Grade Level</td>
+	<td>District Entry Grade Level</td>
+</tr>
+<tr>
+	<td><b><span id="grade_level">~([01]Grade_Level)</span></b></td>
+	<td><input type="text" id="SchoolEntryGradeLevel" name="[01]SchoolEntryGradeLevel" value="" size="20"></td>
+	<td><input type="text" id="DistrictEntryGradeLevel" name="[01]DistrictEntryGradeLevel" value="" size="20"></td>
+</tr>
+<tr>
+	<td>Current Entry Date</td>
+	<td>School Entry Date</td>
+	<td>District Entry Date</td>
+</tr>
+<tr>
+	<td><b><span id="entry_date">~([01]EntryDate)</span></b></td>
+	<td><input type="text" id="SchoolEntryDate" name="[01]SchoolEntryDate" value="" size="20"></td>
+	<td><input type="text" id="DistrictEntryDate" name="[01]DistrictEntryDate" value="" size="20"></td>
+</tr>
 <tr class="secheader"><td colspan="3" class="bold">Home Room</td></tr>
-	<tr>
-		<td>Room Number</td>
-		<td>Teacher Last</td>
-		<td>Teacher First</td>
-	</tr>
-	<tr>
-		<td><input type="text" name="[01]Home_Room" value="" size="20"></td>
-		<td><input type="text" name="[01]HomeRoom_Teacher" value="" size="20"></td>
-		<td><input type="text" name="[01]HomeRoom_TeacherFirst" value="" size="20"></td>
-	</tr>
+<tr>
+	<td>Room Number</td>
+	<td>Teacher Last</td>
+	<td>Teacher First</td>
+</tr>
+<tr>
+	<td><input type="text" name="[01]Home_Room" value="" size="20"></td>
+	<td><input type="text" name="[01]HomeRoom_Teacher" value="" size="20"></td>
+	<td><input type="text" name="[01]HomeRoom_TeacherFirst" value="" size="20"></td>
+</tr>
 <tr class="secheader"><td colspan="3" class="bold">3. Student Account</td></tr>
-	<tr>
-		<td>Network Login</td>
-		<td>Network Password</td>
-		<td>Student Number</td>
-	</tr>
-	<tr>
-		<td><input type="text" id="st_login" name="[01]Network_ID" value="" size="20" onfocus="return id_check('st_id');"></td>
-		<td><input type="text" id="st_password" name="[01]Network_Password" value="" size="20"></td>
-		<td><input type="text" id="st_id" name="[01]Student_Number" value="" size="20"></td>
-	</tr>
+<tr>
+	<td>Network User Name</td>
+	<td>Network Password</td>
+	<td>Student Number</td>
+</tr>
+<tr>
+	<td><input type="text" id="st_login" name="[01]Network_ID" value="" size="20" onfocus="return id_check('st_id');"></td>
+	<td><input type="text" id="st_password" name="[01]Network_Password" value="" size="20"></td>
+	<td><input type="text" id="st_id" name="[01]Student_Number" value="" size="20"></td>
+</tr>
+<tr><td colspan="3"><input type="checkbox" class="pwgen" id="generate_st_login" value="1">Generate network login</td></tr>
 <tr class="secheader"><td colspan="3" class="bold">Primary Family Account</td></tr>
-	<tr><td colspan="3">Parent Web Access <input type="checkbox" name="[01]AllowWebAccess" value=""></td></tr>
-	<tr>
-		<td>Login</td>
-		<td>Password</td>
-		<td>Family Number</td>
-	</tr>
-	<tr>
-		<td><input type="text" id="h1_login" name="[01]Web_ID" value="" size="20"></td>
-		<td><input type="text" id="h1_password" name="[01]Web_Password" value="" size="20"></td>
-		<td><input type="text" id="h1_id" name="[01]Home_ID" value="" size="20"></td>
-	</tr>
-	<tr>
-		<td colspan="2">Mother Last, First</td>
-		<td>Mother Teacher Number</td>
-	</tr>
-	<tr>
-		<td colspan="2"><b>~([01]Mother), ~([01]Mother_First)</b></td>
-		<td><input type="text" name="[01]Mother_Staff_ID" value="" size="20"></td>
-	</tr>
-	<tr>
-		<td colspan="2">Father Last, First</td>
-		<td>Father Teacher Number</td>
-	</tr>
-	<tr>
-		<td colspan="2"><b>~([01]Father), ~([01]Father_First)</b></td>
-		<td><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
-	</tr>
+<tr><td colspan="3"><input type="checkbox" name="[01]AllowWebAccess" value="">Parent Web Access</td></tr>
+<tr>
+	<td>User Name</td>
+	<td>Password</td>
+	<td>Family Number</td>
+</tr>
+<tr>
+	<td><input type="text" id="h1_login" name="[01]Web_ID" value="" size="20"></td>
+	<td><input type="text" id="h1_password" name="[01]Web_Password" value="" size="20"></td>
+	<td><input type="text" id="h1_id" name="[01]Home_ID" value="" size="20"></td>
+</tr>
+<tr><td colspan="3"><input type="checkbox" class="pwgen" id="generate_h1_login" value="1">Generate family login</td></tr>
+<tr>
+	<td colspan="2">Mother Last, First</td>
+	<td>Mother Teacher Number</td>
+</tr>
+<tr>
+	<td colspan="2"><b>~([01]Mother), ~([01]Mother_First)</b></td>
+	<td><input type="text" name="[01]Mother_Staff_ID" value="" size="20"></td>
+</tr>
+<tr>
+	<td colspan="2">Father Last, First</td>
+	<td>Father Teacher Number</td>
+</tr>
+<tr>
+	<td colspan="2"><b>~([01]Father), ~([01]Father_First)</b></td>
+	<td><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
+</tr>
 <tr class="secheader"><td colspan="3" class="bold">Second Family Account</td></tr>
-	<tr><td colspan="3">Parent Web Access <input type="checkbox" name="[01]Student_AllowWebAccess" value=""></td></tr>
-	<tr>
-		<td>Login</td>
-		<td>Password</td>
-		<td>Family Number</td>
-	</tr>
-	<tr>
-		<td><input type="text" id="h2_login" name="[01]Student_Web_ID" value="" size="20"></td>
-		<td><input type="text" id="h2_password" name="[01]Student_Web_Password" value="" size="20"></td>
-		<td><input type="text" id="h2_id" name="[01]Home2_ID" value="" size="20"></td>
-	</tr>
-	<tr>
-		<td colspan="2">Mother Last, First</td>
-		<td>Mother Teacher Number</td>
-	</tr>
-	<tr>
-		<td colspan="2"><b>~([01]Mother2_Last), ~([01]Mother2_First)</b></td>
-		<td><input type="text" name="[01]Mother2_Staff_ID" value="" size="20"></td>
-	</tr>
-	<tr>
-		<td colspan="2">Father Last, First</td>
-		<td>Father Teacher Number</td>
-	</tr>
-	<tr>
-		<td colspan="2"><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
-		<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
-	</tr>
-</td></tr>
+<tr><td colspan="3"><input type="checkbox" name="[01]Student_AllowWebAccess" value="">Parent Web Access</td></tr>
+<tr>
+	<td>User Name</td>
+	<td>Password</td>
+	<td>Family Number</td>
+</tr>
+<tr>
+	<td><input type="text" id="h2_login" name="[01]Student_Web_ID" value="" size="20"></td>
+	<td><input type="text" id="h2_password" name="[01]Student_Web_Password" value="" size="20"></td>
+	<td><input type="text" id="h2_id" name="[01]Home2_ID" value="" size="20"></td>
+</tr>
+<tr><td colspan="3"><input type="checkbox" class="pwgen" id="generate_h2_login" value="1">Generate family login</td></tr>
+<tr>
+	<td colspan="2">Mother Last, First</td>
+	<td>Mother Teacher Number</td>
+</tr>
+<tr>
+	<td colspan="2"><b>~([01]Mother2_Last), ~([01]Mother2_First)</b></td>
+	<td><input type="text" name="[01]Mother2_Staff_ID" value="" size="20"></td>
+</tr>
+<tr>
+	<td colspan="2">Father Last, First</td>
+	<td>Father Teacher Number</td>
+</tr>
+<tr>
+	<td colspan="2"><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
+	<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
+</tr>
 
 <tr class="secheader"><td colspan="3" class="bold">Enrollment Information</td></tr>
 <tr><td class="bold" colspan="2">Status for 2008-9</td><td><select id="reg_enroll" name="[01]reg_will_attend">

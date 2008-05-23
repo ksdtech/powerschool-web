@@ -40,6 +40,7 @@ $(document).ready(function() {
 	$("#reg_enroll").bind("change", function() { on_enrollment_change(); });
 	$("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
 	// do stuff when page is loaded
+	bind_login_generators();
 	$(".private").hide();
 	on_enrollment_change();
 });
