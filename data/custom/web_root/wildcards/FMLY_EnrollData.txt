@@ -1,0 +1,28 @@
+<img src="/images/linestyle1.gif" alt="" align="middle" vspace="2" width="600" height="1"><br /></td></tr>
+<tr class="headerrow"><td colspan="2" class="bold">Information for Family Match</td></tr>
+
+<tr><td colspan="2">Students may be linked to other family members in the school or district and their demographic information may be copied to the student being enrolled. By creating a link between students, shared information can be synchronized so edits that occur to one student can automatically be made to the linked students. 
+
+<tr><td colspan="2">
+
+	<input name="doLink" type="radio" value="0" >Enroll without Linking or Copying Information<br />
+~[if.~(gpv.addfromexisting)=""]
+	<input name="doLink" type="radio" value="2" checked>Search For Family Members to Link to and Copy Information from
+ [else]
+
+ 	<input name="doLink" type="radio" value="1" checked>Link and Copy Information from ~(studentname)<br />
+	<input name="doLink" type="radio" value="2" >Search For Family Members to Link to and Copy Information from
+ [/if]
+	 <input type="hidden" name="addfromexisting" value="~(gpv.addfromexisting)">
+	 <input type="hidden" name="datasource_t" value="FamMan">
+
+<br />
+</td></tr>
+
+<tr class="~[evenoddrow]"><td class="bold">Family ID</td><td><input type="text" name="FamilyID_T" maxlength="60"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Mother's Name <br />&nbsp;</td><td><input type="text" name="MomsName_t"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Father's Name <br />&nbsp;</td><td><input type="text" name="DadsName_t"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Guardian's Name <br />&nbsp;</td><td><input type="text" name="GuardianLastName_t">,&nbsp;<input type="text" name="GuardianFirstName_t"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Address<br /> (Street, City) </td><td><input type="text" name="Street_t">,&nbsp;<input type="text" name="City_t"></td></tr>
+<tr class="~[evenoddrow]"><td class="bold">Sibling's Name <br />&nbsp;(Last, First)</td><td><input type="text" name="SiblingLastName_t">,&nbsp;<input type="text" name="SiblingFirstName_t"></td></tr>
+<tr class="~[evenoddrow]"><th class="bold" colspan="2"><input name="includeStudentLastName" id="includeStudentLastName" type="checkbox" value="Yes" checked> Include Student's Last Name <span id="insertlastnamehere"></span> In Search.</td></tr>
