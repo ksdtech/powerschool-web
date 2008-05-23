@@ -38,6 +38,12 @@ function ethn2_allowed() {
 	}
 }
 
+function set_form_updated() {
+	$("#upd_by").val($("#userid").val()); 
+	$("#upd_at").val(timestamp_now()); 
+	return true;
+}
+
 // encode the field type in the class of the input (text field)
 // form should also have three hidden fields with these ids:
 //  #userid (no name) should have a value of ~[x:userid]
@@ -50,9 +56,12 @@ $(document).ready(function() {
 			$("#"+this.id+"_data").val(pack_multi_select(this)); });
 		$(".checklist").each( function() { 
 			$(this).val(pack_checklist(this)); });
-		$("#upd_by").val($("#userid").val()); 
-		$("#upd_at").val(timestamp_now()); return true; });
+		if (!$("#upd_by").hasClass("disabled")) { set_form_updated(); }
+	});
 	// format field values for specific input types
+	$("#admin_update").bind("click", function() {
+		if ($("#admin_update").attr("checked")) { set_form_updated(); }
+	});
 	$("#ethnicity").bind("change", function(e) { ethn2_allowed(); } );
 	$("input.first").bind("blur", function(e) { 
 		this.value = ucfirst(this.value); });

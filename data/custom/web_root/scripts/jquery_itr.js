@@ -1,17 +1,3 @@
-// intent to return form
-$(document).ready(function() {
-	// do stuff when user submits
-	$("#attSubmitButton").bind("click", function(e) { 
-		$("#upd_by").val($("#userid").val()); 
-		$("#upd_at").val(timestamp_now()); return true; });
-	// change display based on selections
-	$("#reg_enroll").bind("change", function() { on_enrollment_change(); });
-	$("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
-	// do stuff when page is loaded
-	$(".private").hide();
-	on_enrollment_change();
-});
-
 function on_enrollment_change() {
 	var enrollment = $("#reg_enroll option:selected").val();
 	var not_enrolling = (enrollment.indexOf("nr-") == 0);
@@ -34,3 +20,27 @@ function on_grade_level_change() {
 	}
 	return true;
 }
+
+function set_form_updated() {
+	$("#upd_by").val($("#userid").val()); 
+	$("#upd_at").val(timestamp_now()); 
+	return true;
+}
+
+// intent to return form
+$(document).ready(function() {
+	// do stuff when user submits
+	$("#attSubmitButton").bind("click", function(e) { 
+		if (!$("#upd_by").hasClass("disabled")) { set_form_updated(); }
+	});
+	// change display based on selections
+	$("#admin_update").bind("click", function() {
+		if ($("#admin_update").attr("checked")) { set_form_updated(); }
+	});
+	$("#reg_enroll").bind("change", function() { on_enrollment_change(); });
+	$("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
+	// do stuff when page is loaded
+	$(".private").hide();
+	on_enrollment_change();
+});
+
