@@ -51,8 +51,8 @@
 </tr>
 <tr>
 	<td><b><span id="grade_level">~([01]Grade_Level)</span></b></td>
-	<td><input type="text" id="SchoolEntryGradeLevel" name="[01]SchoolEntryGradeLevel" value="" size="20"></td>
-	<td><input type="text" id="DistrictEntryGradeLevel" name="[01]DistrictEntryGradeLevel" value="" size="20"></td>
+	<td><input type="text" class="entry_grade_level" name="[01]SchoolEntryGradeLevel" value="" size="20"></td>
+	<td><input type="text" class="entry_grade_level" name="[01]DistrictEntryGradeLevel" value="" size="20"></td>
 </tr>
 <tr>
 	<td>Current Entry Date</td>
@@ -61,8 +61,8 @@
 </tr>
 <tr>
 	<td><b><span id="entry_date">~([01]EntryDate)</span></b></td>
-	<td><input type="text" id="SchoolEntryDate" name="[01]SchoolEntryDate" value="" size="20"></td>
-	<td><input type="text" id="DistrictEntryDate" name="[01]DistrictEntryDate" value="" size="20"></td>
+	<td><input type="text" class="entry_date" name="[01]SchoolEntryDate" value="" size="20"></td>
+	<td><input type="text" class="entry_date" name="[01]DistrictEntryDate" value="" size="20"></td>
 </tr>
 <tr class="secheader"><td colspan="3" class="bold">Home Room</td></tr>
 <tr>
@@ -90,7 +90,7 @@
 </tr>
 <tr><td colspan="3"><input type="checkbox" class="pwgen" id="generate_st_login" value="1">Generate network login</td></tr>
 <tr class="secheader"><td colspan="3" class="bold">Primary Family Account</td></tr>
-<tr><td colspan="3"><input type="checkbox" name="[01]AllowWebAccess" value="">Parent Web Access</td></tr>
+<tr><td colspan="3"><input type="checkbox" id="h1_web_access" name="[01]AllowWebAccess" value="">Parent Web Access</td></tr>
 <tr>
 	<td>User Name</td>
 	<td>Password</td>
@@ -119,7 +119,7 @@
 	<td><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
 </tr>
 <tr class="secheader"><td colspan="3" class="bold">Second Family Account</td></tr>
-<tr><td colspan="3"><input type="checkbox" name="[01]Student_AllowWebAccess" value="">Parent Web Access</td></tr>
+<tr><td colspan="3"><input type="checkbox" id="h2_web_access" name="[01]Student_AllowWebAccess" value="">Parent Web Access</td></tr>
 <tr>
 	<td>User Name</td>
 	<td>Password</td>

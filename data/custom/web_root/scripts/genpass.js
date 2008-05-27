@@ -11,10 +11,10 @@ function new_ps_username(last_name, secondary_family) {
 	var prefix;
 	if (secondary_family) { prefix = '6789'; }
 	else { prefix = '2345'; }
-	var last = last_name.toUpperCase().replace(/[^ABCDEFGHJKMNPQRSTUVWXYZ]/, '');
+	var last = last_name.toUpperCase().replace(/[^ABCDEFGHJKMNPQRSTUVWXYZ]/g, '');
 	var len = last.length;
 	if (len > 3) { last = last.substring(0, 3); }
-	if (len < 3) { last = last + Array(3 - len).join('Y'); }
+	if (len < 3) { last = last + Array(4 - len).join('Y'); }
 	var numbers = '23456789';
 	var username;
 	for (var i=0; i < 100; i++) {
@@ -53,12 +53,12 @@ function new_student_username(last_name, first_name, middle_school) {
 			if (first.length > 10) { break; }
 		}
 		if (first.length > 10) { first = first.substring(0, 10); }
-		last = first_name.toLowerCase().replace(/[^a-z]/, '').substring(0, 1);
+		last = first_name.toLowerCase().replace(/[^a-z]/g, '').substring(0, 1);
 		if (last.length > 0) { last_len = 1; }
 	} else {
 		// stop first name on any non-alpha character
-		first = first_name.toLowerCase().replace(/[^a-z].*$/, '');
-		last	= last_name.toLowerCase().replace(/[^a-z]/, '');
+		first = first_name.toLowerCase().replace(/[^a-z].*$/g, '');
+		last	= last_name.toLowerCase().replace(/[^a-z]/g, '');
 		last_len = last.length;
 	} 
 	var last_i = 0;
@@ -91,6 +91,7 @@ function generate_h1_login() {
 	if ($("#h1_password").val() == '') {
 		$("#h1_password").val(new_ps_password());
 	}
+	$("#h1_web_access").attr("checked", "checked");
 }
 
 function generate_h2_login() {
@@ -104,6 +105,7 @@ function generate_h2_login() {
 	if ($("#h2_password").val() == '') {
 		$("#h2_password").val(new_ps_password());
 	}
+	$("#h2_web_access").attr("checked", "checked");
 }
 
 function generate_st_login() {
@@ -117,15 +119,8 @@ function generate_st_login() {
 }
 
 // lame function table
-var fptrs = new Array();
-fptrs['generate_h1_login'] = generate_h1_login;
-fptrs['generate_h2_login'] = generate_h2_login;
-fptrs['generate_st_login'] = generate_st_login;
-
-function bind_login_generators() {
-	$(".pwgen").bind("click", function() {
-		var func_name = $(this).attr("id");
-		fptrs[func_name]();
-	});
-}
+var genpass_fptrs = new Array();
+genpass_fptrs['generate_h1_login'] = generate_h1_login;
+genpass_fptrs['generate_h2_login'] = generate_h2_login;
+genpass_fptrs['generate_st_login'] = generate_st_login;
 

@@ -27,6 +27,30 @@ function set_form_updated() {
 	return true;
 }
 
+function set_entry_dates() {
+	$(".entry_date").each(function() {
+		if ($(this).val() == '') { 
+			if ($("#entry_date").is("input")) {
+				$(this).val($("#entry_date").val()); 
+			} else {
+				$(this).val($("#entry_date").text()); 
+			}
+		}
+	});
+	$(".entry_grade_level").each(function() {
+		if ($(this).val() == '') { $(this).val($("#entry_grade_level").text()); }
+	});
+}
+
+function bind_login_generators() {
+	if ($(".pwgen").length > 0) {
+		$(".pwgen").bind("click", function() {
+			var func_name = $(this).attr("id");
+			genpass_fptrs[func_name]();
+		});
+	}
+}
+
 // intent to return form
 $(document).ready(function() {
 	// do stuff when user submits
@@ -40,6 +64,7 @@ $(document).ready(function() {
 	$("#reg_enroll").bind("change", function() { on_enrollment_change(); });
 	$("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
 	// do stuff when page is loaded
+	set_entry_dates();
 	bind_login_generators();
 	$(".private").hide();
 	on_enrollment_change();
