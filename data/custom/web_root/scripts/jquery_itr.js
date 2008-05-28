@@ -27,9 +27,9 @@ function set_form_updated() {
 	return true;
 }
 
-function set_entry_dates() {
+function set_entry_dates(force) {
 	$(".entry_date").each(function() {
-		if ($(this).val() == '') { 
+		if (force || ($(this).val() == '')) { 
 			if ($("#entry_date").is("input")) {
 				$(this).val($("#entry_date").val()); 
 			} else {
@@ -38,7 +38,9 @@ function set_entry_dates() {
 		}
 	});
 	$(".entry_grade_level").each(function() {
-		if ($(this).val() == '') { $(this).val($("#entry_grade_level").text()); }
+		if (force || ($(this).val() == '')) { 
+			$(this).val($("#entry_grade_level").text()); 
+		}
 	});
 }
 
@@ -61,10 +63,10 @@ $(document).ready(function() {
 	$("#admin_update").bind("click", function() {
 		if ($("#admin_update").attr("checked")) { set_form_updated(); }
 	});
+	$("#entry_check").bind("click", function() { set_entry_dates(1); }
 	$("#reg_enroll").bind("change", function() { on_enrollment_change(); });
 	$("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
 	// do stuff when page is loaded
-	set_entry_dates();
 	bind_login_generators();
 	$(".private").hide();
 	on_enrollment_change();
