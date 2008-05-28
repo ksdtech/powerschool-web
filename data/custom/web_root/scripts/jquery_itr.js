@@ -63,7 +63,7 @@ $(document).ready(function() {
 	$("#admin_update").bind("click", function() {
 		if ($("#admin_update").attr("checked")) { set_form_updated(); }
 	});
-	$("#entry_check").bind("click", function() { set_entry_dates(1); }
+	$("#entry_check").bind("click", function() { set_entry_dates(1); });
 	$("#reg_enroll").bind("change", function() { on_enrollment_change(); });
 	$("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
 	// do stuff when page is loaded
