@@ -39,7 +39,7 @@ function set_entry_dates(force) {
 	});
 	$(".entry_grade_level").each(function() {
 		if (force || ($(this).val() == '')) { 
-			$(this).val($("#entry_grade_level").text()); 
+			$(this).val($("#grade_level").text()); 
 		}
 	});
 }
