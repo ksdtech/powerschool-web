@@ -62,6 +62,12 @@ $(document).ready(function() {
 	$("#admin_update").bind("click", function() {
 		if ($("#admin_update").attr("checked")) { set_form_updated(); }
 	});
+	$(".copyfields").bind("click", function(e) {
+		$("."+$(this).attr("id")).each( function() {
+			var src = "#"+$(this).attr("id")+"_src";
+			$(this).val($(src).val());
+		});
+	});
 	$("#ethnicity").bind("change", function(e) { ethn2_allowed(); } );
 	$("input.first").bind("blur", function(e) { 
 		this.value = ucfirst(this.value); });
