@@ -8,6 +8,11 @@
 <script src="http://ps.kentfieldschools.org/scripts/selectlists.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/jquery.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<style type="text/css">
+tr.staffonly td { padding-top: 4px; background-color: #ffcccc; border-style: solid; border-width: 4px 0 0 0; border-color: #ffffff; }
+tr.secheader td { padding-top: 4px; background-color: #ccccff; border-style: solid; border-width: 4px 0 0 0; border-color: #ffffff; }
+tr.fldheader td { padding-top: 4px; }
+</style>
 <!-- pscustom_end -->
 ~[wc:commonscripts]
 <link href="/images/powerschool.css" rel="stylesheet">
@@ -81,8 +86,8 @@
 </table><br><br>
 </td></tr>
 
-<tr><td class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted</td></tr>
-<tr><td class="bold">Last updated at 
+<tr class="staffonly"><td class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
+<tr class="staffonly"><td class="bold">Last updated at 
 <input type="text" id="upd_at" class="disabled" name="[01]form9_updated_at" value=""> by 
 <input type="text" id="upd_by" class="disabled" name="[01]form9_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
