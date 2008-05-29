@@ -69,22 +69,23 @@
 at a second residence in addition to the residence that is within District boundaries.
 All other families may leave the fields on this page blank and click the <b>Submit</b> 
 button at the bottom of the page.</td></tr>
-<tr><td width="40%" class="bold">Physical Number &amp; Street</td>
+<tr><td width="40%"><b>Physical Address:</b> Number &amp; Street</td>
 <td width="25%">City</td>
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
-<tr><td><input class="street" type="text" name="[01]Home2_Street" value="" size="30"></td>
-<td><input class="city" type="text" name="[01]Home2_City" value="" size="20"></td>
-<td><input class="state" type="text" name="[01]Home2_State" value="CA" size="4"></td>
-<td><input class="zip" type="text" name="[01]Home2_Zip" value="" size="10"></td></tr>
-<tr><td class="bold">Mailing Number &amp; Street</td>
+<tr><td><input class="street" type="text" id="h2a_src" name="[01]Home2_Street" value="" size="30"></td>
+<td><input class="city" type="text" id="h2c_src" name="[01]Home2_City" value="" size="20"></td>
+<td><input class="state" type="text" id="h2s_src" name="[01]Home2_State" value="CA" size="4"></td>
+<td><input class="zip" type="text" id="h2z_src" name="[01]Home2_Zip" value="" size="10"></td></tr>
+<tr><td colspan="4"><input type="checkbox" class="copyfields" id="h2acopy" value="1">Copy physical address to mailing address</td></tr>
+<tr><td><b>Mailing Address:</b> Number &amp; Street</td>
 <td>City</td>
 <td>State</td>
 <td>Zip</td></tr>
-<tr><td><input class="street" type="text" name="[01]Mailing2_Street" value="" size="30"></td>
-<td><input class="city" type="text" name="[01]Mailing2_City" value="" size="20"></td>
-<td><input class="state" type="text" name="[01]Mailing2_State" value="" size="4"></td>
-<td><input class="zip" type="text" name="[01]Mailing2_Zip" value="" size="10"></td></tr>
+<tr><td><input class="street h2acopy" type="text" id="h2a" name="[01]Mailing2_Street" value="" size="30"></td>
+<td><input class="city h2acopy" type="text" id="h2c" name="[01]Mailing2_City" value="" size="20"></td>
+<td><input class="state h2acopy" type="text" id="h2s" name="[01]Mailing2_State" value="" size="4"></td>
+<td><input class="zip h2acopy" type="text" id="h2z" name="[01]Mailing2_Zip" value="" size="10"></td></tr>
 <tr><td class="bold">Home Phone</td><td><input class="phone" type="text" name="[01]Home2_Phone" value="" size="16"></td>
 <td colspan="2">&nbsp;</td></tr>
 <tr><td colspan="4">The Kentfield School District uses email and website
