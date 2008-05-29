@@ -68,12 +68,16 @@ $(document).ready(function() {
 <td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
 <td>
 
-<table border="0" cellspacing="0" cellpadding="4" width="600">
+<table border="0" cellspacing="0" cellpadding="4" width="700">
 <tr class="headerrow">
 <td colspan="2" class="bold">Student Information</td></tr>
 <tr bgcolor="#edf3fe">
 <td class="bold">Student's Full Legal Name<br>(Last, First Middle)</td>
-<td><input type="text" name="last" id="last" value="" size="17" maxlength="20" onBlur="updatecheckbox()">, <input type="text" name="first" value="" size="17" maxlength="20"> <input type="text" name="middle" value="" size="15" maxlength="15"></td>
+<td><input type="text" name="last" id="last" value="" size="17" maxlength="30" onBlur="updatecheckbox()">,&nbsp;<input type="text" name="first" value="" size="17" maxlength="30">&nbsp;<input type="text" name="middle" value="" size="17" maxlength="30"></td>
+</tr>
+<tr>
+<td class="bold">Gender</td>
+<td><select name="[01]Gender"><option value=""><option value="M">Male<option value="F">Female</select></td>
 </tr>
 <tr>
 <td class="bold">Date of Birth</td>
