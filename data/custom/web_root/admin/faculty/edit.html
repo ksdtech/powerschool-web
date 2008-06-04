@@ -1,0 +1,137 @@
+<html>
+<!-- start right frame -->
+<head>
+<title>Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)</title>
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
+</head>
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+<form action="edit.html" method="POST">
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/faculty/search.html" target="_top">Staff</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">Select A Staff Member</a> &gt; Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
+<!-- Beginning of title of page -->
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="header">Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)</td>
+</tr>
+</table>
+<!-- Ending of title of page -->
+<br>
+
+<!-- start of content and bounding box -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="4">
+<tr class="~[evenoddrow]">
+<td class="bold">Name (Last, First MI)</td>
+<td><input type="text" name="[05]Last_Name" value="" size="15" maxlength="20">, <input type="text" name="[05]First_Name" value="" size="15" maxlength="20"> <input type="text" name="[05]middle_name" value="" size="10" maxlength="15"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Preferred Name</td>
+<td><input type="text" name="[05]preferredname" value="" size="15" maxlength="20"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Email Address</td>
+<td><input type="text" name="[05]email_addr" value="" size="42"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Title</td>
+<td><input type="text" name="[05]title" value="" size="42"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Gender</td>
+<td><select name="[05]gender"><option><option value="m">Male<option value="f">Female</select></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Ethnicity</td>
+<td><select name="[05]Ethnicity" special="lists.ethnicity"></select></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">ID</td>
+<td><input type="text" name="[05]teachernumber" value="" size="9"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">StatePrId</td>
+<td><input type="text" name="[05]SIF_StatePrId" value="" size="32"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Homeroom</td>
+<td><input type="text" name="[05]homeroom" value="" size="9"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">School</td>
+<td><select name="[05]schoolid" special="schoolswithdistrict"><option>Item</select></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Homeroom</td>
+<td><input type="text" name="[05]homeroom" value="" size="9"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">School Voice Mail &amp; Ext</td>
+<td><input type="text" class="phone" name="[05]voice_mail" value="" size="20">
+<input type="text" name="[05]voice_mail_ext" value="" size="5"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">School Direct Line &amp; Ext</td>
+<td><input type="text" class="phone" name="[05]school_phone" value="" size="20">
+<input type="text" name="[05]school_phone_ext" value="" size="5"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Home Phone</td>
+<td><input type="text" name="[05]home_phone" value="" size="18"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Street</td>
+<td><input type="text" name="[05]street" value="" size="42"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">City, State, Zip</td>
+<td><input type="text" name="[05]city" value="" size="26"> <input type="text" name="[05]state" value="" size="2"> <input type="text" name="[05]zip" value="" size="10"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">DOB</td>
+<td><input type="text" name="[05]dob" value="" size="10" maxlength="10" onChange="checkDates('~(JSFieldParam;[05]dob)');"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Staff Status</td>
+<td><select name="[05]StaffStatus"><option value="0">Not Assigned<option value="1">Teacher<option value="2">Staff<option value="3">Lunch Staff<option value="4">Substitute</select></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Status</td>
+<td><select name="[05]status"><option value="1">Current<option value="2">No longer here</select></td>
+</tr>
+<!-- Start insert state specific staff information -->
+~[x:insertfile;state/faculty~[displaypref:districtstate].html]
+<!-- End insert state specific staff information -->
+</table>
+<br>
+
+</td>
+<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
+</tr>
+<tr>
+<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
+<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
+</tr>
+<tr>
+<td colspan="2" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame]
+</form>
+
+</body>
+</html><!-- end right frame -->
