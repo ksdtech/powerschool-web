@@ -6,10 +6,24 @@
 <link href="/images/powerschool.css" rel="stylesheet">
 <script src="http://ps.kentfieldschools.org/scripts/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
-function copy_username() {
-  $("#email").val($("#username").val() + "@kentfieldschools.org");
-  return true;
-}
+// new staff entry form
+$(document).ready(function() {
+	// change display based on selections
+	$(".tn_check").bind("click", function(e) { 
+	  $("#teachernumber").val($(this).val());
+	});
+	$("#username").bind("change", function(e) { 
+    $("#email").val($("#username").val() + "@kentfieldschools.org");
+	});
+	$("#staffstatus").bind("change", function(e) {
+	  var st = $("#staffstatus option:selected").val();
+	  if (st == "1" || st == "2") {
+      $("#teacherloginid").val($("#username").val());
+      $("#teacherloginpw").val($("#password").val());
+      $("#powergradepw").val($("#password").val());
+    }
+	});
+});
 </script>
 </head>
 
@@ -62,13 +76,47 @@ function copy_username() {
 <td class="bold">Ethnicity</td>
 <td><select name="[05]Ethnicity" special="lists.ethnicity"></select></td>
 </tr>
+<!-- tlists for teacher number. note TeacherNumber is a char field -->
+~[tlist_sql;
+  SELECT TOP 1 (CONVERT(int, Teachers.TeacherNumber)+1) AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '102000' AND Teachers.TeacherNumber < '103000'
+  ORDER BY Teachers.TeacherNumber DESC
+  ;alternatecolor]
+<tr bgcolor="#edf3fe">
+<td class="bold">Next District ID</td>
+<td><input type="checkbox" class="tn_check" id="tn_dist" value="~(Teachers.tn)">Use ~(Teachers.tn) as ID</td>
+</tr>
+[/tlist_sql]
+
+~[tlist_sql;
+  SELECT TOP 1 (CONVERT(int, Teachers.TeacherNumber)+1) AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '103000' AND Teachers.TeacherNumber < '104000'
+  ORDER BY Teachers.TeacherNumber DESC
+  ;alternatecolor]
+<tr bgcolor="#edf3fe">
+<td class="bold">Next Bacich ID</td>
+<td><input type="checkbox" class="tn_check" id="tn_bacich" value="~(Teachers.tn)">Use ~(Teachers.tn) as ID</td>
+</tr>
+[/tlist_sql]
+
+~[tlist_sql;
+  SELECT TOP 1 (CONVERT(int, Teachers.TeacherNumber)+1) AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '104000' AND Teachers.TeacherNumber < '105000'
+  ORDER BY Teachers.TeacherNumber DESC
+  ;alternatecolor]
+<tr bgcolor="#edf3fe">
+<td class="bold">Next Kent ID</td>
+<td><input type="checkbox" class="tn_check" id="tn_kent" value="~(Teachers.tn)">Use ~(Teachers.tn) as ID</td>
+</tr>
+[/tlist_sql]
+
 <tr bgcolor="#edf3fe">
 <td class="bold">ID *</td>
-<td><input type="text" name="[05]teachernumber" value="" size="9"></td>
+<td><input type="text" id="teachernumber" name="[05]teachernumber" value="" size="9"></td>
 </tr>
 <tr>
 <td class="bold">User Name</td>
-<td><input type="text" id="username" name="[05]network_id" value="" size="15" maxlength="20" onchange="copy_username();"></td>
+<td><input type="text" id="username" name="[05]network_id" value="" size="15" maxlength="20"></td>
 </tr>
 <tr bgcolor="#edf3fe">
 <td class="bold">Email Address</td>
@@ -76,7 +124,7 @@ function copy_username() {
 </tr>
 <tr>
 <td class="bold">Preferred Password</td>
-<td><input type="text" name="[05]network_password" value="" size="15" maxlength="20">&nbsp;(6 characters minimum)</td>
+<td><input type="text" id="password" name="[05]network_password" value="" size="15" maxlength="20">&nbsp;(at least 6 characters)</td>
 </tr>
 <tr bgcolor="#edf3fe">
 <td class="bold">School</td>
@@ -108,7 +156,19 @@ function copy_username() {
 </tr>
 <tr>
 <td class="bold">Staff Status</td>
-<td><select name="[05]StaffStatus"><option value="0">Not Assigned<option value="1">Teacher<option value="2">Staff<option value="3">Lunch Staff<option value="4">Substitute</select></td>
+<td><select id="staffstatus" name="[05]StaffStatus"><option value="0">Not Assigned<option value="1">Teacher<option value="2">Staff<option value="3">Lunch Staff<option value="4">Substitute</select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Teacher Login ID</td>
+<td><input type="text" value="" id="teacherloginid" name="[05]teacherloginid" size="12" maxlength="20" >~[if.~[ldapisenabledteacher]=True]&nbsp;LDAP Enabled:<input type=checkbox value="0" name="[05]TeacherLDAPEnabled" id="teacherldapenabled">[else][/if]&nbsp;~[x:ldapstaffteacherlookupbutton_teacherloginid]</td>
+</tr>
+<tr>
+<td class="bold">Teacher Password</td>
+<td><input type="text" value="" id="teacherloginpw" name="[05]teacherloginpw" size="12" maxlength="20"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">PowerGrade Connectivity Key</td>
+<td><input type="text" value="" id="powergradepw" name="[05]powergradepw"></td>
 </tr>
 <tr>
 <td colspan="2" class="bold">* Required</td>
