@@ -1,0 +1,70 @@
+# This is the default database that PowerSchool uses.
+# Used by Tomcat (for PowerTeacher Gradebook)
+# Specification should match serverconfig.props file.
+# Note: db.connection.password changed!
+
+com.pearson.powerschool.database.default                          = db
+
+com.pearson.powerschool.database.db.adapter                      = sybase
+com.pearson.powerschool.database.db.connection.driver            = com.sybase.jdbc3.jdbc.SybDriver
+com.pearson.powerschool.database.db.connection.url               = jdbc:sybase:Tds:172.16.121.234:5000/PSProdDB
+com.pearson.powerschool.database.db.connection.user              = PS
+com.pearson.powerschool.database.db.connection.password          = verysecurepassword
+com.pearson.powerschool.database.db.ldap.keystore                = E:\PowerSchoolPremier\data\ssl\jssecacerts
+
+# Cache settings for each database.
+# If these settings are not present, then the system looks up
+# settings that are common to all databases.
+com.pearson.powerschool.database.db.cache.gradescale.size                   = 400
+com.pearson.powerschool.database.db.cache.gradescale.timeToLiveInSecs       = 3600
+com.pearson.powerschool.database.db.cache.reportingterm.size                = 400
+com.pearson.powerschool.database.db.cache.reportingterm.timeToLiveInSecs    = 3600
+
+#
+# com.pearson.powerschool.dbpool Settings
+#
+# Defines default connection pool settings.
+# These default settings can be overridden by setting them with each database.
+#
+
+# This defines the maximum number of connections that will be pooled at any given time.
+# Default is 50.
+com.pearson.powerschool.dbpool.maxPoolSize          = 60
+# validation query used to check if db connection is alive.
+com.pearson.powerschool.dbpool.validationQuery = select 1
+# time in milliseconds 5 minutes here
+com.pearson.powerschool.dbpool.maxWait = 300000
+# use the validation query to check that the connection is alive.
+com.pearson.powerschool.dbpool.testOnBorrow = true
+
+# This defines the maximum number of connections that will be pooled for use by the IDBroker at any given time.
+# Default is 3. The recommended value is 3.
+com.pearson.powerschool.dbpool.maxIDBrokerPoolSize  = 6
+
+# This will enable stats collection.
+# Stats collection uses miniscule system resource.
+# Default is true.
+com.pearson.powerschool.stats.enabled = true
+
+#
+# Cache Settings for All Databases
+#
+# These are used by the system if they are not overwritten with database-specific settings.
+
+# Default is 200.
+com.pearson.powerschool.cache.gradescale.size                   = 300
+
+# Default is 1800.
+com.pearson.powerschool.cache.gradescale.timeToLiveInSecs       = 2700
+
+# Default is 200.
+com.pearson.powerschool.cache.reportingterm.size                = 300
+
+# Default is 1800
+com.pearson.powerschool.cache.reportingterm.timeToLiveInSecs    = 2700
+
+#
+# The system will use this date as the current date.
+#
+#com.pearson.powerschool.systemDate = 2006.10.15
+

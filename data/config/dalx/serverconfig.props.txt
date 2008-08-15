@@ -1,0 +1,29 @@
+<!-- This is the default database that PowerSchool uses.
+ Used by 4D webserver and PowerSchool's main process.        
+ Specification should match powerschool-config.properties file.
+ Note: db.connection.password changed! -->
+ 
+<config>
+	<ShowDebugOutput value="NO" />
+	<RootPort value="2222" />
+	<MaxConnections value="120" />
+	<WorkerThreadCount value="60" />
+	<SelectedDriver value="sybase1" />
+	<ContainerType value="JDBCCONTAINER" />
+	<pshost value="http://localhost:80" />
+	<MaxRequestBuffer value="2048000000" />
+	
+	<!-- StatsBuddy Configuration -->
+	<StatsBuddyEnable value="true" />
+	<StatsBuddyLogEnable value="false" />
+	<StatsBuddyLogFrequencyInMinutes value="360" />
+	
+	<!-- Recommend WorkerThreadCount is same as maxActive -->
+	<DbConnectionPool maxActive="60" maxIdle="8" maxWait="-1" />
+	
+	<ListCache maxsize="12" expiration="60000" interval="60000" />
+	<jdbc>
+		<sybase1 drivertype="sybase" connect="jdbc:sybase:Tds:172.16.121.234:5000/PSProdDB" user="PS" password="verysecurepassword" driver="com.sybase.jdbc3.jdbc.SybDriver" scrollable="true" appenduser="true" autoindex="false" pooled="true" />
+	</jdbc>
+<ServerInstance value="1"/>
+</config>
