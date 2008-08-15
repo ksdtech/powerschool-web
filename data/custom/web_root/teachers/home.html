@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>PowerSchool - Teachers</title>
+<title>PowerTeacher</title>
 ~[wc:commonscripts]
 <script language="javascript">function formHandler(newLoc){var URL = newLoc.options[newLoc.selectedIndex].value;window.location.href = URL;} </script>
 <link rel="stylesheet" href="/images/powerschool.css">
@@ -13,7 +13,18 @@
 <!-- start gel tabs navigation -->
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td colspan="2" align="right" valign="top"><img src="/images/nav_top_shadow.gif" width="131" height="4" border="0"><br><a href="/teachers/home.html"><img src="/images/nav_start_on.gif" alt="Start Page" width="131" height="23" border="0"></a><br><a href="/teachers/bulletin.html"><img src="/images/nav_daily.gif" alt="Daily Bulletin" width="131" height="23" border="0"></a><br><a href="/teachers/facultydirectory.html"><img src="/images/nav_faculty.gif" alt="Staff Directory" width="131" height="23" border="0"></a><br><a href="/teachers/lunchtransactions.html?frn=~(userfrn)"><img src="/images/nav_meals.gif" alt="Meals" width="131" height="23" border="0"></a><br><a href="/teachers/userpreferences.html?frn=~(userfrn)"><img src="/images/nav_personalize.gif" alt="Personalize" width="131" height="23" border="0"></a><br><a href="/teachers/powergrade/home.html"><img src="/images/nav_powergrade.gif" alt="PowerGrade" width="131" height="23" border="0"></a><br><a href="/teachers/reportsall.html?ac=selectstudentsforteacher&teacherid=~[x:userid]"><img src="/images/nav_reports.gif" alt="Reports" width="131" height="23" border="0"></a><br><a href="/teachers/training/training.html"><img src="/images/nav_vu.gif" alt="VirtualUniversity" width="131" height="23" border="0"></a><br><img src="/images/nav_bot_shadow.gif" width="131" height="7" border="0"><br><img src="/images/transparent.gif" width="1" height="140" alt="" border="0"></td>
+<td colspan="2" align="right" valign="top"><img src="/images/nav_top_shadow.gif" width="131" height="4" border="0"><br>
+<a href="/teachers/home.html"><img src="/images/nav_start_on.gif" alt="Start Page" width="131" height="23" border="0"></a><br>
+<a href="/teachers/bulletin.html"><img src="/images/nav_daily.gif" alt="Daily Bulletin" width="131" height="23" border="0"></a><br>
+<a href="/teachers/facultydirectory.html"><img src="/images/nav_faculty.gif" alt="Staff Directory" width="131" height="23" border="0"></a><br>
+<a href="/teachers/lunchtransactions.html?frn=~(userfrn)"><img src="/images/nav_meals.gif" alt="Meals" width="131" height="23" border="0"></a><br>
+<a href="/teachers/userpreferences.html?frn=~(userfrn)"><img src="/images/nav_personalize.gif" alt="Personalize" width="131" height="23" border="0"></a><br>
+~[if.~(gradebookType)="1"]
+<a href="/teachers/gradebook/home.html"><img src="/images/nav_wgb.gif" alt="Gradebook" width="131" height="23" border="0"><br>
+[else]
+<a href="/teachers/powergrade/home.html"><img src="/images/nav_powergrade.gif" alt="PowerGrade" width="131" height="23" border="0"></a><br>
+[/if]
+<a href="/teachers/reportsall.html?ac=selectstudentsforteacher&teacherid=~[x:userid]"><img src="/images/nav_reports.gif" alt="Reports" width="131" height="23" border="0"></a><br><img src="/images/nav_bot_shadow.gif" width="131" height="7" border="0"><br><img src="/images/transparent.gif" width="1" height="140" alt="" border="0"></td>
 </tr>
 </table>
 <!-- end gel tabs navigation -->
@@ -22,6 +33,7 @@
 <td width="20" background="/images/admin_mid_right_side.gif"><img src="/images/transparent.gif" width="20" height="1" alt="" border="0"></td>
 <td width="100%" align="center" valign="top">
 <br>
+
 <div align="left"><span class="header">Current Classes</span></div>
 <br>
 
@@ -38,18 +50,25 @@
 
 <!-- Start of shaded content table -->
 <table border="0" cellspacing="0" cellpadding="6">
-<tr>~[tlist;sections;teacher=~[x:userid];currentterms;alternatecolor;separatorline;nonemessage=You do not have any current classes.;sortcmd;teacherhome]
-<td>~(*class_expression)</td>
-<td>~(relcoursename)</td>
-<td>~(ATT_RecordTeacherLinkHTML)</td>
+<tr>~[cachedteacherhomelist]
+<td>~(cachedteacher.classexpression)</td>
+<td>~(cachedteacher.coursename)</td>
+~[if.~(cachedteacher.sectionnumberpref)="1"]
+<td>~(cachedteacher.sectionnumber)</td>
+[/if]
+<td>~(cachedteacher.recordlink)</td>
+<td><img src="/images/~(cachedteacher.attendancetakenimage)" border="0">&nbsp;~(cachedteacher.attendancetakenscore)</td>
 <td><a href="/teachers/lunch.html?sectionid=~(id)&frn=~(frn)"><img src="/images/btn_silverware.gif" alt="Submit Lunch Counts" width="32" height="30" border="0"></a></td>
 <td><a href="/teachers/summary.html?sectionid=~(id)&frn=~(frn)"><img src="/images/btn_backpack.gif" alt="Student Information" width="32" height="33" border="0"></a></td>
 <td><a href="/teachers/reports.html?ac=reportselection&sectionid=~(id)"><img src="/images/btn_printer.gif" alt="Print Class Reports" width="36" height="30" border="0"></a></td>
-~[if.tchrpgvers.>.102]<td><a href="/teachers/webasmtlist.html?sectionid=~(id)"><img src="/images/btn_assignments.gif" alt="Web Assignments" width="31" height="31" border="0"></a></td>[/if]
+~[if.~(gradebookType)="0"]
+<td><a href="/teachers/webasmtlist.html?sectionid=~(id)"><img src="/images/btn_assignments.gif" alt="Web Assignments" width="31" height="31" border="0"></a></td>
+[/if]
 </tr>
 </table>
 </form>
 <!-- End of shaded content table -->
+
 </td>
 <td background="/images/admin_login_right_side.gif"><img src="/images/transparent.gif" width="4" height="1" alt="" border="0"></td>
 </tr>
