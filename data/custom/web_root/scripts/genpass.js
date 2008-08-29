@@ -77,8 +77,8 @@ function new_student_username(last_name, first_name, middle_school) {
 }
 
 function new_student_password(middle_school) {
-	if (middle_school) { return rand_chars('23456789', 6); }
-	return '1234';
+	if (middle_school) { return 'aa' + rand_chars('23456789', 4); }
+	return 'aa1234';
 }
 
 function generate_h1_login() {
