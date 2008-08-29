@@ -57,10 +57,10 @@ Need help? Send an email to <a href="mailto:webmaster@kentfieldschools.org">webm
 <td><a href="teachercomments.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_teacher_comm.gif" width="60" height="61" alt="Teacher Comments" border="0"></a></td>
 <td><a href="bulletin.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_school_bull.gif" width="42" height="61" alt="School Bulletin" border="0"></a></td>
 <!-- pscustom_begin -->
-~[if.isguardian]<td><a href="regforms.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_class_reg.gif" width="65" height="61" alt="Registration Forms" border="0"></a></td>[/if]
-<!-- pscustom_end -->
+~[if.isguardian]<td><a href="regforms.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_registration.gif" width="65" height="61" alt="Registration Forms" border="0"></a></td>
+<td><a href="contacts.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_contacts.gif" width="55" height="61" alt="Update Contacts" border="0"></a></td>[/if]
 ~[if.pref.nolunchdisplay=1][else]<td><a href="lunchbal.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_meal_bal.gif" width="42" height="61" alt="Balances" border="0"></a></td>[/if.pref.nolunchdisplay=1]
-<td><a href="mycalendars.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_mycalendars.gif" width="55" height="61" alt="My Calendars" border="0"></a></td>
+<!-- pscustom_end -->
 </tr>
 </table>
 <!-- icons -->
