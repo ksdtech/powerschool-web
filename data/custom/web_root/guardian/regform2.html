@@ -457,13 +457,16 @@ If you answer <b>Yes</b>, you must submit paper copies of the legal documents to
 <td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
 <td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
 </tr>
+[/if]
+~[if.~(deny_parent_modifications)#1]
 <tr>
 <td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td>
 </tr>
+[/if]
+~[if.~(schoolid)#999999]
 </table>
 </form>
 <!-- end student content -->
-
 [/if]
 
 </td>
