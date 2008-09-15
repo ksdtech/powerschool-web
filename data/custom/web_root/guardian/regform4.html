@@ -209,7 +209,13 @@ button at the bottom of the page.</td></tr>
 <td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
 </tr>
 <tr>
+[/if]
+~[if.~(wm_status)=1]
+<td colspan="3" align="right">You do not have permission to modify data on this page.</td>
+[else]
 <td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td>
+[/if]
+~[if.~(schoolid)#999999]
 </tr>
 </table>
 </form>
