@@ -83,7 +83,7 @@ $(document).ready(function() {
   ORDER BY Teachers.TeacherNumber DESC
 -->
 ~[tlist_sql;
-  SELECT (ROUND(T0_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
+  SELECT (ROUND(TO_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
   WHERE Teachers.TeacherNumber >= '102000' AND Teachers.TeacherNumber < '103000' AND ROWNUM <= 1
   ORDER BY Teachers.TeacherNumber DESC
   ;alternatecolor]
@@ -94,7 +94,7 @@ $(document).ready(function() {
 [/tlist_sql]
 
 ~[tlist_sql;
-  SELECT (ROUND(T0_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
+  SELECT (ROUND(TO_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
   WHERE Teachers.TeacherNumber >= '103000' AND Teachers.TeacherNumber < '104000' AND ROWNUM <= 1
   ORDER BY Teachers.TeacherNumber DESC
   ;alternatecolor]
@@ -105,7 +105,7 @@ $(document).ready(function() {
 [/tlist_sql]
 
 ~[tlist_sql;
-  SELECT (ROUND(T0_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
+  SELECT (ROUND(TO_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
   WHERE Teachers.TeacherNumber >= '104000' AND Teachers.TeacherNumber < '105000' AND ROWNUM <= 1
   ORDER BY Teachers.TeacherNumber DESC
   ;alternatecolor]
