@@ -77,9 +77,14 @@ $(document).ready(function() {
 <td><select name="[05]Ethnicity" special="lists.ethnicity"></select></td>
 </tr>
 <!-- tlists for teacher number. note TeacherNumber is a char field -->
-~[tlist_sql;
+<!-- sybase syntax was this: now using oracle...
   SELECT TOP 1 (CONVERT(int, Teachers.TeacherNumber)+1) AS tn FROM Teachers 
   WHERE Teachers.TeacherNumber >= '102000' AND Teachers.TeacherNumber < '103000'
+  ORDER BY Teachers.TeacherNumber DESC
+-->
+~[tlist_sql;
+  SELECT (ROUND(T0_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '102000' AND Teachers.TeacherNumber < '103000' AND ROWNUM <= 1
   ORDER BY Teachers.TeacherNumber DESC
   ;alternatecolor]
 <tr bgcolor="#edf3fe">
@@ -89,8 +94,8 @@ $(document).ready(function() {
 [/tlist_sql]
 
 ~[tlist_sql;
-  SELECT TOP 1 (CONVERT(int, Teachers.TeacherNumber)+1) AS tn FROM Teachers 
-  WHERE Teachers.TeacherNumber >= '103000' AND Teachers.TeacherNumber < '104000'
+  SELECT (ROUND(T0_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '103000' AND Teachers.TeacherNumber < '104000' AND ROWNUM <= 1
   ORDER BY Teachers.TeacherNumber DESC
   ;alternatecolor]
 <tr bgcolor="#edf3fe">
@@ -100,8 +105,8 @@ $(document).ready(function() {
 [/tlist_sql]
 
 ~[tlist_sql;
-  SELECT TOP 1 (CONVERT(int, Teachers.TeacherNumber)+1) AS tn FROM Teachers 
-  WHERE Teachers.TeacherNumber >= '104000' AND Teachers.TeacherNumber < '105000'
+  SELECT (ROUND(T0_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '104000' AND Teachers.TeacherNumber < '105000' AND ROWNUM <= 1
   ORDER BY Teachers.TeacherNumber DESC
   ;alternatecolor]
 <tr bgcolor="#edf3fe">
