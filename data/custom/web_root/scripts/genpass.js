@@ -82,39 +82,39 @@ function new_student_password(middle_school) {
 }
 
 function generate_h1_login() {
-	if ($("#h1_id").val() == '') {
-		$("#h1_id").val($("#st_id").val());
+	if (jQuery("#h1_id").val() == '') {
+		jQuery("#h1_id").val(jQuery("#st_id").val());
 	}
-	if ($("#h1_login").val() == '') {
-		$("#h1_login").val(new_ps_username($("#st_last").val(), 0));
+	if (jQuery("#h1_login").val() == '') {
+		jQuery("#h1_login").val(new_ps_username(jQuery("#st_last").val(), 0));
 	}
-	if ($("#h1_password").val() == '') {
-		$("#h1_password").val(new_ps_password());
+	if (jQuery("#h1_password").val() == '') {
+		jQuery("#h1_password").val(new_ps_password());
 	}
-	$("#h1_web_access").attr("checked", "checked");
+	jQuery("#h1_web_access").attr("checked", "checked");
 }
 
 function generate_h2_login() {
-	if ($("#h2_id").val() == '') {
-		var st_id = $("#st_id").val();
-		if (st_id != '') { $("#h2_id").val(parseInt(st_id) + 100000); }
+	if (jQuery("#h2_id").val() == '') {
+		var st_id = jQuery("#st_id").val();
+		if (st_id != '') { jQuery("#h2_id").val(parseInt(st_id) + 100000); }
 	}
-	if ($("#h2_login").val() == '') {
-		$("#h2_login").val(new_ps_username($("#st_last").val(), 1));
+	if (jQuery("#h2_login").val() == '') {
+		jQuery("#h2_login").val(new_ps_username(jQuery("#st_last").val(), 1));
 	}
-	if ($("#h2_password").val() == '') {
-		$("#h2_password").val(new_ps_password());
+	if (jQuery("#h2_password").val() == '') {
+		jQuery("#h2_password").val(new_ps_password());
 	}
-	$("#h2_web_access").attr("checked", "checked");
+	jQuery("#h2_web_access").attr("checked", "checked");
 }
 
 function generate_st_login() {
-	var middle_school = ($("#st_school").val() == '104');
-	if ($("#st_login").val() == '') {
-		$("#st_login").val(new_student_username($("#st_last").val(), $("#st_first").val(), middle_school));
+	var middle_school = (jQuery("#st_school").val() == '104');
+	if (jQuery("#st_login").val() == '') {
+		jQuery("#st_login").val(new_student_username(jQuery("#st_last").val(), jQuery("#st_first").val(), middle_school));
 	}
-	if ($("#st_password").val() == '') {
-		$("#st_password").val(new_student_password(middle_school));
+	if (jQuery("#st_password").val() == '') {
+		jQuery("#st_password").val(new_student_password(middle_school));
 	}
 }
 
