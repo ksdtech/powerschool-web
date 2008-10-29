@@ -7,20 +7,20 @@
 <script src="http://ps.kentfieldschools.org/scripts/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 // new staff entry form
-$(document).ready(function() {
+jQuery(document).ready(function() {
 	// change display based on selections
-	$(".tn_check").bind("click", function(e) { 
-	  $("#teachernumber").val($(this).val());
+	jQuery(".tn_check").bind("click", function(e) { 
+	  jQuery("#teachernumber").val(jQuery(this).val());
 	});
-	$("#username").bind("change", function(e) { 
-    $("#email").val($("#username").val() + "@kentfieldschools.org");
+	jQuery("#username").bind("change", function(e) { 
+    jQuery("#email").val(jQuery("#username").val() + "@kentfieldschools.org");
 	});
-	$("#staffstatus").bind("change", function(e) {
-	  var st = $("#staffstatus option:selected").val();
+	jQuery("#staffstatus").bind("change", function(e) {
+	  var st = jQuery("#staffstatus option:selected").val();
 	  if (st == "1" || st == "2") {
-      $("#teacherloginid").val($("#username").val());
-      $("#teacherloginpw").val($("#password").val());
-      $("#powergradepw").val($("#password").val());
+      jQuery("#teacherloginid").val(jQuery("#username").val());
+      jQuery("#teacherloginpw").val(jQuery("#password").val());
+      jQuery("#powergradepw").val(jQuery("#password").val());
     }
 	});
 });

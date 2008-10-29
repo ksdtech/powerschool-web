@@ -33,10 +33,10 @@ function updatecheckbox(){
 <!-- pscustom_begin -->
 <script src="http://ps.kentfieldschools.org/scripts/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
-$(document).ready(function() {
+jQuery(document).ready(function() {
 	// copy the value of the grade_level select to the reg_grade_level field
-	$("#attSubmitButton").bind("click", function(e) { 
-	  $("#reg_grade_level").val($("select[@name='grade_level'] option:selected").val());
+	jQuery("#attSubmitButton").bind("click", function(e) { 
+	  jQuery("#reg_grade_level").val(jQuery("select[@name='grade_level'] option:selected").val());
 	});  
 });
 </script>
