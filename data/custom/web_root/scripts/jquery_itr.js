@@ -115,5 +115,5 @@ jQuery(document).ready(function() {
 	bind_login_generators();
 	jQuery(".private").hide();
 	on_enrollment_change();
-}
+});
 
