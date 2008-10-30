@@ -99,7 +99,7 @@ function bind_login_generators() {
 }
 
 // intent to return form
-function itr() {
+jQuery(document).ready(function() {
 	// do stuff when user submits
 	jQuery("#attSubmitButton").bind("click", function(e) { 
 		if (!jQuery("#upd_by").hasClass("disabled")) { set_form_updated(); }
@@ -116,7 +116,4 @@ function itr() {
 	jQuery(".private").hide();
 	on_enrollment_change();
 }
-
-YAHOO.util.Event.onDOMReady(update_itr);
-
 
