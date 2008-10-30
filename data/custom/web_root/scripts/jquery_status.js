@@ -1,4 +1,4 @@
-// intent to return form
+// regform status page
 jQuery(document).ready(function() {
 	var enrollment = jQuery("#reg_enroll").val();
 	var not_enrolling = (enrollment.indexOf("nr-") == 0);
