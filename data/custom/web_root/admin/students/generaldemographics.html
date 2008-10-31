@@ -29,21 +29,21 @@
 <td>
 
 <table border="0" cellspacing="0" cellpadding="4">
-<tr>
-<td class="bold">Name (last, first MI)</td>
-<td><input type="text" name="[01]lastfirst" value="" size="30"></td>
-</tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">DOB</td>
-<td><input type="text" name="[01]dob" value="" size="11" onChange="checkDates('~(JSFieldParam;[01]dob)');"></td>
+<td class="bold">Name (Last, First Middle)</td>
+<td><input type="text" name="[01]last_name" value="" size="17" maxlength="20">,<input type="text" name="[01]first_name" value="" size="17" maxlength="20"><input type="text" name="[01]middle_name" value="" size="15" maxlength="15"></td>
 </tr>
 <tr>
 <td class="bold">Age</td>
 <td>~(age)</td>
 </tr>
+<tr>
+<td class="bold">Aggregate days of membership (YTD)</td>
+<td>~(aggmemdaysytd)</td>
+</tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Gender</td>
-<td><select name="[01]gender"><option value=""><option value="M">Male<option value="F">Female</select></td>
+<td class="bold">DOB</td>
+<td><input type="text" name="[01]dob" value="" size="11" onChange="checkDates('~(JSFieldParam;[01]dob)');"></td>
 </tr>
 <tr>
 <td class="bold">Ethnicity</td>
