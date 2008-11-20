@@ -41,9 +41,10 @@ function openSpecialWeighting() {
 </td>
 </tr>
 </table>
+<!-- PFZ: removed 2 columns from table below.  now there are 4. -->
 <table border="0" cellspacing="0" cellpadding="4" align="center" width="99%">
 <tr>
-	<td colspan="6">
+	<td colspan="4">
 		<table border="0" cellspacing="0" callpadding="4" width="99%">
 			<tr>
 				<td valign="top"><b>Teacher&nbsp;Comments:&nbsp;</b></td><td valign="top" width="90%"><pre style="font-family: Geneva, Verdana, Arial, Helvetica;font-size:10px; color: #333333;">~[decode;~(frn);031@;~(comment);~(final.comment;~[gpv:fg])]</pre></td>
@@ -59,25 +60,24 @@ function openSpecialWeighting() {
 <td>Category</td>
 <td>Assignment</td>
 <td align="center">Score</td>
-<td align="right" class="bold">~[if.~[dbval;table=termbins;field=SuppressPercentScr]=0]%[/if]</td>
-<td align="center" class="bold">~[if.~[dbval;table=termbins;field=suppressltrgrd]#true]Grd[/if]</td>
+<!-- PFZ: percentage and letter grades suppressed -->
 </tr>
 <tr bgcolor="#edf3fe">~[x:studentscores]
 <td>[duedate]</td>
 <td>[category]</td>
 <td>[assignment]</td>
 <td align="center">[score]</td>
-<td align="right">[percent]</td>
-<td align="center">[grade]</td>
+<!-- PFZ: percentage and letter grades suppressed -->
 </tr>
 <tr>
-<td colspan="6" align="center">~[if.~(frn)=031@]Grade stored on ~(datestored)[else]Grades last updated on ~(LastGradeUpdate)[/if]</td>
+<td colspan="4" align="center">~[if.~(frn)=031@]Grade stored on ~(datestored)[else]Grades last updated on ~(LastGradeUpdate)[/if]</td>
 </tr>
 <tr>
-<td colspan="6" align="center"><b>^</b> - Score is exempt from final grade, <b>*</b> - Assignment is not included in final grade</td>
+<td colspan="4" align="center"><b>^</b> - Score is exempt from final grade<br> <b>*</b> - Assignment is excluded from final grade<br>
+Note: All Citizenship scores are excluded from final grade</td>
 </tr>
 <tr>
-<td colspan="6" align="center"><b>1</b> - This final grade may include assignments that are not yet published by the teacher. It may also be a result of <a href="#" onclick="openSpecialWeighting();">special weighting</a> used by the teacher.</td>
+<td colspan="4" align="center"><b>1</b> - This final grade may include assignments that are not yet published by the teacher. It may also be a result of <a href="#" onclick="openSpecialWeighting();">special weighting</a> used by the teacher.</td>
 </tr>
 </table>
 <!-- end student content -->
