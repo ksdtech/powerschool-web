@@ -1,0 +1,98 @@
+~[wc:guardian_header]
+<script type="text/javascript">
+function openSpecialWeighting() {
+	window.open("/guardian/specialweighting.html",'Weighting','width=500,height=425,menu=no,toolbar=no,location=no,scrollbars=yes');
+}
+</script>
+<!-- start of title and student content -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td background="/images/transparent.gif">
+<br>
+
+<!-- title -->
+&nbsp;&nbsp;<span class="header">Class Score Detail</span><br><br>
+<!-- title -->
+
+<!-- start student content -->
+<table border="1" bordercolor="#dcdcdc" cellpadding="2" cellspacing="0" align="center" width="99%">
+<tr align="center" bgcolor="#f6f6f6">
+<td>Course</td>
+<td>Teacher</td>
+<td>Expression</td>
+<td>Final Grade<sup>1</sup></td>
+</tr>
+<tr align="center" bgcolor="#edf3fe">
+<td>~[sectioninfo:~(sectionid);coursename]</td>
+<td>~[sectioninfo:~(sectionid);teachername]</td>
+<td>~(*class_expression frn="~(relsectionfrn)")</td>
+<td>~[if.~[dbval;table=termbins;field=suppressltrgrd;*storecode=~[gpv:fg];*termid=~(termid);*schoolid=~(schoolid)]#true]
+		~[decode;~(frn);031@;~(grade);~(final.grade;~[gpv:fg])] &nbsp; 
+	[/if]
+	~[if.~[dbval;table=termbins;field=SuppressPercentScr;*storecode=~[gpv:fg];*termid=~(termid);*schoolid=~(schoolid)]=0]
+		<script type="text/javascript">
+			if ("~[decode;~(frn);031@;~(grade);~(final.grade;~[gpv:fg])]"=="--") {
+				document.write("&nbsp;");
+			} else {
+				document.write("~[decode;~(frn);031@;~(percent);~(final.pct;~[gpv:fg])]% &nbsp;");
+			}
+		</script> 
+	[/if]
+</td>
+</tr>
+</table>
+<!-- PFZ: removed 2 columns from table below.  now there are 4. -->
+<table border="0" cellspacing="0" cellpadding="4" align="center" width="99%">
+<tr>
+	<td colspan="4">
+		<table border="0" cellspacing="0" callpadding="4" width="99%">
+			<tr>
+				<td valign="top"><b>Teacher&nbsp;Comments:&nbsp;</b></td><td valign="top" width="90%"><pre style="font-family: Geneva, Verdana, Arial, Helvetica;font-size:10px; color: #333333;">~[decode;~(frn);031@;~(comment);~(final.comment;~[gpv:fg])]</pre></td>
+			</tr>
+			<tr>
+				<td valign="top"><b>Section&nbsp;Description:&nbsp;</b></td><td valign="top" width="90%">~([03]teacherdescr)</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+<tr bgcolor="#f6f6f6">
+<td>Due Date</td>
+<td>Category</td>
+<td>Assignment</td>
+<td align="center">Score</td>
+<!-- PFZ: percentage and letter grades suppressed -->
+</tr>
+<tr bgcolor="#edf3fe">~[x:studentscores]
+<td>[duedate]</td>
+<td>[category]</td>
+<td>[assignment]</td>
+<td align="center">[score]</td>
+<!-- PFZ: percentage and letter grades suppressed -->
+</tr>
+<tr>
+<td colspan="4" align="center">~[if.~(frn)=031@]Grade stored on ~(datestored)[else]Grades last updated on ~(LastGradeUpdate)[/if]</td>
+</tr>
+<tr>
+<td colspan="4" align="center"><b>^</b> - Score is exempt from final grade<br> <b>*</b> - Assignment is excluded from final grade<br>
+Note: All Citizenship scores are excluded from final grade</td>
+</tr>
+<tr>
+<td colspan="4" align="center"><b>1</b> - This final grade may include assignments that are not yet published by the teacher. It may also be a result of <a href="#" onclick="openSpecialWeighting();">special weighting</a> used by the teacher.</td>
+</tr>
+</table>
+<!-- end student content -->
+
+</td>
+</tr>
+</table>
+<!-- end of title and student content -->
+
+<br>
+<!-- legend, miscellaneous info, and print icon -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="right"><br><a href="/guardian/text/scores.html~[urlpostvalues]" target="_blank"><img src="/images/icon_printpage.gif" width="79" height="22" alt="" border="0"></a>&nbsp; &nbsp;</td>
+</tr>
+</table>
+
+~[wc:guardian_footer]
