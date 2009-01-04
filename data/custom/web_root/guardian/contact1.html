@@ -82,12 +82,11 @@
 <tr><td>2nd emergency contact number</td>
 <td><select name="[01]contact_1_2">
   ~[tlist_sql;
-      SELECT DISTINCT pcs.text_value AS phone
+      SELECT pcs.field_name, pcs.text_value
       FROM PVSIS_Custom_Students pcs 
-      WHERE pcs.student_number='~(student_number)' AND pcs.char_value<>'' AND pcs.field_name IN 
-  ('mother_cell','mother_work_phone','father_cell','father_work_phone','home_phone','mother_home_phone','father_home_phone')
+      WHERE pcs.student_number='~(student_number)'
       ;alternatecolor]
-      <option value="~(pcs.phone)">~(pcs.phone)</option>
+      <option value="~(pcs.field_name)">~(pcs.text_value) (~(pcs.field_name))</option>
 [/tlist_sql]
 </select></td></tr>
 <tr><td>3rd emergency contact number</td>
