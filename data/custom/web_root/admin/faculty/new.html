@@ -83,9 +83,8 @@ jQuery(document).ready(function() {
   ORDER BY Teachers.TeacherNumber DESC
 -->
 ~[tlist_sql;
-  SELECT (ROUND(TO_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
-  WHERE Teachers.TeacherNumber >= '102000' AND Teachers.TeacherNumber < '103000' AND ROWNUM <= 1
-  ORDER BY Teachers.TeacherNumber DESC
+  SELECT MAX(ROUND(TO_NUMBER(Teachers.TeacherNumber)))+1 AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '102000' AND Teachers.TeacherNumber < '103000'
   ;alternatecolor]
 <tr bgcolor="#edf3fe">
 <td class="bold">Next District ID</td>
@@ -94,9 +93,8 @@ jQuery(document).ready(function() {
 [/tlist_sql]
 
 ~[tlist_sql;
-  SELECT (ROUND(TO_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
-  WHERE Teachers.TeacherNumber >= '103000' AND Teachers.TeacherNumber < '104000' AND ROWNUM <= 1
-  ORDER BY Teachers.TeacherNumber DESC
+  SELECT MAX(ROUND(TO_NUMBER(Teachers.TeacherNumber)))+1 AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '103000' AND Teachers.TeacherNumber < '104000' 
   ;alternatecolor]
 <tr bgcolor="#edf3fe">
 <td class="bold">Next Bacich ID</td>
@@ -105,9 +103,8 @@ jQuery(document).ready(function() {
 [/tlist_sql]
 
 ~[tlist_sql;
-  SELECT (ROUND(TO_NUMBER(Teachers.TeacherNumber))+1) AS tn FROM Teachers 
-  WHERE Teachers.TeacherNumber >= '104000' AND Teachers.TeacherNumber < '105000' AND ROWNUM <= 1
-  ORDER BY Teachers.TeacherNumber DESC
+  SELECT MAX(ROUND(TO_NUMBER(Teachers.TeacherNumber)))+1 AS tn FROM Teachers 
+  WHERE Teachers.TeacherNumber >= '104000' AND Teachers.TeacherNumber < '105000'
   ;alternatecolor]
 <tr bgcolor="#edf3fe">
 <td class="bold">Next Kent ID</td>
