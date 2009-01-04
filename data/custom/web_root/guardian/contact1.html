@@ -85,11 +85,13 @@
       SELECT pcs.field_name, pcs.char_value
       FROM PVSIS_Custom_Students pcs 
       WHERE pcs.student_number='~(student_number)'
+      AND pcs.char_value<>''
       AND pcs.field_name IN 
- ('Mother_Cell','Mother_Work_Phone','Father_Cell','Father_Work_Phone','Home_Phone','Mother_Home_phone','Father_Home_Phone')
+ ('Mother_Cell','Mother_Work_Phone','Father_Cell','Father_Work_Phone','Mother_Home_phone','Father_Home_Phone')
       ;alternatecolor]
-      <option value="~(pcs.field_name)">~(pcs.char_value) (~(pcs.field_name))</option>
+      <option value="~(pcs.char_value)">~(pcs.char_value) (~(pcs.field_name))</option>
 [/tlist_sql]
+<option value="~(home_phone)">~(home_phone) (Home_Phone)</option>
 </select></td></tr>
 <tr><td>3rd emergency contact number</td>
 <td><select name="[01]contact_1_3">
