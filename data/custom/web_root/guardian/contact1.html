@@ -67,8 +67,8 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
 <tr class="secheader"><td colspan="2" class="bold">Qualifying Residence Contact Information</td></tr>
 <tr><td colspan="2">Please select three <b>different</b> contact phone numbers for use by the District emergency dialing system.  These must be <b>direct, daytime</b> phone numbers.  Do not select phone numbers that connect to automated answering machines or receptionists.  If the number you want to use does not appear in the available phone number menus, you must go back to the <a href="regform3.html">Qualifying Residence Information</a> page of your registation information and add the phone number there first, then treturn to this page.</td></tr>
-<tr><td width="15%">1st emergency contact number</td>
-<td><select name="[01]contact_1_1">
+<tr><td>1st emergency contact number</td>
+<td width="75%"><select name="[01]contact_1_1">
 ~[tlist_sql;
   SELECT DISTINCT pcs.char_value
   FROM PVSIS_Custom_Students pcs 
@@ -81,12 +81,13 @@
 [/tlist_sql]
 <option value="~(home_phone)">~(home_phone)</option>
 </select></td></tr>
-<tr><td width="15%">2nd emergency contact number</td>
-<td><select name="[01]contact_1_2">
+<tr><td>2nd emergency contact number</td>
+<td width="75%"><select name="[01]contact_1_2">
 ~[tlist_sql;
   SELECT DISTINCT pcs.char_value
   FROM PVSIS_Custom_Students pcs 
   WHERE pcs.student_number='~(student_number)'
+  AND pcs.char_value <> ''
   AND pcs.field_name IN 
   ('Mother_Cell','Mother_Work_Phone','Father_Cell',
    'Father_Work_Phone','Mother_Home_Phone','Father_Home_Phone') 
@@ -95,8 +96,8 @@
 [/tlist_sql]
 <option value="~(home_phone)">~(home_phone)</option>
 </select></td></tr>
-<tr><td width="15%">3rd emergency contact number</td>
-<td><select name="[01]contact_1_3">
+<tr>3rd emergency contact number</td>
+<td width="75%"><select name="[01]contact_1_3">
 ~[tlist_sql;
   SELECT DISTINCT pcs.char_value
   FROM PVSIS_Custom_Students pcs 
