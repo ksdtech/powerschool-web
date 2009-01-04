@@ -87,6 +87,7 @@
   SELECT DISTINCT pcs.char_value
   FROM PVSIS_Custom_Students pcs 
   WHERE pcs.student_number='~(student_number)'
+  AND pcs.char_value <> ''
   AND pcs.field_name IN 
   ('Mother_Cell','Mother_Work_Phone','Father_Cell',
    'Father_Work_Phone','Mother_Home_Phone','Father_Home_Phone') 
