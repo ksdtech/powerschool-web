@@ -13,7 +13,7 @@
 <!-- pscustom_end -->
 <!-- title -->
 
-~[if.isstudent=]
+~[if.isstudent][else]
 <!-- if.isstudent is false if primary guardian is logged in -->
 
 <!-- start of content and bounding box -->
@@ -44,7 +44,8 @@
 <br>
 <!-- end of content of bounding box -->
 
-[else]
+[/if]
+~[if.isstudent]
 
 <!-- start student content -->
 <!-- pscustom_begin -->
