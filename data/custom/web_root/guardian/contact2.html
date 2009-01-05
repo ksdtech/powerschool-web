@@ -9,11 +9,11 @@
 <!-- title -->
 <!-- pscustom_begin -->
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
-&nbsp;&nbsp;<span class="header">Qualifying Residence Contact Information</span><br><br>
+&nbsp;&nbsp;<span class="header">Additional Residence Contact Information</span><br><br>
 <!-- pscustom_end -->
 <!-- title -->
 
-~[if.isstudent=0]
+~[if.isstudent]
 <!-- if.isstudent is false if primary guardian is logged in -->
 
 <!-- start of content and bounding box -->
@@ -29,7 +29,7 @@
 <table border="0" cellspacing="0" cellpadding="4">
 <tr>
 <td>Your account does not allow access to this page.  Please visit the 
-  <a href="contact2.html">Additional Residence Contact Information</a> page.</td>
+  <a href="contact1.html">Qualifying Residence Contact Information</a> page.</td>
 </tr>
 </table>
 
@@ -65,8 +65,8 @@
 <tr><td>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
-<tr class="secheader"><td colspan="2" class="bold">Qualifying Residence Contact Information</td></tr>
-<tr><td colspan="2">Please select three <b>different</b> contact phone numbers for use by the District emergency dialing system.  These must be <b>direct, daytime</b> phone numbers.  Do not select phone numbers that connect to automated answering machines or receptionists.  If the number you want to use does not appear in the available phone number menus, you must go back to the <a href="regform3.html">Qualifying Residence Information</a> page of your registration information and add the phone number there first, then return to this page.</td></tr>
+<tr class="secheader"><td colspan="2" class="bold">Additional Residence Contact Information</td></tr>
+<tr><td colspan="2">Please select three <b>different</b> contact phone numbers for use by the District emergency dialing system.  These must be <b>direct, daytime</b> phone numbers.  Do not select phone numbers that connect to automated answering machines or receptionists.  If the number you want to use does not appear in the available phone number menus, you must go back to the <a href="regform4.html">Additional Residence Information</a> page of your registration information and add the phone number there first, then return to this page.</td></tr>
 <tr><td width="25%">1st emergency contact number</td>
 <td><select name="[01]contact1_1">
 <option value="">Choose a phone number:</option>
@@ -76,14 +76,15 @@ SELECT CONCAT(char_value, text_value) AS phone
   WHERE student_number='~(student_number)'
   AND (char_value IS NOT NULL OR text_value IS NOT NULL)
   AND LOWER(field_name) IN 
-  ('mother_cell','mother_work_phone','father_cell',
-   'father_work_phone','mother_home_phone','father_home_phone') 
+  ('mother2_cell','mother2_work_phone','father2_cell',
+   'father2_work_phone','mother2_home_phone','father2_home_phone') 
 UNION
-SELECT home_phone AS phone
-  FROM PS.Students
+SELECT CONCAT(char_value, text_value) AS phone
+  FROM PS.PVSIS_Custom_Students
   WHERE student_number='~(student_number)'
-  AND home_phone IS NOT NULL
-ORDER BY phone  
+  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
+  AND LOWER(field_name)='home2_phone' 
+ORDER BY phone
   ]
 <option value="~(phone)">~(phone)</option>
 [/tlist_sql]
@@ -97,14 +98,15 @@ SELECT CONCAT(char_value, text_value) AS phone
   WHERE student_number='~(student_number)'
   AND (char_value IS NOT NULL OR text_value IS NOT NULL)
   AND LOWER(field_name) IN 
-  ('mother_cell','mother_work_phone','father_cell',
-   'father_work_phone','mother_home_phone','father_home_phone') 
+  ('mother2_cell','mother2_work_phone','father2_cell',
+   'father2_work_phone','mother2_home_phone','father2_home_phone') 
 UNION
-SELECT home_phone AS phone
-  FROM PS.Students
+SELECT CONCAT(char_value, text_value) AS phone
+  FROM PS.PVSIS_Custom_Students
   WHERE student_number='~(student_number)'
-  AND home_phone IS NOT NULL
-ORDER BY phone  
+  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
+  AND LOWER(field_name)='home2_phone' 
+ORDER BY phone
   ]
 <option value="~(phone)">~(phone)</option>
 [/tlist_sql]
@@ -118,14 +120,15 @@ SELECT CONCAT(char_value, text_value) AS phone
   WHERE student_number='~(student_number)'
   AND (char_value IS NOT NULL OR text_value IS NOT NULL)
   AND LOWER(field_name) IN 
-  ('mother_cell','mother_work_phone','father_cell',
-   'father_work_phone','mother_home_phone','father_home_phone') 
+  ('mother2_cell','mother2_work_phone','father2_cell',
+   'father2_work_phone','mother2_home_phone','father2_home_phone') 
 UNION
-SELECT home_phone AS phone
-  FROM PS.Students
+SELECT CONCAT(char_value, text_value) AS phone
+  FROM PS.PVSIS_Custom_Students
   WHERE student_number='~(student_number)'
-  AND home_phone IS NOT NULL
-ORDER BY phone  
+  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
+  AND LOWER(field_name)='home2_phone' 
+ORDER BY phone
   ]
 <option value="~(phone)">~(phone)</option>
 [/tlist_sql]
