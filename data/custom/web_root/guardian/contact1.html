@@ -70,44 +70,54 @@
 <tr><td width="25%">1st emergency contact number</td>
 <td><select name="[01]contact1_1">
 ~[tlist_sql;
-  SELECT DISTINCT pcs.char_value
-  FROM PVSIS_Custom_Students pcs 
-  WHERE pcs.student_number='~(student_number)'
-  AND pcs.field_name IN 
-  ('Mother_Cell','Mother_Work_Phone','Father_Cell',
-   'Father_Work_Phone','Mother_Home_Phone','Father_Home_Phone') 
-  ORDER BY pcs.char_value]
-<option value="~(pcs.char_value)">~(pcs.char_value)</option>
+SELECT DISTINCT CONCAT(char_value, text_value) AS phone
+  FROM PS.PVSIS_Custom_Students pcs
+  WHERE student_number='~(student_number)'
+  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
+  AND LOWER(field_name) IN 
+  ('mother_cell','mother_work_phone','father_cell',
+   'father_work_phone','mother_home_phone','father_home_phone') 
+  ORDER BY CONCAT(char_value, text_value)
+  ]
+<option value="~(pcs.phone)">~(pcs.phone)</option>
 [/tlist_sql]
 <option value="~(home_phone)">~(home_phone)</option>
 </select></td></tr>
 <tr><td width="25%">2nd emergency contact number</td>
 <td><select name="[01]contact1_2">
 ~[tlist_sql;
-  SELECT DISTINCT pcs.char_value
-  FROM PVSIS_Custom_Students pcs 
-  WHERE pcs.student_number='~(student_number)'
-  AND pcs.field_name IN 
-  ('Mother_Cell','Mother_Work_Phone','Father_Cell',
-   'Father_Work_Phone','Mother_Home_Phone','Father_Home_Phone') 
-  ORDER BY pcs.char_value]
-<option value="~(pcs.char_value)">~(pcs.char_value)</option>
+SELECT DISTINCT CONCAT(char_value, text_value) AS phone
+  FROM PS.PVSIS_Custom_Students pcs
+  WHERE student_number='~(student_number)'
+  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
+  AND LOWER(field_name) IN 
+  ('mother_cell','mother_work_phone','father_cell',
+   'father_work_phone','mother_home_phone','father_home_phone') 
+  ORDER BY CONCAT(char_value, text_value)
+  ]
+<option value="~(pcs.phone)">~(pcs.phone)</option>
 [/tlist_sql]
 <option value="~(home_phone)">~(home_phone)</option>
 </select></td></tr>
 <tr><td width="25%">3rd emergency contact number</td>
 <td><select name="[01]contact1_3">
 ~[tlist_sql;
-  SELECT DISTINCT pcs.char_value
-  FROM PVSIS_Custom_Students pcs 
-  WHERE pcs.student_number='~(student_number)'
-  AND pcs.field_name IN 
-  ('Mother_Cell','Mother_Work_Phone','Father_Cell',
-   'Father_Work_Phone','Mother_Home_Phone','Father_Home_Phone') 
-  ORDER BY pcs.char_value]
-<option value="~(pcs.char_value)">~(pcs.char_value)</option>
+SELECT CONCAT(char_value, text_value) AS phone
+  FROM PS.PVSIS_Custom_Students
+  WHERE student_number='111009'
+  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
+  AND LOWER(field_name) IN 
+  ('mother_cell','mother_work_phone','father_cell',
+   'father_work_phone','mother_home_phone','father_home_phone') 
+UNION
+SELECT home_phone AS phone
+  FROM PS.Students
+  WHERE student_number='111009'
+  AND home_phone IS NOT NULL
+ORDER BY phone  
+  ]
+<option value="~(phone)">~(phone)</option>
 [/tlist_sql]
-<option value="~(home_phone)">~(home_phone)</option>
 </select></td></tr>
 </table><br><br>
 </td></tr>
