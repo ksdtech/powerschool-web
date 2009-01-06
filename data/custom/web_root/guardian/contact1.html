@@ -13,14 +13,14 @@
 function on_contact_change(idx) {
   nxt = idx + 1
   var options = '';
-  var sel = jQuery("#contact_" + idx)[0].selectedIndex;
+  var sel = jQuery("#contact_" + idx + "option:selected").val();
   alert("selected " + sel);
   jQuery("#contact_" + idx + " option").each(function(i) {
-    if (i == 0 || i != sel) {
+    if (i == 0 || this.val() != sel) {
       options += '<option value="' + this.val() + '">' +
         this.text() + '</option>';
     } else {
-      alert('dropping ' + this.val());
+      alert("dropping " + i + ": " + this.val());
     }
   });
   jQuery("#contact_" + nxt).html(options);
