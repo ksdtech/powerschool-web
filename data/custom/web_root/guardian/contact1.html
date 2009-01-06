@@ -13,7 +13,7 @@
 function on_contact_change(idx) {
   nxt = idx + 1
   var options = '';
-  jQuery("#contact_" + idx + " options").each(function(i) {
+  jQuery("#contact_" + idx + " option").each(function(i) {
     if (i == 0 || !this.attr("selected")) {
       options += '<option value="' + this.val() + '">' +
         this.text() + '</option>';
