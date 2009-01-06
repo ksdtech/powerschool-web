@@ -16,11 +16,10 @@ function on_contact_change(idx) {
   var sel = jQuery("#contact_" + idx + " option:selected").val();
   alert("selected " + sel);
   jQuery("#contact_" + idx + " option").each(function(i) {
+    alert("option " + i + ": " + this.value)
     if (i == 0 || this.value != sel) {
       options += '<option value="' + this.value + '">' +
         this.text() + '</option>';
-    } else {
-      alert("dropping " + i + ": " + this.val());
     }
   });
   jQuery("#contact_" + nxt).html(options);
