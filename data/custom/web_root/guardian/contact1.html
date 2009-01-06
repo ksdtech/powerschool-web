@@ -13,7 +13,7 @@
 function on_contact_change(idx) {
   nxt = idx + 1
   var options = '';
-  var sel = jQuery("#contact_" + idx + "option:selected").val();
+  var sel = jQuery("#contact_" + idx + " option:selected").val();
   alert("selected " + sel);
   jQuery("#contact_" + idx + " option").each(function(i) {
     if (i == 0 || this.val() != sel) {
