@@ -15,10 +15,10 @@ function on_contact_change(idx) {
   var options = '';
   var sel = jQuery("#contact_" + idx + " option:selected").val();
   jQuery("#contact_" + idx + " option").each(function(i) {
-    alert("option " + i + ": " + this.val())
-    if (i == 0 || this.val() != sel) {
-      options += '<option value="' + this.val() + '">' +
-        this.text() + '</option>';
+    alert("option " + i + ": " + this.value)
+    if (i == 0 || this.value != sel) {
+      options += '<option value="' + this.value + '">' +
+        this.text + '</option>';
     }
   });
   jQuery("#contact_" + nxt).html(options);
