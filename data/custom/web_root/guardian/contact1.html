@@ -12,7 +12,10 @@
 <script type="text/javascript">
 function on_contact_change(idx) {
   var sel_1 = jQuery("#contact_1 option:selected").val();
-  var sel_2 = jQuery("#contact_2 option:selected").val();
+  var sel_2 = "";
+  if (idx >= 2) {
+    sel_2 = jQuery("#contact_2 option:selected").val();
+  }
   var options = '';
   jQuery("#contact_1 option").each(function(i) {
     if (this.value == "" || (this.value != sel_1 && this.value != sel_2)) {
