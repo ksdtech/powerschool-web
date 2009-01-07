@@ -11,17 +11,18 @@
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
 <script type="text/javascript">
 function on_contact_change(idx) {
-  nxt = idx + 1
+  var sel_1 = jQuery("#contact_1 option:selected").val();
+  var sel_2 = jQuery("#contact_2 option:selected").val();
   var options = '';
-  var sel = jQuery("#contact_" + idx + " option:selected").val();
-  jQuery("#contact_" + idx + " option").each(function(i) {
-    alert("option " + i + ": " + this.value)
-    if (i == 0 || this.value != sel) {
+  jQuery("#contact_1 option").each(function(i) {
+    if (this.value == "" || (this.value != sel_1 && this.value != sel_2)) {
       options += '<option value="' + this.value + '">' +
         this.text + '</option>';
     }
   });
-  jQuery("#contact_" + nxt).html(options);
+  for (var i = idx + 1; i <= 3; i++) {
+    jQuery("#contact_" + i).html(options);
+  }
 }
 
 </script>
@@ -86,7 +87,7 @@ function on_contact_change(idx) {
 <tr><td colspan="2"><b>Instructions:</b> Please select three <b>different</b> contact phone numbers for use by the District emergency dialing system.  These must be <b>direct, daytime</b> phone numbers.  Please <b>do not</b> select phone numbers that connect to automated answering machines or receptionists.  
 If the number you want to use does not appear in the available phone number menus, you must go back to the <a href="regform3.html?actpage=~[gpv:actpage]">Qualifying Residence Information</a> page of your registration information and add the phone number there first, then return to this page.</td></tr>
 <tr><td width="25%">1st emergency contact number</td>
-<td><select class="selorder" id="contact_1" name="[01]contact1_1" onchange="on_contact_change(1);">
+<td><select id="contact_1" name="[01]contact1_1" onchange="on_contact_change(1);">
 <option value="">Choose a phone number:</option>
 ~[tlist_sql;
 SELECT CONCAT(char_value, text_value) AS phone
@@ -107,46 +108,12 @@ ORDER BY phone
 [/tlist_sql]
 </select></td></tr>
 <tr><td width="25%">2nd emergency contact number</td>
-<td><select class="selorder" id="contact_2" name="[01]contact1_2">
+<td><select id="contact_2" name="[01]contact1_2" onchange="on_contact_change(2);">
 <option value="">Choose a phone number:</option>
-~[tlist_sql;
-SELECT CONCAT(char_value, text_value) AS phone
-  FROM PS.PVSIS_Custom_Students
-  WHERE student_number='~(student_number)'
-  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
-  AND LOWER(field_name) IN 
-  ('mother_cell','mother_work_phone','father_cell',
-   'father_work_phone','mother_home_phone','father_home_phone') 
-UNION
-SELECT home_phone AS phone
-  FROM PS.Students
-  WHERE student_number='~(student_number)'
-  AND home_phone IS NOT NULL
-ORDER BY phone  
-  ]
-<option value="~(phone)">~(phone)</option>
-[/tlist_sql]
 </select></td></tr>
 <tr><td width="25%">3rd emergency contact number</td>
-<td><select class="selorder" id="contact_3" name="[01]contact1_3">
+<td><select id="contact_3" name="[01]contact1_3">
 <option value="">Choose a phone number:</option>
-~[tlist_sql;
-SELECT CONCAT(char_value, text_value) AS phone
-  FROM PS.PVSIS_Custom_Students
-  WHERE student_number='~(student_number)'
-  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
-  AND LOWER(field_name) IN 
-  ('mother_cell','mother_work_phone','father_cell',
-   'father_work_phone','mother_home_phone','father_home_phone') 
-UNION
-SELECT home_phone AS phone
-  FROM PS.Students
-  WHERE student_number='~(student_number)'
-  AND home_phone IS NOT NULL
-ORDER BY phone  
-  ]
-<option value="~(phone)">~(phone)</option>
-[/tlist_sql]
 </select></td></tr>
 </table><br><br>
 </td></tr>
