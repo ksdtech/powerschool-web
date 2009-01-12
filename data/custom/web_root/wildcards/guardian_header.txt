@@ -53,12 +53,12 @@ Need help? Send an email to <a href="mailto:webmaster@kentfieldschools.org">webm
 <td><a href="home.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_grades_attend.gif" width="61" height="61" alt="Grades and Attendance" border="0"></a></td>
 <td><a href="termgrades.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_grade_hist.gif" width="40" height="61" alt="Historic Grades" border="0"></a></td>
 <td><a href="attendance.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_attendance_hist.gif" width="62" height="61" alt="Historic Attendance" border="0"></a></td>
-~[if.isguardian]<td><a href="autoemailsetup.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_email_not.gif" width="63" height="61" alt="Email Notification" border="0"></a></td>[/if]
+<td><a href="autoemailsetup.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_email_not.gif" width="63" height="61" alt="Email Notification" border="0"></a></td>
 <td><a href="teachercomments.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_teacher_comm.gif" width="60" height="61" alt="Teacher Comments" border="0"></a></td>
 <td><a href="bulletin.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_school_bull.gif" width="42" height="61" alt="School Bulletin" border="0"></a></td>
 <!-- pscustom_begin -->
-~[if.isguardian]<td><a href="regforms.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_registration.gif" width="65" height="61" alt="Registration Forms" border="0"></a></td>
-<td><a href="contacts.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_contacts.gif" width="55" height="61" alt="Update Contacts" border="0"></a></td>[/if]
+<td><a href="regforms.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_registration.gif" width="65" height="61" alt="Registration Forms" border="0"></a></td>
+<td><a href="contacts.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_contacts.gif" width="55" height="61" alt="Update Contacts" border="0"></a></td>
 ~[if.pref.nolunchdisplay=1][else]<td><a href="lunchbal.html?~[randomnumber;20]" ONFOCUS="this.blur();"><img src="/images/btn_meal_bal.gif" width="42" height="61" alt="Balances" border="0"></a></td>[/if.pref.nolunchdisplay=1]
 <!-- pscustom_end -->
 </tr>
