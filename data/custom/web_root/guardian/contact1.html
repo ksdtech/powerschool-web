@@ -13,10 +13,10 @@
 // query phone numbers
 all_phones = [
 ~[tlist_sql;
-SELECT field_name, CONCAT(char_value, text_value) AS phone
+SELECT field_name, string_value AS phone
   FROM PS.PVSIS_Custom_Students
   WHERE student_number='~(student_number)'
-  AND (char_value IS NOT NULL OR text_value IS NOT NULL)
+  AND string_value IS NOT NULL
   AND LOWER(field_name) IN 
   ('mother_cell','mother_work_phone','father_cell',
    'father_work_phone','mother_home_phone','father_home_phone') 
