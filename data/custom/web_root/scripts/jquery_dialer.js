@@ -80,6 +80,7 @@ function on_contact_change(idx) {
   if (idx > 2) {
     return true;
   }
+  var i;
   var sels = [ "", "", "" ];
   if (idx == 0) {
     // initialization
@@ -88,23 +89,28 @@ function on_contact_change(idx) {
     sels[1] = init_sels[1];
     sels[2] = init_sels[2];
   } else {
-    // menu selection
-    if (idx == 1) {
-      sels[0] = jQuery("#contact_1 option:selected").val();
-      if (sels[0] != "" && sels[0] == init_sels[0]) {
-        return true;
-      }
-    if (idx == 2) {
-      sels[0] = jQuery("#contact_1 option:selected").val();
-      sels[1] = jQuery("#contact_2 option:selected").val();
-      if (sels[0] != "" && sels[0] == init_sels[0] && sels[1] != "" && sels[1] == init_sels[1]) {
-        return true;
-      }
+    for (i = 0; i < idx; i++) {
+      sels[i] = jQuery("#contact_" + (i+1) + " option:selected").val();
     }
   }
-  for (var i = idx; i < 3; i++) {
-    var options = ParentPhones.get_options(i, sels);
-    jQuery("#contact_" + (i+1)).html(options);
+  for (i = 0; i < 3; i++) {
+    if (sels[i] == "&nbsp;") {
+      sels[i] = "";
+    }
+  }
+  alert("occ " + idx + "0:" + sels[0] + " 1:" + sels[1] + " 2:" + sels[3]);
+  var changed = 0;
+  for (i = 0; changed == 0 && i < idx; i++) {
+    if (sels[i] == "" || sels[i] != init_sels[i]) {
+      changed = 1;
+    }
+  }
+  alert("occ " + idx + "0:" + sels[0] + " 1:" + sels[1] + " 2:" + sels[3] + "changed: " + changed);
+  if (changed != 0) {
+    for (i = idx; i < 3; i++) {
+      var options = ParentPhones.get_options(i, sels);
+      jQuery("#contact_" + (i+1)).html(options);
+    }
   }
   return true;
 }
