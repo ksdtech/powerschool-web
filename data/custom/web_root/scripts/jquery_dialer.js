@@ -104,7 +104,7 @@ function on_contact_change(idx) {
       changed = 1;
     }
   }
-  alert("occ " + idx + "0:" + sels[0] + " 1:" + sels[1] + " 2:" + sels[3] + "changed: " + changed);
+  alert("occ(" + idx + ") 0:" + sels[0] + " 1:" + sels[1] + " 2:" + sels[2] + " changed: " + changed);
   if (changed != 0) {
     for (i = idx; i < 3; i++) {
       var options = ParentPhones.get_options(i, sels);
