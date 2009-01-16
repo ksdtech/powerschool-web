@@ -81,27 +81,24 @@ function on_contact_change(idx) {
     return true;
   }
   var i;
+  var changed = 0;
   var sels = [ "", "", "" ];
   if (idx == 0) {
     // initialization
     ParentPhones.load_and_sort_phones(all_phones);
-    sels[0] = init_sels[0];
-    sels[1] = init_sels[1];
-    sels[2] = init_sels[2];
+    for (i = 0; i < 3; i++) {
+      sels[i] = init_sels[i];
+      if (sels[i] == "&nbsp;") {
+        sels[i] = "";
+      }
+    }
+    changed = 1;
   } else {
     for (i = 0; i < idx; i++) {
       sels[i] = jQuery("#contact_" + (i+1) + " option:selected").val();
-    }
-  }
-  for (i = 0; i < 3; i++) {
-    if (sels[i] == "&nbsp;") {
-      sels[i] = "";
-    }
-  }
-  var changed = 0;
-  for (i = 0; changed == 0 && i < idx; i++) {
-    if (sels[i] == "" || sels[i] != init_sels[i]) {
-      changed = 1;
+      if (sels[i] == "" || sels[i] != init_sels[i]) {
+        changed = 1;
+      }
     }
   }
   alert("occ(" + idx + ") 0:" + sels[0] + " 1:" + sels[1] + " 2:" + sels[2] + " changed: " + changed);
