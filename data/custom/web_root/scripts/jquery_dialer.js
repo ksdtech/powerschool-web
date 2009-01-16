@@ -91,13 +91,13 @@ function on_contact_change(idx) {
     // menu selection
     if (idx == 1) {
       sels[0] = jQuery("#contact_1 option:selected").val();
-      if (sels[0] == init_sels[0]) {
+      if (sels[0] != "" && sels[0] == init_sels[0]) {
         return true;
       }
     if (idx == 2) {
       sels[0] = jQuery("#contact_1 option:selected").val();
       sels[1] = jQuery("#contact_2 option:selected").val();
-      if (sels[0] == init_sels[0] && sels[1] == init_sels[1]) {
+      if (sels[0] != "" && sels[0] == init_sels[0] && sels[1] != "" && sels[1] == init_sels[1]) {
         return true;
       }
     }
