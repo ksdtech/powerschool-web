@@ -98,7 +98,6 @@ function on_contact_change(idx) {
       sels[i] = "";
     }
   }
-  alert("occ " + idx + "0:" + sels[0] + " 1:" + sels[1] + " 2:" + sels[3]);
   var changed = 0;
   for (i = 0; changed == 0 && i < idx; i++) {
     if (sels[i] == "" || sels[i] != init_sels[i]) {
