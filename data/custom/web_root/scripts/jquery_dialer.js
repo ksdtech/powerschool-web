@@ -48,6 +48,7 @@ var ParentPhones = function() {
     },
   
     get_options: function(idx, sels) {
+      inti_sels[idx] = ""; // keep this in sync
       var options = '<option value="">Choose a phone number:</option>';
       for (var i = 0; i < phones.length; i++) {
         var phone = phones[i].phone;
@@ -61,6 +62,7 @@ var ParentPhones = function() {
           options += "<option value=\"" + phone + "\"";
           if (phone == sels[idx]) {
             options += " selected=\"selected\"";
+            init_sels[idx] = sels[idx]; // keep this in sync
           }
           options += ">" + phone + "</option>";
         }
@@ -75,6 +77,9 @@ var all_phones;
 var init_sels;
 
 function on_contact_change(idx) {
+  if (idx > 2) {
+    return true;
+  }
   var sels = [ "", "", "" ];
   if (idx == 0) {
     // initialization
@@ -84,15 +89,24 @@ function on_contact_change(idx) {
     sels[2] = init_sels[2];
   } else {
     // menu selection
-    sels[0] = jQuery("#contact_1 option:selected").val();
-    if (idx >= 2) {
+    if (idx == 1) {
+      sels[0] = jQuery("#contact_1 option:selected").val();
+      if (sels[0] == init_sels[0]) {
+        return true;
+      }
+    if (idx == 2) {
+      sels[0] = jQuery("#contact_1 option:selected").val();
       sels[1] = jQuery("#contact_2 option:selected").val();
+      if (sels[0] == init_sels[0] && sels[1] == init_sels[1]) {
+        return true;
+      }
     }
   }
   for (var i = idx; i < 3; i++) {
     var options = ParentPhones.get_options(i, sels);
     jQuery("#contact_" + (i+1)).html(options);
   }
+  return true;
 }
 
 function set_form_updated() {
