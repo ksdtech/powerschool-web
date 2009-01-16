@@ -48,7 +48,7 @@ var ParentPhones = function() {
     },
   
     get_options: function(idx, sels) {
-      inti_sels[idx] = ""; // keep this in sync
+      init_sels[idx] = ""; // keep this in sync
       var options = '<option value="">Choose a phone number:</option>';
       for (var i = 0; i < phones.length; i++) {
         var phone = phones[i].phone;
