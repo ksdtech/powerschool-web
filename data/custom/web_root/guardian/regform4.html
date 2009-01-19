@@ -13,7 +13,7 @@
 <!-- pscustom_end -->
 <!-- title -->
 
-~[if.~(schoolid)=999999]
+~[if.~(schoolid)#999999][else]
 <!-- we allow both primary and secondary parents access to this page --> 
 
 <!-- start of content and bounding box -->
@@ -43,7 +43,8 @@
 <br>
 <!-- end of content of bounding box -->
 
-[else]
+[/if]
+~[if.~(schoolid)#999999]
 
 <!-- start student content -->
 <!-- pscustom_begin -->
