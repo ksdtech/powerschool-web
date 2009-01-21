@@ -31,18 +31,23 @@ var ParentPhones = function() {
     load_and_sort_phones: function(plist) {
       for (var i = 0; i < plist.length; i += 2) {
         var phone = plist[i+1];
-        var ptype = plist[i].toLowerCase();
-        var priority = 0;
-        if (ptype == 'mother_cell' || ptype == 'mother2_cell') {
-          priority += 4;
+        if (phone != null) {
+          var priority = 0;
+          var ptype = plist[i];
+          if (ptype != null) {
+            ptype = ptype.toLowerCase();
+            if (ptype == 'mother_cell' || ptype == 'mother2_cell') {
+              priority += 4;
+            }
+            if (ptype == 'father_cell' || ptype == 'father2_cell') {
+              priority += 2;
+            }
+            if (ptype == 'mother_work_phone' || ptype == 'mother2_work_phone') {
+              priority += 1;
+            }
+          }
+          set_phone(phone, priority);
         }
-        if (ptype == 'father_cell' || ptype == 'father2_cell') {
-          priority += 2;
-        }
-        if (ptype == 'mother_work_phone' || ptype == 'mother2_work_phone') {
-          priority += 1;
-        }
-        set_phone(phone, priority);
       }
       sort_phones();
     },
