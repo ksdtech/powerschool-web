@@ -45,7 +45,7 @@ genpass_fptrs['generate_st_login'] = generate_st_login;
 
 function on_enrollment_change() {
 	var enrollment = jQuery("#reg_enroll option:selected").val();
-	var not_enrolling = (enrolling != null && enrollment.indexOf("nr-") == 0);
+	var not_enrolling = (enrollment != null && enrollment.indexOf("nr-") == 0);
 	if (not_enrolling) { 
 		jQuery("tr.enrolling").hide(); 
 		jQuery("tr.not_enrolling").show();
