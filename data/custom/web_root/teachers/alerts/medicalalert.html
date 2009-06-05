@@ -34,6 +34,8 @@
 <td colspan="3">~(alert_medical)
 <br>&nbsp;<br>Life-Threatening: ~[if.~(alert_life_threatening)=1]<b>Yes</b>[else]No[/if]
 <br>Treatment/Action: ~(alert_medical_treatment)
+<br>Medication in Office: ~[if.~(school_meds_office)=1]<b>Yes</b>[else]No[/if]
+<br>Medication in Backpack: ~[if.~(school_meds_backpack)=1]<b>Yes</b>[else]No[/if]
 <br>Alert Expires: ~[if.~(alert_medicalexpires)=0/0/0]Never[else]~(alert_medicalexpires)[/if]<br>&nbsp;<br></td>
 </tr>
 </table>
