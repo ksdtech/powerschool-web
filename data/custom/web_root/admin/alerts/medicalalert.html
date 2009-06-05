@@ -31,9 +31,10 @@
 <td colspan="3"><img src="/images/misc_trans.gif" width="1" height="8"></td>
 </tr>
 <tr>
-<td colspan="3">~(alert_medical)<br>&nbsp;<br>
-  What: ~(alert_medical_what)<br>
-  Alert Expires: ~[if.~(alert_medicalexpires)=0/0/0]Never[else]~(alert_medicalexpires)[/if]<br>&nbsp;<br></td>
+<td colspan="3">~(alert_medical)
+<br>Life-Threatening: ~[if.~(alert_life_threatening)=1]Yes[else]No[/if]
+<br>&nbsp;<br>Treatment/Action: ~(alert_medical_treatment)
+<br>Alert Expires: ~[if.~(alert_medicalexpires)=0/0/0]Never[else]~(alert_medicalexpires)[/if]<br>&nbsp;<br></td>
 </tr>
 </table>
 <center><a href="javascript:window.close()">Close</a></center>
