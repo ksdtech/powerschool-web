@@ -161,11 +161,23 @@
 <tr><td class="bold">Date of Last Eye Exam</td>
 <td colspan="4"><input type="text" name="[01]h_Last_Eye_Exam" value="" size="16"></td>
 </tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Eyeglasses Alert:<br>(office use only)</td>
+<td colspan="3"><textarea name="[01]alert_vision" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Eyeglasses Alert Expires: (Date - office use only)</td>
+<td colspan="3"><input type="text" name="[01]alert_visionexpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]alert_visionexpires)');"> (0/0/0 to never expire)</td>
+</tr>
 <tr><td class="bold">Wears Hearing Aid?</td>
 <td>&nbsp;</td>
 <td><input type="radio" name="[01]h_Hearing_Aid" value="1">Yes&nbsp;&nbsp;</td>
 <td><input type="radio" name="[01]h_Hearing_Aid" value="">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Hearing Aid Alert:<br>(office use only)</td>
+<td colspan="3"><textarea name="[01]alert_vision" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Hearing Aid Expires: (Date - office use only)</td>
+<td colspan="3"><input type="text" name="[01]alert_visionexpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]alert_visionexpires)');"> (0/0/0 to never expire)</td>
 </tr>
 </table>
 </td></tr>
@@ -255,11 +267,11 @@
 <tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Medical Alert:<br>(office use only)</td>
 <td colspan="5"><textarea name="[01]Alert_Medical" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
-<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Health Alert: What (office use only)</td>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Medical Alert: What (office use only)</td>
 <td colspan="5"><input type="text" name="[01]Alert_Medical_What" value="" size="40"></td>
 </tr>
-<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Health Alert: Symptoms (office use only)</td>
-<td colspan="5"><input type="text" name="[01]Alert_Medical_Symptoms" value="" size="40"></td>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Alert Expires: (Date - office use only)</td>
+<td colspan="5"><input type="text" name="[01]alert_medicalexpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]alert_medicalexpires)');"> (0/0/0 to never expire)</td>
 </tr>
 </table><br><br>
 </td></tr>
