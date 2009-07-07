@@ -26,7 +26,7 @@ function pack_checklist(obj) {
 		}
 	});
 	alert("pack_checklist(" + obj.id + "), setting val to '" + ret + "'");
-	obj.val(ret);
+	jQuery("#"+obj.id).val(ret);
 	return ret;
 }
 
