@@ -2,6 +2,7 @@
 // requires jquery.js, fmt_date.js, formatters.js and selectlists.js
 
 function init_checklist(obj) {
+  jQuery("#"+obj.id).hide();
 	var a = jQuery("#"+obj.id).val().split(/[, \t\r\n]+/);
 	var alen = a.length;
 	for (var i = 0; i < alen; i++) {
