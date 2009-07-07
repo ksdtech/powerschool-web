@@ -26,7 +26,6 @@ function pack_checklist(obj) {
 			ret = ret + val.toLowerCase();
 		}
 	});
-	alert("pack_checklist(" + obj.id + "), setting val to '" + ret + "'");
 	jQuery("#"+obj.id).val(ret);
 	return ret;
 }
