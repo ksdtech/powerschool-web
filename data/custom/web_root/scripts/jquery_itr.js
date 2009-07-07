@@ -12,7 +12,7 @@ function generate_h1_login() {
 	jQuery("#h1_web_access").attr("checked", "checked");
 }
 
-function generate_h2_login() {
+function generate_h2_number() {
 	if (jQuery("#h2_id").val() == '') {
 		var st_id = jQuery("#st_id").val();
 		if (st_id != '') { jQuery("#h2_id").val(parseInt(st_id) + 100000); }
@@ -42,7 +42,7 @@ function generate_st_login() {
 // lame function table
 var genpass_fptrs = new Array();
 genpass_fptrs['generate_h1_login'] = generate_h1_login;
-genpass_fptrs['generate_h2_login'] = generate_h2_login;
+genpass_fptrs['generate_h2_number'] = generate_h2_number;
 genpass_fptrs['generate_psst_login'] = generate_psst_login;
 genpass_fptrs['generate_st_login'] = generate_st_login;
 
