@@ -25,7 +25,8 @@ function pack_checklist(obj) {
 			ret = ret + val.toLowerCase();
 		}
 	});
-	alert("pack_checklist(" + obj.id + "), returning '" + ret + "'");
+	alert("pack_checklist(" + obj.id + "), setting val to '" + ret + "'");
+	obj.val(ret);
 	return ret;
 }
 
@@ -56,7 +57,7 @@ jQuery(document).ready(function() {
 		jQuery("select.mselect").each( function() {
 			jQuery("#"+this.id+"_data").val(pack_multi_select(this)); });
 		jQuery(".checklist").each( function() { 
-			jQuery(this).val(pack_checklist(this)); });
+			pack_checklist(this); });
 		if (!jQuery("#upd_by").hasClass("disabled")) { set_form_updated(); }
 	});
 	// format field values for specific input types
