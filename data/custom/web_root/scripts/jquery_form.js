@@ -25,6 +25,7 @@ function pack_checklist(obj) {
 			ret = ret + val.toLowerCase();
 		}
 	});
+	alert("pack_checklist(" + obj.id "), returning '" + ret "'");
 	return ret;
 }
 
