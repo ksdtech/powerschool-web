@@ -17,13 +17,16 @@ function generate_h2_login() {
 		var st_id = jQuery("#st_id").val();
 		if (st_id != '') { jQuery("#h2_id").val(parseInt(st_id) + 100000); }
 	}
-	if (jQuery("#h2_login").val() == '') {
-		jQuery("#h2_login").val(new_ps_username(jQuery("#st_last").val(), 1));
+}
+
+function generate_psst_login() {
+	if (jQuery("#psst_login").val() == '') {
+		jQuery("#psst_login").val(new_ps_username(jQuery("#st_last").val(), 1));
 	}
-	if (jQuery("#h2_password").val() == '') {
-		jQuery("#h2_password").val(new_ps_password());
+	if (jQuery("#psst_password").val() == '') {
+		jQuery("#psst_password").val(new_ps_password());
 	}
-	jQuery("#h2_web_access").attr("checked", "checked");
+	jQuery("#psst_web_access").attr("checked", "checked");
 }
 
 function generate_st_login() {
@@ -40,6 +43,7 @@ function generate_st_login() {
 var genpass_fptrs = new Array();
 genpass_fptrs['generate_h1_login'] = generate_h1_login;
 genpass_fptrs['generate_h2_login'] = generate_h2_login;
+genpass_fptrs['generate_psst_login'] = generate_psst_login;
 genpass_fptrs['generate_st_login'] = generate_st_login;
 
 
