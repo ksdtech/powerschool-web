@@ -29,7 +29,7 @@
 <!-- logo, student, high school, district, icons -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
 <tr>
-<td rowspan="5" align="left"><a href="/guardian/home.html"><img src="/images/pss_powerschool_publogo.gif" width="195" height="23" alt="PowerSchool"  border="0"></a></td>
+<td rowspan="5" align="left"><a href="/guardian/home.html"><img src="/images/pss_powerschool_publogo.png" width="195" height="23" alt="PowerSchool"  border="0"></a></td>
 <td>&nbsp;</td>
 <td align="left">~(studentname), ~(grade_level)<br>~[schoolname] - ~[schoolordistrictname]<br>
 Need help? Send an email to <a href="mailto:webmaster@kentfieldschools.org">webmaster@kentfieldschools.org</a><br></td>
