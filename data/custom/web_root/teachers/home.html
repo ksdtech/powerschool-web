@@ -24,7 +24,9 @@
 [else]
 <a href="/teachers/powergrade/home.html"><img src="/images/nav_powergrade.gif" alt="PowerGrade" width="131" height="23" border="0"></a><br>
 [/if]
-<a href="/teachers/reportsall.html?ac=selectstudentsforteacher&teacherid=~[x:userid]"><img src="/images/nav_reports.gif" alt="Reports" width="131" height="23" border="0"></a><br><img src="/images/nav_bot_shadow.gif" width="131" height="7" border="0"><br><img src="/images/transparent.gif" width="1" height="140" alt="" border="0"></td>
+<a href="/teachers/reportsall.html?ac=selectstudentsforteacher&teacherid=~[x:userid]"><img src="/images/nav_reports.gif" alt="Reports" width="131" height="23" border="0"></a><br>
+<a href="/teachers/RecommendTeacherPTList.html?teacherid=~[x:userid]"><img src="/images/nav_recommendations.gif" alt="Recommendations" width="131" height="23" border="0"></a><br>
+<img src="/images/nav_bot_shadow.gif" width="131" height="8" border="0"><br><img src="/images/transparent.gif" width="1" height="140" alt="" border="0"></td>
 </tr>
 </table>
 <!-- end gel tabs navigation -->
@@ -56,15 +58,32 @@
 ~[if.~(cachedteacher.sectionnumberpref)="1"]
 <td>~(cachedteacher.sectionnumber)</td>
 [/if]
+
 <td>~(cachedteacher.recordlink)</td>
-<td><img src="/images/~(cachedteacher.attendancetakenimage)" border="0">&nbsp;~(cachedteacher.attendancetakenscore)</td>
-<td><a href="/teachers/lunch.html?sectionid=~(id)&frn=~(frn)"><img src="/images/btn_silverware.gif" alt="Submit Lunch Counts" width="32" height="30" border="0"></a></td>
+
+<td>~(cachedteacher.attendancetakenscore)</td>
+
+<td>~(cachedteacher.lunch)</td>
+
 <td><a href="/teachers/summary.html?sectionid=~(id)&frn=~(frn)"><img src="/images/btn_backpack.gif" alt="Student Information" width="32" height="33" border="0"></a></td>
 <td><a href="/teachers/reports.html?ac=reportselection&sectionid=~(id)"><img src="/images/btn_printer.gif" alt="Print Class Reports" width="36" height="30" border="0"></a></td>
 ~[if.~(gradebookType)="0"]
 <td><a href="/teachers/webasmtlist.html?sectionid=~(id)"><img src="/images/btn_assignments.gif" alt="Web Assignments" width="31" height="31" border="0"></a></td>
 [/if]
 </tr>
+
+<!-- start extra row for Independent Study -->
+~[if.~(cachedteacher.hasAnyISSection)="Y"]
+<tr>
+<td colspan="9" background="/images/bullet_repeat.gif"><img src="/images/transparent.gif" height="1" width="1" alt="" border="0"></td>
+</tr>
+<tr>
+<td colspan=2>Independent Study Attendance</td>
+~(cachedteacher.ISRow)
+</tr>
+[/if]
+<!-- end extra row for Independent Study -->
+
 </table>
 </form>
 <!-- End of shaded content table -->
