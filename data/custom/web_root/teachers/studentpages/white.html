@@ -49,10 +49,10 @@ window.location.href = URL;
 <tr>
 <td>
 <table border="0" cellspacing="0" cellpadding="4" align="left">
+<tr><td colspan="5">Parent Email Addresses for Section ID# ~[gpv:sectionid]</td></tr>
 <tr><td>Student</td><td>Relationship</td><td>First Name</td><td>Last Name</td><td>Email</td></tr>
  ~[tlist_sql;
-  SELECT st.ID,
-  st.Student_Number,
+  SELECT
   st.First_Name,
   st.Last_Name,
   'Mother' AS Relationship,
@@ -64,11 +64,8 @@ window.location.href = URL;
   LEFT OUTER JOIN CustomVarchars mf ON (mf.FieldNo=223 AND mf.KeyNo=st.DCID)
   LEFT OUTER JOIN CustomVarchars me ON (me.FieldNo=405 AND me.KeyNo=st.DCID)
   WHERE me.Value IS NOT NULL
-
   UNION ALL
-
-  SELECT st.ID,
-  st.Student_Number,
+  SELECT
   st.First_Name,
   st.Last_Name,
   'Father' AS Relationship,
@@ -80,11 +77,8 @@ window.location.href = URL;
   LEFT OUTER JOIN CustomVarchars ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
   LEFT OUTER JOIN CustomVarchars fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
   WHERE fe.Value IS NOT NULL
-
   UNION ALL
-
-  SELECT st.ID,
-  st.Student_Number,
+  SELECT
   st.First_Name,
   st.Last_Name,
   'Mother2' AS Relationship,
@@ -97,11 +91,8 @@ window.location.href = URL;
   LEFT OUTER JOIN CustomVarchars m2f ON (m2f.FieldNo=415 AND m2f.KeyNo=st.DCID)
   LEFT JOIN CustomVarchars m2e ON (m2e.FieldNo=138 AND m2e.KeyNo=st.DCID)
   WHERE m2e.Value IS NOT NULL
-
   UNION ALL
-
-  SELECT st.ID,
-  st.Student_Number,
+  SELECT 
   st.First_Name,
   st.Last_Name,
   'Father2' AS Relationship,
@@ -118,6 +109,9 @@ window.location.href = URL;
 <tr><td>~(st.First_Name) ~(st.LastName)</td><td>~(Relationship)</td>
   <td>~(First)</td><td>~(Last)</td><td>~(Email)</td></tr>
 [/tlist_sql]
+</table>
+</td>
+</tr>
 </table>
 <!-- End of shaded content table -->
 
