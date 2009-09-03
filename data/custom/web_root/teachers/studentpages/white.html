@@ -11,6 +11,8 @@ window.location.href = URL;
 }
 // End -->
 </SCRIPT>
+<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js" > </script>
+<script type="text/javascript" src="http://www.kunalbabre.com/projects/table2CSV.js" > </script>
 </head><!--NoLink-->
 
 <body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
@@ -38,7 +40,7 @@ window.location.href = URL;
 <!-- Ending of title of page -->
 
 <!-- Start of shaded content table -->
-<table border="0" cellspacing="0" cellpadding="4" align="center" background="/images/transparent.gif">
+<table border="0" cellspacing="0" cellpadding="0" align="center" background="/images/transparent.gif">
 <tr>
 <td>Use the navigation pane on the left to work with the students listed.<ul>
 <li>Click on the student's last name to go to your default student screen.
@@ -46,79 +48,80 @@ window.location.href = URL;
 <li>Click on a class name to change the current list of students to those in that class.
 </ul></td>
 </tr>
+<tr><td>Parent Email Addresses for Section ID# ~[gpv:sectionid]
+<br/>Click to <a href="#" onclick="jQuery('#emailcsv').table2CSV();">Download emails as CSV file</a></td></tr>
 <tr>
 <td>
-<table border="0" cellspacing="4" cellpadding="0" align="left">
-<tr><td colspan="5">Parent Email Addresses for Section ID# ~[gpv:sectionid]</td></tr>
-<tr class="csvrow">
-  <td>Student</td>
-  <td>Relationship</td>
-  <td class="csvcell">First Name</td>
-  <td class="csvcell">Last Name</td>
-  <td class="csvcell">Email</td>
+<table id="emailcsv" border="0" cellspacing="4" cellpadding="0" align="left">
+<tr style="margin-left: 2px; margin-right: 2px">
+  <td>First Name</td>
+  <td>Last Name</td>
+  <td>Email Address</td>
+  <td>Phone</td>
+  <td>Notes</td>
 </tr>
  ~[tlist_sql;
-  SELECT
-  st.First_Name,
-  st.Last_Name,
-  'Mother' AS Relationship,
-  mf.Value AS First,
-  st.Mother AS Last,
-  me.Value As Email
-  FROM Students st
-  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
-  LEFT OUTER JOIN CustomVarchars mf ON (mf.FieldNo=223 AND mf.KeyNo=st.DCID)
-  LEFT OUTER JOIN CustomVarchars me ON (me.FieldNo=405 AND me.KeyNo=st.DCID)
-  WHERE me.Value IS NOT NULL
-  UNION ALL
-  SELECT
-  st.First_Name,
-  st.Last_Name,
-  'Father' AS Relationship,
-  ff.Value AS First,
-  st.Father AS Last,
-  fe.Value As Email
-  FROM Students st
-  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
-  LEFT OUTER JOIN CustomVarchars ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
-  LEFT OUTER JOIN CustomVarchars fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
-  WHERE fe.Value IS NOT NULL
-  UNION ALL
-  SELECT
-  st.First_Name,
-  st.Last_Name,
-  'Mother2' AS Relationship,
-  m2f.Value AS First,
-  m2l.Value as Last,
-  m2e.Value As Email
-  FROM Students st
-  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
-  LEFT OUTER JOIN CustomVarchars m2l ON (m2l.FieldNo=414 AND m2l.KeyNo=st.DCID)
-  LEFT OUTER JOIN CustomVarchars m2f ON (m2f.FieldNo=415 AND m2f.KeyNo=st.DCID)
-  LEFT JOIN CustomVarchars m2e ON (m2e.FieldNo=138 AND m2e.KeyNo=st.DCID)
-  WHERE m2e.Value IS NOT NULL
-  UNION ALL
-  SELECT 
-  st.First_Name,
-  st.Last_Name,
-  'Father2' AS Relationship,
-  f2f.Value AS First,
-  f2l.Value as Last,
-  f2e.Value As Email
-  FROM Students st
-  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
-  LEFT OUTER JOIN CustomVarchars f2l ON (f2l.FieldNo=418 AND f2l.KeyNo=st.DCID)
-  LEFT OUTER JOIN CustomVarchars f2f ON (f2f.FieldNo=419 AND f2f.KeyNo=st.DCID)
-  LEFT OUTER JOIN CustomVarchars f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
-  WHERE f2e.Value IS NOT NULL
-  ORDER BY 2, 1, 3
+ SELECT
+ mf.Value AS First,
+ st.Mother AS Last,
+ me.Value As Email,
+ st.Home_Phone As Phone,
+ 'Mother of '||st.First_Name||' '||st.Last_Name as Notes,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ LEFT OUTER JOIN CustomVarchars mf ON (mf.FieldNo=223 AND mf.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomVarchars me ON (me.FieldNo=405 AND me.KeyNo=st.DCID)
+ WHERE me.Value IS NOT NULL
+ UNION ALL
+ SELECT
+ ff.Value AS First,
+ st.Father AS Last,
+ fe.Value As Email,
+ st.Home_Phone As Phone,
+ 'Father of '||st.First_Name||' '||st.Last_Name as Notes,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ LEFT OUTER JOIN CustomVarchars ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomVarchars fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
+ WHERE fe.Value IS NOT NULL
+ UNION ALL
+ SELECT
+ m2f.Value AS First,
+ m2l.Value as Last,
+ m2e.Value As Email,
+ '' As Phone,
+ 'NC Mother of '||st.First_Name||' '||st.Last_Name as Notes,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ LEFT OUTER JOIN CustomVarchars m2l ON (m2l.FieldNo=414 AND m2l.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomVarchars m2f ON (m2f.FieldNo=415 AND m2f.KeyNo=st.DCID)
+ LEFT JOIN CustomVarchars m2e ON (m2e.FieldNo=138 AND m2e.KeyNo=st.DCID)
+ WHERE m2e.Value IS NOT NULL
+ UNION ALL
+ SELECT 
+ f2f.Value AS First,
+ f2l.Value as Last,
+ f2e.Value As Email,
+ '' As Phone,
+ 'NC Father of '||st.First_Name||' '||st.Last_Name as Notes,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ LEFT OUTER JOIN CustomVarchars f2l ON (f2l.FieldNo=418 AND f2l.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomVarchars f2f ON (f2f.FieldNo=419 AND f2f.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomVarchars f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
+ WHERE f2e.Value IS NOT NULL
+  ORDER BY 6, 7, 5
 ;alternatecolor]  
-<tr class="csvrow">
-  <td>~(st.First_Name) ~(st.LastName)</td>
-  <td>~(Relationship)</td>
-  <td class="csvcell">~(First)</td>
-  <td class="csvcell">~(Last)</td>
-  <td class="csvcell"><a href="mailto:~(Email)">~(Email)</a></td>
+<tr style="margin-left: 2px; margin-right: 2px" class="csvrow">
+  <td>~(First)</td>
+  <td>~(Last)</td>
+  <td><a href="mailto:~(Email)">~(Email)</a></td>
+  <td>~(Phone)</td>
+  <td>~(Notes)</td>
 </tr>
 [/tlist_sql]
 </table>
