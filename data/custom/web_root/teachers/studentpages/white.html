@@ -48,9 +48,15 @@ window.location.href = URL;
 </tr>
 <tr>
 <td>
-<table border="0" cellspacing="0" cellpadding="4" align="left">
+<table border="0" cellspacing="4" cellpadding="0" align="left">
 <tr><td colspan="5">Parent Email Addresses for Section ID# ~[gpv:sectionid]</td></tr>
-<tr><td>Student</td><td>Relationship</td><td>First Name</td><td>Last Name</td><td>Email</td></tr>
+<tr class="csvrow">
+  <td>Student</td>
+  <td>Relationship</td>
+  <td class="csvcell">First Name</td>
+  <td class="csvcell">Last Name</td>
+  <td class="csvcell">Email</td>
+</tr>
  ~[tlist_sql;
   SELECT
   st.First_Name,
@@ -107,8 +113,13 @@ window.location.href = URL;
   WHERE f2e.Value IS NOT NULL
   ORDER BY 2, 1, 3
 ;alternatecolor]  
-<tr><td>~(st.First_Name) ~(st.LastName)</td><td>~(Relationship)</td>
-  <td>~(First)</td><td>~(Last)</td><td>~(Email)</td></tr>
+<tr class="csvrow">
+  <td>~(st.First_Name) ~(st.LastName)</td>
+  <td>~(Relationship)</td>
+  <td class="csvcell">~(First)</td>
+  <td class="csvcell">~(Last)</td>
+  <td class="csvcell"><a href="mailto:~(Email)">~(Email)</a></td>
+</tr>
 [/tlist_sql]
 </table>
 </td>
