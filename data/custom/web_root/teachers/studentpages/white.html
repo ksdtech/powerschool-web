@@ -56,8 +56,11 @@ jQuery(document).ready(function() {
 </ul></td>
 </tr>
 <tr><td>Parent Email Addresses for Section ID# ~[gpv:sectionid]
-<br/><b>Instructions</b>: To download these email contacts in a CSV file for use with GMail, click <a target="javascript:void(0)" id="csvdownload">This Link</a> to open a new window.
-<br/>Use your browser's <b>File &gt; Save Page As..</b> command to save the page, <b>making sure to Save As "Text Files"</b>, and renaming the ending ("extension") of the file name to <b>.csv, not .html</b>.  
+<br/><b>Instructions</b>: To download these email contacts in a CSV file for use with GMail, click <a target="javascript:void(0)" id="csvdownload">This Link</a> to popup a new window 
+<br/>that contains a text field with the contact data.
+<br/>Now launch a text application, either TextEdit on a Mac, or Notepad on a Windows PC.
+<br/>Then select the entire contents of the text field and copy it to the 
+text application.  Save the file.
 <br/>After saving the file, you may import it into GMail's Contacts.</td></tr>
 <tr>
 <td>
@@ -65,11 +68,9 @@ jQuery(document).ready(function() {
 <tr style="margin-left: 2px; margin-right: 2px">
   <td>First Name</td>
   <td>Last Name</td>
-  <td>Notes</td>
-  <td>E-mail 1 - Type</td>
-  <td>E-mail 1 - Value</td>
-  <td>Phone 1 - Type</td>
-  <td>Phone 1 - Value</td>
+  <td>Address</td>
+  <td>Email Address</td>
+  <td>Phone</td>
 </tr>
  ~[tlist_sql;
  SELECT
@@ -131,9 +132,7 @@ jQuery(document).ready(function() {
   <td>~(First)</td>
   <td>~(Last)</td>
   <td>~(Notes)</td>
-  <td>Home</td>
   <td><a href="mailto:~(Email)">~(Email)</a></td>
-  <td>Home</td>
   <td>~(Phone)</td>
 </tr>
 [/tlist_sql]
