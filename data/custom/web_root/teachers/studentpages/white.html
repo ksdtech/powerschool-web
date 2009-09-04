@@ -65,17 +65,19 @@ jQuery(document).ready(function() {
 <tr style="margin-left: 2px; margin-right: 2px">
   <td>First Name</td>
   <td>Last Name</td>
-  <td>Email Address</td>
-  <td>Phone</td>
   <td>Notes</td>
+  <td>E-mail 1 - Type</td>
+  <td>E-mail 1 - Value</td>
+  <td>Phone 1 - Type</td>
+  <td>Phone 1 - Value</td>
 </tr>
  ~[tlist_sql;
  SELECT
  mf.Value AS First,
  st.Mother AS Last,
+ 'Mother of '||st.First_Name||' '||st.Last_Name as Notes,
  me.Value As Email,
  st.Home_Phone As Phone,
- 'Mother of '||st.First_Name||' '||st.Last_Name as Notes,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
@@ -86,9 +88,9 @@ jQuery(document).ready(function() {
  SELECT
  ff.Value AS First,
  st.Father AS Last,
+ 'Father of '||st.First_Name||' '||st.Last_Name as Notes,
  fe.Value As Email,
  st.Home_Phone As Phone,
- 'Father of '||st.First_Name||' '||st.Last_Name as Notes,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
@@ -99,9 +101,9 @@ jQuery(document).ready(function() {
  SELECT
  m2f.Value AS First,
  m2l.Value as Last,
+ 'NC Mother of '||st.First_Name||' '||st.Last_Name as Notes,
  m2e.Value As Email,
  '' As Phone,
- 'NC Mother of '||st.First_Name||' '||st.Last_Name as Notes,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
@@ -113,9 +115,9 @@ jQuery(document).ready(function() {
  SELECT 
  f2f.Value AS First,
  f2l.Value as Last,
+ 'NC Father of '||st.First_Name||' '||st.Last_Name as Notes,
  f2e.Value As Email,
  '' As Phone,
- 'NC Father of '||st.First_Name||' '||st.Last_Name as Notes,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
@@ -123,14 +125,16 @@ jQuery(document).ready(function() {
  LEFT OUTER JOIN CustomVarchars f2f ON (f2f.FieldNo=419 AND f2f.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomVarchars f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
  WHERE f2e.Value IS NOT NULL
-  ORDER BY 6, 7, 5
+  ORDER BY 6, 7, 3
 ;alternatecolor]  
 <tr style="margin-left: 2px; margin-right: 2px" class="csvrow">
   <td>~(First)</td>
   <td>~(Last)</td>
-  <td><a href="mailto:~(Email)">~(Email)</a></td>
-  <td>~(Phone)</td>
   <td>~(Notes)</td>
+  <td>Home</td>
+  <td><a href="mailto:~(Email)">~(Email)</a></td>
+  <td>Home</td>
+  <td>~(Phone)</td>
 </tr>
 [/tlist_sql]
 </table>
