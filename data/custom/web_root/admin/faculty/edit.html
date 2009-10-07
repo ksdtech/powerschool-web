@@ -1,20 +1,38 @@
 <html>
 <!-- start right frame -->
 <head>
-<title>Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)</title>
-~[wc:commonscripts]
-<link href="/images/powerschool.css" rel="stylesheet">
+	<title>Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)</title>
+	~[wc:UI_js_includes]
+	~[wc:commonscripts]
+  <link rel="stylesheet" type="text/css" href="/images/powerschool.css">
+  <link rel="stylesheet" type="text/css" href="/images/boxing.css">
+	<link rel="stylesheet" type="text/css" href="/images/css/theme/true_css/true_style-min.css">
+	<style>
+		.clickable { cursor:pointer; }
+	</style>
+	<script>
+		function onload() {
+			// If they don't select any of the visible options for ethnicity, choose "-1" for them ...
+			var defaultEthnicity = document.getElementById("defaultEthnicity");
+			if ( defaultEthnicity ) {
+				defaultEthnicity.value = "-1";
+			}
+		}
+	</script>
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif" onload="onload();">
 
 <form action="edit.html" method="POST">
+<input type="hidden" name="frn" value="~(frn)">
 ~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/faculty/search.html" target="_top">Staff</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">Select A Staff Member</a> &gt; Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)<!-- breadcrumb end -->~[wc:admin_navigation_frame]
 
 <!-- Beginning of title of page -->
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td class="header">Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)</td>
+<td class="header">~[facultytitlephoto]</td>
+<td class="header" width="1">&nbsp;</td>
+<td class="header" valign="top">Edit Information - ~(lastfirst) &nbsp; ~(teachernumber)</td>
 </tr>
 </table>
 <!-- Ending of title of page -->
@@ -51,9 +69,38 @@
 <td class="bold">Gender</td>
 <td><select name="[05]gender"><option><option value="m">Male<option value="f">Female</select></td>
 </tr>
+<tr class="headerrow">
+    <td colspan="2" class="bold">Federal Ethnicity and Race</td>
+</tr>
 <tr class="~[evenoddrow]">
-<td class="bold">Ethnicity</td>
-<td><select name="[05]Ethnicity" special="lists.ethnicity"></select></td>
+	<td class="subhead">Ethnicity</td>
+	<td>
+		<div>
+			<label>Is the staff member Hispanic or Latino?</label>
+			<input id="defaultEthnicity" type="hidden" name="[05]FedEthnicity" value="-1">~[Comment:Note that the onload javascript will revert this back to -1 after it's been changed to whatever is currently in the DB.]
+			<div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="1">Yes</div>
+			<div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="0">No</div>
+			~[if.pref.FRE_AllowDeclineEthnicity=1]<div class="choicefloat"><span class="declined"><input type="radio" name="[05]FedEthnicity" value="2">~[pref:FRE_DeclineEthnicityText]</span></div>[/if]
+			<div class=clearit><!-- --></div>
+		</div>
+	</td>
+</tr>
+<tr class="~[evenoddrow]">
+	<td class="subhead">Race</td>
+	<td>
+		<input type="hidden" name="SaveRace" value="1">
+		<input type="hidden" name="[05]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
+		~[SetPostValue:subjectid=~([05]id)]
+~[brij_renderform:federalrace;:GetTeacherRaceSelectionBlock]
+	</td>
+</tr>
+<tr class="~[evenoddrow]">
+    <td class="subhead">Reporting Ethnicity</td>
+    <td>
+			<select id="primaryethnicity" name="[05]ethnicity" special="lists.ethnicity">
+	        <option>
+	    </select>
+	</td>
 </tr>
 <tr class="~[evenoddrow]">
 <td class="bold">ID</td>
