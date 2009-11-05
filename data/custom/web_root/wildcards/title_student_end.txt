@@ -14,6 +14,6 @@
 <td align="right" valign="top">&nbsp;</td>
 </tr>
 <tr>
-<td colspan="2" valign="bottom">~(studentname) &nbsp; ~([01]grade_level) &nbsp; ~([01]student_number) &nbsp; &nbsp; ~([01]track) &nbsp; &nbsp; ~(studschoolabbr) &nbsp; &nbsp; ~[enrollmentstatus]</td>
+<td colspan="2" valign="bottom">~(studentname)&nbsp;&nbsp;&nbsp;~([01]grade_level)&nbsp;&nbsp;&nbsp;LocalID:&nbsp;~([01]student_number)&nbsp;&nbsp;&nbsp;SSID:&nbsp;~([01]state_studentnumber)&nbsp;&nbsp;&nbsp;~(studschoolabbr)&nbsp;&nbsp;&nbsp;~[enrollmentstatus]</td>
 </tr>
 </table>
