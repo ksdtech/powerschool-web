@@ -37,7 +37,7 @@ ORA_HASH(TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || StudentPers_guid) AS token
 FROM Students WHERE ID=~(curstudid)
 ]
 <tr bgcolor="#edf3fe">
-<td class="bold"><a href="http://kentweb.kentfieldschools.org/psweb/rc/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards</td>
+<td class="bold"><a href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards</td>
 </tr>
 [/tlist_sql]
 </table><br>
