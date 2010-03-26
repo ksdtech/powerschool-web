@@ -15,7 +15,7 @@
 <table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
 
 <tr><td class="header">Quick Links</td></tr>
-<tr><td>(external links will open in new tab or window)</td></tr>
+<tr><td>External links will open in new tab or window</td></tr>
 <tr><td><ul>
 ~[if.isguardian]<li><a href="contacts.html?~[randomnumber;20]">Update Contact Information</a> (or click <strong>Contacts</strong> icon above)</li>[/if]
 <li><a target="ksorg" href="http://www.kentfieldschools.org">Kentfield
@@ -31,15 +31,20 @@ Elementary School website</a></li>
 <!-- pscustom_end -->
 
 <table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
+<tr><td class="header">Online Report Cards</td></tr>
+<tr><td>Click "Online Report Cards" link below to see all posted report cards for this sudent</td></tr>
+
 ~[tlist_sql;
 SELECT student_number AS sn, TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') AS ctime, 
 ORA_HASH(TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || StudentPers_guid) AS token 
 FROM Students WHERE ID=~(curstudid)
 ]
-<tr bgcolor="#edf3fe">
-<td class="bold"><a href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards</td>
-</tr>
+<tr><td><ul>
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards
+</ul></td></tr>
 [/tlist_sql]
+
+<tr><td class="header">Current Grades and Attendance</td></tr>
 </table><br>
 
 ~[SetPostValue:skipDontPrintFilter=1]
