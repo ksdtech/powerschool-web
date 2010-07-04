@@ -77,61 +77,24 @@ IT Information - ~(lastfirst) &nbsp; ~(teachernumber)
 </select></td>
 </tr>
 <tr>
-<td class="bold">Mailing Lists</td>
-<td><input type="hidden" name="[05]groups" value="" id="groups_data"><select class="mselect" id="groups" multiple="multiple">
-<option value="">Choose Multiple...</option>
-<option value="administrators">administrators</option>
-<option value="aides-bacich">aides-bacich</option>
-<option value="aides-kent">aides-kent</option>
-<option value="arts">arts</option>
-<option value="classified-all">classified-all</option>
-<option value="classified-bacich">classified-bacich</option>
-<option value="classified-district">classified-district</option>
-<option value="classified-kent">classified-kent</option>
-<option value="communications">communications</option>
-<option value="connections">connections</option>
-<option value="ela">ela</option>
-<option value="eld">eld</option>
-<option value="enrichment">enrichment</option>
-<option value="glcs-bacich">glcs-bacich</option>
-<option value="glcs-kent">glcs-kent</option>
-<option value="guidance-kent">guidance-kent</option>
-<option value="history">history</option>
-<option value="kta">kta</option>
-<option value="library">library</option>
-<option value="math">math</option>
-<option value="math-bacich">math-bacich</option>
-<option value="pe">pe</option>
-<option value="pslogs-bacich">pslogs-bacich</option>
-<option value="pslogs-kent">pslogs-kent</option>
-<option value="rsp">rsp</option>
-<option value="rsp-bacich">rsp-bacich</option>
-<option value="rsp-kent">rsp-kent</option>
-<option value="science">science</option>
-<option value="spanish">spanish</option>
-<option value="staff-5">staff-5</option>
-<option value="staff-all">staff-all</option>
-<option value="staff-bacich">staff-bacich</option>
-<option value="staff-district">staff-district</option>
-<option value="staff-kent">staff-kent</option>
-<option value="teachers-1">teachers-1</option>
-<option value="teachers-2">teachers-2</option>
-<option value="teachers-3">teachers-3</option>
-<option value="teachers-4">teachers-4</option>
-<option value="teachers-5">teachers-5</option>
-<option value="teachers-6">teachers-6</option>
-<option value="teachers-7">teachers-7</option>
-<option value="teachers-8">teachers-8</option>
-<option value="teachers-all">teachers-all</option>
-<option value="teachers-bacich">teachers-bacich</option>
-<option value="teachers-kent">teachers-kent</option>
-<option value="teachers-kg">teachers-kg</option>
-<option value="trustees">trustees</option>
-<option value="tug">tug</option>
-<option value="tug-bacich">tug-bacich</option>
-<option value="tug-kent">tug-kent</option>
-<option value="vanguard">vanguard</option>
-</select></td>
+<td rowspan="2" class="bold">Mini-Base Group Numbers</td>
+</tr>
+<tr>
+<td class="bold">District Group #</td>
+<td><input type="text" name="[05]dir_group_district" value="" size="4"></td>
+</tr>
+<tr>
+<td class="bold">Bacich Group #</td>
+<td><input type="text" name="[05]dir_group_bacich" value="" size="4"></td>
+</tr>
+<tr>
+<td class="bold">Kent Group #</td>
+<td><input type="text" name="[05]dir_group_kent" value="" size="4"></td>
+</tr>
+<tr>
+<td class="bold">Group Membership</td>
+<td><textarea name="[05]group_membership" cols="60" rows="6"></textarea>
+</td>
 </tr>
 <tr class="secheader">
 <td class="bold" colspan="2" align="center">Login Information</td>
@@ -146,6 +109,18 @@ IT Information - ~(lastfirst) &nbsp; ~(teachernumber)
 </tr>
 <tr class="secheader">
 <td class="bold" colspan="2" align="center">Website Information</td>
+</tr>
+<tr>
+<td class="bold">Exclude from Open Directory</td>
+<td><input type="checkbox" value="1" name="[05]exclude_from_opendirectory"></td>
+</tr>
+<tr>
+<td class="bold">Exclude from Gmail</td>
+<td><input type="checkbox" value="1" name="[05]exclude_from_gmail"></td>
+</tr>
+<tr>
+<td class="bold">Exclude from Schoolwires</td>
+<td><input type="checkbox" value="1" name="[05]exclude_from_schoolwires"></td>
 </tr>
 <tr>
 <td class="bold">Website Type</td>
