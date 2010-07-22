@@ -1,0 +1,38 @@
+<html>
+<!-- start right frame -->
+<head>
+<title>Online Report Cards</title>
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
+</head>
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Severe Medical<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+
+<table border="0" cellspacing="0" cellpadding="4" width="700" align="left">
+
+<tr>
+<td class="header">Online Report Cards</td>
+</tr>
+<tr><td>Click "Online Report Cards" link below to see all posted report cards for this student</td></tr>
+
+~[tlist_sql;
+SELECT student_number AS sn, TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') AS ctime, 
+ORA_HASH(TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || StudentPers_guid) AS token 
+FROM Students WHERE ID=~(curstudid)
+]
+<tr><td><ul>
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards
+</ul></td></tr>
+[/tlist_sql]
+
+</table>
+<br>
+
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame]
+
+</body>
+</html><!-- end right frame -->
