@@ -18,6 +18,9 @@ jQuery(document).ready(function() {
 	jQuery("a#csvdownload").bind("click", function(e) {
     jQuery("table#emailcsv").table2CSV(); 
   });
+	jQuery("a#csvdownload2").bind("click", function(e) {
+    jQuery("table#emailcsv2").table2CSV(); 
+  });
 });
 </script>
 </head><!--NoLink-->
@@ -79,11 +82,11 @@ jQuery(document).ready(function() {
 </tr>
  ~[tlist_sql;
  SELECT
- mf.Value AS First,
- st.Mother AS Last,
- 'Mother of '||st.First_Name||' '||st.Last_Name as Notes,
- me.Value AS Email,
- st.Home_Phone AS Phone,
+ ASCIISTR(mf.Value) AS First,
+ ASCIISTR(st.Mother) AS Last,
+ ASCIISTR('Mother of '||st.First_Name||' '||st.Last_Name) as Notes,
+ ASCIISTR(me.Value) AS Email,
+ ASCIISTR(st.Home_Phone) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
@@ -109,14 +112,14 @@ jQuery(document).ready(function() {
  ASCIISTR(m2l.Value) AS Last,
  ASCIISTR('NC Mother of '||st.First_Name||' '||st.Last_Name) AS Notes,
  ASCIISTR(m2e.Value) AS Email,
- ASCIISTR(h2p.Value) AS Phone,
+ ASCIISTR(m2p.Value) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
  LEFT OUTER JOIN CustomText m2l ON (m2l.FieldNo=414 AND m2l.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText m2f ON (m2f.FieldNo=415 AND m2f.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText m2e ON (m2e.FieldNo=138 AND m2e.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomText h2p ON (h2p.FieldNo=377 AND h2p.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText m2p ON (m2p.FieldNo=377 AND m2p.KeyNo=st.DCID)
  WHERE m2f.Value IS NOT NULL
  UNION ALL
  SELECT 
@@ -124,14 +127,14 @@ jQuery(document).ready(function() {
  ASCIISTR(f2l.Value) AS Last,
  ASCIISTR('NC Father of '||st.First_Name||' '||st.Last_Name) AS Notes,
  ASCIISTR(f2e.Value) AS Email,
- ASCIISTR(h2p.Value) AS Phone,
+ ASCIISTR(f2p.Value) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
  LEFT OUTER JOIN CustomText f2l ON (f2l.FieldNo=418 AND f2l.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText f2f ON (f2f.FieldNo=419 AND f2f.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomText h2p ON (h2p.FieldNo=377 AND h2p.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText h2p ON (f2p.FieldNo=377 AND f2p.KeyNo=st.DCID)
  WHERE f2f.Value IS NOT NULL
   ORDER BY 6, 7, 3
 ;alternatecolor]  
