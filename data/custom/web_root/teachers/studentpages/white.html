@@ -70,8 +70,7 @@ jQuery(document).ready(function() {
   the <b>Learn More</b> link in the Contacts section of Gmail.</li>
 </ul>
 </td></tr>
-<tr>
-<td>
+<tr><td>
 <table id="emailcsv" border="0" cellspacing="4" cellpadding="0" align="left">
 <tr style="margin-left: 2px; margin-right: 2px">
   <td>First Name</td>
@@ -80,7 +79,7 @@ jQuery(document).ready(function() {
   <td>E-mail Address</td>
   <td>Home Phone</td>
 </tr>
- ~[tlist_sql;
+~[tlist_sql;
  SELECT
  ASCIISTR(mf.Value) AS First,
  ASCIISTR(st.Mother) AS Last,
@@ -106,7 +105,28 @@ jQuery(document).ready(function() {
  LEFT OUTER JOIN CustomText ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
  WHERE ff.Value IS NOT NULL
- UNION ALL
+ ORDER BY 6, 7, 3
+;alternatecolor]  
+<tr style="margin-left: 2px; margin-right: 2px" class="csvrow">
+ <td>~(First)</td>
+ <td>~(Last)</td>
+ <td>~(Notes)</td>
+ <td><a href="mailto:~(Email)">~(Email)</a></td>
+ <td>~(Phone)</td>
+</tr>
+[/tlist_sql]
+</table>
+</td></tr>
+<tr><td>
+<table id="emailcsv" border="0" cellspacing="4" cellpadding="0" align="left">
+<tr style="margin-left: 2px; margin-right: 2px">
+  <td>First Name</td>
+  <td>Last Name</td>
+  <td>Notes</td>
+  <td>E-mail Address</td>
+  <td>Home Phone</td>
+</tr>
+~[tlist_sql;
  SELECT
  ASCIISTR(m2f.Value) AS First,
  ASCIISTR(m2l.Value) AS Last,
@@ -136,7 +156,7 @@ jQuery(document).ready(function() {
  LEFT OUTER JOIN CustomText f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText h2p ON (f2p.FieldNo=377 AND f2p.KeyNo=st.DCID)
  WHERE f2f.Value IS NOT NULL
-  ORDER BY 6, 7, 3
+ ORDER BY 6, 7, 3
 ;alternatecolor]  
 <tr style="margin-left: 2px; margin-right: 2px" class="csvrow">
   <td>~(First)</td>
@@ -147,8 +167,7 @@ jQuery(document).ready(function() {
 </tr>
 [/tlist_sql]
 </table>
-</td>
-</tr>
+</td></tr>
 </table>
 <!-- End of shaded content table -->
 
