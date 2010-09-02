@@ -87,9 +87,9 @@ jQuery(document).ready(function() {
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
- LEFT OUTER JOIN CustomVarchars mf ON (mf.FieldNo=223 AND mf.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomVarchars me ON (me.FieldNo=405 AND me.KeyNo=st.DCID)
- WHERE me.Value IS NOT NULL
+ LEFT OUTER JOIN CustomText mf ON (mf.FieldNo=223 AND mf.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText me ON (me.FieldNo=405 AND me.KeyNo=st.DCID)
+ WHERE mf.Value IS NOT NULL
  UNION ALL
  SELECT
  ff.Value AS First,
@@ -100,8 +100,8 @@ jQuery(document).ready(function() {
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
- LEFT OUTER JOIN CustomVarchars ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomVarchars fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
  WHERE ff.Value IS NOT NULL
  UNION ALL
  SELECT
@@ -113,9 +113,9 @@ jQuery(document).ready(function() {
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
- LEFT OUTER JOIN CustomVarchars m2l ON (m2l.FieldNo=414 AND m2l.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomVarchars m2f ON (m2f.FieldNo=415 AND m2f.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomVarchars m2e ON (m2e.FieldNo=138 AND m2e.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText m2l ON (m2l.FieldNo=414 AND m2l.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText m2f ON (m2f.FieldNo=415 AND m2f.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText m2e ON (m2e.FieldNo=138 AND m2e.KeyNo=st.DCID)
  WHERE m2f.Value IS NOT NULL
  UNION ALL
  SELECT 
@@ -127,9 +127,9 @@ jQuery(document).ready(function() {
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
- LEFT OUTER JOIN CustomVarchars f2l ON (f2l.FieldNo=418 AND f2l.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomVarchars f2f ON (f2f.FieldNo=419 AND f2f.KeyNo=st.DCID)
- LEFT OUTER JOIN CustomVarchars f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText f2l ON (f2l.FieldNo=418 AND f2l.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText f2f ON (f2f.FieldNo=419 AND f2f.KeyNo=st.DCID)
+ LEFT OUTER JOIN CustomText f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
  WHERE f2f.Value IS NOT NULL
   ORDER BY 6, 7, 3
 ;alternatecolor]  
