@@ -62,7 +62,7 @@ jQuery(document).ready(function() {
 <br/><b>Instructions:</b>  To download these email contacts in a CSV file for use with Gmail:
 <ul>
   <li><b>IMPORTANT NOTE: You must use Firefox to copy these contacts! Safari will not work! If you are viewing this page in Safari, quit and launch Firefox instead.</b><br/>&nbsp;</li>
-  <li>1. <a style="border:4px outset; padding:2px; text-decoration:none;" target="javascript:void(0)" id="csvdownload"><b>Click Here</b></a> to pop up a window containing the contact data FOR PRIMARY PARENTS in a text field.<br/>&nbsp;</li>
+  <li>1. <a style="border:4px outset; padding:2px; text-decoration:none;" target="javascript:void(0)" id="csvdownload"><b>Click Here</b></a> to pop up a window containing the contact data for these students' parents in a text field.<br/>&nbsp;</li>
   <li>2. Now launch a text editor application, either TextWrangler on a Mac, or Notepad on a Windows PC.</li>
   <li>3. Place your mouse cursor inside the pop-up window's text field.  Select the entire contents of the text field and copy it to your text editor application's window.<br/>Hint: You can use Command-A, Command-C to select all and copy, then Command-V to paste.</li> 
   <li>4. Save the file to your Desktop, making sure to add ".csv" to the end of the file name.</li>
@@ -105,17 +105,7 @@ jQuery(document).ready(function() {
  LEFT OUTER JOIN CustomText ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
  WHERE ff.Value IS NOT NULL
- ORDER BY 6, 7, 3
-;alternatecolor]  
-<tr style="margin-left: 2px; margin-right: 2px" class="csvrow">
- <td>~(First)</td>
- <td>~(Last)</td>
- <td>~(Notes)</td>
- <td><a href="mailto:~(Email)">~(Email)</a></td>
- <td>~(Phone)</td>
-</tr>
-[/tlist_sql]
-~[tlist_sql;
+ UNION ALL
  SELECT
  ASCIISTR(m2f.Value) AS First,
  ASCIISTR(m2l.Value) AS Last,
