@@ -1,21 +1,18 @@
-~[wc:guardian_header]
-
-<!-- start of title and student content -->
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td background="/images/transparent.gif">
-<br>
-
-<!-- pscustom_begin -->
-<!-- title -->
-&nbsp;&nbsp;<span class="header">~[if.~(schoolid)=104]Kent[else]Bacich[/if] PowerSchool Home Page</span><br><br>
-<!-- title -->
-
-<!-- start student content -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Grades and Attendance - PowerSchool Parent Access</title>
+~[wc:guardian_header_yui]
+~[SetPostValue:selectedTab=GradesAndAttendance]
+~[if.prefschool.sgshowpa=1]~[SetPostValue:showSGFGradebook=false][else]~[SetPostValue:showSGFGradebook=true][/if.prefschool.sgshowpa=1]
+~[brij_render:common-ps;:GuardianHomeTabs]
+<div id="content-main">
+<h1>~[if.~(schoolid)=104]Kent[else]Bacich[/if] PowerSchool Home Page</h1>
+		
 <table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
-
 <tr><td class="header">Quick Links</td></tr>
 <tr><td>External links will open in new tab or window</td></tr>
+<tr><td>Click "Online Report Cards" link below to see all posted report cards for this student</td></tr>
 <tr><td><ul>
 ~[if.isguardian]<li><a href="contacts.html?~[randomnumber;20]">Update Contact Information</a> (or click <strong>Contacts</strong> icon above)</li>[/if]
 <li><a target="ksorg" href="http://www.kentfieldschools.org">Kentfield
@@ -24,90 +21,51 @@ School District website</a></li>
 Middle School website</a></li>
 <li><a target="ksorg" href="http://www.kentfieldschools.org/Bacich">Bacich
 Elementary School website</a></li>
-</ul></td></tr>
-</table>
-
-~[if.~(schoolid)#103]
-<!-- pscustom_end -->
-
-<table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
-<tr><td class="header">Online Report Cards</td></tr>
-<tr><td>Click "Online Report Cards" link below to see all posted report cards for this student</td></tr>
-
 ~[tlist_sql;
 SELECT student_number AS sn, TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') AS ctime, 
 ORA_HASH(TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || StudentPers_guid) AS token 
 FROM Students WHERE ID=~(curstudid)
 ]
-<tr><td><ul>
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards
-</ul></td></tr>
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards</li>
 [/tlist_sql]
+</ul></td></tr>
+</table>
 
-<tr><td class="header">Current Grades and Attendance</td></tr>
-</table><br>
+<h1>Grades and Attendance</h1>
+
+<!-- start student content -->
+~[if.prefschool.sgshowpa=1]
+[else]
+[/if.prefschool.sgshowpa=1]
 
 ~[SetPostValue:skipDontPrintFilter=1]
-~[SetPostValue:att_quicklookuphide_t=~[x:GetQuickLookupHidePref]]
+
+~[if#G.isguardian]
+	~[if.pref.ATT_QuickLookupHide-100=1]
+		~[SetPostValue:att_quicklookuphide_t=1]
+	[else]
+		~[SetPostValue:att_quicklookuphide_t=]
+	[/if.pref.ATT_QuickLookupHide-100=1]
+[else#G]
+	~[if.pref.ATT_QuickLookupHide-110=1]
+		~[SetPostValue:att_quicklookuphide_t=1]
+	[else]
+		~[SetPostValue:att_quicklookuphide_t=]
+	[/if.pref.ATT_QuickLookupHide-110=1]
+[/if#G]
+
 ~[wc:att_quicklookmeet_guardian]
 ~[wc:att_quicklookupdaily]
 ~[wc:att_quicklookupprogram]
 <!-- end student content -->
-
-</td>
-</tr>
-</table>
-<!-- end of title and student content -->
-
-<br>
-<!-- legend, miscellaneous info, and print icon -->
-<table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
-<tr>
-<td width="70%">Legend<br>
-    Attendance Codes: &nbsp;~[x:att_code_legend;if.blank.then=Blank]<br><br>
-    Citizenship Codes: &nbsp;~[x:CitizenshipCodeLegend]</td>
-<td align="right" valign="top" width="30%"><br><a href="/guardian/text/summary.html?~[randomnumber;20]" target="_blank"><img src="/images/icon_printpage.gif" width="79" height="22" alt="" border="0"></a>&nbsp; &nbsp;</td>
-</tr>
-</table>
-
-<!-- pscustom_begin -->
-[else]
-<!-- end student content -->
-
-</td>
-</tr>
-</table>
-<!-- end of title and student content -->
-[/if]
-
-<br>
-<table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
-<tr><td class="header">Disclaimer</td></tr>
-<tr><td>This system is provided as a convenience.
-Grades and other information provided by this system are not official
-records and may or may not be accurate. Neither the Kentfield School District nor
-PowerSchool accepts any responsibility for information
-provided by this system and/or for any damages resulting from
-information provided by this system. For official grades and student
-records contact the school office.
-<ul>
-<li>Grades and attendance are not posted for Bacich students.</li>
-<li>Teachers will update information at least
-twice per trimester, i.e., at mid-term and at the end of the trimester;
-information viewed, therefore, may not be current.</li>
-<li>Different classes may use different
-factoring methods to weight assignment scores; the current percentage
-and grade, therefore, may not be equivalent to the average of all
-scores reported.</li>
-<li>If errors are suspected in any assignment
-scores, the student must show the assignment to the teacher for review.</li>
-<li>Inappropriate use of the family-access
-component of PowerSchool (e.g., accessing records of non-family
-members, or inappropriate communication via the system) will result in
-loss of access.</li>
-</ul>
-</td></tr>
-</table>
-<!-- pscustom_end -->
-
-~[wc:guardian_footer]
+<!-- legend-->
+<div id="legend" class="group">
+<h3>Legend</h3>
+	<p><strong>Attendance Codes: </strong>&nbsp;~[x:att_code_legend;if.blank.then=Blank]</p>
+	<p><strong>Citizenship Codes: </strong>&nbsp;~[x:CitizenshipCodeLegend]</p>
+</div>
+</div>
+<input id="activeNav" type="hidden" value="#btn-gradesAttendance"/>
+~[wc:guardian_footer_yui]
+</body>
+</html>
