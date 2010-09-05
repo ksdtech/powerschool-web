@@ -1,0 +1,80 @@
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+<link href="/images/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/images/css/print.css" rel="stylesheet" type="text/css" media="print" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<body id="parentPageTemp" class="psparent">
+
+<div id="container" class="group">
+
+<!-- start of shell for entire page  -->
+<!-- start logo, school, term, logoff, help -->
+<div id="header" class="group">
+ <div id="branding">
+<a href="/guardian/home.html" tabindex="0"><img src="/images/img/pss_powerschool_logo.2.png" alt="PowerSchool Logo" height="46" width="165" /></a></div>
+<ul id="nav-main">
+	~[if.isguardianAndSSOEnabled]
+	    <li id="btn-accountPreferences"><a href="accountmanagement_profile.html">Account Preferences</a></li>
+	[/if]
+	<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+	<li id="btn-schoolBulletin"><a href="bulletin.html">School Bulletin</a></li>
+	<li id="btn-teacherComments"><a href="teachercomments.html">Teacher Comments</a></li>
+	~[if.isguardian]
+	    <li id="btn-emailNotification"><a href="autoemailsetup.html">Email Notification</a></li>
+	[/if]
+	<li id="btn-attendanceHistory"><a href="attendance.html">Attendance History</a></li>
+	<li id="btn-gradesHistory"><a href="termgrades.html">Grade History</a></li>
+	<li id="btn-gradesAttendance"><a href="home.html">Grades and Attendance</a></li>
+</ul>
+<div id="nav-main-phone">
+	<form name="phonejump" id="phonejump">
+  <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
+    <option value="#">Select...</option>
+	<option value="home.html">Grades & Attendance</option>
+    <option value="termgrades.html">Grade History</option>
+    <option value="attendance.html">Attendance History</option>
+    ~[if.isguardian]
+	<option value="autoemailsetup.html">Email Notification</option>
+	[/if]
+    <option value="teachercomments.html">Teacher Comments</option>
+    <option value="bulletin.html">School Bulletin</option>
+    <option value="regforms.html">Registration</option>
+	~[if.isguardianAndSSOEnabled]
+    <option value="accountmanagement_profile.html">Account Preferences</option>
+	[/if]
+  </select>
+</form>
+</div>
+</div>
+<div id="print-school">~[schoolordistrictname]<br><span>~[schoolname]</span></div>
+<!-- end logo, school, term, logoff, help -->
+<div id="usercontext-bar" class="group">
+<!-- PA-73: Render list of associated students if  the user is a guardian -->
+~[if.isguardianAndSSOEnabled] ~[brij_render:parentportal-pkg;:listStudentsAssociatedWithGuardian][/if]
+<!-- Render either the guardian name or the student name. Guardian name is rendered by the brij tag above -->
+	~[if.isguardianAndSSOEnabled][else]<div id="students-list">&nbsp;</div><div id="userName">~(studentname)[/if] ~[wc:login_lastlogin]
+	
+
+<!-- PA-448: A form to hold a hidden input html value to indicate the currently selected student id. 
+    Submitting a form with currently selected student id as a hidden input will prevent clear display of student id in the url -->
+    <form id="switch_student_form" action="${(currentResource!"home.html")?js_string}" method="post">
+        <input type="hidden" name="selected_student_id"/>
+    </form>
+    
+    
+<!-- Script to set the selected_student_id and submit the form to retrieve data belonging to the currently selected student
+    Consolidating all the logic related to switching the student into this ftl will improve code readability" -->
+<script type="text/javascript">
+    function switchStudent(studentId){
+       var switchStudentForm = document.getElementById('switch_student_form');
+       switchStudentForm.selected_student_id.value=studentId;
+       switchStudentForm.submit();
+    }  
+</script>  
+</div>
+	<ul id="tools"><li><a href="home.html?ac=logoff" target="_top" title="Logout" accesskey="l">Logout</a></li><li><a href="javascript:helpwindow('~[x:help_pagelink]')" title="Help">?</a></li><li class="icon-btn-print"><a href="javascript:window.print()">&nbsp;</a></li></ul>
+  
+</div>
+<div id="content" class="group">
