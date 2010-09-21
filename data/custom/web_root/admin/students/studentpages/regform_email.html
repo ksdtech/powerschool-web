@@ -40,28 +40,51 @@
 <p><b>Subject:</b>&nbsp;&nbsp;Kentfield School District Registration Login Instructions</p>
 <p>To the parents of ~(first_name) ~(last_name):</p>
 
-<p>Below you'll find a web address, user name and password that will
-allow you to connect to the Kentfield School District's online registration 
-system.  Please fill out all pages of the online regstration form
-as soon as possible, so that we can schedule your child's classes and
-provide you with additional information.</p>
+<p>Below you'll find a web address, and instructions for creating a Parent
+Access Account that will allow you to connect to the Kentfield School
+District's online registration system.  After you create your parent account
+and log in, please click the "Registration" icon and fill out all pages of 
+the online regstration form as soon as possible, so that we can schedule your
+child's classes and provide you with additional information.</p>
 
-<p><b>SAVE THIS EMAIL!</b><br> You can use this same link, login and
-password to update your information at any time during the school
-year.  For your own convenience, please bookmark the PowerSchool
-Parent Portal website.</p>
+<p>To create a parent account, please follow these steps:  
 
 <ol>
-<li>Go to the PowerSchool Parent Portal website at 
-     http://ps.kentfieldschools.org<br></li>
-<li>Enter this user name and password:<br>
-  User name:&nbsp;~(web_id)<br>
-  Password:&nbsp;~(web_password)</li>
-<li>After logging in, click the <b>Registration</b> icon to go the 
-     main page of the registration system.</li>
-<li>Read and follow the instructions for completing all the pages
-     of the registration form.</li>
+<li>Go to <a href="http://ps.kentfieldschools.org">http://ps.kentfieldschools.org</a>
+(the PowerSchool Parent Portal).</li>
+
+<li>Click the "Create Account" button at the bottom of the log in page.</li>
+
+<li>On the Create Account page, type in your (the parent's) First Name,
+Last Name and Email address in the appropriate fields.</li>
+
+<li>Choose a simple user name (suggestion: concatenate the initial of your first name and your entire last name).</li>
+
+<li>Choose a password that is at least 6 characters long, and type it into
+the "Password" and "Re-enter Password" fields.</li>
+
+<li>Next fill in the "Name", "Access ID", and "Access Password" fields as
+shown for each of your students listed below.  For each student, select your
+relationship to the student in the "Relationship" drop-down menu.</li>
+
+<li>When all the information is complete, click the "enter" button to
+create the account.</li>
 </ol>
+
+<ul>
+~[tlist_sql;
+  SELECT st.First_Name, st.Last_Name, st.Web_ID, st.Web_Password 
+  FROM Students st
+  LEFT OUTER JOIN CustomText hid ON (hid.FieldNo=337 AND hid.KeyNo=st.DCID)
+  WHERE hid.Value='~(home_id)' OR st.Student_Number=~(student_number)]
+  
+<li>Name:&nbsp;~(st.first_name) ~(st.last_name)<br>
+Access ID:&nbsp;~(st.web_id)<br>
+Access Password:&nbsp;~(st.web_password)</li>
+
+[/tlist_sql]
+</ul>
+
 <p>If you have technical difficulties with the registration system, or
   have questions or comments, please send an email to:
   registration@kentfieldschools.org</p>
