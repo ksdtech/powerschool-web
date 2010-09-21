@@ -64,26 +64,18 @@ Last Name and Email address in the appropriate fields.</li>
 the "Password" and "Re-enter Password" fields.</li>
 
 <li>Next fill in the "Name", "Access ID", and "Access Password" fields as
-shown for each of your students listed below.  For each student, select your
-relationship to the student in the "Relationship" drop-down menu.</li>
+shown for the student listed in this email as well as for any other
+students sent to you in separate email messages.  For each student, select
+your relationship to the student in the "Relationship" drop-down menu.</li>
 
 <li>When all the information is complete, click the "enter" button to
 create the account.</li>
 </ol>
 
-<ul>
-~[tlist_sql;
-  SELECT st.First_Name, st.Last_Name, st.Web_ID, st.Web_Password 
-  FROM Students st
-  LEFT OUTER JOIN CustomText hid ON (hid.FieldNo=337 AND hid.KeyNo=st.DCID)
-  WHERE hid.Value='~(home_id)' OR st.Student_Number=~(student_number)]
-  
-<li>Name:&nbsp;~(st.first_name) ~(st.last_name)<br>
-Access ID:&nbsp;~(st.web_id)<br>
-Access Password:&nbsp;~(st.web_password)</li>
-
-[/tlist_sql]
-</ul>
+<p>Student Name, Access ID and Access Password Information<p>
+<p>Name:&nbsp;~(first_name) ~(last_name)<br>
+Access ID:&nbsp;~(web_id)<br>
+Access Password:&nbsp;~(web_password)</p>
 
 <p>If you have technical difficulties with the registration system, or
   have questions or comments, please send an email to:
