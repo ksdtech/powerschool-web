@@ -888,6 +888,8 @@ body.psparent #nav-main li.active a, body.psparent #nav-main a:hover,  body.pspa
 }
 #btn-classRegistration a {	background: url(../img/icon-class-reg.png) no-repeat;
 }
+#btn-contacts a {	background: url(../img/icon-contacts.png) no-repeat;
+}
 #btn-balance a {			background: url(../img/icon-meal-bal.png) no-repeat;
 }
 #btn-myCalendars a {		background: url(../img/icon-mycalendars.png) no-repeat;
