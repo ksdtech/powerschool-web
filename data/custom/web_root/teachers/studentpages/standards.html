@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Standards</title>
+~[wc:commonscripts]
+<script language="JavaScript" src="/admin/javascript/ajaxuservar.js"></script>
+<script language="JavaScript" src="/admin/javascript/hierarchical.js"></script>
+<link href="/images/powerschool.css" rel="stylesheet">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function formHandler(form){
+var URL = document.navigation.page.options[document.navigation.page.selectedIndex].value;
+window.location.href = URL;
+}
+// End -->
+</SCRIPT>
+</head>
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif" onload="setinitialstate('standardslist',2,'STDList')" onunload="storestate('standardslist','STDList')">
+
+~[wc:teachers_header_fr]
+
+</td>
+</tr>
+<tr>
+<td width="10"><img src="/images/admin_top_left_corn.gif" width="10" height="9" alt="" border="0"></td>
+<td width="100%" background="/images/admin_top_mid_bckg.gif"><img src="/images/transparent.gif" width="1" height="9" alt="" border="0"></td>
+<td width="6"><img src="/images/admin_top_right_corn.gif" width="6" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="10" background="/images/admin_top_left_side.gif"><img src="/images/transparent.gif" width="10" height="350" alt="" border="0"></td>
+<td width="100%" bgcolor="#ffffff" valign="top"><img src="/images/transparent.gif" width="1" height="2" alt="" border="0"><br>
+<br>
+
+<!-- Beginning of title of page -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="1" rowspan="2" valign="bottom">~[studenttitlephoto]</td>
+<td rowspan="2">&nbsp;</td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="header">Standards</td>
+<td>~[wc:custom_alerts]</td>
+</tr>
+</table>
+
+</td>
+<form name="navigation"><td align="right" valign="top"><select name="page" size=1 onChange="javascript:formHandler()"><option value="">Select screens<option value="">--------------------~[x:teacherpages]</select></td></form>
+</tr>
+<tr>
+<td colspan="2" valign="bottom">~(studentname) &nbsp; ~(grade_level) &nbsp; ~(student_number) &nbsp; &nbsp; ~(track) &nbsp; &nbsp; ~(studschoolabbr) &nbsp; &nbsp; ~[enrollmentstatus]</td>
+</tr>
+</table>
+<!-- Ending of title of page -->
+<br>
+
+<!-- Start of shaded content table -->
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
+<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
+<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
+</tr>
+<tr>
+<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
+<td>
+
+<form action="standardsdetail.html?frn=~(studentfrn)" method="POST">
+<table border="0" cellpadding="2" cellspacing="0" width="100%" background="/images/transparent.gif" id="standardslist">
+<tr>
+<td>Enter a Standard Identifier in the box below or select one from the list.</td>
+</tr>
+<tr>
+<td>Identifier <input type="text" name="[prefuser]STDStudentScoreIdentifier" value="" size="15"><input type="hidden" name="ac" value="prim"><input type="hidden" name="ac" value="stdstudentscoretarget"></td>
+</tr>
+<tr>
+<td align="center"><a href="javascript:expandall('standardslist')">Expand All</a> &nbsp; <a href="javascript:collapseall('standardslist')">Collapse All</a></td>
+</tr>
+<tr [id] valign="baseline" class="[classlist]">
+<td>~[x:standardlist][indent][link][identifier] - <a href="standardsdetail.html?frn=[pagefrn]&identifier=[identifier]">[name]</a></td>
+</tr>
+</table>
+</form>
+
+</td>
+<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
+</tr>
+<tr>
+<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
+<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
+<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
+</tr>
+</table>
+<!-- End of shaded content table -->
+
+~[wc:teachers_footer_fr]
+
+</body>
+</html>
