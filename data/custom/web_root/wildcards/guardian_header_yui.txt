@@ -35,6 +35,7 @@
 	    <li id="btn-accountPreferences"><a href="accountmanagement_profile.html">Account Preferences</a></li>
 	[/if]
 	<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+	<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
 	<li id="btn-schoolBulletin"><a href="bulletin.html">School Bulletin</a></li>
 	<li id="btn-teacherComments"><a href="teachercomments.html">Teacher Comments</a></li>
 	~[if.isguardian]

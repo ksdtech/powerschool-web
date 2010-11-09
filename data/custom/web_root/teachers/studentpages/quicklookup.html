@@ -19,6 +19,10 @@ window.location.href = URL;
 
 </td>
 </tr>
+<tr><td colspan="3">
+~[SetPostValue:selectedTab=QuickLookup]
+~[brij_render:common-ps;:TeacherQuickLookupTabs]
+</td></tr>
 <tr>
 <td width="10"><img src="/images/admin_top_left_corn.gif" width="10" height="9" alt="" border="0"></td>
 <td width="100%" background="/images/admin_top_mid_bckg.gif"><img src="/images/transparent.gif" width="1" height="9" alt="" border="0"></td>
@@ -39,14 +43,7 @@ window.location.href = URL;
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td class="header">Quick Lookup</td>
-<td>~[studentalert]
-&nbsp;<a href="javascript:alertwindow('~[directory]', 'iep', '~(studentfrn)')" onMouseOver="window.status='IEP'; return true"> 
-~([01]alert_iep;if.not.blank.then= <img src="/images/alert_iep.jpg" height="24" width="24" alt="IEP" border="0">)</a>
-&nbsp;<a href="javascript:alertwindow('~[directory]', 'vision', '~(studentfrn)')" onMouseOver="window.status='Eyeglasses or Corrective Lenses'; return true"> 
-~([01]alert_vision;if.not.blank.then= <img src="/images/alert_vision.jpg" height="24" width="24" alt="Eyeglasses or Corrective Lenses" border="0">)</a>
-&nbsp;<a href="javascript:alertwindow('~[directory]', 'hearing', '~(studentfrn)')" onMouseOver="window.status='Hearing Aid'; return true"> 
-~([01]alert_hearing;if.not.blank.then= <img src="/images/alert_hearing.gif" height="24" width="24" alt="Hearing Aid" border="0">)</a>
-</td>
+<td>~[wc:custom_alerts]</td>
 </tr>
 </table>
 
@@ -59,6 +56,8 @@ window.location.href = URL;
 </table>
 <!-- Ending of title of page -->
 <br>
+
+
 
 <!-- Start of shaded content table -->
 ~[SetPostValue:skipDontPrintFilter=1]

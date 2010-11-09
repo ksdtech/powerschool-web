@@ -28,7 +28,7 @@ FROM Students WHERE ID=~(curstudid)
 ]
 <li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards</li>
 ~[if.~(schoolid)=104]
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Sign Up for Parent-Teacher Conferences</li>
+<li><span style="font-size: 14pt"><i>New!</i> - <a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Reserve Parent-Teacher Conferences</span></li>
 [/if]
 [/tlist_sql]
 </ul></td></tr>

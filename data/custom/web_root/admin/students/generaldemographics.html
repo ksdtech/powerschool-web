@@ -14,8 +14,8 @@
 		</style>
 </head>
 <script type="text/javascript">
-    var selectedAdapter = "~[displaypref:validationadapter.selected]";
-    var mapKey = "~[x:selectedvalidationadapterkey]";
+    var selectedAdapter = "~[displaypref:mappingadapter.selected]";
+    var mapKey = "~[x:selectedvalidationmappingadapterkey]";
 
 		function onload() {
 			prepPage();
@@ -29,7 +29,7 @@
 
 ~[x:renderboundaryobject]
 
-<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;~[x:selectedvalidationadapterkey]" type="text/javascript"></script>-->
+<!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;~[x:selectedmappingadapterkey]" type="text/javascript"></script>-->
 
 <script language="JavaScript" src="/admin/validation/validationCommon.js"></script>
 
@@ -109,7 +109,7 @@
         <div id="pgeocodehtml"></div>  <div id="boundaryIconDiv"></div> 
     </td>
 </tr>
-~[if.~[displaypref:validationadapter.selected]=""]
+~[if.~[displaypref:mappingadapter.selected]=""]
 [else]
 <tr class="~[evenoddrow]">
     <td> </td>
@@ -125,23 +125,11 @@
 
 <tr class="~[evenoddrow]">
     <td class="subhead">Street, Apt/Suite</td>
-    <td>
-        <input type="text" name="[01]mailing_street" value="" size="45" id="mstreet">
-        <input type="text" name="" value="" size="10" id="mapt">
-    </td>
+    <td>This field is not used</td>
 </tr>
 <tr class="~[evenoddrow]">
     <td class="subhead">City, State, Zip</td>
-    <td>
-        <input type="text" name="[01]mailing_city" value="" size="30" id="mcity">
-        <input type="text" name="[01]mailing_state" value="" size="2" id="mstate">
-        <input type="text" name="[01]mailing_zip" value="" size="10" id="mzip">
-
-        <input type="hidden" name="orig_mailingstreet" value="~([01]mailing_street)" id="orig_mstreet">
-        <input type="hidden" name="orig_mailingcity" value="~([01]mailing_city)" id="orig_mcity">
-        <input type="hidden" name="orig_mailingstate" value="~([01]mailing_state)" id="orig_mstate">
-        <input type="hidden" name="orig_mailingzip" value="~([01]mailing_zip)" id="orig_mzip">
-    </td>
+    <td>These fields are not used</td>
 </tr>
 
 <tr class="~[evenoddrow]">
@@ -151,7 +139,7 @@
         <div id="mgeocodehtml"></div>
     </td>
 </tr>
-~[if.~[displaypref:validationadapter.selected]=""]
+~[if.~[displaypref:mappingadapter.selected]=""]
 [else]
 <tr class="~[evenoddrow]">
     <td></td>
@@ -261,7 +249,6 @@
     <td class="bold">Mother's Email</td>
     <td><input type="text" name="[01]Mother_email" value="" size="50"></td>
 </tr>
-
 <tr class="~[evenoddrow]">
     <td class="bold">Father (last, first)</td>
     <td><input type="text" name="[01]Father" value="" size="25">&nbsp;,&nbsp;<input type="text" name="[01]Father_first" value="" size="25"></td>
@@ -311,7 +298,7 @@
 ~[wc:admin_footer_frame]
 </form>
 <!--</script>-->
-~[if.~[displaypref:validationadapter.selected]=""]
+~[if.~[displaypref:mappingadapter.selected]=""]
 [else]
 <script type="text/javascript">
     addYuiButton("validatePrimaryAddress", validatePrimaryAddress);
