@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Schedule</title>
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function formHandler(form){
+var URL = document.navigation.page.options[document.navigation.page.selectedIndex].value;
+window.location.href = URL;
+}
+// End -->
+</SCRIPT>
+</head>
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+~[wc:teachers_header_fr]
+
+</td>
+</tr>
+<tr>
+<td width="10"><img src="/images/admin_top_left_corn.gif" width="10" height="9" alt="" border="0"></td>
+<td width="100%" background="/images/admin_top_mid_bckg.gif"><img src="/images/transparent.gif" width="1" height="9" alt="" border="0"></td>
+<td width="6"><img src="/images/admin_top_right_corn.gif" width="6" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="10" background="/images/admin_top_left_side.gif"><img src="/images/transparent.gif" width="10" height="350" alt="" border="0"></td>
+<td width="100%" bgcolor="#ffffff" valign="top"><img src="/images/transparent.gif" width="1" height="2" alt="" border="0"><br>
+<br>
+
+<!-- Beginning of title of page -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="1" rowspan="2" valign="bottom">~[studenttitlephoto]</td>
+<td rowspan="2">&nbsp;</td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="header">Schedule</td>
+<td>~[wc:custom_alerts]</td>
+</tr>
+</table>
+
+</td>
+<form name="navigation"><td align="right" valign="top"><select name="page" size=1 onChange="javascript:formHandler()"><option value="">Select screens<option value="">--------------------~[x:teacherpages]</select></td></form>
+</tr>
+<tr>
+<td colspan="2" valign="bottom">~(studentname) &nbsp; ~(grade_level) &nbsp; ~(student_number) &nbsp; &nbsp; ~(track) &nbsp; &nbsp; ~(studschoolabbr) &nbsp; &nbsp; ~[enrollmentstatus]</td>
+</tr>
+</table>
+<!-- Ending of title of page -->
+<br>
+
+<!-- Start of shaded content table -->
+<table border="0" cellspacing="0" cellpadding="4" align="center" background="/images/transparent.gif">
+<tr bgcolor="#f6f6f6">
+<td align="center">Exp</td>
+<td align="center">Trm</td>
+<td>Crs-Sec</td>
+<td>Course</td>
+<td>Teacher</td>
+<td align="center">Room</td>
+<td align="center">Enroll</td>
+<td align="center">Leave</td>
+</tr>
+~[if.database.sql]
+    ~[tlist_sql;select
+            CC.Expression, Sections.SchoolID, Sections.TermID,
+            Terms.Abbreviation,
+            Sections.Course_Number, Sections.Section_Number, Sections.ID,
+            Courses.Course_Name,
+            Teachers.LastFirst,
+            Sections.Room,
+            CC.DateEnrolled,
+            CC.DateLeft
+        from CC, Sections, Teachers, Courses, Terms
+        where ABS(CC.SectionID) = Sections.ID
+          and Sections.Teacher = Teachers.ID
+          and lower(Courses.Course_Number) = lower(Sections.Course_Number)
+          and Terms.ID = Sections.TermID and Terms.SchoolID = Sections.SchoolID
+        ;alternatecolor;currentschedule]
+    <tr bgcolor="#edf3fe">
+    <td align="center">~(CC.Expression;t;externalExpression)<!-- ~(Sections.SchoolID;l) ~(Sections.TermID;l) --></td>
+    <td align="center">~(Terms.Abbreviation;t)</td>
+    <td>~(Sections.Course_Number;t)-~(Sections.Section_Number;t)<!-- ~(Sections.ID;l) --></td>
+    <td>~(Courses.Course_Name;t)</td>
+    <td>~(Teachers.LastFirst;t)</td>
+    <td align="center">~(Sections.Room;t)</td>
+    <td align="right">~(CC.DateEnrolled;d)</td>
+    <td align="right">~(CC.DateLeft;d)</td>
+    </tr>
+    [/tlist_sql]
+[else]
+    <tr bgcolor="#edf3fe">~[tlist;cc;alternatecolor;currentschedule]
+    <td align="center">~(*class_expression data="abbr" format="expression" frn="~(relsectionfrn)")</td>
+    <td align="center">~(reltermabbr)</td>
+    <td>~(course_number)-~([03]section_number)</td>
+    <td>~(coursename)</td>
+    <td>~(teachername)</td>
+    <td align="center">~([03]room)</td>
+    <td align="right">~(dateenrolled)</td>
+    <td align="right">~(dateleft)</td>
+    </tr>
+[/if]
+</table>
+<br>
+<!-- End of shaded content table -->
+
+~[wc:teachers_footer_fr]
+
+</body>
+</html>

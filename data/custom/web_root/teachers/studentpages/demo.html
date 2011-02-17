@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>Demographics</title>
+~[wc:commonscripts]
+<link href="/images/powerschool.css" rel="stylesheet">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function formHandler(form){
+var URL = document.navigation.page.options[document.navigation.page.selectedIndex].value;
+window.location.href = URL;
+}
+// End -->
+</SCRIPT>
+</head>
+
+<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+
+~[wc:teachers_header_fr]
+
+</td>
+</tr>
+<tr>
+<td width="10"><img src="/images/admin_top_left_corn.gif" width="10" height="9" alt="" border="0"></td>
+<td width="100%" background="/images/admin_top_mid_bckg.gif"><img src="/images/transparent.gif" width="1" height="9" alt="" border="0"></td>
+<td width="6"><img src="/images/admin_top_right_corn.gif" width="6" height="9" alt="" border="0"></td>
+</tr>
+<tr>
+<td width="10" background="/images/admin_top_left_side.gif"><img src="/images/transparent.gif" width="10" height="350" alt="" border="0"></td>
+<td width="100%" bgcolor="#ffffff" valign="top"><img src="/images/transparent.gif" width="1" height="2" alt="" border="0"><br>
+<br>
+
+<!-- Beginning of title of page -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="1" rowspan="2" valign="bottom">~[studenttitlephoto]</td>
+<td rowspan="2">&nbsp;</td>
+<td>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="header">Demographics</td>
+<td>~[wc:custom_alerts]</td>
+</tr>
+</table>
+
+</td>
+<form name="navigation"><td align="right" valign="top"><select name="page" size=1 onChange="javascript:formHandler()"><option value="">Select screens<option value="">--------------------~[x:teacherpages]</select></td></form>
+</tr>
+<tr>
+<td colspan="2" valign="bottom">~(studentname) &nbsp; ~(grade_level) &nbsp; ~(student_number) &nbsp; &nbsp; ~(track) &nbsp; &nbsp; ~(studschoolabbr) &nbsp; &nbsp; ~[enrollmentstatus]</td>
+</tr>
+</table>
+<!-- Ending of title of page -->
+<br>
+
+<!-- Start of shaded content table -->
+<table border="0" cellspacing="0" cellpadding="4" align="center" background="/images/transparent.gif">
+<tr bgcolor="#edf3fe">
+<td>Name (Last, First MI)</td>
+<td>~(studentname)</td>
+</tr>
+<tr>
+<td>Gender</td>
+<td>~(gender;uppercase)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>DOB</td>
+<td>~(dob)</td>
+</tr>
+<tr>
+<td>Age</td>
+<td>~(age)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Student Number (Local ID)</td>
+<td>~(student_number)</td>
+</tr>
+<tr>
+<td>SSID</td>
+<td>~(State_studentnumber)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Grade Level</td>
+<td>~(grade_level)</td>
+</tr>
+<tr>
+<td>Home Room</td>
+<td>~(home_room)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Qualifying Home Address</td>
+<td>~(street)<BR>  ~(city), ~(state)&nbsp;&nbsp;~(zip)</td>
+</tr>
+<tr>
+<td>Home Phone</td>
+<td>~(home_phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Mother's Name</td>
+<td>~(Mother_First) ~(Mother)</td>
+</tr>
+<tr>
+<td>Mother's Work Phone</td>
+<td>~(Mother_Work_Phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Mother's Cell Phone</td>
+<td>~(Mother_Cell)</td>
+</tr>
+<tr>
+<td>Mother's Email Address</td>
+<td>~(Mother_Email)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Father's Name</td>
+<td>~(Father_First) ~(Father)</td>
+</tr>
+<tr>
+<td>Father's Work Phone</td>
+<td>~(Father_Work_Phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Father's Cell Phone</td>
+<td>~(Father_Cell)</td>
+</tr>
+<tr>
+<td>Father's Email Address</td>
+<td>~(Father_Email)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Additional Home Address</td>
+<td>~(Home2_street)<BR>  ~(Home2_city), ~(Home2_state)&nbsp;&nbsp;~(Home2_zip)</td>
+</tr>
+<tr>
+<td>Addtional Home Phone</td>
+<td>~(home2_phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Mother's Name</td>
+<td>~(Mother2_First) ~(Mother2_Last)</td>
+</tr>
+<tr>
+<td>NC Mother's Work Phone</td>
+<td>~(Mother2_Work_Phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Mother's Cell Phone</td>
+<td>~(Mother2_Cell)</td>
+</tr>
+<tr>
+<td>NC Mother's Email Address</td>
+<td>~(Mother2_Email)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Father's Name</td>
+<td>~(Father2_First) ~(Father2_Last)</td>
+</tr>
+<tr>
+<td>NC Father's Work Phone</td>
+<td>~(Father2_Work_Phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Father's Cell Phone</td>
+<td>~(Father2_Cell)</td>
+</tr>
+<tr>
+<td>NC Father's Email Address</td>
+<td>~(Father2_Email)</td>
+</tr>
+</table>
+<br>
+<!-- End of shaded content table -->
+
+~[wc:teachers_footer_fr]
+
+</body>
+</html>

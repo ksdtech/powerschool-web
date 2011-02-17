@@ -1,0 +1,7 @@
+~[studentalert]
+&nbsp;<a href="javascript:alertwindow('~[directory]', 'iep', '~(studentfrn)')" onMouseOver="window.status='IEP'; return true"> 
+~([01]alert_iep;if.not.blank.then= <img src="/images/alert_iep.jpg" height="24" width="24" alt="IEP" border="0">)</a>
+&nbsp;<a href="javascript:alertwindow('~[directory]', 'vision', '~(studentfrn)')" onMouseOver="window.status='Eyeglasses or Corrective Lenses'; return true"> 
+~([01]alert_vision;if.not.blank.then= <img src="/images/alert_vision.jpg" height="24" width="24" alt="Eyeglasses or Corrective Lenses" border="0">)</a>
+&nbsp;<a href="javascript:alertwindow('~[directory]', 'hearing', '~(studentfrn)')" onMouseOver="window.status='Hearing Aid'; return true"> 
+~([01]alert_hearing;if.not.blank.then= <img src="/images/alert_hearing.gif" height="24" width="24" alt="Hearing Aid" border="0">)</a>
