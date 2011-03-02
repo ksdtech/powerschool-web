@@ -79,7 +79,8 @@
           return true;
         }
       };
-      field.bind(config.when || 'blur', field.testValid);
+      // PFZ: use focusout event instead of blur
+      field.bind(config.when || 'focusout', field.testValid);
     }
     
     for (item in config.fields) {
