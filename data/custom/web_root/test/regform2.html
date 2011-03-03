@@ -4,14 +4,13 @@
 <title>Name, Birth and Custody Information - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="./images/regforms.css" rel="stylesheet">
+<script src="./scripts/jquery-1.5.1.dev.js" type="text/javascript"></script>
 <script src="./scripts/fmt_date.js" type="text/javascript"></script>
 <script src="./scripts/formatters.js" type="text/javascript"></script>
-<script src="./scripts/selectlists.js" type="text/javascript"></script>
-<script src="./scripts/jquery-1.5.1.dev.js" type="text/javascript"></script>
 <script src="./scripts/happy.js" type="text/javascript"></script>
 <script src="./scripts/happy.methods.js" type="text/javascript"></script>
-<script src="./scripts/jquery_form2.js" type="text/javascript"></script>
 <script src="./scripts/jquery_itr.js" type="text/javascript"></script>
+<script src="./scripts/jquery_form2.js" type="text/javascript"></script>
 <!-- begin ~[wc:guardian_header] -->
 <meta http-equiv="X-UA-Compatible" content="IE=8"/>
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
@@ -147,14 +146,14 @@
 <tr class="secheader"><td colspan="3" class="bold">2a. Name and Birth Information</td></tr>
 <tr><td>Date of Birth</td>
 <td colspan="2">Gender</td></tr>
-<tr><td><input type="text" name="[01]DOB" value="" size="15"></td>
-<td colspan="2"><select name="[01]Gender">
+<tr><td><input type="text" id="dob" name="[01]DOB" value="" size="15"></td>
+<td colspan="2"><select id="gender" name="[01]Gender">
 <option value="M">M</option>
 <option value="F">F</option>
 </select></td></tr>
 <tr><td>Birth City</td><td>State</td><td>Country</td></tr>
-<tr><td><input type="text" name="[01]CA_BirthPlace_City" value="" size="20" maxlength="30"></td>
-<td><select name="[01]CA_BirthPlace_StateProvince">
+<tr><td><input type="text" id="birth_city" name="[01]CA_BirthPlace_City" value="" size="20" maxlength="30"></td>
+<td><select id="birth_state" name="[01]CA_BirthPlace_StateProvince">
 <option value="">State (US, Canada or Mexico):</option>
 <option value="US-AL">Alabama</option>
 <option value="US-AK">Alaska</option>
@@ -252,7 +251,7 @@
 <option value="MX-YUC">Yucatan</option>
 <option value="MX-ZAC">Zacatecas</option>
 </select></td>
-<td><select name="[01]CA_BirthCountry">
+<td><select id="birth_country" name="[01]CA_BirthCountry">
 <option value="">Country:</option>
 <option value="US">United States</option>
 <option value="AC">Ascension Island</option>
@@ -504,7 +503,7 @@
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="3" class="bold">2b. Custody Information</td></tr>
-<tr><td class="bold">Student lives with</td><td colspan="2"><select name="[01]Lives_With_Rel">
+<tr><td class="bold">Student lives with</td><td colspan="2"><select id="lives_with_rel" name="[01]Lives_With_Rel">
 <option value="">Choose:</option>
 <option value="Both">Both Parents</option>
 <option value="Mother">Mother</option>
@@ -514,8 +513,8 @@
 <tr><td colspan="3">Are there any <b>court-mandated</b> custody or visitation orders limiting access to this student?
 If you answer <b>Yes</b>, you must submit paper copies of the legal documents to the school office.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Custody_Orders" value="1">Yes&nbsp;&nbsp;</td>
-<td width="50%"><input type="radio" name="[01]Custody_Orders" value="">No&nbsp;&nbsp;</td></tr>
+<td><input type="radio" id="co_yes" class="custody_orders" name="[01]Custody_Orders" value="1">Yes&nbsp;&nbsp;</td>
+<td width="50%"><input type="radio" id="co_no" class="custody_orders" name="[01]Custody_Orders" value="">No&nbsp;&nbsp;</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="3" class="bold">2c. Siblings</td></tr>

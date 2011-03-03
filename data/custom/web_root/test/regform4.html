@@ -4,14 +4,13 @@
 <title>Additional Residence - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="./images/regforms.css" rel="stylesheet">
+<script src="./scripts/jquery-1.5.1.dev.js" type="text/javascript"></script>
 <script src="./scripts/fmt_date.js" type="text/javascript"></script>
 <script src="./scripts/formatters.js" type="text/javascript"></script>
-<script src="./scripts/selectlists.js" type="text/javascript"></script>
-<script src="./scripts/jquery-1.5.1.dev.js" type="text/javascript"></script>
 <script src="./scripts/happy.js" type="text/javascript"></script>
 <script src="./scripts/happy.methods.js" type="text/javascript"></script>
-<script src="./scripts/jquery_form4.js" type="text/javascript"></script>
 <script src="./scripts/jquery_form.js" type="text/javascript"></script>
+<script src="./scripts/jquery_form4.js" type="text/javascript"></script>
 <!-- begin ~[wc:guardian_header] -->
 <meta http-equiv="X-UA-Compatible" content="IE=8"/>
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
@@ -149,7 +148,7 @@ button at the bottom of the page.</td></tr>
 <td><input class="city" type="text" id="h2c_src" name="[01]Home2_City" value="" size="20"></td>
 <td><input class="state" type="text" id="h2s_src" name="[01]Home2_State" value="CA" size="4"></td>
 <td><input class="zip" type="text" id="h2z_src" name="[01]Home2_Zip" value="" size="10"></td></tr>
-<tr><td class="bold">Home Phone</td><td><input class="phone" type="text" name="[01]Home2_Phone" value="" size="16"></td>
+<tr><td class="bold">Home Phone</td><td><input id="_phone" type="text" name="[01]Home2_Phone" value="" size="16"></td>
 <td colspan="2">&nbsp;</td></tr>
 <tr><td colspan="4">The Kentfield School District uses email and website
   communications wherever possible, but printed and/or translated materials may 
@@ -188,12 +187,12 @@ button at the bottom of the page.</td></tr>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>&nbsp;</td></tr>
-<tr><td><input class="phone" type="text" name="[01]Mother2_Work_Phone" value="" size="16"></td>
-<td><input class="phone" type="text" name="[01]Mother2_Home_Phone" value="" size="16"></td>
-<td><input class="phone" type="text" name="[01]Mother2_Cell" value="" size="16"></td>
+<tr><td><input id="_phone" type="text" name="[01]Mother2_Work_Phone" value="" size="16"></td>
+<td><input id="_phone" type="text" name="[01]Mother2_Home_Phone" value="" size="16"></td>
+<td><input id="_phone" type="text" name="[01]Mother2_Cell" value="" size="16"></td>
 <td>&nbsp;</td></tr>
 <tr><td colspan="4">Email Address</td></tr>
-<tr><td colspan="4"><input class="email" type="text" name="[01]Mother2_Email" value="" size="30"></td></tr>
+<tr><td colspan="4"><input id="_email" type="text" name="[01]Mother2_Email" value="" size="30"></td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">4c. Father/Parent/Guardian at Additional Residence</td></tr>
@@ -223,12 +222,12 @@ button at the bottom of the page.</td></tr>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>&nbsp;</td></tr>
-<tr><td><input class="phone" type="text" name="[01]Father2_Work_Phone" value="" size="16"></td>
-<td><input class="phone" type="text" name="[01]Father2_Home_Phone" value="" size="16"></td>
-<td><input class="phone" type="text" name="[01]Father2_Cell" value="" size="16"></td>
+<tr><td><input id="_phone" type="text" name="[01]Father2_Work_Phone" value="" size="16"></td>
+<td><input id="_phone" type="text" name="[01]Father2_Home_Phone" value="" size="16"></td>
+<td><input id="_phone" type="text" name="[01]Father2_Cell" value="" size="16"></td>
 <td>&nbsp;</td></tr>
 <tr><td colspan="4">Email Address</td></tr>
-<tr><td colspan="4"><input class="email" type="text" name="[01]Father2_Email" value="" size="30"></td></tr>
+<tr><td colspan="4"><input id="_email" type="text" name="[01]Father2_Email" value="" size="30"></td></tr>
 <tr class="private"><td colspan="4" class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form4_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form4_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>

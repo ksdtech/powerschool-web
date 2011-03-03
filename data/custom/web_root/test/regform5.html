@@ -4,14 +4,13 @@
 <title>Authorized Adults - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="./images/regforms.css" rel="stylesheet">
+<script src="./scripts/jquery-1.5.1.dev.js" type="text/javascript"></script>
 <script src="./scripts/fmt_date.js" type="text/javascript"></script>
 <script src="./scripts/formatters.js" type="text/javascript"></script>
-<script src="./scripts/selectlists.js" type="text/javascript"></script>
-<script src="./scripts/jquery-1.5.1.dev.js" type="text/javascript"></script>
 <script src="./scripts/happy.js" type="text/javascript"></script>
 <script src="./scripts/happy.methods.js" type="text/javascript"></script>
-<script src="./scripts/jquery_form5.js" type="text/javascript"></script>
 <script src="./scripts/jquery_form.js" type="text/javascript"></script>
+<script src="./scripts/jquery_form5.js" type="text/javascript"></script>
 <!-- begin ~[wc:guardian_header] -->
 <meta http-equiv="X-UA-Compatible" content="IE=8"/>
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
@@ -181,7 +180,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_Phone_1" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_Phone_1" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_1_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -189,7 +188,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_1_Alt_Phone" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_1_Alt_Phone" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_1_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -220,7 +219,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_Phone_2" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_Phone_2" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_2_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -228,7 +227,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_2_Alt_Phone" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_2_Alt_Phone" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_2_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -259,7 +258,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_3_Phone" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_3_Phone" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_3_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -267,7 +266,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_3_Alt_Phone" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_3_Alt_Phone" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_3_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -300,7 +299,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_X_Phone" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_X_Phone" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_X_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -308,7 +307,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" class="phone" name="[01]Emerg_X_Alt_Phone" value="" size="16"></td>
+<td><input type="text" id="_phone" name="[01]Emerg_X_Alt_Phone" value="" size="16"></td>
 <td colspan="2">Phone Type<br><select name="[01]Emerg_X_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>

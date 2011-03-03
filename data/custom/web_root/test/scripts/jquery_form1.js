@@ -2,7 +2,7 @@
 
 function required_if_not_returning(val) {
 	var enrollment = jQuery("#reg_enroll option:selected").val();
-	var not_enrolling = (enrollment != null && enrollment.indexOf("nr-") == 0);
+	var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
 	var error = false
 	if (not_enrolling) {
 	  error = (val.length === 0);
@@ -16,17 +16,18 @@ function required_if_transfering(val) {
 	var error = false
 	if (not_enrolling) {
   	var exitcode = jQuery("#reg_exitcode option:selected").val();
-  	if (exitcode == "160" || exitcode == "180") {
+  	if (exitcode != null && /^160|180$/.test(exitcode)) {
 	    error = (val.length === 0);
 	  }
 	}
 	return !error;
 }
 
-
+// happy.js validations
 jQuery(document).ready(function () {
   jQuery('#form1').isHappy({
     // submitButton: jQuery('#attSubmitButton'),
+    onSubmit: onItrFormSubmit,
     fields: {
       '#reg_enroll': {
         required: true,

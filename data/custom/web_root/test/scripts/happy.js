@@ -1,12 +1,21 @@
 (function($){
   function trim(el) {
-    return (''.trim) ? el.val().trim() : $.trim(el.val());
+    return (''.trim) ? el.val().trim() : jQuery.trim(el.val());
   }
   $.fn.isHappy = function (config) {
     var fields = [], item;
     
+    function setDefaultRadio(radio_group, default_radio) {
+      var num_checked = radio_group.filter(':checked').length;
+      if (num_checked == 0) {
+        jQuery(default_radio).attr('checked', 'checked');
+      }
+    }
     function getError(error) {
       return $('<span id="'+error.id+'" class="unhappyMessage">'+error.message+'</span>');
+    }
+    function isFunction(obj) {
+      return !!(obj && obj.constructor && obj.call && obj.apply);
     }
     function handleSubmit() {
       var errors = false, i, l;
@@ -17,13 +26,14 @@
       }
       if (errors) {
         return false;
-      } else if (config.testMode) {
+      }
+      if (isFunction(config.onSubmit)) {
+        config.onSubmit();
+      }
+      if (config.testMode) {
         if (window.console) console.warn('would have submitted');
         return false;
       }
-    }
-    function isFunction (obj) {
-      return !!(obj && obj.constructor && obj.call && obj.apply);
     }
     function processField(opts, selector) {
       var field = $(selector),
@@ -33,41 +43,56 @@
         },
         errorEl = $(error.id).length > 0 ? $(error.id) : getError(error);
         
+      if (opts.default_radio) {
+        setDefaultRadio(field, opts.default_radio);
+      }
+      
       fields.push(field);
       field.testValid = function (submit) {
         var val,
           el = $(this),
           gotFunc,
           error = false,
-          temp, 
+          temp,
           required = !!el.get(0).attributes.getNamedItem('required') || opts.required,
-          password = (field.attr('type') === 'password'),
+          field_type = el.get(0).type,
+          checked_radio,
+          has_val = false,
           arg = isFunction(opts.arg) ? opts.arg() : opts.arg;
         
-        // clean it or trim it
-        if (isFunction(opts.clean)) {
-          val = opts.clean(el.val());
-        } else if (!opts.trim && !password) {
-          val = trim(el);
+        // special handling for radio buttons
+        if (field_type == 'radio') {
+          checked_radio = el.filter(':checked');
+          has_val = (checked_radio.length != 0);
+          val = has_val ? checked_radio.val() : '';
         } else {
-          val = el.val();
+          // text, password, textarea, or select
+          // clean it or trim it
+          if (isFunction(opts.clean)) {
+            val = opts.clean(el.val());
+          } else if (opts.trim && !(field_type == 'password')) {
+            val = trim(el);
+          } else {
+            val = el.val();
+          }
+          // write it back to the field
+          el.val(val);
+          has_val = !(val === '');
         }
         
-        // write it back to the field
-        el.val(val);
-        
         // get the value
-        gotFunc = ((val.length > 0 || required === 'sometimes') && isFunction(opts.test));
+        gotFunc = ((has_val || required === 'sometimes') && isFunction(opts.test));
         
         // check if we've got an error on our hands
-        if (submit === true && required === true && val.length === 0) {
+        if (submit === true && required === true && !has_val) {
           error = true;
         } else if (gotFunc) {
           error = !opts.test(val, arg);
         }
         
         if (error) {
-          el.addClass('unhappy').before(errorEl);
+          // only first() in case of radio
+          el.first().addClass('unhappy').before(errorEl);
           return false;
         } else {
           temp = errorEl.get(0);
@@ -75,12 +100,12 @@
           if (temp.parentNode) {
             temp.parentNode.removeChild(temp);
           }
-          el.removeClass('unhappy');
+          el.first().removeClass('unhappy');
           return true;
         }
       };
       // PFZ: use focusout event instead of blur
-      field.bind(config.when || 'focusout', field.testValid);
+      field.bind(config.when || 'blur', field.testValid);
     }
     
     for (item in config.fields) {
