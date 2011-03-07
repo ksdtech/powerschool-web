@@ -50,6 +50,10 @@ var happy = {
     return (val1 == val2);
   },
   
+  emptyOrDate: function (val) {
+    return (val === '' || happy.date(val));
+  },
+  
   emptyOrEmail: function (val) {
     return (val === '' || happy.email(val));
   },
