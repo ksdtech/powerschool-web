@@ -160,9 +160,9 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">5a. Authorized Adult No. 1</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" name="[01]Emerg_Contact_1" value="" size="20">, 
-<input type="text" name="[01]Emerg_1_First" value="" size="20"></td>
-<td><select name="[01]Emerg_1_Rel">
+<tr><td colspan="3"><input type="text" id="emerg1_last" name="[01]Emerg_Contact_1" value="" size="20">, 
+<input type="text" id="emerg1_first" name="[01]Emerg_1_First" value="" size="20"></td>
+<td><select id="emerg1_rel" name="[01]Emerg_1_Rel">
 <option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
@@ -180,16 +180,16 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" id="_phone" name="[01]Emerg_Phone_1" value="" size="16"></td>
-<td colspan="2">Phone Type<br><select name="[01]Emerg_1_Ptype">
+<td><input type="text" id="emerg1_phone" name="[01]Emerg_Phone_1" value="" size="16"></td>
+<td colspan="2">Phone Type<br><select id="emerg1_ptype" name="[01]Emerg_1_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
 <option value="Home">Home</option>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" id="_phone" name="[01]Emerg_1_Alt_Phone" value="" size="16"></td>
-<td colspan="2">Phone Type<br><select name="[01]Emerg_1_Alt_Ptype">
+<td><input type="text" id="emerg1_phone2" name="[01]Emerg_1_Alt_Phone" value="" size="16"></td>
+<td colspan="2">Phone Type<br><select id="emerg1_ptype2" name="[01]Emerg_1_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
 <option value="Home">Home</option>
@@ -199,9 +199,9 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">5b. Authorized Adult No. 2</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" name="[01]Emerg_Contact_2" value="" size="20">, 
-<input type="text" name="[01]Emerg_2_First" value="" size="20"></td>
-<td><select name="[01]Emerg_2_Rel">
+<tr><td colspan="3"><input type="text" class="emerg2_name" id="emerg2_last" name="[01]Emerg_Contact_2" value="" size="20">, 
+<input type="text" class="emerg2_name" id="emerg2_first" name="[01]Emerg_2_First" value="" size="20"></td>
+<td><select id="emerg2_rel" name="[01]Emerg_2_Rel">
 <option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
@@ -219,16 +219,16 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" id="_phone" name="[01]Emerg_Phone_2" value="" size="16"></td>
-<td colspan="2">Phone Type<br><select name="[01]Emerg_2_Ptype">
+<td><input type="text" id="emerg2_phone" name="[01]Emerg_Phone_2" value="" size="16"></td>
+<td colspan="2">Phone Type<br><select id="emerg2_ptype" name="[01]Emerg_2_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
 <option value="Home">Home</option>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" id="_phone" name="[01]Emerg_2_Alt_Phone" value="" size="16"></td>
-<td colspan="2">Phone Type<br><select name="[01]Emerg_2_Alt_Ptype">
+<td><input type="text" id="emerg2_phone2" name="[01]Emerg_2_Alt_Phone" value="" size="16"></td>
+<td colspan="2">Phone Type<br><select id="emerg2_ptype2" name="[01]Emerg_2_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
 <option value="Home">Home</option>
@@ -238,9 +238,9 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">5c. Authorized Adult No. 3</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" name="[01]Emerg_3_Last" value="" size="20">, 
-<input type="text" name="[01]Emerg_3_First" value="" size="20"></td>
-<td><select name="[01]Emerg_3_Rel">
+<tr><td colspan="3"><input type="text" class="emerg3_name" id="emerg3_last" name="[01]Emerg_3_Last" value="" size="20">, 
+<input type="text" class="emerg3_name" id="emerg3_first"  name="[01]Emerg_3_First" value="" size="20"></td>
+<td><select id="emerg3_rel" name="[01]Emerg_3_Rel">
 <option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
@@ -258,16 +258,16 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" id="_phone" name="[01]Emerg_3_Phone" value="" size="16"></td>
-<td colspan="2">Phone Type<br><select name="[01]Emerg_3_Ptype">
+<td><input type="text" id="emerg3_phone" name="[01]Emerg_3_Phone" value="" size="16"></td>
+<td colspan="2">Phone Type<br><select id="emerg3_ptype" name="[01]Emerg_3_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
 <option value="Home">Home</option>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" id="_phone" name="[01]Emerg_3_Alt_Phone" value="" size="16"></td>
-<td colspan="2">Phone Type<br><select name="[01]Emerg_3_Alt_Ptype">
+<td><input type="text" id="emerg3_phone2" name="[01]Emerg_3_Alt_Phone" value="" size="16"></td>
+<td colspan="2">Phone Type<br><select id="emerg3_ptype2" name="[01]Emerg_3_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
 <option value="Home">Home</option>
