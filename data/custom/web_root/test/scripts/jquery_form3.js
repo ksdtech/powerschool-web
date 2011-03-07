@@ -111,19 +111,19 @@ jQuery(document).ready(function () {
         arg: '#father_first',
         message: 'Required field.'
       },
-      '#mother_work_phone': { 
+      '#father_work_phone': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.'
       },
-      '#mother_home_phone': { 
+      '#father_home_phone': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.'
       },
-      '#mother_cell': { 
+      '#father_cell': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
