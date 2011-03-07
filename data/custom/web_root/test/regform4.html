@@ -144,30 +144,30 @@ button at the bottom of the page.</td></tr>
 <td width="25%">City</td>
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
-<tr><td><input class="street" type="text" id="h2a_src" name="[01]Home2_Street" value="" size="30"></td>
-<td><input class="city" type="text" id="h2c_src" name="[01]Home2_City" value="" size="20"></td>
-<td><input class="state" type="text" id="h2s_src" name="[01]Home2_State" value="CA" size="4"></td>
-<td><input class="zip" type="text" id="h2z_src" name="[01]Home2_Zip" value="" size="10"></td></tr>
-<tr><td class="bold">Home Phone</td><td><input id="_phone" type="text" name="[01]Home2_Phone" value="" size="16"></td>
+<tr><td><input class="street" type="text" id="home2_street"  name="[01]Home2_Street" value="" size="30"></td>
+<td><input class="city" type="text" id="home2_city"  name="[01]Home2_City" value="" size="20"></td>
+<td><input class="state" type="text" id="home2_state"  name="[01]Home2_State" value="" size="4"></td>
+<td><input class="zip" type="text" id="home2_zip" name="[01]Home2_Zip" value="" size="10"></td></tr>
+<tr><td class="bold">Home Phone</td><td><input type="text" id="home2_phone" name="[01]Home2_Phone" value="" size="16"></td>
 <td colspan="2">&nbsp;</td></tr>
 <tr><td colspan="4">The Kentfield School District uses email and website
   communications wherever possible, but printed and/or translated materials may 
   be provided if staffing and budget permits.</td></tr>
 <tr><td class="bold">Do you have internet access at this residence?</td>
-<td colspan="3"><input type="radio" name="[01]Home2_No_Inet_Access" value="">Yes&nbsp;&nbsp;<input type="radio" name="[01]Home2_No_Inet_Access" value="1">No&nbsp;&nbsp;</td></tr>
+<td colspan="3"><input type="radio" class="inet_access2" name="[01]Home2_No_Inet_Access" value="">Yes&nbsp;&nbsp;<input type="radio" class="inet_access2" name="[01]Home2_No_Inet_Access" value="1">No&nbsp;&nbsp;</td></tr>
 <tr><td class="bold">Do you require printed copies of school communications?</td>
-<td colspan="3"><input type="radio" name="[01]Home2_Printed_Material" value="1">Yes&nbsp;&nbsp;<input type="radio" name="[01]Home2_Printed_Material" value="">No&nbsp;&nbsp;</td></tr>
+<td colspan="3"><input type="radio" class="printed_material2" name="[01]Home2_Printed_Material" value="1">Yes&nbsp;&nbsp;<input type="radio" class="printed_material2" name="[01]Home2_Printed_Material" value="">No&nbsp;&nbsp;</td></tr>
 <tr><td class="bold">Do you require communications in Spanish?</td>
-<td colspan="3"><input type="radio" name="[01]Home2_Spanish_Material" value="1">Yes&nbsp;&nbsp;<input type="radio" name="[01]Home2_Spanish_Material" value="">No&nbsp;&nbsp;</td></tr>
+<td colspan="3"><input type="radio" class="spanish_material2" name="[01]Home2_Spanish_Material" value="1">Yes&nbsp;&nbsp;<input type="radio" class="spanish_material2" name="[01]Home2_Spanish_Material" value="">No&nbsp;&nbsp;</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">4b. Mother/Parent/Guardian at Additional Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td></tr>
-<tr><td colspan="2"><input type="text" name="[01]Mother2_Last" value="" size="30"></td>
-<td colspan="2"><input type="text" name="[01]Mother2_First" value="" size="30"></td></tr>
+<tr><td colspan="2"><input type="text" class="guardian2_name" id="mother2_last" name="[01]Mother2_Last" value="" size="30"></td>
+<td colspan="2"><input type="text" class="guardian2_name" id="mother2_first" name="[01]Mother2_First" value="" size="30"></td></tr>
 <tr><td>Relationship</td>
-<td colspan="3"><select name="[01]Mother2_Rel">
+<td colspan="3"><select id="mother2_rel" name="[01]Mother2_Rel">
 <option value="">Choose:</option>
 <option value="Father">Father</option>
 <option value="Mother">Mother</option>
@@ -182,27 +182,27 @@ button at the bottom of the page.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td colspan="2"><input type="radio" name="[01]Mother2_IsGuardian" value="yes">Yes&nbsp;&nbsp;<input type="radio" name="[01]Mother2_IsGuardian" value="-1">No&nbsp;&nbsp;</td></tr>
+<td colspan="2"><input type="radio" class="mother2_guardian" name="[01]Mother2_IsGuardian" value="yes">Yes&nbsp;&nbsp;<input type="radio" class="mother2_guardian" name="[01]Mother2_IsGuardian" value="-1">No&nbsp;&nbsp;</td></tr>
 <tr><td>Work Phone</td>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>&nbsp;</td></tr>
-<tr><td><input id="_phone" type="text" name="[01]Mother2_Work_Phone" value="" size="16"></td>
-<td><input id="_phone" type="text" name="[01]Mother2_Home_Phone" value="" size="16"></td>
-<td><input id="_phone" type="text" name="[01]Mother2_Cell" value="" size="16"></td>
+<tr><td><input type="text" id="mother2_work_phone" name="[01]Mother2_Work_Phone" value="" size="16"></td>
+<td><input type="text" id="mother2_home_phone" name="[01]Mother2_Home_Phone" value="" size="16"></td>
+<td><input type="text" id="mother2_cell" name="[01]Mother2_Cell" value="" size="16"></td>
 <td>&nbsp;</td></tr>
 <tr><td colspan="4">Email Address</td></tr>
-<tr><td colspan="4"><input id="_email" type="text" name="[01]Mother2_Email" value="" size="30"></td></tr>
+<tr><td colspan="4"><input id="mother2_email" type="text" name="[01]Mother2_Email" value="" size="30"></td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">4c. Father/Parent/Guardian at Additional Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td>
 </tr>
-<tr><td colspan="2"><input type="text" name="[01]Father2_Last" value="" size="30"></td>
-<td colspan="2"><input type="text" name="[01]Father2_First" value="" size="30"></td></tr>
+<tr><td colspan="2"><input type="text" class="guardian2_name" id="father2_last" name="[01]Father2_Last" value="" size="30"></td>
+<td colspan="2"><input type="text" class="guardian2_name" id="father2_first" name="[01]Father2_First" value="" size="30"></td></tr>
 <tr><td>Relationship</td>
-<td colspan="3"><select name="[01]Father2_Rel">
+<td colspan="3"><select id="father2_rel" name="[01]Father2_Rel">
 <option value="">Choose:</option>
 <option value="Father">Father</option>
 <option value="Mother">Mother</option>
@@ -217,17 +217,23 @@ button at the bottom of the page.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td colspan="2"><input type="radio" name="[01]Father2_IsGuardian" value="yes">Yes&nbsp;&nbsp;<input type="radio" name="[01]Father2_IsGuardian" value="-1">No&nbsp;&nbsp;</td></tr>
+<td colspan="2"><input type="radio" class="father2_guardian" name="[01]Father2_IsGuardian" value="yes">Yes&nbsp;&nbsp;<input type="radio" class="father2_guardian" name="[01]Father2_IsGuardian" value="-1">No&nbsp;&nbsp;</td></tr>
 <tr><td>Work Phone</td>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>&nbsp;</td></tr>
-<tr><td><input id="_phone" type="text" name="[01]Father2_Work_Phone" value="" size="16"></td>
-<td><input id="_phone" type="text" name="[01]Father2_Home_Phone" value="" size="16"></td>
-<td><input id="_phone" type="text" name="[01]Father2_Cell" value="" size="16"></td>
+<tr><td><input type="text" id="father2_work_phone" name="[01]Father2_Work_Phone" value="" size="16"></td>
+<td><input type="text" id="father2_home_phone" name="[01]Father2_Home_Phone" value="" size="16"></td>
+<td><input type="text" id="father2_cell" name="[01]Father2_Cell" value="" size="16"></td>
 <td>&nbsp;</td></tr>
 <tr><td colspan="4">Email Address</td></tr>
-<tr><td colspan="4"><input id="_email" type="text" name="[01]Father2_Email" value="" size="30"></td></tr>
+<tr><td colspan="4"><input type="text" id="father2_email" name="[01]Father2_Email" value="" size="30"></td></tr>
+<tr class="private"><td colspan="4">
+<input type="text" class="copy_address2" id="mailing2_street" name="[01]mailing2_street" value=""> 
+<input type="text" class="copy_address2" id="mailing2_city" name="[01]mailing2_city" value=""> 
+<input type="text" class="copy_address2" id="mailing2_state" name="[01]mailing2_state" value=""> 
+<input type="text" class="copy_address2" id="mailing2_zip" name="[01]mailing2_zip" value=""></td>
+</tr>
 <tr class="private"><td colspan="4" class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form4_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form4_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
