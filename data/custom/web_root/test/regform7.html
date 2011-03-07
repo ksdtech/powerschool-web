@@ -130,10 +130,10 @@
 </div>
 
 <!-- begin form action -->
-<form id="form1" action="regforms.html" method="post">
+<form id="form7" action="regforms.html" method="post">
 <!-- end form action -->
-<div id="form1-contents" align="center" style="width: 98%">
-<div id="form1-setup" class="box-round group" style="width: 720px">
+<div id="form7-contents" align="center" style="width: 98%">
+<div id="form7-setup" class="box-round group" style="width: 720px">
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="2" class="bold">7. Home Language Survey</td></tr>
 <tr><td colspan="2">The California Education Code contains legal requirements 
@@ -146,7 +146,7 @@ below as accurately as possible.  Do not leave any of questions 7a through 7d
 unanswered.
 </td></tr>
 <tr><td>7a. Which language did your child learn when he/she first began to talk?</td>
-<td><select name="[01]Lang_Earliest">
+<td><select id="lang_earliest" name="[01]Lang_Earliest">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -209,7 +209,7 @@ unanswered.
 <option value="99">Other Non-English Language</select></td></tr>
 
 <tr><td>7b. What language does your child most frequently speak at home?</td>
-<td><select name="[01]CA_PrimaryLanguage">
+<td><select id="lang_primary" name="[01]CA_PrimaryLanguage">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -272,7 +272,7 @@ unanswered.
 <option value="99">Other Non-English Language</select></td></tr>
 
 <tr><td>7c. What language do you use most frequently to speak to your child?</td>
-<td><select name="[01]Lang_Spoken_To">
+<td><select id="lang_spoken" name="[01]Lang_Spoken_To">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -336,7 +336,7 @@ unanswered.
 
 <tr><td>7d. What language is most often spoken by adults in the home?<br>
 (parents, guardians, grandparents, or any other adults)</td>
-<td><select name="[01]Lang_Adults_Primary">
+<td><select id="lang_adults" name="[01]Lang_Adults_Primary">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -404,7 +404,7 @@ unanswered.
 <tr><td>7e. What additional language, if any, is also spoken 
 by adults in the home?<br>
 (parents, guardians, grandparents, or any other adults)</td>
-<td><select name="[01]Lang_Other">
+<td><select id="lang_other" name="[01]Lang_Other">
 <option value="">Choose (if applicable)...
 <option value="00">English
 <option value="01">Spanish
