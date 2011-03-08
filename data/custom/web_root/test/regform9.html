@@ -162,8 +162,8 @@ I (we) understand that the school district does not provide accident/medical
   to medical treatment shall be my (our) responsibility and not that of the school 
   district.</td></tr>
 <tr><td width="10">&nbsp;</td>
-<td width="75"><input type="radio" name="[01]Release_Authorization" value="1">Yes&nbsp;&nbsp;</td>
-<td width="75"><input type="radio" name="[01]Release_Authorization" value="">No&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="med_treatment" name="[01]Release_Authorization" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="med_treatment" name="[01]Release_Authorization" value="">No&nbsp;&nbsp;</td>
 <td colspan="3">&nbsp;</td></tr>
 <tr><td colspan="6">By selecting <b>Yes</b>, I (we) give authorization for emergency treatment.</td></tr>
 </table>
@@ -172,8 +172,8 @@ I (we) understand that the school district does not provide accident/medical
 <tr><td colspan="6">I hereby grant permission to the Kentfield School District to contact my (our) child's 
 previous school regarding recommendations for placement.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Prev_School_Permission" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Prev_School_Permission" value="-1">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="prev_school_contact" name="[01]Prev_School_Permission" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="prev_school_contact" name="[01]Prev_School_Permission" value="-1">No&nbsp;&nbsp;</td>
 <td colspan="3">&nbsp;</td></tr>
 <tr><td colspan="6">By selecting <b>Yes</b>, I (we) grant permission to contact previous school.</td></tr>
 </table>
@@ -187,8 +187,8 @@ previous school regarding recommendations for placement.</td></tr>
   District Internet Publishing Guidelines</a>. The school office will keep a copy of 
   this permission on file, and I (we) may revoke it in writing at any time.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Public" value="yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Public" value="no">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="pub_waver_public" name="[01]Pub_Waiver_Public" value="yes">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="pub_waver_public" name="[01]Pub_Waiver_Public" value="no">No&nbsp;&nbsp;</td>
 <td colspan="3">&nbsp;</td></tr>
 <tr><td colspan="6">By selecting <b>Yes</b>, I (we) grant permission for internet publication.</td></tr>
 </table>
@@ -205,20 +205,30 @@ previous school regarding recommendations for placement.</td></tr>
   Distribution Publishing Guidelines</a>. The school office will keep a copy of 
   this permission on file, and I (we) may revoke it in writing at any time.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Restricted" value="yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Pub_Waiver_Restricted" value="no">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="pub_waver_private" name="[01]Pub_Waiver_Restricted" value="yes">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="pub_waver_private" name="[01]Pub_Waiver_Restricted" value="no">No&nbsp;&nbsp;</td>
 <td colspan="3">&nbsp;</td></tr>
 <tr><td colspan="6">By selecting <b>Yes</b>, I (we) grant permission for restricted publication.</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="secheader"><td class="bold" colspan="6">10e. Responsibility for Student</td></tr>
+<tr class="secheader"><td class="bold" colspan="6">10e. Acceptable Use of Technology</td></tr>
+<tr><td colspan="6">I have read and discussed the Student Acceptable Use Agreement
+  with my child and we agree to the terms and conditions in the agreement.</td></tr>
+<tr><td>&nbsp;</td>
+<td><input type="radio" class="acceptable_use" name="[01]Acceptable_Use" value="yes">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="acceptable_use" name="[01]Acceptable_Use" value="no">No&nbsp;&nbsp;</td>
+<td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="6">By selecting <b>Yes</b>, we agree to the Student Acceptable Use Agreement terms and conditions.</td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<tr class="secheader"><td class="bold" colspan="6">10f. Responsibility for Student</td></tr>
 <tr><td colspan="6">To the best of my (our) knowledge, all the information reported 
   on this registration form is true and correct. I (we) assume full responsibility 
   for my (our) student in all school matters. I (we) will notify the school office 
   immediately if there is a change in any of the information reported on this form.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Responsibility_Signed" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Responsibility_Signed" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="signature" name="[01]Responsibility_Signed" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="signature" name="[01]Responsibility_Signed" value="">No&nbsp;&nbsp;</td>
 <td colspan="3">&nbsp;</td></tr>
 <tr><td colspan="6">By selecting <b>Yes</b>, I (we) agree to the previous statement.</td></tr>
 <tr><td colspan="2">Signatures (typed)</td>
@@ -227,7 +237,7 @@ previous school regarding recommendations for placement.</td></tr>
 <td colspan="4"><input type="text" class="todayifblank" name="[01]Responsibility_Date" value="" size="15"></td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="secheader"><td class="bold" colspan="6">10f. Volunteer Assistance</td></tr>
+<tr class="secheader"><td class="bold" colspan="6">10g. Volunteer Assistance</td></tr>
 <tr><td colspan="6">If you live close to school and feel that, if called, you can 
   offer volunteer assistance during an emergency, check the box below and provide your name, 
   best daytime phone number and expertise that might be used in an emergency.</td></tr>
