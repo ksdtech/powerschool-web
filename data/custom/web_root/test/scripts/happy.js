@@ -65,6 +65,9 @@
           checked_radio = el.filter(':checked');
           has_val = (checked_radio.length != 0);
           val = has_val ? checked_radio.val() : '';
+          if (isFunction(opts.clean)) {
+            val = opts.clean(val);
+          }
         } else {
           // text, password, textarea, or select
           // clean it or trim it

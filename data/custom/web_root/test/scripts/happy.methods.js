@@ -22,7 +22,11 @@ var happy = {
   
   selectorIsEmpty: function(arg) {
     var not_blank = jQuery.grep(jQuery(arg), function(el, i) {
-      return !(jQuery(el).val() === '');
+      var thisEl = jQuery(el);
+      if ((el.type == 'checkbox' || el.type == 'radio') && thisEl.filter(':checked').length == 0) {
+        return false;
+      }
+      return !(thisEl.val() === '');
     });
     return (not_blank.length == 0);
   },
