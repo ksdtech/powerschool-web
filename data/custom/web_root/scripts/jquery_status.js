@@ -1,7 +1,7 @@
 // regform status page
 jQuery(document).ready(function() {
   var enrollment = jQuery("#reg_enroll").val();
-  var not_enrolling = (enrollment != null && enrollment.indexOf("nr-") == 0);
+	var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   if (not_enrolling) { 
     jQuery(".enrolling").hide();
   }

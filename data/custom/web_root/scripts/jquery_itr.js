@@ -46,10 +46,9 @@ genpass_fptrs['generate_h2_number'] = generate_h2_number;
 genpass_fptrs['generate_psst_login'] = generate_psst_login;
 genpass_fptrs['generate_st_login'] = generate_st_login;
 
-
 function on_enrollment_change() {
 	var enrollment = jQuery("#reg_enroll option:selected").val();
-	var not_enrolling = (enrollment != null && enrollment.indexOf("nr-") == 0);
+	var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
 	if (not_enrolling) { 
 		jQuery("tr.enrolling").hide(); 
 		jQuery("tr.not_enrolling").show();
@@ -102,20 +101,20 @@ function bind_login_generators() {
 	}
 }
 
+function onItrFormSubmit() {
+	if (!jQuery("#upd_by").hasClass("disabled")) { set_form_updated(); }  
+}
+
 // intent to return form
 jQuery(document).ready(function() {
-	// do stuff when user submits
-	jQuery("#attSubmitButton").bind("click", function(e) { 
-		if (!jQuery("#upd_by").hasClass("disabled")) { set_form_updated(); }
-	});
-	// change display based on selections
+	// when user submits - now handled by happy.js configuration
+	// do stuff when page is loaded
 	jQuery("#admin_update").bind("click", function() {
 		if (jQuery("#admin_update").attr("checked")) { set_form_updated(); }
 	});
 	jQuery("#entry_check").bind("click", function() { set_entry_dates(1); });
 	jQuery("#reg_enroll").bind("change", function() { on_enrollment_change(); });
 	jQuery("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
-	// do stuff when page is loaded
 	bind_login_generators();
 	jQuery(".private").hide();
 	on_enrollment_change();

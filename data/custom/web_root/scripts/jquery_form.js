@@ -30,14 +30,43 @@ function pack_checklist(obj) {
 	return ret;
 }
 
-function ethn2_allowed() {
-	var primary_ethn = jQuery("#ethnicity option:selected").val();
-	if (primary_ethn == "" || primary_ethn == "999") {
-		jQuery(".ethn2").attr("disabled", "disabled");
-	} else {
-		jQuery(".ethn2").removeAttr("disabled");
-		jQuery("#ethn2_" + primary_ethn).removeAttr("checked").attr("disabled", "disabled");
+function select_one(osel, str) {
+	if (str == "") { return -1; }
+	var opts = osel.options;
+	var olen = opts.length;
+	for (var i = 0; i < olen; i++) {
+		if (opts[i].value == str) {
+			opts[i].selected = true;
+			return i;
+		}
 	}
+	return -1;
+}
+
+function init_multi_select(osel, str) {
+	var count = 0;
+	var a = str.split(/[, \t\r\n]+/);
+	var alen = a.length;
+	for (var j = 0; j < alen; j++) {
+		var val = a[j];
+		if (select_one(osel, val) >= 0) {
+			count = count + 1;
+		}
+	}
+	return count;
+}
+
+function pack_multi_select(osel) {
+	var ret = "";
+	var opts = osel.options;
+	var olen = opts.length;
+	for (var i = 0; i < olen; i++) {
+		if (opts[i].selected && opts[i].value != "") {
+			if (ret != "") { ret = ret + ","; }
+			ret = ret + opts[i].value;
+		}
+	}
+	return ret;
 }
 
 function set_form_updated() {
@@ -46,50 +75,28 @@ function set_form_updated() {
 	return true;
 }
 
+function onRegFormSubmit() {
+	jQuery("select.mselect").each( function() {
+		jQuery("#"+this.id+"_data").val(pack_multi_select(this)); });
+	jQuery(".checklist").each( function() { 
+		pack_checklist(this); });
+	if (!jQuery("#upd_by").hasClass("disabled")) { set_form_updated(); }  
+}
+
 // encode the field type in the class of the input (text field)
 // form should also have three hidden fields with these ids:
 //  #userid (no name) should have a value of ~[x:userid]
 //  #upd_by should use a custom field name like [05]form0_updated_by
 //  #upd_at should use a custom field name like [05]form0_updated_at
 jQuery(document).ready(function() {
-	// do stuff when user submits
-	jQuery("#attSubmitButton").bind("click", function(e) { 
-		jQuery("select.mselect").each( function() {
-			jQuery("#"+this.id+"_data").val(pack_multi_select(this)); });
-		jQuery(".checklist").each( function() { 
-			pack_checklist(this); });
-		if (!jQuery("#upd_by").hasClass("disabled")) { set_form_updated(); }
-	});
-	// format field values for specific input types
+	// when user submits - now handled by happy.js configuration
+	// do stuff when page is loaded
 	jQuery("#admin_update").bind("click", function() {
 		if (jQuery("#admin_update").attr("checked")) { set_form_updated(); }
 	});
-	jQuery(".copyfields").bind("click", function(e) {
-		jQuery("."+jQuery(this).attr("id")).each( function() {
-			var src = "#"+jQuery(this).attr("id")+"_src";
-			jQuery(this).val(jQuery(src).val());
-		});
-	});
-	jQuery("#ethnicity").bind("change", function(e) { ethn2_allowed(); } );
-	jQuery("input.first").bind("blur", function(e) { 
-		this.value = ucfirst(this.value); });
-	jQuery("input.last").bind("blur", function(e) { 
-		this.value = uclastword(this.value); });
-	jQuery("input.street").bind("blur", function(e) { 
-		this.value = ucwords(this.value); });
-	jQuery("input.city").bind("blur", function(e) { 
-		this.value = ucwords(this.value); });
-	jQuery("input.state").bind("blur", function(e) { 
-		this.value = this.value.toUpperCase(); });
-	jQuery("input.email").bind("blur", function(e) { 
-		this.value = this.value.toLowerCase(); });
-	jQuery("input.phone").bind("blur", function(e) { 
-		this.value = na_phone(this.value, "415"); });
-	// do stuff when page is loaded
 	jQuery(".private").hide();
 	jQuery("select.mselect").each( function() {
 		init_multi_select(this, jQuery("#"+this.id+"_data").val()); });
-	ethn2_allowed();
 	jQuery(".checklist").each( function() { init_checklist(this); });
 	// blank contents have &nbsp; in them; how do I search for these?
 	// :contains('&nbsp;') doesn't work

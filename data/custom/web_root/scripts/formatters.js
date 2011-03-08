@@ -60,3 +60,19 @@ function uclastword(str) {
 function ucwords(str) {
 	return str.replace(/^(.)|\s(.)/g, function ($1) { return $1.toUpperCase(); });
 }
+
+function setCAIfBlank(val) {
+  val = jQuery.trim(val);
+  if (val === '') {
+    val = 'CA';
+  } else {
+    val = val.toUpperCase();
+  }
+  return val;
+}
+
+function reformatPhone415(val) {
+  return na_phone(val, '415');
+}
+
+
