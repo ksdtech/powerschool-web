@@ -11,11 +11,11 @@ jQuery(document).ready(function () {
         required: true,
         message: 'Required field.',
       },
-      '.pub_waver_public': {
+      '.pub_waiver_public': {
         required: true,
         message: 'Required field.',
       },
-      '.pub_waver_private': {
+      '.pub_waiver_private': {
         required: true,
         message: 'Required field.',
       },
