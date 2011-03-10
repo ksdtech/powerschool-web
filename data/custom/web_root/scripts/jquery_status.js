@@ -1,14 +1,14 @@
 // regform status page
-jQuery(document).ready(function() {
-  var enrollment = jQuery("#reg_enroll").val();
+jq15(document).ready(function() {
+  var enrollment = jq15("#reg_enroll").val();
 	var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   if (not_enrolling) { 
-    jQuery(".enrolling").hide();
+    jq15(".enrolling").hide();
   }
-  jQuery(".chk_status").each(function() {
-    jQuery(this).bind("click", function() { return false; } );
-    var src = "#" + jQuery(this).attr('id').replace('_status', '_updated_at');
-    if (jQuery(src).val() != "") { jQuery(this).attr("checked", "checked"); }
+  jq15(".chk_status").each(function() {
+    jq15(this).bind("click", function() { return false; } );
+    var src = "#" + jq15(this).attr('id').replace('_status', '_updated_at');
+    if (jq15(src).val() != "") { jq15(this).attr("checked", "checked"); }
   });
 });
 

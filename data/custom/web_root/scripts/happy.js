@@ -8,7 +8,7 @@
     function setDefaultRadio(radio_group, default_radio) {
       var num_checked = radio_group.filter(':checked').length;
       if (num_checked == 0) {
-        jQuery(default_radio).attr('checked', 'checked');
+        jq15(default_radio).attr('checked', 'checked');
       }
     }
     function getError(error) {

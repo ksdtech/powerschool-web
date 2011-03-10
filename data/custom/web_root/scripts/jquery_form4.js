@@ -1,7 +1,7 @@
 function onForm4Submit() {
-  jQuery('.copy_address2').each(function (i) {
+  jq15('.copy_address2').each(function (i) {
     var src_id = this.id.replace(/^mailing2_/, '#home2_');
-    this.value = jQuery(src_id).val();
+    this.value = jq15(src_id).val();
   });
   onRegFormSubmit();
 }
@@ -28,9 +28,9 @@ function home2_phone_test(val) {
 }
 
 // happy.js validations
-jQuery(document).ready(function () {
-  jQuery('#form4').isHappy({
-    // submitButton: jQuery('#attSubmitButton'),
+jq15(document).ready(function () {
+  jq15('#form4').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
     onSubmit: onForm4Submit,
     fields: {
       '#home2_street': {

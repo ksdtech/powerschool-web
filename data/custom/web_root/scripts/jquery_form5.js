@@ -6,9 +6,9 @@ function required_contact_phone(val, arg) {
 }
 
 // happy.js validations
-jQuery(document).ready(function () {
-  jQuery('#form5').isHappy({
-    // submitButton: jQuery('#attSubmitButton'),
+jq15(document).ready(function () {
+  jq15('#form5').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
     fields: {
       '#emerg1_last': {
         required: true,

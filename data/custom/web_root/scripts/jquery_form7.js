@@ -1,7 +1,7 @@
 // happy.js validations
-jQuery(document).ready(function () {
-  jQuery('#form7').isHappy({
-    // submitButton: jQuery('#attSubmitButton'),
+jq15(document).ready(function () {
+  jq15('#form7').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
     fields: {
       '#lang_earliest': {
         required: true,

@@ -21,8 +21,8 @@ var happy = {
   },
   
   selectorIsEmpty: function(arg) {
-    var not_blank = jQuery.grep(jQuery(arg), function(el, i) {
-      var thisEl = jQuery(el);
+    var not_blank = jQuery.grep(jq15(arg), function(el, i) {
+      var thisEl = jq15(el);
       if ((el.type == 'checkbox' || el.type == 'radio') && thisEl.filter(':checked').length == 0) {
         return false;
       }

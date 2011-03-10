@@ -1,7 +1,7 @@
 // happy.js validations
-jQuery(document).ready(function () {
-  jQuery('#form6').isHappy({
-    // submitButton: jQuery('#attSubmitButton'),
+jq15(document).ready(function () {
+  jq15('#form6').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
     fields: {
       '#first_usa_school': {
         required: 'sometimes',

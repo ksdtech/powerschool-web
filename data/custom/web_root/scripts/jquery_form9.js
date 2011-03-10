@@ -1,7 +1,7 @@
 // happy.js validations
-jQuery(document).ready(function () {
-  jQuery('#form9').isHappy({
-    // submitButton: jQuery('#attSubmitButton'),
+jq15(document).ready(function () {
+  jq15('#form9').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
     fields: {
       '.med_treatment': {
         required: true,

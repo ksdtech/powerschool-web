@@ -1,7 +1,7 @@
 // happy.js validations
-jQuery(document).ready(function () {
-  jQuery('#form1').isHappy({
-    // submitButton: jQuery('#attSubmitButton'),
+jq15(document).ready(function () {
+  jq15('#form1').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
     fields: {
       '#reg_enroll': {
         required: true,

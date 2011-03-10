@@ -1,15 +1,15 @@
 function onForm3Submit() {
-  jQuery('.copy_address').each(function (i) {
+  jq15('.copy_address').each(function (i) {
     var src_id = this.id.replace(/^mailing_/, '#');
-    this.value = jQuery(src_id).val();
+    this.value = jq15(src_id).val();
   });
   onRegFormSubmit();
 }
 
 // happy.js validations
-jQuery(document).ready(function () {
-  jQuery('#form3').isHappy({
-    // submitButton: jQuery('#attSubmitButton'),
+jq15(document).ready(function () {
+  jq15('#form3').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
     onSubmit: onForm3Submit,
     fields: {
       '#street': {

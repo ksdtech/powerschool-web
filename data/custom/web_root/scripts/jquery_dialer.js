@@ -100,7 +100,7 @@ function on_contact_change(idx) {
     changed = 1;
   } else {
     for (i = 0; i < idx; i++) {
-      sels[i] = jQuery("#contact_" + (i+1) + " option:selected").val();
+      sels[i] = jq15("#contact_" + (i+1) + " option:selected").val();
       if (sels[i] == "" || sels[i] != init_sels[i]) {
         changed = 1;
       }
@@ -109,15 +109,15 @@ function on_contact_change(idx) {
   if (changed != 0) {
     for (i = idx; i < 3; i++) {
       var options = ParentPhones.get_options(i, sels);
-      jQuery("#contact_" + (i+1)).html(options);
+      jq15("#contact_" + (i+1)).html(options);
     }
   }
   return true;
 }
 
 function set_form_updated() {
-  jQuery("#upd_by").val(jQuery("#userid").val()); 
-  jQuery("#upd_at").val(timestamp_now()); 
+  jq15("#upd_by").val(jq15("#userid").val()); 
+  jq15("#upd_at").val(timestamp_now()); 
   return true;
 }
 
@@ -126,16 +126,16 @@ function set_form_updated() {
 //  #userid (no name) should have a value of ~[x:userid]
 //  #upd_by should use a custom field name like [05]form0_updated_by
 //  #upd_at should use a custom field name like [05]form0_updated_at
-jQuery(document).ready(function() {
+jq15(document).ready(function() {
   // do stuff when user submits
-  jQuery("#attSubmitButton").bind("click", function(e) { 
-    if (!jQuery("#upd_by").hasClass("disabled")) { set_form_updated(); }
+  jq15("#attSubmitButton").bind("click", function(e) { 
+    if (!jq15("#upd_by").hasClass("disabled")) { set_form_updated(); }
   });
   // format field values for specific input types
-  jQuery("#admin_update").bind("click", function() {
-    if (jQuery("#admin_update").attr("checked")) { set_form_updated(); }
+  jq15("#admin_update").bind("click", function() {
+    if (jq15("#admin_update").attr("checked")) { set_form_updated(); }
   });
-  jQuery(".private").hide();
+  jq15(".private").hide();
   // load everything!
   on_contact_change(0);
 });
