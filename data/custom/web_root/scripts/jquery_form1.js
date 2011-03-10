@@ -41,7 +41,7 @@ jq15(document).ready(function () {
       '#reg_exitcomment': { 
         required: 'sometimes',
         test: required_if_transfering,
-        message: 'Please give the name of the school, or type "Don't know'"',
+        message: 'Please give the name of the school, or type \"Don\'t know.\"',
       },
     }
   });
