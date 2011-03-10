@@ -15,61 +15,19 @@ var jq15 = jQuery.noConflict();
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
 ~[wc:guardian_header]
 <div id="content-main">
-
 <h1>Medical Information</h1>
-
-~[if.~(schoolid)=999999]
-<!-- was if.isstudent, but we use student login for secondary parents -->
-
-<!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
-
-<table border="0" cellspacing="0" cellpadding="4">
-<tr>
-<td>Your account does not allow access to this page.</td>
-</tr>
-</table>
-
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-</table>
-<br>
-<!-- end of content of bounding box -->
-
-[else]
+<!-- title -->
 
 <!-- start student content -->
-<!-- pscustom_begin -->  
-<form id="form8" action="~[gpv:actpage].html" method="POST">
-<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
-<!-- pscustom_end -->
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
-<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
-<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
-</tr>
-<tr>
-<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-<td>
+<div id="changes-saved-container">
+</div>
 
-<!-- pscustom_begin -->  
-<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr><td>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
-
+<!-- begin form action -->
+<form id="form8" action="regforms.html" method="post">
+<!-- end form action -->
+<div id="form8-contents" align="center" style="width: 98%">
+<div id="form8-setup" class="box-round group" style="width: 720px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="3" class="bold">9a. Medication - Daily and 72 hour Supply</td></tr>
 <tr><td colspan="3">In order to administer prescription or over-the-counter medication at school, 
 the District requires a medication form, signed by a doctor.  The forms for daily medication 
@@ -91,31 +49,32 @@ contact the District nurse, Becky Gayman, at
 <a href="mailto:bgayman@marin.k12.ca.us">bgayman@marin.k12.ca.us</a></td></tr>
 
 <tr><td class="bold">Does the student take medication at home or at school?</td>
-<td width="75"><input type="radio" name="[01]Requires_Meds" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Requires_Meds" value="">No&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="requires_meds" name="[01]Requires_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="requires_meds" name="[01]Requires_Meds" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr><td class="bold">Will you be providing medication for the student to take at school?</td>
-<td width="75"><input type="radio" name="[01]School_Meds" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]School_Meds" value="">No&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="school_meds" name="[01]School_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="school_meds" name="[01]School_Meds" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr><td class="bold">Will you be providing 72-hour medication to be used in an emergency?</td>
-<td width="75"><input type="radio" name="[01]Emergency_Meds" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Emergency_Meds" value="">No&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="emergency_meds" name="[01]Emergency_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="emergency_meds" name="[01]Emergency_Meds" value="">No&nbsp;&nbsp;</td>
 </tr>
-</table></td></tr>
-
-<tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">9b. Health Insurance and Providers</td></tr>
 <tr><td colspan="4">Select <b>Private Health Insurance</b> for HMO's, PPO's, Kaiser, etc.<br>
-Follow these links to get online information about these insurance programs:
+  Note: Please see the <a href="http://www.marinschools.org/Health/chi.htm">Marin County Office of Education website</a> for information about free
+  and low cost local health
+  insurance programs, including an Interest Form to apply for these programs.<br>
+  Or follow these links to get online information about these insurance programs:
 <ul>
 <li>California Healthy Families - <a target="ksorg" href="http://www.healthyfamilies.ca.gov">http://www.healthyfamilies.ca.gov</a></li>
 <li>CaliforniaKids Healthcare Foundation - <a target="ksorg" href="http://www.californiakids.org">http://www.californiakids.org</a></li>
 <li>Medi-Cal (Calif. Dept. of Health Care Services) - Individuals Page - <a target="ksorg" href="http://www.dhcs.ca.gov/individuals/Pages/default.aspx">http://www.dhcs.ca.gov/individuals/Pages/default.aspx</a></li>
 </ul></td></tr>
 <tr><td width="150" class="bold">Health Insurance Type</td>
-<td width="260"><select name="[01]Health_Ins_Type">
+<td width="260"><select id="health_ins" name="[01]Health_Ins_Type">
   <option value="">Choose...</option>
   <option value="private">Private Health Insurance</option>
   <option value="hfamilies">Healthy Families</option>
@@ -125,26 +84,26 @@ Follow these links to get online information about these insurance programs:
 </select></td>  
 <td width="102" class="bold">Medi-Cal #<br>
   (if Applicable)</td>
-<td width="162"><input type="text" name="[01]Medi_Cal_Num" value="" size="16"></td>
+<td width="162"><input type="text" id="medi_cal_num" name="[01]Medi_Cal_Num" value="" size="16"></td>
 </tr>
 <tr><td class="bold">Preferred Hospital</td>
-<td><input type="text" name="[01]Emergency_Hospital" value="" size="30"></td>
+<td><input type="text" id="emergency_hospital" name="[01]Emergency_Hospital" value="" size="30"></td>
 <td colspan="2">&nbsp;</td>
 </tr>
 <tr><td class="bold">Primary Physician Name</td>
 <td><input type="text" name="[01]Doctor_Name" value="" size="30"></td>
 <td class="bold">Phone</td>
-<td><input class="phone" type="text" name="[01]Doctor_Phone" value="" size="16"></td>
+<td><input id="_phone" type="text" name="[01]Doctor_Phone" value="" size="16"></td>
 </tr>
 <tr><td class="bold">Secondary Physician Name</td>
 <td><input type="text" name="[01]Doctor2_Name" value="" size="30"></td>
 <td class="bold">Phone</td>
-<td><input class="phone" type="text" name="[01]Doctor2_Phone" value="" size="16"></td>
+<td><input id="_phone" type="text" name="[01]Doctor2_Phone" value="" size="16"></td>
 </tr>
 <tr><td class="bold">Dentist Name</td>
 <td><input type="text" name="[01]Dentist_Name" value="" size="30"></td>
 <td class="bold">Phone</td>
-<td><input class="phone" type="text" name="[01]Dentist_Phone" value="" size="16"></td>
+<td><input id="_phone" type="text" name="[01]Dentist_Phone" value="" size="16"></td>
 </tr>
 <tr><td class="bold">Health Plan/Group Name</td>
 <td><input type="text" name="[01]Medical_Carrier" value="" size="30"></td>
@@ -162,146 +121,126 @@ Follow these links to get online information about these insurance programs:
 <td><input type="text" name="[01]Optical_Policy" value="" size="16"></td>
 </tr>
 </table>
-</td></tr>
-
-<tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="5" class="bold">9c. Vision and Hearing</td></tr>
 <tr><td width="200" class="bold">Does the student wear eyeglasses or contact lenses?</td>
 <td width="100">&nbsp;</td>
-<td width="75"><input type="radio" name="[01]Eyeglasses" value="1">Yes&nbsp;&nbsp;</td>
-<td width="75"><input type="radio" name="[01]Eyeglasses" value="">No&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="eyeglasses" id="eyeglasses_yes" name="[01]Eyeglasses" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="eyeglasses" name="[01]Eyeglasses" value="">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr><td class="bold">If so, when are they to be worn?</td>
-<td><input type="checkbox" name="[01]Eyeglasses_Board" value="1">Board work</td>
-<td><input type="checkbox" name="[01]Eyeglasses_Reading" value="1">Reading&nbsp;</td>
-<td colspan="2"><input type="checkbox" name="[01]Eyeglasses_Always" value="1">All the time&nbsp;</td>
+<td><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Board" value="1">Board work</td>
+<td><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Reading" value="1">Reading&nbsp;</td>
+<td colspan="2"><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Always" value="1">All the time&nbsp;</td>
 </tr>
 <tr><td class="bold">Date of last eye exam?</td>
-<td colspan="4"><input type="text" name="[01]h_Last_Eye_Exam" value="" size="16"></td>
+<td colspan="4"><input type="text" id="last_eye_exam" name="[01]h_Last_Eye_Exam" value="" size="16"></td>
 </tr>
 <tr><td class="bold">Does the student wear a hearing aid?</td>
 <td>&nbsp;</td>
-<td><input type="radio" name="[01]h_Hearing_Aid" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]h_Hearing_Aid" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="hearing_aid" name="[01]h_Hearing_Aid" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="hearing_aid" name="[01]h_Hearing_Aid" value="">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 </table>
-</td></tr>
-
-<tr><td>
-<table width="674" border="0" cellspacing="0" cellpadding="2">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="7" class="bold">Medical Conditions</td></tr>
 <tr><td colspan="8">Does the student have any of the following conditions?</td></tr>
 <tr><td width="150" class="bold">9d. Severe Allergies?</td>
-<td width="75"><input type="radio" name="[01]Allergies_Severe" value="1">Yes&nbsp;&nbsp;</td>
-<td width="75"><input type="radio" name="[01]Allergies_Severe" value="">No&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="allergies" id="allergies_yes" name="[01]Allergies_Severe" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="allergies" name="[01]Allergies_Severe" value="">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td>
 <td width="130" class="bold">Allergy treatment:</td>
-<td width="75"><input type="checkbox" name="[01]Allergies_Epi_Pen" value="1">Epi-Pen&nbsp;</td>
-<td><input type="checkbox" name="[01]Allergies_Benadryl" value="1">Benadryl&nbsp;</td>
+<td width="75"><input type="checkbox" class="allergies_chk" name="[01]Allergies_Epi_Pen" value="1">Epi-Pen&nbsp;</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Benadryl" value="1">Benadryl&nbsp;</td>
 </tr>
 <tr><td class="bold">Allergic To:</td>
-<td><input type="checkbox" name="[01]Allergies_Food" value="1">Food&nbsp;</td>
-<td colspan="3"><input type="checkbox" name="[01]Allergies_Insects" value="">Bees or stinging insects&nbsp;</td>
-<td><input type="checkbox" name="[01]Allergies_Drugs" value="1">Drugs&nbsp;</td>
-<td><input type="checkbox" name="[01]Allergies_Other" value="1">Other&nbsp;</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Food" value="1">Food&nbsp;</td>
+<td colspan="3"><input type="checkbox" class="allergies_chk" name="[01]Allergies_Insects" value="1">Bees or stinging insects&nbsp;</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Drugs" value="1">Drugs&nbsp;</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Other" value="1">Other&nbsp;</td>
 </tr>
 <tr valign="top"><td colspan="2" class="bold">Description of Allergies:</td>
-<td colspan="5"><textarea name="[01]Allergies" wrap="soft" cols="40" rows="3"></textarea></td>
+<td colspan="5"><textarea class="allergies_chk" id="allergies_txt" name="[01]Allergies" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
 <tr><td class="bold">9e. Asthma?</td>
-<td><input type="radio" name="[01]Asthma" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Asthma" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="asthma" id="asthma_yes" name="[01]Asthma" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="asthma" name="[01]Asthma" value="">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td>
 <td class="bold">Asthma treatment:</td>
-<td><input type="checkbox" name="[01]Asthma_Inhaler" value="1">Inhaler&nbsp;</td>
-<td><input type="checkbox" name="[01]Asthma_Medication" value="1">Daily medication&nbsp;</td>
+<td><input type="checkbox" class="asthma_chk" name="[01]Asthma_Inhaler" value="1">Inhaler&nbsp;</td>
+<td><input type="checkbox" class="asthma_chk" name="[01]Asthma_Medication" value="1">Daily medication&nbsp;</td>
 </tr>
 <tr><td class="bold">9f. Seizures?</td>
-<td><input type="radio" name="[01]Seizures" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Seizures" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="seizures" id="seizures_yes" name="[01]Seizures" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="seizures" name="[01]Seizures" value="">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td>
 <td class="bold">Daily medication?</td>
-<td><input type="radio" name="[01]Seizures_Medication" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Seizures_Medication" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="seizures_chk" name="[01]Seizures_Medication" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="seizures_chk" name="[01]Seizures_Medication" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr><td class="bold">9g. Diabetes?</td>
-<td><input type="radio" name="[01]Diabetes" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Diabetes" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="diabetes" id="diabetes_yes" name="[01]Diabetes" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="diabetes" name="[01]Diabetes" value="">No&nbsp;&nbsp;</td>
 <td>&nbsp;</td>
 <td class="bold">Insulin dependent?</td>
-<td><input type="radio" name="[01]Diabetes_Insulin" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Diabetes_Insulin" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="diabetes_chk" name="[01]Diabetes_Insulin" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="diabetes_chk" name="[01]Diabetes_Insulin" value="">No&nbsp;&nbsp;</td>
 </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td class="bold" colspan="7">Other Medical Conditions</td></tr>
 <tr><td colspan="7">Check any applicable boxes and provide details in the text fields.</td></tr>
 <tr><td colspan="5" class="bold">9h. Behavior problems</td>
-<td><input type="radio" name="[01]Behavior_Problems" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Behavior_Problems" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="behavior" id="behavior_yes" name="[01]Behavior_Problems" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="behavior" name="[01]Behavior_Problems" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr valign="top"><td colspan="2" class="bold">Description:</td>
-<td colspan="5"><textarea name="[01]Behavior_Issues" wrap="soft" cols="40" rows="3"></textarea></td>
+<td colspan="5"><textarea class="behavior_chk" id="behavior_txt" name="[01]Behavior_Issues" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
 <tr><td colspan="5" class="bold">9i. Movement limitations</td>
-<td><input type="radio" name="[01]Movement_Limits" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Movement_Limits" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="movement" id="movement_yes" name="[01]Movement_Limits" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="movement" name="[01]Movement_Limits" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr valign="top"><td colspan="2" class="bold">Description:</td>
-<td colspan="5"><textarea name="[01]Movement_Limits_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+<td colspan="5"><textarea class="movement_chk" id="movement_txt" name="[01]Movement_Limits_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
 <tr><td colspan="5" class="bold">9j. Other conditions</td>
-<td><input type="radio" name="[01]Medical_Other" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Medical_Other" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="med_other" id="med_other_yes" name="[01]Medical_Other" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="med_other" name="[01]Medical_Other" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr valign="top"><td colspan="2" class="bold">Description:</td>
-<td colspan="5"><textarea name="[01]Medical_Considerations" wrap="soft" cols="40" rows="3"></textarea></td>
+<td colspan="5"><textarea class="med_other_chk" id="med_other_txt" name="[01]Medical_Considerations" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
 <tr><td colspan="5" class="bold">9k. Recent illness, hospitalization or surgery</td>
-<td><input type="radio" name="[01]Illness_Recent" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Illness_Recent" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="illness" id="illness_yes" name="[01]Illness_Recent" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="illness" name="[01]Illness_Recent" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr valign="top"><td colspan="2" class="bold">Dates and Description:</td>
-<td colspan="5"><textarea name="[01]Illness_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+<td colspan="5"><textarea class="illness_chk" id="illness_txt" name="[01]Illness_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
 <tr><td colspan="5" class="bold">8l. Medical condition that might require care or accommodation at school</td>
-<td><input type="radio" name="[01]Medical_Accom" value="1">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" name="[01]Medical_Accom" value="">No&nbsp;&nbsp;</td>
+<td><input type="radio" class="med_accom" id="med_accom_yes" name="[01]Medical_Accom" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="med_accom" name="[01]Medical_Accom" value="">No&nbsp;&nbsp;</td>
 </tr>
 <tr valign="top"><td colspan="2" class="bold">Description and Accommodations:</td>
-<td colspan="5"><textarea name="[01]Medical_Accom_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
+<td colspan="5"><textarea class="med_accom_chk" id="med_accom_txt" name="[01]Medical_Accom_Desc" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
-</table><br><br>
-</td></tr>
-
-<tr class="private"><td class="bold">Last updated at 
+<tr class="private"><td colspan="7" class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form8_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form8_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
 </tr>
-</table>
-<!-- pscustom_end -->
 
-</td>
-<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-</tr>
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
-<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
-<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
-</tr>
-<tr>
-[/if]
 ~[if.~(wm_status)=1]
-<td colspan="3" align="right">You do not have permission to modify data on this page.</td>
+<tr><td colspan="7" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td>
+<tr><td colspan="7" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
 [/if]
-~[if.~(schoolid)#999999]
-</tr>
 </table>
+</div>
+</div>
 </form>
-[/if]
 
 <!-- end student content -->
 </div>
