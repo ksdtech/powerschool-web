@@ -37,7 +37,8 @@ jq15(document).ready(function () {
       '#signed_date': {
         required: true,
         clean: todayIfBlank,
-        test: 'Required field. Format as M/D/YYYY.'
+        test: happy.date,
+        message: 'Required field. Format as M/D/YYYY.'
       },
     }
   });
