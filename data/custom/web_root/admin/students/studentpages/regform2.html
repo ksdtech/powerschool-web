@@ -425,16 +425,20 @@ var jq15 = jQuery.noConflict();
 <tr><td colspan="3">Are there any <b>court-mandated</b> custody or visitation orders limiting access to this student?
 If you answer <b>Yes</b>, you must submit paper copies of the legal documents to the school office.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]Custody_Orders" value="1">Yes&nbsp;&nbsp;</td>
-<td width="50%"><input type="radio" name="[01]Custody_Orders" value="">No&nbsp;&nbsp;</td></tr>
+<td><input name="[01]Custody_Orders" type="radio" value="1">Yes&nbsp;&nbsp;</td>
+<td width="50%"><input name="[01]Custody_Orders" type="radio" value="">No&nbsp;&nbsp;</td></tr>
 <tr><td colspan="3">&nbsp;</td>
 
 <tr class="secheader"><td colspan="3" class="bold">2c. Siblings</td></tr>
 <tr><td>&nbsp;</td><td class="bold">Name (Last, First)</td><td class="bold">Birth Date</td></tr>
-<tr><td class="bold">Sibling 1</td><td><input type="text" name="[01]Sibling1_Name" value="" size="30" maxlength="50"></td><td><input type="text" name="[01]Sibling1_DOB" value="" size="16"></td></tr>
-<tr><td class="bold">Sibling 2</td><td><input type="text" name="[01]Sibling2_Name" value="" size="30" maxlength="50"></td><td><input type="text" name="[01]Sibling2_DOB" value="" size="16"></td></tr>
-<tr><td class="bold">Sibling 3</td><td><input type="text" name="[01]Sibling3_Name" value="" size="30" maxlength="50"></td><td><input type="text" name="[01]Sibling3_DOB" value="" size="16"></td></tr>
-<tr><td class="bold">Sibling 4</td><td><input type="text" name="[01]Sibling4_Name" value="" size="30" maxlength="50"></td><td><input type="text" name="[01]Sibling4_DOB" value="" size="16"></td></tr>
+<tr><td class="bold">Sibling 1</td><td><input type="text" name="[01]Sibling1_Name" value="" size="30" maxlength="50"></td>
+  <td><input type="text" id="sibling1_dob" name="[01]Sibling1_DOB" value="" size="16"></td></tr>
+<tr><td class="bold">Sibling 2</td><td><input type="text" name="[01]Sibling2_Name" value="" size="30" maxlength="50"></td>
+  <td><input type="text" id="sibling2_dob" name="[01]Sibling2_DOB" value="" size="16"></td></tr>
+<tr><td class="bold">Sibling 3</td><td><input type="text" name="[01]Sibling3_Name" value="" size="30" maxlength="50"></td>
+  <td><input type="text" id="sibling3_dob" name="[01]Sibling3_DOB" value="" size="16"></td></tr>
+<tr><td class="bold">Sibling 4</td><td><input type="text" name="[01]Sibling4_Name" value="" size="30" maxlength="50"></td>
+  <td><input type="text" id="sibling4_dob" name="[01]Sibling4_DOB" value="" size="16"></td></tr>
 </table><br><br>
 </td></tr>
 
