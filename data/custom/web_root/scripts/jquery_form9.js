@@ -30,7 +30,11 @@ jq15(document).ready(function () {
         required: true,
         message: 'Required field.',
       },
-      '.signature': {
+      '.responsibility': {
+        required: true,
+        message: 'Required field.',
+      },
+      '#signature': {
         required: true,
         message: 'Required field.',
       },
