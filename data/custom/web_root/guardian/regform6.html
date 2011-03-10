@@ -12,69 +12,25 @@ var jq15 = jQuery.noConflict();
 </script>
 <script src="http://ps.kentfieldschools.org/scripts/fmt_date.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/formatters.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/happy.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/happy.methods.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form6.js" type="text/javascript"></script>
 ~[wc:guardian_header]
 <div id="content-main">
-
-<!-- start of title and student content -->
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr>
-<td background="/images/transparent.gif">
-<br>
-
 <h1>Previous School and Demographics</h1>
-
-~[if.~(schoolid)=999999]
-<!-- was if.isstudent, but we use student login for secondary parents -->
-
-<!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
-
-<table border="0" cellspacing="0" cellpadding="4">
-<tr>
-<td>Your account does not allow access to this page.</td>
-</tr>
-</table>
-
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-</table>
-<br>
-<!-- end of content of bounding box -->
-
-[else]
+<!-- title -->
 
 <!-- start student content -->
-<!-- pscustom_begin -->
-<form id="form6" action="~[gpv:actpage].html" method="POST">
-<table width="700" cellpadding="0" cellspacing="0" border="0" align="center">
-<!-- pscustom_end -->
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
-<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
-<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
-</tr>
-<tr>
-<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-<td>
+<div id="changes-saved-container">
+</div>
 
-<!-- pscustom_begin -->  
-<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr><td>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<!-- begin form action -->
+<form id="form6" action="regforms.html" method="post">
+<!-- end form action -->
+<div id="form6-contents" align="center" style="width: 98%">
+<div id="form6-setup" class="box-round group" style="width: 720px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">6a. Previous School Enrollment</td></tr>
 <tr><td colspan="2" class="bold">Name of Previous School (if applicable)</td>
 <td class="bold">Street</td>
@@ -86,19 +42,18 @@ var jq15 = jQuery.noConflict();
 <td colspan="3"><input type="text" name="[01]Previous_School_Phone" value="" size="16"></td></tr>
 <tr><td class="bold">Last Grade Level</td>
 <td colspan="3"><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10"></td></tr>
-<tr><td colspan="2" class="bold">Date student first enrolled in a U.S. school</td>
-<td colspan="2"><input type="text" name="[01]CA_FirstUSASchooling" value="" size="16"></td>
+<tr><td colspan="2" class="bold">Date student first enrolled in a U.S. school<br/>
+  (Note: leave field blank if a Kentfield school is the first U.S. school)</td>
+<td colspan="2"><input type="text" id="first_usa_school" name="[01]CA_FirstUSASchooling" value="" size="16"></td>
 <tr><td class="bold" colspan="2"><tr><td class="bold" colspan="2">Has student been enrolled in U.S. schools<br>for a total of less than 3 years?</td>
-<td colspan="2"><input type="radio" name="[01]CA_ImmigrantFunding" value="">No&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="[01]CA_ImmigrantFunding" value="1">Yes</td></tr>
-</table><br>
-<br></td></tr>
-
-<tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<td colspan="2"><input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="">No&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="1">Yes</td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td class="bold">6b. State Required Demographics: Ethnicity</td></tr>
 <tr><td>Is the student Hispanic or Latino?</td></tr>
-<tr><td><input type="radio" name="[01]FedEthnicity" value="1">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="[01]FedEthnicity" value="0">No</td></tr>
-
+<tr><td><input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="1">Yes&nbsp;&nbsp;&nbsp;<input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="0">No</td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td class="bold">6c. State Required Demographics: Race</td></tr>
 <tr><td>The previous question was about <b>ethnicity</b>, not race.  No matter what you selected above, please continue to answer the following by marking one or more boxes to indicate what you consider your child's racial makeup to be.<br><br>What is your child's <b>race?</b> Please check up to five categories from the list below:</td></tr>
 <tr><td>
@@ -107,14 +62,11 @@ var jq15 = jQuery.noConflict();
 ~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
 	</td>
 </tr>
-</table><br>
-<br></td></tr>
-
-<tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td class="bold">6d. State Required Demographics: Parent Education</td></tr>
 <tr><td>Please select the educational level of the student's <b>most educated parent</b> from the following list:</td><tr>
-<tr><td valign="bottom"><select name="[01]CA_ParentEd">
+<tr><td valign="bottom"><select id="parent_edu" name="[01]CA_ParentEd">
 <option value="">Select One:</option>
 <option value="14">Not a High School Graduate</option>
 <option value="13">High School Graduate</option>
@@ -123,37 +75,20 @@ var jq15 = jQuery.noConflict();
 <option value="10">Graduate School</option>
 <option value="15">Decline to State or Unknown</option>
 </select></td></tr>
-</table><br>
-<br>
-</td></tr>
-
 <tr class="private"><td class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form6_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form6_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
 </tr>
-</table>
-<!-- pscustom_end -->
 
-</td>
-<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-</tr>
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
-<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
-<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
-</tr>
-<tr>
-[/if]
 ~[if.~(wm_status)=1]
-<td colspan="3" align="right">You do not have permission to modify data on this page.</td>
+<tr><td align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td>
+<tr><td align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
 [/if]
-~[if.~(schoolid)#999999]
-</tr>
 </table>
+</div>
+</div>
 </form>
-[/if]
 
 <!-- end student content -->
 </div>
