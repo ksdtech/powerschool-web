@@ -17,21 +17,19 @@ var jq15 = jQuery.noConflict();
 <div id="content-main">
 
 <!-- start student content -->
-<h1>>Online Registration Forms</h1>
+<h1>Online Registration Forms</h1>
+<!-- title -->
 
-<table width="700" cellpadding="0" cellspacing="0" border="0" align="center">
-<!-- pscustom_end -->
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
-<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
-<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
-</tr>
-<tr>
-<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-<td>
+<!-- start student content -->
+<div id="changes-saved-container">
+</div>
 
-<!-- pscustom_begin -->
-<form id="formc" action="regforms.html" method="POST">
+<!-- begin form action -->
+<form id="formc" action="regforms.html" method="post">
+<!-- end form action -->
+<div id="formc-contents" align="center" style="width: 98%">
+<div id="formc-setup" class="box-round group" style="width: 720px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <input type="hidden" id="reg_enroll" name="[01]reg_will_attend" value="">
 <input type="hidden" id="form1_updated_at" name="[01]form1_updated_at" value="">
 <input type="hidden" id="form2_updated_at" name="[01]form2_updated_at" value="">
@@ -44,8 +42,6 @@ var jq15 = jQuery.noConflict();
 <input type="hidden" id="form7_updated_at" name="[01]form7_updated_at" value="">
 <input type="hidden" id="form8_updated_at" name="[01]form8_updated_at" value="">
 <input type="hidden" id="form9_updated_at" name="[01]form9_updated_at" value="">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-
 <tr class="secheader"><td class="bold">Welcome</td></tr>
 <tr><td>Welcome to the Kentfield School District 
   online registration and contact information system. The
@@ -60,11 +56,69 @@ confidential information you provide will be used by the school in many ways.  F
   to pick up your children in case of illness or emergency.</li>
 <li><b>Medical information</b> is used by the school nurse to 
   insure your child receives proper health care.</li></ul></td></tr>
-  
+
+<tr class="secheader"><td class="bold"><a name="reg_current">Required Documents for Current Students</a></td></tr>
+<tr><td>The complete list of required documents for students returning to Bacich or Kent
+is as follows:
+<ol>
+<li>All pages (links above) of the Online District Registration Form completely filled out and 
+  updated where necessary</li>
+<li>Signed Proof of Residency Affadavit and documentation, for incoming 5th 
+  grade students (see <a href="regform3.html?actpage=regforms">Page 3</a> for more information)</li>
+<li><a href="">Proof of Immunization</a> (including Tdap booster for incoming 
+  7th and 8th grade students)</li>
+<li>Authorization to Administer Medication and 72-Hour Medication Forms, 
+  if applicable (must be signed by a physician; 
+  <a href="regform8.html?actpage=regforms">see Page 8 for more information</a>)</li>
+
+</ul></td></tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr class="secheader"><td class="bold"><a name="reg_new">Required Documents for New Students</a></td></tr>
+<tr><td>Parents of new students entering the District must provide these items to the school office:
+<ol>
+  <li>All pages (links above) of the Online District Registration Form completely filled out and 
+    updated where necessary</li>
+  <li>Copy of student's birth certificate (or passport or baptismal certificate)</li>
+  <li>Signed Proof of Residency Affadavit and documentation, if required 
+    (see <a href="regform3.html?actpage=regforms">Page 3</a> for more information)</li>
+<li>(<a target="ksorg" 
+  href="http://www.marinschools.org/Health/Resources/SchlEntryHlthExm99.pdf">"Health Exam for School Entry"</a>), 
+signed by a physician.  This form may be downloaded from the link above, or 
+picked up at the school office.</li>
+<li><a href="">Proof of Immunization</a> (including Tdap booster for 
+  incoming 7th and 8th grade students)</li>
+<li>Authorization to Administer Medication and 72-Hour Medication Forms, 
+  if applicable (must be signed by a physician; 
+  <a href="regform8.html?actpage=regforms">see Page 8 for more information</a>)</li>
+<li>Request for Records from Previous School (available from the school office)</li>
+<li>All other information you wish the school to know about your child</li>
+</ol>
+Present these documents to the Bacich or Kent School offices during business
+hours.  If the school offices are closed for vacation, you may go to the 
+District office, located at 750 College Avenue in Kentfield. 
+If you cannot appear in person because you currently live outside of the
+area, or cannot provide the required documents, please speak with
+<ul>
+<li>Bacich School Office, at (415) 925-2220,</li>
+<li>Kent School Office, at (415) 458-5970, or</li>
+<li>District Office, at (415) 458-5130.</li>
+</ul>
+</td></tr>
+<tr><td><b>For Students entering Kent School:</b> In order to create the 
+class schedule for new students at Kent School, parents must schedule 
+Math and Language Arts placement tests with the Kent School Office 
+(see phone number above) as soon as possible.</td></tr>
+
 <tr class="secheader"><td class="bold">Instructions</td></tr>
 <tr><td>Click on the blue links below to go to each of the nine pages of the
 registration form.  Please make sure you complete all pages.  As you complete a page, 
-  remember to click the <b>Submit</b> button at the bottom of the page.  
+  remember to click the <b>Submit</b> button at the bottom of the page. <br><br>
+  <b>New for 2011:</b> If you do not fill in required fields, or do not
+  format the fields as required, <span style="color:red; font-weight:bold">red prompt(s)</span> 
+  will appear in front of the required field(s). Your data will not be 
+  saved until all errors on the page have been corrected, and the <b>Submit</b>
+  button has been clicked again.<br><br>
   After each page of the form is submitted, the system will bring you here and  
   a check mark will appear in the box next to the name of the page to 
   indicate that it has been completed.<br><br>
@@ -84,56 +138,12 @@ icon in the icon banner above.</td></tr>
 <tr><td>&nbsp;</td></tr>
 <tr><td><b>Note:</b> Only Page 1 is required for students who are not returning to Kent or Bacich.
   Pages 1 through 9 must be completed for new or returning students.</td>
-<tr><td>&nbsp;</td></tr>
-
-<tr class="secheader"><td class="bold"><a name="reg_current">Required Documents for Current Students</td></tr>
-<tr><td>The complete list of required documents for students returning to Bacich or Kent
-is as follows:
-<ul>
-<li>All pages (links above) of the Online District Registration Form completely filled out and 
-  updated where necessary</li>
-<li>Signed Proof of Residency Affadavit and documentation, if required (see <a href="regform3.html?actpage=regforms">Page 3</a> for more information)</li>
-<li>Authorization to Administer Medication and 72-Hour Medication Forms, if applicable (must be signed by a physician; <a href="regform8.html?actpage=regforms">see Page 8 for more information</a>)</li>
-</ul></td></tr>
-<tr><td>&nbsp;</td></tr>
-
-<tr class="secheader"><td class="bold"><a name="#reg_new">Required Documents for New Students</td></tr>
-<tr><td>In addition to the items listed in <b>Required Documents for Current Students</b>, above,
-  parents of new students entering the District must also provide these items to the school office:
-<ul>
-<li>Copy of student's birth certificate (or passport or baptismal certificate)</li>
-<li>Immunization record 
-(<a target="ksorg" href="http://www.marinschools.org/Health/Resources/SchlEntryHlthExm99.pdf">"Health Exam for School Entry"</a>), 
-signed by a physician.  This form may be downloaded from the link above, or 
-picked up at the school office.</li>
-<li>Request for Records from Previous School (available from the school office)</li>
-<li>All other information you wish the school to know about your child</li>
-</ul>
-Present these documents to the Bacich or Kent School offices during business
-hours.  If the school offices are closed for vacation, you may go to the District office, located at 750 College Avenue in Kentfield. 
-If you cannot appear in person because you currently live outside of the
-area, or cannot provide the required documents, please speak with
-<ul>
-<li>Bacich School Office, at (415) 925-2220,</li>
-<li>Kent School Office, at (415) 458-5970, or</li>
-<li>District Office, at (415) 458-5130.</li>
-</ul>
-</td></tr>
-<tr><td><b>For Students entering Kent School:</b> In order to create the class schedule for new students at Kent School, parents must schedule 
-Math and Language Arts placement tests with the Kent School Office (see phone number above) as soon as possible.</td></tr>
-</table>
-<!-- pscustom_end -->
-
-</td>
-<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-</tr>
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
-<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
-<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
 </tr>
 </table>
+</div>
+</div>
 </form>
+
 <!-- end student content -->
 </div>
 
