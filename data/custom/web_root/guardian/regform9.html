@@ -152,18 +152,16 @@ previous school regarding recommendations for placement.</td></tr>
 <input type="text" id="upd_at" name="[01]form9_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form9_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
 </tr>
-<tr><td colspan="6" align="right"><input type="hidden" name="ac" value="autosendupdate">
-<!-- begin ~[submitbutton] -->
-<input type="hidden" name="ac" value="autosendupdate">
-<input style="border: none; width: 77px; height: 27px;" type="image" src="/images/btn_submit.gif"  alt="submit"  id="attSubmitButton">  
-<!-- end ~[submitbutton] -->
-</td>
-</tr>
+
+~[if.~(wm_status)=1]
+<tr><td colspan="6" align="right">You do not have permission to modify data on this page.</td></tr>
+[else]
+<tr><td colspan="6" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+[/if]
 </table>
 </div>
 </div>
 </form>
-
 <!-- end student content -->
 </div>
 
