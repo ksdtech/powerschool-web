@@ -12,62 +12,25 @@ var jq15 = jQuery.noConflict();
 </script>
 <script src="http://ps.kentfieldschools.org/scripts/fmt_date.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/formatters.js" type="text/javascript"></script>
-<script src="http://ps.kentfieldschools.org/scripts/jquery_itr.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/happy.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/happy.methods.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form2.js" type="text/javascript"></script>
 ~[wc:guardian_header]
 <div id="content-main">
-
-<h1>>Name, Birth and Custody Information</h1>
-
-~[if.~(schoolid)=999999]
-<!-- was if.isstudent, but we use student login for secondary parents -->
-
-<!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
-
-<table border="0" cellspacing="0" cellpadding="4">
-<tr>
-<td>Your account does not allow access to this page.</td>
-</tr>
-</table>
-
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-</table>
-<br>
-<!-- end of content of bounding box -->
-
-[else]
+<h1>Name, Birth and Custody Information</h1>
+<!-- title -->
 
 <!-- start student content -->
-<!-- pscustom_begin -->  
-<form id="form2" action="~[gpv:actpage].html" method="POST">
-<table width="700" cellpadding="0" cellspacing="0" border="0" align="center">
-<!-- pscustom_end -->
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
-<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
-<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
-</tr>
-<tr>
-<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-<td>
+<div id="changes-saved-container">
+</div>
 
-<!-- pscustom_begin -->  
-<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2" align="left">
+<!-- begin form action -->
+<form id="form2" action="regforms.html" method="post">
+<!-- end form action -->
+<div id="form2-contents" align="center" style="width: 98%">
+<div id="form2-setup" class="box-round group" style="width: 720px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr><td colspan="3" class="bold">Student's Legal Name</td></tr>
 <tr><td colspan="3"><b>Note:</b>  The Student's Legal Name must match the
   name on the student's legal documentation (birth certificate or passport).
@@ -433,12 +396,8 @@ var jq15 = jQuery.noConflict();
 <option value="ZW">Zimbabwe</option>
 <option value="ZZ">Unspecified or Unknown</option>
 </select></td></tr>
-<tr><td colspan="3">&nbsp;</td></tr>
 </table>
-</td></tr>
-
-<tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="3" class="bold">2b. Custody Information</td></tr>
 <tr><td class="bold">Student lives with</td><td colspan="2"><select id="lives_with_rel" name="[01]Lives_With_Rel">
 <option value="">Choose:</option>
@@ -450,10 +409,10 @@ var jq15 = jQuery.noConflict();
 <tr><td colspan="3">Are there any <b>court-mandated</b> custody or visitation orders limiting access to this student?
 If you answer <b>Yes</b>, you must submit paper copies of the legal documents to the school office.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input type="radio" class="custody_orders" name="[01]Custody_Orders" value="1">Yes&nbsp;&nbsp;</td>
-<td width="50%"><input type="radio" class="custody_orders" name="[01]Custody_Orders" value="">No&nbsp;&nbsp;</td></tr>
-<tr><td colspan="3">&nbsp;</td>
-
+<td><input type="radio" id="co_yes" class="custody_orders" name="[01]Custody_Orders" value="1">Yes&nbsp;&nbsp;</td>
+<td width="50%"><input type="radio" id="co_no" class="custody_orders" name="[01]Custody_Orders" value="">No&nbsp;&nbsp;</td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="3" class="bold">2c. Siblings</td></tr>
 <tr><td colspan="3">Please enter the first name and birthdate of any children in your 
   family who you intend to send to Bacich or Kent in the future.</td></tr>
@@ -462,36 +421,20 @@ If you answer <b>Yes</b>, you must submit paper copies of the legal documents to
 <tr><td class="bold">Sibling 2</td><td><input type="text" name="[01]Sibling2_Name" value="" size="30" maxlength="50"></td><td><input type="text" name="[01]Sibling2_DOB" value="" size="16"></td></tr>
 <tr><td class="bold">Sibling 3</td><td><input type="text" name="[01]Sibling3_Name" value="" size="30" maxlength="50"></td><td><input type="text" name="[01]Sibling3_DOB" value="" size="16"></td></tr>
 <tr><td class="bold">Sibling 4</td><td><input type="text" name="[01]Sibling4_Name" value="" size="30" maxlength="50"></td><td><input type="text" name="[01]Sibling4_DOB" value="" size="16"></td></tr>
-</table><br><br>
-</td></tr>
-
-<tr class="private"><td class="bold">Last updated at 
+<tr class="private"><td colspan="3" class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form2_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form2_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
 </tr>
-</table>
-<!-- pscustom_end -->
 
-</td>
-<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-</tr>
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
-<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
-<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
-</tr>
-<tr>
-[/if]
 ~[if.~(wm_status)=1]
-<td colspan="3" align="right">You do not have permission to modify data on this page.</td>
+<tr><td colspan="3" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td>
+<tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
 [/if]
-~[if.~(schoolid)#999999]
-</tr>
 </table>
+</div>
+</div>
 </form>
-[/if]
 
 <!-- end student content -->
 </div>
