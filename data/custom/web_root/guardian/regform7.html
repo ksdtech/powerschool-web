@@ -12,63 +12,25 @@ var jq15 = jQuery.noConflict();
 </script>
 <script src="http://ps.kentfieldschools.org/scripts/fmt_date.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/formatters.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/happy.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/happy.methods.js" type="text/javascript"></script>
 <script src="http://ps.kentfieldschools.org/scripts/jquery_form.js" type="text/javascript"></script>
+<script src="http://ps.kentfieldschools.org/scripts/jquery_form8.js" type="text/javascript"></script>
 ~[wc:guardian_header]
 <div id="content-main">
-
-<h1>>Home Language, Programs and Services</h1>
-
-~[if.~(schoolid)=999999]
-<!-- was if.isstudent, but we use student login for secondary parents -->
-
-<!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
-
-<table border="0" cellspacing="0" cellpadding="4">
-<tr>
-<td>Your account does not allow access to this page.</td>
-</tr>
-</table>
-
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-</table>
-<br>
-<!-- end of content of bounding box -->
-
-[else]
+<h1>Home Language, Programs and Services</h1>
+<!-- title -->
 
 <!-- start student content -->
-<!-- pscustom_begin -->
-<form id="form7" action="~[gpv:actpage].html" method="POST">
-<table width="700" cellpadding="0" cellspacing="0" border="0" align="center">
-<!-- pscustom_end -->
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_top_left.gif" width="20" height="9"></td>
-<td background="/images/box_white_top_bg.gif"><img src="/images/spacer.gif" width="1" height="9"></td>
-<td width="20" valign="top"><img src="/images/box_white_top_right.gif" width="20" height="9"></td>
-</tr>
-<tr>
-<td width="20" valign="top" background="/images/box_white_lft_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-<td>
+<div id="changes-saved-container">
+</div>
 
-<!-- pscustom_begin -->  
-<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr><td>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<!-- begin form action -->
+<form id="form7" action="regforms.html" method="post">
+<!-- end form action -->
+<div id="form7-contents" align="center" style="width: 98%">
+<div id="form7-setup" class="box-round group" style="width: 720px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="2" class="bold">7. Home Language Survey</td></tr>
 <tr><td colspan="2">The California Education Code contains legal requirements 
 which direct schools to determine the language(s) spoken in the home of each 
@@ -80,7 +42,7 @@ below as accurately as possible.  Do not leave any of questions 7a through 7d
 unanswered.
 </td></tr>
 <tr><td>7a. Which language did your child learn when he/she first began to talk?</td>
-<td><select name="[01]Lang_Earliest">
+<td><select id="lang_earliest" name="[01]Lang_Earliest">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -143,7 +105,7 @@ unanswered.
 <option value="99">Other Non-English Language</select></td></tr>
 
 <tr><td>7b. What language does your child most frequently speak at home?</td>
-<td><select name="[01]CA_PrimaryLanguage">
+<td><select id="lang_primary" name="[01]CA_PrimaryLanguage">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -206,7 +168,7 @@ unanswered.
 <option value="99">Other Non-English Language</select></td></tr>
 
 <tr><td>7c. What language do you use most frequently to speak to your child?</td>
-<td><select name="[01]Lang_Spoken_To">
+<td><select id="lang_spoken" name="[01]Lang_Spoken_To">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -270,7 +232,7 @@ unanswered.
 
 <tr><td>7d. What language is most often spoken by adults in the home?<br>
 (parents, guardians, grandparents, or any other adults)</td>
-<td><select name="[01]Lang_Adults_Primary">
+<td><select id="lang_adults" name="[01]Lang_Adults_Primary">
 <option value="">Choose...
 <option value="00">English
 <option value="01">Spanish
@@ -338,7 +300,7 @@ unanswered.
 <tr><td>7e. What additional language, if any, is also spoken 
 by adults in the home?<br>
 (parents, guardians, grandparents, or any other adults)</td>
-<td><select name="[01]Lang_Other">
+<td><select id="lang_other" name="[01]Lang_Other">
 <option value="">Choose (if applicable)...
 <option value="00">English
 <option value="01">Spanish
@@ -399,11 +361,8 @@ by adults in the home?<br>
 <option value="38">Ukranian
 <option value="35">Urdu
 <option value="99">Other Non-English Language</select></td></tr>
-</table><br><br>
-</td></tr>
-
-<tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2">
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td  colspan="4" class="bold">8a-b. English Language Development</td></tr>
 <tr><td colspan="2">Check the appropriate boxes if your child
   has received English Language Development services or
@@ -411,8 +370,9 @@ by adults in the home?<br>
 <tr>
 <td><input type="checkbox" name="[01]Reg_Prog_ELD" value="1">8a. English Language Development&nbsp;&nbsp;</td>
 <td><input type="checkbox" name="[01]Reg_Previous_CELDT" value="1">8b. CELDT &nbsp;&nbsp;</td>
-<td colspan="2">&nbsp;</td></tr>
-
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td  colspan="4" class="bold">8c-h. Other Programs and Services</td></tr>
 <tr><td colspan="4">Please check the appropriate boxes below if your child has been enrolled in any of these programs or services:</td></tr>
 <tr>
@@ -425,36 +385,20 @@ by adults in the home?<br>
 <td><input type="checkbox" name="[01]Reg_Prog_GATE" value="1">8g. Gifted (GATE)&nbsp;&nbsp;</td>
 <td colspan="3">8h. Other (please describe): <input type="text" name="[01]Reg_Prog_Other" value="" size="30"></td>
 </tr>
-</table><br>
-<br></td></tr>
-
-<tr class="private"><td class="bold">Last updated at 
+<tr class="private"><td colspan="4" class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form7_updated_at" value=""> by 
 <input type="text" id="upd_by" name="[01]form7_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
 </tr>
-</table>
-<!-- pscustom_end -->
 
-</td>
-<td width="20" valign="top" background="/images/box_white_rt_bg.gif" height="100%"><img src="/images/spacer.gif" width="20" height="1"></td>
-</tr>
-<tr>
-<td width="20" valign="top"><img src="/images/box_white_bot_left.gif" width="20" height="12"></td>
-<td background="/images/box_white_bot_bg.gif"><img src="/images/spacer.gif" width="1" height="12"></td>
-<td width="20" valign="top"><img src="/images/box_white_bot_right.gif" width="20" height="12"></td>
-</tr>
-<tr>
-[/if]
 ~[if.~(wm_status)=1]
-<td colspan="3" align="right">You do not have permission to modify data on this page.</td>
+<tr><td colspan="4" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td>
+<tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
 [/if]
-~[if.~(schoolid)#999999]
-</tr>
 </table>
+</div>
+</div>
 </form>
-[/if]
 
 <!-- end student content -->
 </div>
