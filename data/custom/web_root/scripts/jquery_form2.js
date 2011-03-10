@@ -44,6 +44,26 @@ jq15(document).ready(function () {
         required: true,
         message: 'Required field.'
       },
+      '#sibling1_dob': {
+        required: 'sometimes',
+        test: happy.emptyOrDate,
+        message: 'Please enter in format M/D/YYYY.'
+      },
+      '#sibling2_dob': {
+        required: 'sometimes',
+        test: happy.emptyOrDate,
+        message: 'Please enter in format M/D/YYYY.'
+      },
+      '#sibling3_dob': {
+        required: 'sometimes',
+        test: happy.emptyOrDate,
+        message: 'Please enter in format M/D/YYYY.'
+      },
+      '#sibling4_dob': {
+        required: 'sometimes',
+        test: happy.emptyOrDate,
+        message: 'Please enter in format M/D/YYYY.'
+      },
     }
   });
 });
