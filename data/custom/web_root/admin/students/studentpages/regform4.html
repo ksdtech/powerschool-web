@@ -7,6 +7,12 @@
 <script type="text/javascript">
 //<![CDATA[
 var jq15 = jQuery.noConflict();
+function copyToMailingAddress() {
+  jq15('.copy_add2').each(function (i) {
+    var src_id = this.id.replace(/^mailing2_/, '#home2_');
+    this.value = jq15(src_id).val();
+  });
+}
 //]]>
 </script>
 <script src="http://ps.kentfieldschools.org/scripts/fmt_date.js" type="text/javascript"></script>
@@ -53,19 +59,19 @@ var jq15 = jQuery.noConflict();
 <td width="25%">City</td>
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
-<tr><td><input name="[01]Home2_Street" class="street" type="text" id="home2_street" value="" size="30"></td>
+<tr><td><input name="[01]Home2_Street" type="text" id="home2_street" value="" size="30"></td>
 <td><input name="[01]Home2_City" type="text" id="home2_city" value="" size="20"></td>
 <td><input name="[01]Home2_State" type="text" id="home2_state" value="" size="4"></td>
 <td><input name="[01]Home2_Zip" type="text" id="home2_zip" value="" size="10"></td></tr>
-<tr class="staffonly"><td colspan="4"><input type="checkbox" class="copyfields" id="h2acopy" value="1">Copy physical address to mailing address</td></tr>
+<tr class="staffonly"><td colspan="4"><input type="checkbox" onclick="copyToMailingAddress();" value="1">Copy physical address to mailing address</td></tr>
 <tr class="staffonly"><td><b>Mailing Address:</b> Number &amp; Street</td>
-<td>City</td>
-<td>State</td>
-<td>Zip</td></tr>
-<tr class="staffonly"><td>Not used</td>
-<td>Not used</td>
-<td>Not used</td>
-<td>Not used</td></tr>
+<td width="25%">City</td>
+<td width="10%">State</td>
+<td width="25%">Zip</td></tr>
+<tr class="staffonly"><td><input name="[01]Mailing2_Street" type="text" class="copy_add2" id="mailing2_street" value="" size="30"></td>
+<td><input name="[01]mailing2_City" type="text" class="copy_add2" id="mailing2_city" value="" size="20"></td>
+<td><input name="[01]mailing2_State" type="text" class="copy_add2" id="mailing2_state" value="" size="4"></td>
+<td><input name="[01]mailing2_Zip" type="text" class="copy_add2" id="mailing2_zip" value="" size="10"></td></tr>
 <tr><td class="bold">Home Phone</td><td><input type="text" id="home2_phone" name="[01]Home2_Phone" value="" size="16"></td>
 <td colspan="2">&nbsp;</td></tr>
 <tr><td class="bold">Home internet access?</td>
