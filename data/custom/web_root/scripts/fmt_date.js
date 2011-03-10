@@ -166,3 +166,7 @@ Date.getFormatCode = function(character) {
 function timestamp_now() {
 	return (new Date()).dateFormat("Y-m-d H:i:s");
 }
+
+function today_mdy() {
+  return (new Date()).dateFormat('n/w/Y');
+}

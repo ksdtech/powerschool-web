@@ -1,3 +1,10 @@
+function todayIfBlank(val) {
+  if (val === '') {
+    val = today_mdy();
+  }
+  return val;
+}
+
 // happy.js validations
 jq15(document).ready(function () {
   jq15('#form9').isHappy({
@@ -26,6 +33,11 @@ jq15(document).ready(function () {
       '.signature': {
         required: true,
         message: 'Required field.',
+      },
+      '#signed_date': {
+        required: true,
+        clean: todayIfBlank,
+        test: 'Required field. Format as M/D/YYYY.'
       },
     }
   });
