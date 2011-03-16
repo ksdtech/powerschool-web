@@ -2,6 +2,7 @@
 jq15(document).ready(function () {
   jq15('#form7').isHappy({
     // submitButton: jq15('#attSubmitButton'),
+    onSubmit: onRegFormSubmit,
     fields: {
       '#lang_earliest': {
         required: true,

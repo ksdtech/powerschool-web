@@ -9,6 +9,7 @@ function required_contact_phone(val, arg) {
 jq15(document).ready(function () {
   jq15('#form5').isHappy({
     // submitButton: jq15('#attSubmitButton'),
+    onSubmit: onRegFormSubmit,
     fields: {
       '#emerg1_last': {
         required: true,

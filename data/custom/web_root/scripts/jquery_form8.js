@@ -51,6 +51,7 @@ function set_med_accom(val) {
 jq15(document).ready(function () {
   jq15('#form8').isHappy({
     // submitButton: jq15('#attSubmitButton'),
+    onSubmit: onRegFormSubmit,
     fields: {
       '.requires_meds': {
         required: true,

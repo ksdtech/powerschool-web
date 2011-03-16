@@ -2,6 +2,7 @@
 jq15(document).ready(function () {
   jq15('#form6').isHappy({
     // submitButton: jq15('#attSubmitButton'),
+    onSubmit: onRegFormSubmit,
     fields: {
       '#first_usa_school': {
         required: 'sometimes',

@@ -9,6 +9,7 @@ function todayIfBlank(val) {
 jq15(document).ready(function () {
   jq15('#form9').isHappy({
     // submitButton: jq15('#attSubmitButton'),
+    onSubmit: onRegFormSubmit,
     fields: {
       '.med_treatment': {
         required: true,
