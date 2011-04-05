@@ -16,54 +16,43 @@ jq15(document).ready(function () {
       '#dob': {
         required: true,
         test: happy.date,
-        message: 'Required field: please enter in format M/D/YYYY.',
-      },
+        message: 'Required field: please enter in format M/D/YYYY.' },
       '#gender': { 
         required: true,
-        message: 'Please choose a gender from the list.',
-      },
+        message: 'Please choose a gender from the list.' },
       '#birth_city': { 
         required: true,
-        message: 'Required field: birth place city.',
-      },
+        message: 'Required field: birth place city.' },
       '#birth_state': { 
         required: 'sometimes',
         test: required_if_north_american,
-        message: 'Required field for US, Canada or Mexico birth place: state or province.',
-      },
+        message: 'Required field for US, Canada or Mexico birth place: state or province.' },
       '#birth_country': { 
         required: true,
-        message: 'Required field: birth place country.',
-      },
+        message: 'Required field: birth place country.' },
       '#lives_with_rel': { 
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.custody_orders': {
         default_radio: '#co_no',
         required: true,
-        message: 'Required field.'
-      },
+        message: 'Required field.' },
       '#sibling1_dob': {
         required: 'sometimes',
         test: happy.emptyOrDate,
-        message: 'Please enter in format M/D/YYYY.'
-      },
+        message: 'Please enter in format M/D/YYYY.' },
       '#sibling2_dob': {
         required: 'sometimes',
         test: happy.emptyOrDate,
-        message: 'Please enter in format M/D/YYYY.'
-      },
+        message: 'Please enter in format M/D/YYYY.' },
       '#sibling3_dob': {
         required: 'sometimes',
         test: happy.emptyOrDate,
-        message: 'Please enter in format M/D/YYYY.'
-      },
+        message: 'Please enter in format M/D/YYYY.' },
       '#sibling4_dob': {
         required: 'sometimes',
         test: happy.emptyOrDate,
-        message: 'Please enter in format M/D/YYYY.'
-      },
+        message: 'Please enter in format M/D/YYYY.' }
     }
   });
 });

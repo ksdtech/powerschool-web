@@ -6,20 +6,16 @@ jq15(document).ready(function () {
     fields: {
       '#lang_earliest': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#lang_primary': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#lang_spoken': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#lang_adults': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' }
     }
   });
 });

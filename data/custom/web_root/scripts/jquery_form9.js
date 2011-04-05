@@ -13,38 +13,30 @@ jq15(document).ready(function () {
     fields: {
       '.med_treatment': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.prev_school_contact': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.pub_waiver_public': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.pub_waiver_restricted': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.acceptable_use': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.responsibility': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#signature': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#signed_date': {
         required: true,
         clean: todayIfBlank,
         test: happy.date,
-        message: 'Required field. Format as M/D/YYYY.'
-      },
+        message: 'Required field. Format as M/D/YYYY.' }
     }
   });
 });

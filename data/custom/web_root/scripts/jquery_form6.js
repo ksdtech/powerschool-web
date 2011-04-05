@@ -7,20 +7,16 @@ jq15(document).ready(function () {
       '#first_usa_school': {
         required: 'sometimes',
         test: happy.emptyOrDate,
-        message: 'Please enter in format M/D/YYYY.',
-      },
+        message: 'Please enter in format M/D/YYYY.' },
       '.immigrant': { 
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.hispanic_ethnicity': { 
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#parent_edu': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' }
     }
   });
 });

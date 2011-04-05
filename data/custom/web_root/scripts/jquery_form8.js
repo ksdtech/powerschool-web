@@ -55,137 +55,111 @@ jq15(document).ready(function () {
     fields: {
       '.requires_meds': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.school_meds': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.emergency_meds': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#health_ins': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#emergency_hospital': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.eyeglasses': {
         required: true,
         clean: set_eyeglasses,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#last_eye_exam': {
         required: 'sometimes',
         test: happy.emptyOrDate,
-        message: 'Please enter in format M/D/YYYY.',
-      },
+        message: 'Please enter in format M/D/YYYY.' },
       '.hearing_aid': {
         required: true,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.allergies': {
         required: true,
         clean: set_allergies,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#allergies_txt': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#allergies_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.asthma': {
         required: true,
         clean: set_asthma,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.asthma_chk': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#asthma_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.seizures': {
         required: true,
         clean: set_seizures,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.seizures_chk': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#seizures_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.diabetes': {
         required: true,
         clean: set_diabetes,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.diabetes_chk': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#diabetes_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.behavior': {
         required: true,
         clean: set_behavior,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#behavior_txt': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#behavior_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.movement': {
         required: true,
         clean: set_movement,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#movement_txt': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#movement_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.med_other': {
         required: true,
         clean: set_med_other,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#med_other_txt': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#med_other_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.illness': {
         required: true,
         clean: set_illness,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#illness_txt': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#illness_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '.med_accom': {
         required: true,
         clean: set_med_accom,
-        message: 'Required field.',
-      },
+        message: 'Required field.' },
       '#med_accom_txt': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '#med_accom_yes',
-        message: 'Required field.',
-      },
+        message: 'Required field.' }
     }
   });
 });
