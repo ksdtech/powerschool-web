@@ -64,5 +64,5 @@ var happy = {
 
   emptyOrUSPhoneWithExtension: function (val) {
     return (val === '' || happy.USPhoneWithExtension(val));
-  },
+  }
 };
