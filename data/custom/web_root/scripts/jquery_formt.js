@@ -7,7 +7,7 @@ function onFormTSubmit() {
 jq15(document).ready(function () {
   jq15('#formt').isHappy({
     // submitButton: jq15('#attSubmitButton'),
-    onSubmit: onRegFormTSubmit,
+    onSubmit: onFormTSubmit,
     fields: {
       '#street': {
         required: true,
