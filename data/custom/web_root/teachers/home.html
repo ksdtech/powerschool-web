@@ -2,6 +2,17 @@
 <head>
 <title>PowerTeacher</title>
 ~[wc:commonscripts]
+~[if#mdistrict.pref.mobilepages_enable=1]
+<script language="JavaScript">
+var pref=1;
+</script>
+~[if#muser.pref.mobile_access-U~[x:userid]=false][else#muser]
+~[if#mschool.prefschool.mobiledisable_teachers=1][else#mschool]
+<script language="JavaScript" src="/scripts/mobile/detectMobileWebkit.js"></script>
+[/if#mschool]
+[/if#muser]
+[else#mdistrict]
+[/if#mdistrict]
 <script language="javascript">function formHandler(newLoc){var URL = newLoc.options[newLoc.selectedIndex].value;window.location.href = URL;} </script>
 <link rel="stylesheet" href="/images/powerschool.css">
 </head>
@@ -9,27 +20,8 @@
 <body marginwidth=12 marginheight=12 topmargin=12 leftmargin=12 bgcolor="#ffffff">
 
 ~[wc:teachers_header]~[wc:teachers_navigation]
-
-<!-- start gel tabs navigation -->
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td colspan="2" align="right" valign="top"><img src="/images/nav_top_shadow.gif" width="131" height="4" border="0"><br>
-<a href="/teachers/home.html"><img src="/images/nav_start_on.gif" alt="Start Page" width="131" height="23" border="0"></a><br>
-<a href="/teachers/bulletin.html"><img src="/images/nav_daily.gif" alt="Daily Bulletin" width="131" height="23" border="0"></a><br>
-<a href="/teachers/facultydirectory.html"><img src="/images/nav_faculty.gif" alt="Staff Directory" width="131" height="23" border="0"></a><br>
-<a href="/teachers/lunchtransactions.html?frn=~(userfrn)"><img src="/images/nav_meals.gif" alt="Meals" width="131" height="23" border="0"></a><br>
-<a href="/teachers/userpreferences.html?frn=~(userfrn)"><img src="/images/nav_personalize.gif" alt="Personalize" width="131" height="23" border="0"></a><br>
-~[if.~(gradebookType)="1"]
-<a href="/teachers/gradebook/home.html"><img src="/images/nav_wgb.gif" alt="Gradebook" width="131" height="23" border="0"><br>
-[else]
-<a href="/teachers/powergrade/home.html"><img src="/images/nav_powergrade.gif" alt="PowerGrade" width="131" height="23" border="0"></a><br>
-[/if]
-<a href="/teachers/reportsall.html?ac=selectstudentsforteacher&teacherid=~[x:userid]"><img src="/images/nav_reports.gif" alt="Reports" width="131" height="23" border="0"></a><br>
-<a href="/teachers/RecommendTeacherPTList.html?teacherid=~[x:userid]"><img src="/images/nav_recommendations.gif" alt="Recommendations" width="131" height="23" border="0"></a><br>
-<img src="/images/nav_bot_shadow.gif" width="131" height="8" border="0"><br><img src="/images/transparent.gif" width="1" height="140" alt="" border="0"></td>
-</tr>
-</table>
-<!-- end gel tabs navigation -->
+~[SetPostValue:tabname=home]
+~[wc:teachers_nav_gel_buttons]
 
 </td>
 <td width="20" background="/images/admin_mid_right_side.gif"><img src="/images/transparent.gif" width="20" height="1" alt="" border="0"></td>
@@ -61,8 +53,8 @@
 <td>
 
 <!-- Start of shaded content table -->
-<table border="0" cellspacing="0" cellpadding="6">
-<tr>~[cachedteacherhomelist]
+<table border="0" cellspacing="0" cellpadding="6" id="tableContent">
+<tr sectionID="~(id)">~[cachedteacherhomelist]
 <td>~(cachedteacher.classexpression)</td>
 <td>~(cachedteacher.coursename)</td>
 ~[if.~(cachedteacher.sectionnumberpref)="1"]
@@ -80,12 +72,14 @@
 ~[if.~(gradebookType)="0"]
 <td><a href="/teachers/webasmtlist.html?sectionid=~(id)"><img src="/images/btn_assignments.gif" alt="Web Assignments" width="31" height="31" border="0"></a></td>
 [/if]
+
+<td id="pearsonInformCell"></td>
 </tr>
 
 <!-- start extra row for Independent Study -->
 ~[if.~(cachedteacher.hasAnyISSection)="Y"]
 <tr>
-<td colspan="9" background="/images/bullet_repeat.gif"><img src="/images/transparent.gif" height="1" width="1" alt="" border="0"></td>
+<td colspan="10" background="/images/bullet_repeat.gif"><img src="/images/transparent.gif" height="1" width="1" alt="" border="0"></td>
 </tr>
 <tr>
 <td colspan=2>Independent Study Attendance</td>
@@ -95,6 +89,9 @@
 <!-- end extra row for Independent Study -->
 
 </table>
+
+~[brij_render:inform-ps;:ViewTeacherPortalInform]
+
 </form>
 <!-- End of shaded content table -->
 
