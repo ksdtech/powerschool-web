@@ -24,4 +24,8 @@ function grade_level_setup() {
 // happy.js validations
 jq15(document).ready(function () {
   enrollment_setup();
+  jq15('#forme').isHappy({
+    // submitButton: jq15('#attSubmitButton'),
+    onSubmit: onItrFormSubmit
+  });
 });
