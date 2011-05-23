@@ -38,8 +38,10 @@ var happy = {
     return happy.selectorIsEmpty(arg);
   },
   
+  // See wikipedia on permitted characters in local part of email addresses:
+  // http://en.wikipedia.org/wiki/Email_address
   email: function (val) {
-    return /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/.test(val);
+    return /^[-a-zA-Z0-9\.\!\#\$\%\&\'\*\+\/\=\?\^\_\`\{\|\}\~]+@[-a-zA-Z0-9\.]+\.[a-zA-Z]{2,4}$/.test(val);
   },
   
   minLength: function (val, length) {
