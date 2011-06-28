@@ -194,7 +194,7 @@ function codeAddress(sn, full_address, title, html, debugNodeId, callback) {
         debugNode.innerHTML += geocodingResultHTML(results[0]);
       }
       if (callback) {
-        callback({ status: "OK", geocoding: results[0], neighboorhood: neighborhood });
+        callback({ status: "OK", geocoding: results[0], neighborhood: neighborhood });
       }
     } else {
       if (debugNode) {
