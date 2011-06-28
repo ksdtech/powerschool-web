@@ -4,7 +4,7 @@ function plotPrimaryResidence() {
   var rc = codeAddress(null, address, 'Primary Residence', null, null);
   if (rc.status == 'OK') {
     var currentHood = jq15("#neighborhood").val();
-    if (currentHood == '') {}
+    if (currentHood == '') {
       jq15("#neighboorhood").val() = rc.neighborhood;
     }
   }

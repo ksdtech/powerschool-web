@@ -199,7 +199,7 @@ function codeAddress(sn, full_address, title, html, debugNodeId) {
       if (debugNode) {
         debugNode.innerHTML += "Geocode for " + sn + " was not successful: " + status + "<br/>";
       }
-      rc = { status: status, gecoding: null; neighborhood: 'Unknown' };
+      rc = { status: status, gecoding: null, neighborhood: 'Unknown' };
     }
   });
   return rc;
