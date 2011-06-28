@@ -1,4 +1,4 @@
-function setNeighborhood(rc)
+function setNeighborhood(rc) {
   if (rc.status == 'OK') {
     var currentHood = jq15("#neighborhood").val();
     if (currentHood == '') {
