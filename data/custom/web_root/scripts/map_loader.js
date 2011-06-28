@@ -26,8 +26,9 @@ function MapLoader(basemapData, params, mapNodeId, callback) {
 
 MapLoader.prototype.createMap = function() {  
   // Display the map, with some controls
+  var mapNode = document.getElementById(this.mapNodeId_);
   var mapOptions = { center: this.jsonData_.center, mapTypeId: google.maps.MapTypeId.ROADMAP, zoom: this.jsonData_.zoom }
-  var map = new google.maps.Map(document.getElementById(this.mapNodeId_), mapOptions);
+  var map = new google.maps.Map(mapNode, mapOptions);
   // map.addControl(new GLargeMapControl());
   // map.addControl(new GMapTypeControl());
   this.map_ = map;
