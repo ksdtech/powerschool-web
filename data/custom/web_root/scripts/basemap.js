@@ -121,7 +121,7 @@ new google.maps.LatLng(37.946431, -122.538843),
 new google.maps.LatLng(37.947311, -122.539787)
 ] },
 
-{ "color": "#FFFFFF", "width": 4, "title": "Kent Woodlands", "test": 1, "html": "Kent Woodlands",
+{ "color": "#FFCC00", "width": 4, "title": "Kent Woodlands", "test": 1, "html": "Kent Woodlands",
   "points": [
 new google.maps.LatLng(37.939662, -122.550495),  
 new google.maps.LatLng(37.939679, -122.551439), 

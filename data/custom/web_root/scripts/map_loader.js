@@ -22,7 +22,6 @@ function Label(opt_options) {
 
   // Label specific
   var span = document.createElement('span');
-
   span.style.cssText = 'position: relative; left: -50%; top: -8px; ' +
                       'white-space: nowrap; border: 1px solid blue; ' +
                       'padding: 2px; background-color: white';
@@ -103,11 +102,10 @@ MapLoader.prototype.createMap = function() {
       test: polys[i].test,
       title: polys[i].title
     });
+
     var opacity = 0.4;
-    var clickable = true;
     if (polys[i].test != 1) {
       opacity = 0.0;
-      clickable = false;
     }
     this.polygons_[i] = new google.maps.Polygon({
       paths: polys[i].points, 
@@ -115,7 +113,7 @@ MapLoader.prototype.createMap = function() {
       strokeWidth: polys[i].width,
       fillColor: polys[i].color,
       fillOpacity: opacity,
-      clickable: clickable });
+      clickable: false });
     this.polygons_[i].setMap(this.map_);
   }
 
