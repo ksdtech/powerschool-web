@@ -1,8 +1,8 @@
 function setNeighborhood(rc) {
-  if (rc.status == 'OK') {
+  if (rc.status == 'OK' && rc.neighborhood != 'Unknown') {
     var currentHood = jq15("#neighborhood").val();
     if (currentHood == '') {
-      jq15("#neighboorhood").val() = rc.neighborhood;
+      jq15("#neighboorhood").val(rc.neighborhood);
     }
   }
 }
