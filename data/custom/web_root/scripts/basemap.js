@@ -1,4 +1,4 @@
-{ 
+var ksdBasemapData = { 
   "center": new google.maps.LatLng(37.950171, -122.545238), 
   "zoom": 14,
   "markers": [
@@ -338,4 +338,4 @@ new google.maps.LatLng(37.952962, -122.538285)
   new google.maps.LatLng(37.950171, -122.545238),
   new google.maps.LatLng(37.948072, -122.544057), 
 ] }
-] }
+] };

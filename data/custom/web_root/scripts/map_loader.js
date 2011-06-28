@@ -9,13 +9,12 @@ function PolyMeta(opts) {
   return this;
 }
 
-function MapLoader(url, params, mapNodeId, sideBarNodeId) {
-  this.url_ = url;
+function MapLoader(basemapData, params, mapNodeId, callback) {
   this.params_ = params;
   this.mapNodeId_ = mapNodeId;
-  this.sideBarNodeId_ = sideBarNodeId;
+  this.callback_ = callback;
+  this.jsonData_ = basemapData;
   this.map_ = null;
-  this.jsonData_ = null;
   this.markers_ = [];
   this.htmls_ = [];
   this.polygons_ = [];
@@ -23,11 +22,6 @@ function MapLoader(url, params, mapNodeId, sideBarNodeId) {
   this.sideBarHtml_ = "";
   this.geocoder_ = null;
   return this;
-}
-
-MapLoader.prototype.loadMap = function() {
-  var me = this;
-  jq15.getJSON(this.url_, null, function(data, status, jqXRH) { me.createMap(data); });
 }
 
 MapLoader.prototype.createMap = function(data) {
@@ -59,15 +53,10 @@ MapLoader.prototype.createMap = function(data) {
   for (var i = 0; i < markers.length; i++) {
     this.createMarker(markers[i].point, markers[i].title, markers[i].html);
   }
-
-  plotAll();
-
-  // Put the assembled sideBarHtml contents into the div
-  if (this.sideBarNodeId_) {
-    var sideBar = document.getElementById(this.sideBarNodeId_);
-    if (sideBar) {
-      sideBar.innerHTML = this.sideBarHtml_;
-    }
+  
+  // callback when map is ready
+  if (this.callback_) {
+    this.callback_();
   }
 };
 
@@ -209,18 +198,8 @@ function codeAddress(sn, full_address, title, html, debugNodeId) {
   });
 }
 
-function gmaps_initialized() {
-  loader.loadMap();
-}
-
 // Called by window.onload
-function loadMapData(url, mapNodeId, sideBarNodeId) {
-  loader = new MapLoader(url, {}, mapNodeId, sideBarNodeId);
-  
-  // var script = document.createElement("script");
-  // script.type = "text/javascript";
-  // script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=gmaps_initialized";
-  // document.body.appendChild(script);
-  
-  gmaps_initialized();
+function loadMapData(basemapData, mapNodeId, callback) {
+  loader = new MapLoader(basemapData, {}, mapNodeId, callback);
+  loader.createMap();
 }
