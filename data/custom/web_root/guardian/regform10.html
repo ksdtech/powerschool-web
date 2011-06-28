@@ -55,6 +55,11 @@ var jq15 = jQuery.noConflict();
 <tr><td><input type="radio" name="[01]srs_opt_out" value="Y">
   I do not wish to participate in Safe Routes</td></tr>
   
+<tr class="private"><td class="bold">Last updated at 
+<input type="text" id="upd_at" name="[01]form10_updated_at" value=""> by 
+<input type="text" id="upd_by" name="[01]form10_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
+</tr>
+
 ~[if.~(wm_status)=1]
 <tr><td align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
