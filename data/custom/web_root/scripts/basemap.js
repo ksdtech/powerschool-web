@@ -5,8 +5,28 @@ var ksdBasemapData = {
   ],
   "labels": [ 
   {
+    "text": "Firehouse",
+    "point": new google.maps.LatLng(37.9600, -122.5560)
+  },
+  {
+    "text": "Laurel Grove",
+    "point": new google.maps.LatLng(37.9625, -122.5420)
+  },
+  {
+    "text": "Greenbrae",
+    "point": new google.maps.LatLng(37.9575, -122.5270)
+  },
+  {
+    "text": "Behrens",
+    "point": new google.maps.LatLng(37.9500, -122.5398)
+  },
+  {
+    "text": "Murray Park",
+    "point": new google.maps.LatLng(37.9390, -122.5430)
+  },
+  {
     "text": "Kent Woodlands",
-    "point": new google.maps.LatLng(37.960001, -122.548435)
+    "point": new google.maps.LatLng(37.9600, -122.5630)
   }
   ],
   "no_markers": [
