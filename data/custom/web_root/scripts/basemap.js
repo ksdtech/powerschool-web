@@ -3,6 +3,12 @@ var ksdBasemapData = {
   "zoom": 14,
   "markers": [
   ],
+  "labels": [ 
+  {
+    "text": "Kent Woodlands",
+    "point": new google.maps.LatLng(37.960001, -122.548435)
+  }
+  ],
   "no_markers": [
   {
     "title": "Off Behrens in Corte Madera Creek",
@@ -54,7 +60,6 @@ new google.maps.LatLng(37.944164, -122.54631),
 new google.maps.LatLng(37.943233, -122.546997), 
 new google.maps.LatLng(37.942387, -122.546353), 
 new google.maps.LatLng(37.94105, -122.546675),
-
 new google.maps.LatLng(37.939662, -122.550495),  
 new google.maps.LatLng(37.939679, -122.551439), 
 new google.maps.LatLng(37.935398, -122.552447), 
@@ -74,7 +79,6 @@ new google.maps.LatLng(37.956938, -122.556846),
 new google.maps.LatLng(37.956363, -122.555151), 
 new google.maps.LatLng(37.956786, -122.554572), 
 new google.maps.LatLng(37.957294, -122.552962), 
-
 new google.maps.LatLng(37.958478, -122.552855), 
 new google.maps.LatLng(37.959578, -122.552726), 
 new google.maps.LatLng(37.960779, -122.55146), 
@@ -148,9 +152,7 @@ new google.maps.LatLng(37.953656, -122.54586),
 new google.maps.LatLng(37.953284, -122.545753), 
 new google.maps.LatLng(37.952506, -122.546053), 
 new google.maps.LatLng(37.951592, -122.545774), 
-
 new google.maps.LatLng(37.950171, -122.545238),
-
 new google.maps.LatLng(37.950171, -122.550581), 
 new google.maps.LatLng(37.949122, -122.550538), 
 new google.maps.LatLng(37.948292, -122.550023), 

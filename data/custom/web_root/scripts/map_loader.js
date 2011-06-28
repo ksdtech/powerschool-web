@@ -3,12 +3,68 @@
 // http://www.bisphamchurch.org.uk/   
 // http://econym.org.uk/gmap/
 
+// Class to hold information about the polygons we're drawing
 function PolyMeta(opts) {
   this.test = opts.test;
   this.title = opts.title;
   return this;
 }
 
+// Class to implement text drawing as overlays
+// See http://blog.mridey.com/2009/09/label-overlay-example-for-google-maps.html
+// Define the overlay, derived from google.maps.OverlayView
+function Label(opt_options) {
+ // Initialization
+  this.setValues(opt_options);
+
+  // Label specific
+  this.span_ = document.createElement('span');
+  this.span_.style.cssText = 'position: relative; left: -50%; top: -8px; ' +
+                      'white-space: nowrap; border: 1px solid blue; ' +
+                      'padding: 2px; background-color: white';
+
+  this.div_ = document.createElement('div');
+  var div = this.div_;
+  div.appendChild(span);
+  div.style.cssText = 'position: absolute; display: none';
+};
+Label.prototype = new google.maps.OverlayView;
+
+Label.prototype.onAdd = function() {
+  var pane = this.getPanes().overlayLayer;
+  pane.appendChild(this.div_);
+
+  // Ensures the label is redrawn if the text or position is changed.
+  var me = this;
+  this.listeners_ = [
+   google.maps.event.addListener(this, 'position_changed', function() { me.draw(); }),
+   google.maps.event.addListener(this, 'text_changed', function() { me.draw(); })
+  ];
+};
+
+Label.prototype.onRemove = function() {
+  this.div_.parentNode.removeChild(this.div_);
+
+  // Label is removed from the map, stop updating its position/text.
+  for (var i = 0, n = this.listeners_.length; i < n; ++i) {
+    google.maps.event.removeListener(this.listeners_[i]);
+  }
+};
+
+// Implement draw
+Label.prototype.draw = function() {
+  var projection = this.getProjection();
+  var position = projection.fromLatLngToDivPixel(this.get('position'));
+
+  var div = this.div_;
+  div.style.left = position.x + 'px';
+  div.style.top = position.y + 'px';
+  div.style.display = 'block';
+
+  this.span_.innerHTML = this.get('text').toString();
+};
+
+// Our class to manage loading Google Maps and placing markers, polygons and labels
 function MapLoader(basemapData, params, mapNodeId, callback) {
   this.params_ = params;
   this.mapNodeId_ = mapNodeId;
@@ -40,10 +96,19 @@ MapLoader.prototype.createMap = function() {
       test: polys[i].test,
       title: polys[i].title
     });
+    var opacity = 0.4;
+    var clickable = true;
+    if (polys[i].test != 1) {
+      opacity = 0.0;
+      clickable = false;
+    }
     this.polygons_[i] = new google.maps.Polygon({
       paths: polys[i].points, 
       strokeColor: polys[i].color,
-      strokeWidth: polys[i].width });
+      strokeWidth: polys[i].width },
+      fillColor: polys[i].color,
+      fillOpacity: opacity,
+      clickable: clickable});
     this.polygons_[i].setMap(this.map_);
   }
 
@@ -52,6 +117,14 @@ MapLoader.prototype.createMap = function() {
   for (var i = 0; i < markers.length; i++) {
     this.createMarker(markers[i].point, markers[i].title, markers[i].html);
   }
+  
+  // Plot the labels
+  var labels = this.jsonData_.labels;
+  for (var i = 0; i < labels.length; i++) {
+    var label = new Label({ map: this.map_ });
+    label.set('position', labels[i].point);
+    label.set('text', labels[i].text);
+  }  
   
   // callback when map is ready
   if (this.callback_) {
