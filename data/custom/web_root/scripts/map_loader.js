@@ -177,8 +177,7 @@ function geocodingResultHTML(result) {
   return html;
 }
 
-function codeAddress(sn, full_address, title, html, debugNodeId) {
-  var rc = null;
+function codeAddress(sn, full_address, title, html, debugNodeId, callback) {
   loader.geocode( { 'address': full_address }, function(results, status) {
     var debugNode = null;
     if (debugNodeId) {
@@ -194,15 +193,18 @@ function codeAddress(sn, full_address, title, html, debugNodeId) {
       if (debugNode) {
         debugNode.innerHTML += geocodingResultHTML(results[0]);
       }
-      rc = { status: "OK", geocoding: results[0], neighboorhood: neighborhood };
+      if (callback) {
+        callback({ status: "OK", geocoding: results[0], neighboorhood: neighborhood });
+      }
     } else {
       if (debugNode) {
         debugNode.innerHTML += "Geocode for " + sn + " was not successful: " + status + "<br/>";
       }
-      rc = { status: status, gecoding: null, neighborhood: 'Unknown' };
+      if (callback) {
+        callback({ status: status, gecoding: null, neighborhood: 'Unknown' });
+      }
     }
   });
-  return rc;
 }
 
 // Called by window.onload

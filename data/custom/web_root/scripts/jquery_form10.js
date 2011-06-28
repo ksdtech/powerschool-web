@@ -1,13 +1,16 @@
-// called when basemap is loaded
-function plotPrimaryResidence() {
-  var address = jq15('#address').text();
-  var rc = codeAddress(null, address, 'Primary Residence', null, null);
+function setNeighborhood(rc)
   if (rc.status == 'OK') {
     var currentHood = jq15("#neighborhood").val();
     if (currentHood == '') {
       jq15("#neighboorhood").val() = rc.neighborhood;
     }
   }
+}
+
+// called when basemap is loaded
+function plotPrimaryResidence() {
+  var address = jq15('#address').text();
+  codeAddress(null, address, 'Primary Residence', null, null, setNeighborhood);
 }
 
 // happy.js validations
