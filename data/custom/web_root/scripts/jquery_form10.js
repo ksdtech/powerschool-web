@@ -6,7 +6,7 @@ function plotAll() {
 
 // happy.js validations
 jq15(document).ready(function () {
-  loadMapData('http://ps.kentfieldschools.org/scripts/basemap.js', 'map', null);
+  loadMapData('http://ps.kentfieldschools.org/guardian/basemap.json', 'map', null);
   jq15('#form10').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit

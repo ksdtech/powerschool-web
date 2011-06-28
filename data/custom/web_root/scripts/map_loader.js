@@ -27,9 +27,7 @@ function MapLoader(url, params, mapNodeId, sideBarNodeId) {
 
 MapLoader.prototype.loadMap = function() {
   var me = this;
-  
-  // load our marker and polyline data
-  JSONP.get(me.url_, me.params_, function(data) { me.createMap(data); });
+  jq15.getJSON(this.url_, null, function(data, status, jqXRH) { me.createMap(data); });
 }
 
 MapLoader.prototype.createMap = function(data) {
