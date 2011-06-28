@@ -13,20 +13,26 @@ function PolyMeta(opts) {
 // Class to implement text drawing as overlays
 // See http://blog.mridey.com/2009/09/label-overlay-example-for-google-maps.html
 // Define the overlay, derived from google.maps.OverlayView
+// Extending the OverlayView, we add two dynamic properties:
+// 'position' - LatLng of label's location
+// 'text' - text to draw
 function Label(opt_options) {
  // Initialization
   this.setValues(opt_options);
 
   // Label specific
-  this.span_ = document.createElement('span');
-  this.span_.style.cssText = 'position: relative; left: -50%; top: -8px; ' +
+  var span = document.createElement('span');
+
+  span.style.cssText = 'position: relative; left: -50%; top: -8px; ' +
                       'white-space: nowrap; border: 1px solid blue; ' +
                       'padding: 2px; background-color: white';
 
-  this.div_ = document.createElement('div');
-  var div = this.div_;
+  var div = document.createElement('div');
   div.appendChild(span);
   div.style.cssText = 'position: absolute; display: none';
+  this.div_ = div;
+  this.span_ = span;
+  return this;
 };
 Label.prototype = new google.maps.OverlayView;
 
@@ -53,12 +59,13 @@ Label.prototype.onRemove = function() {
 
 // Implement draw
 Label.prototype.draw = function() {
+  var latLngPos = this.get('position');
   var projection = this.getProjection();
-  var position = projection.fromLatLngToDivPixel(this.get('position'));
+  var pixelPos = projection.fromLatLngToDivPixel(latLngPos);
 
   var div = this.div_;
-  div.style.left = position.x + 'px';
-  div.style.top = position.y + 'px';
+  div.style.left = pixelPos.x + 'px';
+  div.style.top = pixelPos.y + 'px';
   div.style.display = 'block';
 
   this.span_.innerHTML = this.get('text').toString();
