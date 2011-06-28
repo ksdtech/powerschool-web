@@ -144,7 +144,41 @@ function sideBarClick(i) {
   win.open(loader.map_, loader.markers_[i]);
 }
 
+function geocodingResultHTML(result) {
+  var html = '{ "student_number": ' + sn;
+  var point = result.geometry.location;
+  html += ',<br/>"lat": ' + roundFloat(point.lat(), 6);
+  html += ',<br/>"lng": ' + roundFloat(point.lng(), 6);
+  var loc_type = result.geometry.location_type;
+  var precision = "exact";
+  if (loc_type == google.maps.GeocoderLocationType.APPROXIMATE) {
+    precision = 'approximate';
+  }
+  if (loc_type == google.maps.GeocoderLocationType.GEOMETRIC_CENTER) {
+    precision = 'center';
+  }
+  if (loc_type == google.maps.GeocoderLocationType.RANGE_INTERPOLATED) {
+    precision = 'interpolated';
+  }
+  html += ',<br>"precision": ' + precision + '"';
+  html += ',<br/>"formatted_address": "' + result.formatted_address + '"';
+  html += ',<br/>"neighborhood": "' + neighborhood + '"';
+
+  for (var i = 0; i < result.address_components.length; i++) {
+    var long_name = result.address_components[i].long_name;
+    var short_name = result.address_components[i].short_name;
+    var type = result.address_components[i].types[0];
+    if (type == "street_number" || type == "route" || type == "locality" ||
+      type == "sublocality" || type == "postal_code") {
+      html += ',<br/>"' + type + '": "' + long_name + '"';
+    }
+  }
+  html += '<br/>},<br/>';
+  return html;
+}
+
 function codeAddress(sn, full_address, title, html, debugNodeId) {
+  var rc = null;
   loader.geocode( { 'address': full_address }, function(results, status) {
     var debugNode = null;
     if (debugNodeId) {
@@ -153,48 +187,22 @@ function codeAddress(sn, full_address, title, html, debugNodeId) {
     if (status == google.maps.GeocoderStatus.OK) {
       var point = results[0].geometry.location;
       loader.createMarker(point, title, html);
-      if (debugNode) {
-        var html = '{ "student_number": ' + sn;
-        html += ',<br/>"lat": ' + roundFloat(point.lat(), 6);
-        html += ',<br/>"lng": ' + roundFloat(point.lng(), 6);
-        var loc_type = results[0].geometry.location_type;
-        var precision = "exact";
-        if (loc_type == google.maps.GeocoderLocationType.APPROXIMATE) {
-          precision = 'approximate';
-        }
-        if (loc_type == google.maps.GeocoderLocationType.GEOMETRIC_CENTER) {
-          precision = 'center';
-        }
-        if (loc_type == google.maps.GeocoderLocationType.RANGE_INTERPOLATED) {
-          precision = 'interpolated';
-        }
-        html += ',<br>"precision": ' + precision + '"';
-        html += ',<br/>"formatted_address": "' + results[0].formatted_address + '"';
-        var foundPoly = loader.findPolygon(point)
-        if (foundPoly == '') {
-          foundPoly = 'Unknown';
-        }
-        html += ',<br/>"neighborhood": "' + foundPoly + '"';
-        
-        for (var i = 0; i < results[0].address_components.length; i++) {
-          var long_name = results[0].address_components[i].long_name;
-          var short_name = results[0].address_components[i].short_name;
-          var type = results[0].address_components[i].types[0];
-          if (type == "street_number" || type == "route" || type == "locality" ||
-            type == "sublocality" || type == "postal_code") {
-            html += ',<br/>"' + type + '": "' + long_name + '"';
-          }
-        }
-        html += '<br/>},<br/>';
-        debugNode.innerHTML += html;
+      var neighborhood = loader.findPolygon(point);
+      if (neighborhood == '') {
+        neighborhood = 'Unknown';
       }
+      if (debugNode) {
+        debugNode.innerHTML += geocodingResultHTML(results[0]);
+      }
+      rc = { status: "OK", geocoding: results[0], neighboorhood: neighborhood };
     } else {
       if (debugNode) {
-        html = "Geocode for " + sn + " was not successful: " + status + "<br/>";
-        debugNode.innerHTML += html;
+        debugNode.innerHTML += "Geocode for " + sn + " was not successful: " + status + "<br/>";
       }
+      rc = { status: status, gecoding: null; neighborhood: 'Unknown' };
     }
   });
+  return rc;
 }
 
 // Called by window.onload
