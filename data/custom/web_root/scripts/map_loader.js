@@ -105,10 +105,10 @@ MapLoader.prototype.createMap = function() {
     this.polygons_[i] = new google.maps.Polygon({
       paths: polys[i].points, 
       strokeColor: polys[i].color,
-      strokeWidth: polys[i].width },
+      strokeWidth: polys[i].width,
       fillColor: polys[i].color,
       fillOpacity: opacity,
-      clickable: clickable});
+      clickable: clickable });
     this.polygons_[i].setMap(this.map_);
   }
 
