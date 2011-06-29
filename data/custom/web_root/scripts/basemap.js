@@ -1,8 +1,7 @@
 var ksdBasemapData = { 
   "center": new google.maps.LatLng(37.950171, -122.545238), 
   "zoom": 14,
-  "markers": [
-  ],
+  "markers": [ ],
   "labels": [ 
   {
     "text": "SFD Firehouse",
@@ -35,117 +34,6 @@ var ksdBasemapData = {
     "point": new google.maps.LatLng(37.9575, -122.5630)
   }
   ],
-  "no_markers": [
-  {
-    "title": "Off Berens in Corte Madera Creek",
-    "point": new google.maps.LatLng(37.950171, -122.545238), 
-  },
-  {
-    "title": "Starting Point in Corte Madera Creek",
-    "point": new google.maps.LatLng(37.9477, -122.542706), 
-  },  
-  {
-    "title": "SFD Near Oak",
-    "point": new google.maps.LatLng(37.953758, -122.543457), 
-  },
-  {
-    "title": "Larkspur Apts Top of Murray Park",  
-    "point": new google.maps.LatLng(37.939662, -122.550495), 
-  },
-  {
-    "title": "Foot of Wolfe Grade at SFD",
-    "point": new google.maps.LatLng(37.952962, -122.538285), 
-  },
-  {
-    "title": "Top of Wolfe Grade",
-    "point": new google.maps.LatLng(37.959425, -122.534122), 
-  },
-  {
-    "title": "Behind Kentfield Rehab on BDY",
-    "point": new google.maps.LatLng(37.957294, -122.552962)
-  },
-  {
-    "title": "Top of Toussin",
-    "point": new google.maps.LatLng(37.960001, -122.548435), 
-  },
-  {
-    "title": "Corte Madera Creek Behind Colonial",
-    "point":  new google.maps.LatLng(37.953927, -122.546139), 
-  }
-  ],
-  "polygons": [
-  
-  { "color": "#FF0000", "width": 4, "title": "", "test": 0, "html": "KSD Limits",
-    "points": [
-new google.maps.LatLng(37.9477, -122.542706),
-new google.maps.LatLng(37.946651, -122.543199), 
-new google.maps.LatLng(37.946634, -122.544594), 
-new google.maps.LatLng(37.946414, -122.544808), 
-new google.maps.LatLng(37.94589, -122.543972), 
-new google.maps.LatLng(37.944164, -122.54631), 
-new google.maps.LatLng(37.943233, -122.546997), 
-new google.maps.LatLng(37.942387, -122.546353), 
-new google.maps.LatLng(37.94105, -122.546675),
-new google.maps.LatLng(37.939662, -122.550495),  
-new google.maps.LatLng(37.939679, -122.551439), 
-new google.maps.LatLng(37.935398, -122.552447), 
-new google.maps.LatLng(37.930879, -122.560322), 
-new google.maps.LatLng(37.934771, -122.567124), 
-new google.maps.LatLng(37.930523, -122.575064), 
-new google.maps.LatLng(37.954688, -122.582574), 
-new google.maps.LatLng(37.956211, -122.575922), 
-new google.maps.LatLng(37.955331, -122.574763), 
-new google.maps.LatLng(37.955805, -122.569227), 
-new google.maps.LatLng(37.958004, -122.568626), 
-new google.maps.LatLng(37.957141, -122.567618), 
-new google.maps.LatLng(37.957818, -122.567489), 
-new google.maps.LatLng(37.956329, -122.559292), 
-new google.maps.LatLng(37.956025, -122.557554), 
-new google.maps.LatLng(37.956938, -122.556846), 
-new google.maps.LatLng(37.956363, -122.555151), 
-new google.maps.LatLng(37.956786, -122.554572), 
-new google.maps.LatLng(37.957294, -122.552962), 
-new google.maps.LatLng(37.958478, -122.552855), 
-new google.maps.LatLng(37.959578, -122.552726), 
-new google.maps.LatLng(37.960779, -122.55146), 
-new google.maps.LatLng(37.96127, -122.551181), 
-new google.maps.LatLng(37.960001, -122.548435), 
-new google.maps.LatLng(37.961574, -122.54689), 
-new google.maps.LatLng(37.959053, -122.54262), 
-new google.maps.LatLng(37.96017, -122.54189), 
-new google.maps.LatLng(37.960136, -122.540689), 
-new google.maps.LatLng(37.960424, -122.539573), 
-new google.maps.LatLng(37.96017, -122.539229), 
-new google.maps.LatLng(37.960018, -122.53835), 
-new google.maps.LatLng(37.95973, -122.536826), 
-new google.maps.LatLng(37.960153, -122.536118), 
-new google.maps.LatLng(37.959798, -122.535861), 
-new google.maps.LatLng(37.960035, -122.534959), 
-new google.maps.LatLng(37.959544, -122.534723), 
-new google.maps.LatLng(37.959425, -122.534122), 
-new google.maps.LatLng(37.959493, -122.533758), 
-new google.maps.LatLng(37.959933, -122.532535), 
-new google.maps.LatLng(37.958309, -122.528887), 
-new google.maps.LatLng(37.958681, -122.528672), 
-new google.maps.LatLng(37.958106, -122.527471), 
-new google.maps.LatLng(37.957294, -122.526312), 
-new google.maps.LatLng(37.953741, -122.51833), 
-new google.maps.LatLng(37.952116, -122.5173), 
-new google.maps.LatLng(37.951846, -122.517214), 
-new google.maps.LatLng(37.952252, -122.515068), 
-new google.maps.LatLng(37.950831, -122.511206), 
-new google.maps.LatLng(37.945213, -122.514725), 
-new google.maps.LatLng(37.943791, -122.515068), 
-new google.maps.LatLng(37.941828, -122.517643), 
-new google.maps.LatLng(37.941625, -122.52142), 
-new google.maps.LatLng(37.943656, -122.526655), 
-new google.maps.LatLng(37.943927, -122.529917), 
-new google.maps.LatLng(37.942505, -122.532749), 
-new google.maps.LatLng(37.943182, -122.536869), 
-new google.maps.LatLng(37.944739, -122.538328), 
-new google.maps.LatLng(37.946431, -122.538843), 
-new google.maps.LatLng(37.947311, -122.539787)
-] },
 
 { "color": "#FFCC00", "width": 4, "title": "Kent Woodlands", "test": 1, "html": "Kent Woodlands",
   "points": [
