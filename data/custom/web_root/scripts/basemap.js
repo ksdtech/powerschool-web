@@ -34,7 +34,8 @@ var ksdBasemapData = {
     "point": new google.maps.LatLng(37.9575, -122.5630)
   }
   ],
-
+  "polygons":
+  
 { "color": "#FFCC00", "width": 4, "title": "Kent Woodlands", "test": 1, "html": "Kent Woodlands",
   "points": [
 new google.maps.LatLng(37.939662, -122.550495),  
