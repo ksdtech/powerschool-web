@@ -5,33 +5,39 @@ var ksdBasemapData = {
   ],
   "labels": [ 
   {
-    "text": "Firehouse",
+    "text": "SFD Firehouse",
+    "bgcolor": "#00CCCC",
     "point": new google.maps.LatLng(37.9600, -122.5560)
   },
   {
     "text": "Laurel Grove",
+    "bgcolor": "#FF00CC",
     "point": new google.maps.LatLng(37.9625, -122.5420)
   },
   {
     "text": "Greenbrae",
+    "bgcolor": "#00FF00",
     "point": new google.maps.LatLng(37.9575, -122.5270)
   },
   {
-    "text": "Behrens",
+    "text": "Berens",
+    "bgcolor": "#0000FF",
     "point": new google.maps.LatLng(37.9500, -122.5398)
   },
   {
     "text": "Murray Park",
+    "bgcolor": "#00CC00",
     "point": new google.maps.LatLng(37.9390, -122.5430)
   },
   {
     "text": "Kent Woodlands",
-    "point": new google.maps.LatLng(37.9600, -122.5630)
+    "bgcolor": "#FFCC00",
+    "point": new google.maps.LatLng(37.9575, -122.5630)
   }
   ],
   "no_markers": [
   {
-    "title": "Off Behrens in Corte Madera Creek",
+    "title": "Off Berens in Corte Madera Creek",
     "point": new google.maps.LatLng(37.950171, -122.545238), 
   },
   {
@@ -222,7 +228,7 @@ new google.maps.LatLng(37.952979, -122.538221),
 
 ] },
 
-{ "color": "#0000FF", "width": 4, "title": "Behrens", "test": 1, "html": "Behrens",
+{ "color": "#0000FF", "width": 4, "title": "Berens", "test": 1, "html": "Berens",
   "points": [
 new google.maps.LatLng(37.952979, -122.538221), 
 new google.maps.LatLng(37.951084, -122.539208), 
@@ -246,7 +252,7 @@ new google.maps.LatLng(37.952979, -122.538221)
 ] },
 
 
-{ "color": "#00CCCC", "width": 4, "title": "Firehouse", "test": 1, "html": "Firehouse",
+{ "color": "#00CCCC", "width": 4, "title": "SFD Firehouse", "test": 1, "html": "SFD Firehouse",
   "points": [
   
   new google.maps.LatLng(37.953927, -122.546139), 

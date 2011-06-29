@@ -15,6 +15,7 @@ function PolyMeta(opts) {
 // Define the overlay, derived from google.maps.OverlayView
 // Extending the OverlayView, we add two dynamic properties:
 // 'position' - LatLng of label's location
+// 'bgcolor' - background color
 // 'text' - text to draw
 function Label(opt_options) {
  // Initialization
@@ -28,7 +29,7 @@ function Label(opt_options) {
 
   var div = document.createElement('div');
   div.appendChild(span);
-  div.style.cssText = 'position: absolute; display: none';
+  div.style.cssText = 'position: absolute; display: none;';
   this.div_ = div;
   this.span_ = span;
   return this;
@@ -65,6 +66,7 @@ Label.prototype.draw = function() {
   var div = this.div_;
   div.style.left = pixelPos.x + 'px';
   div.style.top = pixelPos.y + 'px';
+  div.style.backgroundColor = this.get('bgcolor');
   div.style.display = 'block';
 
   this.span_.innerHTML = this.get('text').toString();
@@ -128,6 +130,7 @@ MapLoader.prototype.createMap = function() {
   for (var i = 0; i < labels.length; i++) {
     var label = new Label({ map: this.map_ });
     label.set('position', labels[i].point);
+    label.set('bgcolor', labels[i].bgcolor);
     label.set('text', labels[i].text);
   }  
   
