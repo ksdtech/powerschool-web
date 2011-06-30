@@ -38,6 +38,8 @@ var jq15 = jQuery.noConflict();
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td>Safe Routes to School</td></tr>
 <tr><td height="400px" width="100%"><div id="map" style="height: 100%"></div></td></tr>
+<tr class="secheader"><td>Your Address: <span id="address">~([01]street), ~([01]city), ~([01]state) ~([01]zip)</span></td></tr>
+<tr class="secheader"><td>Information About Safe Routes to Schools</td></tr>
 <tr><td><h3>Safe Routes to Schools</h3>
 <p>The Kentfield School District is excited to launch a new program to address 
   traffic congestion and safety at our schools. Our goal is to offer parents 
@@ -60,8 +62,7 @@ var jq15 = jQuery.noConflict();
   <tr><td align="right">Murray Park</td><td><div style="border: 1px solid black; background-color: #FF0000; height:28px width:100%">&nbsp;</div></td></tr>
 </table>
 </td></tr>
-<tr class="secheader"><td>Please select or confirm the neighborhood for your address</td></tr>
-<tr><td>Address: <span id="address">~([01]street), ~([01]city), ~([01]state) ~([01]zip)</span></td></tr>
+<tr class="secheader"><td>Please select or confirm the neighborhood for your address.</td></tr>
 <tr><td>Neighborhood: 
 <select id="neighborhood" name="[01]srs_neighborhood">
   <option value="">Select one...
