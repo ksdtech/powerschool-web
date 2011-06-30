@@ -180,7 +180,7 @@ MapLoader.prototype.polygonContains = function(poly, point) {
       ((prevVertex.lat() < y) && (thisVertex.lat() >= y)))) {
       if ((thisVertex.lng() + 
         ((y - thisVertex.lat()) * (prevVertex.lng() - thisVertex.lng())) / dLat) < x) {
-        oddNodes = !oddNodes
+        oddNodes = !oddNodes;
       }
     }
     j = i;
@@ -195,7 +195,7 @@ MapLoader.prototype.findPolygon = function(point) {
     if (this.polymeta_[i].test) {
       if (this.polygonContains(this.polygons_[i], point)) {
         found = this.polymeta_[i].title;
-        break 
+        break; 
       }
     }
   }
@@ -211,7 +211,6 @@ MapLoader.prototype.geocode = function(opts, callback) {
 
 // Global variable
 var loader = null;
-
 
 // Arguments: number to round, number of decimal places
 function roundFloat(number, decimals) { 
