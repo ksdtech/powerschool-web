@@ -229,7 +229,7 @@ new google.maps.LatLng(37.954891, -122.536783),
 new google.maps.LatLng(37.952962, -122.538285)
 ] },
 
-{ "color": "#00CC00", "width": 4, "title": "Murray Park", "test": 1, "html": "Murray Park",
+{ "color": "#FF0000", "width": 4, "title": "Murray Park", "test": 1, "html": "Murray Park",
   "points": [
   new google.maps.LatLng(37.9477, -122.542706),
   new google.maps.LatLng(37.946651, -122.543199), 
