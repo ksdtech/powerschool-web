@@ -2,7 +2,8 @@ var ksdBasemapData = {
   "center": new google.maps.LatLng(37.950171, -122.545238), 
   "zoom": 14,
   "markers": [ ],
-  "labels": [ 
+  "labels": [ ],
+  "no_labels": [ 
   {
     "text": "SFD Firehouse",
     "bgcolor": "#00CCCC",
@@ -25,7 +26,7 @@ var ksdBasemapData = {
   },
   {
     "text": "Murray Park",
-    "bgcolor": "#00CC00",
+    "bgcolor": "#FF0000",
     "point": new google.maps.LatLng(37.9390, -122.5430)
   },
   {
