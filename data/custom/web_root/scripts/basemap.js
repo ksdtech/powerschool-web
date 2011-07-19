@@ -54,10 +54,16 @@ new google.maps.LatLng(37.957141, -122.567618),
 new google.maps.LatLng(37.957818, -122.567489), 
 new google.maps.LatLng(37.956329, -122.559292), 
 new google.maps.LatLng(37.956025, -122.557554), 
-new google.maps.LatLng(37.956938, -122.556846), 
-new google.maps.LatLng(37.956363, -122.555151), 
-new google.maps.LatLng(37.956786, -122.554572), 
-new google.maps.LatLng(37.957294, -122.552962), 
+
+new google.maps.LatLng(37.956291, -122.556744),
+new google.maps.LatLng(37.956858, -122.556197),
+new google.maps.LatLng(37.956862, -122.555838),
+new google.maps.LatLng(37.956651, -122.555532),
+new google.maps.LatLng(37.95685, -122.555312),
+new google.maps.LatLng(37.957243, -122.554502),
+new google.maps.LatLng(37.957624, -122.553864),
+new google.maps.LatLng(37.957869, -122.553086),
+
 new google.maps.LatLng(37.955957, -122.551975), 
 new google.maps.LatLng(37.955213, -122.551053), 
 new google.maps.LatLng(37.95457, -122.550666), 
@@ -77,8 +83,7 @@ new google.maps.LatLng(37.945704, -122.552469),
 new google.maps.LatLng(37.945264, -122.552404), 
 new google.maps.LatLng(37.944181, -122.551696), 
 new google.maps.LatLng(37.943639, -122.551332), 
-new google.maps.LatLng(37.942319, -122.551374), 
-new google.maps.LatLng(37.939662, -122.550495)
+new google.maps.LatLng(37.942319, -122.551374)
 ] },
 
 { "color": "#00FF00", "width": 4, "title": "Greenbrae", "test": 1, "html": "Greenbrae",
@@ -94,12 +99,22 @@ new google.maps.LatLng(37.959933, -122.532535),
 new google.maps.LatLng(37.958309, -122.528887), 
 new google.maps.LatLng(37.958681, -122.528672), 
 new google.maps.LatLng(37.958106, -122.527471), 
-new google.maps.LatLng(37.957294, -122.526312), 
-new google.maps.LatLng(37.953741, -122.51833), 
-new google.maps.LatLng(37.952116, -122.5173), 
-new google.maps.LatLng(37.951846, -122.517214), 
-new google.maps.LatLng(37.952252, -122.515068), 
-new google.maps.LatLng(37.950831, -122.511206), 
+
+new google.maps.LatLng(37.957869, -122.526741),
+new google.maps.LatLng(37.956651, -122.525733),
+new google.maps.LatLng(37.955771, -122.524273),
+new google.maps.LatLng(37.955534, -122.523308),
+new google.maps.LatLng(37.954316, -122.522578),
+new google.maps.LatLng(37.954181, -122.520368),
+new google.maps.LatLng(37.953673, -122.520068),
+new google.maps.LatLng(37.951727, -122.517214),
+new google.maps.LatLng(37.951575, -122.516184),
+new google.maps.LatLng(37.95237, -122.514639),
+new google.maps.LatLng(37.95281, -122.511635),
+new google.maps.LatLng(37.952319, -122.510347),
+new google.maps.LatLng(37.952116, -122.51009),
+new google.maps.LatLng(37.950103, -122.512171),
+
 new google.maps.LatLng(37.945213, -122.514725), 
 new google.maps.LatLng(37.943791, -122.515068), 
 new google.maps.LatLng(37.941828, -122.517643), 
@@ -114,7 +129,7 @@ new google.maps.LatLng(37.947311, -122.539787),
 new google.maps.LatLng(37.9477, -122.542706),
 new google.maps.LatLng(37.949968, -122.540367), 
 new google.maps.LatLng(37.951084, -122.539208), 
-new google.maps.LatLng(37.952979, -122.538221), 
+new google.maps.LatLng(37.952979, -122.538221) 
 
 ] },
 
@@ -151,7 +166,9 @@ new google.maps.LatLng(37.952979, -122.538221)
   new google.maps.LatLng(37.95457, -122.550666), 
   new google.maps.LatLng(37.955213, -122.551053), 
   new google.maps.LatLng(37.955957, -122.551975), 
-  new google.maps.LatLng(37.957294, -122.552962), 
+    
+  new google.maps.LatLng(37.957869, -122.553086),
+  
   new google.maps.LatLng(37.958478, -122.552855), 
   new google.maps.LatLng(37.959578, -122.552726), 
   new google.maps.LatLng(37.960779, -122.55146), 
@@ -254,6 +271,6 @@ new google.maps.LatLng(37.952962, -122.538285)
   new google.maps.LatLng(37.949122, -122.550538), 
   new google.maps.LatLng(37.950171, -122.550581), 
   new google.maps.LatLng(37.950171, -122.545238),
-  new google.maps.LatLng(37.948072, -122.544057), 
+  new google.maps.LatLng(37.948072, -122.544057)
 ] }
 ] };
