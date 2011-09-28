@@ -200,7 +200,7 @@ new google.maps.LatLng(37.952979, -122.538221)
 ] },
 
 
-{ "color": "#FF00CC", "width": 4, "title": "Laurel Grove", "test": 1, "html": "Laurel Grove",
+{ "color": "#FF9933", "width": 4, "title": "Laurel Grove", "test": 1, "html": "Laurel Grove",
   "points": [
 new google.maps.LatLng(37.952979, -122.538221),
 new google.maps.LatLng(37.953563, -122.54071), 
