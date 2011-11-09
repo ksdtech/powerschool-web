@@ -84,33 +84,33 @@ jQuery(document).ready(function() {
  ASCIISTR(mf.Value) AS First,
  ASCIISTR(st.Mother) AS Last,
  ASCIISTR('Mother of '||st.First_Name||' '||st.Last_Name) as Notes,
- ASCIISTR(NVL(me.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
+ ASCIISTR(me.Value) AS Email,
  ASCIISTR(st.Home_Phone) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
  LEFT OUTER JOIN CustomText mf ON (mf.FieldNo=223 AND mf.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText me ON (me.FieldNo=405 AND me.KeyNo=st.DCID)
- WHERE mf.Value IS NOT NULL
+ WHERE me.Value IS NOT NULL AND mf.Value IS NOT NULL
  UNION ALL
  SELECT
  ASCIISTR(ff.Value) AS First,
  ASCIISTR(st.Father) AS Last,
  ASCIISTR('Father of '||st.First_Name||' '||st.Last_Name) AS Notes,
- ASCIISTR(NVL(fe.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
+ ASCIISTR(fe.Value) AS Email,
  ASCIISTR(st.Home_Phone) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
  JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
  LEFT OUTER JOIN CustomText ff ON (ff.FieldNo=222 AND ff.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText fe ON (fe.FieldNo=404 AND fe.KeyNo=st.DCID)
- WHERE ff.Value IS NOT NULL
+ WHERE fe.Value IS NOT NULL AND ff.Value IS NOT NULL
  UNION ALL
  SELECT
  ASCIISTR(m2f.Value) AS First,
  ASCIISTR(m2l.Value) AS Last,
  ASCIISTR('NC Mother of '||st.First_Name||' '||st.Last_Name) AS Notes,
- ASCIISTR(NVL(m2e.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
+ ASCIISTR(m2e.Value) AS Email,
  ASCIISTR(m2p.Value) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
@@ -119,13 +119,13 @@ jQuery(document).ready(function() {
  LEFT OUTER JOIN CustomText m2f ON (m2f.FieldNo=415 AND m2f.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText m2e ON (m2e.FieldNo=138 AND m2e.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText m2p ON (m2p.FieldNo=377 AND m2p.KeyNo=st.DCID)
- WHERE m2f.Value IS NOT NULL
+ WHERE m2e.Value IS NOT NULL AND m2f.Value IS NOT NULL
  UNION ALL
  SELECT 
  ASCIISTR(f2f.Value) AS First,
  ASCIISTR(f2l.Value) AS Last,
  ASCIISTR('NC Father of '||st.First_Name||' '||st.Last_Name) AS Notes,
- ASCIISTR(NVL(f2e.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
+ ASCIISTR(f2e.Value) AS Email,
  ASCIISTR(f2p.Value) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
@@ -134,7 +134,7 @@ jQuery(document).ready(function() {
  LEFT OUTER JOIN CustomText f2f ON (f2f.FieldNo=419 AND f2f.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText f2e ON (f2e.FieldNo=153 AND f2e.KeyNo=st.DCID)
  LEFT OUTER JOIN CustomText f2p ON (f2p.FieldNo=377 AND f2p.KeyNo=st.DCID)
- WHERE f2f.Value IS NOT NULL
+ WHERE f2e.Value IS NOT NULL AND f2f.Value IS NOT NULL
  ORDER BY 6, 7, 3
 ;alternatecolor]  
 <tr style="margin-left: 2px; margin-right: 2px" class="csvrow">
