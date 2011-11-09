@@ -84,7 +84,7 @@ jQuery(document).ready(function() {
  ASCIISTR(mf.Value) AS First,
  ASCIISTR(st.Mother) AS Last,
  ASCIISTR('Mother of '||st.First_Name||' '||st.Last_Name) as Notes,
- ASCIISTR(me.Value) AS Email,
+ ASCIISTR(NVL(me.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
  ASCIISTR(st.Home_Phone) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
@@ -97,7 +97,7 @@ jQuery(document).ready(function() {
  ASCIISTR(ff.Value) AS First,
  ASCIISTR(st.Father) AS Last,
  ASCIISTR('Father of '||st.First_Name||' '||st.Last_Name) AS Notes,
- ASCIISTR(fe.Value) AS Email,
+ ASCIISTR(NVL(fe.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
  ASCIISTR(st.Home_Phone) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
@@ -110,7 +110,7 @@ jQuery(document).ready(function() {
  ASCIISTR(m2f.Value) AS First,
  ASCIISTR(m2l.Value) AS Last,
  ASCIISTR('NC Mother of '||st.First_Name||' '||st.Last_Name) AS Notes,
- ASCIISTR(m2e.Value) AS Email,
+ ASCIISTR(NVL(m2e.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
  ASCIISTR(m2p.Value) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
@@ -125,7 +125,7 @@ jQuery(document).ready(function() {
  ASCIISTR(f2f.Value) AS First,
  ASCIISTR(f2l.Value) AS Last,
  ASCIISTR('NC Father of '||st.First_Name||' '||st.Last_Name) AS Notes,
- ASCIISTR(f2e.Value) AS Email,
+ ASCIISTR(NVL(f2e.Value, "NOEMAIL@kentfieldschools.org")) AS Email,
  ASCIISTR(f2p.Value) AS Phone,
  st.Last_Name, st.First_Name
  FROM Students st
