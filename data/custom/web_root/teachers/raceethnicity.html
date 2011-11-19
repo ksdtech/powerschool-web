@@ -30,6 +30,8 @@
 </head>
 
 <body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif" onload="onload();">
+<form action="raceethnicity.html" method="POST">
+<input type="hidden" name="frn" value="~[gpv:frn]">
 
 ~[wc:teachers_header]~[wc:teachers_navigation]
 ~[wc:teachers_nav_gel_buttons]
@@ -42,7 +44,7 @@
 <br>
 <br>
 <!-- Start of shaded content table -->
-<form action="raceethnicity.html?frn=~[gpv:frn]" method="POST">
+
 <table cellpadding="0" cellspacing="0" border="0" align="center">
 <tr class="~[evenoddrow]">
 	<td class="subhead">Ethnicity</td>
@@ -63,7 +65,7 @@
 		<input type="hidden" name="SaveRace" value="1">
 		<input type="hidden" name="[05]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
 		~[SetPostValue:subjectid=~([05]id)]
-~[brij_renderform:federalrace;:GetTeacherRaceSelectionBlock]
+		~[brij_renderform:federalrace;:GetTeacherRaceSelectionBlock]
 	</td>
 </tr>
 
@@ -72,7 +74,6 @@
 </tr>
 
 </table>
-</form>
 <!-- End of shaded content table -->
 
 <!-- not using wc teachers_footer -->
@@ -118,8 +119,7 @@
 <!-- End of copyright table -->
 <!-- End of set focus -->
 
-<iframe style="height:0px;width:0px;visibility:hidden" src="javascript:false" id="disablecache"></iframe>
-
+</form>
 </body>
 
 </html>
