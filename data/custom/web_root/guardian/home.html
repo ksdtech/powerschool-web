@@ -27,8 +27,8 @@ ORA_HASH(TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || StudentPers_guid) AS token
 FROM Students WHERE ID=~(curstudid)
 ]
 <li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards</a></li>
-~[if.~(schoolid)=104]
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)"><span style="font-size: 14pt">Reserve Parent-Teacher Conferences</span></a></li>
+~[if.~(schoolid)=103]
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)"><span style="font-size: 14pt">Reserve December Parent-Teacher Conferences</span></a></li>
 [/if]
 [/tlist_sql]
 </ul></td></tr>
