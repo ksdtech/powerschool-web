@@ -66,8 +66,101 @@
 	<td>
 		<input type="hidden" name="SaveRace" value="1">
 		<input type="hidden" name="[05]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
-		~[SetPostValue:subjectid=~([05]id)]
-		~[brij_renderform:federalrace;:GetTeacherRaceSelectionBlock]
+		<label>What is your race?</label>
+		<div class=clearit><!-- --></div>
+		<div class="groupblock" style="background-color:white;">
+			<div class=clearit><!-- --></div>
+
+			<div class="choicefloat"><input id="race_100" type=checkbox name="race" value="100" ><span class="clickable" onclick='toggleCheckbox("race_100");'>(100) American Indian or Alaska Native</span></div>
+			<div class="choicefloat"><input id="race_600" type=checkbox name="race" value="600" ><span class="clickable" onclick='toggleCheckbox("race_600");'>(600) Black or African American</span></div>
+			<div class="choicefloat"><input id="race_700" type=checkbox name="race" value="700" CHECKED><span class="clickable" onclick='toggleCheckbox("race_700");'>(700) White</span></div>
+			<div class=clearit><!-- must happen between the top-levels and the groups --></div>
+			<div class="groupblock labeled choicefloat">
+				<div class="groupblocklabel">(200) Asian</div>
+				<div class=clearit><!-- --></div>
+
+				<div class="choicefloat"><input id="race_201" type=checkbox name="race" value="201" ><span class="clickable" onclick='toggleCheckbox("race_201");'>(201) Chinese</span></div>
+				<div class="choicefloat"><input id="race_202" type=checkbox name="race" value="202" ><span class="clickable" onclick='toggleCheckbox("race_202");'>(202) Japanese</span></div>
+				<div class="choicefloat"><input id="race_203" type=checkbox name="race" value="203" ><span class="clickable" onclick='toggleCheckbox("race_203");'>(203) Korean</span></div>
+				<div class="choicefloat"><input id="race_204" type=checkbox name="race" value="204" ><span class="clickable" onclick='toggleCheckbox("race_204");'>(204) Vietnamese</span></div>
+				<div class="choicefloat"><input id="race_205" type=checkbox name="race" value="205" ><span class="clickable" onclick='toggleCheckbox("race_205");'>(205) Asian Indian</span></div>
+				<div class="choicefloat"><input id="race_206" type=checkbox name="race" value="206" ><span class="clickable" onclick='toggleCheckbox("race_206");'>(206) Laotian</span></div>
+
+				<div class="choicefloat"><input id="race_207" type=checkbox name="race" value="207" ><span class="clickable" onclick='toggleCheckbox("race_207");'>(207) Cambodian</span></div>
+				<div class="choicefloat"><input id="race_208" type=checkbox name="race" value="208" ><span class="clickable" onclick='toggleCheckbox("race_208");'>(208) Hmong</span></div>
+				<div class="choicefloat"><input id="race_299" type=checkbox name="race" value="299" ><span class="clickable" onclick='toggleCheckbox("race_299");'>(299) Other Asian</span></div>
+				<div class="choicefloat"><input id="race_400" type=checkbox name="race" value="400" ><span class="clickable" onclick='toggleCheckbox("race_400");'>(400) Filipino</span></div>
+				<div class=clearit><!-- --></div>
+			</div>
+			<div class="groupblock labeled choicefloat">
+
+				<div class="groupblocklabel">(300) Native Hawaiian/Other Pac Islander</div>
+				<div class=clearit><!-- --></div>
+				<div class="choicefloat"><input id="race_301" type=checkbox name="race" value="301" ><span class="clickable" onclick='toggleCheckbox("race_301");'>(301) Hawaiian</span></div>
+				<div class="choicefloat"><input id="race_302" type=checkbox name="race" value="302" ><span class="clickable" onclick='toggleCheckbox("race_302");'>(302) Guamanian</span></div>
+				<div class="choicefloat"><input id="race_303" type=checkbox name="race" value="303" ><span class="clickable" onclick='toggleCheckbox("race_303");'>(303) Samoan</span></div>
+				<div class="choicefloat"><input id="race_304" type=checkbox name="race" value="304" ><span class="clickable" onclick='toggleCheckbox("race_304");'>(304) Tahitian</span></div>
+
+				<div class="choicefloat"><input id="race_399" type=checkbox name="race" value="399" ><span class="clickable" onclick='toggleCheckbox("race_399");'>(399) Other Pac Islander</span></div>
+				<div class=clearit><!-- --></div>
+			</div>
+
+			<div class=clearit><!-- --></div>
+			<div class="choicefloat"><input type=checkbox id=r_none name=race value="*declined*" onchange="decline_race(this);"><span class="clickable declined" onclick='toggleCheckbox("r_none");'>Race Missing</span> (Note that no other selections will be saved when selected)</div>
+			<div class=clearit><!-- --></div>
+
+		</div>
+		<script>
+			function decline_race ( declineel ) {
+				var disable = declineel.checked;
+				var raceels = document.getElementsByName("race");
+				for ( var elidx=0; elidx < raceels.length; elidx++ ) {
+					var el = raceels[elidx];
+					if ( el != declineel ) {
+						el.disabled = disable;
+					}
+				}
+				// Set the field that actually gets stored ...
+				var storageel = document.getElementById("r_none_storage");
+				if ( storageel ) {
+					storageel.value = ( declineel.checked? "1" : "0" );
+				}
+			}
+			function toggleCheckbox(id) {
+				var el = document.getElementById(id);
+				if ( el && !el.disabled ) {
+					el.checked = !(el.checked);
+					if ( el.onchange ) {
+						/* el.onchange(window.event); */
+					}
+				}
+			}
+			function setCheckbox(id, checked) {
+				var el = document.getElementById(id);
+				if ( el && !el.disabled ) {
+					el.checked = checked;
+					if ( el.onchange ) {
+						/* el.onchange(window.event); */
+					}
+				}
+			}
+
+		YAHOO.util.Event.addListener(window, "load", function() {
+			var storageel = document.getElementById("r_none_storage");
+			if ( storageel && storageel.value != "0" ) {
+				setCheckbox('r_none',true);
+			}
+			if ( document.getElementById('r_none') ) {
+				/* document.getElementById('r_none').onchange(null); */
+			} else {
+				// Set the field to "not declined" ...
+				var storageel = document.getElementById("r_none_storage");
+				if ( storageel ) {
+					storageel.value = "0";
+				}
+			}
+		} );
+		</script>	
 	</td>
 </tr>
 
