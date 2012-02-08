@@ -26,7 +26,7 @@
 <tr bgcolor="#FFFFFF">
 <td class="bold">Vaccine</td>
 <td>
-<input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('any');" value="any" checked> Any mandatory vaccine<br
+<input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('any');" value="any" checked> Any mandatory vaccine<br>
 <input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('selected');" value="selected" checked> Only this vaccine: 
 <select name="optvaccine" id="optvaccine" onchange="selectVaccine()">
 	~[brij_render:health;:SelectImmComplianceSearch]
