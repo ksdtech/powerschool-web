@@ -34,6 +34,12 @@ function onLoadHandle(selStudent){
 }
 
 function selectVaccine(){
+  var sel = $("vaccine").value;
+  if (sel == "all" || sel == "any") {
+  	$("vaccineName").value = sel;
+  	return;
+  }
+  
 	var idx = $("optvaccine").selectedIndex;
 	var selected_text = $("optvaccine").options[idx].text;
 
@@ -45,7 +51,7 @@ function selectVaccine(){
 
 <body marginwidth=12 marginheight=12 topmargin=12 leftmargin=12 bgcolor="#ffffff" onload="onLoadHandle(~[x:studsinset]);">
 
-<form action="immunizationSearchResult.html" method="POST" name="ImmunizationSearch">
+<form action="immunizationSearchResult.html" method="POST" name="ImmunizationSearch" onsubmit="selectVaccine();">
 ~[wc:admin_header]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/functions.html" target="_top">Special Functions</a> &gt; <a href="/admin/studentlist/functions.html">Group Functions</a> &gt; Immunization Compliance<!-- breadcrumb end -->~[wc:admin_navigation]
 
 <!-- start of title -->
@@ -85,7 +91,7 @@ function selectVaccine(){
 <tr bgcolor="#FFFFFF">
 <td class="bold">Vaccine</td>
 <td>
-<input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('any');" value="any" checked> Any mandatory vaccine<br>
+<input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('any');" value="any"> Any mandatory vaccine<br>
 <input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('selected');" value="selected" checked> Only this vaccine: 
 <select name="optvaccine" id="optvaccine" onchange="selectVaccine()">
 	~[brij_render:health;:SelectImmComplianceSearch]
