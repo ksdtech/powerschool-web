@@ -1,0 +1,71 @@
+<html>
+<!-- non framed -->
+<head>
+<title>Immunization Compliance</title>
+~[wc:UI_js_includes ]
+~[wc:UI_submitprogress_cond]
+~[wc:commonscripts]
+
+<link href="/images/powerschool.css" rel="stylesheet">
+
+<script type="text/javascript">	
+function setVaccineDropdown(sel){
+	if (sel == "all" || sel == "any")
+	 	$("optvaccine").disabled = true;
+	else
+	 	$("optvaccine").disabled = false;
+	 	
+}
+
+function onLoadHandle(selStudent){
+	if (selStudent > 0){		
+		document.ImmunizationSearch.forwhichstudents[1].checked = true;
+		document.ImmunizationSearch.forwhichstudents[1].disabled = false;
+	}else{		
+		document.ImmunizationSearch.forwhichstudents[0].checked = true;
+		document.ImmunizationSearch.forwhichstudents[1].disabled = true;
+	}
+	
+	var len = $("optvaccine").length;
+	if(len >0){
+		var idx = $("optvaccine").selectedIndex;
+		$("vaccineName").value = $("optvaccine").options[idx].text;
+	}
+}
+
+function selectVaccine(){
+	var idx = $("optvaccine").selectedIndex;
+	var selected_text = $("optvaccine").options[idx].text;
+
+	$("vaccineName").value = selected_text;
+	
+}
+</script>
+</head>
+
+<body marginwidth=12 marginheight=12 topmargin=12 leftmargin=12 bgcolor="#ffffff" onload="onLoadHandle(~[x:studsinset]);">
+
+<form action="immunizationSearchResult.html" method="POST" name="ImmunizationSearch">
+~[wc:admin_header]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/functions.html" target="_top">Special Functions</a> &gt; <a href="/admin/studentlist/functions.html">Group Functions</a> &gt; Immunization Compliance<!-- breadcrumb end -->~[wc:admin_navigation]
+
+<!-- start of title -->
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td class="header">Immunization Compliance Parameters</td>
+</tr>
+</table>
+<br><br>
+<!-- end of title -->
+
+~[if.~(studentscreenaccess;immunization view/modify) = 1]
+	~[x:insertfile;searchImmunizationCompliance_Sub.inc]	
+[else]
+	~[x:insertfile;searchImmunizationCompliance_ViewOnly.inc]
+[/if]
+
+<input type="hidden" name="vaccineName" id="vaccineName" value="">
+~[wc:admin_footer]
+</form>
+
+</body>
+</html><!-- non framed -->
