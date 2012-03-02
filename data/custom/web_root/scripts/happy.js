@@ -1,6 +1,6 @@
 (function($){
   function trim(el) {
-    return (''.trim) ? el.val().trim() : jQuery.trim(el.val());
+    return (''.trim) ? el.val().trim() : $.trim(el.val());
   }
   $.fn.isHappy = function (config) {
     var fields = [], item;
@@ -8,14 +8,11 @@
     function setDefaultRadio(radio_group, default_radio) {
       var num_checked = radio_group.filter(':checked').length;
       if (num_checked == 0) {
-        jq15(default_radio).attr('checked', 'checked');
+        $(default_radio).attr('checked', 'checked');
       }
     }
     function getError(error) {
       return $('<span id="'+error.id+'" class="unhappyMessage">'+error.message+'</span>');
-    }
-    function isFunction(obj) {
-      return !!(obj && obj.constructor && obj.call && obj.apply);
     }
     function handleSubmit() {
       var errors = false, i, l;
@@ -25,6 +22,10 @@
         }
       }
       if (errors) {
+        if (isFunction(config.unHappy)) config.unHappy();
+        
+        // PFZ scroll to first error
+        if (config.setErrorFocus) $('.unhappy').first().focus();
         return false;
       }
       if (isFunction(config.onSubmit)) {
@@ -34,6 +35,9 @@
         if (window.console) console.warn('would have submitted');
         return false;
       }
+    }
+    function isFunction (obj) {
+      return !!(obj && obj.constructor && obj.call && obj.apply);
     }
     function processField(opts, selector) {
       var field = $(selector),
@@ -46,7 +50,6 @@
       if (opts.default_radio) {
         setDefaultRadio(field, opts.default_radio);
       }
-      
       fields.push(field);
       field.testValid = function (submit) {
         var val,
@@ -73,11 +76,12 @@
           // clean it or trim it
           if (isFunction(opts.clean)) {
             val = opts.clean(el.val());
-          } else if (opts.trim && !(field_type == 'password')) {
+          } else if (!opts.trim && !(field_type == 'password')) {
             val = trim(el);
           } else {
             val = el.val();
           }
+        
           // write it back to the field
           el.val(val);
           has_val = !(val === '');
@@ -107,7 +111,6 @@
           return true;
         }
       };
-      // PFZ: use focusout event instead of blur
       field.bind(config.when || 'blur', field.testValid);
     }
     
