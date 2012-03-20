@@ -42,9 +42,9 @@
 <tr bgcolor="#edf3fe">~[tlist;log;alternatecolor;nonemessage=No log entries were found for this student.;sortcmd;entry_date,&lt;]
 <td><a href="editlogentry.html?frn=~(frn)">~(entry_date)</a><br>
 ~[if.~(schoolid)=104]
-<a href="log_letter_kent_single.html?frn=~(studentfrn)">Create Letter</a>
+<a href="log_letter_kent_single.html?frn=~(frn)">Create Letter</a>
 [else]
-<a href="log_letter_bacich_single.html?frn=~(studentfrn)">Create Letter</a>
+<a href="log_letter_bacich_single.html?frn=~(frn)">Create Letter</a>
 [/if]
 </td>
 <td>~(subtype) ~(entry_author) ~(subject) ~(consequence)<br>~(entry)</td>
