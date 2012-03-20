@@ -24,7 +24,13 @@
 <td colspan="2" align="center"><a href="disciplinealert.html?frn=~(studentfrn)">Edit Discipline Alert</a></td>
 </tr>
 <tr>
-<td colspan="2" align="center"><a href="log-entry-letter-MDES.html?frn=~(studentfrn)">Create Summary Letter</a></td>
+<td colspan="2" align="center">
+~[if.~(schoolid)=104]
+<a href="log_letter_kent_all.html?frn=~(studentfrn)">Create Summary Letter</a>
+[else]
+<a href="log_letter_bacich_all.html?frn=~(studentfrn)">Create Summary Letter</a>
+[/if]
+</td>
 </tr>
 <tr>
 <td colspan="2" align="center"><a href="newlogentry.html?frn=008-99"><img src="/images/btn_new_gr.gif" width="62" height="26" alt="" border="0"></a></td>
@@ -34,7 +40,13 @@
 <td class="bold">Description</td>
 </tr>
 <tr bgcolor="#edf3fe">~[tlist;log;alternatecolor;nonemessage=No log entries were found for this student.;sortcmd;entry_date,&lt;]
-<td><a href="editlogentry.html?frn=~(frn)">~(entry_date)</a><br><a href="log-entry-letter-single.html?frn=~(frn)">Create Letter</a></td>
+<td><a href="editlogentry.html?frn=~(frn)">~(entry_date)</a><br>
+~[if.~(schoolid)=104]
+<a href="log_letter_kent_single.html?frn=~(studentfrn)">Create Letter</a>
+[else]
+<a href="log_letter_bacich_single.html?frn=~(studentfrn)">Create Letter</a>
+[/if]
+</td>
 <td>~(subtype) ~(entry_author) ~(subject) ~(consequence)<br>~(entry)</td>
 </tr>
 </table>
