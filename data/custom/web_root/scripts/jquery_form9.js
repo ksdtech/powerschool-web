@@ -11,32 +11,48 @@ jq15(document).ready(function () {
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
-      '.med_treatment': {
+      '.annual_notice': {
         required: true,
         message: 'Required field.' },
-      '.prev_school_contact': {
+      '.release_directory_info': {
         required: true,
         message: 'Required field.' },
-      '.pub_waiver_public': {
+      '.previous_school_contact': {
         required: true,
         message: 'Required field.' },
-      '.pub_waiver_restricted': {
+      '#emergency_hospital': {
+        required: true,
+        message: 'Required field.' },
+      '.emergency_care': {
+        required: true,
+        message: 'Required field.' },
+      '.ipm_notifications': {
+        required: true,
+        message: 'Required field.' },
+      '.off_campus_walks': {
         required: true,
         message: 'Required field.' },
       '.acceptable_use': {
         required: true,
         message: 'Required field.' },
-      '.responsibility': {
+      '.computer_use': {
         required: true,
         message: 'Required field.' },
-      '#signature': {
+      '.google_apps': {
         required: true,
         message: 'Required field.' },
-      '#signed_date': {
+      '.social_learning': {
         required: true,
-        clean: todayIfBlank,
-        test: happy.date,
-        message: 'Required field. Format as M/D/YYYY.' }
+        message: 'Required field.' },
+      '.publish_images': {
+        required: true,
+        message: 'Required field.' },
+      '.publish_articles': {
+        required: true,
+        message: 'Required field.' },
+      '.publish_works': {
+        required: true,
+        message: 'Required field.' }
     }
   });
 });
