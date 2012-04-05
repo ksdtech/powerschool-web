@@ -6,6 +6,13 @@ function onForm4Submit() {
   onRegFormSubmit();
 }
 
+function required_if_guardian2_test(val) {
+  if (val === '') {
+    return happy.selectorIsEmpty('.guardian2_name');
+  }
+  return true;
+}
+
 function home2_state_test(val) {
   if (val === '') {
     return happy.selectorIsEmpty('.guardian2_name');
@@ -58,15 +65,18 @@ jq15(document).ready(function () {
         message: 'Required field: format as (415) 333-2222 x5555.' },
       '.inet_access2': {
         default_radio: '#inet_yes',
-        required: true,
+        required: 'sometimes',
+        test: required_if_guardian2_test,
         message: 'Required field.' },
       '.printed_material2': {
         default_radio: '#printed_no',
-        required: true,
+        required: 'sometimes',
+        test: required_if_guardian2_test,
         message: 'Required field.' },
       '.spanish_material2': {
         default_radio: '#spanish_no',
-        required: true,
+        required: 'sometimes',
+        test: required_if_guardian2_test,
         message: 'Required field.' },
       '#mother2_last': {
         required: 'sometimes',
