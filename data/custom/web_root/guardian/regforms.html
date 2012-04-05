@@ -28,7 +28,7 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="forms" action="regforms.html" method="post">
+<form id="forms" action="changesrecorded.html" method="post">
 <!-- end form action -->
 <div id="forms-contents" align="center" style="width: 98%">
 <div id="forms-setup" class="box-round group" style="width: 720px">
@@ -176,14 +176,14 @@ icon in the icon banner above.</td></tr>
   for my (our) student in all school matters. If there is a change in any of this
   information, I (we) will update it promptly.</td></tr>
 <tr><td width="10">&nbsp;</td>
-<td><input type="radio" class="responsibility_for_student" name="[01]responsibility_for_student" value="Yes">&nbsp;YES&nbsp;</td>
-<td><input type="radio" class="responsibility_for_student" name="[01]responsibility_for_student" value="No">&nbsp;NO&nbsp;</td>
+<td><input type="radio" name="[01]responsibility_for_student" class="resp_for_student" value="Yes">&nbsp;YES&nbsp;</td>
+<td><input type="radio" name="[01]responsibility_for_student" class="resp_for_student" value="No">&nbsp;NO&nbsp;</td>
 <td colspan="3">&nbsp;</td></tr>
 <tr><td colspan="6">By selecting <b>Yes</b>, I (we) agree to the previous statement.</td></tr>
 <tr><td colspan="2">Signatures (typed)</td>
 <td colspan="4"><input type="text" id="responsibility_sig_1" name="[01]responsibility_sig_1" value="" size="30" maxlength="60">&nbsp;and&nbsp;<input type="text" name="[01]responsibility_sig_2" value="" size="30" maxlength="60"></td></tr>
 <tr><td colspan="2">Date</td>
-<td colspan="4"><input type="text" id="reponsibility_date" name="[01]responsibility_date" value="" size="15"></td></tr>
+<td colspan="4"><input type="text" id="responsibility_date" name="[01]responsibility_date" value="" size="15"></td></tr>
 
 ~[if.~(wm_status)=1]
 <tr><td colspan="6" align="right">You do not have permission to modify data on this page.</td></tr>

@@ -1,10 +1,3 @@
-function todayIfBlank(val) {
-  if (val === '') {
-    val = today_mdy();
-  }
-  return val;
-}
-
 // happy.js validations
 jq15(document).ready(function () {
   jq15('#form9').isHappy({
