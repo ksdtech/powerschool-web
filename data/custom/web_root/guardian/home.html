@@ -9,38 +9,27 @@
 ~[brij_render:common-ps;:GuardianHomeTabs]
 
 <h1>~[if.~(schoolid)=104]Kent[else]Bacich[/if] PowerSchool Home Page</h1>
-		
-<table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
-<tr><td class="header">Quick Links</td></tr>
-<tr><td>External links will open in new tab or window</td></tr>
-<tr><td><ul>
-~[if.isguardian]<li><a href="contacts.html?~[randomnumber;20]">Update Contact Information</a> (or click <strong>Contacts</strong> icon above)</li>[/if]
+
+<h1>~[text:psx.html.guardian.home.grades_and_attendance] ~(studentname)</h1>
+
+<div class="header">Quick Links</div>
+<div>
+<p>External links will open in new tab or window.</p>
+<ul>
 <li><a target="ksorg" href="http://www.kentfieldschools.org">Kentfield
 School District website</a></li>
 <li><a target="ksorg" href="http://www.kentfieldschools.org/Kent">Kent
 Middle School website</a></li>
 <li><a target="ksorg" href="http://www.kentfieldschools.org/Bacich">Bacich
 Elementary School website</a></li>
-~[tlist_sql;
-SELECT student_number AS sn, TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') AS ctime, 
-ORA_HASH(TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || StudentPers_guid) AS token 
-FROM Students WHERE ID=~(curstudid)
-]
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards</a><br>
-  <b>Important Note:</b> Parents can review Kent Middle School students' 
+</ul>
+<p><b>Important Note:</b> Parents can review Kent Middle School students' 
   historical grades for all terms in the current school year by clicking the 
   <a href="termgrades.html">Grade History</a>
   icon at the top of this page. Kent Middle School 
   report cards for the year will only be generated and posted 
-  at the end of the school year.</li>
-<!--
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Reserve Parent-Teacher Conferences</a></li>
--->
-[/tlist_sql]
-</ul></td></tr>
-</table>
-
-<h1>~[text:psx.html.guardian.home.grades_and_attendance] ~(studentname)</h1>
+  at the end of the school year.</p>
+</div>
 
 <!-- start student content -->
 <div id="quickLookup">
