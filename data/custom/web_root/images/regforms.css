@@ -1,4 +1,4 @@
-tr.staffonly td { padding-top: 4px; background-color: #ffcccc; }
-tr.secheader td { padding-top: 4px; background-color: #ccccff; border-style: solid; border-width: 4px 0 0 0; border-color: #ffffff; }
-tr.fldheader td { padding-top: 4px; }
+.staffonly { padding-top: 4px; background-color: #ffcccc; }
+.secheader { padding-top: 4px; background-color: #ccccff; border-style: solid; border-width: 4px 0 0 0; border-color: #ffffff; }
+.fldheader { padding-top: 4px; }
 .unhappyMessage { color: red; font-weight: bold; }
