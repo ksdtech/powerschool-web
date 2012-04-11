@@ -1,9 +1,9 @@
-<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+~[frame_type:none]<meta http-equiv="X-UA-Compatible" content="IE=8"/>
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
 
 <!--YUI CSS-->
-<link rel="stylesheet" type="text/css" href="/images/css/theme/true_css/true_style_pa_ver.css">
+
 <link rel="stylesheet" type="text/css" href="/struts/xhtml/styles.css">
 <link rel="stylesheet" type="text/css" href="/scripts/yui/2.7.0/assets/skins/sam/skin.css">
 <link rel="stylesheet" type="text/css" href="/scripts/yui/2.7.0/paginator/assets/skins/sam/paginator.css">
@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/scripts/yui/2.7.0/container/assets/container.css">
 <link rel="stylesheet" type="text/css" href="/scripts/yui/2.7.0/button/assets/skins/sam/button.css">
 <link rel="stylesheet" type="text/css" href="/scripts/glowbutton-min.css">
-<link rel="stylesheet" type="text/css" href="/images/ccs/theme/true_css/true_style.css">
+
 <link rel="stylesheet" type="text/css" href="/scripts/course-prereqs/CourseRequests.css">
 <!--Normal CSS-->
 
@@ -19,6 +19,7 @@
 <link href="/images/css/print.css" rel="stylesheet" type="text/css" media="print" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+~[wc:commonscripts]
 </head>
 <body id="parentPageTemp" class="psparent">
 
@@ -28,55 +29,58 @@
 <!-- start of shell for entire page  -->
 <!-- start logo, school, term, logoff, help -->
 <div id="header" class="group">
- <div id="branding">
-<a href="/guardian/home.html" tabindex="0"><img src="/images/img/pss_powerschool_logo.2.png" alt="PowerSchool Logo" height="46" width="165" /></a></div>
+		<ul id="tools">
+			<li id="userName" title="~[wc:login_lastlogin]">~[text:psx.common.welcome] 
+			<!-- Render either the guardian name or the student name. Guardian name is rendered by the brij tag above -->
+			<span>
+			~[if.isguardianAndSSOEnabled]
+				~[brij_render:parentportal-pkg;:listGuardian]
+			[else]
+				~[x:username;firstlast]
+			[/if]
+			</span>
+		  </li>
+		<li><a href="javascript:helpwindow('~[x:help_pagelink]')" title="~[text:psx.common.help_title]">~[text:psx.common.help]</a></li>
+		<li><a href="home.html?ac=logoff" id="btnLogout" target="_top" title="~[text:psx.common.sign_out_title]" accesskey="l">~[text:psx.common.sign_out]</a></li>
+</ul>
+ <div id="branding-powerschool">
+   <a href="/guardian/home.html" tabindex="0"><img src="/images/img/ps7-logo.png" alt="PowerSchool Logo" height="28" width="180" /></a>
+ </div>
+
+<!--
 <ul id="nav-main">
 	~[if.isguardianAndSSOEnabled]
-	    <li id="btn-accountPreferences"><a href="accountmanagement_profile.html">Account Preferences</a></li>
+	    <li id="btn-accountPreferences"><a href="accountmanagement_profile.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences]</a></li>
+	[/if]
+	~[if.isstudentAndManagementEnabled]
+		<li id="btn-accountPreferences"><a href="accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences1]</a></li>
 	[/if]
 	<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
 	<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
-	<li id="btn-schoolBulletin"><a href="bulletin.html">School Bulletin</a></li>
-	<li id="btn-teacherComments"><a href="teachercomments.html">Teacher Comments</a></li>
+	<li id="btn-schoolBulletin"><a href="bulletin.html">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
+	<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header_yui.teacher_comments]</a></li>
 	~[if.isguardian]
-	    <li id="btn-emailNotification"><a href="autoemailsetup.html">Email Notification</a></li>
+	    <li id="btn-emailNotification"><a href="autoemailsetup.html">~[text:psx.txt.wildcards.guardian_header_yui.email_notification]</a></li>
 	[/if]
-	<li id="btn-attendanceHistory"><a href="attendance.html">Attendance History</a></li>
-	<li id="btn-gradesHistory"><a href="termgrades.html">Grade History</a></li>
-	<li id="btn-gradesAttendance"><a href="home.html">Grades and Attendance</a></li>
+	<li id="btn-attendanceHistory"><a href="attendance.html">~[text:psx.txt.wildcards.guardian_header_yui.attendance_history]</a></li>
+	<li id="btn-gradesHistory"><a href="termgrades.html">~[text:psx.txt.wildcards.guardian_header_yui.grade_history]</a></li>
+	<li id="btn-gradesAttendance"><a href="home.html">~[text:psx.txt.wildcards.guardian_header_yui.grades_and_attendance]</a></li>
 </ul>
-<div id="nav-main-phone">
-	<form name="phonejump" id="phonejump">
-  <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
-    <option value="#">Select...</option>
-	<option value="home.html">Grades & Attendance</option>
-    <option value="termgrades.html">Grade History</option>
-    <option value="attendance.html">Attendance History</option>
-    ~[if.isguardian]
-	<option value="autoemailsetup.html">Email Notification</option>
-	[/if]
-    <option value="teachercomments.html">Teacher Comments</option>
-    <option value="bulletin.html">School Bulletin</option>
-    <option value="regforms.html">Registration</option>
-	~[if.isguardianAndSSOEnabled]
-    <option value="accountmanagement_profile.html">Account Preferences</option>
-	[/if]
-  </select>
-</form>
-</div>
+-->
 </div>
 <div id="print-school">~[schoolordistrictname]<br><span>~[schoolname]</span></div>
 <!-- end logo, school, term, logoff, help -->
 <div id="usercontext-bar" class="group">
 <!-- PA-73: Render list of associated students if  the user is a guardian -->
-~[if.isguardianAndSSOEnabled] ~[brij_render:parentportal-pkg;:listStudentsAssociatedWithGuardian][/if]
-<!-- Render either the guardian name or the student name. Guardian name is rendered by the brij tag above -->
-	~[if.isguardianAndSSOEnabled][else]<div id="students-list">&nbsp;</div><div id="userName">~(studentname)[/if] ~[wc:login_lastlogin]
-	
+	~[if.isguardianAndSSOEnabled]
+		 ~[brij_render:parentportal-pkg;:listOnlyStudentsAssociatedWithGuardian]
+	[else]
+		<div id="students-list" style="width:75%">&nbsp;</div>
+	[/if]
 
 <!-- PA-448: A form to hold a hidden input html value to indicate the currently selected student id. 
     Submitting a form with currently selected student id as a hidden input will prevent clear display of student id in the url -->
-    <form id="switch_student_form" action="${(currentResource!"home.html")?js_string}" method="post">
+    <form id="switch_student_form" action="/~[self]" method="post">
         <input type="hidden" name="selected_student_id"/>
     </form>
     
@@ -90,8 +94,40 @@
        switchStudentForm.submit();
     }  
 </script>
-</div>
-	<ul id="tools"><li><a href="home.html?ac=logoff" target="_top" title="Logout" accesskey="l">Logout</a></li><li><a href="javascript:helpwindow('~[x:help_pagelink]')" title="Help">?</a></li><li class="icon-btn-print"><a href="javascript:window.print()">&nbsp;</a></li></ul>
+	<ul id="tools2">
+		<li class="icon-btn-print" title="~[text:psx.common.print_title]"><a href="javascript:window.print()">&nbsp;</a></li>
+		<li class="icon-btn-download"><a href="studentdata.xml?ac=download">&nbsp;</a></li>
+		~[if.isI18nMessageTracking]
+		<li id="icon-btn-translate"><a title="~[text:psx.common.translate_page_title]" href="/guardian/viewBatchTranslation.action?pageType=interactive&interactiveid=none" class="dialogM" id="interactive_l10n">&nbsp;</a></li>
+		[/if]
+		<span id="notifIcon">~[brij_render_insert:notification:authorizedNotificationCountAJAX]</span>
+	</ul>
   
 </div>
 <div id="content" class="group">
+<div id="nav-main">
+	<h3>~[text:psx.txt.wildcards.guardian_header_yui.navigation]</h3>
+	<ul>
+		<li id="btn-gradesAttendance"><a href="home.html">~[text:psx.txt.wildcards.guardian_header_yui.grades_and_attendance]</a></li>
+		<li id="btn-gradesHistory"><a href="termgrades.html">~[text:psx.txt.wildcards.guardian_header_yui.grade_history]</a></li>
+		<li id="btn-attendanceHistory"><a href="attendance.html">~[text:psx.txt.wildcards.guardian_header_yui.attendance_history]</a></li>
+		~[if.isguardian]
+		    <li id="btn-emailNotification"><a href="autoemailsetup.html">~[text:psx.txt.wildcards.guardian_header_yui.email_notification]</a></li>
+		[/if]
+		<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header_yui.teacher_comments]</a></li>
+		<li id="btn-schoolBulletin"><a dialogContent="/guardian/bulletin.html" class="dialogM" title="~[text:psx.txt.wildcards.guardian_header_yui.view_school_bulletin]">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
+	    <li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
+		<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+		~[if.isstudentAndManagementEnabled]
+			<li id="btn-accountPreferences"><a href="accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences1]</a></li>
+		[/if]
+		~[if.isguardianAndSSOEnabled]
+		    <li id="btn-accountPreferences"><a href="accountmanagement_profile.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences]</a></li>
+		[/if]
+		~[brij_render:pluginnavlinks;:renderStudentNavigationLinks]
+
+	</ul>
+	~[if.isguardian][else]<iframe frameBorder="0" scrolling="no" allowtransparency="true" src="https://powersource.pearsonschoolsystems.com/public/ios/powerschool_student.html" width="100%" height="150"></iframe>[/if]
+	~[if.isguardianAndSSOEnabled]<iframe frameBorder="0" scrolling="no" allowtransparency="true" src="https://powersource.pearsonschoolsystems.com/public/ios/powerschool_parent.html" width="100%" height="150"></iframe>[/if]
+</div>
+<div id="content-main" class="group">
