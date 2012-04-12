@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html>
+<html>
 <head>
 <title>Name, Birth and Custody Information - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
@@ -26,11 +27,11 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="form2" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms">
-<input type="hidden" name="backtitle" value="Main Registration Page">
-<input type="hidden" name="nextpage" value="regform3">
-<input type="hidden" name="nexttitle" value="Page 3 - Qualifying District Residence">
+<form class="noSubmitLoading" id="form2" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regforms" />
+<input type="hidden" name="backtitle" value="Main Registration Page" />
+<input type="hidden" name="nextpage" value="regform3" />
+<input type="hidden" name="nexttitle" value="Page 3 - Qualifying District Residence" />
 <!-- end form action -->
 <div id="form2-contents" align="center" style="width: 98%">
 <div id="form2-setup" class="box-round group" style="width: 720px">
@@ -46,13 +47,13 @@ var jq15 = jQuery.noConflict();
 <tr class="secheader"><td colspan="3" class="bold">2a. Name and Birth Information</td></tr>
 <tr><td>Date of Birth</td>
 <td colspan="2">Gender</td></tr>
-<tr><td><input type="text" id="dob" name="[01]DOB" value="" size="15"></td>
+<tr><td><input type="text" id="dob" name="[01]DOB" value="" size="15" /></td>
 <td colspan="2"><select id="gender" name="[01]Gender">
 <option value="M">M</option>
 <option value="F">F</option>
 </select></td></tr>
 <tr><td>Birth City</td><td>State</td><td>Country</td></tr>
-<tr><td><input type="text" id="birth_city" name="[01]CA_BirthPlace_City" value="" size="20" maxlength="30"></td>
+<tr><td><input type="text" id="birth_city" name="[01]CA_BirthPlace_City" value="" size="20" maxlength="30" /></td>
 <td><select id="birth_state" name="[01]CA_BirthPlace_StateProvince">
 <option value="">State (US, Canada or Mexico):</option>
 <option value="US-AL">Alabama</option>
@@ -413,31 +414,31 @@ var jq15 = jQuery.noConflict();
 <tr><td colspan="3">Are there any <b>court-mandated</b> custody or visitation orders limiting access to this student?
 If you answer <b>Yes</b>, you must submit paper copies of the legal documents to the school office.</td></tr>
 <tr><td>&nbsp;</td>
-<td><input name="[01]Custody_Orders" type="radio" id="co_yes" class="custody_orders" value="1">Yes&nbsp;&nbsp;</td>
-<td width="50%"><input name="[01]Custody_Orders" type="radio" id="co_no" class="custody_orders" value="">No&nbsp;&nbsp;</td></tr>
+<td><input name="[01]Custody_Orders" type="radio" id="co_yes" class="custody_orders" value="1" />Yes&nbsp;&nbsp;</td>
+<td width="50%"><input name="[01]Custody_Orders" type="radio" id="co_no" class="custody_orders" value="" />No&nbsp;&nbsp;</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="3" class="bold">2c. Siblings</td></tr>
 <tr><td colspan="3">Please enter the first name and birthdate of any children in your 
   family who you intend to send to Bacich or Kent in the future.</td></tr>
 <tr><td>&nbsp;</td><td class="bold">Name (Last, First)</td><td class="bold">Birth Date</td></tr>
-<tr><td class="bold">Sibling 1</td><td><input type="text" name="[01]Sibling1_Name" value="" size="30" maxlength="50"></td>
-  <td><input type="text" id="sibling1_dob" name="[01]Sibling1_DOB" value="" size="16"></td></tr>
-<tr><td class="bold">Sibling 2</td><td><input type="text" name="[01]Sibling2_Name" value="" size="30" maxlength="50"></td>
-  <td><input type="text" id="sibling2_dob" name="[01]Sibling2_DOB" value="" size="16"></td></tr>
-<tr><td class="bold">Sibling 3</td><td><input type="text" name="[01]Sibling3_Name" value="" size="30" maxlength="50"></td>
-  <td><input type="text" id="sibling3_dob" name="[01]Sibling3_DOB" value="" size="16"></td></tr>
-<tr><td class="bold">Sibling 4</td><td><input type="text" name="[01]Sibling4_Name" value="" size="30" maxlength="50"></td>
-  <td><input type="text" id="sibling4_dob" name="[01]Sibling4_DOB" value="" size="16"></td></tr>
+<tr><td class="bold">Sibling 1</td><td><input type="text" name="[01]Sibling1_Name" value="" size="30" maxlength="50" /></td>
+  <td><input type="text" id="sibling1_dob" name="[01]Sibling1_DOB" value="" size="16" /></td></tr>
+<tr><td class="bold">Sibling 2</td><td><input type="text" name="[01]Sibling2_Name" value="" size="30" maxlength="50" /></td>
+  <td><input type="text" id="sibling2_dob" name="[01]Sibling2_DOB" value="" size="16" /></td></tr>
+<tr><td class="bold">Sibling 3</td><td><input type="text" name="[01]Sibling3_Name" value="" size="30" maxlength="50" /></td>
+  <td><input type="text" id="sibling3_dob" name="[01]Sibling3_DOB" value="" size="16" /></td></tr>
+<tr><td class="bold">Sibling 4</td><td><input type="text" name="[01]Sibling4_Name" value="" size="30" maxlength="50" /></td>
+  <td><input type="text" id="sibling4_dob" name="[01]Sibling4_DOB" value="" size="16" /></td></tr>
 <tr class="private"><td colspan="3" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form2_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form2_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form2_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form2_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 ~[if.~(wm_status)=1]
 <tr><td colspan="3" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+<tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 </div>

@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html>
+<html>
 <head>
 <title>Qualifying Residence - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
@@ -26,11 +27,11 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="form3" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms">
-<input type="hidden" name="backtitle" value="Main Registration Page">
-<input type="hidden" name="nextpage" value="regform4">
-<input type="hidden" name="nexttitle" value="Page 4 - Additional Residence">
+<form class="noSubmitLoading" id="form3" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regforms" />
+<input type="hidden" name="backtitle" value="Main Registration Page" />
+<input type="hidden" name="nextpage" value="regform4" />
+<input type="hidden" name="nexttitle" value="Page 4 - Additional Residence" />
 <!-- end form action -->
 <div id="form3-contents" align="center" style="width: 98%">
 <div id="form3-setup" class="box-round group" style="width: 720px">
@@ -47,12 +48,12 @@ var jq15 = jQuery.noConflict();
   To read the official information about proof of residency and to download
   the Affidavit of Proof of Residency, please visit 
   the <a target="ksorg" href="http://www.kentfieldschools.org/residency">Proof of Residency page</a>
-  on the Kentfield School District website, or contact the District Office at (415) 458-5130.<br><br>
+  on the Kentfield School District website, or contact the District Office at (415) 458-5130.<br/><br/>
   <b>Qualifying District Residence:</b>
   Information submitted on this page refers only to those adults who reside at the Qualifying District Residence.  If the student also resides at another address, please fill in information about that residency on <b>Page 4 - 
-  Additional Residence Information</b>.<br><br>  
+  Additional Residence Information</b>.<br/><br/>  
 <b>Other Notes:</b> In case of emergency, students may only be released to parents, legal guardians, or emergency contacts designated by
-  a parent or legal guardian and listed on <b>Page 5 - Authorized Adults</b>.<br><br>
+  a parent or legal guardian and listed on <b>Page 5 - Authorized Adults</b>.<br/><br/>
 <b>Legal Guardianship:</b> Legal guardianship is legally defined in 
   Section 20 of the <i>Family Law Act</i>; 
   Part 5 of the <i>Child Welfare Act</i>; 
@@ -60,7 +61,7 @@ var jq15 = jQuery.noConflict();
   Section 23 of the <i>Family Law Act</i>.  Legal 
   Guardianship may also be established by a temporary or permanent guardianship
   order under the <i>Child Welfare Act</i>, or by way of a court order or 
-  agreement in accordance with the <i>Family Law Act</i>.<br><br>
+  agreement in accordance with the <i>Family Law Act</i>.<br/><br/>
 <b>Email Address:</b> It is critical that parent email addresses be kept current, as the District uses email as its primary means of communication with families.
 </td></tr>
 <tr><td colspan="4" class="bold">Address (must be a street address; no P.O. boxes allowed)</td></tr>
@@ -68,31 +69,31 @@ var jq15 = jQuery.noConflict();
 <td width="25%">City</td>
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
-<tr><td><input name="[01]Street" class="street" type="text" id="street" value="" size="30"></td>
-<td><input name="[01]City" type="text" id="city" value="" size="20"></td>
-<td><input name="[01]State" type="text" id="state" value="CA" size="4"></td>
-<td><input name="[01]Zip" type="text" id="zip" value="" size="10"></td></tr>
-<tr><td class="bold">Home Phone</td><td><input type="text" id="home_phone" name="[01]Home_Phone" value="" size="16"></td>
+<tr><td><input name="[01]Street" class="street" type="text" id="street" value="" size="30" /></td>
+<td><input name="[01]City" type="text" id="city" value="" size="20" /></td>
+<td><input name="[01]State" type="text" id="state" value="CA" size="4" /></td>
+<td><input name="[01]Zip" type="text" id="zip" value="" size="10" /></td></tr>
+<tr><td class="bold">Home Phone</td><td><input type="text" id="home_phone" name="[01]Home_Phone" value="" size="16" /></td>
 <td colspan="2">&nbsp;</td></tr>
 <tr><td colspan="4">The Kentfield School District uses email and website
   communications wherever possible, but printed and/or translated materials may 
   be provided if staffing and budget permits.</td></tr>
 <tr><td class="bold">Do you have internet access at this residence?</td>
-<td colspan="3"><input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" id="inet_yes" value="">Yes&nbsp;&nbsp;
-  <input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" value="1">No&nbsp;&nbsp;</td></tr>
+<td colspan="3"><input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" id="inet_yes" value="" />Yes&nbsp;&nbsp;
+  <input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" value="1" />No&nbsp;&nbsp;</td></tr>
 <tr><td class="bold">Do you require printed copies of school communications?</td>
-<td colspan="3"><input name="[01]Home_Printed_Material" type="radio" class="printed_material" value="1">Yes&nbsp;&nbsp;
-  <input name="[01]Home_Printed_Material" type="radio" class="printed_material" id="printed_no" value="">No&nbsp;&nbsp;</td></tr>
+<td colspan="3"><input name="[01]Home_Printed_Material" type="radio" class="printed_material" value="1" />Yes&nbsp;&nbsp;
+  <input name="[01]Home_Printed_Material" type="radio" class="printed_material" id="printed_no" value="" />No&nbsp;&nbsp;</td></tr>
 <tr><td class="bold">Do you require communications in Spanish?</td>
-<td colspan="3"><input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" value="1">Yes&nbsp;&nbsp;
-  <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" id="spanish_no" value="">No&nbsp;&nbsp;</td></tr>
+<td colspan="3"><input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" value="1" />Yes&nbsp;&nbsp;
+  <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" id="spanish_no" value="" />No&nbsp;&nbsp;</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">3b. Mother/Parent/Guardian at Qualifying District Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td></tr>
-<tr><td colspan="2"><input name="[01]Mother" type="text" class="guardian_name" id="mother_last" value="" size="30"></td>
-  <td colspan="2"><input name="[01]Mother_First" type="text" class="guardian_name" id="mother_first" value="" size="30"></td></tr>
+<tr><td colspan="2"><input name="[01]Mother" type="text" class="guardian_name" id="mother_last" value="" size="30" /></td>
+  <td colspan="2"><input name="[01]Mother_First" type="text" class="guardian_name" id="mother_first" value="" size="30" /></td></tr>
 <tr><td>Relationship</td>
 <td colspan="3"><select id="mother_rel" name="[01]Mother_Rel">
 <option value="">Choose:</option>
@@ -109,25 +110,25 @@ var jq15 = jQuery.noConflict();
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td colspan="2"><input type="radio" class="mother_guardian" name="[01]Mother_IsGuardian" value="yes">Yes&nbsp;&nbsp;<input type="radio" class="mother_guardian" name="[01]Mother_IsGuardian" value="-1">No&nbsp;&nbsp;</td></tr>
+<td colspan="2"><input type="radio" class="mother_guardian" name="[01]Mother_IsGuardian" value="yes" />Yes&nbsp;&nbsp;<input type="radio" class="mother_guardian" name="[01]Mother_IsGuardian" value="-1" />No&nbsp;&nbsp;</td></tr>
 <tr><td>Work Phone</td>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>&nbsp;</td></tr>
-<tr><td><input type="text" id="mother_work_phone" name="[01]Mother_Work_Phone" value="" size="16"></td>
-<td><input type="text" id="mother_home_phone" name="[01]Mother_Home_Phone" value="" size="16"></td>
-<td><input type="text" id="mother_cell" name="[01]Mother_Cell" value="" size="16"></td>
+<tr><td><input type="text" id="mother_work_phone" name="[01]Mother_Work_Phone" value="" size="16" /></td>
+<td><input type="text" id="mother_home_phone" name="[01]Mother_Home_Phone" value="" size="16" /></td>
+<td><input type="text" id="mother_cell" name="[01]Mother_Cell" value="" size="16" /></td>
 <td>&nbsp;</td></tr>
 <tr><td colspan="4">Email Address</td></tr>
-<tr><td colspan="4"><input type="text" id="mother_email" name="[01]Mother_Email" value="" size="30"></td></tr>
+<tr><td colspan="4"><input type="text" id="mother_email" name="[01]Mother_Email" value="" size="30" /></td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td colspan="4" class="bold">3c. Father/Parent/Guardian at Qualifying District Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td>
 </tr>
-<tr><td colspan="2"><input name="[01]Father" type="text" id="father_last" value="" size="30"></td>
-<td colspan="2"><input name="[01]Father_First" type="text" id="father_first" value="" size="30"></td></tr>
+<tr><td colspan="2"><input name="[01]Father" type="text" id="father_last" value="" size="30" /></td>
+<td colspan="2"><input name="[01]Father_First" type="text" id="father_first" value="" size="30" /></td></tr>
 <tr><td>Relationship</td>
 <td colspan="3"><select id="father_rel" name="[01]Father_Rel">
 <option value="">Choose:</option>
@@ -144,32 +145,32 @@ var jq15 = jQuery.noConflict();
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td colspan="2"><input type="radio" class="father_guardian" name="[01]Father_IsGuardian" value="yes">Yes&nbsp;&nbsp;<input type="radio" class="father_guardian" name="[01]Father_IsGuardian" value="-1">No&nbsp;&nbsp;</td></tr>
+<td colspan="2"><input type="radio" class="father_guardian" name="[01]Father_IsGuardian" value="yes" />Yes&nbsp;&nbsp;<input type="radio" class="father_guardian" name="[01]Father_IsGuardian" value="-1" />No&nbsp;&nbsp;</td></tr>
 <tr><td>Work Phone</td>
 <td>Home Phone</td>
 <td>Cell Phone</td>
 <td>&nbsp;</td></tr>
-<tr><td><input type="text" id="father_work_phone" name="[01]Father_Work_Phone" value="" size="16"></td>
-<td><input type="text" id="father_home_phone" name="[01]Father_Home_Phone" value="" size="16"></td>
-<td><input type="text" id="father_cell" name="[01]Father_Cell" value="" size="16"></td>
+<tr><td><input type="text" id="father_work_phone" name="[01]Father_Work_Phone" value="" size="16" /></td>
+<td><input type="text" id="father_home_phone" name="[01]Father_Home_Phone" value="" size="16" /></td>
+<td><input type="text" id="father_cell" name="[01]Father_Cell" value="" size="16" /></td>
 <td>&nbsp;</td></tr>
 <tr><td colspan="4">Email Address</td></tr>
-<tr><td colspan="4"><input type="text" id="father_email" name="[01]Father_Email" value="" size="30"></td></tr>
+<tr><td colspan="4"><input type="text" id="father_email" name="[01]Father_Email" value="" size="30" /></td></tr>
 <tr class="private"><td colspan="4">
-<input name="[01]mailing_street" type="text" class="copy_address" id="mailing_street" value=""> 
-<input name="[01]mailing_city" type="text" class="copy_address" id="mailing_city" value=""> 
-<input name="[01]mailing_state" type="text" class="copy_address" id="mailing_state" value=""> 
-<input name="[01]mailing_zip" type="text" class="copy_address" id="mailing_zip" value=""></td>
+<input name="[01]mailing_street" type="text" class="copy_address" id="mailing_street" value="" /> 
+<input name="[01]mailing_city" type="text" class="copy_address" id="mailing_city" value="" /> 
+<input name="[01]mailing_state" type="text" class="copy_address" id="mailing_state" value="" /> 
+<input name="[01]mailing_zip" type="text" class="copy_address" id="mailing_zip" value="" /></td>
 </tr>
 <tr class="private"><td colspan="4" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form3_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form3_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form3_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form3_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 ~[if.~(wm_status)=1]
 <tr><td colspan="4" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+<tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 </div>

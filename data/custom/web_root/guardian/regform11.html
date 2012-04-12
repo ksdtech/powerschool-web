@@ -31,9 +31,9 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="form11" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms">
-<input type="hidden" name="backtitle" value="Main Registration Page. This was the last page.">
+<form class="noSubmitLoading" id="form11" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regforms" />
+<input type="hidden" name="backtitle" value="Main Registration Page. This was the last page." />
 <!-- end form action -->
 <div id="form11-contents" align="center" style="width: 98%">
 <div id="form11-setup" class="box-round group" style="width: 720px">
@@ -58,7 +58,7 @@ var jq15 = jQuery.noConflict();
 	you in finding other parents to walk, bike, or carpool together if 
 	desired. The Captains also advocate for safety concerns on behalf of 
 	the families in their neighborhood. We will be relying on the 
-	neighborhood you select on this page to determine your neighborhood.<br> 
+	neighborhood you select on this page to determine your neighborhood.<br/> 
 Electing to participate in this program will ensure that you receive the 
 	suggested route map for your neighborhood and alternatives to walk, 
 	bike, or carpool to school.  It does not obligate you to do anything 
@@ -89,21 +89,21 @@ Electing to participate in this program will ensure that you receive the
 <tr class="secheader"><td>Please let us know if you give permission
 	to share your contact information with STP Neighborhood Captions
 	or if you do not want to participate in the program.</td></tr>
-<tr><td><input type="radio" id="opt_out_n" name="[01]srs_opt_out" value="N">
+<tr><td><input type="radio" id="opt_out_n" name="[01]srs_opt_out" value="N" />
   Yes, I want to participate in the Kentfield Student Travel Program program.
-  Please have a Neighborhood Captain contact me with more information.<br>
-<input type="radio" id="opt_out_y" name="[01]srs_opt_out" value="Y">
+  Please have a Neighborhood Captain contact me with more information.<br/>
+<input type="radio" id="opt_out_y" name="[01]srs_opt_out" value="Y" />
   No, I do not wish to participate in the Kentfield Student Travel Program program.</td></tr>
   
 <tr class="private"><td class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form11_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form11_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form11_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form11_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 ~[if.~(wm_status)=1]
 <tr><td align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+<tr><td align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 </div>

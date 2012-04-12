@@ -26,6 +26,7 @@
         
         // PFZ scroll to first error
         if (config.setErrorFocus) $('.unhappy').first().focus();
+        
         return false;
       }
       if (isFunction(config.onSubmit)) {

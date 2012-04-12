@@ -27,11 +27,11 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="form10" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms">
-<input type="hidden" name="backtitle" value="Main Registration Page">
-<input type="hidden" name="nextpage" value="regform11">
-<input type="hidden" name="nexttitle" value="Page 11 - Student Travel Program">
+<form class="noSubmitLoading" id="form10" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regforms" />
+<input type="hidden" name="backtitle" value="Main Registration Page" />
+<input type="hidden" name="nextpage" value="regform11" />
+<input type="hidden" name="nexttitle" value="Page 11 - Student Travel Program" />
 <!-- end form action -->
 
 <div id="form10-contents" align="center" style="width: 98%">
@@ -43,9 +43,9 @@ var jq15 = jQuery.noConflict();
   Membership requires no volunteer hours. If so, please mark "yes" and the
   PTA will email you when school starts with membership information.</td></tr>
 <tr><td width="10">&nbsp;</td>
-<td colspan="3"><input type="radio" class="pta_contact" name="[01]pta_contact" value="Yes">&nbsp;YES, I (we) would like the KS PTA to contact me (us) by phone or email about membership</td></tr>
+<td colspan="3"><input type="radio" class="pta_contact" name="[01]pta_contact" value="Yes" />&nbsp;YES, I (we) would like the KS PTA to contact me (us) by phone or email about membership</td></tr>
 <tr><td width="10">&nbsp;</td>
-<td colspan="3"><input type="radio" class="pta_contact" name="[01]pta_contact" value="No">&nbsp;NO, I (we) would not like the KS PTA to contact me (us) by phone or email about membership</td></tr>
+<td colspan="3"><input type="radio" class="pta_contact" name="[01]pta_contact" value="No" />&nbsp;NO, I (we) would not like the KS PTA to contact me (us) by phone or email about membership</td></tr>
   
 <tr class="secheader"><td colspan="4" class="bold">10b. Room Parent Contacts</td></tr>
 <tr><td colspan="4"><b>For classroom purposes only</b>, do you give your 
@@ -54,13 +54,13 @@ var jq15 = jQuery.noConflict();
   Lead Room Parent in order to contact you?  Select one of the
   following answers.</td></tr>
 <tr><td width="10">&nbsp;</td>
-<td colspan="3"><input type="radio" class="pta_room_parent" name="[01]pta_room_parent" value="N/A">&nbsp;This student is not in grades K-5, so there is no Lead Room Parent.</td></tr>  
+<td colspan="3"><input type="radio" class="pta_room_parent" name="[01]pta_room_parent" value="N/A" />&nbsp;This student is not in grades K-5, so there is no Lead Room Parent.</td></tr>  
 <tr><td width="10">&nbsp;</td>
-<td colspan="3"><input type="radio" class="pta_room_parent" name="[01]pta_room_parent" value="Yes">&nbsp;I (we) ALLOW the District to share my (our) contact information with the Lead Room Parent</td></tr>
+<td colspan="3"><input type="radio" class="pta_room_parent" name="[01]pta_room_parent" value="Yes" />&nbsp;I (we) ALLOW the District to share my (our) contact information with the Lead Room Parent</td></tr>
 <tr><td width="10">&nbsp;</td>
-<td colspan="3"><input type="radio" class="pta_room_parent" name="[01]pta_room_parent" value="No">&nbsp;I (we) DO NOT ALLOW the District to share my (our) contact information with the Lead Room Parent</td></tr>  
+<td colspan="3"><input type="radio" class="pta_room_parent" name="[01]pta_room_parent" value="No" />&nbsp;I (we) DO NOT ALLOW the District to share my (our) contact information with the Lead Room Parent</td></tr>  
 
-<tr class="secheader"><td colspan="4" class="bold">10c. kik Directory - Important! - You Must Fill Out and Return Form to kik Office<br>If You Want To Be In the 2012-2013 Directory</td></tr>
+<tr class="secheader"><td colspan="4" class="bold">10c. kik Directory - Important! - You Must Fill Out and Return Form to kik Office<br/>If You Want To Be In the 2012-2013 Directory</td></tr>
 <tr><td colspan="4">Please click the link below to download and print
   your request to be included in the <b>kik</b> 
   2012-2013 printed directory.
@@ -74,15 +74,15 @@ var jq15 = jQuery.noConflict();
   <td colspan="3"><a href="http://www.kentfieldschools.org/ksd/lib/ksd/_shared/reg1213/1213AllFamilyDirectoryForm.pdf"><img src="http://www.kentfieldschools.org/ksd/lib/ksd/_shared/pdficon_large.png">&nbsp;All Family Form for the 2012-2013 School Directory</a></td></tr>
 
 <tr class="private"><td colspan="4" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form10_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form10_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form10_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form10_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 
 ~[if.~(wm_status)=1]
 <tr><td colspan="6" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td colspan="6" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+<tr><td colspan="6" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 </div>

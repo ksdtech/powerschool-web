@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html>
+<html>
 <head>
 <title>Home Language - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
@@ -26,11 +27,11 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="form7" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms">
-<input type="hidden" name="backtitle" value="Main Registration Page">
-<input type="hidden" name="nextpage" value="regform8">
-<input type="hidden" name="nexttitle" value="Page 8 - Medical Information">
+<form class="noSubmitLoading" id="form7" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regforms" />
+<input type="hidden" name="backtitle" value="Main Registration Page" />
+<input type="hidden" name="nextpage" value="regform8" />
+<input type="hidden" name="nexttitle" value="Page 8 - Medical Information" />
 <!-- end form action -->
 <div id="form7-contents" align="center" style="width: 98%">
 <div id="form7-setup" class="box-round group" style="width: 720px">
@@ -39,7 +40,7 @@ var jq15 = jQuery.noConflict();
 <tr><td colspan="2">The California Education Code contains legal requirements 
 which direct schools to determine the language(s) spoken in the home of each 
 student.  This information is essential in order for schools to 
-provide adequate instructional programs and services.<br><br> 
+provide adequate instructional programs and services.<br/><br/> 
 As parents and guardians, your cooperation is requested in complying with 
 this legal requirement.  Please respond to each of the questions 
 below as accurately as possible.  Do not leave any of questions 7a through 7d
@@ -234,7 +235,7 @@ unanswered.
 <option value="35">Urdu
 <option value="99">Other Non-English Language</select></td></tr>
 
-<tr><td>7d. What language is most often spoken by adults in the home?<br>
+<tr><td>7d. What language is most often spoken by adults in the home?<br/>
 (parents, guardians, grandparents, or any other adults)</td>
 <td><select id="lang_adults" name="[01]Lang_Adults_Primary">
 <option value="">Choose...
@@ -302,7 +303,7 @@ unanswered.
   other than that answered in question 7d that is
   spoken by adults in the student's home.</td></tr>
 <tr><td>7e. What additional language, if any, is also spoken 
-by adults in the home?<br>
+by adults in the home?<br/>
 (parents, guardians, grandparents, or any other adults)</td>
 <td><select id="lang_other" name="[01]Lang_Other">
 <option value="">Choose (if applicable)...
@@ -372,32 +373,32 @@ by adults in the home?<br>
   has received English Language Development services or
   been given the California English Language Development Test (CELDT).</td><tr>
 <tr>
-<td><input type="checkbox" name="[01]Reg_Prog_ELD" value="1">8a. English Language Development&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Previous_CELDT" value="1">8b. CELDT &nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_ELD" value="1" />8a. English Language Development&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Previous_CELDT" value="1" />8b. CELDT &nbsp;&nbsp;</td>
 </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td  colspan="4" class="bold">8c-h. Other Programs and Services</td></tr>
 <tr><td colspan="4">Please check the appropriate boxes below if your child has been enrolled in any of these programs or services:</td></tr>
 <tr>
-<td><input type="checkbox" name="[01]Reg_Prog_RSP" value="1">8c. Resource Special Program&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Prog_SDC" value="1">8d. Special Day Class&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Prog_Speech" value="1">8e. Speech/Language&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Prog_504" value="1">8f. Section 504&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_RSP" value="1" />8c. Resource Special Program&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_SDC" value="1" />8d. Special Day Class&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_Speech" value="1" />8e. Speech/Language&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_504" value="1" />8f. Section 504&nbsp;&nbsp;</td>
 </tr>
 <tr>
-<td><input type="checkbox" name="[01]Reg_Prog_GATE" value="1">8g. Gifted (GATE)&nbsp;&nbsp;</td>
-<td colspan="3">8h. Other (please describe): <input type="text" name="[01]Reg_Prog_Other" value="" size="30"></td>
+<td><input type="checkbox" name="[01]Reg_Prog_GATE" value="1" />8g. Gifted (GATE)&nbsp;&nbsp;</td>
+<td colspan="3">8h. Other (please describe): <input type="text" name="[01]Reg_Prog_Other" value="" size="30" /></td>
 </tr>
 <tr class="private"><td colspan="4" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form7_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form7_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form7_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form7_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 ~[if.~(wm_status)=1]
 <tr><td colspan="4" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+<tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 </div>

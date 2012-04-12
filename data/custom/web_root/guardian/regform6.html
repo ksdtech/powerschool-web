@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html>
+<html>
 <head>
 <title>Demographics - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
@@ -26,11 +27,11 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="form6" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms">
-<input type="hidden" name="backtitle" value="Main Registration Page">
-<input type="hidden" name="nextpage" value="regform7">
-<input type="hidden" name="nexttitle" value="Page 7 - Home Language, Programs and Services">
+<form class="noSubmitLoading" id="form6" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regforms" />
+<input type="hidden" name="backtitle" value="Main Registration Page" />
+<input type="hidden" name="nextpage" value="regform7" />
+<input type="hidden" name="nexttitle" value="Page 7 - Home Language, Programs and Services" />
 <!-- end form action -->
 <div id="form6-contents" align="center" style="width: 98%">
 <div id="form6-setup" class="box-round group" style="width: 720px">
@@ -39,30 +40,30 @@ var jq15 = jQuery.noConflict();
 <tr><td colspan="2" class="bold">Name of Previous School (if applicable)</td>
 <td class="bold">Street</td>
 <td class="bold">City</td></tr>
-<tr><td colspan="2"><input type="text" name="[01]Previous_School_Name" value="" size="30" maxlength="30"></td>
-<td><input type="text" name="[01]Previous_School_Address" value="" size="30" maxlength="50"></td>
-<td><input type="text" name="[01]Previous_School_City" value="" size="20"></td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Previous_School_Name" value="" size="30" maxlength="30" /></td>
+<td><input type="text" name="[01]Previous_School_Address" value="" size="30" maxlength="50" /></td>
+<td><input type="text" name="[01]Previous_School_City" value="" size="20" /></td></tr>
 <tr><td class="bold">Phone (with area code)</td>
-<td colspan="3"><input type="text" name="[01]Previous_School_Phone" value="" size="16"></td></tr>
+<td colspan="3"><input type="text" name="[01]Previous_School_Phone" value="" size="16" /></td></tr>
 <tr><td class="bold">Last Grade Level</td>
-<td colspan="3"><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10"></td></tr>
+<td colspan="3"><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10" /></td></tr>
 <tr><td colspan="2" class="bold">Date student first enrolled in a U.S. school<br/>
   (Note: leave field blank if a Kentfield school is the first U.S. school)</td>
-<td colspan="2"><input type="text" id="first_usa_school" name="[01]CA_FirstUSASchooling" value="" size="16"></td>
-<tr><td class="bold" colspan="2"><tr><td class="bold" colspan="2">Has student been enrolled in U.S. schools<br>for a total of less than 3 years?</td>
-<td colspan="2"><input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="">No&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="1">Yes</td></tr>
+<td colspan="2"><input type="text" id="first_usa_school" name="[01]CA_FirstUSASchooling" value="" size="16" /></td>
+<tr><td class="bold" colspan="2"><tr><td class="bold" colspan="2">Has student been enrolled in U.S. schools<br/>for a total of less than 3 years?</td>
+<td colspan="2"><input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="" />No&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="1" />Yes</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td class="bold">6b. State Required Demographics: Ethnicity</td></tr>
 <tr><td>Is the student Hispanic or Latino?</td></tr>
-<tr><td><input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="1">Yes&nbsp;&nbsp;&nbsp;<input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="0">No</td></tr>
+<tr><td><input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="1" />Yes&nbsp;&nbsp;&nbsp;<input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="0" />No</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="secheader"><td class="bold">6c. State Required Demographics: Race</td></tr>
-<tr><td>The previous question was about <b>ethnicity</b>, not race.  No matter what you selected above, please continue to answer the following by marking one or more boxes to indicate what you consider your child's racial makeup to be.<br><br>What is your child's <b>race?</b> Please check up to five categories from the list below:</td></tr>
+<tr><td>The previous question was about <b>ethnicity</b>, not race.  No matter what you selected above, please continue to answer the following by marking one or more boxes to indicate what you consider your child's racial makeup to be.<br/><br/>What is your child's <b>race?</b> Please check up to five categories from the list below:</td></tr>
 <tr><td>
-		<input type="hidden" name="SaveRace" value="1">
-		<input type="hidden" name="[01]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
+		<input type="hidden" name="SaveRace" value="1" />
+		<input type="hidden" name="[01]FedRaceDecline" id="r_none_storage" value="0" /><!-- See 'decline_race' function in raceselection_block.ftl -->
 ~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
 	</td>
 </tr>
@@ -80,14 +81,14 @@ var jq15 = jQuery.noConflict();
 <option value="15">Decline to State or Unknown</option>
 </select></td></tr>
 <tr class="private"><td class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form6_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form6_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]"></td>
+<input type="text" id="upd_at" name="[01]form6_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form6_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 ~[if.~(wm_status)=1]
 <tr><td align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+<tr><td align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 </div>

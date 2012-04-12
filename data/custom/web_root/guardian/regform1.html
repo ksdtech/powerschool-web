@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html>
+<html>
 <head>
 <title>Enrollment Information - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
@@ -17,7 +18,7 @@ var jq15 = jQuery.noConflict();
 <script src="/scripts/jquery_itr.js" type="text/javascript"></script>
 <script src="/scripts/jquery_form1.js" type="text/javascript"></script>
 ~[wc:guardian_header]
-<div id="content-main">
+
 <h1>Enrollment Information</h1>
 <!-- title -->
 
@@ -26,11 +27,11 @@ var jq15 = jQuery.noConflict();
 </div>
 
 <!-- begin form action -->
-<form id="form1" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms">
-<input type="hidden" name="backtitle" value="Main Registration Page">
-<input type="hidden" name="nextpage" value="regform2">
-<input type="hidden" name="nexttitle" value="Page 2 - Name, Birth and Custody">
+<form class="noSubmitLoading" id="form1" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regforms" />
+<input type="hidden" name="backtitle" value="Main Registration Page" />
+<input type="hidden" name="nextpage" value="regform2" />
+<input type="hidden" name="nexttitle" value="Page 2 - Name, Birth and Custody" />
 <!-- end form action -->
 <div id="form1-contents" align="center" style="width: 98%">
 <div id="form1-setup" class="box-round group" style="width: 720px">
@@ -113,8 +114,8 @@ var jq15 = jQuery.noConflict();
 
 <tr class="enrolling by_grade grade_6"><td colspan="3" class="bold">Required Performing Arts Options for Sixth Grade Students</td></tr>
 <tr class="enrolling by_grade grade_6"><td width="100">&nbsp;</td>
-<td width="400"><input type="radio" name="[01]electives_6_pa" value="band">6th Grade Int. Band</td>
-<td><input type="radio" name="[01]electives_6_pa" value="chorus">6th Grade Int. Chorus</td></tr>
+<td width="400"><input type="radio" name="[01]electives_6_pa" value="band" />6th Grade Int. Band</td>
+<td><input type="radio" name="[01]electives_6_pa" value="chorus" />6th Grade Int. Chorus</td></tr>
 
 <tr class="enrolling by_grade grade_7 grade_8"><td colspan="3" class="bold">Seventh and Eighth Grade Music Program</td></tr>
 
@@ -148,7 +149,7 @@ var jq15 = jQuery.noConflict();
   At Kent, our goal is to offer Mathletes during zero period in order to give 
   students further opportunities to work on fun and creative problems that 
   promote critical-thinking and problem-solving skills as well as to extend 
-  the concepts that are learned in the students' math classes.<br>
+  the concepts that are learned in the students' math classes.<br/>
   The Kent Mathletes Team will meet one to two mornings a week on Tuesdays 
   and/or Thursdays from October till Mid-March (students will be excused from 
   Chorus if attending Mathletes). The teams will learn strategies that 
@@ -160,25 +161,25 @@ var jq15 = jQuery.noConflict();
 
 <tr class="enrolling by_grade grade_7"><td colspan="3" class="bold">Zero-Period Music Options for 7th Grade Students</td></tr>
 <tr class="enrolling by_grade grade_7"><td width="100">&nbsp;</td>
-<td width="400"><input type="radio" name="[01]electives_7_band" value="1">Zero-Period Band M/W/F</td>
-<td><input type="radio" name="[01]electives_7_band" value="">No Zero Period Band</td></tr>
+<td width="400"><input type="radio" name="[01]electives_7_band" value="1" />Zero-Period Band M/W/F</td>
+<td><input type="radio" name="[01]electives_7_band" value="" />No Zero Period Band</td></tr>
 <tr class="enrolling by_grade grade_7"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_7_choir" value="1">Zero-Period Concert Choir T/Th</td>
-<td><input type="radio" name="[01]electives_7_choir" value="">No Zero Period Concert Choir</td></tr>
+<td><input type="radio" name="[01]electives_7_choir" value="1" />Zero-Period Concert Choir T/Th</td>
+<td><input type="radio" name="[01]electives_7_choir" value="" />No Zero Period Concert Choir</td></tr>
 <tr class="enrolling by_grade grade_7"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_7_mathletes" value="1">Zero-Period Mathletes T/Th</td>
-<td><input type="radio" name="[01]electives_7_mathletes" value="">No Zero Period Mathletes</td></tr>
+<td><input type="radio" name="[01]electives_7_mathletes" value="1" />Zero-Period Mathletes T/Th</td>
+<td><input type="radio" name="[01]electives_7_mathletes" value="" />No Zero Period Mathletes</td></tr>
 
 <tr class="enrolling by_grade grade_8"><td colspan="3" class="bold">Zero-Period Music Options for 8th Grade Students</td></tr>
 <tr class="enrolling by_grade grade_8"><td width="100">&nbsp;</td>
-<td width="400"><input type="radio" name="[01]electives_8_band" value="1">Zero-Period Band M/W/F</td>
-<td><input type="radio" name="[01]electives_8_band" value="">No Zero Period Band</td></tr>
+<td width="400"><input type="radio" name="[01]electives_8_band" value="1" />Zero-Period Band M/W/F</td>
+<td><input type="radio" name="[01]electives_8_band" value="" />No Zero Period Band</td></tr>
 <tr class="enrolling by_grade grade_8"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_8_choir" value="1">Zero-Period Choir T/Th</td>
-<td><input type="radio" name="[01]electives_8_choir" value="">No Zero Period Choir</td></tr>
+<td><input type="radio" name="[01]electives_8_choir" value="1" />Zero-Period Choir T/Th</td>
+<td><input type="radio" name="[01]electives_8_choir" value="" />No Zero Period Choir</td></tr>
 <tr class="enrolling by_grade grade_8"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_8_mathletes" value="1">Zero-Period Mathletes T/Th</td>
-<td><input type="radio" name="[01]electives_8_mathletes" value="">No Zero Period Mathletes</td></tr>
+<td><input type="radio" name="[01]electives_8_mathletes" value="1" />Zero-Period Mathletes T/Th</td>
+<td><input type="radio" name="[01]electives_8_mathletes" value="" />No Zero Period Mathletes</td></tr>
 
 <tr class="enrolling by_grade grade_8"><td colspan="3" class="bold">Eighth Grade Enrichment Classes</td></tr>
 <tr class="enrolling by_grade grade_8"><td colspan="3">Eighth grade students
@@ -214,12 +215,12 @@ var jq15 = jQuery.noConflict();
   elements of line, shape, value, texture, color and form to explore the
   interrelationship of these ideas with principles such as balance,
   repetition, variation, emphasis and unity.  They may use ink, graphite,
-  charcoal, chalk/oil pastel, prismacolor, acrylic and watercolor.<br>
+  charcoal, chalk/oil pastel, prismacolor, acrylic and watercolor.<br/>
   
   In addtion to their regular curriculum, students have studio workshops
   on block days. These workshops are process oriented designed to further
   enhance their development as artists and their understanding of 
-  techniques and materials<br>
+  techniques and materials<br/>
   
   The eighth grade workshop focus is "Project Runway." Students work in 
   teams to design, create and present a garment modeled by a team member.
@@ -318,7 +319,7 @@ please email Ms. Osterman at
   Enter a numeric combination like this: "32-20-45"<br/>
   If the lock is a key lock, enter the word "key"</td></tr> 
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold" colspan="2">Personal locker combination (if applicable)</td>
-<td><input type="text" name="[01]locker_combination" value=""></input></td></tr>
+<td><input type="text" name="[01]locker_combination" value="" /></input></td></tr>
 
 <tr class="secheader enrolling by_grade grade_6 grade_7 grade_8"><td colspan="3" class="bold">1d. PE Locker Information (Grades 6-8 Only)</td></tr>
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td colspan="3">
@@ -339,18 +340,18 @@ please email Ms. Osterman at
   Enter a numeric combination like this: "32-20-45"<br/>
   If the lock is a key lock, enter the word "key"</td></tr> 
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold" colspan="2">PE locker combination (if applicable)</td>
-<td><input type="text" name="[01]pe_locker_combination" value=""></input></td></tr>
+<td><input type="text" name="[01]pe_locker_combination" value="" /></input></td></tr>
 
 
 <tr class="private"><td colspan="3" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form1_updated_at" value=""> by 
-<input type="text" id="upd_by" name="[01]form1_updated_by" value=""><input type="hidden" id="userid" value="G~[x:userid]">
+<input type="text" id="upd_at" name="[01]form1_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form1_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" />
 </td></tr>
 
 ~[if.~(wm_status)=1]
 <tr><td colspan="3" align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate">~[submitbutton]</td></tr>
+<tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 
@@ -358,7 +359,6 @@ please email Ms. Osterman at
 </div>
 </form>
 <!-- end student content -->
-</div>
 
 ~[wc:guardian_footer]
 </body>
