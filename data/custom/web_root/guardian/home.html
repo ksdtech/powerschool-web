@@ -20,6 +20,19 @@ School District website</a></li>
 Middle School website</a></li>
 <li><a target="ksorg" href="http://www.kentfieldschools.org/Bacich">Bacich
 Elementary School website</a></li>
+~[tlist_sql;
+SELECT SN, TS, TS*13+PERSON-2*BITAND(TS*13,PERSON)-16777619 AS TOKEN FROM
+(SELECT STUDENT_NUMBER AS SN, 
+TRUNC(86400*(CAST(SYS_EXTRACT_UTC(SYSTIMESTAMP) AS DATE)-TO_DATE('19700101','YYYYMMDD'))) AS TS,
+TO_NUMBER(SUBSTR(STUDENTPERS_GUID,26,7),'XXXXXXXX') AS PERSON
+FROM STUDENTS
+WHERE ID=~(curstudid))
+]
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Online Report Cards</a></li>
+~[if.~(schoolid)=120]
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)"><span style="font-size: 14pt">Reserve December Parent-Teacher Conferences</span></a></li>
+[/if]
+[/tlist_sql]
 </ul>
 <p><b>Important Note:</b> Parents can review Kent Middle School students' 
   historical grades for all terms in the current school year by clicking the 
