@@ -26,7 +26,6 @@
         
         // PFZ scroll to first error
         if (config.setErrorFocus) $('.unhappy').first().focus();
-        
         return false;
       }
       if (isFunction(config.onSubmit)) {
@@ -36,6 +35,7 @@
         if (window.console) console.warn('would have submitted');
         return false;
       }
+      return true;
     }
     function isFunction (obj) {
       return !!(obj && obj.constructor && obj.call && obj.apply);
@@ -97,20 +97,19 @@
         } else if (gotFunc) {
           error = !opts.test(val, arg);
         }
-        
         if (error) {
           // only first() in case of radio
           el.first().addClass('unhappy').before(errorEl);
           return false;
-        } else {
-          temp = errorEl.get(0);
-          // this is for zepto
-          if (temp.parentNode) {
-            temp.parentNode.removeChild(temp);
-          }
-          el.first().removeClass('unhappy');
-          return true;
         }
+        
+        temp = errorEl.get(0);
+        // this is for zepto
+        if (temp.parentNode) {
+          temp.parentNode.removeChild(temp);
+        }
+        el.first().removeClass('unhappy');
+        return true;
       };
       field.bind(config.when || 'blur', field.testValid);
     }

@@ -6,11 +6,10 @@ function onForm4Submit() {
   onRegFormSubmit();
 }
 
-function required_if_guardian2_test(val) {
-  if (val === '') {
-    return happy.selectorIsEmpty('.guardian2_name');
-  }
-  return true;
+function required_if_guardian2_test(val, radio_class) {
+  var checked_radio = jq15(radio_class).filter(':checked');
+  var has_val = (checked_radio.length != 0);
+  return has_val || happy.selectorIsEmpty('.guardian2_name');
 }
 
 function home2_state_test(val) {
@@ -67,16 +66,19 @@ jq15(document).ready(function () {
         default_radio: '#inet_yes',
         required: 'sometimes',
         test: required_if_guardian2_test,
+        arg: '.inet_access2',
         message: 'Required field.' },
       '.printed_material2': {
         default_radio: '#printed_no',
         required: 'sometimes',
         test: required_if_guardian2_test,
+        arg: '.printed_material2',
         message: 'Required field.' },
       '.spanish_material2': {
         default_radio: '#spanish_no',
         required: 'sometimes',
         test: required_if_guardian2_test,
+        arg: '.spanish_material2',
         message: 'Required field.' },
       '#mother2_last': {
         required: 'sometimes',

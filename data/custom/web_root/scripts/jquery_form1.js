@@ -1,26 +1,26 @@
 // Validation for form1
 
 function required_if_not_returning(val) {
-	var enrollment = jq15("#reg_enroll option:selected").val();
-	var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
-	var error = false
-	if (not_enrolling) {
-	  error = (val.length === 0);
-	}
-	return !error;
+  var enrollment = jq15("#reg_enroll option:selected").val();
+  var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
+  var error = false;
+  if (not_enrolling) {
+    error = (val === '');
+  }
+  return !error;
 }
 
 function required_if_transfering(val) {
-	var enrollment = jq15("#reg_enroll option:selected").val();
-	var not_enrolling = (enrollment != null && enrollment.indexOf("nr-") == 0);
-	var error = false
-	if (not_enrolling) {
-  	var exitcode = jq15("#reg_exitcode option:selected").val();
-  	if (exitcode != null && /^160|180$/.test(exitcode)) {
-	    error = (val.length === 0);
-	  }
-	}
-	return !error;
+  var enrollment = jq15("#reg_enroll option:selected").val();
+  var not_enrolling = (enrollment != null && enrollment.indexOf("nr-") == 0);
+  var error = false;
+  if (not_enrolling) {
+    var exitcode = jq15("#reg_exitcode option:selected").val();
+    if (exitcode != null && /^160|180$/.test(exitcode)) {
+      error = (val === '');
+    }
+  }
+  return !error;
 }
 
 // happy.js validations

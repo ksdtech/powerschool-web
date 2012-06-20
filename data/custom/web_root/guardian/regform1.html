@@ -27,10 +27,11 @@ var jq15 = jQuery.noConflict();
 
 <!-- begin form action -->
 <form class="noSubmitLoading" id="form1" action="changesrecorded.html" method="post">
-<input type="hidden" name="backpage" value="regforms" />
-<input type="hidden" name="backtitle" value="Main Registration Page" />
-<input type="hidden" name="nextpage" value="regform2" />
-<input type="hidden" name="nexttitle" value="Page 2 - Name, Birth and Custody" />
+<input type="hidden" name="backpage" id="backpage" value="regforms" />
+<input type="hidden" name="backtitle" id="backtitle" value="Main Registration Page" />
+<input type="hidden" name="donetitle" id="donetitle" value="Main Registration Page. This is the only page required." />
+<input type="hidden" name="nextpage" id="nextpage" value="regform2" />
+<input type="hidden" name="nexttitle" id="nexttitle" value="Page 2 - Name, Birth and Custody" />
 <!-- end form action -->
 <div id="form1-contents" align="center" style="width: 98%">
 <div id="form1-setup" class="box-round group" style="width: 720px">
@@ -70,9 +71,8 @@ var jq15 = jQuery.noConflict();
 <option value="140">Other reason for not attending, or don't know</option>
 </select></td></tr>
 
-<tr class="not_enrolling"><td class="bold" colspan="2">Name address and phone number of next school (if applicable)</td>
-<td><textarea id="reg_exitcomment" name="[01]ExitComment" wrap="soft" 
-  cols="40" rows="3"></textarea></td></tr>
+<tr class="not_enrolling"><td class="bold" colspan="2">Name and phone number of next school (if applicable)</td>
+<td><input name="[01]ExitComment" type="text" id="reg_exitcomment" value="" size="80"></td></tr>
 
 <tr class="secheader enrolling"><td colspan="3" class="bold">1b. Music and Enrichment Options - Grades 5-8 Only</td></tr>
 <tr class="enrolling by_grade grade_0 grade_1 grade_2 grade_3 grade_4"><td colspan="3">
