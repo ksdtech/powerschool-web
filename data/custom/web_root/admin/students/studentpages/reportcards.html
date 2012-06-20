@@ -16,16 +16,18 @@
 <td class="header">Online Report Cards</td>
 </tr>
 <tr><td>Click "Online Report Cards" link below to see all posted report cards for this student</td></tr>
-
-~[tlist_sql;
-SELECT student_number AS sn, TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') AS ctime, 
-ORA_HASH(TO_CHAR(SYSDATE,'YYYYMMDDHH24MISS') || StudentPers_guid) AS token 
-FROM Students WHERE ID=~(curstudid)
-]
 <tr><td><ul>
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ctime)&token=~(Students.token)">Online Report Cards
-</ul></td></tr>
+~[tlist_sql;
+SELECT SN, TS, TS*13+PERSON-2*BITAND(TS*13,PERSON)-16777619 AS TOKEN FROM
+(SELECT STUDENT_NUMBER AS SN, 
+TRUNC(86400*(CAST(SYS_EXTRACT_UTC(SYSTIMESTAMP) AS DATE)-TO_DATE('19700101','YYYYMMDD'))) AS TS,
+TO_NUMBER(SUBSTR(STUDENTPERS_GUID,26,7),'XXXXXXXX') AS PERSON
+FROM STUDENTS
+WHERE ID=~(curstudid))
+]
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Online Report Cards</a></li>
 [/tlist_sql]
+</ul></td></tr>
 
 </table>
 <br>
