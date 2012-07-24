@@ -91,7 +91,11 @@ function MapLoader(basemapData, params, mapNodeId, callback) {
 MapLoader.prototype.createMap = function() {  
   // Display the map, with some controls
   var mapNode = document.getElementById(this.mapNodeId_);
-  var mapOptions = { center: this.jsonData_.center, mapTypeId: google.maps.MapTypeId.ROADMAP, zoom: this.jsonData_.zoom }
+  var mapOptions = { 
+    center: this.makeLatLng(this.jsonData_.center), 
+    mapTypeId: google.maps.MapTypeId.ROADMAP, 
+    zoom: this.jsonData_.zoom 
+  };
   var map = new google.maps.Map(mapNode, mapOptions);
   // map.addControl(new GLargeMapControl());
   // map.addControl(new GMapTypeControl());
@@ -110,7 +114,7 @@ MapLoader.prototype.createMap = function() {
       opacity = 0.0;
     }
     this.polygons_[i] = new google.maps.Polygon({
-      paths: polys[i].points, 
+      paths: polys[i].points.map(this.makeLatLng), 
       strokeColor: polys[i].color,
       strokeWidth: polys[i].width,
       fillColor: polys[i].color,
@@ -140,11 +144,16 @@ MapLoader.prototype.createMap = function() {
   }
 };
 
-  // A function to create the marker and set up the event window
+// Utility function to convert from [lng, lat] (KML coordinate order) array to google.maps.LatLng object
+MapLoader.prototype.makeLatLng = function(lngLatCoords) {
+  return new google.maps.LatLng(lngLatCoords[1], lngLatCoords[0]);
+}
+
+// A function to create the marker and set up the event window
 MapLoader.prototype.createMarker = function(point, title, html) {
   var i = this.markers_.length;
   var marker = new google.maps.Marker({ 
-    position: point, 
+    position: this.makeLatLng(point), 
     map: this.map_, 
     title: title
     });
