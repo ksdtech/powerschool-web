@@ -126,7 +126,7 @@ MapLoader.prototype.createMap = function() {
   // Plot the markers
   var markers = this.jsonData_.markers;
   for (var i = 0; i < markers.length; i++) {
-    this.createMarker(markers[i].point, markers[i].title, markers[i].html);
+    this.createMarker(this.makeLatLng(markers[i].point), markers[i].title, markers[i].html);
   }
   
   // Plot the labels
@@ -153,7 +153,7 @@ MapLoader.prototype.makeLatLng = function(lngLatCoords) {
 MapLoader.prototype.createMarker = function(point, title, html) {
   var i = this.markers_.length;
   var marker = new google.maps.Marker({ 
-    position: this.makeLatLng(point), 
+    position: point, 
     map: this.map_, 
     title: title
     });
