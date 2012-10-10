@@ -1,14 +1,24 @@
+<!DOCTYPE html>
 <html>
+<!-- start right frame -->
 <head>
-<title>Alerts and Special Needs</title></head><body>
+<title>Alerts and Special Needs</title>
 ~[wc:commonscripts]
-~[no.update]
-<link href="/images/powerschool.css" rel="stylesheet">
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Assessment<!-- breadcrumb end -->~[wc:admin_navigation_frame]
-<!-- Beginning of title of page -->
-~[wc:title_student_begin]Alerts and Special Needs~[wc:title_student_end]
-<!-- start of content -->
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+
+<body>
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.demo.start_page]</a> &gt; <a href="/admin/home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.demo.student_selection]</a> &gt; Alerts and Special Needs<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+~[wc:title_student_begin_css]Alerts and Special Needs~[wc:title_student_end_css]
+
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+<table border="0" cellspacing="0" cellpadding="4">
 <tr><td colspan="9">&nbsp;</td></tr>
 <span class="bold">Alerts and Other Information</span>
 </td></tr>
@@ -67,7 +77,15 @@ Log
 </tr>
 <tr><td colspan="9">&nbsp;</td></tr>
 </table>
-<!-- end of content -->
-~[wc:admin_footer_frame]
+<br>
+
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame_css]
+</form>
+
 </body>
-</html>
+</html><!-- end right frame -->

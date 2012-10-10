@@ -1,20 +1,26 @@
+<!DOCTYPE html>
 <html>
 <!-- start right frame -->
 <head>
-<title>Health: Severe Medical</title>
+<title>Health: Severe Medical Condition</title>
 ~[wc:commonscripts]
-<link href="/images/powerschool.css" rel="stylesheet">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+<body>
 
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Severe Medical<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.demo.start_page]</a> &gt; <a href="/admin/home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.demo.student_selection]</a> &gt; Severe Medical Condition<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-<table border="0" cellspacing="0" cellpadding="4" width="700" align="left">
+~[wc:title_student_begin_css]Severe Medical Condition~[wc:title_student_end_css]
 
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+<table border="0" cellspacing="0" cellpadding="4">
 ~[if.~(alert_medical)#]
-<tr>
-<td colspan="2" class="header">Severe Medical Condition</td>
+<tr class="headerrow">
+<td colspan="2">Severe Medical Condition</td>
 </tr>
 <tr>
 <td colspan="2" align="center">~(studentphoto)</td>
@@ -25,11 +31,11 @@
 <b>Grade ~(grade_level)<br>Homeroom ~(home_room)</b><br>
 <b>DOB: ~(dob)</b></td>
 </tr>
-<tr>
-<td colspan="2" class="header">Medical Condition and Instructions for Treatment</td>
+<tr class="headerrow">
+<td colspan="2">Medical Condition and Instructions for Treatment</td>
 </tr>
 <tr>
-<td colspan="2" class="header">~(alert_medical)</td>
+<td colspan="2">~(alert_medical)</td>
 </tr>
 <tr>
 <td colspan="2">Doctor: ~(doctor_name)<br>
@@ -37,11 +43,11 @@ Contact: ~(doctor_phone)</td>
 </tr>
 [else]
 <tr>
-<td colspan="2" class="header">No Medical Alert</td>
+<td colspan="2">No Medical Alert</td>
 </tr>
 [/if]
-<tr>
-<td colspan="2" class="bold">Parent Contacts</td>
+<tr class="headerrow">
+<td colspan="2">Parent Contacts</td>
 </tr>
 <tr>
 <td>~[if.~(mother)#]~(Mother_Rel): ~(mother_first) ~(mother)<br>
@@ -61,7 +67,7 @@ Contacts: ~(father2_home_phone) (H), ~(father2_Work_Phone) (W), ~(father2_cell) 
 
 <!-- end of content of bounding box -->
 
-~[wc:admin_footer_frame]
+~[wc:admin_footer_frame_css]
 
 </body>
 </html><!-- end right frame -->

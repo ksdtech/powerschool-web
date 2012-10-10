@@ -1,19 +1,25 @@
+<!DOCTYPE html>
 <html>
 <!-- start right frame -->
 <head>
-<title>Online Report Cards</title>
+<title>Assess: Online Report Cards</title>
 ~[wc:commonscripts]
-<link href="/images/powerschool.css" rel="stylesheet">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+<body>
 
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Severe Medical<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.demo.start_page]</a> &gt; <a href="/admin/home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.demo.student_selection]</a> &gt; Online Report Cards<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-<table border="0" cellspacing="0" cellpadding="4" width="700" align="left">
+~[wc:title_student_begin_css]Online Report Cards~[wc:title_student_end_css]
 
-<tr>
-<td class="header">Online Report Cards</td>
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+<table border="0" cellspacing="0" cellpadding="4">
+<tr class="headerrow">
+<td>Online Report Cards</td>
 </tr>
 <tr><td>Click "Online Report Cards" link below to see all posted report cards for this student</td></tr>
 <tr><td><ul>
@@ -26,6 +32,7 @@ FROM STUDENTS
 WHERE ID=~(curstudid))
 ]
 <li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Online Report Cards</a></li>
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Parent-Teacher Conference Reservations</a></li>
 [/tlist_sql]
 </ul></td></tr>
 
@@ -34,7 +41,7 @@ WHERE ID=~(curstudid))
 
 <!-- end of content of bounding box -->
 
-~[wc:admin_footer_frame]
+~[wc:admin_footer_frame_css]
 
 </body>
 </html><!-- end right frame -->
