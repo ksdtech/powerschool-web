@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>IEP</title>
-~[wc:commonscripts]
-<link href="/images/css/screen.css" rel="stylesheet" media="screen">
-<link href="/images/css/print.css" rel="stylesheet" media="print">
-</head>
-
-<body class="popUp">
-
-<!-- Start of shaded content table -->
-<div class="box-round">
-
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="42"><img src="/images/alert_iep.jpg" width="42" height="42" alt="" border="0"></td>
-<td width="5"><img src="/images/misc_trans.gif" width="5" height="1"></td>
-<td width="100%"><span class="header">IEP</span><br>~(studentname)</td>
-</tr>
-<tr>
-<td colspan="3">
-<hr />
-</tr>
-<tr>
-<td colspan="3">~(alert_iep)<br>&nbsp;<br>Alert Expires: ~[if.~(alert_iepexpires)=0/0/0]Never[else]~(alert_iepexpires)[/if]</td>
-</tr>
-</table>
-<center><a href="javascript:window.close()">~[text:psx.html.admin_alerts.guardianalert.close]</a></center>
-
+<div class="studentAlert" id="alert-iep~(studentfrn)">
+<img class="alertImage" src="/images/alert_iep.gif" />
+<div class="alertContent">
+<p class="alertHeader">~(studentname)</p>
+<p>~([01]alert_iep)<br>&nbsp;<br>Alert Expires:&nbsp;~[if.~([01]alert_iepexpires)=]Never[else]~([01]alert_iepexpires)[/if]</p>	
+</div>	
 </div>
-~[wc:legal_copyright]
-
-</body>
-</html>

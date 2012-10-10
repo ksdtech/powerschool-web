@@ -1,39 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>~[text:psx.html.admin_alerts.medicalalert.medical_alert]</title>
-~[wc:commonscripts]
-<link href="/images/css/screen.css" rel="stylesheet" media="screen">
-<link href="/images/css/print.css" rel="stylesheet" media="print">
-</head>
-
-<body class="popUp">
-
-<!-- Start of shaded content table -->
-<div class="box-round">
-
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="42"><img src="/images/alert_medicalwhite.gif" width="42" height="42" alt="" border="0"></td>
-<td width="5"><img src="/images/misc_trans.gif" width="5" height="1"></td>
-<td width="100%"><span class="header">~[text:psx.html.admin_alerts.medicalalert.medical_alert1]</span><br>~(studentname)</td>
-</tr>
-<tr>
-<td colspan="3">
-<hr />
-</tr>
-<tr>
-<td colspan="3">~(alert_medical)<br>&nbsp;<br>Life-Threatening: ~[if.~(alert_life_threatening)=1]<b>Yes</b>[else]No[/if]
-<br>Treatment/Action: ~(alert_medical_treatment)
-<br>Medication in Office: ~[if.~(school_meds_office)=1]<b>Yes</b>[else]No[/if]
-<br>Medication in Backpack: ~[if.~(school_meds_backpack)=1]<b>Yes</b>[else]No[/if]
-<br>~[text:psx.html.admin_alerts.medicalalert.alert_expires]~[if.~(alert_medicalexpires)=0/0/0]Never[else]~(alert_medicalexpires)[/if]</td>
-</tr>
-</table>
-<center><a href="javascript:window.close()">~[text:psx.html.admin_alerts.medicalalert.close]</a></center>
-
+<div class="studentAlert" id="alert-medical~(studentfrn)">
+<img class="alertImage" src="/images/alert_medicalwhite.gif" />
+<div class="alertContent">
+<p class="alertHeader">~(studentname)</p>
+<p>~(alert_medical)<br>
+&nbsp;<br>
+Life-Threatening: ~[if.~(alert_life_threatening)=1]<b>Yes</b>[else]No[/if]
+<br>
+Treatment/Action: ~(alert_medical_treatment)
+<br>
+Medication in Office: ~[if.~(school_meds_office)=1]<b>Yes</b>[else]No[/if]
+<br>
+Medication in Backpack: ~[if.~(school_meds_backpack)=1]<b>Yes</b>[else]No[/if]
+<br>~[text:psx.html.admin_alerts.medicalalert.alert_expires]~[if.~(alert_medicalexpires)=0/0/0]~[text:psx.html.admin_alerts.medicalalert.never][else]~(alert_medicalexpires)[/if]</p>
 </div>
-~[wc:legal_copyright]
-
-</body>
-</html>
+</div>	
