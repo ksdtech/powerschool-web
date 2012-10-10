@@ -1,94 +1,73 @@
+<!DOCTYPE html>
 <html>
 <!-- start right frame -->
 <head>
-    <title>General Demographics</title>
+    <title>~[text:psx.html.admin_students.generaldemographics.general_demographics]</title>
     ~[wc:UI_js_includes]
     ~[wc:commonscripts]
-    <link rel="stylesheet" type="text/css" href="/images/powerschool.css">
+    <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
     <link rel="stylesheet" type="text/css" href="/images/boxing.css">
-		<link rel="stylesheet" type="text/css" href="/images/css/theme/true_css/true_style-min.css">
+		
     <script language="JavaScript" src="/admin/javascript/student_copyAddress.js"></script>
-
 		<style>
 			.clickable { cursor:pointer; }
 		</style>
-</head>
+
 <script type="text/javascript">
     var selectedAdapter = "~[displaypref:mappingadapter.selected]";
     var mapKey = "~[x:selectedvalidationmappingadapterkey]";
-
-		function onload() {
-			prepPage();
-			// If they don't select any of the visible options for ethnicity, choose "-1" for them ...
-			var defaultEthnicity = document.getElementById("defaultEthnicity");
-			if ( defaultEthnicity ) {
-				defaultEthnicity.value = "-1";
-			}
+    
+    function load(){
+		prepPage();
+		// If they don't select any of the visible options for ethnicity, choose "-1" for them ...
+		var defaultEthnicity = document.getElementById("defaultEthnicity");
+		if ( defaultEthnicity ) {
+			defaultEthnicity.value = "-1";
 		}
+    }
 </script>
 
 ~[x:renderboundaryobject]
 
 <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;~[x:selectedmappingadapterkey]" type="text/javascript"></script>-->
-
+~[get_js_texts:psx.js.admin_validation.validationCommon.]
 <script language="JavaScript" src="/admin/validation/validationCommon.js"></script>
-
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif" onload="onload()">
+</head>
+<body onload="load()">
 
 <form action="/admin/changesrecorded.white.html" method="POST" onSubmit="return validateInput()">
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
-        href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; General Demographics
-<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.generaldemographics.start_page]</a> &gt; <a
+        href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.generaldemographics.student_selection]</a> &gt;~[text:psx.html.admin_students.generaldemographics.general_demographics1]<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-<!-- Beginning of title of page -->
-~[wc:title_student_begin]General Demographics~[wc:title_student_end]
-<!-- Ending of title of page -->
-<br>
+~[wc:title_student_begin_css]~[text:psx.html.admin_students.generaldemographics.general_demographics2]~[wc:title_student_end_css]
 
 <!-- Start of shaded content table and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-    <td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif"
-                                                                              width="15" height="9" alt="" border="0">
-    </td>
-    <td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
+<div class="box-round">
 
-<table border="0" cellspacing="0" cellpadding="4">
-<tr class="~[evenoddrow]">
-    <td class="bold">Name (last, first MI)</td>
+<table border="0" cellspacing="0" cellpadding="4" class="linkDescList">
+<colgroup><col style="width:20%"><col></colgroup>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.name]&nbsp;~[text:psx.html.admin_students.generaldemographics.last_first_mi]</td>
     <td>
-        <input type="text" name="[01]last_name" value="" size="17" maxlength="20" id="lastName">,
-        <input type="text" name="[01]first_name" value="" size="17" maxlength="20" id="firstName">
-        <input type="text" name="[01]middle_name" value="" size="15" maxlength="15" id="middleName"></td>
+        <input type="text" name="[01]last_name" value="" size="25" maxlength="50" id="lastName">,
+        <input type="text" name="[01]first_name" value="" size="25" maxlength="50" id="firstName">
+        <input type="text" name="[01]middle_name" value="" size="15" maxlength="30" id="middleName">
+    </td>
 </tr>
-
-
-<tr class="~[evenoddrow]">
-    <td class="bold">Student Number</td>
-    <td><input type="text" name="[01]student_number" value="" size="13"></td>
-</tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Previous Student ID</td>
-    <td><input type="text" name="[01]prevstudentid" value="" size=10></td>
-</tr>
-
 
 <tr class="headerrow">
-    <td colspan="2" class="bold">Home Address</td>
+    <td colspan="2" class="bold">~[text:psx.html.admin_students.generaldemographics.home_address]</td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="subhead">Street, Apt/Suite</td>
+<tr>
+    <td class="subhead">~[text:psx.html.admin_students.generaldemographics.street_aptsuite]</td>
     <td>
         <input type="text" name="[01]street" size="45" id="pstreet" value="">
         <input type="text" name="" value="" size="10" id="papt">
     </td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="subhead">City, State, Zip</td>
+<tr>
+    <td class="subhead">~[text:psx.html.admin_students.generaldemographics.city_state_zip]</td>
     <td>
         <input type="text" name="[01]city" value="" size="30" id="pcity">
         <input type="text" name="[01]state" value="" size="2" id="pstate">
@@ -102,8 +81,8 @@
 
 </tr>
 
-<tr class="~[evenoddrow]">
-    <td class="subhead">Geocode</td>
+<tr>
+    <td class="subhead">~[text:psx.html.admin_students.generaldemographics.geocode]</td>
     <td>
         <input type="hidden" name="[01]geocode" value="" id="pgeocode" size="40">
         <div id="pgeocodehtml"></div>  <div id="boundaryIconDiv"></div> 
@@ -111,29 +90,41 @@
 </tr>
 ~[if.~[displaypref:mappingadapter.selected]=""]
 [else]
-<tr class="~[evenoddrow]">
+<tr>
     <td> </td>
-    <td class="yui-skin-sam">
-        <input type="button" id="validatePrimaryAddress" value="Validate" onclick="validatePrimaryAddress()">
+    <td>
+        <input type="button" id="validatePrimaryAddress" value="~[text:psx.html.admin_students.generaldemographics.validate]" onclick="validatePrimaryAddress()">
     </td>
 </tr>
 [/if]
 
 <tr class="headerrow">
-    <td colspan="2" class="bold"><br>Mailing Address - <a href="javascript:void(copyAddress())" onClick="copyAddress(); displayGeocode('m');">Copy From Home Address</a></td>
+    <td colspan="2" class="bold">~[text:psx.html.admin_students.generaldemographics.mailing_address_]<a href="javascript:void(copyAddress())" onClick="copyAddress(); displayGeocode('m');">~[text:psx.html.admin_students.generaldemographics.copy_from_home_address]</a></td>
 </tr>
 
-<tr class="~[evenoddrow]">
-    <td class="subhead">Street, Apt/Suite</td>
-    <td>This field is not used</td>
+<tr>
+    <td class="subhead">~[text:psx.html.admin_students.generaldemographics.street_aptsuite1]</td>
+    <td>
+        <input type="text" name="[01]mailing_street" value="" size="45" id="mstreet">
+        <input type="text" name="" value="" size="10" id="mapt">
+    </td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="subhead">City, State, Zip</td>
-    <td>These fields are not used</td>
+<tr>
+    <td class="subhead">~[text:psx.html.admin_students.generaldemographics.city_state_zip1]</td>
+    <td>
+        <input type="text" name="[01]mailing_city" value="" size="30" id="mcity">
+        <input type="text" name="[01]mailing_state" value="" size="2" id="mstate">
+        <input type="text" name="[01]mailing_zip" value="" size="10" id="mzip">
+
+        <input type="hidden" name="orig_mailingstreet" value="~([01]mailing_street)" id="orig_mstreet">
+        <input type="hidden" name="orig_mailingcity" value="~([01]mailing_city)" id="orig_mcity">
+        <input type="hidden" name="orig_mailingstate" value="~([01]mailing_state)" id="orig_mstate">
+        <input type="hidden" name="orig_mailingzip" value="~([01]mailing_zip)" id="orig_mzip">
+    </td>
 </tr>
 
-<tr class="~[evenoddrow]">
-    <td class="subhead">Geocode</td>
+<tr>
+    <td class="subhead">~[text:psx.html.admin_students.generaldemographics.geocode1]</td>
     <td>
         <input type="hidden" name="[01]mailing_geocode" value="" id="mgeocode" size="40">
         <div id="mgeocodehtml"></div>
@@ -141,161 +132,152 @@
 </tr>
 ~[if.~[displaypref:mappingadapter.selected]=""]
 [else]
-<tr class="~[evenoddrow]">
+<tr>
     <td></td>
-    <td class="yui-skin-sam">
-        <input type="button" id="validateMailingAddress" value="Validate" onclick="validateMailingAddress()">
+    <td>
+        <input type="button" id="validateMailingAddress" value="~[text:psx.html.admin_students.generaldemographics.validate1]" onclick="validateMailingAddress()">
     </td>
 </tr>
 [/if]
 
+<!-- KSD customization begin -->
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.student_number]</td>
+    <td><input type="text" name="[01]student_number" value="" size="13"></td>
+</tr>
+<!-- KSD customization end -->
 
-
-
-<tr class="~[evenoddrow]">
-    <td class="bold">Home phone</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.home_phone]</td>
     <td><input type="text" name="[01]home_phone" value="" size="17"></td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Age</td>
-    <td>~(age)</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.age]</td>
+    <td id="studentAge">~(age)</td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Aggregate days of membership (YTD)</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.aggregate_days_of_membership,param:(YTD)]</td>
     <td>~(aggmemdaysytd)</td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Area/neighborhood</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.areaneighborhood]</td>
     <td><input type="text" name="[01]area" value="" size="27"></td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">DOB</td>
-    <td><input type="text" name="[01]dob" value="" size="11" onChange="checkDates('~(JSFieldParam;[01]dob)');"></td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.dob]</td>
+    <td><input type="text" name="[01]dob" value="" size="11"></td>
 </tr>
 <tr class="headerrow">
-    <td colspan="2" class="bold">Federal Ethnicity and Race</td>
+    <td colspan="2" class="bold">~[text:psx.html.admin_students.generaldemographics.federal_ethnicity_and_race]</td>
 </tr>
-<tr class="~[evenoddrow]">
-	<td class="subhead">Ethnicity</td>
+<tr>
+	<td class="subhead">~[text:psx.html.admin_students.generaldemographics.ethnicity]</td>
 	<td>
 		<div>
-			<label>Is the student Hispanic or Latino?</label>
+			<label>~[text:psx.html.admin_students.generaldemographics.is_the_student_hispanic_or_latino]</label>
 			<input id="defaultEthnicity" type="hidden" name="[01]FedEthnicity" value="-1">~[Comment:Note that the onload javascript will revert this back to -1 after it's been changed to whatever is currently in the DB.]
-			<div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="1">Yes</div>
-			<div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="0">No</div>
+			<div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="1">~[text:psx.html.admin_students.generaldemographics.yes]</div>
+			<div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="0">~[text:psx.html.admin_students.generaldemographics.no]</div>
 			~[if.pref.FRE_AllowDeclineEthnicity=1]<div class="choicefloat"><span class="declined"><input type="radio" name="[01]FedEthnicity" value="2">~[pref:FRE_DeclineEthnicityText]</span></div>[/if]
 			<div class=clearit><!-- --></div>
 		</div>
 	</td>
 </tr>
-<tr class="~[evenoddrow]">
-	<td class="subhead">Race</td>
+<tr>
+	<td class="subhead">~[text:psx.html.admin_students.generaldemographics.race]</td>
 	<td>
 		<input type="hidden" name="SaveRace" value="1">
 		<input type="hidden" name="[01]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
 ~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
 	</td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="subhead">Scheduling/Reporting Ethnicity</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.schedulingreporting_ethnicity]</td>
     <td>
 			<select id="primaryethnicity" name="[01]ethnicity" special="lists.ethnicity">
 	        <option>
 	    </select>
 	</td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Gender</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.gender]</td>
     <td><select name="[01]gender">
         <option value="">
-        <option value="M">Male
-        <option value="F">Female
-    </select></td>
+        <option value="M">~[text:psx.html.admin_students.generaldemographics.male]<option value="F">~[text:psx.html.admin_students.generaldemographics.female]</select></td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Grade Level</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.grade_level]</td>
     <td>~(grade_level)</td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Graduation Year</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.graduation_year]</td>
     <td><input type="text" name="[01]graduation_year" value="" size="5"></td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold">Guardianship</td>
+<tr>
+    <td class="bold">~[text:psx.html.admin_students.generaldemographics.guardianship]</td>
     <td><input type="text" name="[01]guardianship" value="" size="13"></td>
 </tr>
-<tr class="~[evenoddrow]">
-    <td class="bold"><a href="mailto:~(guardianemail)">Guardian Email</a></td>
-    <td><input type="text" name="[01]guardianemail" value="" size="50"></td>
+<tr>
+    <td class="bold"><a href="mailto:~(guardianemail)">~[text:psx.html.admin_students.generaldemographics.guardian_email]</a></td>
+    <td><input type="text" name="[01]guardianemail" value="" size="30"></td>
 </tr>
 
-<tr class="~[evenoddrow]">
+<!-- KSD customization begin -->
+<tr>
     <td class="bold">Mother (last, first)</td>
     <td><input type="text" name="[01]mother" value="" size="25">&nbsp;,&nbsp;<input type="text" name="[01]mother_first" value="" size="25"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Mother's Work Phone</td>
-    <td><input type="text" name="[01]mother_work_phone" value="" size="13"></td>
+    <td><input type="text" name="[01]mother_work_phone" value="" size="17"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Mother's Home Phone</td>
-    <td><input type="text" name="[01]Mother_home_phone" value="" size="13"></td>
+    <td><input type="text" name="[01]Mother_home_phone" value="" size="17"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Mother's Cell</td>
-    <td><input type="text" name="[01]Mother_cell" value="" size="13"></td>
+    <td><input type="text" name="[01]Mother_cell" value="" size="17"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Mother's Email</td>
     <td><input type="text" name="[01]Mother_email" value="" size="50"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Father (last, first)</td>
     <td><input type="text" name="[01]Father" value="" size="25">&nbsp;,&nbsp;<input type="text" name="[01]Father_first" value="" size="25"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Father's Work Phone</td>
-    <td><input type="text" name="[01]Father_work_phone" value="" size="13"></td>
+    <td><input type="text" name="[01]Father_work_phone" value="" size="17"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Father's Home Phone</td>
-    <td><input type="text" name="[01]Father_home_phone" value="" size="13"></td>
+    <td><input type="text" name="[01]Father_home_phone" value="" size="17"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Father's Cell</td>
-    <td><input type="text" name="[01]Father_cell" value="" size="13"></td>
+    <td><input type="text" name="[01]Father_cell" value="" size="17"></td>
 </tr>
-<tr class="~[evenoddrow]">
+<tr>
     <td class="bold">Father's Email</td>
     <td><input type="text" name="[01]Father_email" value="" size="50"></td>
 </tr>
-
-<tr class="~[evenoddrow]">
-    <td class="bold"><a href="generaldemographics_2.html?frn=~(frn)">Second Family Demographics</td>
+<tr>
+    <td class="bold" colspan="2"><a href="/admin/students/generaldemographics_2.html?frn=~(frn)">Second Family Demographics</td>
 </tr>
+<!-- KSD customization end -->
 
 <!-- Start insert state specific section information -->
 ~[x:insertfile;state/demographics~[displaypref:districtstate].html]
 <!-- End insert state specific section information -->
 </table>
 
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-    <td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif"
-                                                                              width="15" height="12" alt="" border="0">
-    </td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-<tr>
-<td colspan="2" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
-<td>&nbsp;</td>
-</tr>
-</table>
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
 <!-- End of shaded content table and bounding box -->
 
-~[wc:admin_footer_frame]
+~[wc:admin_footer_frame_css]
 </form>
 <!--</script>-->
 ~[if.~[displaypref:mappingadapter.selected]=""]

@@ -1,84 +1,75 @@
+<!DOCTYPE html>
 <html>
 <!-- start right frame -->
 <head>
-<title>Other Information</title>
+<title>~[text:psx.html.admin_students.misc.other_information]</title>
 ~[wc:commonscripts]
-<link href="/images/powerschool.css" rel="stylesheet">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+<body>
 
 <form action="/admin/changesrecorded.white.html" method="POST">
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Other Information<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.misc.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.misc.student_selection]</a> &gt;~[text:psx.html.admin_students.misc.other_information1]<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-<!-- Beginning of title of page -->
-~[wc:title_student_begin]Other Information~[wc:title_student_end]
-<!-- Ending of title of page -->
-<br>
+~[wc:title_student_begin_css]~[text:psx.html.admin_students.misc.other_information2]~[wc:title_student_end_css]
 
 <!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
+<div class="box-round">
 
 <table border="0" cellspacing="0" cellpadding="4">
 <tr bgcolor="#edf3fe">
-<td class="bold">Homeless Code</td>
+<td class="bold">~[text:psx.html.admin_students.misc.homeless_code]</td>
 <td><input type="text" name="[01]homeless_code" value="" size="5"></td>
-<td class="bold">Equip Flag</td>
-<td><select name="[01]equipStudent"><option><option value="F">False<option value="T">True</select></td>
+<td class="bold">~[text:psx.html.admin_students.misc.equip_flag]</td>
+<td><select name="[01]equipStudent"><option><option value="F">~[text:psx.html.admin_students.misc.false]<option value="T">~[text:psx.html.admin_students.misc.true]</select></td>
 </tr>
 <tr>
-<td class="bold">Date Of Entry Into USA</td>
-<td><input type="text" name="[01]dateOfEntryIntoUSA" value="" size="9" onChange="checkDates_Blank('~(JSFieldParam;[01]dateOfEntryIntoUSA)');"></td>
-<td class="bold">MESA</td>
-<td><select name="[01]mesa"><option><option value="F">False<option value="T">True</select></td>
+<td class="bold">~[text:psx.html.admin_students.misc.date_of_entry_into_usa]</td>
+<td><input type="text" name="[01]dateOfEntryIntoUSA" value="" size="10"></td>
+<td class="bold">~[text:psx.html.admin_students.misc.mesa]</td>
+<td><select name="[01]mesa"><option><option value="F">~[text:psx.html.admin_students.misc.false1]<option value="T">~[text:psx.html.admin_students.misc.true1]</select></td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">AFDC Application Number</td>
+<td class="bold">~[text:psx.html.admin_students.misc.afdc_application_number]</td>
 <td><input type="text" name="[01]afdcAppNum" value="" size="9"></td>
-<td class="bold">AFDC Approved</td>
-<td><select name="[01]afdc"><option><option value="F">False<option value="T">True</select></td>
+<td class="bold">~[text:psx.html.admin_students.misc.afdc_approved]</td>
+<td><select name="[01]afdc"><option><option value="F">~[text:psx.html.admin_students.misc.false2]<option value="T">~[text:psx.html.admin_students.misc.true2]</select></td>
 </tr>
 <tr>
-<td class="bold">Primary Language Code</td>
+<td class="bold">~[text:psx.html.admin_students.misc.primary_language_code]</td>
 <td><input type="text" name="[01]primarylanguage" value="" size="3"></td>
-<td class="bold">PHLOTE</td>
+<td class="bold">~[text:psx.html.admin_students.misc.phlote]</td>
 <td><input type="text" name="[01]phlote" value="" size="2"></td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Secondary Language Code</td>
+<td class="bold">~[text:psx.html.admin_students.misc.secondary_language_code]</td>
 <td><input type="text" name="[01]secondarylanguage" value="" size="3"></td>
-<td class="bold">Exclude From Class Ranking</td>
+<td class="bold">~[text:psx.html.admin_students.misc.exclude_from_class_ranking]</td>
 <td><input type="checkbox" name="[01]exclude_fr_rank" value="1"></td>
 </tr>
 <tr>
 <td colspan="2">&nbsp;</td>
-<td class="bold">Fee Exemption Status</td>
-<td><select name="[01]Fee_Exemption_Status"><option value="0">Student Not Exempted<option value="1">Student Exempted from Course Fees<option value="2">Student Exempted from School Fees<option value="3">Student Exempted from All Fees</select></td>
+<td class="bold">~[text:psx.html.admin_students.misc.fee_exemption_status]</td>
+<td><select name="[01]Fee_Exemption_Status"><option value="0">~[text:psx.html.admin_students.misc.student_not_exempted]<option value="1">~[text:psx.html.admin_students.misc.student_exempted_from_course_fees]<option value="2">~[text:psx.html.admin_students.misc.student_exempted_from_school_fees]<option value="3">~[text:psx.html.admin_students.misc.student_exempted_from_all_fees]</select></td>
 </tr>
 <tr>
 <td colspan="6">&nbsp;</td>
 </tr>
 <tr bgcolor="#f6f6f6">
-<td colspan="4" class="bold">Other Alert</td>
+<td colspan="4" class="bold">~[text:psx.html.admin_students.misc.other_alert]</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Other Alert Text</td>
+<td class="bold">~[text:psx.html.admin_students.misc.other_alert_text]</td>
 <td colspan="3"><textarea name="[01]Alert_Other" rows="4" cols="40"></textarea></td>
 </tr>
 <tr>
-<td class="bold">Alert Expires (Date)</td>
-<td colspan="3"><input type="text" name="[01]Alert_OtherExpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]Alert_OtherExpires)');"> (0/0/0 to never expire)</td>
+<td class="bold">~[text:psx.html.admin_students.misc.alert_expires,param:(Date)]</td>
+<td colspan="3"><input type="text" name="[01]Alert_OtherExpires" value="" size="10"> ~[text:psx.html.admin_students.misc._to_never_expire,param:~[i18shortdate:0/0/0]]</td>
 </tr>
-<tr>
-<td colspan="6">&nbsp;</td>
-</tr>
+
+<!-- KSD customization begin -->
 <tr bgcolor="#f6f6f6">
 <td colspan="4" class="bold">IEP</td>
 </tr>
@@ -88,27 +79,19 @@
 </tr>
 <tr>
 <td class="bold">IEP Expires (Date)</td>
-<td colspan="3"><input type="text" name="[01]alert_iepexpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]alert_iepexpires)');"> (0/0/0 to never expire)</td>
+<td colspan="3"><input type="text" name="[01]alert_iepexpires" value="" size="10" data-validation='{"type":"date","key":"students.alert_iepexpires"}'> (0/0/0 to never expire)</td>
 </tr>
+<!-- KSD customization end -->
+
 </table>
 <br>
 
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-<tr>
-<td colspan="2" align="right"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
-<td>&nbsp;</td>
-</tr>
-</table>
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
 <br>
 <!-- end of content of bounding box -->
 
-~[wc:admin_footer_frame]
+~[wc:admin_footer_frame_css]
 </form>
 
 </body>

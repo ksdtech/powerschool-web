@@ -1,64 +1,123 @@
+<!DOCTYPE html>
 <html>
 <!-- start right frame -->
 <head>
-<title>Emergency Contact/Medical</title>
+<title>~[text:psx.html.admin_students.emergency.emergency_contactmedical]</title>
 ~[wc:commonscripts]
-<link href="/images/powerschool.css" rel="stylesheet">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+<body>
 
-<!-- pscustom_begin --><!-- pscustom_end -->
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Emergency Contact/Medical<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+<form action="/admin/changesrecorded.white.html" method="POST">
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.emergency.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.emergency.student_selection]</a> &gt;~[text:psx.html.admin_students.emergency.emergency_contactmedical1]<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-<!-- Beginning of title of page -->
-~[wc:title_student_begin]Emergency Contact/Medical~[wc:title_student_end]
-<!-- Ending of title of page -->
-<br>
+~[wc:title_student_begin_css]~[text:psx.html.admin_students.emergency.emergency_contactmedical2]~[wc:title_student_end_css]
 
 <!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
+<div class="box-round">
+
+<table border="0" cellspacing="0" cellpadding="4">
+
+<!-- KSD customization begin -->  
+<tr bgcolor="#edf3fe"><td class="bold" colspan="4">Please use these custom pages for emergency/medical information:</td></tr>
+<tr><td><a href="/admin/students/studentpages/regform8.html?frn=~(frn)">Medical Information</a></td>
+ <td colspan="3"><a href="/admin/students/health/home_health.html?frn=~(frn)">Immunizations</a></td>
+</tr>
+<tr><td><a href="/admin/students/studentpages/physicals.html?frn=~(frn)">Physicals</a></td>
+ <td colspan="3"><a href="/admin/students/studentpages/severemedical.html?frn=~(frn)">Severe Medical Page with Photo</a></td>
+</tr>
+<tr><td><a href="/admin/students/studentpages/regform3.html?frn=~(frn)">Primary Parents</a></td>
+ <td colspan="3"><a href="/admin/students/studentpages/regform4.html?frn=~(frn)">Secondary Parents</a></td>
+</tr>
+<tr><td colspan="4"><a href="/admin/students/studentpages/regform5.html?frn=~(frn)">Authorized Adults</a></td></tr>
+<!-- KSD customization end -->  
+  
+<tr bgcolor="#edf3fe">
+<td class="bold" rowspan="2">~[text:psx.html.admin_students.emergency.contact_]</td>
+<td>~[text:psx.html.admin_students.emergency.contact_name_last_first]<br><input type="text" name="[01]Emerg_Contact_1" value="" size="25"></td>
+<td>~[text:psx.html.admin_students.emergency.relationship]<br><select name="[01]Emerg_1_Rel"><option><option value="Aunt">~[text:psx.html.admin_students.emergency.aunt]<option value="Brother">~[text:psx.html.admin_students.emergency.brother]<option value="Father">~[text:psx.html.admin_students.emergency.father]<option value="Friend">~[text:psx.html.admin_students.emergency.friend]<option value="Grandfather">~[text:psx.html.admin_students.emergency.grandfather]<option value="Grandmother">~[text:psx.html.admin_students.emergency.grandmother]<option value="Mother">~[text:psx.html.admin_students.emergency.mother]<option value="Neighbor">~[text:psx.html.admin_students.emergency.neighbor]<option value="Other">~[text:psx.html.admin_students.emergency.other]<option value="Sister">~[text:psx.html.admin_students.emergency.sister]<option value="Uncle">~[text:psx.html.admin_students.emergency.uncle]</select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text:psx.html.admin_students.emergency.phone]<br><input type="text" name="[01]Emerg_Phone_1" value="" size="15"></td>
+<td>~[text:psx.html.admin_students.emergency.phone_type]<br><select name="[01]Emerg_1_Ptype"><option><option value="Cell">~[text:psx.html.admin_students.emergency.cell]<option value="Home">~[text:psx.html.admin_students.emergency.home]<option value="Work">~[text:psx.html.admin_students.emergency.work]</select></td>
 </tr>
 <tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
-
-<!-- pscustom_begin -->
-<table border="0" cellspacing="0" cellpadding="4" align="left">
-<tr><td>Please see these other pages for emergency/medical information:
-  <ul>
-    <li><a href="/admin/students/studentpages/regform8.html?frn=~(frn)">Medical Information</a></li>
-    <li><a href="/admin/students/health/home_health.html?frn=~(frn)">Immunizations</a></li>
-    <li><a href="/admin/students/studentpages/physicals.html?frn=~(frn)">Physicals</a></li>
-    <li><a href="/admin/students/studentpages/severemedical.html?frn=~(frn)">Severe Medical Page with Photo</a></li>
-    <li><a href="/admin/students/studentpages/regform3.html?frn=~(frn)">Primary Parents</a></li>
-    <li><a href="/admin/students/studentpages/regform4.html?frn=~(frn)">Secondary Parents</a></li>
-    <li><a href="/admin/students/studentpages/regform5.html?frn=~(frn)">Authorized Adults</a></li>
-  </ul>
-</td></tr>
+<td class="bold" rowspan="2">~[text:psx.html.admin_students.emergency.contact_1]</td>
+<td>~[text:psx.html.admin_students.emergency.contact_name_last_first1]<br><input type="text" name="[01]Emerg_Contact_2" value="" size="25"></td>
+<td>~[text:psx.html.admin_students.emergency.relationship1]<br><select name="[01]Emerg_2_Rel"><option><option value="Aunt">~[text:psx.html.admin_students.emergency.aunt1]<option value="Brother">~[text:psx.html.admin_students.emergency.brother1]<option value="Father">~[text:psx.html.admin_students.emergency.father1]<option value="Friend">~[text:psx.html.admin_students.emergency.friend1]<option value="Grandfather">~[text:psx.html.admin_students.emergency.grandfather1]<option value="Grandmother">~[text:psx.html.admin_students.emergency.grandmother1]<option value="Mother">~[text:psx.html.admin_students.emergency.mother1]<option value="Neighbor">~[text:psx.html.admin_students.emergency.neighbor1]<option value="Other">~[text:psx.html.admin_students.emergency.other1]<option value="Sister">~[text:psx.html.admin_students.emergency.sister1]<option value="Uncle">~[text:psx.html.admin_students.emergency.uncle1]</select></td>
+</tr>
+<tr>
+<td>~[text:psx.html.admin_students.emergency.phone1]<br><input type="text" name="[01]Emerg_Phone_2" value="" size="15"></td>
+<td>~[text:psx.html.admin_students.emergency.phone_type1]<br><select name="[01]Emerg_2_Ptype"><option><option value="Cell">~[text:psx.html.admin_students.emergency.cell1]<option value="Home">~[text:psx.html.admin_students.emergency.home1]<option value="Work">~[text:psx.html.admin_students.emergency.work1]</select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold" rowspan="2">~[text:psx.html.admin_students.emergency.contact_2]</td>
+<td>~[text:psx.html.admin_students.emergency.contact_name_last_first2]<br><input type="text" name="[01]Emerg_Contact_3" value="" size="25"></td>
+<td>~[text:psx.html.admin_students.emergency.relationship2]<br><select name="[01]Emerg_3_Rel"><option><option value="Aunt">~[text:psx.html.admin_students.emergency.aunt2]<option value="Brother">~[text:psx.html.admin_students.emergency.brother2]<option value="Father">~[text:psx.html.admin_students.emergency.father2]<option value="Friend">~[text:psx.html.admin_students.emergency.friend2]<option value="Grandfather">~[text:psx.html.admin_students.emergency.grandfather2]<option value="Grandmother">~[text:psx.html.admin_students.emergency.grandmother2]<option value="Mother">~[text:psx.html.admin_students.emergency.mother2]<option value="Neighbor">~[text:psx.html.admin_students.emergency.neighbor2]<option value="Other">~[text:psx.html.admin_students.emergency.other2]<option value="Sister">~[text:psx.html.admin_students.emergency.sister2]<option value="Uncle">~[text:psx.html.admin_students.emergency.uncle2]</select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text:psx.html.admin_students.emergency.phone2]<br><input type="text" name="[01]Emerg_3_Phone" value="" size="15"></td>
+<td>~[text:psx.html.admin_students.emergency.phone_type2]<br><select name="[01]Emerg_3_Ptype"><option><option value="Cell">~[text:psx.html.admin_students.emergency.cell2]<option value="Home">~[text:psx.html.admin_students.emergency.home2]<option value="Work">~[text:psx.html.admin_students.emergency.work2]</select></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.emergency.doctor]</td>
+<td><input type="text" name="[01]Doctor_Name" value="" size="25"></td>
+<td><input type="text" name="[01]Doctor_Phone" value="" size="15"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.emergency.dentist]</td>
+<td><input type="text" name="[01]Dentist_Name" value="" size="25"></td>
+<td><input type="text" name="[01]Dentist_Phone" value="" size="15"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.emergency.special_medical]<br>~[text:psx.html.admin_students.emergency.considerations]</td>
+<td colspan="2"><textarea name="[01]Medical_Considerations" rows="4" cols="40"></textarea></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.emergency.allergies]</td>
+<td colspan="2"><input type="text" name="[01]allergies" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.emergency.immunizations]</td>
+<td colspan="2">
+<table border="0" cellpadding="4" cellspacing="0">
+<tr align="center">
+<td>~[text:psx.html.admin_students.emergency.polio]</td>
+<td>~[text:psx.html.admin_students.emergency.mmr]</td>
+<td>~[text:psx.html.admin_students.emergency.dpt]</td>
+</tr>
+<tr align="center">
+<td><input type="text" name="[01]immunizaton_polio" value="" size="3"></td>
+<td><input type="text" name="[01]immunizaton_mmr" value="" size="3"></td>
+<td><input type="text" name="[01]immunizaton_dpt" value="" size="3"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.emergency.medical_alert_text]</td>
+<td colspan="2"><textarea name="[01]Alert_Medical" rows="4" cols="40"></textarea></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.emergency.alert_expires,param:(date)]</td>
+<td colspan="2"><input type="text" name="[01]Alert_MedicalExpires" value="" size="10"> ~[text:psx.html.admin_students.emergency._to_never_expire,param:~[i18shortdate:0/0/0]]
+</td>
+</tr>
 <!-- Start insert state specific section information -->
 ~[x:insertfile;state/emergency~[displaypref:districtstate].html]
 <!-- End insert state specific section information -->
 </table>
-<!-- pscustom_end -->
+<br>
 
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-<!-- pscustom_begin --><!-- pscustom_end -->
-</table>
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
 <br>
 <!-- end of content of bounding box -->
 
-~[wc:admin_footer_frame]
-<!-- pscustom_begin --><!-- pscustom_end -->
+~[wc:admin_footer_frame_css]
+</form>
 
 </body>
 </html><!-- end right frame -->

@@ -1,106 +1,116 @@
+<!DOCTYPE html>
 <html>
 <!-- start right frame -->
 <head>
-<title>Demographics</title>
+<title>~[text:psx.html.admin_students.demo.demographics]</title>
 ~[wc:commonscripts]
-<link href="/images/powerschool.css" rel="stylesheet">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+<body>
 
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Demographics<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.demo.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.demo.student_selection]</a> &gt;~[text:psx.html.admin_students.demo.demographics1]<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-<!-- Beginning of title of page -->
-~[wc:title_student_begin]Demographics~[wc:title_student_end]
-<!-- Ending of title of page -->
-<br>
+~[wc:title_student_begin_css]~[text:psx.html.admin_students.demo.demographics2]~[wc:title_student_end_css]
 
 <!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
+<div class="box-round">
 
 <table border="0" cellspacing="0" cellpadding="4">
 <tr bgcolor="#f6f6f6">
-<td class="bold">Demographics</td>
-<td class="bold">Value</td>
-</tr>
-<tr>
-<td class="bold">Name (Last, First MI)</td>
-<td>~(studentname)</td>
+<td class="bold">~[text:psx.html.admin_students.demo.demographics3]</td>
+<td class="bold">~[text:psx.html.admin_students.demo.value]</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">DOB</td>
-<td>~(dob)</td>
+<td class="bold">~[text:psx.html.admin_students.demo.name,param:(Last, First MI)]</td>
+<td>~(studentname)</td>
+</tr>
+
+<!-- KSD customization begin -->
 </tr>
 <tr>
-<td class="bold">Age</td>
+<td class="bold">~[text:psx.html.admin_students.demo.student_number]</td>
+<td>~(student_number)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Calif. Student ID (SSID)</td>
+<td>~(state_studentnumber)</td>
+</tr>
+<!-- KSD customization end -->
+
+<tr>
+<td class="bold">~[text:psx.html.admin_students.demo.age]</td>
 <td>~(age)</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Gender</td>
+<td class="bold">~[text:psx.html.admin_students.demo.aggregate_days_of_membership,param:(YTD)]</td>
+<td>~(aggmemdaysytd)</td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.demo.areaneighborhood]</td>
+<td>~(area)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.demo.dob]</td>
+<td>~(dob)</td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.demo.ethnicity]</td>
+<td>~(ethnicity)
+	<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.demo.gender]</td>
 <td>~(gender;uppercase)</td>
 </tr>
 <tr>
-<td class="bold">Ethnicity</td>
-<td>~(ethnicity)</td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">Entry Date</td>
-<td>~(entrydate)</td>
-</tr>
-<tr>
-<td class="bold">Grade Level</td>
+<td class="bold">~[text:psx.html.admin_students.demo.grade_level]</td>
 <td>~(grade_level)</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">School Entry Date</td>
-<td>~(schoolentrydate)</td>
-</tr>
-<tr>
-<td class="bold">School Entry Grade Level</td>
-<td>~(schoolentrygradelevel)</td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">Graduation Year</td>
+<td class="bold">~[text:psx.html.admin_students.demo.graduation_year]</td>
 <td>~(graduation_year)</td>
 </tr>
 <tr>
-<td class="bold">Address</td>
-<td>~(street)<br>  ~(city), ~(state)&nbsp;&nbsp;~(zip)</td>
+<td class="bold">~[text:psx.html.admin_students.demo.guardianship]</td>
+<td>~(guardianship)</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Mailing Address</td>
-<td>This field is not used anymore</td>
+<td class="bold"><a href="mailto:~(guardianemail)">~[text:psx.html.admin_students.demo.guardian_email]</a></td>
+<td>~(guardianemail)</td>
+</tr>
+
+<!-- KSD customization begin -->
+<tr>
+<td class="bold">~[text:psx.html.admin_students.demo.address]</td>
+<td>~(street)<br>~(city), ~(state)&nbsp;&nbsp;~(zip)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.demo.mailing_address]</td>
+<td>~(mailing_street)<br>~(mailing_city), ~(mailing_state)&nbsp;&nbsp;~(mailing_zip)</td>
 </tr>
 <tr>
-<td class="bold">Home Phone</td>
+<td class="bold">~[text:psx.html.admin_students.demo.home_phone]</td>
 <td>~(home_phone)</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold"><a href="mailto:~(guardianemail)">Guardian Email</a></td>
-<td>~(guardianemail)</td>
-</tr>
-<tr>
 <td class="bold">Father</td>
 <td>~(Father), ~(Father_First)</td>
 </tr>
-<tr bgcolor="#edf3fe">
+<tr>
 <td class="bold">Father's Home Phone</td>
 <td>~(Father_home_phone)</td>
 </tr>
-<tr>
+<tr bgcolor="#edf3fe">
 <td class="bold">Father's Cell Phone</td>
 <td>~(Father_cell)</td>
 </tr>
-<tr bgcolor="#edf3fe">
+<tr>
 <td class="bold">Father's Work Phone</td>
 <td>~(Father_Work_Phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Father's Email Address</td>
+<td>~(Father_Email)</td>
 </tr>
 <tr>
 <td class="bold">Mother</td>
@@ -119,6 +129,22 @@
 <td>~(Mother_Work_Phone)</td>
 </tr>
 <tr>
+<td class="bold">Mother's Email Address</td>
+<td>~(Mother_Email)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">NC Address</td>
+<td>~(home2_street)<br>~(home2_city), ~(home2_state)&nbsp;&nbsp;~(home2_zip)</td>
+</tr>
+<tr>
+<td class="bold">NC Mailing Address</td>
+<td>~(mailing2_street)<br>~(mailing2_city), ~(mailing2_state)&nbsp;&nbsp;~(mailing2_zip)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">NC Home Phone</td>
+<td>~(home2_phone)</td>
+</tr>
+<tr>
 <td class="bold">NC (Non-Custodial) Father</td>
 <td>~(Father2_Last), ~(Father2_First)</td>
 </tr>
@@ -135,48 +161,40 @@
 <td>~(Father2_Work_Phone)</td>
 </tr>
 <tr>
+<td class="bold">NC Father's Email Address</td>
+<td>~(Father2_Email)</td>
+</tr>
+<tr bgcolor="#edf3fe">
 <td class="bold">NC Mother</td>
 <td>~(Mother2_Last), ~(Mother2_First)</td>
 </tr>
-<tr bgcolor="#edf3fe">
+<tr>
 <td class="bold">NC Mother's Home Phone</td>
 <td>~(Mother2_home_phone)</td>
 </tr>
-<tr>
+<tr bgcolor="#edf3fe">
 <td class="bold">NC Mother's Cell Phone</td>
 <td>~(Mother2_cell)</td>
 </tr>
-<tr bgcolor="#edf3fe">
+<tr>
 <td class="bold">NC Mother's Work Phone</td>
 <td>~(Mother2_Work_Phone)</td>
 </tr>
-<tr>
-<td class="bold">Local Student ID (Student Number)</td>
-<td>~(student_number)</td>
-</tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Calif. Student ID (SSID)</td>
-<td>~(state_studentnumber)</td>
+<td class="bold">NC Mother's Email Address</td>
+<td>~(Mother2_Email)</td>
 </tr>
-<tr>
-<td class="bold">Previous Student ID</td>
-<td>~(prevstudentid)</td>
-</tr>
+<!-- KSD customization end -->
+
 </table>
 <br>
 
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-</table>
+<div class="button-row"></div>
+</div>
 <br>
 <!-- end of content of bounding box -->
 
-~[wc:admin_footer_frame]
+~[wc:admin_footer_frame_css]
 
 </body>
 </html><!-- end right frame -->
