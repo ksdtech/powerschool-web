@@ -1,116 +1,183 @@
+<!DOCTYPE html>
 <html>
 <!-- start right frame -->
 <head>
-<title>Parents/Guardian</title>
+<title>~[text:psx.html.admin_students.parentsguardian.parentsguardian]</title>
 ~[wc:commonscripts]
-<link href="/images/powerschool.css" rel="stylesheet">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif">
+<body>
 
 <form action="/admin/changesrecorded.white.html" method="POST">
-~[wc:admin_header_frame]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Parents/Guardian<!-- breadcrumb end -->~[wc:admin_navigation_frame]
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.parentsguardian.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.parentsguardian.student_selection]</a> &gt;~[text:psx.html.admin_students.parentsguardian.parentsguardian1]<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-<!-- Beginning of title of page -->
-~[wc:title_student_begin]Parents/Guardian~[wc:title_student_end]
-<!-- Ending of title of page -->
-<br>
+~[wc:title_student_begin_css]~[text:psx.html.admin_students.parentsguardian.parentsguardian2]~[wc:title_student_end_css]
 
 <!-- start of content and bounding box -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
+<div class="box-round">
 
 <table border="0" cellspacing="0" cellpadding="4">
 <tr bgcolor="#f6f6f6">
-<td colspan="2" class="bold">Parents/Guardian Information</td>
+<td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.parentsguardian_information]</td>
 </tr>
+
+<!-- KSD customization begin -->
 <tr bgcolor="#edf3fe">
-<td class="bold">Mother (Last, First)</td>
-<td><input type="text" name="[01]mother" value="" size="24">,&nbsp;<input type="text" name="[01]mother_first" value="" size="24"></td>
+<td class="bold">Mother (last, first)</td>
+<td><input type="text" name="[01]mother" value="" size="25">&nbsp;,&nbsp;<input type="text" name="[01]mother_first" value="" size="25"></td>
 </tr>
 <tr>
-<td class="bold">&nbsp;&nbsp;Work Phone</td>
-<td><input type="text" name="[01]Mother_Work_Phone" value="" size="24"></td>
+<td class="bold">Mother's Work Phone</td>
+<td><input type="text" name="[01]mother_work_phone" value="" size="17"></td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Father (Last, First)</td>
-<td><input type="text" name="[01]father" value="" size="24">,&nbsp;<input type="text" name="[01]father_first" value="" size="24"></td>
+<td class="bold">Father (last, first)</td>
+<td><input type="text" name="[01]Father" value="" size="25">&nbsp;,&nbsp;<input type="text" name="[01]Father_first" value="" size="25"></td>
 </tr>
 <tr>
-<td class="bold">&nbsp;&nbsp;Work Phone</td>
-<td><input type="text" name="[01]Father_Work_Phone" value="" size="24"></td>
+<td class="bold">Father's Work Phone</td>
+<td><input type="text" name="[01]Father_work_phone" value="" size="17"></td>
 </tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">NC Mother (last, first)</td>
+<td><input type="text" name="[01]mother2_First" value="" size="25">&nbsp;,&nbsp;<input type="text" name="[01]mother2_first" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">NC Mother's Work Phone</td>
+<td><input type="text" name="[01]mother2_work_phone" value="" size="17"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">NC Father (last, first)</td>
+<td><input type="text" name="[01]Father2_last" value="" size="25">&nbsp;,&nbsp;<input type="text" name="[01]Father2_first" value="" size="25"></td>
+</tr>
+<tr>
+<td class="bold">NC Father's Work Phone</td>
+<td><input type="text" name="[01]Father2_work_phone" value="" size="17"></td>
+</tr>
+<!-- KSD customization end -->
+
 <tr>
 <td colspan="2">&nbsp;</td>
 </tr>
 <tr bgcolor="#f6f6f6">
-<td colspan="2" class="bold">Guardian's Name &amp; Info</td>
+<td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.guardians_name_amp_info]</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Last, First</td>
-<td><input type="text" name="[01]guardian_ln" value="" size="24">,&nbsp;<input type="text" name="[01]guardian_fn" value="" size="24"></td>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.last_first_middle]</td>
+<td><input type="text" name="[01]guardian_ln" value="" size="21"><input type="text" name="[01]guardian_fn" value="" size="16"><input type="text" name="[01]guardian_mn" value="" size="5"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.nbsp_nbsp_daytime_phone2]</td>
+<td><input type="text" name="[01]guardiandayphone" value="" size="24" onChange="ValidatePhoneNumber('~(JSFieldParam;[01]guardiandayphone)');">~[text:psx.html.admin_students.parentsguardian.relationship_code]<input type="text" name="[01]guardianrelcode" value="" size="2"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.previous_guardian_info]</td>
+<td><textarea name="[01]guardian" rows="2" cols="40"></textarea></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.single_parent_household]</td>
+<td><select name="[01]singleparenthshldflag"><option><option value=True>~[text:psx.html.admin_students.parentsguardian.true]<option value=False>~[text:psx.html.admin_students.parentsguardian.false]</select></td>
 </tr>
 <tr>
 <td colspan="2">&nbsp;</td>
 </tr>
+~[if.prefSSOEnabled]
 <tr bgcolor="#f6f6f6">
-<td colspan="2" class="bold">Parents/Guardian Automatic Email Reports</td>
+<td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.parentsguardian_email]</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Guardian is registered to receive</td>
-<td><input type="checkbox" name="[01]autosend_summary" value="yes">Summary of current grades and attendance<br><input type="checkbox" name="[01]Autosend_attendancedetail" value="yes">Detailed report of attendance<br><input type="checkbox" name="[01]Autosend_gradedetail" value="yes">Detailed report showing all assignment scores for each class<br><input type="checkbox" name="[01]Autosend_schoolannouncements" value="yes">School announcements<br><input type="checkbox" name="[01]Autosend_balancealert" value="yes">Balance Alert (Note: Will only be sent when a student is low on funds.)</td>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.guardians_email_address]</td>
+<td><input type="text" name="[01]GuardianEmail" value="" size="33"></td>
+</tr>
+
+<!-- KSD customization begin -->
+<tr>
+<td class="bold">Mother's Email</td>
+<td><input type="text" name="[01]Mother_email" value="" size="33"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">Father's Email</td>
+<td><input type="text" name="[01]Father_email" value="" size="33"></td>
 </tr>
 <tr>
-<td class="bold">How often?</td>
-<td><select name="[01]Autosend_howoften"><option value="0" selected>Never<option value="7">Once a week<option value="14">Once every two weeks<option value="30">Once a month<option value="1">Daily</select></td>
+<td class="bold">NC Mother's Email</td>
+<td><input type="text" name="[01]Mother2_email" value="" size="33"></td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Send now?</td>
+<td class="bold">NC Father's Email</td>
+<td><input type="text" name="[01]Father2_email" value="" size="33"></td>
+</tr>
+<!-- KSD customization end -->
+
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+[else]
+<tr bgcolor="#f6f6f6">
+<td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.parentsguardian_automatic_email_reports]</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.guardian_is_registered_to_receive]</td>
+<td><input type="checkbox" name="[01]autosend_summary" value="yes">~[text:psx.html.admin_students.parentsguardian.summary_of_current_grades_and_attendance]<br><input type="checkbox" name="[01]Autosend_attendancedetail" value="yes">~[text:psx.html.admin_students.parentsguardian.detailed_report_of_attendance]<br><input type="checkbox" name="[01]Autosend_gradedetail" value="yes">~[text:psx.html.admin_students.parentsguardian.detailed_report_showing_all_assignment_scores_for_each_class]<br><input type="checkbox" name="[01]Autosend_schoolannouncements" value="yes">~[text:psx.html.admin_students.parentsguardian.school_announcements]<br><input type="checkbox" name="[01]Autosend_balancealert" value="yes">~[text:psx.html.admin_students.parentsguardian.balance_alert_note_will_only_be_sent_when_a_student_is_low_o]</td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.how_often]</td>
+<td><select name="[01]Autosend_howoften"><option value="0" selected>~[text:psx.html.admin_students.parentsguardian.never]<option value="7">~[text:psx.html.admin_students.parentsguardian.once_a_week]<option value="14">~[text:psx.html.admin_students.parentsguardian.once_every_two_weeks]<option value="30">~[text:psx.html.admin_students.parentsguardian.once_a_month]<option value="1">~[text:psx.html.admin_students.parentsguardian.daily]</select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.send_now]</td>
 <td><input type="checkbox" name="sendNow" value="checked"></td>
 </tr>
 <tr>
-<td class="bold">Guardian's email address:</td>
-<td><textarea name="[01]guardianemail" wrap="soft" cols="40" rows="3"></textarea></td>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.guardians_email_address1]</td>
+<td><input type="text" name="[01]GuardianEmail" value="" size="33"></td>
 </tr>
+
+<!-- KSD customization begin -->
+<tr bgcolor="#edf3fe">
+<td class="bold">Mother's Email</td>
+<td><input type="text" name="[01]Mother_email" value="" size="33"></td>
+</tr>
+<tr>
+<td class="bold">Father's Email</td>
+<td><input type="text" name="[01]Father_email" value="" size="33"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">NC Mother's Email</td>
+<td><input type="text" name="[01]Mother2_email" value="" size="33"></td>
+</tr>
+<tr>
+<td class="bold">NC Father's Email</td>
+<td><input type="text" name="[01]Father2_email" value="" size="33"></td>
+</tr>
+<!-- KSD customization end -->
+
 <tr>
 <td colspan="2">&nbsp;</td>
 </tr>
+[/if]
 <tr bgcolor="#f6f6f6">
-<td colspan="2" class="bold">Guardian Alert</td>
+<td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.guardian_alert]</td>
 </tr>
 <tr bgcolor="#edf3fe">
-<td class="bold">Guardian Alert Text</td>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.guardian_alert_text]</td>
 <td colspan="2"><textarea name="[01]Alert_Guardian" rows="4" cols="40"></textarea></td>
 </tr>
 <tr>
-<td class="bold">Alert Expires (date)</td>
-<td colspan="2"><input type="text" name="[01]Alert_GuardianExpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]Alert_GuardianExpires)');"> (0/0/0 to never expire)</td>
+<td class="bold">~[text:psx.html.admin_students.parentsguardian.alert_expires,param:(date)]</td>
+<td colspan="2"><input type="text" class="psDateWidget" name="[01]Alert_GuardianExpires" value="" size="10"> ~[text:psx.html.admin_students.parentsguardian._to_never_expire,param:~[i18shortdate:0/0/0]]</td>
 </tr>
 </table>
 <br>
 
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-<tr>
-<td colspan="2" align="right"><input type="hidden" name="ac" value="sendnow"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
-<td>&nbsp;</td>
-</tr>
-</table>
+<div class="button-row"><input type="hidden" name="ac" value="sendnow"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
 <br>
 <!-- end of content of bounding box -->
 
-~[wc:admin_footer_frame]
+~[wc:admin_footer_frame_css]
 </form>
 
 </body>
