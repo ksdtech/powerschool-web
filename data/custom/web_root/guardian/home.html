@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>~[text:psx.html.guardian.home.grades_and_attendance_]</title>
-~[wc:guardian_header_yui]
+~[wc:guardian_header]
 ~[SetPostValue:selectedTab=GradesAndAttendance]
 ~[if.prefschool.sgshowpa=1]~[SetPostValue:showSGFGradebook=false][else]~[SetPostValue:showSGFGradebook=true][/if.prefschool.sgshowpa=1]
 ~[brij_render:common-ps;:GuardianHomeTabs]
@@ -29,9 +29,7 @@ FROM STUDENTS
 WHERE ID=~(curstudid))
 ]
 <li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Online Report Cards</a></li>
-~[if.~(schoolid)=120]
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)"><span style="font-size: 14pt">Reserve December Parent-Teacher Conferences</span></a></li>
-[/if]
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Reserve Parent-Teacher Conferences</a></li>
 [/tlist_sql]
 </ul>
 <p><b>Important Note:</b> Parents can review Kent Middle School students' 
@@ -77,6 +75,6 @@ WHERE ID=~(curstudid))
 </div>
 
 <input id="activeNav" type="hidden" value="#btn-gradesAttendance"/ />
-~[wc:guardian_footer_yui]
+~[wc:guardian_footer]
 </body>
 </html>
