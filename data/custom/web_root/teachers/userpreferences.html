@@ -1,78 +1,56 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Personalize - ~[x:username]</title>
+<title>~[text]psx.html.teachers.userpreferences.personalize_,param:~[x:username][/text]</title>
 ~[wc:commonscripts]
-<link rel="stylesheet" href="/images/powerschool.css">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=12 marginheight=12 topmargin=12 leftmargin=12 bgcolor="#ffffff">
+<body>
 
-~[wc:teachers_header]~[wc:teachers_navigation]
+~[wc:teachers_header_css]~[wc:teachers_navigation_css]
 ~[SetPostValue:tabname=personalize]
-~[wc:teachers_nav_gel_buttons]
+~[wc:teachers_nav_css]
 
-</td>
-<td width="20" background="/images/admin_mid_right_side.gif"><img src="/images/transparent.gif" width="20" height="1" alt="" border="0"></td>
-<td width="100%" valign="top">
-<br>
-<span class="header">Personalize - ~[x:username]</span>
-<br><br>
+<h1>~[text]psx.html.teachers.userpreferences.personalize_1,param:~[x:username][/text]</h1>
 
 <!-- Start of shaded content table -->
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td colspan="2" background="/images/bond_3000_top.gif" align="right"><img src="/images/bound_box_top_right1.gif" width="15" height="9" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_top_right2.gif" width="25" height="9" alt="" border="0"></td>
-</tr>
-<tr>
-<td width="23" background="/images/bond_box_left_edge.gif"><img src="/images/spacer.gif" width="23" height="1"></td>
-<td>
+<div class="box-round">
 
 <table border="0" cellspacing="0" cellpadding="4">
 <tr bgcolor="#f6f6f6">
-    <td class="bold">Function</td>
-    <td class="bold">Description</td>
-</tr>
-<!-- pscustom_begin -->
-<tr>
-    <td><a href="/teachers/proxyinfo.html?frn=~[gpv:frn]">Proxy Bypass Password</a></td>
-    <td>View Proxy Bypass (YouTube Access) Password.</td>
-</tr>
-<tr>
-    <td><a href="/teachers/contactinfo.html?frn=~[gpv:frn]">Update Contact Information</a></td>
-    <td>Change address, email, phone, emergency contact and medical information.</td>
-</tr>
-<tr>
-    <td><a href="/teachers/raceethnicity.html?frn=~[gpv:frn]">Update Race and Ethnicity Information</a></td>
-    <td>Change race or ethnicity.</td>
-</tr>
-<!-- pscustom_end -->
-<tr bgcolor="#edf3fe">
-    <td><a href="/teachers/userprefpassword.html?frn=~[gpv:frn]">Change Password</a></td>
-    <td>Change current password to a new one.</td>
-</tr>
-<tr>
-    <td><a href="/teachers/userprefscreen.html?frn=~[gpv:frn]">Default Student Screen</a></td>
-    <td>Sets the initial student screen.</td>
+	<td class="bold">~[text]psx.html.teachers.userpreferences.function[/text]</td>
+	<td class="bold">~[text]psx.html.teachers.userpreferences.description[/text]</td>
 </tr>
 <tr bgcolor="#edf3fe">
-    <td><a href="/teachers/userdisplaysectionnum.html?frn=~[gpv:frn]">Display Section Number</a></td>
-	<td>Show or hide the Section Number on the Teachers home page</td>
+	<td><a href="/teachers/contactinfo.html?frn=~[gpv:frn]">Update Contact Information</a></td>	
+	<td>Change address, email, phone, emergency contact and medical information.</td>
+</tr>
+<tr>
+	<td><a href="/teachers/raceethnicity.html?frn=~[gpv:frn]">Update Race and Ethnicity Information</a></td>
+	<td>Change race or ethnicity.</td>
+</tr>
+<tr bgcolor="#edf3fe">
+	<td><a href="/teachers/userprefpassword.html?frn=~[gpv:frn]">~[text]psx.html.teachers.userpreferences.change_password[/text]</a></td>
+	<td>~[text]psx.html.teachers.userpreferences.change_current_password_to_a_new_one[/text]</td>
+</tr>
+<tr>
+	<td><a href="/teachers/userprefscreen.html?frn=~[gpv:frn]">~[text]psx.html.teachers.userpreferences.default_student_screen[/text]</a></td>
+	<td>~[text]psx.html.teachers.userpreferences.sets_the_initial_student_screen[/text]</td>
+</tr>
+<tr bgcolor="#edf3fe">
+	<td><a href="/teachers/userdisplaysectionnum.html?frn=~[gpv:frn]">~[text]psx.html.teachers.userpreferences.display_section_number[/text]</a></td>
+	<td>~[text]psx.html.teachers.userpreferences.show_or_hide_the_section_number_on_the_teachers_home_page[/text]</td>
 </tr>
 </table>
 
-</td>
-<td width="25" background="/images/bond_box_right_edge.gif"><img src="/images/spacer.gif" width="25" height="1"></td>
-</tr>
-<tr>
-<td colspan="2" background="/images/bond_3000_bot.gif" align="right"><img src="/images/bound_box_bot_right1.gif" width="15" height="12" alt="" border="0"></td>
-<td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
-</tr>
-</table>
+<div class="button-row"></div>
+</div>
 <br>
 <!-- End of shaded content table -->
 
-~[wc:teachers_footer_nf]
+~[wc:teachers_footer_nf_css]
 
-</body>
+
 </html>

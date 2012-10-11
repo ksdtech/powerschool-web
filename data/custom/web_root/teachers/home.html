@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>PowerTeacher</title>
+<title>~[text]psx.html.teachers.home.powerteacher[/text]</title>
 ~[wc:commonscripts]
 ~[if#mdistrict.pref.mobilepages_enable=1]
 <script language="JavaScript">
@@ -13,47 +14,81 @@ var pref=1;
 [/if#muser]
 [else#mdistrict]
 [/if#mdistrict]
-<script language="javascript">function formHandler(newLoc){var URL = newLoc.options[newLoc.selectedIndex].value;window.location.href = URL;} </script>
-<link rel="stylesheet" href="/images/powerschool.css">
+<script language="javascript">
+	function formHandler(newLoc)
+	{
+		var URL = newLoc.options[newLoc.selectedIndex].value;
+		window.location.href = URL;
+	} 
+</script>
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 </head>
 
-<body marginwidth=12 marginheight=12 topmargin=12 leftmargin=12 bgcolor="#ffffff">
+<body>
 
-~[wc:teachers_header]~[wc:teachers_navigation]
+<script language="javascript">
+<!--here we will setup attendance images and links i.e. add grid and seating chart icons   -->
+$j(document).ready(function(){
+	
+	var attArr = $j('[id^="attLink"]');
+	if (attArr === undefined || attArr.length == 0) return;
+	
+	for (var i=0;i<attArr.length;i++) {
+		var o = attArr[i];
+		var search ='';
+		for (var j=0;j<o.childNodes.length;j++) {
+			if (o.childNodes[j].tagName == "A") {
+				search = o.childNodes[j].search;
+				search = search.replace('sectionid','sectionId');
+				break;
+			}
+		}
+		
+		var str='';
+
+		if (search.length>1) {
+			var multiday_search = search.replace('att_date','attendanceDate').replace('pagetype','meetingType').replace('Att_Mode_Code','meetingMode').replace('Period_ID','periodId').replace('att_period','attPeriod');
+			var s = o.id;
+			s = s.replace('attLink','mdLink');
+			var o1 = $j("#"+s);
+			if (o1 !== undefined) // modify url for multi-day icon
+				o1.attr("href", '/teachers/attendance-grid.action'+multiday_search);
+		}
+		
+	}
+});
+</script>
+
+~[wc:teachers_header_css]~[wc:teachers_navigation_css]
 ~[SetPostValue:tabname=home]
-~[wc:teachers_nav_gel_buttons]
+~[wc:teachers_nav_css]
 
-</td>
-<td width="20" background="/images/admin_mid_right_side.gif"><img src="/images/transparent.gif" width="20" height="1" alt="" border="0"></td>
-<td width="100%" align="center" valign="top">
-<br>
+<div align="left">
+<h1>Links</h1>
 
-<div align="left"><span class="header">Links</span></div>
-<br>
-<div align="left"><a href="https://mail.google.com/a/kentfieldschools.org" target="offsite">Kentfieldschools.org Gmail</a></div>
-<div align="left"><a href="http://www.achievedata.com/marin" target="offsite">DataDirector Login - <i>New!</i></a></div>
-<div align="left"><a href="http://kentweb.kentfieldschools.org/gcal/calendar" target="offsite">Public Events Calendars</a></div>
-<div align="left"><a href="http://www.kentfieldschools.org/bacich/staff" target="offsite">Bacich Teachers Page</a></div>
-<div align="left"><a href="http://www.kentfieldschools.org/kent/staff" target="offsite">Kent Teachers Page</a></div>
-<div align="left"><a href="http://www.ustream.tv/channel/falcon-news-broadcast" target="offsite">Falcon Broadcast News (Ustream)</a></div>
+<div class="box-round">
 
-<br>
-<div align="left"><span class="header">Current Classes</span></div>
-<br>
+<table border="0" cellspacing="0" cellpadding="6">
+<tr><td><a href="https://mail.google.com/a/kentfieldschools.org" target="offsite">Kentfieldschools.org Gmail</a></td></tr>
+<tr><td><a href="http://www.achievedata.com/marin" target="offsite">DataDirector Login</a></td></tr>
+<tr><td><a href="http://kentweb.kentfieldschools.org/gcal/calendar" target="offsite">Public Events Calendars</a></td></tr>
+<tr><td><a href="http://www.kentfieldschools.org/bacich/staff" target="offsite">Bacich Teachers Page</a></td></tr>
+<tr><td><a href="http://www.kentfieldschools.org/kent/staff" target="offsite">Kent Teachers Page</a></td></tr>
+<tr><td><a href="http://www.ustream.tv/channel/falcon-news-broadcast" target="offsite">Falcon Broadcast News (Ustream)</a></td></tr>
+</table>
+
+</div>
+
+<h1>~[text]psx.html.teachers.home.current_classes[/text]</h1>
 
 <form name="navigation">
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-<tr>
-<td><img src="/images/admin_login_top_left.gif" width="8" height="8" alt="" border="0"></td>
-<td background="/images/admin_login_top_side.gif"><img src="/images/transparent.gif" width="8" height="1" alt="" border="0"></td>
-<td><img src="/images/admin_login_top_right.gif" width="8" height="8" alt="" border="0"></td>
-</tr>
-<tr>
-<td background="/images/admin_login_left_side.gif"><img src="/images/transparent.gif" width="4" height="1" alt="" border="0"></td>
-<td>
+
+<div class="box-round">
+
 
 <!-- Start of shaded content table -->
-<table border="0" cellspacing="0" cellpadding="6" id="tableContent">
+<table border="0" cellspacing="0" cellpadding="6" id="teacherSectionTable">
 <tr sectionID="~(id)">~[cachedteacherhomelist]
 <td>~(cachedteacher.classexpression)</td>
 <td>~(cachedteacher.coursename)</td>
@@ -61,19 +96,21 @@ var pref=1;
 <td>~(cachedteacher.sectionnumber)</td>
 [/if]
 
-<td>~(cachedteacher.recordlink)</td>
+<td width="22">~(cachedteacher.attendancetakenscore)</td>
+<td style="max-width:100px;width:7%;" id="attLink~(id)">~(cachedteacher.recordlink) </td>
+<td style="max-width:100px;width:7%;">
+	<a id="mdLink~(id)" href="/teachers/attendance-grid.action?sectionId=~(id)&frn=~(frn)"><img src="/images/icon-att-grid.png" alt="~[text]psx.html.teachers.home.multi_day[/text]"  width="21" height="27" border="0"></a>
+</td>
+<td style="max-width:100px;width:7%;">
+	<a id="scLink~(id)" href="/teachers/seatingchartcontainer.action?sectionId=~(id)#classtoolsmode"><img src="/images/seatingchart/seatingcharticon.png" alt="~[text]psx.html.teachers.home.seating_chart[/text]" width="22" height="27" border="0"></a>
+</td>
 
-<td>~(cachedteacher.attendancetakenscore)</td>
+<td style="max-width:100px;width:7%;">~(cachedteacher.lunch)</td>
 
-<td>~(cachedteacher.lunch)</td>
+<td style="max-width:100px;width:7%;"><a href="/teachers/summary.html?sectionid=~(id)&frn=~(frn)"><img src="/images/btn_backpack.gif" alt="~[text]psx.html.teachers.home.student_information[/text]" width="29" height="27" border="0"></a></td>
+<td style="max-width:100px;width:7%;"><a href="/teachers/reports.html?ac=reportselection&sectionid=~(id)"><img src="/images/btn_printer.gif" alt="~[text]psx.html.teachers.home.print_class_reports[/text]" width="32" height="27" border="0"></a></td>
 
-<td><a href="/teachers/summary.html?sectionid=~(id)&frn=~(frn)"><img src="/images/btn_backpack.gif" alt="Student Information" width="32" height="33" border="0"></a></td>
-<td><a href="/teachers/reports.html?ac=reportselection&sectionid=~(id)"><img src="/images/btn_printer.gif" alt="Print Class Reports" width="36" height="30" border="0"></a></td>
-~[if.~(gradebookType)="0"]
-<td><a href="/teachers/webasmtlist.html?sectionid=~(id)"><img src="/images/btn_assignments.gif" alt="Web Assignments" width="31" height="31" border="0"></a></td>
-[/if]
-
-<td id="pearsonInformCell"></td>
+<td style="max-width:100px;width:7%;" id="pearsonInformCell"></td>
 </tr>
 
 <!-- start extra row for Independent Study -->
@@ -82,7 +119,7 @@ var pref=1;
 <td colspan="10" background="/images/bullet_repeat.gif"><img src="/images/transparent.gif" height="1" width="1" alt="" border="0"></td>
 </tr>
 <tr>
-<td colspan=2>Independent Study Attendance</td>
+<td colspan=2>~[text]psx.html.teachers.home.independent_study_attendance[/text]</td>
 ~(cachedteacher.ISRow)
 </tr>
 [/if]
@@ -92,21 +129,11 @@ var pref=1;
 
 ~[brij_render:inform-ps;:ViewTeacherPortalInform]
 
-</form>
+
 <!-- End of shaded content table -->
 
-</td>
-<td background="/images/admin_login_right_side.gif"><img src="/images/transparent.gif" width="4" height="1" alt="" border="0"></td>
-</tr>
-<tr>
-<td><img src="/images/admin_login_bottom_left.gif" width="8" height="8" alt="" border="0"></td>
-<td background="/images/admin_login_bottom_side.gif"><img src="/images/transparent.gif" width="8" height="1" alt="" border="0"></td>
-<td><img src="/images/admin_login_bottom_right.gif" width="8" height="8" alt="" border="0"></td>
-</tr>
-</table>
-
-
-~[wc:teachers_footer]
+</div>
+~[wc:teachers_footer_css]
 
 </body>
 </html>

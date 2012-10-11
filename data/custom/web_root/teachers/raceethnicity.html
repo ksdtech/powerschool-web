@@ -1,12 +1,10 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Your Race and Ethnicity Information</title>
-~[wc:UI_js_includes]
+<title>Race and Ethnicity - ~[x:username]</title>
 ~[wc:commonscripts]
-<link rel="stylesheet" href="/images/powerschool.css">
-<link rel="stylesheet" type="text/css" href="/images/powerschool.css">
-<link rel="stylesheet" type="text/css" href="/images/boxing.css">
-<link rel="stylesheet" type="text/css" href="/images/css/theme/true_css/true_style-min.css">
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
 <style>
 	.clickable { cursor:pointer; }
 </style>
@@ -21,54 +19,68 @@
 </script>
 </head>
 
-<body marginwidth=10 marginheight=10 topmargin=10 leftmargin=10 background="/images/bg3.gif" onload="onload();">
-<form action="raceethnicity.html" method="POST">
-<input type="hidden" name="frn" value="~[gpv:frn]">
+<body onload="onload();">
 
-~[wc:teachers_header]~[wc:teachers_navigation]
-~[wc:teachers_nav_gel_buttons]
+~[wc:teachers_header_css]~[wc:teachers_navigation_css]
+~[SetPostValue:tabname=race]
+~[wc:teachers_nav_css]
 
-</td>
-<td width="20" background="/images/admin_mid_right_side.gif"><img src="/images/transparent.gif" width="20" height="1" alt="" border="0"></td>
-<td width="100%" valign="top">
-<br>
-<span class="header">Your Race and Ethnicity Information</span>
-<br>
-<br>
+<h1>Race and Ethnicity - ~[x:username]</h1>
+
+<form action="changesrecorded.white_nf.html" method="POST">
+
 <!-- Start of shaded content table -->
-<table cellpadding="0" cellspacing="0" border="0" align="center">
-<tr class="~[evenoddrow]">
-	<td class="subhead">Ethnicity</td>
-	<td>
-		<div>
-			<label>Are You Hispanic or Latino?</label>
-			<input id="defaultEthnicity" type="hidden" name="[05]FedEthnicity" value="-1">~[Comment:Note that the onload javascript will revert this back to -1 after it's been changed to whatever is currently in the DB.]
-			<div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="1">Yes</div>
-			<div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="0">No</div>
-			~[if.pref.FRE_AllowDeclineEthnicity=1]<div class="choicefloat"><span class="declined"><input type="radio" name="[05]FedEthnicity" value="2">~[pref:FRE_DeclineEthnicityText]</span></div>[/if]
-			<div class=clearit><!-- --></div>
-		</div>
-	</td>
-</tr>
-<tr class="~[evenoddrow]">
-	<td class="subhead">Race</td>
-	<td>
-		<input type="hidden" name="SaveRace" value="1">
-		<input type="hidden" name="[05]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
-		~[SetPostValue:subjectid=~([05]id)]
-~[brij_renderform:federalrace;:GetTeacherRaceSelectionBlock]
-	</td>
-</tr>
+<div class="box-round">
 
-<tr>
-<td colspan="2" align="right"><input type="hidden" name="ac" value="webAsmt"><input type="hidden" name="ac" value="prim">~[submitbutton]</td>
-</tr>
-
+<table border="0" cellspacing="0" cellpadding="4">
+	<tr class="headerrow">
+	    <td colspan="2" class="bold">Federal Ethnicity and Race</td>
+	</tr>
+	<tr class="~[evenoddrow]">
+		<td class="subhead">Ethnicity</td>
+		<td>
+			<div>
+				<label>Are you Hispanic or Latino?</label>
+				<input id="defaultEthnicity" type="hidden" name="[05]FedEthnicity" value="-1">~[Comment:Note that the onload javascript will revert this back to -1 after it's been changed to whatever is currently in the DB.]
+				<div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="1">Yes</div>
+				<div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="0">No</div>
+				~[if.pref.FRE_AllowDeclineEthnicity=1]<div class="choicefloat"><span class="declined"><input type="radio" name="[05]FedEthnicity" value="2">~[pref:FRE_DeclineEthnicityText]</span></div>[/if]
+				<div class=clearit><!-- --></div>
+			</div>
+		</td>
+	</tr>
+	<tr class="headerrow">
+	    <td colspan="2" class="bold">Races - Please choose as many as applicable</td>
+	</tr>
+	<tr class="~[evenoddrow]">
+		<td class="subhead">Race</td>
+		<td>
+			<input type="hidden" name="SaveRace" value="1">
+			<input type="hidden" name="[05]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
+			~[SetPostValue:subjectid=~([05]id)]
+	~[brij_renderform:federalrace;:GetTeacherRaceSelectionBlock]
+		</td>
+	</tr>
+	<tr class="headerrow">
+	    <td colspan="2" class="bold">Reporting Ethnicity - Please choose one</td>
+	</tr>
+	<tr class="~[evenoddrow]">
+	    <td class="subhead">Reporting Ethnicity</td>
+	    <td>
+				<select id="primaryethnicity" name="[05]ethnicity" special="lists.ethnicity">
+		        <option>
+		    </select>
+		</td>
+	</tr>
 </table>
+
+<div class="button-row"><input type="hidden" name="ac" value="race"><input type="hidden" name="userid" value="~[x:userid]">~[submitbutton]</div>
+</div>
+<br>
+</form>
 <!-- End of shaded content table -->
 
-~[wc:teachers_footer]
+~[wc:teachers_footer_nf_css]
 
-</form>
-</body>
+
 </html>
