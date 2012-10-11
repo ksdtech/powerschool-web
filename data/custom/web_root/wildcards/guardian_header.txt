@@ -32,53 +32,57 @@
 		<a href="/guardian/home.html" tabindex="0"><img src="/images/img/ps7-logo.png" alt="PowerSchool Logo" height="28" width="180" /></a>
 	 </div>
 <!--
-<ul id="nav-main">
-	~[if.isguardianAndSSOEnabled]
+	<ul id="nav-main">
+		~[if.isguardianAndSSOEnabled]
 		    <li id="btn-accountPreferences"><a href="accountmanagement_profile.html">~[text:psx.txt.wildcards.guardian_header.account_preferences]</a></li>
-	[/if]
-	~[if.isstudentAndManagementEnabled]
-		<li id="btn-accountPreferences"><a href="accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header.account_preferences1]</a></li>
-	[/if]
-	<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
-	<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
-	<li id="btn-schoolBulletin"><a href="bulletin.html">~[text:psx.txt.wildcards.guardian_header.school_bulletin]</a></li>
-	<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header.teacher_comments]</a></li>
-	~[if.isguardian]
-		<li id="btn-emailNotification"><a href="autoemailsetup.html">~[text:psx.txt.wildcards.guardian_header.email_notification]</a></li>
-	[/if]
-	<li id="btn-attendanceHistory"><a href="attendance.html">~[text:psx.txt.wildcards.guardian_header.attendance_history]</a></li>
-	<li id="btn-gradesHistory"><a href="termgrades.html">~[text:psx.txt.wildcards.guardian_header.grade_history]</a></li>
-	<li id="btn-gradesAttendance"><a href="home.html">~[text:psx.txt.wildcards.guardian_header.grades_and_attendance]</a></li>
-</ul>
+		[/if]
+		~[if.isstudentAndManagementEnabled]
+			<li id="btn-accountPreferences"><a href="accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header.account_preferences1]</a></li>
+		[/if]
+		<li id="btn-myCalendars"><a href="mycalendars.html">~[text:psx.txt.wildcards.guardian_header.my_calendars]</a></li>
+		~[if.pref.nolunchdisplay=1][else]
+		    <li id="btn-balance"><a href="lunchbal.html">~[text:psx.txt.wildcards.guardian_header.balance]</a></li>
+		[/if.pref.nolunchdisplay=1]
+		<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+		<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
+		<li id="btn-schoolBulletin"><a href="bulletin.html">~[text:psx.txt.wildcards.guardian_header.school_bulletin]</a></li>
+		<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header.teacher_comments]</a></li>
+		~[if.isguardian]
+		    <li id="btn-emailNotification"><a href="autoemailsetup.html">~[text:psx.txt.wildcards.guardian_header.email_notification]</a></li>
+		[/if]
+		<li id="btn-attendanceHistory"><a href="attendance.html">~[text:psx.txt.wildcards.guardian_header.attendance_history]</a></li>
+		<li id="btn-gradesHistory"><a href="termgrades.html">~[text:psx.txt.wildcards.guardian_header.grade_history]</a></li>
+		<li id="btn-gradesAttendance"><a href="home.html">~[text:psx.txt.wildcards.guardian_header.grades_and_attendance]</a></li>
+	</ul>
 -->
 
 </div>
 <div id="print-school">~[schoolordistrictname]<br><span>~[schoolname]</span></div>
 <!-- end logo, school, term, logoff, help -->
 <div id="usercontext-bar" class="group">
-<!-- PA-73: Render list of associated students if  the user is a guardian -->
+	<!-- PA-73: Render list of associated students if  the user is a guardian -->
 	~[if.isguardianAndSSOEnabled]
 		 ~[brij_render:parentportal-pkg;:listOnlyStudentsAssociatedWithGuardian]
 	[else]
 		<div id="students-list" style="width:75%">&nbsp;</div>
 	[/if]
 
-<!-- PA-448: A form to hold a hidden input html value to indicate the currently selected student id. 
-    Submitting a form with currently selected student id as a hidden input will prevent clear display of student id in the url -->
+		<!-- PA-448: A form to hold a hidden input html value to indicate the currently selected student id. 
+	    Submitting a form with currently selected student id as a hidden input will prevent clear display of student id in the url -->
 	    <form id="switch_student_form" action="/~[self]" method="post">
-        <input type="hidden" name="selected_student_id"/>
-    </form>
-    
-    
-<!-- Script to set the selected_student_id and submit the form to retrieve data belonging to the currently selected student
-    Consolidating all the logic related to switching the student into this ftl will improve code readability" -->
-<script type="text/javascript">
-    function switchStudent(studentId){
-       var switchStudentForm = document.getElementById('switch_student_form');
-       switchStudentForm.selected_student_id.value=studentId;
-       switchStudentForm.submit();
-    }  
-</script>  
+	        <input type="hidden" name="selected_student_id"/>
+	    </form>
+
+
+	<!-- Script to set the selected_student_id and submit the form to retrieve data belonging to the currently selected student
+	    Consolidating all the logic related to switching the student into this ftl will improve code readability" -->
+	<script type="text/javascript">
+	    function switchStudent(studentId){
+	       var switchStudentForm = document.getElementById('switch_student_form');
+	       switchStudentForm.selected_student_id.value=studentId;
+	       switchStudentForm.submit();
+	    }  
+	</script>  
 	<ul id="tools2">
 		<li class="icon-btn-print" title="~[text:psx.common.print_title]"><a href="javascript:window.print()">&nbsp;</a></li>
 		<li class="icon-btn-download"><a href="studentdata.xml?ac=download">&nbsp;</a></li>
@@ -86,9 +90,14 @@
 		<li id="icon-btn-translate"><a title="~[text:psx.common.translate_page_title]" href="/guardian/viewBatchTranslation.action?pageType=interactive&interactiveid=none" class="dialogM" id="interactive_l10n">&nbsp;</a></li>
 		[/if]
 		<span id="notifIcon">~[brij_render_insert:notification:authorizedNotificationCountAJAX]</span>
+		~[if.isguardianAndSSOEnabled]
+			~[pluginnavlinks:guardian.header]
+		[/if]		
+		~[if.isstudent]~[pluginnavlinks:student.header][/if]
 	</ul>
   
 </div>
+
 <div id="content" class="group">
 
 <div id="nav-main">
@@ -102,8 +111,12 @@
 		[/if]
 		<li id="btn-teacherComments"><a href="/guardian/teachercomments.html">~[text:psx.txt.wildcards.guardian_header_yui.teacher_comments]</a></li>
 		<li id="btn-schoolBulletin"><a dialogContent="/guardian/bulletin.html" class="dialogM" title="~[text:psx.txt.wildcards.guardian_header.view_school_bulletin]">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
-		<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
-		<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+		<li id="btn-classRegistration"><a href="/guardian/regforms.html">Registration</a></li>
+		<li id="btn-contacts"><a href="/guardian/contacts.html">Contacts</a></li>
+	~[if.pref.nolunchdisplay=1][else]
+		    <li id="btn-balance"><a href="/guardian/lunchbal.html">~[text:psx.txt.wildcards.guardian_header_yui.balance]</a></li>
+		[/if.pref.nolunchdisplay=1]
+		<li id="btn-myCalendars"><a href="/guardian/mycalendars.html">~[text:psx.txt.wildcards.guardian_header_yui.my_calendars]</a></li>
 		~[if.isstudentAndManagementEnabled]
 			<li id="btn-accountPreferences"><a href="/guardian/accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences1]</a></li>
 		[/if]
@@ -111,7 +124,7 @@
 		    <li id="btn-accountPreferences"><a href="/guardian/accountmanagement_profile.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences]</a></li>
 		[/if]
 
-		~[brij_render:pluginnavlinks;:renderStudentNavigationLinks]
+		~[if.isstudent]~[pluginnavlinks:student.left_nav][/if]
 	</ul>
 </div>
 <div id="content-main" class="group">
