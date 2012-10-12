@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+~[wc:UI_js_includes]
+~[wc:guardian_header]
+
+<h1>Page Title ~(studentname)</h1>
+<!-- title -->
+~[if.isstudent]
+<!-- don't allow students to change guardian email settings. -->
+<!-- start of content and bounding box -->
+<p>Your account does not allow access to this page</p>
+<!-- end of content of bounding box -->
+[else]
+<form action="changesrecorded.html" method="POST" id="formid">
+<div class="box-round group">
+<table>
+
+</table>
+<br>
+
+<div class="button-row"><button type="submit" value="Submit">Submit</button></div>
+</div>
+
+</form>
+[/if]
+<!-- end of title and student content -->
+
+<input id="activeNav" type="hidden" value="#btn-emailNotification"/>
+~[wc:guardian_footer]
+</body>
+</html>
