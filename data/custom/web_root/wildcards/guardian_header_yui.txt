@@ -55,6 +55,10 @@
 	~[if.isstudentAndManagementEnabled]
 		<li id="btn-accountPreferences"><a href="accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences1]</a></li>
 	[/if]
+	<li id="btn-myCalendars"><a href="mycalendars.html">~[text:psx.txt.wildcards.guardian_header_yui.my_calendars]</a></li>
+	~[if.pref.nolunchdisplay=1][else]
+	    <li id="btn-balance"><a href="lunchbal.html">~[text:psx.txt.wildcards.guardian_header_yui.balance]</a></li>
+	[/if.pref.nolunchdisplay=1]
 	<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
 	<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
 	<li id="btn-schoolBulletin"><a href="bulletin.html">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
@@ -101,9 +105,14 @@
 		<li id="icon-btn-translate"><a title="~[text:psx.common.translate_page_title]" href="/guardian/viewBatchTranslation.action?pageType=interactive&interactiveid=none" class="dialogM" id="interactive_l10n">&nbsp;</a></li>
 		[/if]
 		<span id="notifIcon">~[brij_render_insert:notification:authorizedNotificationCountAJAX]</span>
+		~[if.isguardianAndSSOEnabled]
+			~[pluginnavlinks:guardian.header]
+		[/if]			
+		~[if.isstudent]~[pluginnavlinks:student.header][/if]
 	</ul>
   
 </div>
+
 <div id="content" class="group">
 <div id="nav-main">
 	<h3>~[text:psx.txt.wildcards.guardian_header_yui.navigation]</h3>
@@ -116,15 +125,19 @@
 		[/if]
 		<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header_yui.teacher_comments]</a></li>
 		<li id="btn-schoolBulletin"><a dialogContent="/guardian/bulletin.html" class="dialogM" title="~[text:psx.txt.wildcards.guardian_header_yui.view_school_bulletin]">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
-	    <li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
+		<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
 		<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+	~[if.pref.nolunchdisplay=1][else]
+		    <li id="btn-balance"><a href="lunchbal.html">~[text:psx.txt.wildcards.guardian_header_yui.balance]</a></li>
+		[/if.pref.nolunchdisplay=1]
+		<li id="btn-myCalendars"><a href="mycalendars.html">~[text:psx.txt.wildcards.guardian_header_yui.my_calendars]</a></li>
 		~[if.isstudentAndManagementEnabled]
 			<li id="btn-accountPreferences"><a href="accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences1]</a></li>
 		[/if]
 		~[if.isguardianAndSSOEnabled]
 		    <li id="btn-accountPreferences"><a href="accountmanagement_profile.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences]</a></li>
 		[/if]
-		~[brij_render:pluginnavlinks;:renderStudentNavigationLinks]
+		~[if.isstudent]~[pluginnavlinks:student.left_nav][/if]
 
 	</ul>
 	~[if.isguardian][else]<iframe frameBorder="0" scrolling="no" allowtransparency="true" src="https://powersource.pearsonschoolsystems.com/public/ios/powerschool_student.html" width="100%" height="150"></iframe>[/if]
