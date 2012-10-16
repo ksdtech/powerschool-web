@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text]psx.html.teachers_studentpages.demo.demographics[/text]</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function formHandler(form){
+var URL = document.navigation.page.options[document.navigation.page.selectedIndex].value;
+window.location.href = URL;
+}
+// End -->
+</SCRIPT>
+</head>
+
+<body>
+
+~[wc:teachers_header_fr_css]
+
+ <form name="navigation"><span class="account-photo">~[studenttitlephoto]</span><h1>~[text]psx.html.teachers_studentpages.demo.demographics1[/text]<span class="nav-teacher"><select name="page" size=1 onChange="javascript:formHandler()"><option value="">~[text]psx.html.teachers_studentpages.demo.select_screens[/text]<option value="">--------------------~[x:teacherpages]</select></span>~[studentalert]</h1>
+<p>~(studentname) &nbsp; ~(grade_level) &nbsp; ~(student_number) &nbsp; &nbsp; ~(track) &nbsp; &nbsp; ~(studschoolabbr) &nbsp; &nbsp; ~[enrollmentstatus]</p></form>
+<div class="box-round">
+<!-- Start of shaded content table -->
+<table border="0" cellspacing="0" cellpadding="4" align="center" background="/images/transparent.gif">
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.name_last_first_mi[/text]</td>
+<td>~(studentname)</td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.age[/text]</td>
+<td>~(age)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.aggregate_days_of[/text]<BR>~[text]psx.html.teachers_studentpages.demo.membership_ytd[/text]</td>
+<td>~(aggmemdaysytd)</td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.dob[/text]</td>
+<td>~(dob)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.ethnicity[/text]</td>
+<td>~(ethnicity)</td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.gender[/text]</td>
+<td>~(gender;uppercase)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.grade_level[/text]</td>
+<td>~(grade_level)</td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.address[/text]</td>
+<td>~(street)<BR>~(city), ~(state)&nbsp;&nbsp;~(zip)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.home_phone[/text]</td>
+<td>~(home_phone)</td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.mothers_name[/text]</td>
+<td>~(Mother_First) ~(Mother)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.mothers_home_phone[/text]</td>
+<td>~(Mother_home_phone)</td>
+</tr>
+<tr>
+<td>Mother's Work Phone</td>
+<td>~(Mother_work_phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Mother's Cell Phone</td>
+<td>~(Mother_cell)</td>
+</tr>
+<tr>
+<td>Mother's Email Address</td>
+<td><a href="mailto:~(Mother_Email)">~(Mother_Email)</a></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.fathers_name[/text]</td>
+<td>~(Father_First) ~(Father)</td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.fathers_home_phone[/text]</td>
+<td>~(Father_home_phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Father's Work Phone</td>
+<td>~(Father_work_phone)</td>
+</tr>
+<tr>
+<td>Father's Cell Phone</td>
+<td>~(Father_cell)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Father's Email Address</td>
+<td><a href="mailto:~(Father_Email)">~(Father_Email)</a></td>
+</tr>
+<tr>
+<td>NC Family Address</td>
+<td>~(home2_street)<BR>~(home2_city), ~(home2_state)&nbsp;&nbsp;~(home2_zip)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Family Home Phone</td>
+<td>~(home2_phone)</td>
+</tr>
+<tr>
+<td>NC Mother's Name</td>
+<td>~(Mother2_First) ~(Mother2_Last)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Mother's Home Phone</td>
+<td>~(Mother2_home_phone)</td>
+</tr>
+<tr>
+<td>NC Mother's Work Phone</td>
+<td>~(Mother2_work_phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Mother's Cell Phone</td>
+<td>~(Mother2_cell)</td>
+</tr>
+<tr>
+<td>NC Mother's Email Address</td>
+<td><a href="mailto:~(Mother2_Email)">~(Mother2_Email)</a></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Father's Name</td>
+<td>~(Father2_First) ~(Father2_Last)</td>
+</tr>
+<tr>
+<td>NC Father's Home Phone</td>
+<td>~(Father2_home_phone)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Father's Work Phone</td>
+<td>~(Father2_work_phone)</td>
+</tr>
+<tr>
+<td>NC Father's Cell Phone</td>
+<td>~(Father2_cell)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>NC Father's Email Address</td>
+<td><a href="mailto:~(Father2_Email)">~(Father2_Email)</a></td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.guardianship[/text]</td>
+<td>~(guardianship)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.guardian_email[/text]</td>
+<td><a href="mailto:~(guardianemail)">~(guardianemail)</a></td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.home_room[/text]</td>
+<td>~(home_room)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.locker_combination[/text]</td>
+<td>~(locker_combination)</td>
+</tr>
+<tr>
+<td>~[text]psx.html.teachers_studentpages.demo.locker_number[/text]</td>
+<td>~(locker_number)</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>~[text]psx.html.teachers_studentpages.demo.student_number[/text]</td>
+<td>~(student_number)</td>
+</tr>
+<tr>
+<td>California Statewide Student ID (SSID)</td>
+<td>~(State_studentnumber)</td>
+</tr>
+</table>
+</div>
+<!-- End of shaded content table -->
+
+~[wc:teachers_footer_fr_css]
+
+</body>
+</html>
