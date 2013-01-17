@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<!-- non framed -->
+<head>
+<title>~[text:psx.html.admin_reports.runreports.run_reports]</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+
+<script type="text/javascript">
+
+function tml(){
+	var frm = document.getElementById('MaxLoad');
+	if (frm && frm.style.display=='none'){
+	
+		frm.style.display = 'block';}else{
+		frm.style.display = 'none';
+		
+		}
+}
+
+function livelistupdate(){
+	var ll = document.getElementById('livelist');
+	var ht = document.getElementById('selectedTeacher');
+	if(ll && ht) {
+		ht.value=ll.options[ll.selectedIndex].text;
+	}
+}
+
+
+function show(section) {
+	if(document.getElementById(section).style.display="none") {
+		document.getElementById(section).style.display="block";
+	}
+}
+
+window.onload = function () {
+	var vlivelist = document.getElementById('livelist');
+	if(vlivelist) {
+		vlivelist.onclick=livelistupdate;
+	}
+	
+	
+	var maxlink = document.getElementById('maxloadlink');
+	if(maxlink) {
+		maxlink.onclick=tml;
+	}
+}
+
+</script>
+</head>
+
+<body>
+
+~[wc:admin_header_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_reports.runreports.start_page]</a> &gt; <a href="/admin/reports/home.html">~[text:psx.html.admin_reports.runreports.reports]</a> &gt;~[text:psx.html.admin_reports.runreports.reports_system]<!-- breadcrumb end -->~[wc:admin_navigation_css]
+
+<h1>~[text:psx.html.admin_reports.runreports.reports1]</h1>~[SetPostValue:repType=system]
+~[x:insertfile;reporttabs.html]
+
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+
+<table border="0" cellspacing="0" cellpadding="4" width="100%">
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.attendance]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_Absentee">~[text:psx.html.admin_reports.runreports.absentee]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_Absentee">~[text:psx.html.admin_reports.runreports.absentee1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.single_day_period_by_period_attendance_code_report]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_ATTENDANCE_COUNT">~[text:psx.html.admin_reports.runreports.attendance_count]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_ATTENDANCE_COUNT">~[text:psx.html.admin_reports.runreports.attendance_count1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.multiday_period_by_period_attendance_code_report]</td> 
+</tr> 
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_CLASS_AUDIT">~[text:psx.html.admin_reports.runreports.class_attendance_audit]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_CLASS_AUDIT">~[text:psx.html.admin_reports.runreports.class_attendance_audit1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.section_specific_attendance_roster]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_ConsecAbsences">~[text:psx.html.admin_reports.runreports.consecutive_absences]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_Consecutive_Absences">~[text:psx.html.admin_reports.runreports.consecutive_absences1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.report_detailing_consecutive_student_absences_by_absence_cod]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_StudentAttendanceAudit">~[text:psx.html.admin_reports.runreports.student_attendance_audit]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_StudentAttendanceAudit">~[text:psx.html.admin_reports.runreports.student_attendance_audit1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.roster_report_detailing_attendance_codes_by_day]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_MonthlyStudentAttendance">~[text:psx.html.admin_reports.runreports.monthly_student_attendance_report]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_MonthlyStudentAttendance">~[text:psx.html.admin_reports.runreports.monthly_student_attendance_report1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.twentyday_student_attendance_report_by_grade]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_Cum_Attendance_Summary">~[text:psx.html.admin_reports.runreports.attendance_summary_by_grade]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_Cum_Attendance_Summary">~[text:psx.html.admin_reports.runreports.attendance_summary_by_grade1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.an_aggregated_attendance_report_for_a_date_range_and_grades]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_YTD_Attendance_Summary">~[text:psx.html.admin_reports.runreports.yeartodate_attendance_summary]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.a_yeartodate_aggregated_attendance_report_by_grade]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_PowerGradeAtt">~[text:psx.html.admin_reports.runreports.powerteacher_attendance]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_PowerGradeAttendance">~[text:psx.html.admin_reports.runreports.powerteacher_attendance1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.report_showing_which_teachers_have_not_taken_attendance]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_WK_Att_Summary">~[text:psx.html.admin_reports.runreports.weekly_attendance_summary_meeting]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_WK_Att_Summary">~[text:psx.html.admin_reports.runreports.weekly_attendance_summary_meeting1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.a_weekly_attendance_summary_by_section]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_WK_Att_Sum_DAILY">~[text:psx.html.admin_reports.runreports.weekly_attendance_summary_daily]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_WK_Att_Sum_DAILY">~[text:psx.html.admin_reports.runreports.weekly_attendance_summary_daily1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.a_weekly_attendance_summary_by_teacher]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_PerAttVer">~[text:psx.html.admin_reports.runreports.period_att_verification]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_PerAttVer">~[text:psx.html.admin_reports.runreports.period_att_verification1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.report_showing_students_marked_present_a_specified_number_of]</td>
+</tr>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.attendance_tracking_and_notification]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description7]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=RefreshTrackingData_Main">~[text:psx.html.admin_reports.runreports.refresh_attendance_tracking_data]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.this_report_refreshes_attendance_tracking_and_notification_r]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=Truancy_View">~[text:psx.html.admin_reports.runreports.truancy_and_attendance_letters_view_only]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.the]<i>~[text:psx.html.admin_reports.runreports.view_only]</i>~[text:psx.html.admin_reports.runreports.version_produces_a_list_of_students_who_meet_a_specified_thr]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=Truancy_Extract">~[text:psx.html.admin_reports.runreports.truancy_and_attendance_letters_extract]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.the1]<em>~[text:psx.html.admin_reports.runreports.extract_only]</em>~[text:psx.html.admin_reports.runreports.version_of_this_report_produces_two_outputs]<br>
+	<ul><li>~[text:psx.html.admin_reports.runreports.a_list_of_students_who_meet_a_specified_threshold_for_an_att]</li><li>~[text:psx.html.admin_reports.runreports.an_attendance_letter_that_can_be_printed_by_clicking_the_rep]</li></ul>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=Notify_info">~[text:psx.html.admin_reports.runreports.truancy_and_attendance__levels_reached]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.this_report_includes_students_who_meet_a_specific_threshold_]</td>
+</tr>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.discipline]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description1]</td>
+</tr>
+<tr class="~[evenoddrow;reset]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_Discipline_Log">~[text:psx.html.admin_reports.runreports.discipline_log]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.a_list_of_student_discipline_incidents_by_date_range_and_sub]</td>
+</tr>
+~[if.~[version] >= 4.3]
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=DisciplineSummary">~[text:psx.html.admin_reports.runreports.discipline_summary]</a></td>
+<td>~[text:psx.html.admin_reports.runreports._disciplinary_incidents_by_gender_ethnicity_special_program_]</td>
+</tr>
+[/if]
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.grades_and_gradebooks]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description2]</td>
+</tr>
+<tr class="~[evenoddrow;reset]">
+<td><a href="/admin/reports/classranking1.html">~[text:psx.html.admin_reports.runreports.class_ranking]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.student_list_by_gpa]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/gradecount.new.1.html">~[text:psx.html.admin_reports.runreports.grade_count]</a>~[text:psx.html.admin_reports.runreports.or]<a href="/admin/reports/gradecount1.html">~[text:psx.html.admin_reports.runreports.by_teacher]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.grade_count_by_teacher]</td>
+</tr>
+~[if.~[version] < 4.3]
+<tr class="~[evenoddrow]">
+<td><a href="gradprogress.html">~[text:psx.html.admin_reports.runreports.graduation_progress_report_pdf]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.progress_towards_graduation_requirements]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="honorroll1.html">~[text:psx.html.admin_reports.runreports.honor_roll]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.students_meeting_honor_roll_criteria]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td ><a href="/admin/reports/teachergradebooks.html">~[text:psx.html.admin_reports.runreports.teacher_gradebooks]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.individual_student_grading_report]</td>
+</tr>
+[else]
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=GradesDistribution">~[text:psx.html.admin_reports.runreports.grades_distribution]</a></td>
+<td>~[text:psx.html.admin_reports.runreports._identifies__trends_in_instruction_grading_and_assessment]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="gradprogress.html">~[text:psx.html.admin_reports.runreports.graduation_progress_report_pdf1]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.progress_towards_graduation_requirements1]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="honorroll1.html">~[text:psx.html.admin_reports.runreports.honor_roll1]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.students_meeting_honor_roll_criteria1]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td ><a href="/admin/reports/teachergradebooks.html">~[text:psx.html.admin_reports.runreports.teacher_gradebooks1]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.individual_student_grading_report1]</td>
+</tr>
+[/if]
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.membership_and_enrollment]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description3]</td>
+</tr>
+<tr class="~[evenoddrow;reset]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_ADAADM_ByDate">~[text:psx.html.admin_reports.runreports.adaadm_by_date]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_ADA_ADM_By_DATE">~[text:psx.html.admin_reports.runreports.adaadm_by_date1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.attendance_and_membership_summary_report_by_date]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_ADAADM_ByStudent">~[text:psx.html.admin_reports.runreports.adaadm_by_student]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_ADA_ADM By Student">~[text:psx.html.admin_reports.runreports.adaadm_by_student1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.attendance_and_membership_summary_report_by_student]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_ADAADM_ByMinute">~[text:psx.html.admin_reports.runreports.adaadm_by_minute]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_ADA_ADMByMinute">~[text:psx.html.admin_reports.runreports.adaadm_by_minute1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.attendance_and_membership_summary_report_by_minute]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_AggregateMembershipAudit">~[text:psx.html.admin_reports.runreports.aggregate_membership_audit]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.membership_audit_by_section]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_ClassSizeReduction">~[text:psx.html.admin_reports.runreports.class_size_reduction_report]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_ClassSizeReduction">~[text:psx.html.admin_reports.runreports.class_size_reduction_report1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.daily_enrollment_numbers_by_section]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/attendance/enrollmentbygrade.html">~[text:psx.html.admin_reports.runreports.enrollment_by_grade]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.summary_of_student_enrollment_by_grade_level]</td>
+</tr>
+<tr class="~[evenoddrow]">
+~[if.database.sql]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSPRE_Enrollment_By_Section">~[text:psx.html.admin_reports.runreports.enrollment_by_section]</a></td>
+[else]
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_Enrollment_By_Section">~[text:psx.html.admin_reports.runreports.enrollment_by_section1]</a></td>
+[/if]
+<td>~[text:psx.html.admin_reports.runreports.membership_summary_report_by_section]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/ethnicitybreakdown1.html">~[text:psx.html.admin_reports.runreports.enrollment_summary_by_date]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.membership_summary_report_by_date]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=PSATT_VocationalAggregateMember">~[text:psx.html.admin_reports.runreports.voc_courses_agg_membership]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.membership_summary_of_vocational_courses]</td>
+</tr>
+
+<tr class="~[evenoddrow]">
+<td>~[if.hasLocales]<a href="/admin/locale/locale_dialog_checkenrollment.html" class="dialogM">[else]<a href="/admin/tech/checkenrollment.html">[/if]~[text:psx.html.admin_reports.runreports.school_enrollment_audit]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.a_report_of_possible_school_enrollment_errors]</td>
+</tr>
+
+<tr class="~[evenoddrow]">
+<td>~[if.hasLocales]<a href="/admin/locale/locale_dialog_checkclassdates.html" class="dialogM">[else]<a href="/admin/tech/checkclassdates.html">[/if]~[text:psx.html.admin_reports.runreports.section_enrollment_audit]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.a_report_of_possible_section_enrollment_errors]</td>
+</tr>
+
+~[if.is.a.school]
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.scheduling]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description4]</td>
+</tr>
+<tr class="~[evenoddrow;reset]">
+<td><a href="/admin/reports/teachermaxload.html">~[text:psx.html.admin_reports.runreports.teacher_maximum_load_report]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.shows_the_number_of_students_assigned_to_a_teacher_compared_]</td>
+</tr>
+[/if]
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.statistics]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description5]</td>
+</tr>
+<tr class="~[evenoddrow;reset]">
+<td><a href="/admin/reports/parentalaccess/stats1.html">~[text:psx.html.admin_reports.runreports.parental_access_statistics]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.summary_report_for_parent_logins]</td>
+</tr>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr class="headerRow">
+<td class="bold">~[text:psx.html.admin_reports.runreports.student_listings]</td>
+<td class="bold">~[text:psx.html.admin_reports.runreports.description6]</td>
+</tr>
+~[if.~[version] < 4.3]
+<tr class="~[evenoddrow;reset]">
+<td><a href="/admin/reports/classrosters.html">~[text:psx.html.admin_reports.runreports.class_rosters_pdf]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.class_information_and_roll_sheets]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/livesidemasterpdf.html">~[text:psx.html.admin_reports.runreports.master_schedule_pdf]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.user_definable_student_schedule_report]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/locator1.html">~[text:psx.html.admin_reports.runreports.student_schedule_listing]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.user_definable_student_schedule_report1]</td>
+</tr>
+[else]
+<tr class="~[evenoddrow;reset]">
+<td><a href="/admin/reports_engine/report_w_param.html?ac=reports_get_using_ID;repo_ID=AtRisk">~[text:psx.html.admin_reports.runreports.at_risk]</a></td>
+<td>~[text:psx.html.admin_reports.runreports._a_listing_of_courses_sections_and_grades_associated_with_st]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/classrosters.html">~[text:psx.html.admin_reports.runreports.class_rosters_pdf1]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.class_information_and_roll_sheets1]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/livesidemasterpdf.html">~[text:psx.html.admin_reports.runreports.master_schedule_pdf1]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.user_definable_student_schedule_report2]</td>
+</tr>
+<tr class="~[evenoddrow]">
+<td><a href="/admin/reports/locator1.html">~[text:psx.html.admin_reports.runreports.student_schedule_listing1]</a></td>
+<td>~[text:psx.html.admin_reports.runreports.user_definable_student_schedule_report3]</td>
+</tr>
+[/if]
+</table>
+
+<div class="button-row"></div>
+</div>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_css]
+
+</body>
+</html><!-- non framed -->
