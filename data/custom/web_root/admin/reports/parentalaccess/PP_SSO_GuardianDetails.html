@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<!-- non framed -->
+<head>
+	<title>Parent/Guardian Account Details for SSO</title>
+
+	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+	<link href="/images/css/print.css" rel="stylesheet" media="print">
+
+	~[wc:commonscripts]
+
+	<!-- TableSorter code was taken from http://tablesorter.com/docs/ -->
+	<script type="text/javascript" src="/admin/resources/tablesorter/jquery-latest.js"></script> 
+	<script type="text/javascript" src="/admin/resources/tablesorter/jquery.tablesorter.js"></script>
+	<link rel="stylesheet" href="/admin/resources/tablesorter/themes/blue/style.css">
+
+	<script type="text/javascript" language="JavaScript"> 
+		function actionChange() {
+			var url = 'PP_SSO_GuardianDetails.html?';
+
+			url += 'sch=' + document.searchform.sch.value;
+			url += '&cnt=' + document.searchform.cnt.value;
+
+			document.searchform.action = url;
+		}
+	  
+		$(document).ready(function() { 
+			// extend the default setting to always include the zebra widget. 
+			$.tablesorter.defaults.widgets = ['zebra']; 
+			// call the tablesorter plugin 
+			$("#results").tablesorter({  });     
+		});
+	</script>
+
+	<style>
+	@media print {
+		.button-row{display: none;}
+	}
+	</style>
+
+</head>
+<body>
+	~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/reports/home.html">Reports</a> &gt; <a href="/admin/reports/crm_home.html">Reports (Custom)</a> &gt; <a href="/admin/reports/crm_guardian.html">Parent/Student Portal</a> &gt; Parent/Guardian Account Details for SSO<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+	~[if.~[gpv:cnt]=]
+		~[SetPostValue:cnt=0]
+	[/if]
+
+	~[if.is.a.school]
+		~[SetPostValue:sch=~(curschoolid)]
+	[else]
+		~[SetPostValue:sch=0]
+	[/if]
+		
+	<!-- begin filter parameters -->
+	<form name="searchform" action="PP_SSO_GuardianDetails.html" method="POST">
+	<div class="box-round">
+		<h2>Report Filters</h2>
+		<table border="0" cellspacing="0" cellpadding="4">
+		  <tr class="headerrow">
+			<th width="10px">&nbsp;School</th>
+			<th width="100%">&nbsp;# of Students (Greater Than)</th>
+		  </tr>
+		  <tr valign="top">
+			<td>
+				<select name="sch">
+					~[if.district.office]
+					<option value="0" ~[if.~[gpv:sch]=0]selected="selected"[/if]>All</option>
+					[/if]
+					~[tlist_sql;
+						SELECT School_Number, CASE WHEN School_Number = to_number('~[gpv:sch]') THEN 'selected' ELSE '' END isselected, Name
+						FROM Schools
+						WHERE school_number LIKE CASE ~(curschoolid) WHEN 0 THEN '%' ELSE '~(curschoolid)' END
+						ORDER BY SortOrder;]
+					<option value="~(School_Number;l)" ~(isselected;t)>~(Name;t)</option>
+					[/tlist_sql]
+				</select>
+			</td>
+			<td><input type="text" name="cnt" id="cnt" value="~[gpv:cnt]" /></td>
+		  </tr>
+		</table>
+		
+		<div class="button-row">
+			<button type="submit" id="btnSubmit" name="btnSubmit" onClick="actionChange()">Submit</button>
+		</div>
+
+	</div>	</form>	<!-- end filter parameters -->
+
+	<!-- Start of Results -->
+	<div class="box-round">	
+		<h2>Parent/Guardian Account Details for SSO</h2> 
+		
+		<table border="0" cellspacing="0" cellpadding="4" class="tablesorter" id="results">
+			<thead>
+			<tr class="headerRow">
+				<th valign="bottom">&nbsp;</th>
+				<th valign="bottom">First Name</th>
+				<th valign="bottom">Last Name</th>
+				<th valign="bottom">Username</th>
+				<th valign="bottom">Email Address</th>
+				<th valign="bottom">Count of Students</th>
+				<th valign="bottom">Student(s)</th>
+			</tr>
+			</thead>
+			
+			<tbody>
+			~[tlist_sql;
+				SELECT
+					g.FirstName
+					,g.LastName
+					,ga.Username 
+					,ec.EmailAddress
+					,Count(gs.studentsdcid) NumOfStudents
+					,'<ul>' || listagg('<li>' || s.lastfirst || ' (' || s.grade_level || ')' || '</li>', '') WITHIN GROUP ( ORDER BY s.grade_level desc, Upper(Trim(s.lastfirst)) ) || '</ul>' StudentList
+				FROM
+					Guardian g
+					INNER JOIN GuardianStudent gs ON g.GuardianID = gs.GuardianID
+					INNER JOIN Students s ON gs.studentsdcid = s.dcid
+					INNER JOIN PCAS_Account ga ON g.AccountIdentifier = ga.PCAS_AccountToken
+					INNER JOIN PCAS_EmailContact ec ON ga.PCAS_AccountID = ec.PCAS_AccountID
+				WHERE 
+					s.enroll_status = 0
+					AND s.schoolid LIKE ~[if#sch.~[gpv:sch]#0]'~[gpv:sch]'[else#sch]'%'[/if#sch]
+				GROUP BY g.GuardianID, g.FirstName, g.LastName, ga.Username, ec.EmailAddress
+				~[if.~[gpv:cnt]>0]HAVING COUNT(gs.studentsdcid) > ~[gpv:cnt][/if]
+				ORDER BY Upper(Trim(g.LastName)), Upper(Trim(g.FirstName))
+			;alternatecolor;nonemessage=<tr><td colspan="100%">No Parent/Guardian Accounts for SSO were found.</td></tr>]
+			<tr class="oddRow">
+				<td align="left">~(count;-)</td>
+				<td align="left">~(g.FirstName)</td>
+				<td align="left">~(g.LastName)</td>
+				<td align="left">~(ga.Username)</td>
+				<td align="left">~(ec.EmailAddress)</td>
+				<td align="center">~(NumOfStudents)</td>
+				<td align="left">~(StudentList)</td>
+			</tr>
+			[/tlist_sql]
+			</tbody>
+		  
+		</table>
+	</div>
+	<!-- End of Results -->
+
+	<div style="clear: both;">
+		<p><center>Report generated at ~[time] on ~[date]</center></p>
+	</div>
+
+~[wc:admin_footer_frame_css]
+				
+</body>				
+</html>
