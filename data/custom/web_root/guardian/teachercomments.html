@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text:psx.html.guardian.teachercomments.teacher_comments_]</title>
+~[wc:guardian_header_yui]
+<script language="javascript">
+function formHandler(form){
+ var URL = document.navigation.storecode.options[document.navigation.storecode.selectedIndex].value;
+ window.location.href = URL;
+ } 
+</script>
+
+<h1>~[text:psx.html.guardian.teachercomments.teacher_comments] ~(studentname)</h1>
+<!-- title -->
+
+<!-- start student content -->
+<div>
+<!-- the drop down for FG -->
+<h2>~[text:psx.html.guardian.teachercomments.reporting_term]
+<form name="navigation" class="noSubmitLoading">
+
+<select name="storecode" size=1 onChange="javascript:formHandler()">
+   <option value="teachercomments.html?fg=~(gpv.fg)&showdropped=~(gpv.showdropped)">--</option>
+   ~[tlist_sql;select distinct StoreCode, 
+        case when '~(decode;~(gpv.showdropped;sqltext);true;1;0)' = 1 then '&showdropped=true' else '' end as showdropped,
+        case when StoreCode = '~(decode;x~(gpv.fg;sqltext);x ;~[displayprefschool:curfgname];~(gpv.fg;sqltext))' then ' selected' else '' end as selected
+		from TermBins
+        where 
+        	SchoolID = '~(curschoolid)' and YearID = ~(curyearid)
+       	order by storecode]
+    <option value="teachercomments.html?fg=~(StoreCode;t)~(showdropped)"~(selected;t)>~(StoreCode;t)</option>
+    [/tlist_sql]
+</select>
+</form>
+</h2>
+<table class="grid linkDescList">
+<tr align="center">
+<th>~[text:psx.html.guardian.teachercomments.exp]</th>
+<th>~[text:psx.html.guardian.teachercomments.course_num]</th>
+<th>~[text:psx.html.guardian.teachercomments.course]</th>
+<th>~[text:psx.html.guardian.teachercomments.teacher]</th>
+<th>~[text:psx.html.guardian.teachercomments.comment]</th>
+</tr>
+
+   ~[tlist_sql;select CC.Expression, Sections.Course_Number,
+            Courses.Course_Name, Teachers.DCID, 
+            Teachers.LastFirst, Teachers.Email_Addr, 
+            replace(PGFinalGrades.Comment_Value, chr(10), '<BR/>') as TeacherComment, Sections.TermID, Sections.ID
+			from CC
+        inner join Sections on abs(CC.SectionID) = Sections.ID
+        left join Courses on Sections.Course_Number = Courses.Course_Number
+        left join Teachers on CC.TeacherID = Teachers.ID
+    	left join PGFinalGrades on Sections.ID=PGFinalGrades.SectionID and 
+    	  PGFinalGrades.StudentID=cc.StudentID and PGFinalGrades.FinalGradeName = '~(decode;x~(gpv.fg;sqltext);x ;~[displayprefschool:curfgname];~(gpv.fg;sqltext))'
+		where 1=1;alternatecolor;currentschedule;~(decode;~(gpv.showdropped;sqltext);true;showDroppedClasses;;)]
+    <tr>
+    <td>~(CC.Expression;t;externalExpression)</td>
+    <td>~(Sections.Course_Number;t)</td>
+    <td>~(Courses.Course_Name;t;codemap=CourseName;id=~(Sections.Course_Number;t))</td>
+    <td><a onclick="javascript:createPopup('teacherinfo.html?frn=005~(Teachers.DCID;l)&nolink=true','~[text]psx.html.guardian.teachercomments.details_about,param:~(Teachers.LastFirst;t)[/text]', '500', 5, 5, true, true, true);" title="~[text]psx.html.guardian.teachercomments.details_about,param:~(Teachers.LastFirst;t)[/text]"><img src="/images/photo_thumb.jpg" alt="~[text]psx.html.guardian.teachercomments.details_about,param:~(Teachers.LastFirst;t)[/text]" height="12" border="0"/></a>&nbsp;<a href="mailto:~(Teachers.Email_Addr;t)">~(Teachers.LastFirst;t)</a></td>
+    <td><pre>~(PGFinalGrades.Comment_Value;t) <!-- ~(Sections.TermID;l) ~(Sections.ID;l)  --></pre></td>
+    </tr> 	
+    [/tlist_sql]
+
+</table>
+~[if.~[gpv:showdropped]=true]
+<center><a href="teachercomments.html?fg=~(decode;x~(gpv.fg);x ;~[displayprefschool:curfgname];~(gpv.fg))">~[text:psx.html.guardian.teachercomments.show_current]</a></center>
+[else]
+<center><a href="teachercomments.html?fg=~(decode;x~(gpv.fg);x ;~[displayprefschool:curfgname];~(gpv.fg))&showdropped=true">~[text:psx.html.guardian.teachercomments.show_dropped]</a></center>
+[/if]
+</div>
+
+<!-- end student content -->
+
+<!-- end of title and student content -->
+<p><strong>*</strong>~[text:psx.html.guardian.teachercomments.additional_teacher_comments_may_be_found_on_the_grades_and_a]</p>
+
+<input id="activeNav" type="hidden" value="#btn-teacherComments"/>
+~[wc:guardian_footer_yui]
+</body>
+</html>
