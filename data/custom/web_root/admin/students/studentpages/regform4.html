@@ -36,12 +36,16 @@ var jq15 = jQuery.noConflict();
 <tr><td>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr class="headerrow"><td colspan="4" class="bold">3d. Other Parents/Guardians Not Living at Primary Residence/td></tr>
+<tr><td colspan="2">Are there parents or guardians of this student living at another residence?</td>
+<td colspan="2"><input name="[01]family2" type="radio" class="family2" id="family2_yes" value="1" />Yes&nbsp;&nbsp;
+<input name="[01]family2" type="radio" class="family2" id="family2_no" value="" />No&nbsp;&nbsp;</td></tr>
 <tr class="headerrow"><td colspan="4" class="bold">4a. Additional Residence</td></tr>
 <tr><td width="40%"><b>Physical Address:</b> Number &amp; Street</td>
 <td width="25%">City</td>
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
-<tr><td><input name="[01]Home2_Street" type="text" id="home2_street" value="" size="30"></td>
+<tr><td><input name="[01]Home2_Street" type="text" class="family2_test" id="home2_street" value="" size="30"></td>
 <td><input name="[01]Home2_City" type="text" id="home2_city" value="" size="20"></td>
 <td><input name="[01]Home2_State" type="text" id="home2_state" value="" size="4"></td>
 <td><input name="[01]Home2_Zip" type="text" id="home2_zip" value="" size="10"></td></tr>
@@ -50,7 +54,7 @@ var jq15 = jQuery.noConflict();
 <td width="25%">City</td>
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
-<tr class="staffonly"><td><input name="[01]Mailing2_Street" type="text" class="copy_add2" id="mailing2_street" value="" size="30"></td>
+<tr class="staffonly"><td><input name="[01]Mailing2_Street" type="text" class="family2_test copy_add2" id="mailing2_street" value="" size="30"></td>
 <td><input name="[01]mailing2_City" type="text" class="copy_add2" id="mailing2_city" value="" size="20"></td>
 <td><input name="[01]mailing2_State" type="text" class="copy_add2" id="mailing2_state" value="" size="4"></td>
 <td><input name="[01]mailing2_Zip" type="text" class="copy_add2" id="mailing2_zip" value="" size="10"></td></tr>
@@ -76,8 +80,8 @@ var jq15 = jQuery.noConflict();
 <tr class="headerrow"><td colspan="4" class="bold">4b. Mother/Parent/Guardian at Additional Residence</td></tr>
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td></tr>
-<tr><td colspan="2"><input type="text" id="mother2_last" name="[01]Mother2_Last" value="" size="30"></td>
-<td colspan="2"><input type="text" id="mother2_first" name="[01]Mother2_First" value="" size="30"></td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Mother2_Last" class="family2_test" id="mother2_last" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Mother2_First" class="family2_test" id="mother2_first" value="" size="30"></td></tr>
 <tr><td>Relationship</td>
 <td><select id="mother2_rel" name="[01]Mother2_Rel">
 <option value="">Choose:</option>
@@ -118,8 +122,8 @@ var jq15 = jQuery.noConflict();
 <tr><td colspan="2">Last</td>
   <td colspan="2">First</td>
 </tr>
-<tr><td colspan="2"><input type="text" id="father2_last" name="[01]Father2_Last" value="" size="30"></td>
-<td colspan="2"><input type="text" id="father2_first" name="[01]Father2_First" value="" size="30"></td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Father2_Last" class="family2_test" id="father2_last" value="" size="30"></td>
+<td colspan="2"><input type="text" name="[01]Father2_First" class="family2_test" id="father2_first" value="" size="30"></td></tr>
 <tr><td>Relationship</td>
 <td><select id="father2_rel" name="[01]Father2_Rel">
 <option value="">Choose:</option>

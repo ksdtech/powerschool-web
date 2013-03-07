@@ -1,8 +1,31 @@
 function onForm4Submit() {
+  var any_family2 = "";
+  var fam2_text, fam2_yes, fam2_no;
   jq15('.copy_address2').each(function (i) {
     var src_id = this.id.replace(/^mailing2_/, '#home2_');
     this.value = jq15(src_id).val();
   });
+  fam2_text = jq15("#family2");
+  fam2_yes =  jq15("#family2_yes");
+  if (fam2_text || fam2_yes) {
+    jq15(".family2_test").each(function() {
+      if (jq15.trim(jq15(this).val()) != "") {
+        any_family2 = "1";
+      }
+    });
+    if (fam2_text) {
+      fam2_input.val(any_family2);
+    } else {
+      fam2_no = jq15("#family2_no");
+      if (any_family2 == "1") {
+        fam2_yes.attr('checked', 'checked');
+        fam2_no.removeAttr('checked');
+      } else {
+        fam2_no.attr('checked', 'checked');
+        fam2_yes.removeAttr('checked');
+      }
+    }
+  }
   onRegFormSubmit();
 }
 
