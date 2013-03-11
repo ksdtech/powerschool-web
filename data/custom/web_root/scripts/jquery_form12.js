@@ -21,10 +21,12 @@ function validateAllFields() {
       forms.push(el.attr("id") + " on form " + regform);
     }
   });
-  if (forms.length > 0) {
-    alert("You have incomplete data:\n" + forms.join("\n"));
-  } else {
-    alert("All " + count + " required fields are complete.");
+  if (count > 0) {
+    if (forms.length > 0) {
+      alert("You have incomplete data:\n" + forms.join("\n"));
+    } else {
+      alert("All " + count + " required fields are complete.");
+    }
   }
 }
 
