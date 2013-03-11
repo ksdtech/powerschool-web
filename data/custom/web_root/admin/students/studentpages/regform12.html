@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+<title>Reg Page 12: Validation</title>
+<script src="/scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var jq15 = jQuery.noConflict();
+//]]>
+</script>
+<script src="/scripts/fmt_date.js" type="text/javascript"></script>
+<script src="/scripts/formatters.js" type="text/javascript"></script>
+<script src="/scripts/happy.js" type="text/javascript"></script>
+<script src="/scripts/happy.methods.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form12.js" type="text/javascript"></script>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+<link href="/images/css/regforms.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+
+<!-- begin form action -->
+<form class="noSubmitLoading" id="form11" action="/admin/changesrecorded.white.html" method="post">
+<!-- end form action -->
+
+<!-- pscustom_begin -->
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Student Travel Program<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+<!-- Beginning of title of page -->
+~[wc:title_student_begin_css]Validation~[wc:title_student_end_css]
+
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr class="headerrow"><td colspan="2">12. Validation</td></tr>
+<tr><td width="20%">form1_updated_at</td><td><input type="text" name="[01]form1_updated_at" id="form1_updated_at" class="always regform1" value="" /></td></tr>
+<tr><td>form1_updated_by</td><td><input type="text" name="[01]form1_updated_by" id="form1_updated_by" class="always regform1" value="" /></td></tr>
+<tr><td>form2_updated_at</td><td><input type="text" name="[01]form2_updated_at" id="form2_updated_at" class="always regform2" value="" /></td></tr>
+<tr><td>form2_updated_by</td><td><input type="text" name="[01]form2_updated_by" id="form2_updated_by" class="always regform2" value="" /></td></tr>
+<tr><td>form3_updated_at</td><td><input type="text" name="[01]form3_updated_at" id="form3_updated_at" class="always regform3" value="" /></td></tr>
+<tr><td>form3_updated_by</td><td><input type="text" name="[01]form3_updated_by" id="form3_updated_by" class="always regform3" value="" /></td></tr>
+<tr><td>form4_updated_at</td><td><input type="text" name="[01]form4_updated_at" id="form4_updated_at" class="always regform4" value="" /></td></tr>
+<tr><td>form4_updated_by</td><td><input type="text" name="[01]form4_updated_by" id="form4_updated_by" class="always regform4" value="" /></td></tr>
+<tr><td>form5_updated_at</td><td><input type="text" name="[01]form5_updated_at" id="form5_updated_at" class="always regform5" value="" /></td></tr>
+<tr><td>form5_updated_by</td><td><input type="text" name="[01]form5_updated_by" id="form5_updated_by" class="always regform5" value="" /></td></tr>
+<tr><td>form6_updated_at</td><td><input type="text" name="[01]form6_updated_at" id="form6_updated_at" class="always regform6" value="" /></td></tr>
+<tr><td>form6_updated_by</td><td><input type="text" name="[01]form6_updated_by" id="form6_updated_by" class="always regform6" value="" /></td></tr>
+<tr><td>form7_updated_at</td><td><input type="text" name="[01]form7_updated_at" id="form7_updated_at" class="always regform7" value="" /></td></tr>
+<tr><td>form7_updated_by</td><td><input type="text" name="[01]form7_updated_by" id="form7_updated_by" class="always regform7" value="" /></td></tr>
+<tr><td>form8_updated_at</td><td><input type="text" name="[01]form8_updated_at" id="form8_updated_at" class="always regform8" value="" /></td></tr>
+<tr><td>form8_updated_by</td><td><input type="text" name="[01]form8_updated_by" id="form8_updated_by" class="always regform8" value="" /></td></tr>
+<tr><td>form9_updated_at</td><td><input type="text" name="[01]form9_updated_at" id="form9_updated_at" class="always regform9" value="" /></td></tr>
+<tr><td>form9_updated_by</td><td><input type="text" name="[01]form9_updated_by" id="form9_updated_by" class="always regform9" value="" /></td></tr>
+<tr><td>form10_updated_at</td><td><input type="text" name="[01]form10_updated_at" id="form10_updated_at" class="always regform10" value="" /></td></tr>
+<tr><td>form10_updated_by</td><td><input type="text" name="[01]form10_updated_by" id="form10_updated_by" class="always regform10" value="" /></td></tr>
+<tr><td>form11_updated_at</td><td><input type="text" name="[01]form11_updated_at" id="form11_updated_at" class="always regform11" value="" /></td></tr>
+<tr><td>form11_updated_by</td><td><input type="text" name="[01]form11_updated_by" id="form11_updated_by" class="always regform11" value="" /></td></tr>
+<tr><td>acceptable_use</td><td><input type="text" name="[01]acceptable_use" id="acceptable_use" class="always regform9" value="" /></td></tr>
+<tr><td>allergies</td><td><input type="text" name="[01]allergies" id="allergies" class="sometimes regform8" value="" /></td></tr>
+<tr><td>allergies_severe</td><td><input type="text" name="[01]allergies_severe" id="allergies_severe" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>annual_notice</td><td><input type="text" name="[01]annual_notice" id="annual_notice" class="always regform9" value="" /></td></tr>
+<tr><td>asthma</td><td><input type="text" name="[01]asthma" id="asthma" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>behavior_problems</td><td><input type="text" name="[01]behavior_problems" id="behavior_problems" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>ca_birthcountry</td><td><input type="text" name="[01]ca_birthcountry" id="ca_birthcountry" class="always regform2" value="" /></td></tr>
+<tr><td>ca_birthplace_city</td><td><input type="text" name="[01]ca_birthplace_city" id="ca_birthplace_city" class="always regform2" value="" /></td></tr>
+<tr><td>ca_birthplace_stateprovince</td><td><input type="text" name="[01]ca_birthplace_stateprovince" id="ca_birthplace_stateprovince" class="sometimes regform2" value="" /></td></tr>
+<tr><td>ca_firstusaschooling</td><td><input type="text" name="[01]ca_firstusaschooling" id="ca_firstusaschooling" class="sometimes regform6" value="" /></td></tr>
+<tr><td>ca_parented</td><td><input type="text" name="[01]ca_parented" id="ca_parented" class="always regform6" value="" /></td></tr>
+<tr><td>ca_primarylanguage</td><td><input type="text" name="[01]ca_primarylanguage" id="ca_primarylanguage" class="always regform7" value="" /></td></tr>
+<tr><td>city</td><td><input type="text" name="[01]city" id="city" class="always regform3" value="" /></td></tr>
+<tr><td>computer_use</td><td><input type="text" name="[01]computer_use" id="computer_use" class="always regform9" value="" /></td></tr>
+<tr><td>custody_orders</td><td><input type="text" name="[01]custody_orders" id="custody_orders" class="always oneorblank regform2" value="" /></td></tr>
+<tr><td>diabetes</td><td><input type="text" name="[01]diabetes" id="diabetes" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>dob</td><td><input type="text" name="[01]dob" id="dob" class="always regform2" value="" /></td></tr>
+<tr><td>electives_6_pa</td><td><input type="text" name="[01]electives_6_pa" id="electives_6_pa" class="sometimes regform1" value="" /></td></tr>
+<tr><td>electives_7_band</td><td><input type="text" name="[01]electives_7_band" id="electives_7_band" class="sometimes oneorblank regform1" value="" /></td></tr>
+<tr><td>electives_7_choir</td><td><input type="text" name="[01]electives_7_choir" id="electives_7_choir" class="sometimes oneorblank regform1" value="" /></td></tr>
+<tr><td>electives_7_mathletes</td><td><input type="text" name="[01]electives_7_mathletes" id="electives_7_mathletes" class="sometimes oneorblank regform1" value="" /></td></tr>
+<tr><td>electives_8_band</td><td><input type="text" name="[01]electives_8_band" id="electives_8_band" class="sometimes oneorblank regform1" value="" /></td></tr>
+<tr><td>electives_8_choir</td><td><input type="text" name="[01]electives_8_choir" id="electives_8_choir" class="sometimes oneorblank regform1" value="" /></td></tr>
+<tr><td>electives_8_enrich1</td><td><input type="text" name="[01]electives_8_enrich1" id="electives_8_enrich1" class="sometimes regform1" value="" /></td></tr>
+<tr><td>electives_8_enrich2</td><td><input type="text" name="[01]electives_8_enrich2" id="electives_8_enrich2" class="sometimes regform1" value="" /></td></tr>
+<tr><td>electives_8_enrich3</td><td><input type="text" name="[01]electives_8_enrich3" id="electives_8_enrich3" class="sometimes regform1" value="" /></td></tr>
+<tr><td>electives_8_mathletes</td><td><input type="text" name="[01]electives_8_mathletes" id="electives_8_mathletes" class="sometimes regform1" value="" /></td></tr>
+<tr><td>emerg_1_alt_phone</td><td><input type="text" name="[01]emerg_1_alt_phone" id="emerg_1_alt_phone" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_1_alt_ptype</td><td><input type="text" name="[01]emerg_1_alt_ptype" id="emerg_1_alt_ptype" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_1_first</td><td><input type="text" name="[01]emerg_1_first" id="emerg_1_first" class="always regform5" value="" /></td></tr>
+<tr><td>emerg_1_ptype</td><td><input type="text" name="[01]emerg_1_ptype" id="emerg_1_ptype" class="always regform5" value="" /></td></tr>
+<tr><td>emerg_1_rel</td><td><input type="text" name="[01]emerg_1_rel" id="emerg_1_rel" class="always regform5" value="" /></td></tr>
+<tr><td>emerg_2_alt_phone</td><td><input type="text" name="[01]emerg_2_alt_phone" id="emerg_2_alt_phone" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_2_alt_ptype</td><td><input type="text" name="[01]emerg_2_alt_ptype" id="emerg_2_alt_ptype" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_2_first</td><td><input type="text" name="[01]emerg_2_first" id="emerg_2_first" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_2_ptype</td><td><input type="text" name="[01]emerg_2_ptype" id="emerg_2_ptype" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_2_rel</td><td><input type="text" name="[01]emerg_2_rel" id="emerg_2_rel" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_3_alt_phone</td><td><input type="text" name="[01]emerg_3_alt_phone" id="emerg_3_alt_phone" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_3_alt_ptype</td><td><input type="text" name="[01]emerg_3_alt_ptype" id="emerg_3_alt_ptype" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_3_first</td><td><input type="text" name="[01]emerg_3_first" id="emerg_3_first" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_3_last</td><td><input type="text" name="[01]emerg_3_last" id="emerg_3_last" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_3_phone</td><td><input type="text" name="[01]emerg_3_phone" id="emerg_3_phone" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_3_ptype</td><td><input type="text" name="[01]emerg_3_ptype" id="emerg_3_ptype" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_3_rel</td><td><input type="text" name="[01]emerg_3_rel" id="emerg_3_rel" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_contact_1</td><td><input type="text" name="[01]emerg_contact_1" id="emerg_contact_1" class="always regform5" value="" /></td></tr>
+<tr><td>emerg_contact_2</td><td><input type="text" name="[01]emerg_contact_2" id="emerg_contact_2" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emerg_phone_1</td><td><input type="text" name="[01]emerg_phone_1" id="emerg_phone_1" class="always regform5" value="" /></td></tr>
+<tr><td>emerg_phone_2</td><td><input type="text" name="[01]emerg_phone_2" id="emerg_phone_2" class="sometimes regform5" value="" /></td></tr>
+<tr><td>emergency_care</td><td><input type="text" name="[01]emergency_care" id="emergency_care" class="always regform9" value="" /></td></tr>
+<tr><td>emergency_hospital</td><td><input type="text" name="[01]emergency_hospital" id="emergency_hospital" class="always regform9" value="" /></td></tr>
+<tr><td>emergency_meds</td><td><input type="text" name="[01]emergency_meds" id="emergency_meds" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>eyeglasses</td><td><input type="text" name="[01]eyeglasses" id="eyeglasses" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>family2</td><td><input type="text" name="[01]family2" id="family2" class="always oneorblank regform3" value="" /></td></tr>
+<tr><td>father</td><td><input type="text" name="[01]father" id="father" class="sometimes regform3" value="" /></td></tr>
+<tr><td>father2_first</td><td><input type="text" name="[01]father2_first" id="father2_first" class="sometimes regform4" value="" /></td></tr>
+<tr><td>father2_isguardian</td><td><input type="text" name="[01]father2_isguardian" id="father2_isguardian" class="sometimes regform4" value="" /></td></tr>
+<tr><td>father2_last</td><td><input type="text" name="[01]father2_last" id="father2_last" class="sometimes regform4" value="" /></td></tr>
+<tr><td>father2_rel</td><td><input type="text" name="[01]father2_rel" id="father2_rel" class="sometimes regform4" value="" /></td></tr>
+<tr><td>father_first</td><td><input type="text" name="[01]father_first" id="father_first" class="sometimes regform3" value="" /></td></tr>
+<tr><td>father_isguardian</td><td><input type="text" name="[01]father_isguardian" id="father_isguardian" class="sometimes regform3" value="" /></td></tr>
+<tr><td>father_rel</td><td><input type="text" name="[01]father_rel" id="father_rel" class="sometimes regform3" value="" /></td></tr>
+<tr><td>fedethnicity</td><td><input type="text" name="[01]fedethnicity" id="fedethnicity" class="always regform6" value="" /></td></tr>
+<tr><td>fedracedecline</td><td><input type="text" name="[01]fedracedecline" id="fedracedecline" class="sometimes regform6" value="" /></td></tr>
+<tr><td>gender</td><td><input type="text" name="[01]gender" id="gender" class="always regform2" value="" /></td></tr>
+<tr><td>google_apps</td><td><input type="text" name="[01]google_apps" id="google_apps" class="always regform9" value="" /></td></tr>
+<tr><td>h_hearing_aid</td><td><input type="text" name="[01]h_hearing_aid" id="h_hearing_aid" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>h_last_eye_exam</td><td><input type="text" name="[01]h_last_eye_exam" id="h_last_eye_exam" class="sometimes regform8" value="" /></td></tr>
+<tr><td>health_ins_type</td><td><input type="text" name="[01]health_ins_type" id="health_ins_type" class="always regform8" value="" /></td></tr>
+<tr><td>home2_city</td><td><input type="text" name="[01]home2_city" id="home2_city" class="sometimes regform4" value="" /></td></tr>
+<tr><td>home2_no_inet_access</td><td><input type="text" name="[01]home2_no_inet_access" id="home2_no_inet_access" class="sometimes oneorblank regform4" value="" /></td></tr>
+<tr><td>home2_phone</td><td><input type="text" name="[01]home2_phone" id="home2_phone" class="sometimes regform4" value="" /></td></tr>
+<tr><td>home2_printed_material</td><td><input type="text" name="[01]home2_printed_material" id="home2_printed_material" class="sometimes oneorblank regform4" value="" /></td></tr>
+<tr><td>home2_spanish_material</td><td><input type="text" name="[01]home2_spanish_material" id="home2_spanish_material" class="sometimes oneorblank regform4" value="" /></td></tr>
+<tr><td>home2_state</td><td><input type="text" name="[01]home2_state" id="home2_state" class="sometimes regform4" value="" /></td></tr>
+<tr><td>home2_street</td><td><input type="text" name="[01]home2_street" id="home2_street" class="sometimes regform4" value="" /></td></tr>
+<tr><td>home2_zip</td><td><input type="text" name="[01]home2_zip" id="home2_zip" class="sometimes regform4" value="" /></td></tr>
+<tr><td>home_no_inet_access</td><td><input type="text" name="[01]home_no_inet_access" id="home_no_inet_access" class="always oneorblank regform3" value="" /></td></tr>
+<tr><td>home_phone</td><td><input type="text" name="[01]home_phone" id="home_phone" class="always regform3" value="" /></td></tr>
+<tr><td>home_printed_material</td><td><input type="text" name="[01]home_printed_material" id="home_printed_material" class="always oneorblank regform3" value="" /></td></tr>
+<tr><td>home_spanish_material</td><td><input type="text" name="[01]home_spanish_material" id="home_spanish_material" class="always oneorblank regform3" value="" /></td></tr>
+<tr><td>illness_recent</td><td><input type="text" name="[01]illness_recent" id="illness_recent" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>ipm_notifications</td><td><input type="text" name="[01]ipm_notifications" id="ipm_notifications" class="always regform9" value="" /></td></tr>
+<tr><td>lang_adults_primary</td><td><input type="text" name="[01]lang_adults_primary" id="lang_adults_primary" class="always regform7" value="" /></td></tr>
+<tr><td>lang_earliest</td><td><input type="text" name="[01]lang_earliest" id="lang_earliest" class="always regform7" value="" /></td></tr>
+<tr><td>lang_other</td><td><input type="text" name="[01]lang_other" id="lang_other" class="sometimes regform7" value="" /></td></tr>
+<tr><td>lang_spoken_to</td><td><input type="text" name="[01]lang_spoken_to" id="lang_spoken_to" class="always regform7" value="" /></td></tr>
+<tr><td>lives_with_rel</td><td><input type="text" name="[01]lives_with_rel" id="lives_with_rel" class="always regform2" value="" /></td></tr>
+<tr><td>locker_combination</td><td><input type="text" name="[01]locker_combination" id="locker_combination" class="sometimes regform1" value="" /></td></tr>
+<tr><td>medical_accom</td><td><input type="text" name="[01]medical_accom" id="medical_accom" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>medical_other</td><td><input type="text" name="[01]medical_other" id="medical_other" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>mother</td><td><input type="text" name="[01]mother" id="mother" class="sometimes regform3" value="" /></td></tr>
+<tr><td>mother2_first</td><td><input type="text" name="[01]mother2_first" id="mother2_first" class="sometimes regform4" value="" /></td></tr>
+<tr><td>mother2_isguardian</td><td><input type="text" name="[01]mother2_isguardian" id="mother2_isguardian" class="sometimes regform4" value="" /></td></tr>
+<tr><td>mother2_last</td><td><input type="text" name="[01]mother2_last" id="mother2_last" class="sometimes regform4" value="" /></td></tr>
+<tr><td>mother2_rel</td><td><input type="text" name="[01]mother2_rel" id="mother2_rel" class="sometimes regform4" value="" /></td></tr>
+<tr><td>mother_first</td><td><input type="text" name="[01]mother_first" id="mother_first" class="sometimes regform3" value="" /></td></tr>
+<tr><td>mother_isguardian</td><td><input type="text" name="[01]mother_isguardian" id="mother_isguardian" class="sometimes regform3" value="" /></td></tr>
+<tr><td>mother_rel</td><td><input type="text" name="[01]mother_rel" id="mother_rel" class="sometimes regform3" value="" /></td></tr>
+<tr><td>movement_limits</td><td><input type="text" name="[01]movement_limits" id="movement_limits" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>off_campus_walks</td><td><input type="text" name="[01]off_campus_walks" id="off_campus_walks" class="always regform9" value="" /></td></tr>
+<tr><td>pe_locker_combination</td><td><input type="text" name="[01]pe_locker_combination" id="pe_locker_combination" class="sometimes regform1" value="" /></td></tr>
+<tr><td>pta_contact</td><td><input type="text" name="[01]pta_contact" id="pta_contact" class="always regform10" value="" /></td></tr>
+<tr><td>pta_room_parent</td><td><input type="text" name="[01]pta_room_parent" id="pta_room_parent" class="always regform10" value="" /></td></tr>
+<tr><td>previous_school_contact</td><td><input type="text" name="[01]previous_school_contact" id="previous_school_contact" class="always regform9" value="" /></td></tr>
+<tr><td>publish_articles</td><td><input type="text" name="[01]publish_articles" id="publish_articles" class="always regform9" value="" /></td></tr>
+<tr><td>publish_images</td><td><input type="text" name="[01]publish_images" id="publish_images" class="always regform9" value="" /></td></tr>
+<tr><td>publish_works</td><td><input type="text" name="[01]publish_works" id="publish_works" class="always regform9" value="" /></td></tr>
+<tr><td>reg_grade_level</td><td><input type="text" name="[01]reg_grade_level" id="reg_grade_level" class="always regform1" value="" /></td></tr>
+<tr><td>reg_will_attend</td><td><input type="text" name="[01]reg_will_attend" id="reg_will_attend" class="always regform1" value="" /></td></tr>
+<tr><td>release_directory_info</td><td><input type="text" name="[01]release_directory_info" id="release_directory_info" class="always regform9" value="" /></td></tr>
+<tr><td>requires_meds</td><td><input type="text" name="[01]requires_meds" id="requires_meds" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>school_meds</td><td><input type="text" name="[01]school_meds" id="school_meds" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>seizures</td><td><input type="text" name="[01]seizures" id="seizures" class="always oneorblank regform8" value="" /></td></tr>
+<tr><td>sibling1_dob</td><td><input type="text" name="[01]sibling1_dob" id="sibling1_dob" class="sometimes regform2" value="" /></td></tr>
+<tr><td>sibling1_name</td><td><input type="text" name="[01]sibling1_name" id="sibling1_name" class="sometimes regform2" value="" /></td></tr>
+<tr><td>sibling2_dob</td><td><input type="text" name="[01]sibling2_dob" id="sibling2_dob" class="sometimes regform2" value="" /></td></tr>
+<tr><td>sibling2_name</td><td><input type="text" name="[01]sibling2_name" id="sibling2_name" class="sometimes regform2" value="" /></td></tr>
+<tr><td>sibling3_dob</td><td><input type="text" name="[01]sibling3_dob" id="sibling3_dob" class="sometimes regform2" value="" /></td></tr>
+<tr><td>sibling3_name</td><td><input type="text" name="[01]sibling3_name" id="sibling3_name" class="sometimes regform2" value="" /></td></tr>
+<tr><td>sibling4_dob</td><td><input type="text" name="[01]sibling4_dob" id="sibling4_dob" class="sometimes regform2" value="" /></td></tr>
+<tr><td>sibling4_name</td><td><input type="text" name="[01]sibling4_name" id="sibling4_name" class="sometimes regform2" value="" /></td></tr>
+<tr><td>social_learning</td><td><input type="text" name="[01]social_learning" id="social_learning" class="always regform9" value="" /></td></tr>
+<tr><td>srs_opt_out</td><td><input type="text" name="[01]srs_opt_out" id="srs_opt_out" class="always regform11" value="" /></td></tr>
+<tr><td>state</td><td><input type="text" name="[01]state" id="state" class="always regform3" value="" /></td></tr>
+<tr><td>street</td><td><input type="text" name="[01]street" id="street" class="always regform3" value="" /></td></tr>
+<tr><td>zip</td><td><input type="text" name="[01]zip" id="zip" class="always regform3" value="" /></td></tr>
+</table>
+<br>
+
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame_css]
+</form>
+
+</body>
+</html><!-- end right frame -->

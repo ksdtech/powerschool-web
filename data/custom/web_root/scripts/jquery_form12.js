@@ -5,8 +5,32 @@ function todayIfBlank(val) {
   return val;
 }
 
+function validateAllFields() {
+  var forms = new Array();
+  var count = 0;
+  jq15('.always').not('.oneorblank').each(function (i) {
+    count = count + 1;
+    var el = jq15(this);
+    if (el.val() == '') {
+      var regform = this.className.match(/(regform(\d+))/);
+      if (regform) {
+        regform = regform[2];
+      } else {
+        regform = "?";
+      }
+      forms.push(el.attr("id") + " on form " + regform);
+    }
+  });
+  if (forms.length > 0) {
+    alert("You have incomplete data:\n" + forms.join("\n"));
+  } else {
+    alert("All " + count + " required fields are complete.");
+  }
+}
+
 // happy.js validations
 jq15(document).ready(function () {
+  validateAllFields();
   jq15('#forms').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     // onSubmit: onRegFormSubmit,
