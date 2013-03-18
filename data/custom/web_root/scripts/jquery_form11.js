@@ -4,10 +4,7 @@ jq15(document).ready(function () {
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
-      '.pta_contact': {
-        required: true,
-        message: 'Required field.' },
-      '.pta_room_parent': {
+      '.kikdir_options': {
         required: true,
         message: 'Required field.' }
     }
