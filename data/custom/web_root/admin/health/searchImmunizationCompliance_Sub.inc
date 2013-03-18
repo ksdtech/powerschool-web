@@ -19,8 +19,8 @@
 <tr bgcolor="#edf3fe">
 <td class="bold">Students</td>
 <td>	
-<input type="radio" name="forwhichstudents" id="forwhichstudents" value="all" checked> All active students in ~(schoolname)<br>
-<input type="radio" name="forwhichstudents" id="forwhichstudents" value="selected" > The selected ~[x:studsinset] students
+<input type="radio" name="forwhichstudents" id="forwhichstudents" value="all" checked> All active students in A.E. Kent Middle School<br>
+<input type="radio" name="forwhichstudents" id="forwhichstudents" value="selected" > The selected 110 students
 </td>
 </tr>
 <tr bgcolor="#FFFFFF">
@@ -29,7 +29,16 @@
 <input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('any');" value="any" checked> Any mandatory vaccine<br>
 <input type="radio" name="vaccine" id="vaccine" onchange="setVaccineDropdown('selected');" value="selected" checked> Only this vaccine: 
 <select name="optvaccine" id="optvaccine" onchange="selectVaccine()">
-	~[brij_render:health;:SelectImmComplianceSearch]
+	
+			<option value="5">DTP/DtaP/DT/Td</option>
+		<option value="7">Hepatitis A</option>
+		<option value="6">Hepatitis B</option>
+		<option value="1">HIB Meningitis</option>
+		<option value="2">MMR</option>
+		<option value="4">Polio</option>
+		<option value="10000">Tdap (Pertussis Booster)</option>
+		<option value="3">Varicella (Chicken pox)</option>
+
 </select>
 </td>
 </tr>
@@ -82,7 +91,8 @@ Selecting "Only this vaccine" will return students who meet the compliance, exem
 <td width="25"><img src="/images/bound_box_bot_right2.gif" width="25" height="12" alt="" border="0"></td>
 </tr>
 <tr>
-<td colspan="2" align="right"><input type="hidden" name="ac" value="healthimmcompliancesearch">~[submitbutton]
+<td colspan="2" align="right"><input type="hidden" name="ac" value="healthimmcompliancesearch"><button type="submit" id="btnSubmit" name="btnSubmit">Submit</button>
+
 </td>
 <td>&nbsp;</td>
 </tr>
