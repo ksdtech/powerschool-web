@@ -29,8 +29,10 @@ var jq15 = jQuery.noConflict();
 <form class="noSubmitLoading" id="form3" action="changesrecorded.html" method="post">
 <input type="hidden" name="backpage" value="regforms" />
 <input type="hidden" name="backtitle" value="Main Registration Page" />
-<input type="hidden" name="nextpage" value="regform4" />
-<input type="hidden" name="nexttitle" value="Page 4 - Additional Residence" />
+<input type="hidden" name="nextpage" id="nextpage" value="regform4" />
+<input type="hidden" name="nexttitle" id="nexttitle" value="Page 4 - Additional Residence" />
+<input type="hidden" name="alt_nextpage" id="alt_nextpage" value="regform5" />
+<input type="hidden" name="alt_nexttitle" id="alt_nexttitle" value="Page 5 - Authorized Adults" />
 <!-- end form action -->
 <div id="form3-contents" align="center" style="width: 98%">
 <div id="form3-setup" class="box-round group" style="width: 720px">
@@ -171,6 +173,8 @@ var jq15 = jQuery.noConflict();
 <tr class="private"><td colspan="4" class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form3_updated_at" value="" /> by 
 <input type="text" id="upd_by" name="[01]form3_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="form4_upd_at" name="[01]form4_updated_at" value="" />
+<input type="text" id="form4_upd_by" name="[01]form4_updated_by" value="" /></td>
 </tr>
 
 ~[if.~(wm_status)=1]

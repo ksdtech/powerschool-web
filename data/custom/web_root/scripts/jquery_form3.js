@@ -3,6 +3,13 @@ function onForm3Submit() {
     var src_id = this.id.replace(/^mailing_/, '#');
     this.value = jq15(src_id).val();
   });
+  var no_2nd_family = jq15("#family2_no");
+  if (no_2nd_family && no_2nd_family.attr("checked")) {
+    jq15("#form4_upd_by").val(jq15("#userid").val()); 
+    jq15("#form4_upd_at").val(timestamp_now());
+    jq15("#nextpage").val(jq15("alt_#nextpage").val());
+    jq15("#nexttitle").val(jq15("alt_#nexttitle").val());
+  }
   onRegFormSubmit();
 }
 
