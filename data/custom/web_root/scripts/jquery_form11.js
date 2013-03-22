@@ -1,6 +1,6 @@
 // happy.js validations
 jq15(document).ready(function () {
-  jq15('#form10').isHappy({
+  jq15('#form11').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {

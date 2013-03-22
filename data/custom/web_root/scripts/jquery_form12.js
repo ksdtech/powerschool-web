@@ -12,7 +12,7 @@ function displayListing() {
 // happy.js validations
 jq15(document).ready(function () {
   displayListing();
-  jq15('#form10').isHappy({
+  jq15('#form12').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {

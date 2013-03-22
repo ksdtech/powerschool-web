@@ -9,7 +9,7 @@ function required_if_north_american(val) {
 
 // happy.js validations
 jq15(document).ready(function () {
-  jq15('#form2').isHappy({
+  jq15('#form3').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     setErrorFocus: true,

@@ -1,12 +1,12 @@
-function onForm3Submit() {
+function onForm4Submit() {
   jq15('.copy_address').each(function (i) {
     var src_id = this.id.replace(/^mailing_/, '#');
     this.value = jq15(src_id).val();
   });
   var no_2nd_family = jq15("#family2_no");
   if (no_2nd_family && no_2nd_family.attr("checked")) {
-    jq15("#form4_upd_by").val(jq15("#userid").val()); 
-    jq15("#form4_upd_at").val(timestamp_now());
+    jq15("#form5_upd_by").val(jq15("#userid").val()); 
+    jq15("#form5_upd_at").val(timestamp_now());
     jq15("#nextpage").val(jq15("alt_#nextpage").val());
     jq15("#nexttitle").val(jq15("alt_#nexttitle").val());
   }
@@ -15,9 +15,9 @@ function onForm3Submit() {
 
 // happy.js validations
 jq15(document).ready(function () {
-  jq15('#form3').isHappy({
+  jq15('#form4').isHappy({
     // submitButton: jq15('#attSubmitButton'),
-    onSubmit: onForm3Submit,
+    onSubmit: onForm4Submit,
     fields: {
       '#street': {
         required: true,

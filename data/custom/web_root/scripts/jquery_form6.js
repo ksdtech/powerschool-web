@@ -7,7 +7,7 @@ function required_contact_phone(val, arg) {
 
 // happy.js validations
 jq15(document).ready(function () {
-  jq15('#form5').isHappy({
+  jq15('#form6').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {

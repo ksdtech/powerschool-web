@@ -1,4 +1,4 @@
-// Validation for form1
+// Validation for form2
 
 function required_if_not_returning(val) {
   var enrollment = jq15("#reg_enroll option:selected").val();
@@ -25,7 +25,7 @@ function required_if_transfering(val) {
 
 // happy.js validations
 jq15(document).ready(function () {
-  jq15('#form1').isHappy({
+  jq15('#form2').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onItrFormSubmit,
     fields: {
