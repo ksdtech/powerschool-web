@@ -32,12 +32,12 @@ var jq15 = jQuery.noConflict();
 <!-- start of content and bounding box -->
 <div class="box-round">
 
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<table name="tblMain" width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr class="headerrow"><td colspan="3" class="bold">Current Listing Information (May be Blank)</td></tr>
 ~([01]kikdir_entry_html)
 </table>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
 <tr class="headerrow"><td colspan="2" class="bold">11a. Directory Listing Option - Select One</td>
 <tr><td width="10">&nbsp;</td>
 <td>
@@ -52,7 +52,7 @@ var jq15 = jQuery.noConflict();
 </td></tr>
 </table>
 
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr class="headerrow"><td colspan="3" class="bold">11b. Directory Listing Fields</td></tr>
 <tr><td colspan="3">If you selected the <strong>"Replace"</strong> option above,
   only the information listed below will be displayed in the printed
@@ -88,12 +88,12 @@ var jq15 = jQuery.noConflict();
 </td>
 <td valign="top">Home Number<br />
 	<input type="text" name="[01]kikdir_f1_home_phone" id="kikdir_f1_home_phone" size="20" value="" ><br />
-	Cell Numbers (1st / 2nd Parent)<br />
-	(C) <input type="text" name="[01]kikdir_f1_cell_phone1" id="kikdir_f1_cell_phone1" size="20" value="" > /
-	<input type="text" name="[01]kikdir_f1_cell_phone2" id="kikdir_f1_cell_phone2" size="20" value="" ><br />
 	Work Numbers (1st / 2nd Parent)<br />
 	(W) <input type="text" name="[01]kikdir_f1_work_phone1" id="kikdir_f1_work_phone1" size="20" value="" > /
-	<input type="text" name="[01]kikdir_f1_work_phone2" id="kikdir_f1_work_phone2" size="20" value="" >
+	<input type="text" name="[01]kikdir_f1_work_phone2" id="kikdir_f1_work_phone2" size="20" value="" ><br />
+	Cell Numbers (1st / 2nd Parent)<br />
+	(C) <input type="text" name="[01]kikdir_f1_cell_phone1" id="kikdir_f1_cell_phone1" size="20" value="" > /
+	<input type="text" name="[01]kikdir_f1_cell_phone2" id="kikdir_f1_cell_phone2" size="20" value="" >
 </td></tr>
 <tr><td valign="top"><strong>Secondary Household (If Applicable)</strong></td><td valign="top"><strong>Secondary Household</strong></td></tr>
 <tr><td valign="top">Parents' Names<br />
@@ -111,12 +111,12 @@ var jq15 = jQuery.noConflict();
 </td>
 <td valign="top">Home Number<br />
 	<input type="text" name="[01]kikdir_f2_home_phone" id="kikdir_f2_home_phone" size="20" value="" ><br />
-	Cell Numbers (1st / 2nd Parent)<br />
-	(C) <input type="text" name="[01]kikdir_f2_cell_phone1" id="kikdir_f2_cell_phone1" size="20" value="" > /
-	<input type="text" name="[01]kikdir_f2_cell_phone2" id="kikdir_f2_cell_phone2" size="20" value="" ><br />
 	Work Numbers (1st / 2nd Parent)<br />
 	(W) <input type="text" name="[01]kikdir_f2_work_phone1" id="kikdir_f2_work_phone1" size="20" value="" > /
-	<input type="text" name="[01]kikdir_f2_work_phone2" id="kikdir_f2_work_phone2" size="20" value="" >
+	<input type="text" name="[01]kikdir_f2_work_phone2" id="kikdir_f2_work_phone2" size="20" value="" ><br />
+	Cell Numbers (1st / 2nd Parent)<br />
+	(C) <input type="text" name="[01]kikdir_f2_cell_phone1" id="kikdir_f2_cell_phone1" size="20" value="" > /
+	<input type="text" name="[01]kikdir_f2_cell_phone2" id="kikdir_f2_cell_phone2" size="20" value="" >
 </td></tr>
 
 <tr class="staffonly"><td colspan="3" class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
