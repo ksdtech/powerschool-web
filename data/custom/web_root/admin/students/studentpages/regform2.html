@@ -2,7 +2,7 @@
 <html>
 <!-- start right frame -->
 <head>
-<title>Reg Page 01: Logins and Enrollment</title>
+<title>Reg Page 01-02: Logins and Enrollment</title>
 <script src="/scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -173,7 +173,7 @@ var jq15 = jQuery.noConflict();
 <td colspan="2"><input id="reg_residencyproofdate" type="text" name="[01]reg_residencyproofdate" value="" size="10"></td>
 </tr>
 
-<tr><td class="bold">Enrollment Status</td>
+<tr><td class="bold">2a. Enrollment Status</td>
 <td colspan="2"><select id="reg_enroll" name="[01]reg_will_attend">
 <option value="">Choose:</option>
 <option value="attending">Student will be attending Bacich or Kent</option>
@@ -212,6 +212,7 @@ var jq15 = jQuery.noConflict();
 <tr class="not_enrolling"><td class="bold">Name of next school or other exit information</td>
 <td><textarea id="reg_exitcomment" name="[01]ExitComment" wrap="soft" cols="40" rows="3"></textarea></td></tr>
 
+<tr class="enrolling"><td colspan"3" class="bold">2b. Enrichment Choices</td></tr>
 <tr class="enrolling by_grade grade_6"><td colspan="3" class="bold">Required Performing Arts Options for Sixth Grade Students</td></tr>
 <tr class="enrolling by_grade grade_6"><td>&nbsp;</td>
 <td width="400"><input type="radio" name="[01]electives_6_pa" value="band">6th Grade Int. Band</td>
@@ -273,9 +274,9 @@ var jq15 = jQuery.noConflict();
 <option value="yearbook">Yearbook</option>
 </select></td></tr>
 
-<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">Personal locker combination</td>
+<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">2c. Personal locker combination</td>
 <td colspan="2"><input type="text" name="[01]locker_combination" value=""></input></td></tr>
-<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">PE locker combination</td>
+<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">2d. PE locker combination</td>
 <td colspan="2"><input type="text" name="[01]pe_locker_combination" value=""></input></td></tr>
 
 </table><br><br>
@@ -283,8 +284,8 @@ var jq15 = jQuery.noConflict();
 
 <tr class="staffonly"><td class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
 <tr class="staffonly"><td class="bold">Last updated at 
-<input type="text" id="upd_at" class="disabled" name="[01]form1_updated_at" value=""> by 
-<input type="text" id="upd_by" class="disabled" name="[01]form1_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+<input type="text" id="upd_at" class="disabled" name="[01]form2_updated_at" value=""> by 
+<input type="text" id="upd_by" class="disabled" name="[01]form2_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
 </table>
 <br>
