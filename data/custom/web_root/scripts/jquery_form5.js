@@ -1,115 +1,176 @@
-function required_contact_phone(val, arg) {
+function onForm4Submit() {
+  var any_family2 = "";
+  var fam2_text, fam2_yes, fam2_no;
+  jq15('.copy_address2').each(function (i) {
+    var src_id = this.id.replace(/^mailing2_/, '#home2_');
+    this.value = jq15(src_id).val();
+  });
+  fam2_text = jq15("#family2");
+  fam2_yes =  jq15("#family2_yes");
+  if (fam2_text || fam2_yes) {
+    jq15(".family2_test").each(function() {
+      if (jq15.trim(jq15(this).val()) != "") {
+        any_family2 = "1";
+      }
+    });
+    if (fam2_text) {
+      fam2_input.val(any_family2);
+    } else {
+      fam2_no = jq15("#family2_no");
+      if (any_family2 == "1") {
+        fam2_yes.attr('checked', 'checked');
+        fam2_no.removeAttr('checked');
+      } else {
+        fam2_no.attr('checked', 'checked');
+        fam2_yes.removeAttr('checked');
+      }
+    }
+  }
+  onRegFormSubmit();
+}
+
+function required_if_guardian2_test(val, radio_class) {
+  var checked_radio = jq15(radio_class).filter(':checked');
+  var has_val = (checked_radio.length != 0);
+  return has_val || happy.selectorIsEmpty('.guardian2_name');
+}
+
+function home2_state_test(val) {
   if (val === '') {
-    return happy.selectorIsEmpty(arg);
+    return happy.selectorIsEmpty('.guardian2_name');
+  }
+  return happy.USState(val);
+}
+
+function home2_zip_test(val) {
+  if (val === '') {
+    return happy.selectorIsEmpty('.guardian2_name');
+  }
+  return happy.USZip(val);
+}
+
+function home2_phone_test(val) {
+  if (val === '') {
+    return happy.selectorIsEmpty('.guardian2_name');
   }
   return happy.USPhoneWithExtension(val);
 }
 
 // happy.js validations
 jq15(document).ready(function () {
-  jq15('#form5').isHappy({
+  jq15('#form4').isHappy({
     // submitButton: jq15('#attSubmitButton'),
-    onSubmit: onRegFormSubmit,
+    onSubmit: onForm4Submit,
     fields: {
-      '#emerg1_last': {
-        required: true,
+      '#home2_street': {
+        required: 'sometimes',
+        test: happy.requiredIfArgNotEmpty,
+        arg: '.guardian2_name',
         message: 'Required field.' },
-      '#emerg1_first': {
-        required: true,
+      '#home2_city': { 
+        required: 'sometimes',
+        test: happy.requiredIfArgNotEmpty,
+        arg: '.guardian2_name',
         message: 'Required field.' },
-      '#emerg1_rel': {
-        required: true,
-        message: 'Required field.' },
-      '#emerg1_phone': {
-        required: true,
+      '#home2_state': {
+        required: 'sometimes',
+        test: home2_state_test,
+        message: 'Required field: format as "CA".' },
+      '#home2_zip': { 
+        required: 'sometimes',
+        test: home2_zip_test,
+        message: 'Required field: format as "94904" or "94904-0001"' },
+      '#home2_phone': { 
+        required: 'sometimes',
         clean: reformatPhone415,
-        test: happy.USPhoneWithExtension,
+        test: home2_phone_test,
         message: 'Required field: format as (415) 333-2222 x5555.' },
-      '#emerg1_ptype': {
-        required: true,
+      '.inet_access2': {
+        default_radio: '#inet_yes',
+        required: 'sometimes',
+        test: required_if_guardian2_test,
+        arg: '.inet_access2',
         message: 'Required field.' },
-      '#emerg1_phone2': {
+      '.printed_material2': {
+        default_radio: '#printed_no',
+        required: 'sometimes',
+        test: required_if_guardian2_test,
+        arg: '.printed_material2',
+        message: 'Required field.' },
+      '.spanish_material2': {
+        default_radio: '#spanish_no',
+        required: 'sometimes',
+        test: required_if_guardian2_test,
+        arg: '.spanish_material2',
+        message: 'Required field.' },
+      '#mother2_last': {
+        required: 'sometimes',
+        test: happy.requiredIfArgNotEmpty,
+        arg: '#mother2_first',
+        message: 'Required field.' },
+      '#mother2_rel': {
+        required: 'sometimes',
+        test: happy.requiredIfArgNotEmpty,
+        arg: '#mother2_first',
+        message: 'Required field.' },
+      '.mother2_guardian': {
+        required: 'sometimes',
+        test: happy.requiredIfArgNotEmpty,
+        arg: '#mother2_first',
+        message: 'Required field.' },
+      '#mother2_work_phone': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
-        message: 'Format as (415) 333-2222 x5555.' },
-      '#emerg1_ptype2': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '#emerg1_phone2',
-        message: 'Required field.' },
-      '#emerg2_last': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg2_name',
-        message: 'Required field.' },
-      '#emerg2_first': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg2_name',
-        message: 'Required field.' },
-      '#emerg2_rel': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg2_name',
-        message: 'Required field.' },
-      '#emerg2_phone': {
-        required: 'sometimes',
-        clean: reformatPhone415,
-        test: required_contact_phone,
-        arg: '.emerg2_name',
-        message: 'Required field: format as (415) 333-2222 x5555.' },
-      '#emerg2_ptype': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg2_name',
-        message: 'Required field.' },
-      '#emerg2_phone2': {
+        message: 'Please format as (415) 333-2222 x5555.' },
+      '#mother2_home_phone': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
-        message: 'Format as (415) 333-2222 x5555.' },
-      '#emerg2_ptype2': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '#emerg2_phone2',
-        message: 'Required field.' },
-      '#emerg3_last': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg3_name',
-        message: 'Required field.' },
-      '#emerg3_first': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg3_name',
-        message: 'Required field.' },
-      '#emerg3_rel': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg3_name',
-        message: 'Required field.' },
-      '#emerg3_phone': {
-        required: 'sometimes',
-        clean: reformatPhone415,
-        test: required_contact_phone,
-        arg: '.emerg3_name',
-        message: 'Required field: format as (415) 333-2222 x5555.' },
-      '#emerg3_ptype': {
-        required: 'sometimes',
-        test: happy.requiredIfArgNotEmpty,
-        arg: '.emerg3_name',
-        message: 'Required field.' },
-      '#emerg3_phone2': {
+        message: 'Please format as (415) 333-2222 x5555.' },
+      '#mother2_cell': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
-        message: 'Format as (415) 333-2222 x5555.' },
-      '#emerg3_ptype2': {
+        message: 'Please format as (415) 333-2222 x5555.' },
+      '#mother2_email': { 
+        required: 'sometimes',
+        test: happy.emptyOrEmail,
+        message: 'Must be a valid email address.' },
+      '#father2_last': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
-        arg: '#emerg3_phone2',
-        message: 'Required field.' }
+        arg: '#father2_first',
+        message: 'Required field.' },
+      '#father2_rel': {
+        required: 'sometimes',
+        test: happy.requiredIfArgNotEmpty,
+        arg: '#father2_first',
+        message: 'Required field.' },
+      '.father2_guardian': {
+        required: 'sometimes',
+        test: happy.requiredIfArgNotEmpty,
+        arg: '#father2_first',
+        message: 'Required field.' },
+      '#father2_work_phone': { 
+        required: 'sometimes',
+        clean: reformatPhone415,
+        test: happy.emptyOrUSPhoneWithExtension,
+        message: 'Please format as (415) 333-2222 x5555.' },
+      '#father2_home_phone': { 
+        required: 'sometimes',
+        clean: reformatPhone415,
+        test: happy.emptyOrUSPhoneWithExtension,
+        message: 'Please format as (415) 333-2222 x5555.' },
+      '#father2_cell': { 
+        required: 'sometimes',
+        clean: reformatPhone415,
+        test: happy.emptyOrUSPhoneWithExtension,
+        message: 'Please format as (415) 333-2222 x5555.' },
+      '#father2_email': { 
+        required: 'sometimes',
+        test: happy.emptyOrEmail,
+        message: 'Must be a valid email address.' }
     }
   });
 });

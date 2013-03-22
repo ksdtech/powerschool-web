@@ -1,53 +1,32 @@
-function todayIfBlank(val) {
-  if (val === '') {
-    val = today_mdy();
+// callback when address has been geocoded
+function ksdSetNeighborhood(rc) {
+  if (rc.status == 'OK' && rc.neighborhood != 'Unknown') {
+    var currentHood = jq15("#neighborhood").val();
+    if (currentHood == '') {
+      jq15("#neighborhood").val(rc.neighborhood);
+    }
   }
-  return val;
 }
 
-function validateAllFields() {
-  var forms = new Array();
-  var count = 0;
-  jq15('.always').not('.oneorblank').each(function (i) {
-    count = count + 1;
-    var el = jq15(this);
-    if (el.val() == '') {
-      var regform = this.className.match(/(regform(\d+))/);
-      if (regform) {
-        regform = regform[2];
-      } else {
-        regform = "?";
-      }
-      forms.push(el.attr("id") + " on form " + regform);
-    }
-  });
-  if (count > 0) {
-    if (forms.length > 0) {
-      alert("You have incomplete data:\n" + forms.join("\n"));
-    } else {
-      alert("All " + count + " required fields are complete.");
-    }
-  }
+// callback when basemap is loaded
+function plotPrimaryResidence() {
+  var address = jq15('#address').text();
+  codeAddress(null, address, 'Primary Residence', null, null, ksdSetNeighborhood);
 }
 
 // happy.js validations
 jq15(document).ready(function () {
-  validateAllFields();
-  jq15('#forms').isHappy({
+  // check 'N' for opt out if nothing was checked
+  var radios = jq15("input:radio[ends-with(@name,'srs_opt_out']");
+  if (radios.is(':checked') === false) {
+    radios.filter('[value=N]').attr('checked', true);
+  }
+
+  // load the map
+  loadMapData(ksdBasemapData, 'map', plotPrimaryResidence);
+  
+  jq15('#form11').isHappy({
     // submitButton: jq15('#attSubmitButton'),
-    // onSubmit: onRegFormSubmit,
-    fields: {
-      '.resp_for_student': {
-        required: true,
-        message: 'Required field.' },
-      '#responsibility_sig_1': {
-        required: true,
-        message: 'Required field.' },
-      '#responsibility_date': {
-        required: true,
-        clean: todayIfBlank,
-        test: happy.date,
-        message: 'Required field. Format as M/D/YYYY.' }
-    }
+    onSubmit: onRegFormSubmit
   });
 });

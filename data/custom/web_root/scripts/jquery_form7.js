@@ -1,19 +1,20 @@
 // happy.js validations
 jq15(document).ready(function () {
-  jq15('#form7').isHappy({
+  jq15('#form6').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
-      '#lang_earliest': {
+      '#first_usa_school': {
+        required: 'sometimes',
+        test: happy.emptyOrDate,
+        message: 'Please enter in format M/D/YYYY.' },
+      '.immigrant': { 
         required: true,
         message: 'Required field.' },
-      '#lang_primary': {
+      '.hispanic_ethnicity': { 
         required: true,
         message: 'Required field.' },
-      '#lang_spoken': {
-        required: true,
-        message: 'Required field.' },
-      '#lang_adults': {
+      '#parent_edu': {
         required: true,
         message: 'Required field.' }
     }

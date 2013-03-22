@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home Language - PowerSchool Parent Access</title>
+<title>Demographics - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="/images/css/regforms.css" rel="stylesheet">
 <script src="/scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
@@ -16,388 +16,78 @@ var jq15 = jQuery.noConflict();
 <script src="/scripts/happy.js" type="text/javascript"></script>
 <script src="/scripts/happy.methods.js" type="text/javascript"></script>
 <script src="/scripts/jquery_form.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form7.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form6.js" type="text/javascript"></script>
 ~[wc:UI_js_includes]
 ~[wc:guardian_header]
 
-<h1>Home Language, Programs and Services</h1>
+<h1>Previous School and Demographics</h1>
 
 <div id="changes-saved-container">
 </div>
 
 <!-- begin form action -->
-<form class="noSubmitLoading" id="form7" action="changesrecorded.html" method="post">
+<form class="noSubmitLoading" id="form6" action="changesrecorded.html" method="post">
 <input type="hidden" name="backpage" value="regforms" />
 <input type="hidden" name="backtitle" value="Main Registration Page" />
-<input type="hidden" name="nextpage" value="regform8" />
-<input type="hidden" name="nexttitle" value="Page 8 - Medical Information" />
+<input type="hidden" name="nextpage" value="regform7" />
+<input type="hidden" name="nexttitle" value="Page 7 - Home Language, Programs and Services" />
 <!-- end form action -->
-<div id="form7-contents" align="center" style="width: 98%">
-<div id="form7-setup" class="box-round group" style="width: 720px">
+<div id="form6-contents" align="center" style="width: 98%">
+<div id="form6-setup" class="box-round group" style="width: 720px">
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="headerrow"><td colspan="2" class="bold">7. Home Language Survey</td></tr>
-<tr><td colspan="2">The California Education Code contains legal requirements 
-which direct schools to determine the language(s) spoken in the home of each 
-student.  This information is essential in order for schools to 
-provide adequate instructional programs and services.<br/><br/> 
-As parents and guardians, your cooperation is requested in complying with 
-this legal requirement.  Please respond to each of the questions 
-below as accurately as possible.  Do not leave any of questions 7a through 7d
-unanswered.
-</td></tr>
-<tr><td>7a. Which language did your child learn when he/she first began to talk?</td>
-<td><select id="lang_earliest" name="[01]Lang_Earliest">
-<option value="">Choose...
-<option value="00">English
-<option value="01">Spanish
-<option value="16">Farsi (Persian)
-<option value="17">French
-<option value="18">German
-<option value="08">Japanese
-<option value="04">Korean
-<option value="07">Mandarin (Putonghua)
-<option value="05">Pilipino (Tagalog)
-<option value="06">Portuguese
-<option value="28">Punjabi
-<option value="29">Russian
-<option value="52">Serbo-Croatian (Serbian)
-<option value="57">Tigrinya
-<option value="02">Vietnamese
-<option value="56">Albanian
-<option value="37">American Sign Language
-<option value="11">Arabic
-<option value="12">Armenian
-<option value="42">Assyrian
-<option value="58">Bosnian
-<option value="13">Burmese
-<option value="03">Cantonese
-<option value="36">Cebuano (Visayan)
-<option value="54">Chaldean
-<option value="20">Chamorro (Guamanian)
-<option value="39">Chaozhou (Chaochow)
-<option value="14">Croatian
-<option value="15">Dutch
-<option value="19">Greek
-<option value="43">Gujarati
-<option value="21">Hebrew
-<option value="22">Hindi
-<option value="23">Hmong
-<option value="24">Hungarian
-<option value="25">Ilacano
-<option value="26">Indonesian
-<option value="27">Italian
-<option value="09">Khmer (Cambodian)
-<option value="50">Khmu
-<option value="51">Kurdish
-<option value="47">Lahu
-<option value="10">Lao
-<option value="48">Marshallese
-<option value="44">Mien (Yao)
-<option value="49">Mixteco
-<option value="40">Pashto
-<option value="41">Polish
-<option value="45">Rumanian
-<option value="30">Samoan
-<option value="31">Serbian
-<option value="46">Taiwanewe
-<option value="32">Thai
-<option value="53">Toishanese
-<option value="34">Tongan
-<option value="33">Turkish
-<option value="38">Ukranian
-<option value="35">Urdu
-<option value="99">Other Non-English Language</select></td></tr>
-
-<tr><td>7b. What language does your child most frequently speak at home?</td>
-<td><select id="lang_primary" name="[01]CA_PrimaryLanguage">
-<option value="">Choose...
-<option value="00">English
-<option value="01">Spanish
-<option value="16">Farsi (Persian)
-<option value="17">French
-<option value="18">German
-<option value="08">Japanese
-<option value="04">Korean
-<option value="07">Mandarin (Putonghua)
-<option value="05">Pilipino (Tagalog)
-<option value="06">Portuguese
-<option value="28">Punjabi
-<option value="29">Russian
-<option value="52">Serbo-Croatian (Serbian)
-<option value="57">Tigrinya
-<option value="02">Vietnamese
-<option value="56">Albanian
-<option value="37">American Sign Language
-<option value="11">Arabic
-<option value="12">Armenian
-<option value="42">Assyrian
-<option value="58">Bosnian
-<option value="13">Burmese
-<option value="03">Cantonese
-<option value="36">Cebuano (Visayan)
-<option value="54">Chaldean
-<option value="20">Chamorro (Guamanian)
-<option value="39">Chaozhou (Chaochow)
-<option value="14">Croatian
-<option value="15">Dutch
-<option value="19">Greek
-<option value="43">Gujarati
-<option value="21">Hebrew
-<option value="22">Hindi
-<option value="23">Hmong
-<option value="24">Hungarian
-<option value="25">Ilacano
-<option value="26">Indonesian
-<option value="27">Italian
-<option value="09">Khmer (Cambodian)
-<option value="50">Khmu
-<option value="51">Kurdish
-<option value="47">Lahu
-<option value="10">Lao
-<option value="48">Marshallese
-<option value="44">Mien (Yao)
-<option value="49">Mixteco
-<option value="40">Pashto
-<option value="41">Polish
-<option value="45">Rumanian
-<option value="30">Samoan
-<option value="31">Serbian
-<option value="46">Taiwanewe
-<option value="32">Thai
-<option value="53">Toishanese
-<option value="34">Tongan
-<option value="33">Turkish
-<option value="38">Ukranian
-<option value="35">Urdu
-<option value="99">Other Non-English Language</select></td></tr>
-
-<tr><td>7c. What language do you use most frequently to speak to your child?</td>
-<td><select id="lang_spoken" name="[01]Lang_Spoken_To">
-<option value="">Choose...
-<option value="00">English
-<option value="01">Spanish
-<option value="16">Farsi (Persian)
-<option value="17">French
-<option value="18">German
-<option value="08">Japanese
-<option value="04">Korean
-<option value="07">Mandarin (Putonghua)
-<option value="05">Pilipino (Tagalog)
-<option value="06">Portuguese
-<option value="28">Punjabi
-<option value="29">Russian
-<option value="52">Serbo-Croatian (Serbian)
-<option value="57">Tigrinya
-<option value="02">Vietnamese
-<option value="56">Albanian
-<option value="37">American Sign Language
-<option value="11">Arabic
-<option value="12">Armenian
-<option value="42">Assyrian
-<option value="58">Bosnian
-<option value="13">Burmese
-<option value="03">Cantonese
-<option value="36">Cebuano (Visayan)
-<option value="54">Chaldean
-<option value="20">Chamorro (Guamanian)
-<option value="39">Chaozhou (Chaochow)
-<option value="14">Croatian
-<option value="15">Dutch
-<option value="19">Greek
-<option value="43">Gujarati
-<option value="21">Hebrew
-<option value="22">Hindi
-<option value="23">Hmong
-<option value="24">Hungarian
-<option value="25">Ilacano
-<option value="26">Indonesian
-<option value="27">Italian
-<option value="09">Khmer (Cambodian)
-<option value="50">Khmu
-<option value="51">Kurdish
-<option value="47">Lahu
-<option value="10">Lao
-<option value="48">Marshallese
-<option value="44">Mien (Yao)
-<option value="49">Mixteco
-<option value="40">Pashto
-<option value="41">Polish
-<option value="45">Rumanian
-<option value="30">Samoan
-<option value="31">Serbian
-<option value="46">Taiwanewe
-<option value="32">Thai
-<option value="53">Toishanese
-<option value="34">Tongan
-<option value="33">Turkish
-<option value="38">Ukranian
-<option value="35">Urdu
-<option value="99">Other Non-English Language</select></td></tr>
-
-<tr><td>7d. What language is most often spoken by adults in the home?<br/>
-(parents, guardians, grandparents, or any other adults)</td>
-<td><select id="lang_adults" name="[01]Lang_Adults_Primary">
-<option value="">Choose...
-<option value="00">English
-<option value="01">Spanish
-<option value="16">Farsi (Persian)
-<option value="17">French
-<option value="18">German
-<option value="08">Japanese
-<option value="04">Korean
-<option value="07">Mandarin (Putonghua)
-<option value="05">Pilipino (Tagalog)
-<option value="06">Portuguese
-<option value="28">Punjabi
-<option value="29">Russian
-<option value="52">Serbo-Croatian (Serbian)
-<option value="57">Tigrinya
-<option value="02">Vietnamese
-<option value="56">Albanian
-<option value="37">American Sign Language
-<option value="11">Arabic
-<option value="12">Armenian
-<option value="42">Assyrian
-<option value="58">Bosnian
-<option value="13">Burmese
-<option value="03">Cantonese
-<option value="36">Cebuano (Visayan)
-<option value="54">Chaldean
-<option value="20">Chamorro (Guamanian)
-<option value="39">Chaozhou (Chaochow)
-<option value="14">Croatian
-<option value="15">Dutch
-<option value="19">Greek
-<option value="43">Gujarati
-<option value="21">Hebrew
-<option value="22">Hindi
-<option value="23">Hmong
-<option value="24">Hungarian
-<option value="25">Ilacano
-<option value="26">Indonesian
-<option value="27">Italian
-<option value="09">Khmer (Cambodian)
-<option value="50">Khmu
-<option value="51">Kurdish
-<option value="47">Lahu
-<option value="10">Lao
-<option value="48">Marshallese
-<option value="44">Mien (Yao)
-<option value="49">Mixteco
-<option value="40">Pashto
-<option value="41">Polish
-<option value="45">Rumanian
-<option value="30">Samoan
-<option value="31">Serbian
-<option value="46">Taiwanewe
-<option value="32">Thai
-<option value="53">Toishanese
-<option value="34">Tongan
-<option value="33">Turkish
-<option value="38">Ukranian
-<option value="35">Urdu
-<option value="99">Other Non-English Language</select></td></tr>
-
-<tr><td colspan="2">Answer question 7e if there is language
-  other than that answered in question 7d that is
-  spoken by adults in the student's home.</td></tr>
-<tr><td>7e. What additional language, if any, is also spoken 
-by adults in the home?<br/>
-(parents, guardians, grandparents, or any other adults)</td>
-<td><select id="lang_other" name="[01]Lang_Other">
-<option value="">Choose (if applicable)...
-<option value="00">English
-<option value="01">Spanish
-<option value="16">Farsi (Persian)
-<option value="17">French
-<option value="18">German
-<option value="08">Japanese
-<option value="04">Korean
-<option value="07">Mandarin (Putonghua)
-<option value="05">Pilipino (Tagalog)
-<option value="06">Portuguese
-<option value="28">Punjabi
-<option value="29">Russian
-<option value="52">Serbo-Croatian (Serbian)
-<option value="57">Tigrinya
-<option value="02">Vietnamese
-<option value="56">Albanian
-<option value="37">American Sign Language
-<option value="11">Arabic
-<option value="12">Armenian
-<option value="42">Assyrian
-<option value="58">Bosnian
-<option value="13">Burmese
-<option value="03">Cantonese
-<option value="36">Cebuano (Visayan)
-<option value="54">Chaldean
-<option value="20">Chamorro (Guamanian)
-<option value="39">Chaozhou (Chaochow)
-<option value="14">Croatian
-<option value="15">Dutch
-<option value="19">Greek
-<option value="43">Gujarati
-<option value="21">Hebrew
-<option value="22">Hindi
-<option value="23">Hmong
-<option value="24">Hungarian
-<option value="25">Ilacano
-<option value="26">Indonesian
-<option value="27">Italian
-<option value="09">Khmer (Cambodian)
-<option value="50">Khmu
-<option value="51">Kurdish
-<option value="47">Lahu
-<option value="10">Lao
-<option value="48">Marshallese
-<option value="44">Mien (Yao)
-<option value="49">Mixteco
-<option value="40">Pashto
-<option value="41">Polish
-<option value="45">Rumanian
-<option value="30">Samoan
-<option value="31">Serbian
-<option value="46">Taiwanewe
-<option value="32">Thai
-<option value="53">Toishanese
-<option value="34">Tongan
-<option value="33">Turkish
-<option value="38">Ukranian
-<option value="35">Urdu
-<option value="99">Other Non-English Language</select></td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">6a. Previous School Enrollment</td></tr>
+<tr><td colspan="2" class="bold">Name of Previous School (if applicable)</td>
+<td class="bold">Street</td>
+<td class="bold">City</td></tr>
+<tr><td colspan="2"><input type="text" name="[01]Previous_School_Name" value="" size="30" maxlength="30" /></td>
+<td><input type="text" name="[01]Previous_School_Address" value="" size="30" maxlength="50" /></td>
+<td><input type="text" name="[01]Previous_School_City" value="" size="20" /></td></tr>
+<tr><td class="bold">Phone (with area code)</td>
+<td colspan="3"><input type="text" name="[01]Previous_School_Phone" value="" size="16" /></td></tr>
+<tr><td class="bold">Last Grade Level</td>
+<td colspan="3"><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10" /></td></tr>
+<tr><td colspan="2" class="bold">Date student first enrolled in a U.S. school<br/>
+  (Note: leave field blank if a Kentfield school is the first U.S. school)</td>
+<td colspan="2"><input type="text" id="first_usa_school" name="[01]CA_FirstUSASchooling" value="" size="16" /></td>
+<tr><td class="bold" colspan="2"><tr><td class="bold" colspan="2">Has student been enrolled in U.S. schools<br/>for a total of less than 3 years?</td>
+<td colspan="2"><input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="" />No&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="1" />Yes</td></tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="headerrow"><td  colspan="4" class="bold">7f-g. English Language Development</td></tr>
-<tr><td colspan="2">Check the appropriate boxes if your child
-  has received English Language Development services or
-  been given the California English Language Development Test (CELDT).</td><tr>
-<tr>
-<td><input type="checkbox" name="[01]Reg_Prog_ELD" value="1" />7f. English Language Development&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Previous_CELDT" value="1" />7g. CELDT &nbsp;&nbsp;</td>
+<tr class="headerrow"><td class="bold">6b. State Required Demographics: Ethnicity</td></tr>
+<tr><td>Is the student Hispanic or Latino?</td></tr>
+<tr><td><input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="1" />Yes&nbsp;&nbsp;&nbsp;<input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="0" />No</td></tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<tr class="headerrow"><td class="bold">6c. State Required Demographics: Race</td></tr>
+<tr><td>The previous question was about <b>ethnicity</b>, not race.  No matter what you selected above, please continue to answer the following by marking one or more boxes to indicate what you consider your child's racial makeup to be.<br/><br/>What is your child's <b>race?</b> Please check up to five categories from the list below:</td></tr>
+<tr><td>
+		<input type="hidden" name="SaveRace" value="1" />
+		<input type="hidden" name="[01]FedRaceDecline" id="r_none_storage" value="0" /><!-- See 'decline_race' function in raceselection_block.ftl -->
+~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
+	</td>
 </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="headerrow"><td  colspan="4" class="bold">7h-l. Other Programs and Services</td></tr>
-<tr><td colspan="4">Please check the appropriate boxes below if your child has been enrolled in any of these programs or services:</td></tr>
-<tr>
-<td><input type="checkbox" name="[01]Reg_Prog_RSP" value="1" /7h. Resource Special Program&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Prog_SDC" value="1" />7i. Special Day Class&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Prog_Speech" value="1" />7j. Speech/Language&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Prog_504" value="1" />7k. Section 504&nbsp;&nbsp;</td>
-</tr>
-<tr>
-<td><input type="checkbox" name="[01]Reg_Prog_GATE" value="1" />7l. Gifted (GATE)&nbsp;&nbsp;</td>
-<td colspan="3">8h. Other (please describe): <input type="text" name="[01]Reg_Prog_Other" value="" size="30" /></td>
-</tr>
-<tr class="private"><td colspan="4" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form7_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form7_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<tr class="headerrow"><td class="bold">6d. State Required Demographics: Parent Education</td></tr>
+<tr><td>Please select the educational level of the student's <b>most educated parent</b> from the following list:</td><tr>
+<tr><td valign="bottom"><select id="parent_edu" name="[01]CA_ParentEd">
+<option value="">Select One:</option>
+<option value="14">Not a High School Graduate</option>
+<option value="13">High School Graduate</option>
+<option value="12">Some College (includes AA Degree)</option>
+<option value="11">College Graduate</option>
+<option value="10">Graduate School</option>
+<option value="15">Decline to State or Unknown</option>
+</select></td></tr>
+<tr class="private"><td class="bold">Last updated at 
+<input type="text" id="upd_at" name="[01]form6_updated_at" value="" /> by 
+<input type="text" id="upd_by" name="[01]form6_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 ~[if.~(wm_status)=1]
-<tr><td colspan="4" align="right">You do not have permission to modify data on this page.</td></tr>
+<tr><td align="right">You do not have permission to modify data on this page.</td></tr>
 [else]
-<tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
+<tr><td align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 [/if]
 </table>
 </div>
