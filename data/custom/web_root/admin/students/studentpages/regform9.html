@@ -2,7 +2,7 @@
 <html>
 <!-- start right frame -->
 <head>
-<title>Reg Page 09: Authorizations and Permission</title>
+<title>Reg Page 08: Medical Information</title>
 <script src="/scripts/jquery-1.5.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -14,7 +14,7 @@ var jq15 = jQuery.noConflict();
 <script src="/scripts/happy.js" type="text/javascript"></script>
 <script src="/scripts/happy.methods.js" type="text/javascript"></script>
 <script src="/scripts/jquery_form.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form9.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form8.js" type="text/javascript"></script>
 ~[wc:commonscripts]
 <link href="/images/css/screen.css" rel="stylesheet" media="screen">
 <link href="/images/css/print.css" rel="stylesheet" media="print">
@@ -22,114 +22,268 @@ var jq15 = jQuery.noConflict();
 </head>
 
 <body>
-<form class="noSubmitLoading" id="form9" action="/admin/changesrecorded.white.html" method="POST">
+<form class="noSubmitLoading" id="form8" action="/admin/changesrecorded.white.html" method="POST">
 <!-- pscustom_begin -->
-~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Authorizations and Permissions<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Medical Information<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
 <!-- Beginning of title of page -->
-~[wc:title_student_begin_css]Authorizations and Permissions~[wc:title_student_end_css]
+~[wc:title_student_begin_css]Medical Information~[wc:title_student_end_css]
 
 <!-- start of content and bounding box -->
 <div class="box-round">
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
-<tr class="headerrow"><td colspan="6" class="bold">9. Authorizations and Permissions</td></tr>
+<tr><td>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr class="headerrow"><td colspan="5" class="bold">8a. Medications</td></tr>
+<tr><td colspan="2" class="bold">Does the student take medication<br>(at home or at school)?</td>
+<td width="75"><input type="radio" class="requires_meds" name="[01]Requires_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="requires_meds" name="[01]Requires_Meds" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="bold">Medication will be taken at school?</td>
+<td><input type="radio" class="school_meds" name="[01]School_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="school_meds" name="[01]School_Meds" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="staffonly"><td colspan="2" class="bold">Medication in office? <br>(office use only)</td>
+<td><input type="radio" name="[01]school_meds_office" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]school_meds_office" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="staffonly"><td colspan="2" class="bold">Medication in backpack? <br>(office use only)</td>
+<td><input type="radio" name="[01]school_meds_backpack" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]school_meds_backpack" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td colspan="2" class="bold">72-hour medication will be supplied?</td>
+<td><input type="radio" class="emergency_meds" name="[01]Emergency_Meds" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="emergency_meds" name="[01]Emergency_Meds" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="staffonly"><td colspan="2" class="bold">72-hour medication on file?  <br>(office use only)</td>
+<td><input type="radio" name="[01]Emergency_Meds_Complete" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" name="[01]Emergency_Meds_Complete" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="staffonly" valign="top"><td class="bold" colspan="2">Medication Detail</td>
+<td width="75" class="bold">Medication</td>
+<td class="bold">Dosage</td>
+<td class="bold">Hours Given</td>
+</tr>
+<tr class="staffonly" valign="top"><td class="bold" rowspan="3" colspan="2">List medication, dosage,<br>and when medication should be given<br>(office use only; for emergency cards)</td>
+<td><input type="text" name="[01]Med1_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med1_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med1_Hours" value="" size="16"></td>
+</tr>
+<tr class="staffonly"><td><input type="text" name="[01]Med2_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med2_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med2_Hours" value="" size="16"></td>
+</tr>
+<tr class="staffonly"><td><input type="text" name="[01]Med3_Name" value="" size="20"></td>
+<td><input type="text" name="[01]Med3_Dosage" value="" size="16"></td>
+<td><input type="text" name="[01]Med3_Hours" value="" size="16"></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold">Medication Summary<br>(office use only)</td>
+<td colspan="3"><textarea name="[01]Medication_Summary" wrap="soft" cols="40" rows="3"></textarea></td></tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold">Prescriptions<br>(office use only; for PowerTeacher)</td>
+<td colspan="3"><textarea name="[01]Prescriptions" wrap="soft" cols="40" rows="3"></textarea></td></tr>
+</table></td></tr>
 
 <tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="2" align="left">
-<tr><td class="bold">9a. Notice of Parent Rights</td>
-<td><input type="radio" class="annual_notice" name="[01]annual_notice" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="annual_notice" name="[01]annual_notice" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr class="headerrow"><td colspan="4" class="bold">8b. Health Insurance and Providers</td></tr>
+<tr><td width="150" class="bold">Health Insurance Type</td>
+<td width="260"><select id="health_ins" name="[01]Health_Ins_Type">
+  <option value="">Choose...</option>
+  <option value="private">Private Health Insurance</option>
+  <option value="hfamilies">Healthy Families</option>
+  <option value="calkids">California Kids</option>
+  <option value="medi-cal">Medi-Cal</option>
+  <option value="none">No Health Insurance</option>
+</select></td>  
+<td width="102" class="bold">Medi-Cal #<br>
+  (if Applicable)</td>
+<td width="162"><input type="text" name="[01]Medi_Cal_Num" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Preferred Hospital</td>
+<td><input type="text" id="emergency_hospital" name="[01]Emergency_Hospital" value="" size="30"></td>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr><td class="bold">Primary Physician Name</td>
+<td><input type="text" name="[01]Doctor_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Doctor_Phone" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Secondary Physician Name</td>
+<td><input type="text" name="[01]Doctor2_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Doctor2_Phone" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Dentist Name</td>
+<td><input type="text" name="[01]Dentist_Name" value="" size="30"></td>
+<td class="bold">Phone</td>
+<td><input type="text" name="[01]Dentist_Phone" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Health Plan/Group Name</td>
+<td><input type="text" name="[01]Medical_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Medical_Policy" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Dental Plan Name</td>
+<td><input type="text" name="[01]Dental_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Dental_Policy" value="" size="16"></td>
+</tr>
+<tr><td class="bold">Vision Plan Name</td>
+<td><input type="text" name="[01]Optical_Carrier" value="" size="30"></td>
+<td class="bold">Policy #</td>
+<td><input type="text" name="[01]Optical_Policy" value="" size="16"></td>
+</tr>
+</table>
+</td></tr>
 
-<tr><td class="bold">9b. Release of Pupil Directory Information</td>
-<td><input type="radio" class="release_directory_info" name="[01]release_directory_info" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="release_directory_info" name="[01]release_directory_info" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr class="headerrow"><td colspan="5" class="bold">8c. Vision and Hearing</td></tr>
+<tr><td width="150" class="bold">Wears Eyeglasses?</td>
+<td width="100">&nbsp;</td>
+<td width="75"><input type="radio" class="eyeglasses" name="[01]Eyeglasses" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="eyeglasses" name="[01]Eyeglasses" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td class="bold">Eyeglasses are needed for</td>
+<td><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Board" value="1">Board work</td>
+<td><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Reading" value="1">Reading&nbsp;</td>
+<td colspan="2"><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Always" value="1">All the time&nbsp;</td>
+</tr>
+<tr><td class="bold">Date of Last Eye Exam</td>
+<td colspan="4"><input type="text" id="last_eye_exam" name="[01]h_Last_Eye_Exam" value="" size="16"></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Eyeglasses Alert: <br>(office use only)</td>
+<td colspan="3"><textarea name="[01]alert_vision" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Eyeglasses Alert Expires: <br>(Date - office use only)</td>
+<td colspan="3"><input type="text" name="[01]alert_visionexpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]alert_visionexpires)');"> (0/0/0 to never expire)</td>
+</tr>
+<tr><td class="bold">Wears Hearing Aid?</td>
+<td>&nbsp;</td>
+<td><input type="radio" class="hearing_aid" name="[01]h_Hearing_Aid" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="hearing_aid" name="[01]h_Hearing_Aid" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Hearing Aid Alert: <br>(office use only)</td>
+<td colspan="3"><textarea name="[01]alert_hearing" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Hearing Aid Expires: <br>(Date - office use only)</td>
+<td colspan="3"><input type="text" name="[01]alert_hearingexpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]alert_hearingexpires)');"> (0/0/0 to never expire)</td>
+</tr>
+</table>
+</td></tr>
 
-<tr><td class="bold">9c. Permission to Contact Previous School</td>
-<td><input type="radio" class="previous_school_contact" name="[01]previous_school_contact" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="previous_school_contact" name="[01]previous_school_contact" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-  
-<tr><td class="bold">9d. Authorization for Emergency Treatment</td>
-<td width="75"><input type="radio" class="emergency_care" name="[01]emergency_care" value="Yes">Yes&nbsp;&nbsp;</td>
-<td width="75"><input type="radio" class="emergency_care" name="[01]emergency_care" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">Hospital: <input type="text" id="emergency_hospital" name="[01]emergency_hospital" value=""></td></tr>
-
-<tr><td class="bold">9e. Notification of Pesticide Application</td>
-<td><input type="radio" class="ipm_notifications" name="[01]ipm_notifications" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="ipm_notifications" name="[01]ipm_notifications" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9f. Walking Off-Campus Permission Form</td>
-<td><input type="radio" class="off_campus_walks" name="[01]off_campus_walks" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="off_campus_walks" name="[01]off_campus_walks" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9g. Acceptable Use of Technology</td>
-<td><input type="radio" class="acceptable_use" name="[01]acceptable_Use" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="acceptable_use" name="[01]acceptable_Use" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9h. Technology - Computer Use Agreement</td>
-<td><input type="radio" class="computer_use" name="[01]computer_use" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="computer_use" name="[01]computer_use" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9i. Technology - Google Apps</td>
-<td><input type="radio" class="google_apps" name="[01]google_apps" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="google_apps" name="[01]google_apps" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9j. Technology - Social Learning Applications</td>
-<td><input type="radio" class="social_learning" name="[01]social_learning" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="social_learning" name="[01]social_learning" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9k. Publication Permissions - Images</td>
-<td><input type="radio" class="publish_images" name="[01]publish_images" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="publish_images" name="[01]publish_images" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9k. Publication Permissions - Articles</td>
-<td><input type="radio" class="publish_articles" name="[01]publish_articles" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="publish_articles" name="[01]publish_articles" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">9k. Publication Permissions - Works</td>
-<td><input type="radio" class="publish_works" name="[01]publish_works" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="publish_works" name="[01]publish_works" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold staffonly">Internet Publishing Permission</td>
-<td><input type="radio" class="pub_waiver_public" name="[01]Pub_Waiver_Public" value="yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="pub_waiver_public" name="[01]Pub_Waiver_Public" value="no">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold staffonly">Restricted Publishing Permission</td>
-<td><input type="radio" class="pub_waiver_restricted" name="[01]Pub_Waiver_Restricted" value="yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="pub_waiver_restricted" name="[01]Pub_Waiver_Restricted" value="no">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">Responsibility for Student</td>
-<td><input type="radio" class="responsibility_for_student" name="[01]responsibility_for_student" value="Yes">Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="responsibility_for_student" name="[01]responsibility_for_student" value="No">No&nbsp;&nbsp;</td>
-<td colspan="3">&nbsp;</td></tr>
-
-<tr><td class="bold">Signatures (typed)</td>
-<td colspan="5"><input type="text" class="responsibility_sig" name="[01]responsibility_sig_1" value="" size="30" maxlength="60">&nbsp;and&nbsp;<input type="text" name="[01]responsibility_sig_2" value="" size="30" maxlength="60"></td></tr>
-<tr><td class="bold">Date</td>
-<td colspan="5"><input type="text" id="responsibility_date" name="[01]responsibility_date" value="" size="15"></td></tr>
-
-<tr><td colspan="6">&nbsp;</td></tr>
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+<tr class="headerrow"><td colspan="7" class="bold">Medical Conditions</td></tr>
+<tr><td colspan="8">Does the student have any of the following conditions?</td></tr>
+<tr><td width="150" class="bold">8d. Severe Allergies?</td>
+<td width="75"><input type="radio" class="allergies" name="[01]Allergies_Severe" value="1">Yes&nbsp;&nbsp;</td>
+<td width="75"><input type="radio" class="allergies" name="[01]Allergies_Severe" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td width="130" class="bold">Treatment:</td>
+<td width="75"><input type="checkbox" class="allergies_chk" name="[01]Allergies_Epi_Pen" value="1">Epi-Pen&nbsp;</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Benadryl" value="1">Benadryl&nbsp;</td>
+</tr>
+<tr><td class="bold">Allergic To:</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Food" value="1">Food&nbsp;</td>
+<td colspan="3"><input type="checkbox" class="allergies_chk" name="[01]Allergies_Insects" value="">Bees or stinging insects&nbsp;</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Drugs" value="1">Drugs&nbsp;</td>
+<td><input type="checkbox" class="allergies_chk" name="[01]Allergies_Other" value="1">Other&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description of Allergies:</td>
+<td colspan="5"><textarea name="[01]Allergies" class="allergies_chk" id="allergies_txt" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td class="bold">8e. Asthma?</td>
+<td><input type="radio" class="asthma" name="[01]Asthma" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="asthma" name="[01]Asthma" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Treatment:</td>
+<td><input type="checkbox" class="asthma_chk" name="[01]Asthma_Inhaler" value="1">Inhaler&nbsp;</td>
+<td><input type="checkbox" class="asthma_chk" name="[01]Asthma_Medication" value="1">Daily medication&nbsp;</td>
+</tr>
+<tr><td class="bold">8f. Seizures?</td>
+<td><input type="radio" class="seizures" name="[01]Seizures" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="seizures" name="[01]Seizures" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Daily Medication?</td>
+<td><input type="radio" class="seizures_chk" name="[01]Seizures_Medication" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="seizures_chk" name="[01]Seizures_Medication" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr><td class="bold">8g. Diabetes?</td>
+<td><input type="radio" class="diabetes" name="[01]Diabetes" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="diabetes" name="[01]Diabetes" value="">No&nbsp;&nbsp;</td>
+<td>&nbsp;</td>
+<td class="bold">Insulin Dependent?</td>
+<td><input type="radio" class="diabetes_chk" name="[01]Diabetes_Insulin" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="diabetes_chk" name="[01]Diabetes_Insulin" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr class="headerrow"><td class="bold" colspan="7">Other Medical Conditions</td></tr>
+<tr><td colspan="7">Check any applicable boxes and provide details in the text fields.</td></tr>
+<tr><td colspan="5" class="bold">8h. Behavior Problems</td>
+<td><input type="radio" class="behavior" name="[01]Behavior_Problems" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="behavior" name="[01]Behavior_Problems" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Behavior_Issues" class="behavior_chk" id="behavior_txt" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">8i. Movement Limitations</td>
+<td><input type="radio" class="movement" name="[01]Movement_Limits" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="movement" name="[01]Movement_Limits" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Movement_Limits_Desc" class="movement_chk" id="movement_txt" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">8j. Other Conditions</td>
+<td><input type="radio" class="med_other" name="[01]Medical_Other" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="med_other" name="[01]Medical_Other" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description:</td>
+<td colspan="5"><textarea name="[01]Medical_Considerations" class="med_other_chk" id="med_other_txt" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">8k. Recent Illness, Hospitalization or Surgery</td>
+<td><input type="radio" class="illness" name="[01]Illness_Recent" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="illness" name="[01]Illness_Recent" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Dates and Description:</td>
+<td colspan="5"><textarea name="[01]Illness_Desc" class="illness_chk" id="illness_txt" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr><td colspan="5" class="bold">8l. Medical condition requiring care or accommodation at school</td>
+<td><input type="radio" class="med_accom" name="[01]Medical_Accom" value="1">Yes&nbsp;&nbsp;</td>
+<td><input type="radio" class="med_accom" name="[01]Medical_Accom" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr valign="top"><td colspan="2" class="bold">Description and Accommodations:</td>
+<td colspan="5"><textarea name="[01]Medical_Accom_Desc" class="med_accom_chk" id="med_accom_txt" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Medical Alert: <br>(office use only)</td>
+<td colspan="5"><textarea name="[01]alert_medical" wrap="soft" cols="40" rows="3"></textarea></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="5" class="bold office_use_only">Life-threatening? <br>(office use only)</td>
+  <td><input type="radio" name="[01]alert_life_threatening" value="1">Yes&nbsp;&nbsp;</td>
+  <td><input type="radio" name="[01]alert_life_threatening" value="">No&nbsp;&nbsp;</td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Treatment/Action: <br>(office use only)</td>
+<td colspan="5"><input type="text" name="[01]alert_medical_treatment" value="" size="40"></td>
+</tr>
+<tr class="staffonly" valign="top"><td colspan="2" class="bold office_use_only">Alert Expires: <br>(Date - office use only)</td>
+<td colspan="5"><input type="text" name="[01]alert_medicalexpires" value="" size="10" onChange="checkDates('~(JSFieldParam;[01]alert_medicalexpires)');"> (0/0/0 to never expire)</td>
+</tr>
 </table><br><br>
 </td></tr>
 
 <tr class="staffonly"><td class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
 <tr class="staffonly"><td class="bold">Last updated at 
-<input type="text" id="upd_at" class="disabled" name="[01]form9_updated_at" value=""> by 
-<input type="text" id="upd_by" class="disabled" name="[01]form9_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+<input type="text" id="upd_at" class="disabled" name="[01]form8_updated_at" value=""> by 
+<input type="text" id="upd_by" class="disabled" name="[01]form8_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
 </table>
 <br>
