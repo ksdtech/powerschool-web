@@ -1,4 +1,4 @@
-function onForm4Submit() {
+function onForm5Submit() {
   var any_family2 = "";
   var fam2_text, fam2_yes, fam2_no;
   jq15('.copy_address2').each(function (i) {
@@ -60,7 +60,7 @@ function home2_phone_test(val) {
 jq15(document).ready(function () {
   jq15('#form5').isHappy({
     // submitButton: jq15('#attSubmitButton'),
-    onSubmit: onForm4Submit,
+    onSubmit: onForm5Submit,
     fields: {
       '#home2_street': {
         required: 'sometimes',
