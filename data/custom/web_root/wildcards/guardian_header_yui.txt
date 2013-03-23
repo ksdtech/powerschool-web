@@ -59,7 +59,7 @@
 	~[if.pref.nolunchdisplay=1][else]
 	    <li id="btn-balance"><a href="lunchbal.html">~[text:psx.txt.wildcards.guardian_header_yui.balance]</a></li>
 	[/if.pref.nolunchdisplay=1]
-	<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+	<li id="btn-classRegistration"><a href="regform1.html">Registration</a></li>
 	<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
 	<li id="btn-schoolBulletin"><a href="bulletin.html">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
 	<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header_yui.teacher_comments]</a></li>
@@ -126,7 +126,7 @@
 		<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header_yui.teacher_comments]</a></li>
 		<li id="btn-schoolBulletin"><a dialogContent="/guardian/bulletin.html" class="dialogM" title="~[text:psx.txt.wildcards.guardian_header_yui.view_school_bulletin]">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
 		<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
-		<li id="btn-classRegistration"><a href="regforms.html">Registration</a></li>
+		<li id="btn-classRegistration"><a href="regform1.html">Registration</a></li>
 	~[if.pref.nolunchdisplay=1][else]
 		    <li id="btn-balance"><a href="lunchbal.html">~[text:psx.txt.wildcards.guardian_header_yui.balance]</a></li>
 		[/if.pref.nolunchdisplay=1]
