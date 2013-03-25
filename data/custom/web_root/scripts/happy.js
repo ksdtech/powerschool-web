@@ -23,9 +23,16 @@
       }
       if (errors) {
         if (isFunction(config.unHappy)) config.unHappy();
-        
         // PFZ scroll to first error
-        if (config.setErrorFocus) $('.unhappy').first().focus();
+        if (!config.suppressErrorScroll) {
+          var top = $('.unhappy').offset().top;
+          if (top > 60) {
+            top = top - 60;
+          } else {
+            top = 0;
+          }
+          $(window).scrollTop(top);
+        }
         return false;
       }
       if (isFunction(config.onSubmit)) {
