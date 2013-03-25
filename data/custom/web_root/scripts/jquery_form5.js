@@ -14,7 +14,7 @@ function onForm5Submit() {
       }
     });
     if (fam2_text) {
-      fam2_input.val(any_family2);
+      fam2_text.val(any_family2);
     } else {
       fam2_no = jq15("#family2_no");
       if (any_family2 == "1") {

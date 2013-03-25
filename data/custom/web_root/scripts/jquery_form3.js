@@ -12,7 +12,6 @@ jq15(document).ready(function () {
   jq15('#form3').isHappy({
     // submitButton: jq15('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
-    setErrorFocus: true,
     fields: {
       '#dob': {
         required: true,

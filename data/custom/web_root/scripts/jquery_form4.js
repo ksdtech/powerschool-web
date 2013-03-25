@@ -7,8 +7,8 @@ function onForm4Submit() {
   if (no_2nd_family && no_2nd_family.attr("checked")) {
     jq15("#form5_upd_by").val(jq15("#userid").val()); 
     jq15("#form5_upd_at").val(timestamp_now());
-    jq15("#nextpage").val(jq15("alt_#nextpage").val());
-    jq15("#nexttitle").val(jq15("alt_#nexttitle").val());
+    jq15("#nextpage").val(jq15("#alt_nextpage").val());
+    jq15("#nexttitle").val(jq15("#alt_nexttitle").val());
   }
   onRegFormSubmit();
 }

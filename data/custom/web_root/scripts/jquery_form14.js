@@ -35,7 +35,7 @@ jq15(document).ready(function () {
   validateAllFields();
   jq15('#form14').isHappy({
     // submitButton: jq15('#attSubmitButton'),
-    // onSubmit: onRegFormSubmit,
+    onSubmit: onRegFormSubmit,
     fields: {
       '.resp_for_student': {
         required: true,
