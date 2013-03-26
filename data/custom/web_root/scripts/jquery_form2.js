@@ -23,6 +23,34 @@ function required_if_transfering(val) {
   return !error;
 }
 
+function returning_to_grade(gl) {
+  var enrollment = jq15("#reg_enroll option:selected").val();
+  var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
+  if (not_enrolling) {
+    return false;
+  }
+  var grade = jq15("#reg_grade_level option:selected").val();
+  return (grade == gl);
+}
+
+function required_if_6(val) {
+  if (!returning_to_grade("6"))
+    return true;
+  return !(val === '');
+}
+
+function required_if_7(val) {
+  if (!returning_to_grade("7"))
+    return true;
+  return !(val === '');
+}
+
+function required_if_8(val) {
+  if (!returning_to_grade("8"))
+    return true;
+  return !(val === '');
+}
+
 // happy.js validations
 jq15(document).ready(function () {
   jq15('#form2').isHappy({
@@ -39,7 +67,51 @@ jq15(document).ready(function () {
       '#reg_exitcomment': { 
         required: 'sometimes',
         test: required_if_transfering,
-        message: 'Please give the name of the school, or type \"Don\'t know.\"' }
+        message: 'Please give the name of the school, or type \"Don\'t know.\"' },
+      '.electives_6_pa': {
+        required: 'sometimes',
+        test: required_if_6,
+        message: 'Please choose Band or Chorus' },
+      '.electives_7_band': {
+        required: 'sometimes',
+        test: required_if_7,
+        message: 'Please choose Yes or No' },
+      '.electives_7_choir': {
+        required: 'sometimes',
+        test: required_if_7,
+        message: 'Please choose Yes or No' },
+      '.electives_7_mathletes': {
+        required: 'sometimes',
+        test: required_if_7,
+        message: 'Please choose Yes or No' },
+      '.electives_8_band': {
+        required: 'sometimes',
+        test: required_if_8,
+        message: 'Please choose Yes or No' },
+      '.electives_8_choir': {
+        required: 'sometimes',
+        test: required_if_8,
+        message: 'Please choose Yes or No' },
+      '.electives_8_mathletes': {
+        required: 'sometimes',
+        test: required_if_8,
+        message: 'Please choose Yes or No' },
+      '.electives_8_yearbook': {
+        required: 'sometimes',
+        test: required_if_8,
+        message: 'Please choose Yes or No' },
+      '#electives_8_enrich1': {
+        required: 'sometimes',
+        test: required_if_8,
+        message: 'Please choose an enrichment preference' },
+      '#electives_8_enrich1': {
+        required: 'sometimes',
+        test: required_if_8,
+        message: 'Please choose an enrichment preference' },
+      '#electives_8_enrich1': {
+        required: 'sometimes',
+        test: required_if_8,
+        message: 'Please choose an enrichment preference' }
     }
   });
 });
