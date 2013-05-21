@@ -1,0 +1,121 @@
+~[tlist_sql;
+SELECT SN, TS, TS*13+PERSON-2*BITAND(TS*13,PERSON)-16777619 AS TOKEN FROM
+(SELECT STUDENT_NUMBER AS SN, 
+TRUNC(86400*(CAST(SYS_EXTRACT_UTC(SYSTIMESTAMP) AS DATE)-TO_DATE('19700101','YYYYMMDD'))) AS TS,
+TO_NUMBER(SUBSTR(STUDENTPERS_GUID,26,7),'XXXXXXXX') AS PERSON
+FROM STUDENTS
+WHERE ID=~(curstudid))
+]
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Online Report Cards</a></li>
+<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Parent-Teacher Conference Reservations</a></li>
+[/tlist_sql]
+
+<!DOCTYPE html>
+<html>
+<!-- non framed -->
+<head>
+<title>~[text:psx.html.admin_faculty.new.new_staff_member]</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+
+<body>
+
+<form action="home.html" method="POST">
+~[wc:admin_header_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_faculty.new.start_page]</a> &gt; <a href="/admin/faculty/search.html" target="_top">~[text:psx.html.admin_faculty.new.staff]</a> &gt;~[text:psx.html.admin_faculty.new.new_staff_member1]<!-- breadcrumb end -->~[wc:admin_navigation_css]
+
+<h1>~[text:psx.html.admin_faculty.new.new_staff_member2]</h1><!-- start of content and bounding box -->
+<div class="box-round">
+
+<table border="0" cellspacing="0" cellpadding="4">
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.name,param:(Last, First MI)]</td>
+<td><input type="text" name="[05]Last_Name" value="" size="15" maxlength="20">, <input type="text" name="[05]First_Name" value="" size="15" maxlength="20"> <input type="text" name="[05]middle_name" value="" size="10" maxlength="15"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.preferred_name]</td>
+<td><input type="text" name="[05]preferredname" value="" size="15" maxlength="20"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.email_address]</td>
+<td><input type="text" name="[05]email_addr" value="" size="42"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.title]</td>
+<td><input type="text" name="[05]title" value="" size="42"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.gender]</td>
+<td><select name="[05]gender"><option><option value="m">~[text:psx.html.admin_faculty.new.male]<option value="f">~[text:psx.html.admin_faculty.new.female]</select></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.ethnicity]</td>
+<td><select name="[05]Ethnicity" special="lists.ethnicity"></select></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td>Next ID for Bacich</td>
+<td>
+
+</td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.id_]</td>
+<td><input type="text" name="[05]teachernumber" value="" size="9"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.homeroom]</td>
+<td><input type="text" name="[05]homeroom" value="" size="9"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.school]</td>
+<td>~[schoolname]</td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.lunch_id]</td>
+<td><input type="text" name="[05]lunch_id" value="" size="12"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.home_phone_]</td>
+<td><input type="text" name="[05]home_phone" value="" size="18"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.school_phone_]</td>
+<td><input type="text" name="[05]school_phone" value="" size="18"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.street]</td>
+<td><input type="text" name="[05]street" value="" size="42"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.city_state_zip]</td>
+<td><input type="text" name="[05]city" value="" size="26"> <input type="text" name="[05]state" value="" size="2"> <input type="text" name="[05]zip" value="" size="10"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.ssn]</td>
+<td><input type="text" name="[05]ssn" size="15"></td>
+</tr>
+<tr>
+<td class="bold">~[text:psx.html.admin_faculty.new.dob]</td>
+<td><input type="text" class="psDateWidget" name="[05]dob" value="" size="10" maxlength="10"></td>
+</tr>
+<tr bgcolor="#edf3fe">
+<td class="bold">~[text:psx.html.admin_faculty.new.staff_status]</td>
+<td><select name="[05]StaffStatus"><option value="0">~[text:psx.html.admin_faculty.new.not_assigned]<option value="1">~[text:psx.html.admin_faculty.new.teacher]<option value="2">~[text:psx.html.admin_faculty.new.staff1]<option value="3">~[text:psx.html.admin_faculty.new.lunch_staff]<option value="4">~[text:psx.html.admin_faculty.new.substitute]</select></td>
+</tr>
+<tr>
+<td colspan="2" class="bold">~[text:psx.html.admin_faculty.new._required]</td>
+</tr>
+</table>
+<br>
+
+<div class="button-row"><input type="hidden" name="[05]gradebooktype" value="1"><input type="hidden" name="[05]status" value="1"><input type="hidden" name="[05]schoolID" value="~(curschoolID)"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_css]
+</form>
+
+</body>
+</html><!-- non framed -->
