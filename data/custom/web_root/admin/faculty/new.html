@@ -1,15 +1,3 @@
-~[tlist_sql;
-SELECT SN, TS, TS*13+PERSON-2*BITAND(TS*13,PERSON)-16777619 AS TOKEN FROM
-(SELECT STUDENT_NUMBER AS SN, 
-TRUNC(86400*(CAST(SYS_EXTRACT_UTC(SYSTIMESTAMP) AS DATE)-TO_DATE('19700101','YYYYMMDD'))) AS TS,
-TO_NUMBER(SUBSTR(STUDENTPERS_GUID,26,7),'XXXXXXXX') AS PERSON
-FROM STUDENTS
-WHERE ID=~(curstudid))
-]
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Online Report Cards</a></li>
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Parent-Teacher Conference Reservations</a></li>
-[/tlist_sql]
-
 <!DOCTYPE html>
 <html>
 <!-- non framed -->
@@ -53,12 +41,33 @@ WHERE ID=~(curstudid))
 <td class="bold">~[text:psx.html.admin_faculty.new.ethnicity]</td>
 <td><select name="[05]Ethnicity" special="lists.ethnicity"></select></td>
 </tr>
-<tr bgcolor="#edf3fe">
-<td>Next ID for Bacich</td>
-<td>
-
-</td>
+~[tlist_sql;
+SELECT 'District Office' AS SCHOOL_NAME, MAX(TO_NUMBER(TEACHERNUMBER))+1 AS NEXT_ID FROM TEACHERS
+WHERE TEACHERNUMBER>=102000 AND TEACHERNUMBER<=102999
+]
+<tr>
+<td>Next ID at ~(SCHOOL_NAME)</td>
+<td>~(NEXT_ID)</td>
 </tr>
+[/tlist_sql]
+~[tlist_sql;
+SELECT 'Bacich' AS SCHOOL_NAME, MAX(TO_NUMBER(TEACHERNUMBER))+1 AS NEXT_ID FROM TEACHERS
+WHERE TEACHERNUMBER>=103000 AND TEACHERNUMBER<=103999
+]
+<tr>
+<td>Next ID at ~(SCHOOL_NAME)</td>
+<td>~(NEXT_ID)</td>
+</tr>
+[/tlist_sql]
+~[tlist_sql;
+SELECT 'Kent' AS SCHOOL_NAME, MAX(TO_NUMBER(TEACHERNUMBER))+1 AS NEXT_ID FROM TEACHERS
+WHERE TEACHERNUMBER>=104000 AND TEACHERNUMBER<=104999
+]
+<tr>
+<td>Next ID at ~(SCHOOL_NAME)</td>
+<td>~(NEXT_ID)</td>
+</tr>
+[/tlist_sql]
 <tr bgcolor="#edf3fe">
 <td class="bold">~[text:psx.html.admin_faculty.new.id_]</td>
 <td><input type="text" name="[05]teachernumber" value="" size="9"></td>
