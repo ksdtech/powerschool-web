@@ -229,8 +229,10 @@ function roundFloat(number, decimals) {
 
 // This function picks up the click and opens the corresponding info window
 function sideBarClick(i) {
-  var win = new google.maps.InfoWindow({content: loader.htmls_[i]});
-  win.open(loader.map_, loader.markers_[i]);
+  if (loader) {
+    var win = new google.maps.InfoWindow({content: loader.htmls_[i]});
+    win.open(loader.map_, loader.markers_[i]);
+  }
 }
 
 function geocodingResultHTML(result) {
@@ -267,37 +269,44 @@ function geocodingResultHTML(result) {
 }
 
 function codeAddress(sn, full_address, title, html, debugNodeId, callback) {
-  loader.geocode( { 'address': full_address }, function(results, status) {
-    var debugNode = null;
-    if (debugNodeId) {
-      debugNode = document.getElementById(debugNodeId);
-    }
-    if (status == google.maps.GeocoderStatus.OK) {
-      var point = results[0].geometry.location;
-      loader.createMarker(point, title, html);
-      var neighborhood = loader.findPolygon(point);
-      if (neighborhood == '') {
-        neighborhood = 'Unknown';
+  if (loader) {
+    loader.geocode( { 'address': full_address }, function(results, status) {
+      var debugNode = null;
+      if (debugNodeId) {
+        debugNode = document.getElementById(debugNodeId);
       }
-      if (debugNode) {
-        debugNode.innerHTML += geocodingResultHTML(results[0]);
+      if (status == google.maps.GeocoderStatus.OK) {
+        var point = results[0].geometry.location;
+        loader.createMarker(point, title, html);
+        var neighborhood = loader.findPolygon(point);
+        if (neighborhood == '') {
+          neighborhood = 'Unknown';
+        }
+        if (debugNode) {
+          debugNode.innerHTML += geocodingResultHTML(results[0]);
+        }
+        if (callback) {
+          callback({ status: "OK", geocoding: results[0], neighborhood: neighborhood });
+        }
+      } else {
+        if (debugNode) {
+          debugNode.innerHTML += "Geocode for " + sn + " was not successful: " + status + "<br/>";
+        }
+        if (callback) {
+          callback({ status: status, gecoding: null, neighborhood: 'Unknown' });
+        }
       }
-      if (callback) {
-        callback({ status: "OK", geocoding: results[0], neighborhood: neighborhood });
-      }
-    } else {
-      if (debugNode) {
-        debugNode.innerHTML += "Geocode for " + sn + " was not successful: " + status + "<br/>";
-      }
-      if (callback) {
-        callback({ status: status, gecoding: null, neighborhood: 'Unknown' });
-      }
-    }
-  });
+    });
+  }
 }
 
 // Called by window.onload
 function loadMapData(basemapData, mapNodeId, callback) {
-  loader = new MapLoader(basemapData, {}, mapNodeId, callback);
-  loader.createMap();
+  try {
+    // creates problems on Internet Explorer 8, at least
+    loader = new MapLoader(basemapData, {}, mapNodeId, callback);
+    loader.createMap();
+  } catch(err) {
+    loader = null;
+  }
 }
