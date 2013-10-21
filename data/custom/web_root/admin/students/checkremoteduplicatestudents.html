@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<!-- non framed -->
+<head>
+    <title>~[text:psx.html.admin_students.checkremoteduplicatestudents.check_for_duplicate_students]</title>
+    ~[wc:UI_js_includes]    
+    ~[wc:commonscripts]
+    <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+~[get_js_texts:psx.html.admin_students.checkremoteduplicatestudents.]
+~[get_js_texts:psx.html.admin_students.checkremoteduplicatestudents.]
+
+</head>
+
+<body>
+
+<form id="enrollForm" action="~[if.~[gpv:dupchecktype]=enroll]~[x:state_enrollmentpage][else]/admin/students/home.html[/if]"
+      method="POST">
+~[wc:admin_header_css]
+<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.checkremoteduplicatestudents.start_page]</a> &gt; <a
+        href="/admin/functions.html" target="_top">~[text:psx.html.admin_students.checkremoteduplicatestudents.special_functions]</a> &gt; <a href="/admin/students/newstudent.html">~[text:psx.html.admin_students.checkremoteduplicatestudents.enroll____new_student]</a> &gt;~[text:psx.html.admin_students.checkremoteduplicatestudents.check_for_duplicate_students1]<!-- breadcrumb end -->
+~[wc:admin_navigation_css]
+
+<h1>~[text:psx.html.admin_students.checkremoteduplicatestudents.check_for_duplicate_students2]</h1><!-- start of content and bounding box -->
+<div id="feedback-message"></div>
+<div class="box-round">
+<h2>~[text:psx.html.admin_students.checkremoteduplicatestudents.check_for_duplicate_students]</h2>
+<div id="studentSearchTableHolderId">
+~[text:psx.html.admin_students.checkremoteduplicatestudents.wait_locating_student_matches]
+</div>
+
+<div class="button-row">
+            <input type="hidden" name="ac" value="eEnrollNotDup">
+            <input type="hidden" id="lastFirstId" name="[01]LastFirst" value="[lastfirst]">
+            <input type="hidden" id="stateStudentNumberId" name="[01]State_StudentNumber" value="[state_studentnumber]">
+            <input type="hidden" id="studentNumberId" name="[01]Student_Number" value="[student_number]">
+            <input type="hidden" id="ssnId" name="[01]SSN" value="[ssn]">
+            <input type="hidden" id="dobId" name="[01]DOB" value="[dob]">
+            <input type="hidden" id="genderId" name="[01]gender" value="[gender]">
+            <input type="hidden" id="sisLocatorId" name="[Students.C_STUDENTLOCATOR]PREV_LOCATOR" value="">
+            <input type="hidden" name="[01]Home_Phone" value="[home_phone]">
+            <input type="hidden" name="[01]EntryDate" value="[entrydate]">
+            <input type="hidden" name="[01]Grade_Level" value="[grade_level]">
+            <input type="hidden" name="[01]EntryCode" value="[entrycode]">
+            <input type="hidden" name="[01]fteid" value="[fte]">
+            <input type="hidden" name="[01]Fee_Exemption_Status" value="[Fee_Exemption_Status]">
+            <input type="hidden" name="[01]track" value="[track]">
+            <input type="hidden" name="[01]districtofresidence" value="[districtofresidence]">
+            <input type="hidden" name="[01]MembershipShare" value="[MembershipShare]">
+			<input type="hidden" id="ethnicityID" value="~[gpv:ethnicity]"/>
+			<input type="hidden" id="raceID" value="~[gpv:race]"/>
+			
+			<input type="hidden" name="queryId" value="" id="queryId">
+			<input type="hidden" id="buSisLocatorId" name="prev_locator" value="">
+            <input type="hidden" id="buLastFirstId" name="BU_LastFirst" value="[lastfirst]">
+            <input type="hidden" id="buStateStudentNumberId" name="BU_State_StudentNumber" value="[state_studentnumber]">
+            <input type="hidden" id="buStudentNumberId" name="BU_Student_Number" value="[student_number]">
+            <input type="hidden" id="buSsnId" name="BU_SSN" value="[ssn]">
+            <input type="hidden" id="buDobId" name="BU_DOB" value="[dob]">
+            <input type="hidden" id="buGenderId" name="BU_gender" value="[gender]">
+            <input type="hidden" id="buGradeLevelId" name="BU_Grade_Level" value="[grade_level]">
+            <input type="hidden" id="buSisLocatorId" name="buSisLocator" value="">
+			<input type="hidden" id="buDistrictNumberId" value="[pref]districtnumber" >
+			<input type="hidden" id="buSchoolId" value="~(currschoolid)">
+			
+            [state_specific_flds]
+            [insert_state_post_values]
+            
+            <!-- fields added to customized newstudent.html -->
+            <input type="hidden" name="[01]CA_BirthPlace_City" value="~[gpv:CA_BirthPlace_City]">
+            <input type="hidden" name="[01]CA_BirthPlace_StateProvince" value="~[gpv:CA_BirthPlace_StateProvince]">
+            <input type="hidden" name="[01]CA_BirthCountry" value="~[gpv:CA_BirthCountry]">
+            <input type="hidden" name="[01]CA_PrimaryResidence" value="~[gpv:CA_PrimaryResidence]">
+            <input type="hidden" name="[01]CA_ParentEd" value="~[gpv:CA_ParentEd]">
+
+			<a class="button" id="btnEnrollId">~[text:psx.html.admin_students.checkremoteduplicatestudents.next]</a>
+</div>
+<!-- end of content of bounding box -->
+<!-- These fields bring data over from the new student page, family management fields -->
+<input type="hidden" name="addfromexisting" value="~[gpv:addfromexisting]">
+<input type="hidden" name="doLink" value="~[gpv:doLink]">
+<input type="hidden" name="includeStudentLastName" value="~[gpv:includeStudentLastName]">
+<input type="hidden" name="dupchecktype" value="~[gpv:dupchecktype]">
+<input type="hidden" name="[01]Family_Ident" value="~[gpv:FamilyID_T]">
+<input type="hidden" name="[01]Mother" value="~[gpv:MomsName_t]">
+<input type="hidden" name="[01]Father" value="~[gpv:DadsName_t]">
+<input type="hidden" name="[01]guardian_ln" value="~[gpv:GuardianLastName_t]">
+<input type="hidden" name="[01]guardian_fn" value="~[gpv:GuardianFirstName_t]">
+
+<input type="hidden" name="GuardianLastName_t" value="~[gpv:GuardianLastName_t]">
+<input type="hidden" name="GuardianFirstName_t" value="~[gpv:GuardianFirstName_t]">
+
+
+<input type="hidden" id="pstreet" name="[01]Street" value="~[gpv:Street_t]">
+<input type="hidden" id="pcity" name="[01]City" value="~[gpv:City_t]">
+<input type="hidden" id="pstate" name="[01]State" value="~[gpv:State_t]">
+<input type="hidden" id="pzip" name="[01]Zip" value="~[gpv:Zip_t]">
+<input type="hidden" id="pgeocode" name="[01]Geocode" value="~[gpv:Geocode_t]">
+
+
+<input type="hidden" name="SiblingLastName_t" value="~[gpv:SiblingLastName_t]">
+<input type="hidden" name="SiblingFirstName_t" value="~[gpv:SiblingFirstName_t]">
+<input type="hidden" name="phone" value="[home_phone]">
+
+</div>
+<script type="text/javascript">
+require(['recordexchange/main-min'], function (s) {
+	var o = new s({module: 'StudentLocator'});
+	o.init();
+});
+</script>
+
+~[wc:admin_footer_css]
+
+</body>
+</html><!-- non framed -->

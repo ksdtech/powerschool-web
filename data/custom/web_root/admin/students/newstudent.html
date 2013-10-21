@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<!-- non framed -->
+<head>
+    <title>~[text:psx.html.admin_students.newstudent.enroll_new_student]</title>
+
+    <style type="text/css" title="text/css">
+        <!--
+        headerrow {
+            border-width: 1pt;
+        }
+        -->
+    </style>
+    ~[wc:UI_js_includes]
+    ~[wc:commonscripts]
+    <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+    <script type="text/javascript">
+        <!--
+        function updatecheckbox()
+        {
+            var putnamehere = document.getElementById("insertlastnamehere");
+            if (putnamehere !== null)
+            {
+                var lastname = document.getElementById('last').value;
+                var newval = "";
+                if (lastname !== "")
+                {
+                    newval = "(" + lastname + ")";
+                }
+
+                putnamehere.innerHTML = newval;
+            }
+        }
+        //-->
+    </script>
+
+    <!-- TODO: marsmc begin -->
+    <script type="text/javascript">
+        var selectedAdapter = "~[displaypref:mappingadapter.selected]";
+        var mapKey = "~[x:selectedmappingadapterkey]";
+        var addrType="p";
+    </script>
+    ~[x:renderboundaryobject]
+
+    <!--<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;~[x:selectedmappingadapterkey]" type="text/javascript"></script>-->
+    ~[get_js_texts:psx.js.admin_validation.validationCommon.]
+    <script language="JavaScript" src="/admin/validation/validationCommon.js"></script>
+
+</head>
+
+<body>
+
+<form id="studentEnrollmentForm" action="checkduplicatestudents.html" onsubmit="return validateStudentEnrollment()" method="POST">
+~[wc:admin_header_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.newstudent.start_page]</a> &gt; <a
+        href="/admin/functions.html" target="_top">~[text:psx.html.admin_students.newstudent.special_functions]</a> &gt;~[text:psx.html.admin_students.newstudent.enroll_new_student1]<!-- breadcrumb end -->
+~[wc:admin_navigation_css]
+
+<h1>~[text:psx.html.admin_students.newstudent.enroll_new_student2]</h1>
+<ul class="feedback-alert">
+<li id="last_name_required_error">~[text:psx.html.admin_students.newstudent.you_did_not_enter_a_name_for_this_student]</li>
+<li id="grade_level_required_error">~[text:psx.html.admin_students.newstudent.you_did_not_enter_a_grade_level_for_this_student]</li>
+<li id="invalid_enrollment_date_error">~[text:psx.html.admin_students.newstudent.you_did_not_enter_an_enrollment_date]</li>
+<li id="invalid_fte_error">~[text:psx.html.admin_students.newstudent.you_must_select_a_fulltime_equivalency]</li>
+</ul>
+ <script type="text/javascript">
+	 function hideErrors(){
+	 	$j('#last_name_required_error').hide();
+	 	$j('#grade_level_required_error').hide();
+	 	$j('#invalid_enrollment_date_error').hide();
+	 	$j('#invalid_fte_error').hide();
+	 }
+     hideErrors();
+ </script>
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+            <table border="0" cellspacing="0" cellpadding="4" width="600">
+                <tr class="headerrow">
+                    <td colspan="2" class="bold">~[text:psx.html.admin_students.newstudent.student_information]</td>
+                </tr>
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.students_name]<br>~[text:psx.html.admin_students.newstudent.last_first_mi]</td>
+                    <td>
+                        <input type="text" ~[getValidation:students.last_name] name="last" id="last" value="" size="25" maxlength="50" onBlur="updatecheckbox()">,
+                        <input type="text" ~[getValidation:students.first_name] name="first" id ="first" value="" size="25" maxlength="50">
+                        <input type="text" ~[getValidation:students.middle_name] name="middle" id="middle" value="" size="15" maxlength="30">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.dob]</td>
+                    <td><input type="text" ~[getValidation:students.dob] name="DOB" value="" size="10"></td>
+                </tr>
+                <tr bgcolor="#edf3fe">
+					<td class="bold">~[text:psx.html.admin_students.newstudent.gender]</td>
+					<td><select name="gender" ~[getValidation:students.gender]>
+						<option value="">
+						<option value="M">~[text:psx.html.admin_students.newstudent.male]<option value="F">~[text:psx.html.admin_students.newstudent.female]</select></td>
+				</tr>
+                <tr>
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.student_number]</td>
+                    <td><input type="text" name="student_number" ~[getValidation:students.student_number] value="" size="12"> ~[text:psx.html.admin_students.newstudent.if_this_field_is_left_blank_the_system_will_assign_the_stude]
+                    </td>
+                </tr>
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.social_security_number]</td>
+                    <td><input type="text" name="SSN" ~[getValidation:students.ssn] value="" size="17"></td>
+                </tr>
+                <tr>
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.phone_number]</td>
+                    <td><input type="text" ~[getValidation:students.home_phone] name="Phone" value="" size="17"></td>                    
+                </tr>
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.enrollment_date]</td>
+                    <td><input type="text" ~[getValidation:students.entrydate] name="entrydate" id="entrydate" value="~[short.date]" size="10"></td>
+                </tr>
+                <tr>
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.fulltime_equivalency]</td>
+                    <td>~[if.district.office]~[text:psx.html.admin_students.newstudent.fte_selection_can_only_occur_within_a_______________________][else]~[custompopup;name=fteid;list=att_ftegetlist]<em style="font-size: 150%; margin-left: 5px">*</em>[/if.district.office]
+                    </td>
+                </tr>
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.grade_level]</td>
+                    <td>~[custompopup;name=grade_level;list=gradelevels]</td>
+                </tr>
+                <tr>
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.entry_code]</td>
+                    <td>~[custompopup.entrycodes.lists.entrycodes]</td>
+                </tr>
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.track]</td>
+                    <td>~[custompopup;name=track;list=tracks.blank]</td>
+                </tr>
+                <tr>
+                    <td class="bold"><a href="/admin/districts/" target="_top">~[text:psx.html.admin_students.newstudent.district_of_residence]</a></td>
+                    <td>~[custompopup;name=districtofresidence;list=lists.districts]</td>
+
+
+                    <!-- TODO: marsmc start-->
+                    <script type="text/javascript">
+                        YAHOO.namespace ("powerschool");
+
+                        function attachDistrictBehaviors()
+                        {
+                            YAHOO.util.Event.addListener(document.forms[0].elements["districtofresidence"], 'change', reCheckBoundaries);
+                        }
+
+                        YAHOO.util.Event.addListener( window, 'load', attachDistrictBehaviors );
+
+                        function reCheckBoundaries()
+                        {
+                            displayMembershipIconsNewEnrollment("pgeocode");
+                        }
+                    </script>
+                    <!-- TODO: marsmc end-->
+                </tr>
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.fee_exemption_status]</td>
+                    <td><select name="Fee_Exemption_Status">
+                        <option value="0">~[text:psx.html.admin_students.newstudent.student_not_exempted]<option value="1">~[text:psx.html.admin_students.newstudent.student_exempted_from_course_fees]<option value="2">~[text:psx.html.admin_students.newstudent.student_exempted_from_school_fees]<option value="3">~[text:psx.html.admin_students.newstudent.student_exempted_from_all_fees]</select></td>
+                </tr>
+                <tr>
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.school]</td>
+                    <td>~[schoolname]</td>
+                </tr>
+
+                <!-- Start insert state specific log information -->
+                ~[x:insertfile;state/newstudent~[displaypref:districtstate].html]
+                <!-- End insert state specific log information -->
+
+                <!-- Make sure in these custom fields, NOT to use the [01] prefix in the field names -->
+                <!-- Also must be added to checkduplicatestudents.html and checkremoteduplicatestudents.html -->
+                <!-- See https://powersource.pearsonschoolsystems.com/article/66963?from=search -->
+                <tr>
+                    <td class="bold">Birth City</td>
+                    <td><input type="text" id="birth_city" name="CA_BirthPlace_City" value="" size="20" maxlength="30" /></td>
+                </tr>
+                
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">Birth State</td>
+                    <td><select id="birth_state" name="CA_BirthPlace_StateProvince">
+                <option value="">State (US, Canada or Mexico):</option>
+                <option value="US-AL">Alabama</option>
+                <option value="US-AK">Alaska</option>
+                <option value="US-AZ">Arizona</option>
+                <option value="US-AR">Arkansas</option>
+                <option value="US-CA">California</option>
+                <option value="US-CO">Colorado</option>
+                <option value="US-CT">Connecticut</option>
+                <option value="US-DE">Delaware</option>
+                <option value="US-DC">District of Columbia</option>
+                <option value="US-FL">Florida</option>
+                <option value="US-GA">Georgia</option>
+                <option value="US-HI">Hawaii</option>
+                <option value="US-ID">Idaho</option>
+                <option value="US-IL">Illinois</option>
+                <option value="US-IN">Indiana</option>
+                <option value="US-IA">Iowa</option>
+                <option value="US-KS">Kansas</option>
+                <option value="US-KY">Kentucky</option>
+                <option value="US-LA">Louisiana</option>
+                <option value="US-ME">Maine</option>
+                <option value="US-MD">Maryland</option>
+                <option value="US-MA">Massachusetts</option>
+                <option value="US-MI">Michigan</option>
+                <option value="US-MN">Minnesota</option>
+                <option value="US-MS">Mississippi</option>
+                <option value="US-MO">Missouri</option>
+                <option value="US-MT">Montana</option>
+                <option value="US-NE">Nebraska</option>
+                <option value="US-NV">Nevada</option>
+                <option value="US-NH">New Hampshire</option>
+                <option value="US-NJ">New Jersey</option>
+                <option value="US-NM">New Mexico</option>
+                <option value="US-NY">New York</option>
+                <option value="US-NC">North Carolina</option>
+                <option value="US-ND">North Dakota</option>
+                <option value="US-OH">Ohio</option>
+                <option value="US-OK">Oklahoma</option>
+                <option value="US-OR">Oregon</option>
+                <option value="US-PA">Pennsylvania</option>
+                <option value="US-RI">Rhode Island</option>
+                <option value="US-SC">South Carolina</option>
+                <option value="US-SD">South Dakota</option>
+                <option value="US-TN">Tennessee</option>
+                <option value="US-TX">Texas</option>
+                <option value="US-UT">Utah</option>
+                <option value="US-VT">Vermont</option>
+                <option value="US-VA">Virginia</option>
+                <option value="US-WA">Washington</option>
+                <option value="US-WV">West Virginia</option>
+                <option value="US-WI">Wisconsin</option>
+                <option value="US-WY">Wyoming</option>
+                <option value="CA-AB">Alberta</option>
+                <option value="CA-BC">British Columbia</option>
+                <option value="CA-MB">Manitoba</option>
+                <option value="CA-NB">New Brunswick</option>
+                <option value="CA-NL">Newfoundland</option>
+                <option value="CA-NS">Nova Scotia</option>
+                <option value="CA-NT">North West Territories</option>
+                <option value="CA-ON">Ontario</option>
+                <option value="CA-PE">Prince Edward Island</option>
+                <option value="CA-QC">Quebec</option>
+                <option value="CA-SK">Saskatchewan</option>
+                <option value="CA-YT">Yukon</option>
+                <option value="MX-AGU">Aguascalientes</option>
+                <option value="MX-BCN">Baja California Norte</option>
+                <option value="MX-BCS">Baja California Sur</option>
+                <option value="MX-CHH">Chihuahua</option>
+                <option value="MX-COL">Colima</option>
+                <option value="MX-CAM">Campeche</option>
+                <option value="MX-CHP">Chiapas</option>
+                <option value="MX-COA">Coahuila</option>
+                <option value="MX-DIF">Distrito Federal</option>
+                <option value="MX-DUR">Durango</option>
+                <option value="MX-GRO">Guerrero</option>
+                <option value="MX-GUA">Guanajuato</option>
+                <option value="MX-HID">Hidalgo</option>
+                <option value="MX-JAL">Jalisco</option>
+                <option value="MX-MIC">Michoacan</option>
+                <option value="MX-MOR">Morelos</option>
+                <option value="MX-MEX">Mexico State</option>
+                <option value="MX-NAY">Nayarit</option>
+                <option value="MX-NLE">Nuevo Leon</option>
+                <option value="MX-OAX">Oaxaca</option>
+                <option value="MX-PUE">Puebla</option>
+                <option value="MX-QUE">Queretaro</option>
+                <option value="MX-ROO">Quintana Roo</option>
+                <option value="MX-SIN">Sinaloa</option>
+                <option value="MX-SLP">San Luis Potosi</option>
+                <option value="MX-SON">Sonora</option>
+                <option value="MX-TAB">Tabasco</option>
+                <option value="MX-TLA">Tlaxcala</option>
+                <option value="MX-TAM">Tamaulipas</option>
+                <option value="MX-VER">Veracruz</option>
+                <option value="MX-YUC">Yucatan</option>
+                <option value="MX-ZAC">Zacatecas</option>
+                </select></td>
+                </tr>
+                
+                <tr>
+                    <td class="bold">Birth Country</td>
+                    <td><select id="birth_country" name="CA_BirthCountry">
+                <option value="">Country:</option>
+                <option value="US">United States</option>
+                <option value="AC">Ascension Island</option>
+                <option value="AF">Afghanistan</option>
+                <option value="AX">Aland Islands</option>
+                <option value="AL">Albania</option>
+                <option value="DZ">Algeria</option>
+                <option value="AS">American Samoa</option>
+                <option value="AR">Argentina</option>
+                <option value="AM">Armenia</option>
+                <option value="AW">Aruba</option>
+                <option value="AU">Australia</option>
+                <option value="AT">Austria</option>
+                <option value="AZ">Azerbaijan</option>
+                <option value="BS">Bahamas</option>
+                <option value="BH">Bahrain</option>
+                <option value="BD">Bangladesh</option>
+                <option value="BB">Barbados</option>
+                <option value="BY">Belarus</option>
+                <option value="BE">Belgium</option>
+                <option value="BZ">Belize</option>
+                <option value="BJ">Benin</option>
+                <option value="BM">Bermuda</option>
+                <option value="BT">Bhutan</option>
+                <option value="BO">Bolivia</option>
+                <option value="BA">Bosnia and Herzegovina</option>
+                <option value="BW">Botswana</option>
+                <option value="BV">Bouvet Island</option>
+                <option value="BR">Brazil</option>
+                <option value="IO">British Indian Ocean Territory</option>
+                <option value="BN">Brunei Darussalam</option>
+                <option value="BG">Bulgaria</option>
+                <option value="BF">Burkina Faso</option>
+                <option value="BI">Burundi</option>
+                <option value="KH">Cambodia</option>
+                <option value="CM">Cameroon</option>
+                <option value="CA">Canada</option>
+                <option value="CV">Cape Verde</option>
+                <option value="KY">Cayman Islands</option>
+                <option value="CF">Central African Republic</option>
+                <option value="TD">Chad</option>
+                <option value="CL">Chile</option>
+                <option value="CN">China</option>
+                <option value="CX">Christmas Island</option>
+                <option value="CP">Clipperton Island</option>
+                <option value="CC">Cocos (Keeling) Islands</option>
+                <option value="CO">Colombia</option>
+                <option value="KM">Comoros</option>
+                <option value="CG">Congo</option>
+                <option value="CD">Congo, Democratic Republic</option>
+                <option value="CK">Cook Islands</option>
+                <option value="CR">Costa Rica</option>
+                <option value="CI">Cote d'Ivoire</option>
+                <option value="HR">Croatia</option>
+                <option value="CU">Cuba</option>
+                <option value="CY">Cyprus</option>
+                <option value="CZ">Czech Republic</option>
+                <option value="DK">Denmark</option>
+                <option value="DG">Diego Garcia</option>
+                <option value="DJ">Djibouti</option>
+                <option value="DM">Dominica</option>
+                <option value="DO">Dominican Republic</option>
+                <option value="TP">East Timor</option>
+                <option value="EC">Ecuador</option>
+                <option value="EG">Egypt</option>
+                <option value="SV">El Salvador</option>
+                <option value="GQ">Equatorial Guinea</option>
+                <option value="ER">Eritrea</option>
+                <option value="EE">Estonia</option>
+                <option value="ET">Ethiopia</option>
+                <option value="FK">Falkland Islands</option>
+                <option value="FO">Faroe Islands</option>
+                <option value="FJ">Fiji</option>
+                <option value="FI">Finland</option>
+                <option value="FR">France</option>
+                <option value="GF">French Guiana</option>
+                <option value="PF">French Polynesia</option>
+                <option value="TF">French Southern Territories</option>
+                <option value="GA">Gabon</option>
+                <option value="GM">Gambia</option>
+                <option value="GE">Georgia</option>
+                <option value="DE">Germany</option>
+                <option value="GH">Ghana</option>
+                <option value="GI">Gibraltar</option>
+                <option value="GR">Greece</option>
+                <option value="GL">Greenland</option>
+                <option value="GD">Grenada</option>
+                <option value="GP">Guadeloupe</option>
+                <option value="GU">Guam</option>
+                <option value="GT">Guatemala</option>
+                <option value="GN">Guinea</option>
+                <option value="GW">Guinea-Bissau</option>
+                <option value="GG">Gurnsey</option>
+                <option value="GY">Guyana</option>
+                <option value="HT">Haiti</option>
+                <option value="HM">Heard and Mc Donald Islands</option>
+                <option value="VA">Holy See - Vatican City</option>
+                <option value="HN">Honduras</option>
+                <option value="HK">Hong Kong</option>
+                <option value="HU">Hungary</option>
+                <option value="IS">Iceland</option>
+                <option value="IN">India</option>
+                <option value="ID">Indonesia</option>
+                <option value="IR">Iran</option>
+                <option value="IQ">Iraq</option>
+                <option value="IE">Ireland</option>
+                <option value="IM">Isle of Man</option>
+                <option value="IL">Israel</option>
+                <option value="IT">Italy</option>
+                <option value="JM">Jamaica</option>
+                <option value="JP">Japan</option>
+                <option value="JE">Jersey</option>
+                <option value="JO">Jordan</option>
+                <option value="KZ">Kazakstan</option>
+                <option value="KE">Kenya</option>
+                <option value="KI">Kiribati</option>
+                <option value="KP">Korea, North</option>
+                <option value="KR">Korea, South</option>
+                <option value="KW">Kuwait</option>
+                <option value="KG">Kyrgyzstan</option>
+                <option value="LA">Laos</option>
+                <option value="LV">Latvia</option>
+                <option value="LB">Lebanon</option>
+                <option value="LS">Lesotho</option>
+                <option value="LR">Liberia</option>
+                <option value="LY">Libya</option>
+                <option value="LI">Liechtenstein</option>
+                <option value="LT">Lithuania</option>
+                <option value="LU">Luxembourg</option>
+                <option value="MO">Macau</option>
+                <option value="MK">Macedonia</option>
+                <option value="MG">Madagascar</option>
+                <option value="MW">Malawi</option>
+                <option value="MY">Malaysia</option>
+                <option value="MV">Maldives</option>
+                <option value="ML">Mali</option>
+                <option value="MT">Malta</option>
+                <option value="MH">Marshall Islands</option>
+                <option value="MQ">Martinique</option>
+                <option value="MR">Mauritania</option>
+                <option value="MU">Mauritius</option>
+                <option value="YT">Mayotte</option>
+                <option value="MX">Mexico</option>
+                <option value="FM">Micronesia</option>
+                <option value="MD">Moldova</option>
+                <option value="MC">Monaco</option>
+                <option value="MN">Mongolia</option>
+                <option value="MS">Montserrat</option>
+                <option value="MA">Morocco</option>
+                <option value="MZ">Mozambique</option>
+                <option value="MM">Myanmar</option>
+                <option value="NA">Namibia</option>
+                <option value="NR">Nauru</option>
+                <option value="NP">Nepal</option>
+                <option value="NL">Netherlands</option>
+                <option value="AN">Netherlands Antilles</option>
+                <option value="NC">New Caledonia</option>
+                <option value="NZ">New Zealand</option>
+                <option value="NI">Nicaragua</option>
+                <option value="NE">Niger</option>
+                <option value="NG">Nigeria</option>
+                <option value="NU">Niue</option>
+                <option value="NF">Norfolk Island</option>
+                <option value="MP">Northern Mariana Islands</option>
+                <option value="NO">Norway</option>
+                <option value="OM">Oman</option>
+                <option value="PK">Pakistan</option>
+                <option value="PW">Palau</option>
+                <option value="PS">Palestinian Territory</option>
+                <option value="PA">Panama</option>
+                <option value="PG">Papua New Guinea</option>
+                <option value="PY">Paraguay</option>
+                <option value="PE">Peru</option>
+                <option value="PH">Philippines</option>
+                <option value="PN">Pitcairn</option>
+                <option value="PL">Poland</option>
+                <option value="PT">Portugal</option>
+                <option value="PR">Puerto Rico</option>
+                <option value="QA">Qatar</option>
+                <option value="RE">Reunion</option>
+                <option value="RO">Romania</option>
+                <option value="RU">Russia</option>
+                <option value="RW">Rwanda</option>
+                <option value="BL">St. Barthélemy</option>
+                <option value="SH">St. Helena</option>
+                <option value="KN">St. Kitts and Nevis</option>
+                <option value="LC">St. Lucia</option>
+                <option value="MF">St. Martin</option>
+                <option value="PM">St. Pierre and Miquelon</option>
+                <option value="VC">St. Vincent - Grenadines</option>
+                <option value="WS">Samoa (Independent)</option>
+                <option value="SM">San Marino</option>
+                <option value="ST">Sao Tome and Principe</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="SN">Senegal</option>
+                <option value="SC">Seychelles</option>
+                <option value="SL">Sierra Leone</option>
+                <option value="SG">Singapore</option>
+                <option value="SK">Slovakia</option>
+                <option value="SI">Slovenia</option>
+                <option value="SB">Solomon Islands</option>
+                <option value="SO">Somalia</option>
+                <option value="ZA">South Africa</option>
+                <option value="GS">South Georgia - South Sandwich</option>
+                <option value="ES">Spain</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="SD">Sudan</option>
+                <option value="SR">Suriname</option>
+                <option value="SJ">Svalbard - Jan Mayen Islands</option>
+                <option value="SZ">Swaziland</option>
+                <option value="SE">Sweden</option>
+                <option value="CH">Switzerland</option>
+                <option value="SY">Syria</option>
+                <option value="TW">Taiwan</option>
+                <option value="TJ">Tajikistan</option>
+                <option value="TZ">Tanzania</option>
+                <option value="TH">Thailand</option>
+                <option value="TG">Togo</option>
+                <option value="TK">Tokelau</option>
+                <option value="TO">Tonga</option>
+                <option value="TT">Trinidad and Tobago</option>
+                <option value="TA">Tristan da Cunha</option>
+                <option value="TN">Tunisia</option>
+                <option value="TR">Turkey</option>
+                <option value="TM">Turkmenistan</option>
+                <option value="TC">Turks and Caicos Islands</option>
+                <option value="TV">Tuvalu</option>
+                <option value="UG">Uganda</option>
+                <option value="UA">Ukraine</option>
+                <option value="AE">United Arab Emirates</option>
+                <option value="GB">United Kingdom</option>
+                <option value="UM">United States Minor Islands</option>
+                <option value="UY">Uruguay</option>
+                <option value="UZ">Uzbekistan</option>
+                <option value="VU">Vanuatu</option>
+                <option value="VE">Venezuela</option>
+                <option value="VN">Viet Nam</option>
+                <option value="VG">Virgin Islands (British)</option>
+                <option value="VI">Virgin Islands (U.S.)</option>
+                <option value="WF">Wallis and Futuna Islands</option>
+                <option value="EH">Western Sahara</option>
+                <option value="YE">Yemen</option>
+                <option value="YU">Yugoslavia</option>
+                <option value="ZR">Zaire</option>
+                <option value="ZM">Zambia</option>
+                <option value="ZW">Zimbabwe</option>
+                <option value="ZZ">Unspecified or Unknown</option>
+                </select></td>
+                </tr>
+
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">Primary Residence</td>
+                    <td><select id="primary_residence" name="CA_PrimaryResidence">  <option value="">Select One:</option>
+                <option value="200">(200) Permanent Housing</option>
+                <option value="100">(100) Temporary Shelters</option>
+                <option value="110">(110) Hotels/Motels</option>
+                <option value="120">(120) Temporarily Doubled Up</option>
+                <option value="130">(130) Temporarily Unsheltered</option>
+                <option value="210">(210) Foster Family Home or Kinship Placement</option>
+                <option value="220">(220) Licensed Children's Institution</option>
+                <option value="230">(230) Residential School/Dormitory</option>
+                <option value="240">(240) Health Institution</option>
+                <option value="250">(250) Incarceration Institution</option>
+                <option value="260">(260) Development Center</option>
+                <option value="270">(270) State Hospital</option>
+                <option value="300">(300) Other</option>
+                <option value="310">(310) Unknown</option>
+                </select></td>
+                </tr>
+                
+                <tr>
+                    <td class="bold">Parent/Guardian Highest Education Level</td>
+                    <td><select id="parent_edu" name="CA_ParentEd">
+                <option value="">Select One:</option>
+                <option value="14">Not a High School Graduate</option>
+                <option value="13">High School Graduate</option>
+                <option value="12">Some College (includes AA Degree)</option>
+                <option value="11">College Graduate</option>
+                <option value="10">Graduate School</option>
+                <option value="15">Decline to State or Unknown</option>
+                </select></td>
+                </tr>
+                        <!-- Family Management Starts Here -->
+                        ~[if.module.fmly]
+                        ~[wc:FMLY_EnrollData]
+                        [/if.module.fmly]
+                        <!-- Family Management Ends Here -->
+
+               <!-- TODO: beginning of address validation -->
+                <tr bgcolor="#f6f6f6">
+                    <td colspan="2" class="bold">~[text:psx.html.admin_students.newstudent.home_address]</td>
+                </tr>
+                <tr bgcolor="#edf3fe">
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.street_aptsuite]</td>
+                    <td>
+                        <input type="text" ~[getValidation:students.street] name="Street_t" size="45" id="pstreet" value="">
+                        <input type="text" name="" value="" size="10" id="papt">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bold">~[text:psx.html.admin_students.newstudent.city_state_zip]</td>
+                    <td>
+                        <input type="text" ~[getValidation:students.city] name="City_t" value="" size="30" id="pcity">
+                        <input type="text" ~[getValidation:students.state] name="State_t" value="~[displaypref:districtstate]" size="2" id="pstate">
+                        <input type="text" ~[getValidation:students.zip] name="Zip_t" value="" size="10" id="pzip">
+
+                        <input type="hidden" name="orig_street" value="" id="orig_pstreet">
+                        <input type="hidden" name="orig_city" value="" id="orig_pcity">
+                        <input type="hidden" name="orig_state" value="~[displaypref:districtstate]" id="orig_pstate">
+                        <input type="hidden" name="orig_zip" value="" id="orig_pzip">
+				
+                        <input type="hidden" value="" id="lastName">
+                        <input type="hidden" value="" id="firstName">
+                        <input type="hidden" value="" id="middleName">
+                        <input type="hidden" value="true" id="performingEnrollment">
+                        <input type="hidden" value="" id="raceID" name="race"/>
+                        <input type="hidden" value="" id="ethnicityID" name="ethnicity"/>
+                        <input type="hidden" id="enrollmentSchoolName" value="~[x:schoolname]"/>
+                    </td>
+                </tr>
+
+                ~[if.~[displaypref:mappingadapter.selected]=""]
+                [else]
+                    <tr bgcolor="#edf3fe">
+                        <td class="bold">~[text:psx.html.admin_students.newstudent.geocode]</td>
+                        <td>
+                            <input type="hidden" name="Geocode_t" value="" id="pgeocode" size="50"/>
+
+                            <div id="pgeocodehtml"></div>
+                            <div id="boundaryIconDiv"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" id="validatePrimaryAddress" value="~[textq:psx.html.admin_students.newfees.validate]" onclick="doValidate()">
+                        </td>
+                    </tr>
+                [/if]
+
+                <script type="text/javascript">
+
+                    function doValidate()
+                    {
+                        document.getElementById("lastName").value = document.getElementById("last").value;
+                        document.getElementById("firstName").value = document.getElementById("first").value;
+                        document.getElementById("middleName").value = document.getElementById("middle").value;
+                        openValidationWindow('p');
+                    }
+
+                    function validateStudentEnrollment(){
+                    	hideErrors();
+                    	var validated = true;
+                        var last = $j('#last').val();
+                    	if(($j.trim(last)).length == 0){
+                    		showError('#last_name_required_error');
+                    		validated = false;
+                    	}
+                    	var gradeLevel = $j('select[name="grade_level"]').val();
+                    	if(($j.trim(gradeLevel)).length == 0){
+                    		showError('#grade_level_required_error');
+                    		validated = false;
+                    	}
+                     
+                     
+                    	var entryDate = $j('#entrydate').val();
+                    	if(($j.trim(entryDate)).length == 0){
+                        	showError('#invalid_enrollment_date_error')
+                        	validated = false;
+                    	}
+                    	
+                    	
+
+                    	var fteId = $j('select[name="fteid"]').val();
+                    	if(($j.trim(fteId)).length == 0 || fteId == "0"){
+                    		showError('#invalid_fte_error')
+                    		validated = false;
+                    	}
+
+                    	if(validated){
+                    		loadingDialog();
+                    		joinApartment(); //always returns true
+                    		return validated;
+                    	}
+                    	else{
+	                    	$j(document).scrollTop(0);
+	                    	return validated;
+                    	}
+                    	
+                    }
+                     
+	                 
+	                 function showError(errorId){
+	                    	$j(errorId).show();
+	                 }
+                </script>
+                <!-- TODO: end of address validation -->            
+
+
+			</table>
+        <div class="button-row"><input type="hidden" name="ac" value="eEnrollCheckDup"><input type="hidden" name="dupchecktype" value="enroll"><input type="hidden" name="doftevalidation">~[submitbutton]</div>
+</div>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_css]
+</form>
+~[if.~[displaypref:mappingadapter.selected]=""]
+[else]
+<script type="text/javascript">
+    addYuiButton("validatePrimaryAddress", doValidate);
+</script>
+[/if]
+<script type="text/javascript">
+require(['recordexchange/main-min'], function (s) {
+	var o = new s({module: 'RecordExchangeEnabled'});
+	o.init();
+});
+</script>
+</body>
+</html><!-- non framed -->

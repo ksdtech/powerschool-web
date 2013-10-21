@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<!-- non framed -->
+<head>
+    <title>~[text:psx.html.admin_students.checkduplicatestudents.check_for_duplicate_students]</title>
+    ~[wc:UI_js_includes]    
+    ~[wc:commonscripts]
+    <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+
+</head>
+
+<body>
+
+<form action="~[if.~[gpv:dupchecktype]=enroll]~[x:state_enrollmentpage][else]/admin/students/home.html[/if]"
+      method="POST">
+~[wc:admin_header_css]
+<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.checkduplicatestudents.start_page]</a> &gt; <a
+        href="/admin/functions.html" target="_top">~[text:psx.html.admin_students.checkduplicatestudents.special_functions]</a> &gt; <a href="/admin/students/newstudent.html">~[text:psx.html.admin_students.checkduplicatestudents.enroll____new_student]</a> &gt;~[text:psx.html.admin_students.checkduplicatestudents.check_for_duplicate_students1]<!-- breadcrumb end -->
+~[wc:admin_navigation_css]
+
+<h1>~[text:psx.html.admin_students.checkduplicatestudents.check_for_duplicate_students2]</h1><!-- start of content and bounding box -->
+<div class="box-round">
+<h2>~[text:psx.html.admin_students.checkduplicatestudents.check_for_duplicate_students]</h2>
+            <table border="0" cellspacing="0" cellpadding="4" class="grid">
+                <tr bgcolor="#f6f6f6">
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.student]<br>~[text:psx.html.admin_students.checkduplicatestudents.number]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.name]<br>~[text:psx.html.admin_students.checkduplicatestudents.last_first]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.school]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.dob]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.ssn]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.home]<br>~[text:psx.html.admin_students.checkduplicatestudents.phone]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.entry]<br>~[text:psx.html.admin_students.checkduplicatestudents.date]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.exit]<br>~[text:psx.html.admin_students.checkduplicatestudents.date1]</td>
+                    <td class="bold" rowspan="2">~[text:psx.html.admin_students.checkduplicatestudents.enroll]<br>~[text:psx.html.admin_students.checkduplicatestudents.status]</td>
+                    <td class="bold" colspan="3">~[text:psx.html.admin_students.checkduplicatestudents.matched_by]</td>
+                </tr>
+                <tr bgcolor="#f6f6f6">
+                    <td class="bold">~[text:psx.html.admin_students.checkduplicatestudents.last]<br>~[text:psx.html.admin_students.checkduplicatestudents.name1]<br>~[text:psx.html.admin_students.checkduplicatestudents.dob1]</td>
+                    <td class="bold">~[text:psx.html.admin_students.checkduplicatestudents.ssn1]</td>
+                    <td class="bold">~[text:psx.html.admin_students.checkduplicatestudents.phone1]</td>
+                </tr>
+                <tr align="center" bgcolor="#edf3fe">
+                    <td>[studentnumber]</td>
+                    <td align="left">[namecolumn]</td>
+                    <td>[studschoolabbr]</td>
+                    <td>[dob-date]</td>
+                    <td>[SSNumber]</td>
+                    <td>[homephonenum]</td>
+                    <td>[entry-date]</td>
+                    <td>[exit-date]</td>
+                    <td>[enrollstatus]</td>
+                    <td>[lastnamematch]</td>
+                    <td>[ssnmatch]</td>
+                    <td>[phonematch]</td>
+                </tr>
+                            </table>
+                    ~[if.~[gpv:dupchecktype]=enroll]
+                        <p>~[text:psx.html.admin_students.checkduplicatestudents.if_you_find_a_match_for_this_student_in_the_list_above_click]~[text:psx.html.admin_students.checkduplicatestudents.students_name_to_reenroll_that_student_or_to_go_to_the_stude]</p><p>~[text:psx.html.admin_students.checkduplicatestudents.if_no_match_is_found_click_on_the_enroll_button_below_to_pro]</p>
+                    [else]
+                        <p>~[text:psx.html.admin_students.checkduplicatestudents.if_you_find_a_match_for_this_student_in_the_list_above_click1]~[text:psx.html.admin_students.checkduplicatestudents.students_name____________________________to_go_to_the_studen]~[text:psx.html.admin_students.checkduplicatestudents.to_transfer__to_,param:[lastfirst],param:[schoolname]]~[text:psx.html.admin_students.checkduplicatestudents.click_on_the_transfer_button_below]</p>
+                    [/if]
+
+<div class="button-row">
+            ~[if.~[gpv:dupchecktype]=enroll]
+            <input type="hidden" name="ac" value="eEnrollNotDup">
+            <input type="hidden" name="[01]LastFirst" value="[lastfirst]">
+            <input type="hidden" name="[01]Student_Number" value="[student_number]">
+            <input type="hidden" name="[01]SSN" value="[ssn]">
+            <input type="hidden" name="[01]DOB" value="[dob]">
+            <input type="hidden" name="[01]gender" value="[gender]">
+            <input type="hidden" name="[01]Home_Phone" value="[home_phone]">
+            <input type="hidden" name="[01]EntryDate" value="[entrydate]">
+            <input type="hidden" name="[01]Grade_Level" value="[grade_level]">
+            <input type="hidden" name="[01]EntryCode" value="[entrycode]">
+            <input type="hidden" name="[01]fteid" value="[fte]">
+            <input type="hidden" name="[01]Fee_Exemption_Status" value="[Fee_Exemption_Status]">
+            <input type="hidden" name="[01]track" value="[track]">
+            <input type="hidden" name="[01]districtofresidence" value="[districtofresidence]">
+            <input type="hidden" name="[01]MembershipShare" value="[MembershipShare]">
+
+            [state_specific_flds]
+            [insert_state_post_values]
+            [insert_custom_and_extended_values]
+
+            <!-- fields added to customized newstudent.html -->
+            <input type="hidden" name="[01]CA_BirthPlace_City" value="~[gpv:CA_BirthPlace_City]">
+            <input type="hidden" name="[01]CA_BirthPlace_StateProvince" value="~[gpv:CA_BirthPlace_StateProvince]">
+            <input type="hidden" name="[01]CA_BirthCountry" value="~[gpv:CA_BirthCountry]">
+            <input type="hidden" name="[01]CA_PrimaryResidence" value="~[gpv:CA_PrimaryResidence]">
+            <input type="hidden" name="[01]CA_ParentEd" value="~[gpv:CA_ParentEd]">
+            
+            <button type="submit" id="btnEnroll" name="btnEnroll">~[text:psx.html.admin_students.checkduplicatestudents.enroll]</button>
+            [else]
+            <input type="hidden" name="ac" value="transfertasots">
+            <input type="hidden" name="dothisfor" value="single">
+            <input type="hidden" name="curstudid" value="~[gpv:dothisfor]">
+            <input type="hidden" name="schoolid" value="~[gpv:schoolid]">
+            <button type="button" name="transfer" id="btnTransfer">~[text:psx.html.admin_students.checkduplicatestudents.transfer]</button>
+            [/if]
+</div>
+<!-- end of content of bounding box -->
+<!-- These fields bring data over from the new student page, family management fields -->
+<input type="hidden" name="addfromexisting" value="~[gpv:addfromexisting]">
+<input type="hidden" name="doLink" value="~[gpv:doLink]">
+<input type="hidden" name="includeStudentLastName" value="~[gpv:includeStudentLastName]">
+<input type="hidden" name="dupchecktype" value="~[gpv:dupchecktype]">
+<input type="hidden" name="[01]Family_Ident" value="~[gpv:FamilyID_T]">
+<input type="hidden" name="[01]Mother" value="~[gpv:MomsName_t]">
+<input type="hidden" name="[01]Father" value="~[gpv:DadsName_t]">
+<input type="hidden" name="[01]guardian_ln" value="~[gpv:GuardianLastName_t]">
+<input type="hidden" name="[01]guardian_fn" value="~[gpv:GuardianFirstName_t]">
+<input type="hidden" name="[01]Guardianship" value="~[gpv:Guardianship]">
+
+<input type="hidden" name="GuardianLastName_t" value="~[gpv:GuardianLastName_t]">
+<input type="hidden" name="GuardianFirstName_t" value="~[gpv:GuardianFirstName_t]">
+
+
+<input type="hidden" id="pstreet" name="[01]Street" value="~[gpv:Street_t]">
+<input type="hidden" id="pcity" name="[01]City" value="~[gpv:City_t]">
+<input type="hidden" id="pstate" name="[01]State" value="~[gpv:State_t]">
+<input type="hidden" id="pzip" name="[01]Zip" value="~[gpv:Zip_t]">
+<input type="hidden" id="pgeocode" name="[01]Geocode" value="~[gpv:Geocode_t]">
+
+
+<input type="hidden" name="SiblingLastName_t" value="~[gpv:SiblingLastName_t]">
+<input type="hidden" name="SiblingFirstName_t" value="~[gpv:SiblingFirstName_t]">
+<input type="hidden" name="phone" value="[home_phone]">
+
+<!-- fields added to customized newstudent.html -->
+<input type="hidden" name="[01]CA_BirthPlace_City" value="~[gpv:CA_BirthPlace_City]">
+<input type="hidden" name="[01]CA_BirthPlace_StateProvince" value="~[gpv:CA_BirthPlace_StateProvince]">
+<input type="hidden" name="[01]CA_BirthCountry" value="~[gpv:CA_BirthCountry]">
+<input type="hidden" name="[01]CA_PrimaryResidence" value="~[gpv:CA_PrimaryResidence]">
+<input type="hidden" name="[01]CA_ParentEd" value="~[gpv:CA_ParentEd]">
+
+</div>
+~[wc:admin_footer_css]
+
+</body>
+</html><!-- non framed -->
