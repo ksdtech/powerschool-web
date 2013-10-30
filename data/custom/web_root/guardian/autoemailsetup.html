@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text:psx.html.guardian.autoemailsetup.email_notifications_]</title>
+~[wc:UI_js_includes]
+~[wc:guardian_header]
+
+  <h1>~[text:psx.html.guardian.autoemailsetup.email_notifications] ~(studentname)</h1>
+  <!-- title -->
+  ~[if.isstudent]
+  <!-- don't allow students to change guardian email settings. -->
+  <!-- start of content and bounding box -->
+  <p>~[text:psx.html.guardian.autoemailsetup.your_account_does_not_allow_access_to_this_page]</p>
+  <!-- end of content of bounding box -->
+  [else]
+  ~[if.isguardianAndSSOEnabled]
+      
+    ~[brij_renderform:guardian-accountmanagement-pkg;:EditEmailSettings;:guardian-accountmanagement-pkg;:SaveEmailSettings]
+    
+[else]
+  <div id="parent-email-setup" class="box-round group">
+    <!-- start parent content-->
+    <form action="changesrecorded.html" method="POST" id="parent-email-setup">
+      <fieldset class="inline">
+      <div class="alt not-inline">
+      <div><label>~[text:psx.html.guardian.autoemailsetup.what_information_would_you_like_to_receive]</label></div>
+      <div>
+        <input type="checkbox" name="[01]autosend_summary" value="yes" />~[text:psx.html.guardian.autoemailsetup.summary_of_current_grades_and_attendance]</div>
+      <div>
+        <input type="checkbox" name="[01]Autosend_gradedetail" value="yes" />~[text:psx.html.guardian.autoemailsetup.detailed_reports_showing_all_assignment_scores_for_each_clas]</div>
+      <div>
+        <input type="checkbox" name="[01]Autosend_attendancedetail" value="yes" />~[text:psx.html.guardian.autoemailsetup.detailed_report_of_attendance]</div>
+        <div>
+        <input type="checkbox" name="[01]AutoSend_schoolannouncements" value="yes" />~[text:psx.html.guardian.autoemailsetup.school_announcements]</div>
+        <div>
+        <input type="checkbox" name="[01]Autosend_balancealert" value="yes" />~[text:psx.html.guardian.autoemailsetup.balance_alert_note_will_only_be_sent_when_a_student_is_low_o]</div>
+      </div>
+      <div>
+        <label>~[text:psx.html.guardian.autoemailsetup.how_often]</label>
+        <select name="[01]autosend_howoften">
+          <option value="0">~[text:psx.html.guardian.autoemailsetup.never]</option>
+          <option value="7">~[text:psx.html.guardian.autoemailsetup.once_a_week]</option>
+          <option value="14">~[text:psx.html.guardian.autoemailsetup.once_every_two_weeks]</option>
+          <option value="30">~[text:psx.html.guardian.autoemailsetup.once_a_month]</option>
+          <option value="1">~[text:psx.html.guardian.autoemailsetup.daily]</option>
+        </select>
+      </div>
+      <div>
+        <label>~[text:psx.html.guardian.autoemailsetup.send_now]</label>
+        <input type="checkbox" name="sendnow" value="yes">~[text:psx.html.guardian.autoemailsetup.yes]</div>
+      <div>
+        <label>~[text:psx.html.guardian.autoemailsetup.email_addresses]</label>
+        <input type="text" name="[01]guardianemail" value="" size="36">
+        <span class="input-note">~[text:psx.html.guardian.autoemailsetup.separate_multiple_email_addresses_with_commas]</span> </div>
+      <input type="hidden" name="ac" value="autosendupdate">
+      
+      </fieldset>
+      <div class="button-row">
+      <button type="submit" value="Submit">Submit</button>
+      </div>
+    </form>
+  </div>
+[/if]
+<!-- end parent content -->
+[/if.isstudent]
+<!-- end of title and student content -->
+
+<input id="activeNav" type="hidden" value="#btn-emailNotification"/>
+~[wc:guardian_footer]
+</body>
+</html>

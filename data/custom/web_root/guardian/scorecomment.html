@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>~[text:psx.html.guardian.scorecomment.view_score_comment]</title>
+    <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+
+<body class="popUp">
+<div class="box-round">
+            <h2>~[text:psx.html.guardian.scorecomment.score_comment]</h2>
+
+            <table  width="99%" class="linkDescList">
+                <tr>
+                    <td>~[text:psx.html.guardian.scorecomment.teacher]</td>
+                    <td>~[sectioninfo:~([92]sectionid);teachername]</td>
+                </tr>
+                <tr>
+                    <td>~[text:psx.html.guardian.scorecomment.course]</td>
+                    <td>~[sectioninfo:~([92]sectionid);coursename]</td>
+                </tr>
+                <tr>
+                    <td>~[text:psx.html.guardian.scorecomment.assignment_name]</td>
+                    <td>~([92]name)</td>
+                </tr>
+                <tr>
+                    <td>~[text:psx.html.guardian.scorecomment.date_due]</td>
+                    <td>~([92]datedue)</td>
+                </tr>
+                <tr valign="baseline">
+                    <td>~[text:psx.html.guardian.scorecomment.comment]</td>
+                    <td><pre>~(comment)</pre></td>
+                </tr>
+            </table>
+
+<div class="button-row right">
+	<a href="javascript:window.close()" class="button">~[text:psx.html.guardian.scorecomment.close]</a>
+</div>
+</div>
+<div id="footer">
+      ~[wc:legal_copyright]
+</div>
+
+</body>
+</html>

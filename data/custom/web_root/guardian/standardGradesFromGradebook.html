@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text:psx.html.guardian.standardGradesFromGradebook.standards_grades_]</title>
+~[wc:guardian_header_yui]
+~[SetPostValue:selectedTab=StandardsGrades]
+~[SetPostValue:showSGFGradebook=true]
+~[brij_render:common-ps;:GuardianHomeTabs]
+	
+
+<h1>~[text:psx.html.guardian.standardGradesFromGradebook.standards_grades] ~(studentname)</h1>
+<!-- title -->
+<div width="100%" align="center">
+~[if.~[gpv:showCompleted]="false"]
+ <a href="/guardian/standardGradesFromGradebook.html?showCompleted=true" align="center">~[text:psx.html.guardian.standardGradesFromGradebook.show_completed_classes]</a>
+ [else]
+ <a href="/guardian/standardGradesFromGradebook.html?showCompleted=false" align="center">~[text:psx.html.guardian.standardGradesFromGradebook.hide_completed_classes]</a>
+ [/if]
+</div>
+<!-- start of content and bounding box -->
+
+<!-- start of content -->
+<div id="brij-standards">
+~[brij_render:incident;:StudentStandardScoresPublic]
+</div>
+<!-- end of content -->
+<!-- end of content of bounding box -->
+
+<input id="activeNav" type="hidden" value="#btn-gradesAttendance"/>
+
+~[wc:UI_tooltips]
+~[wc:guardian_footer_yui]
+</body>
+</html>

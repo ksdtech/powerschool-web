@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text:psx.html.guardian.scores2.class_score_detail_]</title>
+~[wc:guardian_header]
+<style type="text/css">
+SPAN.bold-underline a {
+font-weight: bold; 
+text-decoration : underline;
+}
+</style>
+<!-- start of title and student content -->
+
+  <h1>~[text:psx.html.guardian.scores2.class_score_detail] ~(studentname)</h1>
+  <!-- title -->
+  <!-- start student content -->
+  <table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
+    <tr>
+      <th>~[text:psx.html.guardian.scores2.course]</th>
+      <th>~[text:psx.html.guardian.scores2.teacher]</th>
+      <th>~[text:psx.html.guardian.scores2.expression]</th>
+      <th colspan="4">~[text:psx.html.guardian.scores2.final_grade]</th>
+    </tr>
+    <tr bgcolor="#edf3fe">
+      <td>~[sectioninfo:~(sectionid);coursename]</td>
+      <td>~[sectioninfo:~(sectionid);teachername]</td>
+      <td>~(*class_expression frn="~(relsectionfrn)")</td>
+      <td colspan="4">~[if.~[dbval;table=termbins;field=suppressltrgrd;*storecode=~[gpv:fg];*termid=~(termid);*schoolid=~(schoolid)]#true]
+        ~[decode;~(frn);031@;~[code.localize:GradeScaleItem,param:~(grade),param:~(grade),param:column=name] (~(percent;format=numeric)%);
+        ~[code.localize:GradeScaleItem,param:~(final.grade;~[gpv:fg]),param:~(final.grade;~[gpv:fg]),param:column=name] (~(final.pct;~[gpv:fg])%)]
+        [else]~[decode;~(frn);031@;~(percent;format=numeric);~(final.pct;~[gpv:fg])]%[/if]</td>
+    </tr>
+  </table>
+  <!-- only one of the next two <td> rows are rendered.  Must do this since comments can contain ; or : and break 4D's parser-->
+  <p style="display:~[decode;~(frn);031@;inline;none]"><strong>~[text:psx.html.guardian.scores2.teacher_comments]</strong></p><div class="comment"><pre>~(comment)</pre></div>
+  <p style="display:~[decode;~(frn);031@;none;inline]"><strong>~[text:psx.html.guardian.scores2.teacher_comments1]</strong></p><div class="comment"><pre>~(final.comment;~[gpv:fg])</pre></div>
+  <p><strong>~[text:psx.html.guardian.scores2.section_description]</strong></p><div class="comment"><pre>~([03]teacherdescr)</pre></div>
+  <table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
+    <tr>
+      <th>~[text:psx.html.guardian.scores2.due_date]</th>
+      <th>~[text:psx.html.guardian.scores2.category]</th>
+      <th>~[text:psx.html.guardian.scores2.assignment]</th>
+      <th>~[text:psx.html.guardian.scores2.score]</th>
+      <th>%</th>
+      <th>~[text:psx.html.guardian.scores2.grd]</th>
+    </tr>
+    <tr bgcolor="#edf3fe">~[x:studentscores]
+      <td>[duedate]</td>
+      <td>[category]</td>
+      <td>[assignment]</td>
+      <td align="center"><span class="bold-underline">[score]</span></td>
+      <td align="right">[percent]</td>
+      <td align="center">[grade]</td>
+    </tr>
+    <tr>
+      <td colspan="6" align="center">~[if.~(frn)=031@]~[text:psx.html.guardian.scores2.grade_stored_on,param:~(datestored)][else]~[text:psx.html.guardian.scores2.grades_last_updated_on,param:~(LastGradeUpdate)][/if]</td>
+    </tr>
+  </table>
+  <!-- end student content -->
+  <!-- end of title and student content -->
+
+~[wc:guardian_footer]
+</body>
+</html>

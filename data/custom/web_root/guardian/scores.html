@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text:psx.html.guardian.scores.class_score_detail_]</title>
+~[wc:guardian_header]
+~[SetPostValue:selectedTab=GradesAndAttendance]
+~[if.prefschool.sgshowpa=1]~[SetPostValue:showSGFGradebook=false][else]~[SetPostValue:showSGFGradebook=true][/if.prefschool.sgshowpa=1]
+~[brij_render:common-ps;:GuardianHomeTabs]
+
+<!-- start of title and student content -->
+
+  <h1>~[text:psx.html.guardian.scores.class_score_detail]</h1>
+  <!-- title -->
+  <!-- start student content -->
+  <table border="0" cellpadding="0" cellspacing="0" width="99%" class="linkDescList">
+    <tr class="center">
+      <th>~[text:psx.html.guardian.scores.course]</th>
+      <th>~[text:psx.html.guardian.scores.teacher]</th>
+      <th>~[text:psx.html.guardian.scores.expression]</th>
+      <th>~[text:psx.html.guardian.scores.final_grade]<sup>1</sup></th>
+    </tr>
+    <tr class="center">
+      <td>~[sectioninfo:~(sectionid);coursename]</td>
+      <td>~[sectioninfo:~(sectionid);teachername]</td>
+      <td>~(*class_expression frn="~(relsectionfrn)")</td>
+      <td>~[if.~[dbval;table=termbins;field=suppressltrgrd;*storecode=~[gpv:fg];*termid=~(termid);*schoolid=~(schoolid)]#true]
+        ~[code.localize:GradeScaleItem,param:~[decode;~(frn);031@;~(grade);~(final.grade;~[gpv:fg])],param:~[decode;~(frn);031@;~(grade);~(final.grade;~[gpv:fg])],param:column=name] &nbsp; 
+        [/if]
+        ~[if.~[dbval;table=termbins;field=SuppressPercentScr;*storecode=~[gpv:fg];*termid=~(termid);*schoolid=~(schoolid)]=0]
+        <script type="text/javascript">
+			if ("~[decode;~(frn);031@;~(grade);~(final.grade;~[gpv:fg])]"=="--") {
+				document.write("&nbsp;");
+			} else {
+				document.write("~[decode;~(frn);031@;~(percent;format=numeric);~(final.pct;~[gpv:fg])]% &nbsp;");
+			}
+		</script>
+        [/if] </td>
+    </tr>
+  </table>
+  <!-- The following row has 2 paragraphs - only one is visible at a time -->
+  <!-- 4D's parser breaks on ; or : in comment fields passed to 'decode'-->
+ 
+ <p><strong>~[text:psx.html.guardian.scores.teacher_comments]</strong></p>
+ <div class="comment">
+  ~[if.~[decode;~(frn);031@;true;false]=true]
+  	<pre>~(comment)</pre>
+  [else]
+  	<pre>~(final.comment;~[gpv:fg])</pre>
+  [/if]
+  </div>
+  <p><strong>~[text:psx.html.guardian.scores.section_description]</strong></p>
+  <div class="comment">
+  	<pre>~([03]teacherdescr)</pre>
+  </div>
+  <table border="0" cellpadding="0" cellspacing="0" align="center" width="99%">
+    <tr>
+      <th>~[text:psx.html.guardian.scores.due_date]</th>
+      <th>~[text:psx.html.guardian.scores.category]</th>
+      <th>~[text:psx.html.guardian.scores.assignment]</th>
+      <th class="center" colspan="5">~[text:psx.html.guardian.scores.codes]</th>
+      <th class="center">~[text:psx.html.guardian.scores.score]</th>
+      <th class="center">~[if.~[dbval;table=termbins;field=SuppressPercentScr]=0]%[/if]</th>
+      <th class="center">~[if.~[dbval;table=termbins;field=suppressltrgrd]#true]~[text:psx.html.guardian.scores.grd][/if]</th>
+    </tr>
+    <tr bgcolor="#edf3fe">~[x:studentscores]
+      <td>[duedate]</td>
+      <td>[category]</td>
+      <td>[assignment]</td>
+      <td width="14">[code_collected]</td>
+      <td width="14">[code_late]</td>
+      <td width="14">[code_missing]</td>
+      <td width="14">[code_exempt]</td>
+      <td width="19">[code_excluded]</td>
+      <td align="center"><span class="bold-underline">[score]</span></td>
+      <td align="center">[percent]</td>
+      <td align="center">[grade]</td>
+    </tr>
+  </table>
+  <div id="legend">
+    <h3>~[text:psx.html.guardian.scores.legend]</h3>
+    <p class="center">~[if.~(frn)=031@]~[text:psx.html.guardian.scores.grade_stored_on,param:~(datestored)][else]~[text:psx.html.guardian.scores.grades_last_updated_on,param:~(LastGradeUpdate)][/if]</p>
+    <p class="center"> <img src="/images/icon_check.gif" alt="Collected">~[text:psx.html.guardian.scores._collected]<img src="/images/icon_late.gif" alt="Late">~[text:psx.html.guardian.scores._late]<img src="/images/icon_missing.gif" alt="Missing">~[text:psx.html.guardian.scores._missing]<img src="/images/icon_exempt.gif" alt="Exempt">~[text:psx.html.guardian.scores._score_is_exempt_from_final_grade]<img src="/images/icon_excluded.gif" alt="Excluded">~[text:psx.html.guardian.scores._assignment_is_not_included_in_final_grade]</p>
+    <p><strong>1</strong>~[text:psx.html.guardian.scores._this_final_grade_may_include_assignments_that_are_not_yet_p]<a href="#" onclick="openSpecialWeighting('parent');">~[text:psx.html.guardian.scores.special_weighting]</a>~[text:psx.html.guardian.scores.used_by_the_teacher]</p>
+  </div>
+  <!-- end student content -->
+
+<input id="activeNav" type="hidden" value="#btn-gradesAttendance"/>
+~[wc:guardian_footer]
+</body>
+</html>

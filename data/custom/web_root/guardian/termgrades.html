@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text:psx.html.guardian.termgrades.grade_history_]</title>
+~[wc:guardian_header]
+
+<h1>~[text:psx.html.guardian.termgrades.grade_history] ~(studentname)</h1>
+<!-- title -->
+
+<!-- start student content -->
+~[if.prefyearschool.ap_showAPLink=1]
+<div width="100%" align="center">
+	<a href="/guardian/planprogress.html?nav=gh">~[text:psx.html.guardian.termgrades.view_graduation_progress]</a>
+</div>
+
+[/if]
+<table border="0" cellpadding="0" cellspacing="0" width="99%" class="grid">
+<tr>
+<th colspan="5" align="center">[storecode]</th>
+</tr>
+<tr>
+<th align="left">~[text:psx.html.guardian.termgrades.course]</th>
+<th class="center">~[text:psx.html.guardian.termgrades.grade]</th>
+<th class="center">%</th>
+<th class="center">~[text:psx.html.guardian.termgrades.cit]</th>
+<th class="center">~[text:psx.html.guardian.termgrades.hrs]</th>
+</tr>
+~[termgradessumm]
+<tr align="center" bgcolor="#edf3fe">
+<td align="left">[coursename]</td>
+<td>[grade]</td>
+<td><a href="scores2.html?frn=[frn]&fg=[storecode]">[percent]</a></td>
+<td>[behavior]</td>
+<td>[earnedcrhrs]</td>
+</tr>
+</table>
+
+<!-- end student content -->
+
+<input id="activeNav" type="hidden" value="#btn-gradesHistory"/>
+~[wc:guardian_footer]
+</body>
+</html>
