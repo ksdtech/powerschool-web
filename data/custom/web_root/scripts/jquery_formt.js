@@ -1,12 +1,12 @@
 function onFormTSubmit() {
-  alert("testing");
+  // alert("testing");
   onRegFormSubmit();
 }
 
 // happy.js validations
 jq15(document).ready(function () {
   jq15('#formt').isHappy({
-    submitButton: jq15('#attSubmitButton'),
+    submitButton: jq15('#btnSubmit'),
     onSubmit: onFormTSubmit,
     fields: {
       '#street': {

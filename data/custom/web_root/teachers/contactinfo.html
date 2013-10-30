@@ -27,7 +27,7 @@ var jq15 = jQuery.noConflict();
 
 <h1>Contact Information - ~[x:username]</h1>
 
-<form action="changesrecorded.white_nf.html" method="POST">
+<form class="noSubmitLoading" id="formt" action="changesrecorded.white_nf.html" method="POST">
 
 <!-- Start of shaded content table -->
 <div class="box-round">
@@ -224,7 +224,7 @@ var jq15 = jQuery.noConflict();
 <td class="bold">Insurance Phone</td>
 <td><input type="text" id="medical_phone" name="[05]medical_phone" value="" size="20"></td>
 </tr>
-<tr>
+<tr class="private">
 <td class="bold">Last updated at</td>
 <td class="bold"><input type="text" id="upd_at" name="[05]form0_updated_at" value="">
 by <input type="text" id="upd_by" name="[05]form0_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
@@ -232,7 +232,7 @@ by <input type="text" id="upd_by" name="[05]form0_updated_by" value=""><input ty
 <!-- pscustom_end -->
 </table>
 
-<div class="button-row"><input type="hidden" name="ac" value="contacts"><input type="hidden" name="userid" value="~[x:userid]">~[submitbutton]</div>
+<div class="button-row"><input type="hidden" name="ac" value="webAsmt"><input type="hidden" name="userid" value="~[x:userid]">~[submitbutton]</div>
 </div>
 <br>
 </form>
