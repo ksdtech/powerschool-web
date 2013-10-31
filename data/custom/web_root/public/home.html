@@ -1,13 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-<title>Parent Logon - PowerSchool Parent Access</title>
+<title>~[text:psx.html.public.home.parent_sign_in_]</title>
 <meta http-equiv="X-UA-Compatible" content="IE=8"/>
 <meta name="robots" content="noindex" />
 <link href="/images/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="viewport" content="width=device-width" />
+<script src="/scripts/jquery-1.9.1.min.js"></script> 
 <script language="JavaScript" src="/admin/javascript/md5.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript"><!--
 var pskey = "~[x:pskey]";
@@ -20,60 +21,148 @@ function deleteCookie(cookieName){
 	document.cookie = cookieName + "=; expires='" + cookieDate.toGMTString()+"'; path=/";
 }
 deleteCookie("InformAuthToken");
+
+function getURLParameter(name) {
+    return unescape(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+
+var $j = jQuery.noConflict();
+$j(document).ready(function() {
+    // Hide or show the translator login input field
+    // if the URL parameter "translator" is present
+	var translator = getURLParameter("translator");
+	if (translator == "null") {
+		$j('#translatorInput').hide();
+	} else {
+	    if (translator == "true") {
+			$j('#translatorInput').show();
+		} else {
+			$j('#translatorInput').hide();
+		}
+	}
+	$j('a.popWin').click(function(){
+		var winURL = $j(this).attr('href');
+		window.open(winURL);
+		return false;
+	});
+});
 </script>
 </head>
-<body onload="document.forms[0].account.focus();" class="pslogin" id="palogin">
-<iframe style="height:0px;width:0px;visibility:hidden" src="javascript:false" id="disablecache"></iframe>
-	
+<body class="pslogin" id="palogin">
+<div id="container">
+     <div id="branding-powerschool"><img src="/images/img/ps7-logo-lrg.png" alt="PowerSchool"  width="280" height="41" /></div>
+  <div id="content" class="group">
+<form action="/guardian/home.html" method="post" name="LoginForm" target="_top" id="LoginForm" onsubmit="doPCASLogin(this);">
+  ~[if.~[gpv:loginTarget]=][else]
+  <input type="hidden" name="loginTarget" value="~[gpv:loginTarget]"/>
+  [/if]
+  ~[if.~[gpv:popup]=][else]
+  <input type="hidden" name="popup" value="~[gpv:popup]"/>
+  [/if]
 
-   
-<form action="/guardian/home.html" method="post" name="LoginForm" target="_top" id="LoginForm" onsubmit="~[if.prefSSOEnabled]doParentPortalSSOLogin(this)[else]doStudentLogin(this)[/if];">
   <input type="hidden" name="pstoken" value="~[x:pstoken]" />
   <input type="hidden" name="contextData" value="~[x:pskey]" />
+  <input type="hidden" name="dbpw" value="" />
+  <input type="hidden" name="translator_username" value="" />
+  <input type="hidden" name="translator_password" value="" />
+  <input type="hidden" name="translator_ldappassword" value="" />
    ~[brij_publicrender:public-parentaccess-pkg;:renderLoginFormElements]
   ~[x:ldapguardianpassword]
-  <div id="container">
-    <div id="branding"><img src="/images/pss_logo.png" alt="PowerSchool"  width="201" height="60" /></div>
-    
+
+      
+ 
     ~[brij_publicrender:public-parentaccess-pkg;:RenderNewAccountLoginInfo]
     
-    <div class="box-round group">
-  	    <h2>Login</h2>
+			  <h2>~[text:psx.html.public.home.parent_sign_in]</h2>
       <!--box content-->
-      <noscript>
-      <div id="noscript" class="feedback-alert"> To log in to PowerSchool, you must use a browser that supports and has JavaScript enabled. </div>
-      </noscript>
-      ~[loginerror]
+    ~[loginerror]
+	<div id="noscript" class="feedback-alert">~[text:psx.html.public.home.to_sign_in_to_powerschool_you_must_use_a_browser_that_support]</div>
+    <p id="ksd-warn"><strong>Please note</strong> that parent access to PowerSchool may be removed during final grading periods, usually during the last three weeks of each trimester.
+</p>
     <fieldset id="login-inputs" class="hide">
+	    ~[brij_publicrender_insert:i18n_svc:getLocaleLoginDiv]
         <div>
-        <label>User Name</label>
-        <input type="text" name="account" value="" size="39" />
+			  <label>~[text:psx.html.public.home.username]</label>
+			  <input type="text" id="fieldAccount" name="account" value="" size="39"  />
         </div>
         <div>
-        <label>Password</label>
-        <input type="password" name="pw" value="" size="39" /><div id="login-help"><a href="~[if.prefSSOEnabled]/public/account_recovery_begin.html[else]/public/logonhelp.html[/if]">Having trouble logging in?</a></div>
+			  <label>~[text:psx.html.public.home.password]</label>
+			  <input type="password" name="pw" value="" size="39"  /><div id="login-help"><a href="~[if.prefSSOEnabled]/public/account_recovery_begin.html[else]/public/logonhelp.html[/if]">~[text:psx.html.public.home.having_trouble_signing_in]</a></div>
         </div>
-        <button type="submit" id="btn-enter" title="Enter PowerSchool Parent Access" value="Enter" border="0">Submit</button>
-      </fieldset>        
+        <div id="translatorInput">
+			  <label>~[text:psx.html.public.home.translator_sign_in]</label>
+			  <input type="password" name="translatorpw" value="" size="39"  />
+        </div>
+		<div class="button-row">
+		<button type="submit" id="btn-enter" title="~[text:psx.html.public.home.sign_in_to_powerschool_parent_access]" value="Enter" border="0" >~[text:psx.html.public.home.sign_in]</button>
+		</div>
+	</fieldset> 
+		  
       <!-- box content-->
-    </div>
-	
+		 
+
 </form>
 	
    ~[brij_publicrender:public-parentaccess-pkg;:RenderCreateAccountLoginInfo]
+ </div>
+ <div id="footer" class="group">
+    <p>~[text:psx.common.copyright]</p>
+    <p id="pearsoncorplink"><a href="http://www.facebook.com/powerschool" class="popWin fb" title="~[text:psx.html.public.home.join_us_on_facebook]">~[text:psx.html.public.home.join_us_on_facebook]</a></p>
+</div>
 
-    <div id="footer">
-      <div id="legal"> <img id="pearsonLogoLegal" src="/images/pearson-logo-legal.png" alt="Pearson Logo" width="56" height="16"/>
-        <p>Copyright&copy; 2005 - 2010 Pearson Education, Inc., or its affiliate(s). All rights reserved.</p>
-      </div>
-      <p id="pearsoncorplink"><a href="http://www.pearsonschoolsystems.com" target="_blank">www.PearsonSchoolSystems.com</a></p>
-    </div>
+</div>
+<div id="branding-pearson">
+    <div id="logo-pearson"></div>
+	<div id="tagline-pearson"></div>
+</div>
 <script type="text/javascript">
+	/**
+	 * Set the page's locale via a request_locale URL parameter. If there is already a URL parameter by
+	 * this name, then substitute it with the passed-in locale. NOTE: This function will actually cause the page
+	 * to be re-submitted with the new locale, so it really should not be used with pages submitted via POST
+	 * requests (if there are any, which I hope there are not).
+	 * @param locale the locale to set (e.g. en_US)
+	 */
+	function setPageLocale (locale) {
+	  var c=String (window.location);
+	  var rlpos = c.indexOf("request_locale=");
+	  var afterPart = "";
+	  if (rlpos > 0) {
+	    var afterBegin = c.indexOf("&", rlpos);
+	    if (afterBegin > 0) {
+	      afterPart = c.substring(afterBegin);
+	    }
+	    c = c.substring(0, rlpos-1);
+	  }
+	  var s=(c.indexOf('?') > 0 ? '&' : '?');
+	  var np = c + s + 'request_locale=' + locale + afterPart;
+	  window.location = np;
+	}
+
 	function jsCheck() {
 			document.getElementById("login-inputs").className = 'group';
 			
 	}
  jsCheck();
+</script>
+
+<script>
+$j('#noscript').hide();
+function jsEnabled() {
+	if(typeof $j != 'function'){
+		alert('Developer: This page is missing key components required for functionality!\n\nPossible causes include:\n - Commonscripts might be missing.\n - Page customization might enabled, and incomplete.');
+		//document.write('<script...');
+		} else {
+		$j('#login-inputs').removeClass('hide');
+	    $j("#fieldAccount").focus();
+	}
+}
+$j(document).ready(function(){
+	jsEnabled();
+});
+
 </script>
 </body>
 </html>
