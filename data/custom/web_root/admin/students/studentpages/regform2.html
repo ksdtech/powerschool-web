@@ -35,6 +35,9 @@ var jq15 = jQuery.noConflict();
 <input type="hidden" id="st_last" value="~([01]last_name)">
 <input type="hidden" id="st_first" value="~([01]first_name)">
 <input type="hidden" id="st_school", value="~([01]schoolid)">
+<input type="hidden" id="orig_entrydate" name="orig_entrydate" value="~([01]entrydate)" />
+<input type="hidden" id="orig_reg_year" name="orig_reg_year" value="~([01]reg_year)" />
+
 <table border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
 <tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="2" align="left">
@@ -163,7 +166,13 @@ var jq15 = jQuery.noConflict();
 	<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
 </tr>
 
-<tr class="headerrow"><td colspan="3" class="bold">Enrollment Information for 2013-2014 School Year</td></tr>
+<tr class="headerrow"><td colspan="3" class="bold">Enrollment Information</td></tr>
+<tr class="staffonly"><td class="bold">School Year</td>  
+<td colspan="2"><select id="reg_year" name="[01]reg_year">
+<option value="">Choose:</option>
+<option value="2013-2014">2013-2014</option>
+<option value="2014-2015">2014-2015</option>
+</select></td></tr>
 
 <tr class="staffonly"><td class="bold">Proof of Residency Verifier</td>
 <td colspan="2"><input id="reg_residencyproofby" type="text" name="[01]reg_residencyproofby" value="" size="10"></td>
@@ -173,7 +182,7 @@ var jq15 = jQuery.noConflict();
 <td colspan="2"><input id="reg_residencyproofdate" type="text" name="[01]reg_residencyproofdate" value="" size="10"></td>
 </tr>
 
-<tr><td class="bold">2a. Enrollment Status</td>
+<tr><td class="bold">2a. Enrollment Status</td>  
 <td colspan="2"><select id="reg_enroll" name="[01]reg_will_attend">
 <option value="">Choose:</option>
 <option value="attending">Student will be attending Bacich or Kent</option>

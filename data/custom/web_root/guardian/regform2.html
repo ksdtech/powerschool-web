@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +37,7 @@ var jq15 = jQuery.noConflict();
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="headerrow"><td colspan="3" class="bold">2a. Enrollment Information</td></tr>
 
-<tr><td class="bold" colspan="2" width="50%">Status for 2013-2014</td><td><select id="reg_enroll" name="[01]reg_will_attend">
+<tr><td class="bold" colspan="2" width="50%">Status <span class="for_reg_year" id="rys">for 2014-2015 School Year</span></td><td><select id="reg_enroll" name="[01]reg_will_attend">
 <option value="">Choose:</option>
 <option value="attending">Student will be attending Bacich or Kent</option>
 <option value="nr-graduated">Student will have graduated</option>
@@ -47,7 +46,7 @@ var jq15 = jQuery.noConflict();
 <option value="unknown">Not sure if student will attend; don't know at this time</option>
 </select></td></tr>
 
-<tr class="enrolling"><td class="bold" colspan="2">Grade Level for 2013-2014</td><td><select id="reg_grade_level" name="[01]reg_grade_level">
+<tr class="enrolling"><td class="bold" colspan="2">Grade Level <span class="for_reg_year" id="rygl">for 2014-2015 School Year</span></td><td><select id="reg_grade_level" name="[01]reg_grade_level">
 <option value="">Choose:</option>
 <option value="TK">Transitional Kindergarten - Bacich Elementary School</option>
 <option value="K">Regular Kindergarten - Bacich Elementary School</option>
@@ -352,6 +351,11 @@ please email Ms. Osterman at
 <tr class="private"><td colspan="3" class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form2_updated_at" value="" /> by 
 <input type="text" id="upd_by" name="[01]form2_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" />
+</td></tr>
+<tr class="private"><td colspan="3" class="bold">Registration Year
+<input type="text" id="reg_year" class="reg_year" name="[01]reg_year" value="" />
+<input type="hidden" id="orig_entrydate" name="orig_entrydate" value="~([01]entrydate)" />
+<input type="hidden" id="orig_reg_year" name="orig_reg_year" value="~([01]reg_year)" />
 </td></tr>
 
 ~[if.~(wm_status)=1]
