@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+<title>kik Preview</title>
+~[wc:commonscripts]
+<script src="/scripts/fmt_date.js" type="text/javascript"></script>
+<script src="/scripts/formatters.js" type="text/javascript"></script>
+<script src="/scripts/happy.js" type="text/javascript"></script>
+<script src="/scripts/happy.methods.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form.js" type="text/javascript"></script>
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+<link href="/images/css/regforms.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+
+<!-- begin form action -->
+<form class="noSubmitLoading" id="form-family" action="/admin/changesrecorded.white.html" method="post">
+<!-- end form action -->
+
+<!-- pscustom_begin -->
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; kik Preview<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+<!-- Beginning of title of page -->
+~[wc:title_student_begin_css]kik Preivew~[wc:title_student_end_css]
+
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" name="tblMain" align="left">
+<tr>
+<td>My Web ID</td>
+<td colspan="2">~(Web_ID)</td>
+<tr>
+<td>First_Name</td>
+<td>Grade_Level</td>
+<td>Web_ID</td>
+</tr>
+~[tlist_sql;
+SELECT First_Name, Grade_Level, Web_ID FROM STUDENTS
+WHERE Enroll_Status<=0 AND Web_ID LIKE (
+SELECT CONCAT(SUBSTR(TO_CHAR(Web_ID), 1, 9), '%') FROM STUDENTS 
+WHERE ID=~(curstudid))
+ORDER BY Grade_Level, First_Name;
+]
+<tr>
+<td>~(First_Name)</td>
+<td>~(Grade_Level)</td>
+<td>~(Web_ID)</td>
+</tr>
+[/tlist_sql]
+</table>
+<br>
+
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame_css]
+</form>
+
+</body>
+</html><!-- end right frame -->
