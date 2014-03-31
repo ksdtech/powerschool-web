@@ -1,41 +1,41 @@
 
 function generate_h1_login() {
-  if (jq15("#h1_id").val() == '') {
-    jq15("#h1_id").val(jq15("#st_id").val());
+  if ($j("#h1_id").val() == '') {
+    $j("#h1_id").val($j("#st_id").val());
   }
-  if (jq15("#h1_login").val() == '') {
-    jq15("#h1_login").val(new_ps_username(jq15("#st_last").val(), 0));
+  if ($j("#h1_login").val() == '') {
+    $j("#h1_login").val(new_ps_username($j("#st_last").val(), 0));
   }
-  if (jq15("#h1_password").val() == '') {
-    jq15("#h1_password").val(new_ps_password());
+  if ($j("#h1_password").val() == '') {
+    $j("#h1_password").val(new_ps_password());
   }
-  jq15("#h1_web_access").attr("checked", "checked");
+  $j("#h1_web_access").attr("checked", "checked");
 }
 
 function generate_h2_number() {
-  if (jq15("#h2_id").val() == '') {
-    var st_id = jq15("#st_id").val();
-    if (st_id != '') { jq15("#h2_id").val(parseInt(st_id) + 100000); }
+  if ($j("#h2_id").val() == '') {
+    var st_id = $j("#st_id").val();
+    if (st_id != '') { $j("#h2_id").val(parseInt(st_id) + 100000); }
   }
 }
 
 function generate_psst_login() {
-  if (jq15("#psst_login").val() == '') {
-    jq15("#psst_login").val(new_ps_username(jq15("#st_last").val(), 1));
+  if ($j("#psst_login").val() == '') {
+    $j("#psst_login").val(new_ps_username($j("#st_last").val(), 1));
   }
-  if (jq15("#psst_password").val() == '') {
-    jq15("#psst_password").val(new_ps_password());
+  if ($j("#psst_password").val() == '') {
+    $j("#psst_password").val(new_ps_password());
   }
-  jq15("#psst_web_access").attr("checked", "checked");
+  $j("#psst_web_access").attr("checked", "checked");
 }
 
 function generate_st_login() {
-  var middle_school = (jq15("#st_school").val() == '104');
-  if (jq15("#st_login").val() == '') {
-    jq15("#st_login").val(new_student_username(jq15("#st_last").val(), jq15("#st_first").val(), middle_school));
+  var middle_school = ($j("#st_school").val() == '104');
+  if ($j("#st_login").val() == '') {
+    $j("#st_login").val(new_student_username($j("#st_last").val(), $j("#st_first").val(), middle_school));
   }
-  if (jq15("#st_password").val() == '') {
-    jq15("#st_password").val(new_student_password(middle_school));
+  if ($j("#st_password").val() == '') {
+    $j("#st_password").val(new_student_password(middle_school));
   }
 }
 
@@ -47,55 +47,55 @@ genpass_fptrs['generate_psst_login'] = generate_psst_login;
 genpass_fptrs['generate_st_login'] = generate_st_login;
 
 function on_enrollment_change() {
-  var enrollment = jq15("#reg_enroll option:selected").val();
+  var enrollment = $j("#reg_enroll option:selected").val();
   var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   if (not_enrolling) { 
-    jq15("tr.enrolling").hide(); 
-    jq15("tr.not_enrolling").show();
+    $j("tr.enrolling").hide(); 
+    $j("tr.not_enrolling").show();
   } else { 
-    jq15("tr.enrolling").show(); 
-    jq15("tr.not_enrolling").hide();
+    $j("tr.enrolling").show(); 
+    $j("tr.not_enrolling").hide();
     on_grade_level_change();
   }
   return true;
 }
 
 function on_grade_level_change() {
-  jq15("tr.by_grade").hide();
-  var grade = jq15("#reg_grade_level option:selected").val();
+  $j("tr.by_grade").hide();
+  var grade = $j("#reg_grade_level option:selected").val();
   if (grade != "" && grade != "-1") {
-    jq15("tr.by_grade").filter(".grade_" + grade).show();
+    $j("tr.by_grade").filter(".grade_" + grade).show();
   }
   return true;
 }
 
 function set_form_updated() {
-  jq15("#upd_by").val(jq15("#userid").val()); 
-  jq15("#upd_at").val(timestamp_now()); 
+  $j("#upd_by").val($j("#userid").val()); 
+  $j("#upd_at").val(timestamp_now()); 
   return true;
 }
 
 function set_entry_dates(force) {
-  jq15(".entry_date").each(function() {
-    if (force || (jq15(this).val() == '')) { 
-      if (jq15("#entry_date").is("input")) {
-        jq15(this).val(jq15("#entry_date").val()); 
+  $j(".entry_date").each(function() {
+    if (force || ($j(this).val() == '')) { 
+      if ($j("#entry_date").is("input")) {
+        $j(this).val($j("#entry_date").val()); 
       } else {
-        jq15(this).val(jq15("#entry_date").text()); 
+        $j(this).val($j("#entry_date").text()); 
       }
     }
   });
-  jq15(".entry_grade_level").each(function() {
-    if (force || (jq15(this).val() == '')) { 
-      jq15(this).val(jq15("#grade_level").text()); 
+  $j(".entry_grade_level").each(function() {
+    if (force || ($j(this).val() == '')) { 
+      $j(this).val($j("#grade_level").text()); 
     }
   });
 }
 
 function bind_login_generators() {
-  if (jq15(".pwgen").length > 0) {
-    jq15(".pwgen").bind("click", function() {
-      var func_name = jq15(this).attr("id");
+  if ($j(".pwgen").length > 0) {
+    $j(".pwgen").bind("click", function() {
+      var func_name = $j(this).attr("id");
       genpass_fptrs[func_name]();
     });
   }
@@ -103,31 +103,31 @@ function bind_login_generators() {
 
 // change the prompts if student is not returning
 function onItrFormSubmit() {
-  if (!jq15("#upd_by").hasClass("disabled")) { set_form_updated(); }  
-  var enrollment = jq15("#reg_enroll option:selected").val();
+  if (!$j("#upd_by").hasClass("disabled")) { set_form_updated(); }  
+  var enrollment = $j("#reg_enroll option:selected").val();
   var not_enrolling = (enrollment != null && enrollment.indexOf("nr-") == 0);
   if (not_enrolling) {
-    jq15("#nextpage").val('');
-    jq15("#nexttitle").val('');
-    var new_title = jq15("#donetitle").val();
+    $j("#nextpage").val('');
+    $j("#nexttitle").val('');
+    var new_title = $j("#donetitle").val();
     if (new_title != '') {
-      jq15("#backtitle").val(new_title);
+      $j("#backtitle").val(new_title);
     }
   }
 }
 
 // intent to return form
-jq15(document).ready(function() {
+$j(document).ready(function() {
   // when user submits - now handled by happy.js configuration
   // do stuff when page is loaded
-  jq15("#admin_update").bind("click", function() {
-    if (jq15("#admin_update").attr("checked")) { set_form_updated(); }
+  $j("#admin_update").bind("click", function() {
+    if ($j("#admin_update").attr("checked")) { set_form_updated(); }
   });
-  jq15("#entry_check").bind("click", function() { set_entry_dates(1); });
-  jq15("#reg_enroll").bind("change", function() { on_enrollment_change(); });
-  jq15("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
+  $j("#entry_check").bind("click", function() { set_entry_dates(1); });
+  $j("#reg_enroll").bind("change", function() { on_enrollment_change(); });
+  $j("#reg_grade_level").bind("change", function() { on_grade_level_change(); });
   bind_login_generators();
-  jq15(".private").hide();
+  $j(".private").hide();
   on_enrollment_change();
 });
 
