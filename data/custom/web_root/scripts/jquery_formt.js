@@ -4,9 +4,9 @@ function onFormTSubmit() {
 }
 
 // happy.js validations
-jq15(document).ready(function () {
-  jq15('#formt').isHappy({
-    submitButton: jq15('#btnSubmit'),
+$j(document).ready(function () {
+  $j('#formt').isHappy({
+    submitButton: $j('#btnSubmit'),
     onSubmit: onFormTSubmit,
     fields: {
       '#street': {

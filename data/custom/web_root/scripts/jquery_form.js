@@ -2,15 +2,15 @@
 // requires jquery-1.5.1.min.js, fmt_date.js, formatters.js and selectlists.js
 
 function init_checklist(obj) {
-  jq15("#"+obj.id).hide();
-	var a = jq15("#"+obj.id).val().split(/[, \t\r\n]+/);
+  $j("#"+obj.id).hide();
+	var a = $j("#"+obj.id).val().split(/[, \t\r\n]+/);
 	var alen = a.length;
 	for (var i = 0; i < alen; i++) {
 		var val = a[i].replace(/^\s+|\s+$/g, '').toLowerCase();
 		if (val != "") {
-			jq15("."+obj.id+"_list").each( function() { 
-				if (jq15(this).val().toLowerCase() == val) {
-					jq15(this).attr("checked", "checked");
+			$j("."+obj.id+"_list").each( function() { 
+				if ($j(this).val().toLowerCase() == val) {
+					$j(this).attr("checked", "checked");
 				}
 			});
 		}
@@ -19,14 +19,14 @@ function init_checklist(obj) {
 
 function pack_checklist(obj) {
 	var ret = "";
-	jq15("."+obj.id+"_list:checked").each( function() {
-		var val = jq15(this).val();
+	$j("."+obj.id+"_list:checked").each( function() {
+		var val = $j(this).val();
 		if (val != "") {
 			if (ret != "") { ret = ret + ","; }
 			ret = ret + val.toLowerCase();
 		}
 	});
-	jq15("#"+obj.id).val(ret);
+	$j("#"+obj.id).val(ret);
 	return ret;
 }
 
@@ -70,17 +70,17 @@ function pack_multi_select(osel) {
 }
 
 function set_form_updated() {
-	jq15("#upd_by").val(jq15("#userid").val()); 
-	jq15("#upd_at").val(timestamp_now()); 
+	$j("#upd_by").val($j("#userid").val()); 
+	$j("#upd_at").val(timestamp_now()); 
 	return true;
 }
 
 function onRegFormSubmit() {
-	jq15("select.mselect").each( function() {
-		jq15("#"+this.id+"_data").val(pack_multi_select(this)); });
-	jq15(".checklist").each( function() { 
+	$j("select.mselect").each( function() {
+		$j("#"+this.id+"_data").val(pack_multi_select(this)); });
+	$j(".checklist").each( function() { 
 		pack_checklist(this); });
-	if (!jq15("#upd_by").hasClass("disabled")) { set_form_updated(); }  
+	if (!$j("#upd_by").hasClass("disabled")) { set_form_updated(); }  
 }
 
 // encode the field type in the class of the input (text field)
@@ -88,18 +88,18 @@ function onRegFormSubmit() {
 //  #userid (no name) should have a value of ~[x:userid]
 //  #upd_by should use a custom field name like [05]form0_updated_by
 //  #upd_at should use a custom field name like [05]form0_updated_at
-jq15(document).ready(function() {
+$j(document).ready(function() {
 	// when user submits - now handled by happy.js configuration
 	// do stuff when page is loaded
-	jq15("#admin_update").bind("click", function() {
-		if (jq15("#admin_update").attr("checked")) { set_form_updated(); }
+	$j("#admin_update").bind("click", function() {
+		if ($j("#admin_update").attr("checked")) { set_form_updated(); }
 	});
-	jq15(".private").hide();
-	jq15("select.mselect").each( function() {
-		init_multi_select(this, jq15("#"+this.id+"_data").val()); });
-	jq15(".checklist").each( function() { init_checklist(this); });
+	$j(".private").hide();
+	$j("select.mselect").each( function() {
+		init_multi_select(this, $j("#"+this.id+"_data").val()); });
+	$j(".checklist").each( function() { init_checklist(this); });
 	// blank contents have &nbsp; in them; how do I search for these?
 	// :contains('&nbsp;') doesn't work
-	jq15(".hideblank .contents").each( function() {
-		if (jq15(this).is(":not(:contains('@'))")) { jq15(this).parent().hide(); } });
+	$j(".hideblank .contents").each( function() {
+		if ($j(this).is(":not(:contains('@'))")) { $j(this).parent().hide(); } });
 });
