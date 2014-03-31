@@ -1,7 +1,7 @@
 // Validation for form2
 
 function required_if_not_returning(val) {
-  var enrollment = jq15('#reg_enroll option:selected').val();
+  var enrollment = $j('#reg_enroll option:selected').val();
   var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   var error = false;
   if (not_enrolling) {
@@ -11,11 +11,11 @@ function required_if_not_returning(val) {
 }
 
 function required_if_transfering(val) {
-  var enrollment = jq15('#reg_enroll option:selected').val();
+  var enrollment = $j('#reg_enroll option:selected').val();
   var not_enrolling = (enrollment != null && enrollment.indexOf('nr-') == 0);
   var error = false;
   if (not_enrolling) {
-    var exitcode = jq15('#reg_exitcode option:selected').val();
+    var exitcode = $j('#reg_exitcode option:selected').val();
     if (exitcode != null && /^160|180$/.test(exitcode)) {
       error = (val === '');
     }
@@ -24,12 +24,12 @@ function required_if_transfering(val) {
 }
 
 function returning_to_grade(gl) {
-  var enrollment = jq15('#reg_enroll option:selected').val();
+  var enrollment = $j('#reg_enroll option:selected').val();
   var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   if (not_enrolling) {
     return false;
   }
-  var grade = jq15('#reg_grade_level option:selected').val();
+  var grade = $j('#reg_grade_level option:selected').val();
   return (grade == gl);
 }
 
@@ -52,9 +52,9 @@ function required_if_8(val) {
 }
 
 function set_up_reg_year() {
-  var reg_year = jq15.trim(jq15('#orig_reg_year').val());
+  var reg_year = jQuery.trim($j('#orig_reg_year').val());
   if (!reg_year) {
-    var entrydate = jq15('#orig_entrydate').val();
+    var entrydate = $j('#orig_entrydate').val();
     var mdy = entrydate.match(/(\d+)\/\d+\/(\d+)/);
     if (mdy) {
       var mo = parseInt(mdy[1]);
@@ -64,16 +64,16 @@ function set_up_reg_year() {
       }
       reg_year = yr + '-' + (yr + 1);
     }
-    jq15('.reg_year').val(reg_year);
-    jq15('.for_reg_year').val('for ' + reg_year + ' School Year');
+    $j('.reg_year').val(reg_year);
+    $j('.for_reg_year').val('for ' + reg_year + ' School Year');
   }
 }
 
 // happy.js validations
-jq15(document).ready(function () {
+$j(document).ready(function () {
   set_up_reg_year();
-  jq15('#form2').isHappy({
-    // submitButton: jq15('#attSubmitButton'),
+  $j('#form2').isHappy({
+    // submitButton: $j('#attSubmitButton'),
     onSubmit: onItrFormSubmit,
     fields: {
       '#reg_enroll': {

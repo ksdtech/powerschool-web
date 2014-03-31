@@ -1,22 +1,22 @@
 function onForm4Submit() {
-  jq15('.copy_address').each(function (i) {
+  $j('.copy_address').each(function (i) {
     var src_id = this.id.replace(/^mailing_/, '#');
-    this.value = jq15(src_id).val();
+    this.value = $j(src_id).val();
   });
-  var no_2nd_family = jq15("#family2_no");
+  var no_2nd_family = $j("#family2_no");
   if (no_2nd_family && no_2nd_family.attr("checked")) {
-    jq15("#form5_upd_by").val(jq15("#userid").val()); 
-    jq15("#form5_upd_at").val(timestamp_now());
-    jq15("#nextpage").val(jq15("#alt_nextpage").val());
-    jq15("#nexttitle").val(jq15("#alt_nexttitle").val());
+    $j("#form5_upd_by").val($j("#userid").val()); 
+    $j("#form5_upd_at").val(timestamp_now());
+    $j("#nextpage").val($j("#alt_nextpage").val());
+    $j("#nexttitle").val($j("#alt_nexttitle").val());
   }
   onRegFormSubmit();
 }
 
 // happy.js validations
-jq15(document).ready(function () {
-  jq15('#form4').isHappy({
-    // submitButton: jq15('#attSubmitButton'),
+$j(document).ready(function () {
+  $j('#form4').isHappy({
+    // submitButton: $j('#attSubmitButton'),
     onSubmit: onForm4Submit,
     fields: {
       '#street': {

@@ -1,22 +1,22 @@
 function onForm5Submit() {
   var any_family2 = "";
   var fam2_text, fam2_yes, fam2_no;
-  jq15('.copy_address2').each(function (i) {
+  $j('.copy_address2').each(function (i) {
     var src_id = this.id.replace(/^mailing2_/, '#home2_');
-    this.value = jq15(src_id).val();
+    this.value = $j(src_id).val();
   });
-  fam2_text = jq15("#family2");
-  fam2_yes =  jq15("#family2_yes");
+  fam2_text = $j("#family2");
+  fam2_yes =  $j("#family2_yes");
   if (fam2_text || fam2_yes) {
-    jq15(".family2_test").each(function() {
-      if (jq15.trim(jq15(this).val()) != "") {
+    $j(".family2_test").each(function() {
+      if (jQuery.trim($j(this).val()) != "") {
         any_family2 = "1";
       }
     });
     if (fam2_text) {
       fam2_text.val(any_family2);
     } else {
-      fam2_no = jq15("#family2_no");
+      fam2_no = $j("#family2_no");
       if (any_family2 == "1") {
         fam2_yes.attr('checked', 'checked');
         fam2_no.removeAttr('checked');
@@ -30,7 +30,7 @@ function onForm5Submit() {
 }
 
 function required_if_guardian2_test(val, radio_class) {
-  var checked_radio = jq15(radio_class).filter(':checked');
+  var checked_radio = $j(radio_class).filter(':checked');
   var has_val = (checked_radio.length != 0);
   return has_val || happy.selectorIsEmpty('.guardian2_name');
 }
@@ -57,9 +57,9 @@ function home2_phone_test(val) {
 }
 
 // happy.js validations
-jq15(document).ready(function () {
-  jq15('#form5').isHappy({
-    // submitButton: jq15('#attSubmitButton'),
+$j(document).ready(function () {
+  $j('#form5').isHappy({
+    // submitButton: $j('#attSubmitButton'),
     onSubmit: onForm5Submit,
     fields: {
       '#home2_street': {

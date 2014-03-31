@@ -2,7 +2,7 @@ function setIfSelectorNotEmpty(val, sel, which) {
   val = '';
   if (!happy.selectorIsEmpty(sel)) {
     val = '1';
-    jq15(which).attr('checked', 'checked');
+    $j(which).attr('checked', 'checked');
   }
   return val;
 }
@@ -48,9 +48,9 @@ function set_med_accom(val) {
 }
 
 // happy.js validations
-jq15(document).ready(function () {
-  jq15('#form9').isHappy({
-    // submitButton: jq15('#attSubmitButton'),
+$j(document).ready(function () {
+  $j('#form9').isHappy({
+    // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
       '.requires_meds': {

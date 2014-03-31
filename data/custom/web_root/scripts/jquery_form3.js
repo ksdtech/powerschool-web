@@ -1,5 +1,5 @@
 function required_if_north_american(val) {
-	var birth_country = jq15("#birth_country option:selected").val();
+	var birth_country = $j("#birth_country option:selected").val();
 	var error = false
 	if (birth_country != null && /^US|CA|MX$/.test(birth_country)) {
 	  error = (val.length === 0);
@@ -8,9 +8,9 @@ function required_if_north_american(val) {
 }
 
 // happy.js validations
-jq15(document).ready(function () {
-  jq15('#form3').isHappy({
-    // submitButton: jq15('#attSubmitButton'),
+$j(document).ready(function () {
+  $j('#form3').isHappy({
+    // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
       '#dob': {

@@ -8,9 +8,9 @@ function todayIfBlank(val) {
 function validateAllFields() {
   var forms = new Array();
   var count = 0;
-  jq15('.always').not('.oneorblank').each(function (i) {
+  $j('.always').not('.oneorblank').each(function (i) {
     count = count + 1;
-    var el = jq15(this);
+    var el = $j(this);
     if (el.val() == '') {
       var regform = this.className.match(/(regform(\d+))/);
       if (regform) {
@@ -31,10 +31,10 @@ function validateAllFields() {
 }
 
 // happy.js validations
-jq15(document).ready(function () {
+$j(document).ready(function () {
   validateAllFields();
-  jq15('#form14').isHappy({
-    // submitButton: jq15('#attSubmitButton'),
+  $j('#form14').isHappy({
+    // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
       '.resp_for_student': {

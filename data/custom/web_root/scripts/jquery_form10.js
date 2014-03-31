@@ -1,7 +1,7 @@
 // happy.js validations
-jq15(document).ready(function () {
-  jq15('#form10').isHappy({
-    // submitButton: jq15('#attSubmitButton'),
+$j(document).ready(function () {
+  $j('#form10').isHappy({
+    // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
       '.annual_notice': {
