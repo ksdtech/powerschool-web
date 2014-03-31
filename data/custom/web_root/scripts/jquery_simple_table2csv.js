@@ -1,4 +1,4 @@
-jq15.fn.table2CSV = function(options) {
+jQuery.fn.table2CSV = function(options) {
     var options = jQuery.extend({
         separator: ',',
         header: [],
@@ -19,18 +19,18 @@ jq15.fn.table2CSV = function(options) {
             tmpRow[tmpRow.length] = formatData(options.header[i]);
         }
     } else {
-        jq15(el).filter(':visible').find('th').each(function() {
-            if (jq15(this).css('display') != 'none') tmpRow[tmpRow.length] = formatData(jq15(this).html());
+        $j(el).filter(':visible').find('th').each(function() {
+            if ($j(this).css('display') != 'none') tmpRow[tmpRow.length] = formatData($j(this).html());
         });
     }
 
     row2CSV(tmpRow);
 
     // actual data
-    jq15(el).find('tr').each(function() {
+    $j(el).find('tr').each(function() {
         var tmpRow = [];
-        jq15(this).filter(':visible').find('td').each(function() {
-            if (jq15(this).css('display') != 'none') tmpRow[tmpRow.length] = formatData(jq15(this).html());
+        $j(this).filter(':visible').find('td').each(function() {
+            if ($j(this).css('display') != 'none') tmpRow[tmpRow.length] = formatData($j(this).html());
         });
         row2CSV(tmpRow);
     });
