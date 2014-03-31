@@ -1,5 +1,5 @@
 // jquery calls to set up a PowerSchool form
-// requires jquery-1.5.1.min.js, fmt_date.js, formatters.js and selectlists.js
+// requires jquery, fmt_date.js, formatters.js and selectlists.js
 
 function init_checklist(obj) {
   $j("#"+obj.id).hide();
