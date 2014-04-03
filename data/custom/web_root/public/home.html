@@ -56,10 +56,10 @@ $j(document).ready(function() {
   <div id="content" class="group">
 <form action="/guardian/home.html" method="post" name="LoginForm" target="_top" id="LoginForm" onsubmit="doPCASLogin(this);">
   ~[if.~[gpv:loginTarget]=][else]
-  <input type="hidden" name="loginTarget" value="~[gpv:loginTarget]"/>
+  <input type="hidden" name="loginTarget" value="~(gpv.loginTarget;encodehtml)"/>
   [/if]
   ~[if.~[gpv:popup]=][else]
-  <input type="hidden" name="popup" value="~[gpv:popup]"/>
+  <input type="hidden" name="popup" value="~(gpv.popup;encodehtml)"/>
   [/if]
 
   <input type="hidden" name="pstoken" value="~[x:pstoken]" />
