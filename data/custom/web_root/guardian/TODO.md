@@ -8,6 +8,9 @@ radio buttons; checkboxes to be used only for optional fields.
 
 Move lengthy, or duplicate instructions to popup dialogs.
 
+Move (Electives?), PTA, SRS and Locker Information to separate areas inside
+the parent portal?
+
 
 01-registration
 ---------------
