@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Information - PowerSchool Parent Access</title>
+<!-- pscustom_begin -->
+<link href="/images/css/regforms.css" rel="stylesheet">
+~[wc:UI_js_includes]
+~[wc:guardian_header]
+<script src="/scripts/fmt_date.js" type="text/javascript"></script>
+<script src="/scripts/formatters.js" type="text/javascript"></script>
+<script src="/scripts/happy.js" type="text/javascript"></script>
+<script src="/scripts/happy.methods.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form03.js" type="text/javascript"></script>
+
+<h1>Student Information</h1>
+
+<div id="changes-saved-container">
+</div>
+
+<!-- begin form action -->
+<form class="noSubmitLoading" id="form03" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="01-registration" />
+<input type="hidden" name="backtitle" value="Main Registration Page" />
+<input type="hidden" name="nextpage" value="04-family" />
+<input type="hidden" name="nexttitle" value="Family Information" />
+<!-- end form action -->
+<div id="form3-contents" align="center" style="width: 98%">
+<div id="form3-setup" class="box-round group" style="width: 720px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<tr class="headerrow"><td colspan="3" class="bold">1. Student's Legal Name</td></tr>
+<tr><td colspan="3"><strong>Note:</strong>  The Student's Legal Name must match the
+  name on the student's legal documentation (birth certificate or passport).
+  If the legal name shown here is not correct, please contact the school
+  office so that it can be corrected.</td></tr>
+<tr><td class="bold">Last, First Middle</td><td colspan="2" class="bold">~([01]Lastfirst)</td></tr>
+<tr><td class="bold">Current Grade</td><td colspan="2" class="bold">~([01]Grade_Level)</td></tr>
+
+<tr class="headerrow"><td colspan="3">2. Nickname</td></tr>
+<tr><td colspan="3"><em>Optional:</em> If your student has a nickname that 
+  he or she would like teachers and other students to use rather than his or
+  her legal first name, please enter it here. Note that this nickname (or the
+  legal first name if no nickname is supplied) will also be used as part of
+  the username created for student online accounts.</td></tr>
+<tr><td>Nickname</td><td colspan="2"><input type="text" name="[01]Nickname" value="" size="20" maxlength="30"></td></tr>
+
+<tr class="headerrow"><td colspan="3" class="bold">3. Birth Information</td></tr>
+<tr><td>Date of Birth</td>
+<td colspan="2">Gender</td></tr>
+<tr><td><input type="text" id="dob" name="[01]DOB" value="" size="15" /></td>
+<td colspan="2"><select id="gender" name="[01]Gender">
+<option value="M">M</option>
+<option value="F">F</option>
+</select></td></tr>
+
+<tr><td>Birth City</td><td>State</td><td>Country</td></tr>
+<tr><td><input type="text" id="birth_city" name="[01]CA_BirthPlace_City" value="" size="20" maxlength="30" /></td>
+<td><select id="birth_state" name="[01]CA_BirthPlace_StateProvince">
+<option value="">State (US, Canada or Mexico):</option>
+<option value="US-AL">Alabama</option>
+<option value="US-AK">Alaska</option>
+<option value="US-AZ">Arizona</option>
+<option value="US-AR">Arkansas</option>
+<option value="US-CA">California</option>
+<option value="US-CO">Colorado</option>
+<option value="US-CT">Connecticut</option>
+<option value="US-DE">Delaware</option>
+<option value="US-DC">District of Columbia</option>
+<option value="US-FL">Florida</option>
+<option value="US-GA">Georgia</option>
+<option value="US-HI">Hawaii</option>
+<option value="US-ID">Idaho</option>
+<option value="US-IL">Illinois</option>
+<option value="US-IN">Indiana</option>
+<option value="US-IA">Iowa</option>
+<option value="US-KS">Kansas</option>
+<option value="US-KY">Kentucky</option>
+<option value="US-LA">Louisiana</option>
+<option value="US-ME">Maine</option>
+<option value="US-MD">Maryland</option>
+<option value="US-MA">Massachusetts</option>
+<option value="US-MI">Michigan</option>
+<option value="US-MN">Minnesota</option>
+<option value="US-MS">Mississippi</option>
+<option value="US-MO">Missouri</option>
+<option value="US-MT">Montana</option>
+<option value="US-NE">Nebraska</option>
+<option value="US-NV">Nevada</option>
+<option value="US-NH">New Hampshire</option>
+<option value="US-NJ">New Jersey</option>
+<option value="US-NM">New Mexico</option>
+<option value="US-NY">New York</option>
+<option value="US-NC">North Carolina</option>
+<option value="US-ND">North Dakota</option>
+<option value="US-OH">Ohio</option>
+<option value="US-OK">Oklahoma</option>
+<option value="US-OR">Oregon</option>
+<option value="US-PA">Pennsylvania</option>
+<option value="US-RI">Rhode Island</option>
+<option value="US-SC">South Carolina</option>
+<option value="US-SD">South Dakota</option>
+<option value="US-TN">Tennessee</option>
+<option value="US-TX">Texas</option>
+<option value="US-UT">Utah</option>
+<option value="US-VT">Vermont</option>
+<option value="US-VA">Virginia</option>
+<option value="US-WA">Washington</option>
+<option value="US-WV">West Virginia</option>
+<option value="US-WI">Wisconsin</option>
+<option value="US-WY">Wyoming</option>
+<option value="CA-AB">Alberta</option>
+<option value="CA-BC">British Columbia</option>
+<option value="CA-MB">Manitoba</option>
+<option value="CA-NB">New Brunswick</option>
+<option value="CA-NL">Newfoundland</option>
+<option value="CA-NS">Nova Scotia</option>
+<option value="CA-NT">North West Territories</option>
+<option value="CA-ON">Ontario</option>
+<option value="CA-PE">Prince Edward Island</option>
+<option value="CA-QC">Quebec</option>
+<option value="CA-SK">Saskatchewan</option>
+<option value="CA-YT">Yukon</option>
+<option value="MX-AGU">Aguascalientes</option>
+<option value="MX-BCN">Baja California Norte</option>
+<option value="MX-BCS">Baja California Sur</option>
+<option value="MX-CHH">Chihuahua</option>
+<option value="MX-COL">Colima</option>
+<option value="MX-CAM">Campeche</option>
+<option value="MX-CHP">Chiapas</option>
+<option value="MX-COA">Coahuila</option>
+<option value="MX-DIF">Distrito Federal</option>
+<option value="MX-DUR">Durango</option>
+<option value="MX-GRO">Guerrero</option>
+<option value="MX-GUA">Guanajuato</option>
+<option value="MX-HID">Hidalgo</option>
+<option value="MX-JAL">Jalisco</option>
+<option value="MX-MIC">Michoacan</option>
+<option value="MX-MOR">Morelos</option>
+<option value="MX-MEX">Mexico State</option>
+<option value="MX-NAY">Nayarit</option>
+<option value="MX-NLE">Nuevo Leon</option>
+<option value="MX-OAX">Oaxaca</option>
+<option value="MX-PUE">Puebla</option>
+<option value="MX-QUE">Queretaro</option>
+<option value="MX-ROO">Quintana Roo</option>
+<option value="MX-SIN">Sinaloa</option>
+<option value="MX-SLP">San Luis Potosi</option>
+<option value="MX-SON">Sonora</option>
+<option value="MX-TAB">Tabasco</option>
+<option value="MX-TLA">Tlaxcala</option>
+<option value="MX-TAM">Tamaulipas</option>
+<option value="MX-VER">Veracruz</option>
+<option value="MX-YUC">Yucatan</option>
+<option value="MX-ZAC">Zacatecas</option>
+</select></td>
+<td><select id="birth_country" name="[01]CA_BirthCountry">
+<option value="">Country:</option>
+<option value="US">United States</option>
+<option value="AC">Ascension Island</option>
+<option value="AF">Afghanistan</option>
+<option value="AX">Aland Islands</option>
+<option value="AL">Albania</option>
+<option value="DZ">Algeria</option>
+<option value="AS">American Samoa</option>
+<option value="AR">Argentina</option>
+<option value="AM">Armenia</option>
+<option value="AW">Aruba</option>
+<option value="AU">Australia</option>
+<option value="AT">Austria</option>
+<option value="AZ">Azerbaijan</option>
+<option value="BS">Bahamas</option>
+<option value="BH">Bahrain</option>
+<option value="BD">Bangladesh</option>
+<option value="BB">Barbados</option>
+<option value="BY">Belarus</option>
+<option value="BE">Belgium</option>
+<option value="BZ">Belize</option>
+<option value="BJ">Benin</option>
+<option value="BM">Bermuda</option>
+<option value="BT">Bhutan</option>
+<option value="BO">Bolivia</option>
+<option value="BA">Bosnia and Herzegovina</option>
+<option value="BW">Botswana</option>
+<option value="BV">Bouvet Island</option>
+<option value="BR">Brazil</option>
+<option value="IO">British Indian Ocean Territory</option>
+<option value="BN">Brunei Darussalam</option>
+<option value="BG">Bulgaria</option>
+<option value="BF">Burkina Faso</option>
+<option value="BI">Burundi</option>
+<option value="KH">Cambodia</option>
+<option value="CM">Cameroon</option>
+<option value="CA">Canada</option>
+<option value="CV">Cape Verde</option>
+<option value="KY">Cayman Islands</option>
+<option value="CF">Central African Republic</option>
+<option value="TD">Chad</option>
+<option value="CL">Chile</option>
+<option value="CN">China</option>
+<option value="CX">Christmas Island</option>
+<option value="CP">Clipperton Island</option>
+<option value="CC">Cocos (Keeling) Islands</option>
+<option value="CO">Colombia</option>
+<option value="KM">Comoros</option>
+<option value="CG">Congo</option>
+<option value="CD">Congo, Democratic Republic</option>
+<option value="CK">Cook Islands</option>
+<option value="CR">Costa Rica</option>
+<option value="CI">Cote d'Ivoire</option>
+<option value="HR">Croatia</option>
+<option value="CU">Cuba</option>
+<option value="CY">Cyprus</option>
+<option value="CZ">Czech Republic</option>
+<option value="DK">Denmark</option>
+<option value="DG">Diego Garcia</option>
+<option value="DJ">Djibouti</option>
+<option value="DM">Dominica</option>
+<option value="DO">Dominican Republic</option>
+<option value="TP">East Timor</option>
+<option value="EC">Ecuador</option>
+<option value="EG">Egypt</option>
+<option value="SV">El Salvador</option>
+<option value="GQ">Equatorial Guinea</option>
+<option value="ER">Eritrea</option>
+<option value="EE">Estonia</option>
+<option value="ET">Ethiopia</option>
+<option value="FK">Falkland Islands</option>
+<option value="FO">Faroe Islands</option>
+<option value="FJ">Fiji</option>
+<option value="FI">Finland</option>
+<option value="FR">France</option>
+<option value="GF">French Guiana</option>
+<option value="PF">French Polynesia</option>
+<option value="TF">French Southern Territories</option>
+<option value="GA">Gabon</option>
+<option value="GM">Gambia</option>
+<option value="GE">Georgia</option>
+<option value="DE">Germany</option>
+<option value="GH">Ghana</option>
+<option value="GI">Gibraltar</option>
+<option value="GR">Greece</option>
+<option value="GL">Greenland</option>
+<option value="GD">Grenada</option>
+<option value="GP">Guadeloupe</option>
+<option value="GU">Guam</option>
+<option value="GT">Guatemala</option>
+<option value="GN">Guinea</option>
+<option value="GW">Guinea-Bissau</option>
+<option value="GG">Gurnsey</option>
+<option value="GY">Guyana</option>
+<option value="HT">Haiti</option>
+<option value="HM">Heard and Mc Donald Islands</option>
+<option value="VA">Holy See - Vatican City</option>
+<option value="HN">Honduras</option>
+<option value="HK">Hong Kong</option>
+<option value="HU">Hungary</option>
+<option value="IS">Iceland</option>
+<option value="IN">India</option>
+<option value="ID">Indonesia</option>
+<option value="IR">Iran</option>
+<option value="IQ">Iraq</option>
+<option value="IE">Ireland</option>
+<option value="IM">Isle of Man</option>
+<option value="IL">Israel</option>
+<option value="IT">Italy</option>
+<option value="JM">Jamaica</option>
+<option value="JP">Japan</option>
+<option value="JE">Jersey</option>
+<option value="JO">Jordan</option>
+<option value="KZ">Kazakstan</option>
+<option value="KE">Kenya</option>
+<option value="KI">Kiribati</option>
+<option value="KP">Korea, North</option>
+<option value="KR">Korea, South</option>
+<option value="KW">Kuwait</option>
+<option value="KG">Kyrgyzstan</option>
+<option value="LA">Laos</option>
+<option value="LV">Latvia</option>
+<option value="LB">Lebanon</option>
+<option value="LS">Lesotho</option>
+<option value="LR">Liberia</option>
+<option value="LY">Libya</option>
+<option value="LI">Liechtenstein</option>
+<option value="LT">Lithuania</option>
+<option value="LU">Luxembourg</option>
+<option value="MO">Macau</option>
+<option value="MK">Macedonia</option>
+<option value="MG">Madagascar</option>
+<option value="MW">Malawi</option>
+<option value="MY">Malaysia</option>
+<option value="MV">Maldives</option>
+<option value="ML">Mali</option>
+<option value="MT">Malta</option>
+<option value="MH">Marshall Islands</option>
+<option value="MQ">Martinique</option>
+<option value="MR">Mauritania</option>
+<option value="MU">Mauritius</option>
+<option value="YT">Mayotte</option>
+<option value="MX">Mexico</option>
+<option value="FM">Micronesia</option>
+<option value="MD">Moldova</option>
+<option value="MC">Monaco</option>
+<option value="MN">Mongolia</option>
+<option value="MS">Montserrat</option>
+<option value="MA">Morocco</option>
+<option value="MZ">Mozambique</option>
+<option value="MM">Myanmar</option>
+<option value="NA">Namibia</option>
+<option value="NR">Nauru</option>
+<option value="NP">Nepal</option>
+<option value="NL">Netherlands</option>
+<option value="AN">Netherlands Antilles</option>
+<option value="NC">New Caledonia</option>
+<option value="NZ">New Zealand</option>
+<option value="NI">Nicaragua</option>
+<option value="NE">Niger</option>
+<option value="NG">Nigeria</option>
+<option value="NU">Niue</option>
+<option value="NF">Norfolk Island</option>
+<option value="MP">Northern Mariana Islands</option>
+<option value="NO">Norway</option>
+<option value="OM">Oman</option>
+<option value="PK">Pakistan</option>
+<option value="PW">Palau</option>
+<option value="PS">Palestinian Territory</option>
+<option value="PA">Panama</option>
+<option value="PG">Papua New Guinea</option>
+<option value="PY">Paraguay</option>
+<option value="PE">Peru</option>
+<option value="PH">Philippines</option>
+<option value="PN">Pitcairn</option>
+<option value="PL">Poland</option>
+<option value="PT">Portugal</option>
+<option value="PR">Puerto Rico</option>
+<option value="QA">Qatar</option>
+<option value="RE">Reunion</option>
+<option value="RO">Romania</option>
+<option value="RU">Russia</option>
+<option value="RW">Rwanda</option>
+<option value="BL">St. Barthélemy</option>
+<option value="SH">St. Helena</option>
+<option value="KN">St. Kitts and Nevis</option>
+<option value="LC">St. Lucia</option>
+<option value="MF">St. Martin</option>
+<option value="PM">St. Pierre and Miquelon</option>
+<option value="VC">St. Vincent - Grenadines</option>
+<option value="WS">Samoa (Independent)</option>
+<option value="SM">San Marino</option>
+<option value="ST">Sao Tome and Principe</option>
+<option value="SA">Saudi Arabia</option>
+<option value="SN">Senegal</option>
+<option value="SC">Seychelles</option>
+<option value="SL">Sierra Leone</option>
+<option value="SG">Singapore</option>
+<option value="SK">Slovakia</option>
+<option value="SI">Slovenia</option>
+<option value="SB">Solomon Islands</option>
+<option value="SO">Somalia</option>
+<option value="ZA">South Africa</option>
+<option value="GS">South Georgia - South Sandwich</option>
+<option value="ES">Spain</option>
+<option value="LK">Sri Lanka</option>
+<option value="SD">Sudan</option>
+<option value="SR">Suriname</option>
+<option value="SJ">Svalbard - Jan Mayen Islands</option>
+<option value="SZ">Swaziland</option>
+<option value="SE">Sweden</option>
+<option value="CH">Switzerland</option>
+<option value="SY">Syria</option>
+<option value="TW">Taiwan</option>
+<option value="TJ">Tajikistan</option>
+<option value="TZ">Tanzania</option>
+<option value="TH">Thailand</option>
+<option value="TG">Togo</option>
+<option value="TK">Tokelau</option>
+<option value="TO">Tonga</option>
+<option value="TT">Trinidad and Tobago</option>
+<option value="TA">Tristan da Cunha</option>
+<option value="TN">Tunisia</option>
+<option value="TR">Turkey</option>
+<option value="TM">Turkmenistan</option>
+<option value="TC">Turks and Caicos Islands</option>
+<option value="TV">Tuvalu</option>
+<option value="UG">Uganda</option>
+<option value="UA">Ukraine</option>
+<option value="AE">United Arab Emirates</option>
+<option value="GB">United Kingdom</option>
+<option value="UM">United States Minor Islands</option>
+<option value="UY">Uruguay</option>
+<option value="UZ">Uzbekistan</option>
+<option value="VU">Vanuatu</option>
+<option value="VE">Venezuela</option>
+<option value="VN">Viet Nam</option>
+<option value="VG">Virgin Islands (British)</option>
+<option value="VI">Virgin Islands (U.S.)</option>
+<option value="WF">Wallis and Futuna Islands</option>
+<option value="EH">Western Sahara</option>
+<option value="YE">Yemen</option>
+<option value="YU">Yugoslavia</option>
+<option value="ZR">Zaire</option>
+<option value="ZM">Zambia</option>
+<option value="ZW">Zimbabwe</option>
+<option value="ZZ">Unspecified or Unknown</option>
+</select></td></tr>
+
+<tr class="headerrow"><td colspan="3" class="bold">4. Custody Information</td></tr>
+<tr><td class="bold">Student lives with</td><td colspan="2"><select id="lives_with_rel" name="[01]Lives_With_Rel">
+<option value="">Choose:</option>
+<option value="Both">Both Parents</option>
+<option value="Mother">Mother</option>
+<option value="Father">Father</option>
+<option value="Guardian">Legal Guardian</option>
+</select></td></tr>
+<tr><td colspan="2">Are there any <strong>court-mandated</strong> custody or visitation orders limiting access to this student?
+If you answer <strong>Yes</strong>, you must submit current paper copies of the legal documents to the school office.</td>
+<td><input name="[01]Custody_Orders" type="radio" id="co_yes" class="custody_orders" value="1" />Yes&nbsp;&nbsp;
+<input name="[01]Custody_Orders" type="radio" id="co_no" class="custody_orders" value="" />No&nbsp;&nbsp;</td></tr>
+
+<tr class="headerrow"><td colspan="3" class="bold">5. Home Language Survey</td></tr>
+<tr><td colspan="3">The California Education Code contains legal requirements 
+which direct schools to determine the language(s) spoken in the home of each 
+student.  This information is essential in order for schools to 
+provide adequate instructional programs and services.<br/><br/> 
+As parents and guardians, your cooperation is requested in complying with 
+this legal requirement.  Please respond to each of the questions 
+below as accurately as possible.  Do not leave any of questions 5a through 5d
+unanswered.
+</td></tr>
+<tr><td colspan="2">5a. Which language did your child learn when he/she first began to talk?</td>
+<td><select id="lang_earliest" name="[01]Lang_Earliest">
+<option value="">Choose...
+<option value="00">English
+<option value="01">Spanish
+<option value="16">Farsi (Persian)
+<option value="17">French
+<option value="18">German
+<option value="08">Japanese
+<option value="04">Korean
+<option value="07">Mandarin (Putonghua)
+<option value="05">Pilipino (Tagalog)
+<option value="06">Portuguese
+<option value="28">Punjabi
+<option value="29">Russian
+<option value="52">Serbo-Croatian (Serbian)
+<option value="57">Tigrinya
+<option value="02">Vietnamese
+<option value="56">Albanian
+<option value="37">American Sign Language
+<option value="11">Arabic
+<option value="12">Armenian
+<option value="42">Assyrian
+<option value="58">Bosnian
+<option value="13">Burmese
+<option value="03">Cantonese
+<option value="36">Cebuano (Visayan)
+<option value="54">Chaldean
+<option value="20">Chamorro (Guamanian)
+<option value="39">Chaozhou (Chaochow)
+<option value="14">Croatian
+<option value="15">Dutch
+<option value="19">Greek
+<option value="43">Gujarati
+<option value="21">Hebrew
+<option value="22">Hindi
+<option value="23">Hmong
+<option value="24">Hungarian
+<option value="25">Ilacano
+<option value="26">Indonesian
+<option value="27">Italian
+<option value="09">Khmer (Cambodian)
+<option value="50">Khmu
+<option value="51">Kurdish
+<option value="47">Lahu
+<option value="10">Lao
+<option value="48">Marshallese
+<option value="44">Mien (Yao)
+<option value="49">Mixteco
+<option value="40">Pashto
+<option value="41">Polish
+<option value="45">Rumanian
+<option value="30">Samoan
+<option value="31">Serbian
+<option value="46">Taiwanewe
+<option value="32">Thai
+<option value="53">Toishanese
+<option value="34">Tongan
+<option value="33">Turkish
+<option value="38">Ukranian
+<option value="35">Urdu
+<option value="99">Other Non-English Language</select></td></tr>
+
+<tr><td colspan="2">5b. What language does your child most frequently speak at home?</td>
+<td><select id="lang_primary" name="[01]ksd_primarylanguage">
+<option value="">Choose...
+<option value="00">English
+<option value="01">Spanish
+<option value="16">Farsi (Persian)
+<option value="17">French
+<option value="18">German
+<option value="08">Japanese
+<option value="04">Korean
+<option value="07">Mandarin (Putonghua)
+<option value="05">Pilipino (Tagalog)
+<option value="06">Portuguese
+<option value="28">Punjabi
+<option value="29">Russian
+<option value="52">Serbo-Croatian (Serbian)
+<option value="57">Tigrinya
+<option value="02">Vietnamese
+<option value="56">Albanian
+<option value="37">American Sign Language
+<option value="11">Arabic
+<option value="12">Armenian
+<option value="42">Assyrian
+<option value="58">Bosnian
+<option value="13">Burmese
+<option value="03">Cantonese
+<option value="36">Cebuano (Visayan)
+<option value="54">Chaldean
+<option value="20">Chamorro (Guamanian)
+<option value="39">Chaozhou (Chaochow)
+<option value="14">Croatian
+<option value="15">Dutch
+<option value="19">Greek
+<option value="43">Gujarati
+<option value="21">Hebrew
+<option value="22">Hindi
+<option value="23">Hmong
+<option value="24">Hungarian
+<option value="25">Ilacano
+<option value="26">Indonesian
+<option value="27">Italian
+<option value="09">Khmer (Cambodian)
+<option value="50">Khmu
+<option value="51">Kurdish
+<option value="47">Lahu
+<option value="10">Lao
+<option value="48">Marshallese
+<option value="44">Mien (Yao)
+<option value="49">Mixteco
+<option value="40">Pashto
+<option value="41">Polish
+<option value="45">Rumanian
+<option value="30">Samoan
+<option value="31">Serbian
+<option value="46">Taiwanewe
+<option value="32">Thai
+<option value="53">Toishanese
+<option value="34">Tongan
+<option value="33">Turkish
+<option value="38">Ukranian
+<option value="35">Urdu
+<option value="99">Other Non-English Language</select></td></tr>
+
+<tr><td colspan="2">5c. What language do you use most frequently to speak to your child?</td>
+<td><select id="lang_spoken" name="[01]Lang_Spoken_To">
+<option value="">Choose...
+<option value="00">English
+<option value="01">Spanish
+<option value="16">Farsi (Persian)
+<option value="17">French
+<option value="18">German
+<option value="08">Japanese
+<option value="04">Korean
+<option value="07">Mandarin (Putonghua)
+<option value="05">Pilipino (Tagalog)
+<option value="06">Portuguese
+<option value="28">Punjabi
+<option value="29">Russian
+<option value="52">Serbo-Croatian (Serbian)
+<option value="57">Tigrinya
+<option value="02">Vietnamese
+<option value="56">Albanian
+<option value="37">American Sign Language
+<option value="11">Arabic
+<option value="12">Armenian
+<option value="42">Assyrian
+<option value="58">Bosnian
+<option value="13">Burmese
+<option value="03">Cantonese
+<option value="36">Cebuano (Visayan)
+<option value="54">Chaldean
+<option value="20">Chamorro (Guamanian)
+<option value="39">Chaozhou (Chaochow)
+<option value="14">Croatian
+<option value="15">Dutch
+<option value="19">Greek
+<option value="43">Gujarati
+<option value="21">Hebrew
+<option value="22">Hindi
+<option value="23">Hmong
+<option value="24">Hungarian
+<option value="25">Ilacano
+<option value="26">Indonesian
+<option value="27">Italian
+<option value="09">Khmer (Cambodian)
+<option value="50">Khmu
+<option value="51">Kurdish
+<option value="47">Lahu
+<option value="10">Lao
+<option value="48">Marshallese
+<option value="44">Mien (Yao)
+<option value="49">Mixteco
+<option value="40">Pashto
+<option value="41">Polish
+<option value="45">Rumanian
+<option value="30">Samoan
+<option value="31">Serbian
+<option value="46">Taiwanewe
+<option value="32">Thai
+<option value="53">Toishanese
+<option value="34">Tongan
+<option value="33">Turkish
+<option value="38">Ukranian
+<option value="35">Urdu
+<option value="99">Other Non-English Language</select></td></tr>
+
+<tr><td colspan="2">5d. What language is most often spoken by adults in the home?<br/>
+(parents, guardians, grandparents, or any other adults)</td>
+<td><select id="lang_adults" name="[01]Lang_Adults_Primary">
+<option value="">Choose...
+<option value="00">English
+<option value="01">Spanish
+<option value="16">Farsi (Persian)
+<option value="17">French
+<option value="18">German
+<option value="08">Japanese
+<option value="04">Korean
+<option value="07">Mandarin (Putonghua)
+<option value="05">Pilipino (Tagalog)
+<option value="06">Portuguese
+<option value="28">Punjabi
+<option value="29">Russian
+<option value="52">Serbo-Croatian (Serbian)
+<option value="57">Tigrinya
+<option value="02">Vietnamese
+<option value="56">Albanian
+<option value="37">American Sign Language
+<option value="11">Arabic
+<option value="12">Armenian
+<option value="42">Assyrian
+<option value="58">Bosnian
+<option value="13">Burmese
+<option value="03">Cantonese
+<option value="36">Cebuano (Visayan)
+<option value="54">Chaldean
+<option value="20">Chamorro (Guamanian)
+<option value="39">Chaozhou (Chaochow)
+<option value="14">Croatian
+<option value="15">Dutch
+<option value="19">Greek
+<option value="43">Gujarati
+<option value="21">Hebrew
+<option value="22">Hindi
+<option value="23">Hmong
+<option value="24">Hungarian
+<option value="25">Ilacano
+<option value="26">Indonesian
+<option value="27">Italian
+<option value="09">Khmer (Cambodian)
+<option value="50">Khmu
+<option value="51">Kurdish
+<option value="47">Lahu
+<option value="10">Lao
+<option value="48">Marshallese
+<option value="44">Mien (Yao)
+<option value="49">Mixteco
+<option value="40">Pashto
+<option value="41">Polish
+<option value="45">Rumanian
+<option value="30">Samoan
+<option value="31">Serbian
+<option value="46">Taiwanewe
+<option value="32">Thai
+<option value="53">Toishanese
+<option value="34">Tongan
+<option value="33">Turkish
+<option value="38">Ukranian
+<option value="35">Urdu
+<option value="99">Other Non-English Language</select></td></tr>
+
+<tr><td colspan="3">Answer question 5e if there is language
+  other than that answered in question 5d that is
+  spoken by adults in the student's home.</td></tr>
+<tr><td colspan="2">5e. What additional language, if any, is also spoken 
+by adults in the home?<br/>
+(parents, guardians, grandparents, or any other adults)</td>
+<td><select id="lang_other" name="[01]Lang_Other">
+<option value="">Choose (if applicable)...
+<option value="00">English
+<option value="01">Spanish
+<option value="16">Farsi (Persian)
+<option value="17">French
+<option value="18">German
+<option value="08">Japanese
+<option value="04">Korean
+<option value="07">Mandarin (Putonghua)
+<option value="05">Pilipino (Tagalog)
+<option value="06">Portuguese
+<option value="28">Punjabi
+<option value="29">Russian
+<option value="52">Serbo-Croatian (Serbian)
+<option value="57">Tigrinya
+<option value="02">Vietnamese
+<option value="56">Albanian
+<option value="37">American Sign Language
+<option value="11">Arabic
+<option value="12">Armenian
+<option value="42">Assyrian
+<option value="58">Bosnian
+<option value="13">Burmese
+<option value="03">Cantonese
+<option value="36">Cebuano (Visayan)
+<option value="54">Chaldean
+<option value="20">Chamorro (Guamanian)
+<option value="39">Chaozhou (Chaochow)
+<option value="14">Croatian
+<option value="15">Dutch
+<option value="19">Greek
+<option value="43">Gujarati
+<option value="21">Hebrew
+<option value="22">Hindi
+<option value="23">Hmong
+<option value="24">Hungarian
+<option value="25">Ilacano
+<option value="26">Indonesian
+<option value="27">Italian
+<option value="09">Khmer (Cambodian)
+<option value="50">Khmu
+<option value="51">Kurdish
+<option value="47">Lahu
+<option value="10">Lao
+<option value="48">Marshallese
+<option value="44">Mien (Yao)
+<option value="49">Mixteco
+<option value="40">Pashto
+<option value="41">Polish
+<option value="45">Rumanian
+<option value="30">Samoan
+<option value="31">Serbian
+<option value="46">Taiwanewe
+<option value="32">Thai
+<option value="53">Toishanese
+<option value="34">Tongan
+<option value="33">Turkish
+<option value="38">Ukranian
+<option value="35">Urdu
+<option value="99">Other Non-English Language</select></td></tr>
+
+<tr class="headerrow"><td colspan="3" class="bold">6. Previous School Enrollment</td></tr>
+<tr><td colspan="2">Name of Previous School (if applicable)</td>
+  <td><input type="text" name="[01]Previous_School_Name" value="" size="30" maxlength="30" /></td></tr>
+<tr><td>Number &amp; Street</td>
+<td>City</td>
+<td>Phone (with area code)</td></tr>
+<tr><td><input type="text" name="[01]Previous_School_Address" value="" size="30" maxlength="50" /></td>
+<td><input type="text" name="[01]Previous_School_City" value="" size="20" /></td>
+<td><input type="text" name="[01]Previous_School_Phone" value="" size="16" /></td></tr>
+
+<tr><td colspan="2">Last Grade Level</td>
+<td><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10" /></td></tr>
+<tr><td colspan="2">Date student first enrolled in a U.S. school<br/>
+  (Note: leave field blank if a Kentfield school is the first U.S. school)</td>
+<td><input type="text" id="first_usa_school" name="[01]CA_FirstUSASchooling" value="" size="16" /></td>
+<tr><td colspan="2">Has student been enrolled in U.S. schools<br/>for a total of less than 3 years?</td>
+<td><input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="1" />Yes&nbsp;&nbsp;
+  <input type="radio" class="immigrant" name="[01]CA_ImmigrantFunding" value="" />No</td></tr>
+
+<tr class="headerrow"><td  colspan="3" class="bold">7. English Language Development</td></tr>
+<tr><td colspan="3">Check the appropriate boxes if your child
+  has received English Language Development services or
+  been given the California English Language Development Test (CELDT).</td><tr>
+<tr>
+<td><input type="checkbox" name="[01]Reg_Prog_ELD" value="1" />7a. English Language Development&nbsp;&nbsp;</td>
+<td colspan="2"><input type="checkbox" name="[01]Reg_Previous_CELDT" value="1" />7b. CELDT &nbsp;&nbsp;</td>
+</tr>
+<tr class="headerrow"><td  colspan="3" class="bold">8. Other Programs and Services</td></tr>
+<tr><td colspan="3">Please check the appropriate boxes below if your child has been enrolled in any of these programs or services:</td></tr>
+<tr>
+<td><input type="checkbox" name="[01]Reg_Prog_RSP" value="1" />8a. Resource Special Program&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_SDC" value="1" />8b. Special Day Class&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_Speech" value="1" />8c. Speech/Language&nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td><input type="checkbox" name="[01]Reg_Prog_504" value="1" />8d. Section 504&nbsp;&nbsp;</td>
+<td><input type="checkbox" name="[01]Reg_Prog_GATE" value="1" />8e. Gifted (GATE)&nbsp;&nbsp;</td></tr>
+<tr><td>8m. Other (please describe):</td>
+<td colspan="2"><input type="text" name="[01]Reg_Prog_Other" value="" size="30" /></td></tr>
+
+<tr class="headerrow"><td colspan="3" class="bold">9. State Required Demographics: Ethnicity</td></tr>
+<tr><td colspan="2">Is the student Hispanic or Latino?</td>
+  <td><input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="1" />Yes&nbsp;&nbsp;&nbsp;<input type="radio" class="hispanic_ethnicity" name="[01]FedEthnicity" value="0" />No</td></tr>
+
+<tr class="headerrow"><td colspan="3" class="bold">10. State Required Demographics: Race</td></tr>
+<tr><td colspan="3">The previous question was about <b>ethnicity</b>, not race.  No matter what you selected above, please continue to answer the following by marking one or more boxes to indicate what you consider your child's racial makeup to be.<br/><br/>What is your child's <b>race?</b> Please check up to five categories from the list below:</td></tr>
+<tr><td colspan="3">
+<input type="hidden" name="SaveRace" value="1" />
+<input type="hidden" name="[01]FedRaceDecline" id="r_none_storage" value="0" /><!-- See 'decline_race' function in raceselection_block.ftl -->
+~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]	
+</td>
+</tr>
+
+<tr class="headerrow"><td colspan="3" class="bold">11. State Required Demographics: Parent Education</td></tr>
+<tr><td colspan="2">Please select the educational level of the student's <b>most educated parent</b> from the following list:</td>
+<td><select id="parent_edu" name="[01]CA_ParentEd">
+<option value="">Select One:</option>
+<option value="14">Not a High School Graduate</option>
+<option value="13">High School Graduate</option>
+<option value="12">Some College (includes AA Degree)</option>
+<option value="11">College Graduate</option>
+<option value="10">Graduate School</option>
+<option value="15">Decline to State or Unknown</option>
+</select></td></tr>
+
+<tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate" /><!-- ~[submitbutton] --><button type="submit" id="btnSubmit" name="btnSubmit">Submit</button></td></tr>
+</table>
+</div>
+</div>
+</form>
+
+<input id="activeNav" type="hidden" value="#btn-classRegistration"/>
+~[wc:guardian_footer]
+</body>
+</html>
