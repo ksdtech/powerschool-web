@@ -62,7 +62,7 @@ function ucwords(str) {
 }
 
 function setCAIfBlank(val) {
-  val = jQuery.trim(val);
+  val = $j.trim(val);
   if (val === '') {
     val = 'CA';
   } else {

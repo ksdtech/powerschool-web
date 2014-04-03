@@ -1,5 +1,5 @@
-jQuery.fn.table2CSV = function(options) {
-    var options = jQuery.extend({
+$j.fn.table2CSV = function(options) {
+    var options = $j.extend({
         separator: ',',
         header: [],
         delivery: 'popup' // popup, value

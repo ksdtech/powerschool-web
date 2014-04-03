@@ -52,7 +52,7 @@ function required_if_8(val) {
 }
 
 function set_up_reg_year() {
-  var reg_year = jQuery.trim($j('#orig_reg_year').val());
+  var reg_year = $j.trim($j('#orig_reg_year').val());
   if (!reg_year) {
     var entrydate = $j('#orig_entrydate').val();
     var mdy = entrydate.match(/(\d+)\/\d+\/(\d+)/);

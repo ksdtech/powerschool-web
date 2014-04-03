@@ -9,7 +9,7 @@ function onForm5Submit() {
   fam2_yes =  $j("#family2_yes");
   if (fam2_text || fam2_yes) {
     $j(".family2_test").each(function() {
-      if (jQuery.trim($j(this).val()) != "") {
+      if ($j.trim($j(this).val()) != "") {
         any_family2 = "1";
       }
     });
