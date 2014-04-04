@@ -3,4 +3,4 @@
 ~[if.~([01]alert_hearing)#]<a class="dialogM" title="Hearing Alert" href="" dialogcontent="/admin/alerts/hearingalert.html?frn=~(studentfrn)"><img src="/images/alert_hearing.gif"></a>&nbsp;&nbsp;[/if]
 ~[if.~([01]alert_vision)#]<a class="dialogM" title="Vision Alert" href="" dialogcontent="/admin/alerts/visionalert.html?frn=~(studentfrn)"><img src="/images/alert_vision.gif"></a>&nbsp;&nbsp;[/if]
 </h1>
-<p>~(studentname) &nbsp; ~([01]grade_level) &nbsp;Local ID:&nbsp;~([01]student_number) &nbsp;SSID:&nbsp;~([01]state_studentnumber) &nbsp; &nbsp; ~(studschoolabbr) &nbsp; &nbsp; ~[enrollmentstatus]</p>
+<p>~(studentname) &nbsp; ~([01]grade_level) &nbsp;Local ID:&nbsp;~([01]student_number) &nbsp;Family.ID:&nbsp;~([01]Web_ID) &nbsp;SSID:&nbsp;~([01]state_studentnumber) &nbsp; ~(studschoolabbr) &nbsp; ~[enrollmentstatus]</p>
