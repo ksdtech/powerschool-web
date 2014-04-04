@@ -65,7 +65,7 @@ kikdir\_father2\_work_phone
 kikdir\_father2\_cell
 kikdir\_father2\_email
 kikdir\_unlisted (Yes/No)
-kikdir\_preview\_approval (Yes/No)
+kikdir\_preview\_approved (Yes/No)
 kikdir\_preview\_approved\_at (timestamp)
 
 
