@@ -87,50 +87,6 @@ $j(document).ready(function () {
         required: 'sometimes',
         test: required_if_transfering,
         message: 'Please give the name of the school, or type \"Don\'t know.\"' },
-      '.electives_6_pa': {
-        required: 'sometimes',
-        test: required_if_6,
-        message: 'Please choose Band or Chorus' },
-      '.electives_7_band': {
-        required: 'sometimes',
-        test: required_if_7,
-        message: 'Please choose Yes or No' },
-      '.electives_7_choir': {
-        required: 'sometimes',
-        test: required_if_7,
-        message: 'Please choose Yes or No' },
-      '.electives_7_mathletes': {
-        required: 'sometimes',
-        test: required_if_7,
-        message: 'Please choose Yes or No' },
-      '.electives_8_band': {
-        required: 'sometimes',
-        test: required_if_8,
-        message: 'Please choose Yes or No' },
-      '.electives_8_choir': {
-        required: 'sometimes',
-        test: required_if_8,
-        message: 'Please choose Yes or No' },
-      '.electives_8_mathletes': {
-        required: 'sometimes',
-        test: required_if_8,
-        message: 'Please choose Yes or No' },
-      '.electives_8_yearbook': {
-        required: 'sometimes',
-        test: required_if_8,
-        message: 'Please choose Yes or No' },
-      '#electives_8_enrich1': {
-        required: 'sometimes',
-        test: required_if_8,
-        message: 'Please choose an enrichment preference' },
-      '#electives_8_enrich1': {
-        required: 'sometimes',
-        test: required_if_8,
-        message: 'Please choose an enrichment preference' },
-      '#electives_8_enrich1': {
-        required: 'sometimes',
-        test: required_if_8,
-        message: 'Please choose an enrichment preference' }
     }
   });
 });

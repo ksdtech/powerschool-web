@@ -4,16 +4,51 @@
 <title>Online Registration Forms - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="/images/css/regforms.css" rel="stylesheet">
-
 ~[wc:UI_js_includes]
 ~[wc:guardian_header]
+<script src="/scripts/jquery_status.js" type="text/javascript"></script>
 
-<h1>Online Registration Forms - Temporarily Offline</h1>
+<h1>Online Registration Forms</h1>
 
-<div>The online registration system is temporarily unavailable for 
-	maintenance. Please check your email to receive notices about
-	when the registration window will re-open.</div>
+<div id="changes-saved-container">
+</div>
 
+<!-- begin form action -->
+<form class="noSubmitLoading" id="forms" action="changesrecorded.html" method="post">
+<input type="hidden" name="backpage" value="regform1">
+<input type="hidden" name="backtitle" value="Main Registration Page. Thank you for confirming!">
+<!-- end form action -->
+<div id="forms-contents" align="center" style="width: 98%">
+<div id="forms-setup" class="box-round group" style="width: 720px">
+<input type="hidden" id="reg_enroll" name="[01]reg_will_attend" value="">
+<input type="hidden" id="form2_updated_at" name="[01]form2_updated_at" value="">
+<input type="hidden" id="form3_updated_at" name="[01]form3_updated_at" value="">
+<input type="hidden" id="form4_updated_at" name="[01]form4_updated_at" value="">
+<input type="hidden" id="form5_updated_at" name="[01]form5_updated_at" value="">
+<input type="hidden" id="form6_updated_at" name="[01]form6_updated_at" value="">
+<input type="hidden" id="form7_updated_at" name="[01]form7_updated_at" value="">
+<input type="hidden" id="form8_updated_at" name="[01]form8_updated_at" value="">
+<input type="hidden" id="form9_updated_at" name="[01]form9_updated_at" value="">
+<input type="hidden" id="form10_updated_at" name="[01]form10_updated_at" value="">
+<input type="hidden" id="form11_updated_at" name="[01]form11_updated_at" value="">
+<input type="hidden" id="form12_updated_at" name="[01]form12_updated_at" value="">
+<input type="hidden" id="form13_updated_at" name="[01]form13_updated_at" value="">
+<input type="hidden" id="form14_updated_at" name="[01]form14_updated_at" value="">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+	
+	
+<tr class="headerrow"><td colspan="2" class="bold">Registration Pages Under Construction</td></tr>
+<tr><td colspan="2">The registration system is being updated for the 2014-2015 
+  school year. Please check back in a few days when this site
+  has been updated.  If you need help in the meantime, please ask one of
+  the school offices for assistance.</td></tr>
+
+</table>
+</div>
+</div>
+</form>
+
+<input id="activeNav" type="hidden" value="#btn-classRegistration"/ />
 ~[wc:guardian_footer]
 </body>
 </html>
