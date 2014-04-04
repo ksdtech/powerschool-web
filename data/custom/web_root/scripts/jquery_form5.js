@@ -18,11 +18,11 @@ function onForm5Submit() {
     } else {
       fam2_no = $j("#family2_no");
       if (any_family2 == "1") {
-        fam2_yes.attr('checked', 'checked');
-        fam2_no.removeAttr('checked');
+        fam2_yes.prop('checked', true);
+        fam2_no.prop('checked', false);
       } else {
-        fam2_no.attr('checked', 'checked');
-        fam2_yes.removeAttr('checked');
+        fam2_no.prop('checked', true);
+        fam2_yes.prop('checked', false);
       }
     }
   }

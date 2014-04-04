@@ -133,7 +133,7 @@ $j(document).ready(function() {
   });
   // format field values for specific input types
   $j("#admin_update").bind("click", function() {
-    if ($j("#admin_update").attr("checked")) { set_form_updated(); }
+    if ($j("#admin_update").prop('checked')) { set_form_updated(); }
   });
   $j(".private").hide();
   // load everything!

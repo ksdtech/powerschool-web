@@ -10,7 +10,7 @@ function init_checklist(obj) {
 		if (val != "") {
 			$j("."+obj.id+"_list").each( function() { 
 				if ($j(this).val().toLowerCase() == val) {
-					$j(this).attr("checked", "checked");
+					$j(this).prop('checked', true);
 				}
 			});
 		}
@@ -92,7 +92,7 @@ $j(document).ready(function() {
 	// when user submits - now handled by happy.js configuration
 	// do stuff when page is loaded
 	$j("#admin_update").bind("click", function() {
-		if ($j("#admin_update").attr("checked")) { set_form_updated(); }
+		if ($j("#admin_update").prop('checked')) { set_form_updated(); }
 	});
 	$j(".private").hide();
 	$j("select.mselect").each( function() {

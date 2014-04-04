@@ -4,7 +4,7 @@ function onForm4Submit() {
     this.value = $j(src_id).val();
   });
   var no_2nd_family = $j("#family2_no");
-  if (no_2nd_family && no_2nd_family.attr("checked")) {
+  if (no_2nd_family && no_2nd_family.prop('checked')) {
     $j("#form5_upd_by").val($j("#userid").val()); 
     $j("#form5_upd_at").val(timestamp_now());
     $j("#nextpage").val($j("#alt_nextpage").val());

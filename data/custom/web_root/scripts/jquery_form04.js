@@ -33,7 +33,7 @@ function onForm04Submit() {
   
   // todo - verify all of this 2nd family stuff
   var no_2nd_family = $j("#family2_no");
-  if (no_2nd_family && no_2nd_family.attr("checked")) {
+  if (no_2nd_family && no_2nd_family.prop('checked')) {
     $j("#form3_upd_by").val($j("#userid").val()); 
     $j("#form3_upd_at").val(timestamp_now());
     $j("#nextpage").val($j("#alt_nextpage").val());
@@ -56,14 +56,17 @@ function onForm04Submit() {
     } else {
       fam2_no = $j("#family2_no");
       if (any_family2 == "1") {
-        fam2_yes.attr('checked', 'checked');
-        fam2_no.removeAttr('checked');
+        fam2_yes.prop('checked', true);
+        fam2_no.prop('checked', false);
       } else {
-        fam2_no.attr('checked', 'checked');
-        fam2_yes.removeAttr('checked');
+        fam2_no.prop('checked', true);
+        fam2_yes.prop('checked', false);
       }
     }
   }
+  
+  var preview_approved = $j("#preview_approved")
+  $j("#upd_at").val(timestamp_now()); 
   onRegFormSubmit();
 }
 

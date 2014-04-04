@@ -2,7 +2,7 @@ function setIfSelectorNotEmpty(val, sel, which) {
   val = '';
   if (!happy.selectorIsEmpty(sel)) {
     val = '1';
-    $j(which).attr('checked', 'checked');
+    $j(which).prop('checked', true);
   }
   return val;
 }

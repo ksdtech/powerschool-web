@@ -10,7 +10,7 @@ $j(document).ready(function() {
     var src = "#" + $j(this).attr('id').replace('_status', '_updated_at');
     var dt = $j(src).val().match(/^(\d\d\d\d-\d\d-\d\d)/);
     if (dt && dt[1] && dt[1].localeCompare('2013-03-25') >= 0) { 
-      $j(this).attr("checked", "checked"); 
+      $j(this).prop('checked', "checked"); 
     }
   });
 });

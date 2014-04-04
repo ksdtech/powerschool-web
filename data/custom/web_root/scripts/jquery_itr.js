@@ -9,7 +9,7 @@ function generate_h1_login() {
   if ($j("#h1_password").val() == '') {
     $j("#h1_password").val(new_ps_password());
   }
-  $j("#h1_web_access").attr("checked", "checked");
+  $j("#h1_web_access").prop('checked', true);
 }
 
 function generate_h2_number() {
@@ -26,7 +26,7 @@ function generate_psst_login() {
   if ($j("#psst_password").val() == '') {
     $j("#psst_password").val(new_ps_password());
   }
-  $j("#psst_web_access").attr("checked", "checked");
+  $j("#psst_web_access").prop('checked', true);
 }
 
 function generate_st_login() {
@@ -121,7 +121,7 @@ $j(document).ready(function() {
   // when user submits - now handled by happy.js configuration
   // do stuff when page is loaded
   $j("#admin_update").bind("click", function() {
-    if ($j("#admin_update").attr("checked")) { set_form_updated(); }
+    if ($j("#admin_update").prop('checked')) { set_form_updated(); }
   });
   $j("#entry_check").bind("click", function() { set_entry_dates(1); });
   $j("#reg_enroll").bind("change", function() { on_enrollment_change(); });
