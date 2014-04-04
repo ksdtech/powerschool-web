@@ -26,52 +26,135 @@ function home2_phone_test(val) {
 }
 
 function onForm04Submit() {
+  // update mailing addresses
   $j('.copy_address').each(function (i) {
     var src_id = this.id.replace(/^mailing_/, '#');
     this.value = $j(src_id).val();
   });
-  
-  // todo - verify all of this 2nd family stuff
-  var no_2nd_family = $j("#family2_no");
-  if (no_2nd_family && no_2nd_family.prop('checked')) {
-    $j("#form3_upd_by").val($j("#userid").val()); 
-    $j("#form3_upd_at").val(timestamp_now());
-    $j("#nextpage").val($j("#alt_nextpage").val());
-    $j("#nexttitle").val($j("#alt_nexttitle").val());
-  }
   $j('.copy_address2').each(function (i) {
     var src_id = this.id.replace(/^mailing2_/, '#home2_');
     this.value = $j(src_id).val();
   });
-  fam2_text = $j("#family2");
-  fam2_yes =  $j("#family2_yes");
-  if (fam2_text || fam2_yes) {
-    $j(".family2_test").each(function() {
-      if ($j.trim($j(this).val()) != "") {
-        any_family2 = "1";
-      }
-    });
-    if (fam2_text) {
-      fam2_text.val(any_family2);
-    } else {
-      fam2_no = $j("#family2_no");
-      if (any_family2 == "1") {
-        fam2_yes.prop('checked', true);
-        fam2_no.prop('checked', false);
-      } else {
-        fam2_no.prop('checked', true);
-        fam2_yes.prop('checked', false);
+  
+  
+  // update if this is the "master" record
+  if ($j("#preview_approved").prop('checked')) {
+    $j("#preview_approved_at").val(timestamp_now());
+  } else {
+    $j("#preview_approved_at").val('');
+  }
+  onRegFormSubmit();
+}
+
+// Sibling data filled in by tlist_sql based on Web_ID matches
+// <input type="hidden" class="sibdata" id="sib_webid_113960" value="REDLD3FE.113960" />
+// <input type="hidden" class="sibdata" id="sib_first_113960" value="Ethan" />
+// <input type="hidden" class="sibdata" id="sib_last_113960" value="Redlin" />
+// <input type="hidden" class="sibdata" id="sib_grade_113960" value="0" />
+// <input type="hidden" class="sibdata" id="sib_nick_113960" value="" />
+// <input type="hidden" class="sibdata" id="sib_unlisted_113960" value="" />
+// <input type="hidden" class="sibdata" id="sib_approved_113960" value="" />
+// <input type="hidden" class="sibdata" id="sib_approval_113960" value="" />
+
+var sibs = [ ]
+var sib_data = { }
+var sib_unlisted = null;
+var sib_approved = null;
+var last_approval = null;
+var sib_names = [ ];
+
+function get_sibling_data() {
+  $j('.sibdata').each(function(i, el) {
+    var m = el.id.match(/sib_([a-z]+)_([0-9]+)/);
+    if (m) {
+      var attr = m[1];
+      var sid = 'S' + m[2];
+      if (!(sid in sib_data)) {
+        sibs.push(sid);
+        sib_data[sid] = { }
+      };
+      sib_data[sid][attr] = el.value;
+    }
+  });
+  
+  // Pick nickname if they have one
+  // See if other sibs have approved a preview or asked to be unlisted
+  var my_sid = 'S' + $j('#my_id').val();
+  for (var i = 0; i < sibs.length; i++) {
+    var sid = sibs[i];
+    var the_sib = sib_data[sid];
+    if (the_sib.nick != "") {
+      the_sib.first = the_sib.nick;
+    }
+    if (sid != my_sid) {
+      if (the_sib.unlisted == '1') {
+        sib_unlisted = sid;
+      } 
+      if (the_sib.approved == '1' && the_sib.approval != "") {
+        if (last_approval == null || the_sib.approval.localCompare(last_approval)) {
+          sib_approved = sid;
+          last_approval = the_sib.approval;
+        }
       }
     }
   }
+
+  // Sort by grade and name
+  sibs.sort(function(a, b) {
+    var by_grade = parseInt(sib_data[a].grade) - parseInt(sib_data[b].grade);
+    if (by_grade != 0) { return by_grade; }
+    return sib_data[a].first.localeCompare(sib_data[b].first);
+  });
   
-  var preview_approved = $j("#preview_approved")
-  $j("#upd_at").val(timestamp_now()); 
-  onRegFormSubmit();
+  for (var i = 0; i < sibs.length; i++) {
+    var sid = sibs[i];
+    var the_sib = sib_data[sid];
+    if (!/^nr-/.test(the_sib.status)) {
+      var grade = the_sib.grade;
+      if (grade == '0') { grade = 'K' }
+      sib_names.push(the_sib.first + ' (' + grade + ')');
+    }
+  }
+}
+
+function update_preview() {
+  var students = $j('#my_last').val().toUpperCase() + ' ' + sib_names.join(', ');
+  var parents  = '';
+  var mfirst   = '';
+  var mlast    = '';
+  var ffirst   = '';
+  var flast    = '';
+  if (!$j('#kikdir_mother_name').prop('checked')) {
+    mfirst = $j('mother_first').val();
+    mlast = $j('mother_last').val();
+  }
+  if (!$j('#kikdir_father_name').prop('checked')) {
+    mfirst = $j('father_first').val();
+    mlast = $j('father_last').val();
+  }
+  if (mlast != '' && flast != '') {
+    if (mlast != flast) {
+      parents = mfirst + ' ' + mlast + ' and ' + ffirst + ' ' + flast;
+    } else {
+      parents = mfirst + ' and ' + ffirst + ' ' + flast;
+    }
+  } else if (mlast != '') {
+    parents = mfirst + ' ' + mlast;
+  } else if (flast != '') {
+    parents = ffirst + ' ' + flast;
+  }
+  var b1 = "(415) 300-5555";
+  $j('#preview_a1').html(students + '<br>' + parents);
+  $j('#preview_b1').html(b1);
+  return true;
 }
 
 // happy.js validations
 $j(document).ready(function () {
+  get_sibling_data();
+  $j('.ksource').bind('click', update_preview);
+  update_preview();
+  
   $j('#form04').isHappy({
     // submitButton: $j('#attSubmitButton'),
     onSubmit: onForm04Submit,
