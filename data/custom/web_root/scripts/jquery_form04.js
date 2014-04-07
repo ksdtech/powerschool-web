@@ -310,24 +310,31 @@ function get_parents(i) {
 function update_preview() {
   var other_unlisted = sibs_unlisted.length > 0;
   var unlisted =  other_unlisted || $j('#kikdir_unlisted').prop('checked');
-  
-  
   if (unlisted) {
-    $j('#table_preview').hide();
-    $j('#table_message').html('No preview available - family is unlisted');
-    $j('#table_message').show();
+    if (other_unlisted) {
+      $j('#kikdir_other_unlisted').attr('style', 'color: red;');
+    }
+    $j('#preview_table').hide();
+    $j('#preview_message').html('No preview available - family is unlisted');
+    $j('#preview_message').show();
+    $j('#preview_approved').prop('checked', false);
+    $j('#preview_approved').prop('disabled', true);
     return;
   } else if (last_sib_approved) {
     var the_sib = sib_data[last_sib_approved];
-    $j('#table_preview').hide();
-    $j('#table_message').html('No preview available - see preview for ' +
+    $j('#kikdir_other_approved').attr('style', 'color: red;');
+    $j('#preview_table').hide();
+    $j('#preview_message').html('No preview available - see preview for ' +
       the_sib.first + ' ' + the_sib.last);
-    $j('#table_message').show();
+    $j('#preview_message').show();
+    $j('#preview_approved').prop('checked', false);
+    $j('#preview_approved').prop('disabled', true);
     return;
   }
 
-  $j('#table_message').hide();
-  $j('#table_preview').show();
+  $j('#preview_message').hide();
+  $j('#preview_table').show();
+  $j('#preview_approved').prop('disabled', false);
   
   var i;
   var a1 = $j('#my_last').val().toUpperCase() + ' ' + sib_names.join(', ');
