@@ -331,7 +331,7 @@ function update_preview() {
 // happy.js validations
 $j(document).ready(function () {
   get_sibling_data();
-  $j('.ksource').bind('click', update_preview);
+  $j('.ksource').bind('change', update_preview);
   update_preview();
   
   $j('#form04').isHappy({

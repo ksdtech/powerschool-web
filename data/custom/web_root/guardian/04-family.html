@@ -60,6 +60,7 @@ ORDER BY Grade_Level, First_Name;
 <!-- end form action -->
 <div id="form4-contents" align="center" style="width: 98%">
 <div id="form4-setup" class="box-round group" style="width: 720px">
+
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="headerrow"><td colspan="4" class="bold">4a. Qualifying District Residence Information</td></tr>
 <tr><td colspan="4"><strong>Please note</strong> that the District requires all families 
@@ -97,36 +98,47 @@ ORDER BY Grade_Level, First_Name;
 <td width="25%">City</td>
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
-<tr><td><input name="[01]Street" class="street" type="text" id="street" value="" size="30" /></td>
-<td><input name="[01]City" type="text" id="city" value="" size="20" /></td>
-<td><input name="[01]State" type="text" id="state" value="CA" size="4" /></td>
-<td><input name="[01]Zip" type="text" id="zip" value="" size="10" /></td></tr>
-<tr><td colspan="4"><input type="checkbox" name="[01]kikdir_home_addr" class="ksource" id="kikdir_home_addr" value="1" />Exclude this address from the kik directory?</td></tr>
+<tr><td>
+  <input name="[01]Street" type="text" id="street" class="street ksource" value="" size="30" /></td>
+<td>
+  <input name="[01]City" type="text" id="city" class="ksource" value="" size="20" /></td>
+<td>
+  <input name="[01]State" type="text" id="state" class="ksource" value="CA" size="4" /></td>
+<td>
+  <input name="[01]Zip" type="text" id="zip" class="ksource" value="" size="10" /></td></tr>
+<tr><td colspan="4">
+  <input name="[01]kikdir_home_addr" type="checkbox" id="kikdir_home_addr" class="ksource" value="1" />Exclude this address from the kik directory?</td></tr>
 </table>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr><td>Home Phone</td><td colspan="2"><input type="text" id="home_phone" name="[01]Home_Phone" value="" size="16" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_home_phone" class="ksource" id="kikdir_home_phone" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<tr><td>Home Phone</td><td colspan="2">
+  <input name="[01]Home_Phone" type="text" id="home_phone" class="ksource" value="" size="16" />&nbsp;&nbsp;
+  <input name="[01]kikdir_home_phone" type="checkbox" id="kikdir_home_phone" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
 
 <tr><td colspan="3">The Kentfield School District uses email and website
   communications wherever possible, but printed and/or translated materials may 
   be provided if staffing and budget permits.</td></tr>
 <tr><td colspan="2">Do you have internet access at this residence?</td>
-<td><input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" id="inet_yes" value="" />Yes&nbsp;&nbsp;
+<td>
+  <input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" id="inet_yes" value="" />Yes&nbsp;&nbsp;
   <input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" value="1" />No&nbsp;&nbsp;</td></tr>
 <tr><td colspan="2">Do you require printed copies of school communications?</td>
-<td><input name="[01]Home_Printed_Material" type="radio" class="printed_material" value="1" />Yes&nbsp;&nbsp;
+<td>
+  <input name="[01]Home_Printed_Material" type="radio" class="printed_material" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home_Printed_Material" type="radio" class="printed_material" id="printed_no" value="" />No&nbsp;&nbsp;</td></tr>
 <tr><td colspan="2">Do you require communications in Spanish?</td>
-<td><input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" value="1" />Yes&nbsp;&nbsp;
+<td>
+  <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" id="spanish_no" value="" />No&nbsp;&nbsp;</td></tr>
 
 <tr class="headerrow"><td colspan="3" class="bold">4b. Mother/Parent/Guardian at Qualifying District Residence</td></tr>
 <tr><td width="30%">Last</td>
   <td colspan="2">First</td></tr>
-<tr><td><input name="[01]Mother" type="text" class="guardian_name" id="mother_last" value="" size="30" /></td>
-  <td><input name="[01]Mother_First" type="text" class="guardian_name" id="mother_first" value="" size="30" />
-  <input type="checkbox" name="[01]kikdir_mother_name" class="ksource" id="kikdir_mother_name" value="1" />Exclude this person's name from the kik directory?</td></tr>
+<tr><td>
+  <input name="[01]Mother" type="text" id="mother_last" class="guardian_name ksource" value="" size="30" /></td>
+<td>
+  <input name="[01]Mother_First" type="text" id="mother_first" class="guardian_name ksource" value="" size="30" />&nbsp;&nbsp;
+  <input name="[01]kikdir_mother_name" type="checkbox" id="kikdir_mother_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
 <tr><td>Relationship</td>
 <td colspan="2"><select id="mother_rel" name="[01]Mother_Rel">
 <option value="">Choose:</option>
@@ -143,19 +155,27 @@ ORDER BY Grade_Level, First_Name;
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td><input type="radio" class="mother_guardian" name="[01]Mother_IsGuardian" value="yes" />Yes&nbsp;&nbsp;<input type="radio" class="mother_guardian" name="[01]Mother_IsGuardian" value="-1" />No&nbsp;&nbsp;</td></tr>
-<tr><td>Work Phone</td><td colspan="2"><input type="text" id="mother_work_phone" name="[01]mother_Work_Phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
-<tr><td>Cell</td><td colspan="2"><input type="text" id="mother_cell" name="[01]mother_Cell" value="" size="16" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_mother_cell" class="ksource" id="kikdir_mother_cell" value="1" />Exclude this phone number from the kik directory?</td></tr>
-<tr><td>Email Address</td><td colspan="2"><input id="mother_email" type="text" name="[01]mother_Email" value="" size="30" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_mother_email" class="ksource" id="kikdir_mother_email" value="1" />Exclude this email address from the kik directory?</td></tr>
+<td>
+  <input name="[01]Mother_IsGuardian" type="radio" class="mother_guardian" value="yes" />Yes&nbsp;&nbsp;
+  <input name="[01]Mother_IsGuardian" type="radio" class="mother_guardian" value="-1" />No&nbsp;&nbsp;</td></tr>
+<tr><td>Work Phone</td><td colspan="2">
+  <input name="[01]mother_Work_Phone" type="text" id="mother_work_phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
+<tr><td>Cell</td><td colspan="2">
+  <input name="[01]mother_Cell" type="text" id="mother_cell" class="ksource" value="" size="16" />&nbsp;&nbsp;
+  <input name="[01]kikdir_mother_cell" type="checkbox" id="kikdir_mother_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<tr><td>Email Address</td><td colspan="2">
+  <input name="[01]mother_Email" type="text" id="mother_email" class="ksource" value="" size="30" />&nbsp;&nbsp;
+  <input name="[01]kikdir_mother_email" type="checkbox" id="kikdir_mother_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
 
 <tr class="headerrow"><td colspan="3" class="bold">4c. Father/Parent/Guardian at Qualifying District Residence</td></tr>
 <tr><td>Last</td>
   <td colspan="2">First</td>
 </tr>
-<tr><td><input name="[01]Father" type="text" id="father_last" value="" size="30" /></td>
-<td><input name="[01]Father_First" type="text" id="father_first" value="" size="30" /></td></tr>
+<tr><td>
+  <input name="[01]father" type="text" id="father_last" class="guardian_name ksource" value="" size="30" /></td>
+<td>
+  <input name="[01]father_First" type="text" id="father_first" class="guardian_name ksource" value="" size="30" />&nbsp;&nbsp;
+  <input name="[01]kikdir_father_name" type="checkbox" id="kikdir_father_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
 <tr><td>Relationship</td>
 <td colspan="2"><select id="father_rel" name="[01]Father_Rel">
 <option value="">Choose:</option>
@@ -172,19 +192,23 @@ ORDER BY Grade_Level, First_Name;
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td><input type="radio" class="father_guardian" name="[01]father_IsGuardian" value="yes" />Yes&nbsp;&nbsp;<input type="radio" class="father_guardian" name="[01]father_IsGuardian" value="-1" />No&nbsp;&nbsp;</td></tr>
-<tr><td colspan="3"><input type="checkbox" name="[01]kikdir_father_name" class="ksource" id="kikdir_father_name" value="1" />Exclude this person's name from the kik directory?</td></tr>
-<tr><td>Work Phone</td><td colspan="2"><input type="text" id="father_work_phone" name="[01]father_Work_Phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
-<tr><td>Cell</td><td colspan="2"><input type="text" id="father_cell" name="[01]father_Cell" value="" size="16" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_father_cell" class="ksource" id="kikdir_father_cell" value="1" />Exclude this phone number from the kik directory?</td></tr>
-<tr><td>Email Address</td><td colspan="2"><input id="father_email" type="text" name="[01]father_Email" value="" size="30" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_father_email" class="ksource" id="kikdir_father_email" value="1" />Exclude this email address from the kik directory?</td></tr>
+<td>
+  <input name="[01]father_IsGuardian" type="radio" class="father_guardian" value="yes" />Yes&nbsp;&nbsp;
+  <input name="[01]father_IsGuardian" type="radio" class="father_guardian" value="-1" />No&nbsp;&nbsp;</td></tr>
+<tr><td>Work Phone</td><td colspan="2">
+  <input name="[01]father_Work_Phone" type="text" id="father_work_phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
+<tr><td>Cell</td><td colspan="2">
+  <input name="[01]father_Cell" type="text" id="father_cell" class="ksource" value="" size="16" />&nbsp;&nbsp;
+  <input name="[01]kikdir_father_cell" type="checkbox" id="kikdir_father_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<tr><td>Email Address</td><td colspan="2">
+  <input name="[01]father_Email" type="text" id="father_email" class="ksource" value="" size="30" />&nbsp;&nbsp;
+  <input name="[01]kikdir_father_email" type="checkbox" id="kikdir_father_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
 
 <tr class="private"><td colspan="3">
-<input name="[01]mailing_street" type="text" class="copy_address" id="mailing_street" value="" /> 
-<input name="[01]mailing_city" type="text" class="copy_address" id="mailing_city" value="" /> 
-<input name="[01]mailing_state" type="text" class="copy_address" id="mailing_state" value="" /> 
-<input name="[01]mailing_zip" type="text" class="copy_address" id="mailing_zip" value="" /></td>
+  <input name="[01]mailing_street" type="text" id="mailing_street" class="copy_address" value="" /> 
+  <input name="[01]mailing_city" type="text" id="mailing_city" class="copy_address" value="" /> 
+  <input name="[01]mailing_state" type="text" id="mailing_state" class="copy_address" value="" /> 
+  <input name="[01]mailing_zip" type="text" id="mailing_zip" class="copy_address" value="" /></td>
 </tr>
 </table>
 
@@ -199,32 +223,44 @@ ORDER BY Grade_Level, First_Name;
 <td width="10%">State</td>
 <td width="25%">Zip</td></tr>
 
-<tr><td><input  name="[01]Home2_Street" class="family2_test street" type="text" id="home2_street" value="" size="30" /></td>
-<td><input name="[01]Home2_City" type="text" id="home2_city" value="" size="20" /></td>
-<td><input name="[01]Home2_State" type="text" id="home2_state" value="" size="4" /></td>
-<td><input name="[01]Home2_Zip" type="text" id="home2_zip" value="" size="10" /></td></tr>
-<tr><td colspan="4"><input type="checkbox" name="[01]kikdir_home2_addr" class="ksource" id="kikdir_home2_addr" value="1" />Exclude this address from the kik directory?</td></tr>
+<tr><td>
+  <input name="[01]Home2_Street" type="text" id="home2_street" class="family2_test street ksource" value="" size="30" /></td>
+<td>
+  <input name="[01]Home2_City" type="text" id="home2_city" class="ksource" value="" size="20" /></td>
+<td>
+  <input name="[01]Home2_State" type="text" id="home2_state" class="ksource" value="" size="4" /></td>
+<td>
+  <input name="[01]Home2_Zip" type="text" id="home2_zip" class="ksource" value="" size="10" /></td></tr>
+<tr><td colspan="4">
+  <input name="[01]kikdir_home2_addr" type="checkbox" id="kikdir_home2_addr" class="ksource" value="1" />Exclude this address from the kik directory?</td></tr>
 </table>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr><td>Home Phone</td><td colspan="2"><input type="text" id="home2_phone" name="[01]Home2_Phone" value="" size="16" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_home2_phone" class="ksource" id="kikdir_home2_phone" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<tr><td>Home Phone</td><td colspan="2">
+  <input name="[01]Home2_Phone" type="text" id="home2_phone" class="ksource" value="" size="16" />&nbsp;&nbsp;
+  <input name="[01]kikdir_home2_phone" type="checkbox" id="kikdir_home2_phone" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
 
 <tr><td colspan="2">Do you have internet access at this residence?</td>
-<td><input name="[01]Home2_No_Inet_Access" type="radio" class="inet_access2" id="inet_yes" value="" />Yes&nbsp;&nbsp;
+<td>
+  <input name="[01]Home2_No_Inet_Access" type="radio" class="inet_access2" id="inet_yes" value="" />Yes&nbsp;&nbsp;
   <input name="[01]Home2_No_Inet_Access" type="radio" class="inet_access2" value="1" />No&nbsp;&nbsp;</td></tr>
 <tr><td colspan="2">Do you require printed copies of school communications?</td>
-<td><input name="[01]Home2_Printed_Material" type="radio" class="printed_material2" value="1" />Yes&nbsp;&nbsp;
+<td>
+  <input name="[01]Home2_Printed_Material" type="radio" class="printed_material2" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home2_Printed_Material" type="radio" class="printed_material2" id="printed_no" value="" />No&nbsp;&nbsp;</td></tr>
 <tr><td colspan="2">Do you require communications in Spanish?</td>
-<td><input name="[01]Home2_Spanish_Material" type="radio" class="spanish_material2" value="1" />Yes&nbsp;&nbsp;
+<td>
+  <input name="[01]Home2_Spanish_Material" type="radio" class="spanish_material2" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home2_Spanish_Material" type="radio" class="spanish_material2" id="spanish_no" value="" />No&nbsp;&nbsp;</td></tr>
 
 <tr class="headerrow"><td colspan="3" class="bold">5b. Mother/Parent/Guardian at Additional Residence</td></tr>
 <tr><td width="30%">Last</td>
 <td colspan="2">First</td></tr>
-<tr><td><input name="[01]Mother2_Last" type="text" class="family2_test guardian2_name" id="mother2_last" value="" size="30" /></td>
-<td colspan="2"><input name="[01]Mother2_First" type="text" class="family2_test guardian2_name" id="mother2_first" value="" size="30" /></td></tr>
+<tr><td>
+  <input name="[01]Mother2_Last" type="text" id="mother2_last" class="family2_test guardian2_name ksource" value="" size="30" /></td>
+<td colspan="2">
+  <input name="[01]Mother2_First" type="text" id="mother2_first" class="family2_test guardian2_name ksource" value="" size="30" />
+  <input name="[01]kikdir_mother2_name" type="checkbox" id="kikdir_mother2_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
 <tr><td>Relationship</td>
 <td colspan="2"><select id="mother2_rel" name="[01]Mother2_Rel">
 <option value="">Choose:</option>
@@ -242,21 +278,28 @@ ORDER BY Grade_Level, First_Name;
 </select></td></tr>
 
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td><input type="radio" class="mother2_guardian" name="[01]Mother2_IsGuardian" value="yes" />Yes&nbsp;&nbsp;<input type="radio" class="mother2_guardian" name="[01]Mother2_IsGuardian" value="-1" />No&nbsp;&nbsp;</td></tr>
-<tr><td colspan="3"><input type="checkbox" name="[01]kikdir_mother2_name" class="ksource" id="kikdir_mother2_name" value="1" />Exclude this person's name from the kik directory?</td></tr>
+<td>
+  <input name="[01]Mother2_IsGuardian" type="radio" class="mother2_guardian" value="yes" />Yes&nbsp;&nbsp;
+  <input name="[01]Mother2_IsGuardian" type="radio" class="mother2_guardian" value="-1" />No&nbsp;&nbsp;</td></tr>
 
-<tr><td>Work Phone</td><td colspan="2"><input type="text" id="mother2_work_phone" name="[01]Mother2_Work_Phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
-<tr><td>Cell</td><td colspan="2"><input type="text" id="mother2_cell" name="[01]Mother2_Cell" value="" size="16" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_mother2_cell" class="ksource" id="kikdir_mother2_cell" value="1" />Exclude this phone number from the kik directory?</td></tr>
-<tr><td>Email Address</td><td colspan="2"><input id="mother2_email" type="text" name="[01]Mother2_Email" value="" size="30" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_mother2_email" class="ksource" id="kikdir_mother2_email" value="1" />Exclude this email address from the kik directory?</td></tr>
+<tr><td>Work Phone</td><td colspan="2">
+  <input name="[01]Mother2_Work_Phone" type="text" id="mother2_work_phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
+<tr><td>Cell</td><td colspan="2">
+  <input name="[01]Mother2_Cell" type="text" id="mother2_cell" class="ksource" value="" size="16" />&nbsp;&nbsp;
+  <input name="[01]kikdir_mother2_cell" type="checkbox" id="kikdir_mother2_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<tr><td>Email Address</td><td colspan="2">
+  <input name="[01]Mother2_Email" type="text" id="mother2_email" class="ksource" value="" size="30" />&nbsp;&nbsp;
+  <input name="[01]kikdir_mother2_email" type="checkbox" id="kikdir_mother2_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
 
 <tr class="headerrow"><td colspan="3" class="bold">5c. Father/Parent/Guardian at Additional Residence</td></tr>
 <tr><td>Last</td>
   <td colspan="2">First</td>
 </tr>
-<tr><td><input name="[01]Father2_Last" type="text" class="family2_test guardian2_name" id="father2_last" value="" size="30" /></td>
-<td colspan="2"><input name="[01]Father2_First" type="text" class="family2_test guardian2_name" id="father2_first" value="" size="30" /></td></tr>
+<tr><td>
+  <input name="[01]Father2_Last" type="text" id="father2_last" class="family2_test guardian2_name ksource" value="" size="30" /></td>
+<td colspan="2">
+  <input name="[01]Father2_First" type="text" id="father2_first" class="family2_test guardian2_name ksource" value="" size="30" />
+  <input name="[01]kikdir_father2_name" type="checkbox" id="kikdir_father2_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
 <tr><td>Relationship</td>
 <td colspan="2"><select id="father2_rel" name="[01]Father2_Rel">
 <option value="">Choose:</option>
@@ -274,25 +317,32 @@ ORDER BY Grade_Level, First_Name;
 </select></td></tr>
 
 <tr><td colspan="2">Is this person the student's parent or legal guardian?</td>
-<td><input type="radio" class="father2_guardian" name="[01]Father2_IsGuardian" value="yes" />Yes&nbsp;&nbsp;<input type="radio" class="father2_guardian" name="[01]Father2_IsGuardian" value="-1" />No&nbsp;&nbsp;</td></tr>
-<tr><td colspan="3"><input type="checkbox" name="[01]kikdir_father2_name" class="ksource" id="kikdir_father2_name" value="1" />Exclude this person's name from the kik directory?</td></tr>
+<td>
+  <input name="[01]Father2_IsGuardian" type="radio" class="father2_guardian" value="yes" />Yes&nbsp;&nbsp;
+  <input name="[01]Father2_IsGuardian" type="radio" class="father2_guardian" value="-1" />No&nbsp;&nbsp;</td></tr>
+<tr><td colspan="3"></td></tr>
 
-<tr><td>Work Phone</td><td colspan="2"><input type="text" id="father2_work_phone" name="[01]father2_Work_Phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
-<tr><td>Cell</td><td colspan="2"><input type="text" id="father2_cell" name="[01]father2_Cell" value="" size="16" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_father2_cell" class="ksource" id="kikdir_father2_cell" value="1" />Exclude this phone number from the kik directory?</td></tr>
-<tr><td>Email Address</td><td colspan="2"><input id="father2_email" type="text" name="[01]father2_Email" value="" size="30" />&nbsp;&nbsp;
-<input type="checkbox" name="[01]kikdir_father2_email" class="ksource" id="kikdir_father2_email" value="1" />Exclude this email address from the kik directory?</td></tr>
+<tr><td>Work Phone</td><td colspan="2">
+  <input name="[01]father2_Work_Phone" type="text" id="father2_work_phone" value="" size="16" />&nbsp;&nbsp;(Work phones are never published)</td></tr>
+<tr><td>Cell</td><td colspan="2">
+  <input name="[01]father2_Cell" type="text" id="father2_cell" class="ksource" value="" size="16" />&nbsp;&nbsp;
+  <input name="[01]kikdir_father2_cell" type="checkbox" id="kikdir_father2_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<tr><td>Email Address</td><td colspan="2">
+  <input name="[01]father2_Email" type="text" id="father2_email" class="ksource" value="" size="30" />&nbsp;&nbsp;
+  <input name="[01]kikdir_father2_email" type="checkbox" id="kikdir_father2_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
 
 <tr class="private"><td colspan="3">
-<input name="[01]mailing2_street" type="text" class="copy_address2" id="mailing2_street" value="" /> 
-<input name="[01]mailing2_city" type="text" class="copy_address2" id="mailing2_city" value="" /> 
-<input name="[01]mailing2_state" type="text" class="copy_address2" id="mailing2_state" value="" /> 
-<input name="[01]mailing2_zip" type="text" class="copy_address2" id="mailing2_zip" value="" /></td>
+  <input name="[01]mailing2_street" type="text" id="mailing2_street" class="copy_address2" value="" /> 
+  <input name="[01]mailing2_city" type="text" id="mailing2_city" class="copy_address2" value="" /> 
+  <input name="[01]mailing2_state" type="text" id="mailing2_state" class="copy_address2" value="" /> 
+  <input name="[01]mailing2_zip" type="text" id="mailing2_zip" class="copy_address2" value="" /></td>
 </tr>
 
 <tr class="headerrow"><td colspan="3" class="bold">kik Directory Preview</td></tr>
-<tr><td colspan="3"><input type="checkbox" name="[01]kikdir_unlisted" class="ksource" id="kikdir_unlisted" value="1" />Check here if you <b>DO NOT</b> want your family listed from the kik directory</td></tr>
+<tr><td colspan="3">
+  <input name="[01]kikdir_unlisted" type="checkbox" id="kikdir_unlisted" class="ksource" value="1" />Check here if you <b>DO NOT</b> want your family listed from the kik directory</td></tr>
 <tr><td colspan="3">If you checked the box above, <b>none</b> of your students or other family information will appear in the directory. Otherwise, here is what your family's listing will look like, based on the data you entered on this page:</td></tr>
+
 <tr><td colspan="3" style="border:1px solid">
 <table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
 <tr><td valign="top" width="60%" id="preview_a1">(Student Names, Parent Names Address and Emails)</td>
@@ -301,7 +351,9 @@ ORDER BY Grade_Level, First_Name;
   <td valign="top" id="preview_b2">(NC Phone Numbers)</td></tr>
 </table>
 </td></tr>
-<tr><td colspan="3"><input type="checkbox" name="[01]kidir_preview_approved" id="preview_approved" value="1" />Check here if the preview is correct.</td></tr>
+
+<tr><td colspan="3">
+  <input name="[01]kidir_preview_approved" type="checkbox" id="preview_approved" value="1" />Check here if the preview is correct.</td></tr>
 <tr><td colspan="3">Note: by checking the box above, you authorize the Kentfield Schools Foundation to print your family's information as shown. If the preview is not correct, revise the entries on this page. Please contact the District Office if there are missing or incorrect sibling names and grade levels shown in the preview.</td></tr>
 
 <tr class="private"><td colspan="3" class="bold">Preview approved at
