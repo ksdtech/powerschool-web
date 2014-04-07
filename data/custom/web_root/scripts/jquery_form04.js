@@ -37,11 +37,11 @@ function onForm04Submit() {
   });
   
   
-  // update if this is the "master" record
-  if ($j("#preview_approved").prop('checked')) {
-    $j("#preview_approved_at").val(timestamp_now());
+  // update if this is the 'master' record
+  if ($j('#preview_approved').prop('checked')) {
+    $j('#preview_approved_at').val(timestamp_now());
   } else {
-    $j("#preview_approved_at").val('');
+    $j('#preview_approved_at').val('');
   }
   onRegFormSubmit();
 }
@@ -58,8 +58,8 @@ function onForm04Submit() {
 
 var sibs = [ ]
 var sib_data = { }
-var sib_unlisted = null;
-var sib_approved = null;
+var sibs_unlisted = [ ]
+var last_sib_approved = null;
 var last_approval = null;
 var sib_names = [ ];
 
@@ -83,19 +83,8 @@ function get_sibling_data() {
   for (var i = 0; i < sibs.length; i++) {
     var sid = sibs[i];
     var the_sib = sib_data[sid];
-    if (the_sib.nick != "") {
+    if (the_sib.nick != '') {
       the_sib.first = the_sib.nick;
-    }
-    if (sid != my_sid) {
-      if (the_sib.unlisted == '1') {
-        sib_unlisted = sid;
-      } 
-      if (the_sib.approved == '1' && the_sib.approval != "") {
-        if (last_approval == null || the_sib.approval.localCompare(last_approval)) {
-          sib_approved = sid;
-          last_approval = the_sib.approval;
-        }
-      }
     }
   }
 
@@ -106,6 +95,8 @@ function get_sibling_data() {
     return sib_data[a].first.localeCompare(sib_data[b].first);
   });
   
+  var unlisted_ul = $j('#kikdir_unlisted_siblings');
+  var approved_ul = $j('#kikdir_approved_siblings');
   for (var i = 0; i < sibs.length; i++) {
     var sid = sibs[i];
     var the_sib = sib_data[sid];
@@ -114,7 +105,23 @@ function get_sibling_data() {
       if (grade == '0') { grade = 'K' }
       sib_names.push(the_sib.first + ' (' + grade + ')');
     }
-  }
+    if (sid != my_sid) {
+      if (the_sib.unlisted == '1') {
+        sibs_unlisted.push(sid);
+        unlisted_ul.append('<li>' + the_sib.first + ' ' + the_sib.last + '</li>');
+      } else {
+        if (the_sib.approved == '1' && the_sib.approval != '') {
+          if (last_approval == null || the_sib.approval.localCompare(last_approval)) {
+            last_sib_approved = sid;
+            last_approval = the_sib.approval;
+            approved_ul.append('<li>' + the_sib.first + ' ' + the_sib.last + '</li>');
+          }
+        }
+      }
+    }
+  }  
+  
+  
 }
 
 var PRIMARY_PARENTS = 0;
@@ -301,6 +308,27 @@ function get_parents(i) {
 }
 
 function update_preview() {
+  var other_unlisted = sibs_unlisted.length > 0;
+  var unlisted =  other_unlisted || $j('#kikdir_unlisted').prop('checked');
+  
+  
+  if (unlisted) {
+    $j('#table_preview').hide();
+    $j('#table_message').html('No preview available - family is unlisted');
+    $j('#table_message').show();
+    return;
+  } else if (last_sib_approved) {
+    var the_sib = sib_data[last_sib_approved];
+    $j('#table_preview').hide();
+    $j('#table_message').html('No preview available - see preview for ' +
+      the_sib.first + ' ' + the_sib.last);
+    $j('#table_message').show();
+    return;
+  }
+
+  $j('#table_message').hide();
+  $j('#table_preview').show();
+  
   var i;
   var a1 = $j('#my_last').val().toUpperCase() + ' ' + sib_names.join(', ');
   var home  = get_parents(PRIMARY_PARENTS);
