@@ -1,10 +1,11 @@
 
 function generate_h1_login() {
+  var sn = $j("#st_id").val();
   if ($j("#h1_id").val() == '') {
-    $j("#h1_id").val($j("#st_id").val());
+    $j("#h1_id").val(sn);
   }
   if ($j("#h1_login").val() == '') {
-    $j("#h1_login").val(new_ps_username($j("#st_last").val(), 0));
+    $j("#h1_login").val(new_ps_username($j("#st_last").val(), 0, sn));
   }
   if ($j("#h1_password").val() == '') {
     $j("#h1_password").val(new_ps_password());
@@ -20,8 +21,9 @@ function generate_h2_number() {
 }
 
 function generate_psst_login() {
+  var sn = $j("#st_id").val();
   if ($j("#psst_login").val() == '') {
-    $j("#psst_login").val(new_ps_username($j("#st_last").val(), 1));
+    $j("#psst_login").val(new_ps_username($j("#st_last").val(), 1, sn));
   }
   if ($j("#psst_password").val() == '') {
     $j("#psst_password").val(new_ps_password());
