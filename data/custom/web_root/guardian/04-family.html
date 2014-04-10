@@ -31,12 +31,12 @@
 ~[tlist_sql;
 SELECT Student_Number AS SN, 
 Web_ID, First_Name, Last_Name,
-ps_customfields.getcf('students', id, 'reg_will_attend') AS Reg_Status,
-ps_customfields.getcf('students', id, 'reg_grade_level') AS Reg_Grade,
-ps_customfields.getcf('students', id, 'nickname') AS Nickname,
-ps_customfields.getcf('students', id, 'kidkir_unlisted') AS Unlisted, 
-ps_customfields.getcf('students', id, 'kidkir_preview_approved') AS Preview_Approved,
-ps_customfields.getcf('students', id, 'kidkir_preview_approved_at') AS Preview_Approved_At
+ps_customfields.getcf('students', id, 'kikdir_unlisted') AS Unl, 
+ps_customfields.getcf('students', id, 'kikdir_approved') AS PrAppr,
+ps_customfields.getcf('students', id, 'kikdir_at') AS PrAt,
+ps_customfields.getcf('students', id, 'reg_will_attend') AS RegStatus,
+ps_customfields.getcf('students', id, 'reg_grade_level') AS RegGrade,
+ps_customfields.getcf('students', id, 'nickname') AS Nick
 FROM STUDENTS
 WHERE Enroll_Status<=0 AND Web_ID LIKE (
 SELECT CONCAT(SUBSTR(TO_CHAR(Web_ID), 1, 9), '%') FROM STUDENTS 
@@ -46,12 +46,12 @@ ORDER BY Grade_Level, First_Name;
 <input type="hidden" class="sibdata" id="sib_webid_~(SN)" value="~(Web_ID)" />
 <input type="hidden" class="sibdata" id="sib_first_~(SN)" value="~(First_Name)" />
 <input type="hidden" class="sibdata" id="sib_last_~(SN)" value="~(Last_Name)" />
-<input type="hidden" class="sibdata" id="sib_status_~(SN)" value="~(Reg_Status)" />
-<input type="hidden" class="sibdata" id="sib_grade_~(SN)" value="~(Reg_Grade)" />
-<input type="hidden" class="sibdata" id="sib_nick_~(SN)" value="~(Nickname)" />
-<input type="hidden" class="sibdata" id="sib_unlisted_~(SN)" value="~(Unlisted)" />
-<input type="hidden" class="sibdata" id="sib_approved_~(SN)" value="~(Preview_Approved)" />
-<input type="hidden" class="sibdata" id="sib_approval_~(SN)" value="~(Preview_Approved_At)" />
+<input type="hidden" class="sibdata" id="sib_unlisted_~(SN)" value="~(Unl)" />
+<input type="hidden" class="sibdata" id="sib_approved_~(SN)" value="~(PrAppr)" />
+<input type="hidden" class="sibdata" id="sib_approval_~(SN)" value="~(PrAt)" />
+<input type="hidden" class="sibdata" id="sib_status_~(SN)" value="~(RegStatus)" />
+<input type="hidden" class="sibdata" id="sib_grade_~(SN)" value="~(RegGrade)" />
+<input type="hidden" class="sibdata" id="sib_nick_~(SN)" value="~(Nick)" />
 [/tlist_sql]
 
 <input type="hidden" id="my_id" value="~(Student_Number)" />
@@ -62,7 +62,7 @@ ORDER BY Grade_Level, First_Name;
 <div id="form4-setup" class="box-round group" style="width: 720px">
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="headerrow"><td colspan="4" class="bold">4a. Qualifying District Residence Information</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">1. Qualifying District Residence Information</td></tr>
 
 <tr><td colspan="4"><strong>Please note</strong> that the District requires all families 
   to submit proof of residency documents for an address that establishes a 
@@ -139,7 +139,7 @@ ORDER BY Grade_Level, First_Name;
   <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" id="spanish_no" value="" />No&nbsp;&nbsp;</td></tr>
 
-<tr class="headerrow"><td colspan="4" class="bold">4b. Mother/Parent/Guardian at Qualifying District Residence</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">2. Mother/Parent/Guardian at Qualifying District Residence</td></tr>
 
 <tr><td>Last</td><td>First</td><td colspan="2">&nbsp;</td></tr>
 
@@ -190,7 +190,7 @@ ORDER BY Grade_Level, First_Name;
 <td colspan="2">
   <input name="[01]kikdir_mother_email" type="checkbox" id="kikdir_mother_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
 
-<tr class="headerrow"><td colspan="4" class="bold">4c. Father/Parent/Guardian at Qualifying District Residence</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">3. Father/Parent/Guardian at Qualifying District Residence</td></tr>
 
 <tr><td>Last</td><td>First</td><td colspan="2">&nbsp;</td></tr>
 
@@ -248,7 +248,7 @@ ORDER BY Grade_Level, First_Name;
   <input name="[01]mailing_zip" type="text" id="mailing_zip" class="copy_address" value="" /></td>
 </tr>
 
-<tr class="headerrow"><td colspan="4" class="bold">4d. Additional Residence</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">4. Additional Residence</td></tr>
 <tr><td colspan="4">Instructions: Fill out this section if there are 
   parents/guardians of this student living at another residence.</td></tr>
 </table>
@@ -292,7 +292,7 @@ ORDER BY Grade_Level, First_Name;
   <input name="[01]Home2_Spanish_Material" type="radio" class="spanish_material2" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home2_Spanish_Material" type="radio" class="spanish_material2" id="spanish_no" value="" />No</td></tr>
 
-<tr class="headerrow"><td colspan="4" class="bold">5b. Mother/Parent/Guardian at Additional Residence</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">5. Mother/Parent/Guardian at Additional Residence</td></tr>
 <tr><td>Last</td><td>First</td><td colspan="2">&nbsp;</td></tr>
 
 <tr><td>
@@ -342,7 +342,7 @@ ORDER BY Grade_Level, First_Name;
 <td colspan="2">
   <input name="[01]kikdir_mother2_email" type="checkbox" id="kikdir_mother2_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
 
-<tr class="headerrow"><td colspan="4" class="bold">5c. Father/Parent/Guardian at Additional Residence</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">6. Father/Parent/Guardian at Additional Residence</td></tr>
 
 <tr><td>Last</td><td>First</td><td colspan="2">&nbsp;</td></tr>
 <tr><td>
@@ -398,20 +398,31 @@ ORDER BY Grade_Level, First_Name;
   <input name="[01]mailing2_state" type="text" id="mailing2_state" class="copy_address2" value="" /> 
   <input name="[01]mailing2_zip" type="text" id="mailing2_zip" class="copy_address2" value="" /></td></tr>
 
-<tr class="headerrow"><td colspan="4" class="bold">kik Directory Preview</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">7. kik Directory Opt-Out</td></tr>
 
 <tr><td colspan="4">
   <input name="[01]kikdir_unlisted" type="checkbox" id="kikdir_unlisted" class="ksource" value="1" />Check here if you <b>DO NOT</b> want your family listed from the kik directory</td></tr>
   
-<tr><td colspan="4">If you checked this box for <b>any</b> of your current students, <b>none</b> of your students or other family information will appear in the directory. <div id="kikdir_other_unlisted">[Another student is marked "unlisted"] In order to re-list your family, you must go back to the Family Information page for each of these students, uncheck the box and click the Submit button: <ul id="kikdir_unlsted_siblings"></ul></div>
-<div id="kikdir_other_approved">[Another student has preview approved] You have already approved the directory preview for another student in your family.
-If you want to make changes, please go to the Family Information page for
-this student: <ul id="kikdir_approved_siblings"></ul></div>
-<div id="kikdir_prompt"><br/>Here is what your family's listing will look like, based on the data you entered on this page:</div></td></tr>
+<tr><td colspan="4">If you checked this box for <b>any</b> of your current 
+  students, <b>none</b> of your students or other family information 
+  will appear in the directory.</td></tr>
+  
+<tr class="headerrow"><td colspan="4">8. kik Directory Preview Approval</td></tr>
+<tr><td colspan="4">Here is what your family's listing will look like, based on the data you entered on this page:</td></tr>
 
 <tr><td colspan="4" style="border:1px solid">
-<div id="preview_message"></div>
-<table id="preview_table" border="0" cellpadding="0" cellspacing="0" style="width: 100%">
+<div id="this_unlisted" class="kpreview_off" style="color:red;">No preview. 
+  You have marked this family as <b>Unlisted</b>. If you want to be listed, 
+  please uncheck the box above.</div>
+<div id="other_unlisted" class="kpreview_off" style="color:red;">No preview. 
+  You have marked your family as <b>Unlisted</b> for another student.
+  If you want to be listed, please uncheck the box on the Family Information page for
+  these student(s): <ul id="unlisted_siblings"></ul></div>
+<div id="other_approved" class="kpreview_off" style="color:red;">No preview.
+  You have marked the directory preview as approved for another student in your family.
+  If you want to see the approved preview, please go to the Family Information page for
+  this student: <ul id="approved_siblings"></ul></div>
+<table id="preview_table" class="kpreview_on" border="0" cellpadding="0" cellspacing="0" style="width: 100%">
 <tr><td valign="top" width="60%" id="preview_a1">(Student Names, Primary Parent Names, Address and Emails)</td>
   <td valign="top" id="preview_b1">(Primary Phone Numbers)</td></tr>
 <tr><td valign="top" id="preview_a2">(Secondary Parent Names, Address and Emails)</td>
@@ -419,13 +430,13 @@ this student: <ul id="kikdir_approved_siblings"></ul></div>
 </table>
 </td></tr>
 
-<tr><td colspan="4">
-  <input name="[01]kidir_preview_approved" type="checkbox" id="preview_approved" value="1" />Check here if the preview is correct.</td></tr>
+<tr class="kpreview_on"><td colspan="4">
+  <input name="[01]kikdir_approved" type="checkbox" id="preview_approved" value="1" />Check here if the preview is correct.</td></tr>
   
-<tr><td colspan="4">Note: by checking the box above, you authorize the Kentfield Schools Foundation to print your family's information as shown. If the preview is not correct, revise the entries on this page. Please contact the District Office if there are missing or incorrect sibling names and grade levels shown in the preview.</td></tr>
+<tr class="kpreview_on"><td colspan="4">Note: by checking the box above, you authorize the Kentfield Schools Foundation to print your family's information as shown. If the preview is not correct, revise the entries on this page. Please contact the District Office if there are missing or incorrect sibling names and grade levels shown in the preview.</td></tr>
 
 <tr class="private"><td colspan="4" class="bold">Preview approved at
-<input type="text" id="preview_approved_at" name="[01]kikdir_preview_approved_at" value="" /> 
+<input type="text" id="preview_approved_at" name="[01]kikdir_at" value="" /> 
 , Form last updated at
 <input type="text" id="upd_at" name="[01]form4_updated_at" value="" /> by 
 <input type="text" id="upd_by" name="[01]form4_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /><br/>

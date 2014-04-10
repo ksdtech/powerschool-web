@@ -95,8 +95,8 @@ function get_sibling_data() {
     return sib_data[a].first.localeCompare(sib_data[b].first);
   });
   
-  var unlisted_ul = $j('#kikdir_unlisted_siblings');
-  var approved_ul = $j('#kikdir_approved_siblings');
+  var unlisted_ul = $j('#unlisted_siblings');
+  var approved_ul = $j('#approved_siblings');
   for (var i = 0; i < sibs.length; i++) {
     var sid = sibs[i];
     var the_sib = sib_data[sid];
@@ -308,33 +308,29 @@ function get_parents(i) {
 }
 
 function update_preview() {
+  $j('.kpreview_off').hide();
+ 
+  var this_unlisted = $j('#kikdir_unlisted').prop('checked');
   var other_unlisted = sibs_unlisted.length > 0;
-  var unlisted =  other_unlisted || $j('#kikdir_unlisted').prop('checked');
-  if (unlisted) {
-    if (other_unlisted) {
-      $j('#kikdir_other_unlisted').attr('style', 'color: red;');
+  var no_preview = this_unlisted || other_unlisted || last_sib_approved;
+  if (no_preview) {
+    $j('.kpreview_on').hide();
+    $j('#preview_approved').prop('checked', false).prop('disabled', true)
+    if (this_unlisted) {
+      $j('#this_unlisted').show();
     }
-    $j('#preview_table').hide();
-    $j('#preview_message').html('No preview available - family is unlisted');
-    $j('#preview_message').show();
-    $j('#preview_approved').prop('checked', false);
-    $j('#preview_approved').prop('disabled', true);
-    return;
-  } else if (last_sib_approved) {
-    var the_sib = sib_data[last_sib_approved];
-    $j('#kikdir_other_approved').attr('style', 'color: red;');
-    $j('#preview_table').hide();
-    $j('#preview_message').html('No preview available - see preview for ' +
-      the_sib.first + ' ' + the_sib.last);
-    $j('#preview_message').show();
-    $j('#preview_approved').prop('checked', false);
-    $j('#preview_approved').prop('disabled', true);
+    if (other_unlisted) {
+      $j('#other_unlisted').show();
+    }
+    if (last_sib_approved && !this_unlisted && !other_unlisted) {
+      var the_sib = sib_data[last_sib_approved];
+      $j('#other_approved').show();
+    }
     return;
   }
 
-  $j('#preview_message').hide();
-  $j('#preview_table').show();
   $j('#preview_approved').prop('disabled', false);
+  $j('.kpreview_on').show();
   
   var i;
   var a1 = $j('#my_last').val().toUpperCase() + ' ' + sib_names.join(', ');
@@ -425,11 +421,6 @@ $j(document).ready(function () {
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#mother_home_phone': { 
-        required: 'sometimes',
-        clean: reformatPhone415,
-        test: happy.emptyOrUSPhoneWithExtension,
-        message: 'Please format as (415) 333-2222 x5555.' },
       '#mother_cell': { 
         required: 'sometimes',
         clean: reformatPhone415,
@@ -455,11 +446,6 @@ $j(document).ready(function () {
         arg: '#father_first',
         message: 'Required field.' },
       '#father_work_phone': { 
-        required: 'sometimes',
-        clean: reformatPhone415,
-        test: happy.emptyOrUSPhoneWithExtension,
-        message: 'Please format as (415) 333-2222 x5555.' },
-      '#father_home_phone': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
@@ -534,11 +520,6 @@ $j(document).ready(function () {
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#mother2_home_phone': { 
-        required: 'sometimes',
-        clean: reformatPhone415,
-        test: happy.emptyOrUSPhoneWithExtension,
-        message: 'Please format as (415) 333-2222 x5555.' },
       '#mother2_cell': { 
         required: 'sometimes',
         clean: reformatPhone415,
@@ -564,11 +545,6 @@ $j(document).ready(function () {
         arg: '#father2_first',
         message: 'Required field.' },
       '#father2_work_phone': { 
-        required: 'sometimes',
-        clean: reformatPhone415,
-        test: happy.emptyOrUSPhoneWithExtension,
-        message: 'Please format as (415) 333-2222 x5555.' },
-      '#father2_home_phone': { 
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
