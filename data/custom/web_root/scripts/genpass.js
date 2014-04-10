@@ -7,15 +7,16 @@ function rand_chars(str, len) {
 	return rv;
 }
 
-var PSU_LAST_LEN = 4;
+var PSU_LAST_LEN = 2;
 var PSU_NUM_LEN = 4;
 
 function new_ps_username(last_name, secondary_family, student_number) {
   var temp_prefix = secondary_family ? '9T' : '8T'
+  var letters = 'ABCDEFGHJKMNPQRSTUVWXYZ';
 	var last = last_name.toUpperCase().replace(/[^ABCDEFGHJKMNPQRSTUVWXYZ]/g, '');
 	var len = last.length;
 	if (len > PSU_LAST_LEN) { last = last.substring(0, PSU_LAST_LEN); }
-	if (len < PSU_LAST_LEN) { last = last + Array(PSU_LAST_LEN - len + 1).join('Y'); }
+	if (len < PSU_LAST_LEN) { last = last + rand_chars(letters, PSU_LAST_LEN-len); }
 	var username = null;
 	var numbers = '23456789ABCDEF';
 	for (var i=0; i < 100; i++) {
