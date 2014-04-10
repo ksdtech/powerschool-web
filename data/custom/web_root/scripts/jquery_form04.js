@@ -393,8 +393,6 @@ $j(document).ready(function () {
         clean: reformatPhone415,
         test: happy.USPhoneWithExtension,
         message: 'Required field: format as (415) 333-2222 x5555.' },
-      '.family2': {
-        default_radio: '#family2_no' },
       '.inet_access': {
         default_radio: '#inet_yes',
         required: true,
