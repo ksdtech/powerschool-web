@@ -105,7 +105,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <input type="text" id="upd_by" name="[01]form1_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
-<tr><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" /><!-- ~[submitbutton] --><button type="submit" id="btnSubmit" name="btnSubmit">Submit</button></td></tr>
+<tr><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 </table>
 </form>
 
@@ -126,10 +126,11 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form6_status"><a href="06-emergency.html?actpage=01-registration">Emergency Procedures and Contacts</a></div></td></tr>
 <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form9_status"><a href="09-medical.html?actpage=01-registration">Medical Information</a></div></td></tr>
 <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form10_status"><a href="10-permissions.html?actpage=01-registration">Authorizations and Permissions</a></div></td></tr>
-<!-- <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form15_status"><a href="15-electives.html?actpage=01-registration">Electives (Kent Middle School only)</a></div></td></tr> -->
+</table>
 
 <!-- begin form action -->
 <form class="noSubmitLoading" id="form16" action="changesrecorded.html" method="post">
+  
 <!-- end form action -->
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
@@ -145,20 +146,24 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <input type="radio" name="[01]responsibility_for_student" class="resp_for_student" value="No">&nbsp;NO&nbsp;</td></tr>
 <tr><td colspan="2">By selecting <strong>Yes</strong>, I (we) agree to the previous statements.</td></tr>
 <tr><td>Signature of parent (typed)</td>
-<td><input type="text" name="[01]responsibility_sig_1" id="responsibility_sig_1" value="" size="30" maxlength="60"></td></tr>
+<td><input type="text" name="[01]responsibility_sig_1" id="responsibility_sig_1" 
+  value="" size="30" maxlength="60"></td></tr>
 <tr><td>Date</td>
-<td><input type="text" name="[01]responsibility_date" id="responsibility_date" value="" size="15"></td></tr>
+<td><input type="text" name="[01]responsibility_date" id="responsibility_date" 
+  value="" size="15"></td></tr>
 <tr><td>Signature of 2nd parent</td>
-<input type="text" name="[01]responsibility_sig_2" value="" size="30" maxlength="60"></td></tr>
+<td><input type="text" name="[01]responsibility_sig_2" id="responsibility_sig_2" 
+  value="" size="30" maxlength="60"></td></tr>
 <tr><td>Date</td>
 <td><input type="text" name="[01]responsibility_date_2" id="responsibility_date_2" value="" size="15"></td></tr>
 
-<tr class="private"><td class="bold">Last updated at 
+<tr class="private"><td class="bold" colspan="2">Last updated at 
 <input type="text" id="upd_at" name="[01]form16_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form16_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="upd_by" name="[01]form16_updated_by" value="" /><input 
+ type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
-<tr><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" /><!-- ~[submitbutton] --><button type="submit" id="btnSubmit" name="btnSubmit">Submit</button></td></tr>
+<tr><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 
 </table>
 </form>

@@ -43,8 +43,8 @@
 		~[if.pref.nolunchdisplay=1][else]
 		    <li id="btn-balance"><a href="lunchbal.html">~[text:psx.txt.wildcards.guardian_header.balance]</a></li>
 		[/if.pref.nolunchdisplay=1]
-		<li id="btn-classRegistration"><a href="regform1.html">Registration</a></li>
-		<li id="btn-contacts"><a href="contacts.html">Contacts</a></li>
+		<li id="btn-classRegistration"><a href="01-registration.html">Registration</a></li>
+		<li id="btn-contacts"><a href="04-family.html">Contacts</a></li>
 		<li id="btn-schoolBulletin"><a href="bulletin_popup.html">~[text:psx.txt.wildcards.guardian_header.school_bulletin]</a></li>
 		<li id="btn-teacherComments"><a href="teachercomments.html">~[text:psx.txt.wildcards.guardian_header.teacher_comments]</a></li>
 		~[if.isguardian]
@@ -111,8 +111,8 @@
 		[/if]
 		<li id="btn-teacherComments"><a href="/guardian/teachercomments.html">~[text:psx.txt.wildcards.guardian_header_yui.teacher_comments]</a></li>
 		<li id="btn-schoolBulletin"><a dialogContent="/guardian/bulletin_popup.html" class="dialogM" title="~[text:psx.txt.wildcards.guardian_header.view_school_bulletin]">~[text:psx.txt.wildcards.guardian_header_yui.school_bulletin]</a></li>
-		<li id="btn-classRegistration"><a href="/guardian/regform1.html">Registration</a></li>
-		<li id="btn-contacts"><a href="/guardian/contacts.html">Contacts</a></li>
+		<li id="btn-classRegistration"><a href="/guardian/01-registration.html">Registration</a></li>
+		<li id="btn-contacts"><a href="/guardian/04-family.html">Contacts</a></li>
 	~[if.pref.nolunchdisplay=1][else]
 		    <li id="btn-balance"><a href="/guardian/lunchbal.html">~[text:psx.txt.wildcards.guardian_header_yui.balance]</a></li>
 		[/if.pref.nolunchdisplay=1]
