@@ -54,8 +54,6 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <a class="dialogM" title="Registration Information and Requirements" href="/public/ksdp_registration.html">click here.</a></td></tr>
 <tr><td colspan="3">For detailed instructions on filling out the registration pages, 
 <a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">click here.</a></td></tr>
-<tr><td colspan="3">For information about how registration information is used, 
-<a class="dialogM" title="About the Information You Provide during Registration" href="/public/ksdp_contacts.html">click here.</a></td></tr>
   
 <tr class="headerrow"><td colspan="3" class="bold">1. Enrollment Information</td></tr>
 
@@ -115,7 +113,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <tr class="headerrow"><td colspan="2" class="bold">2. Status and Links to Registration Pages</td></tr>
 <tr><td colspan="2">Click the blue links in the list below to go to each 
 	of the pages of the registration system. Check marks and a green background indicate the 
-	pages that have been submitted and validated within the current
+	pages that have been submitted and validated for the current
 	registration cycle.</td></tr>
 <tr><td colspan="2">Please make sure you complete all pages listed below. As you complete a page, 
 	remember to click the <strong>Submit</strong> button at the bottom of the page.
@@ -128,7 +126,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form6_status"><a href="06-emergency.html?actpage=01-registration">Emergency Procedures and Contacts</a></div></td></tr>
 <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form9_status"><a href="09-medical.html?actpage=01-registration">Medical Information</a></div></td></tr>
 <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form10_status"><a href="10-permissions.html?actpage=01-registration">Authorizations and Permissions</a></div></td></tr>
-<tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form15_status"><a href="15-electives.html?actpage=01-registration">Electives (Kent Middle School only)</a></div></td></tr>
+<!-- <tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form15_status"><a href="15-electives.html?actpage=01-registration">Electives (Kent Middle School only)</a></div></td></tr> -->
 
 <!-- begin form action -->
 <form class="noSubmitLoading" id="form16" action="changesrecorded.html" method="post">
@@ -137,8 +135,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="headerrow"><td class="bold" colspan="2">3. Acknowledgement and Responsibility for Student</td></tr>
 <tr><td colspan="2">I (we) have thoroughly reviewed and filled out all of the 
-  registration pages that are applicable to this student and all pages are marked as 
-  checked above.
+  registration pages for this student and the pages are marked with check marks above. 
   To the best of my (our) knowledge, all the information reported on all of 
   the registration pages is true and correct.<br/> 
   I (we) assume full responsibility for my (our) student in all school matters. 
@@ -147,10 +144,14 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <td><input type="radio" name="[01]responsibility_for_student" class="resp_for_student" value="Yes">&nbsp;YES&nbsp;
 <input type="radio" name="[01]responsibility_for_student" class="resp_for_student" value="No">&nbsp;NO&nbsp;</td></tr>
 <tr><td colspan="2">By selecting <strong>Yes</strong>, I (we) agree to the previous statements.</td></tr>
-<tr><td>Signatures (typed)</td>
-<td><input type="text" name="[01]responsibility_sig_1" id="responsibility_sig_1" value="" size="30" maxlength="60">&nbsp;and&nbsp;<input type="text" name="[01]responsibility_sig_2" value="" size="30" maxlength="60"></td></tr>
+<tr><td>Signature of parent (typed)</td>
+<td><input type="text" name="[01]responsibility_sig_1" id="responsibility_sig_1" value="" size="30" maxlength="60"></td></tr>
 <tr><td>Date</td>
 <td><input type="text" name="[01]responsibility_date" id="responsibility_date" value="" size="15"></td></tr>
+<tr><td>Signature of 2nd parent</td>
+<input type="text" name="[01]responsibility_sig_2" value="" size="30" maxlength="60"></td></tr>
+<tr><td>Date</td>
+<td><input type="text" name="[01]responsibility_date_2" id="responsibility_date_2" value="" size="15"></td></tr>
 
 <tr class="private"><td class="bold">Last updated at 
 <input type="text" id="upd_at" name="[01]form16_updated_at" value="" /> by 
