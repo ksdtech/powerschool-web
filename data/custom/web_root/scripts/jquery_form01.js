@@ -87,6 +87,14 @@ function on_enrollment_change() {
   return true;
 }
 
+var scroll_to_el = null;
+
+function delayed_scroll() {
+  if (scroll_to_el) {
+    scroll_to_el.scrollIntoView(true);
+  }
+}
+
 // happy.js validations
 $j(document).ready(function () {
   $j('#form01').isHappy({
@@ -130,4 +138,11 @@ $j(document).ready(function () {
     }
   });
   
+  // attempt to scroll to element in URL
+  var frag = window.location.hash;
+  if (frag != "") {
+    frag = frag.substring(1); 
+    scroll_to_el = document.getElementById(frag);
+    window.setTimeout(delayed_scroll, 200);
+  }
 });
