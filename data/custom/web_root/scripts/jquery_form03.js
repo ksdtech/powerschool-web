@@ -31,13 +31,6 @@ $j(document).ready(function () {
       '#birth_country': { 
         required: true,
         message: 'Required field: birth place country.' },
-      '#lives_with_rel': { 
-        required: true,
-        message: 'Required field.' },
-      '.custody_orders': {
-        default_radio: '#co_no',
-        required: true,
-        message: 'Required field.' },
       '#first_usa_school': {
         required: 'sometimes',
         test: happy.emptyOrDate,
