@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +13,25 @@
 <td>~[text:psx.html.guardian.changesrecorded.the_changes_have_been_recorded]</td>
 </tr>
 <!-- PFZ registration forms -->
-~[if.~[gpv:backurl]#]
-<tr><td class="bold"><a href="~[gpv:backurl]">Back to ~[gpv:backtitle]</a></td></tr>
-[/if]
 ~[if.~[gpv:nexturl]#]
-<tr><td class="bold"><a href="~[gpv:nexturl]">Continue to ~[gpv:nexttitle]</a></td></tr>
+<tr><td><strong><a href="~[gpv:nexturl]">Continue to ~[gpv:nexttitle]</a></strong> 
+ (Click link to continue if page does not change within 5 seconds).</td></tr>
+[/if]
+~[if.~[gpv:nextdesc]#]
+<tr><td>~[gpv:nextdesc]</td></tr>
+[/if]
+~[if.~[gpv:backurl]#]
+<tr><td><a href="~[gpv:backurl]">Back to ~[gpv:backtitle]</a></td></tr>
 [/if]
 </table>
 <!-- end student content -->
 
 ~[wc:guardian_footer]
+
+~[if.~[gpv:nexturl]#]
+<script type="text/javascript">
+window.setTimeout(function() { window.location.href = "~[gpv:nexturl]"; }, 3000);
+</script>
+[/if]
 </body>
 </html>

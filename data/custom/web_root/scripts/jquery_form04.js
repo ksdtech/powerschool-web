@@ -270,7 +270,7 @@ function get_parents(i) {
     mcell = $j(pfields[i+18]).val();
   }
   if (!$j(pfields[i+19]).prop('checked')) {
-    fcelll = $j(pfields[i+20]).val();
+    fcell = $j(pfields[i+20]).val();
   }
   if (mcell != '') {
     if (mcell == hphone) {
@@ -388,7 +388,7 @@ $j(document).ready(function () {
         required: true,
         clean: reformatPhone415,
         test: happy.USPhoneWithExtension,
-        message: 'Required field: format as (415) 333-2222 x5555.' },
+        message: 'Required field. Use cell phone if no land line. Format as (415) 333-2222' },
       '.inet_access': {
         default_radio: '#inet_yes',
         required: true,
@@ -481,7 +481,7 @@ $j(document).ready(function () {
         required: 'sometimes',
         clean: reformatPhone415,
         test: home2_phone_test,
-        message: 'Required field: format as (415) 333-2222 x5555.' },
+        message: 'Required field. Use cell phone if no land line. Format as (415) 333-2222' },
       '.inet_access2': {
         default_radio: '#inet_yes',
         required: 'sometimes',
