@@ -1,5 +1,24 @@
+function setup_nexturl() {
+  var enrollment = $j("#reg_enroll").val();
+  var not_enrolling = (enrollment && /^nr-/.test(enrollment));
+  var grade = $j("#reg_grade_level").val();
+  if (grade == null || grade == "") {
+    grade = -1;
+  } else {
+    grade = parseInt(grade);
+  }
+  if (not_enrolling || grade < 5) {
+    $j("#nexturl").val("01-registration.html#acknowledgement");
+    $j("#nexttitle").val("Acknowledgement and Signature");
+    $j("#nextdesc").val("This is the last registration form. After returning to main registration page, scroll down to the Acknowledgement and Responsibility for Student section, sign, date and click the Submit button.")
+  }
+}
+
+
 // happy.js validations
 $j(document).ready(function () {
+  setup_nexturl();
+  
   $j('#form10').isHappy({
     // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,

@@ -78,11 +78,22 @@ function on_enrollment_change() {
   var enrollment = $j("#reg_enroll option:selected").val();
   var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   if (not_enrolling) { 
-    $j("tr.enrolling").hide(); 
+    $j("tr.enrolling").hide();
     $j("tr.not_enrolling").show();
   } else { 
     $j("tr.enrolling").show(); 
     $j("tr.not_enrolling").hide();
+    var grade = $j("#reg_grade_level").val();
+    if (grade != null && grade != "" && grade != "-1") {
+      grade = "grade_" + grade;
+    } else {
+      grade = null;
+    }
+    $j("tr.enrolling").each(function(i, el) {
+      if ($j(this).hasClass("by_grade") && (!grade || !$j(this).hasClass(grade))) {
+        $j(this).hide();
+      }
+    });
   }
   return true;
 }
@@ -128,6 +139,7 @@ $j(document).ready(function () {
   setup_reg_year();
 
   $j("#reg_enroll").bind("change", function() { on_enrollment_change(); });
+  $j("#reg_grade_level").bind("change", function() { on_enrollment_change(); });
   on_enrollment_change();
 
   $j(".chk_status").each(function() {
