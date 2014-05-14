@@ -17,7 +17,7 @@ var happy = {
   
   // matches mm/dd/yyyy
   date: function (val) {
-    return /^(?:[1-9]|10|11|12)\/(?:[1-9]|[12][0-9]|3[01])\/(?:\d{4})/.test(val);
+    return /^(?:[0]?[1-9]|10|11|12)\/(?:[0]?[1-9]|[12][0-9]|3[01])\/(?:\d{4})/.test(val);
   },
   
   selectorIsEmpty: function(arg) {

@@ -69,9 +69,10 @@ function pack_multi_select(osel) {
 	return ret;
 }
 
-function set_form_updated() {
-	$j("#upd_by").val($j("#userid").val()); 
-	$j("#upd_at").val(timestamp_now()); 
+function set_form_updated(prefix) {
+  if (typeof(prefix) === 'undefined') prefix = "";
+	$j("#" + prefix + "upd_by").val($j("#userid").val()); 
+	$j("#" + prefix + "upd_at").val(timestamp_now()); 
 	return true;
 }
 
@@ -80,7 +81,14 @@ function onRegFormSubmit() {
 		$j("#"+this.id+"_data").val(pack_multi_select(this)); });
 	$j(".checklist").each( function() { 
 		pack_checklist(this); });
-	if (!$j("#upd_by").hasClass("disabled")) { set_form_updated(); }  
+	var prefixes = [ "", "form01_", "form16_" ];
+	for (var i = 0; i < prefixes.length; i++) {
+	  var prefix = prefixes[i];
+	  var el = $j("#" + prefix + "upd_by");
+	  if (el.length > 0 && !el.hasClass("disabled")) {
+	    set_form_updated(prefix);
+	  }
+	}
 }
 
 // encode the field type in the class of the input (text field)
