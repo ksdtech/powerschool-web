@@ -4,25 +4,37 @@ function required_if_guardian2_test(val, radio_class) {
   return has_val || happy.selectorIsEmpty('.guardian2_name');
 }
 
+// Allow Non-US addresses
 function home2_state_test(val) {
   if (val === '') {
     return happy.selectorIsEmpty('.guardian2_name');
   }
-  return happy.USState(val);
+  // return happy.USState(val);
+  return true;
 }
 
+// Allow Non-US addresses
 function home2_zip_test(val) {
   if (val === '') {
     return happy.selectorIsEmpty('.guardian2_name');
   }
-  return happy.USZip(val);
+  var state = $j('#home2_state').val();
+  if (happy.USState(state)) {
+    return happy.USZip(val);
+  }
+  return true;
 }
 
+// Allow Non-US addresses
 function home2_phone_test(val) {
   if (val === '') {
     return happy.selectorIsEmpty('.guardian2_name');
   }
-  return happy.USPhoneWithExtension(val);
+  var state = $j('#home2_state').val();
+  if (happy.USState(state)) {
+    return happy.USPhoneWithExtension(val);
+  }
+  return true;
 }
 
 function onForm04Submit() {
