@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+<title>01 - Logins and Enrollment</title>
+~[wc:commonscripts]
+<script src="/scripts/genpass.js" type="text/javascript"></script>
+<script src="/scripts/fmt_date.js" type="text/javascript"></script>
+<script src="/scripts/formatters.js" type="text/javascript"></script>
+<script src="/scripts/happy.js" type="text/javascript"></script>
+<script src="/scripts/happy.methods.js" type="text/javascript"></script>
+<script src="/scripts/jquery_form01a.js" type="text/javascript"></script>
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+<link href="/images/css/regforms.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Logins and Enrollment<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+~[wc:title_student_begin_css]Logins and Enrollment~[wc:title_student_end_css]
+
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+  <!-- begin form action -->
+  <form class="noSubmitLoading" id="form2" action="/admin/changesrecorded.white.html" method="POST">
+  <input type="hidden" id="st_last" value="~([01]last_name)">
+  <input type="hidden" id="st_first" value="~([01]first_name)">
+  <input type="hidden" id="st_school", value="~([01]schoolid)">
+  <input type="hidden" id="orig_entrydate" name="orig_entrydate" value="~([01]entrydate)" />
+  <input type="hidden" id="orig_reg_year" name="orig_reg_year" value="~([01]reg_year)" />
+
+  <!-- end form action -->
+  <div id="form1-contents" align="center" style="width: 98%">
+  <div id="form1-setup" class="box-round group" style="width: 720px">
+  <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+  <tr><td>
+  <table width="100%" border="0" cellspacing="0" cellpadding="2" align="left">
+  <tr class="staffonly"><td colspan="3" class="bold">Student Transfer Info</td></tr>
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" id="entry_check" value="1">Copy entry date/grade</td></tr>
+  <tr class="staffonly">
+  	<td width="33%">Current Grade Level</td>
+  	<td width="33%">School Entry Grade Level</td>
+  	<td width="34%">District Entry Grade Level</td>
+  </tr>
+  <tr class="staffonly">
+  	<td><b><span id="grade_level">~([01]Grade_Level)</span></b></td>
+  	<td><input type="text" class="entry_grade_level" name="[01]SchoolEntryGradeLevel" value="" size="20"></td>
+  	<td><input type="text" class="entry_grade_level" name="[01]DistrictEntryGradeLevel" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly">
+  	<td>Current Entry Date</td>
+  	<td>School Entry Date</td>
+  	<td>District Entry Date</td>
+  </tr>
+  <tr class="staffonly">
+  	<td><b><span id="entry_date">~([01]EntryDate)</span></b></td>
+  	<td><input type="text" class="entry_date" name="[01]SchoolEntryDate" value="" size="20"></td>
+  	<td><input type="text" class="entry_date" name="[01]DistrictEntryDate" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly"><td colspan="3" class="bold">Home Room</td></tr>
+  <tr class="staffonly">
+  	<td>Room Number</td>
+  	<td>Teacher Last</td>
+  	<td>Teacher First</td>
+  </tr>
+  <tr class="staffonly">
+  	<td><input type="text" name="[01]Home_Room" value="" size="20"></td>
+  	<td><input type="text" name="[01]HomeRoom_Teacher" value="" size="20"></td>
+  	<td><input type="text" name="[01]HomeRoom_TeacherFirst" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly"><td class="bold">Registration (Guardian) Email Address(es)</td>
+    <td colspan="2"><textarea name="[01]GuardianEmail" cols="40" rows="4"></textarea></td></tr>
+  <tr class="staffonly"><td colspan="3" class="bold">Student Account</td></tr>
+  <tr class="staffonly">
+  	<td>Network User Name</td>
+  	<td>Network Password</td>
+  	<td>Student Number</td>
+  </tr>
+  <tr class="staffonly">
+  	<td><input type="text" id="st_login" name="[01]Network_ID" value="" size="20" onfocus="return id_check('st_id');"></td>
+  	<td><input type="text" id="st_password" name="[01]Network_Password" value="" size="20"></td>
+  	<td><input type="text" id="st_id" name="[01]Student_Number" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="3">Apple GUID</td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="3"><input type="text" id="apple_generateduid" name="[01]apple_generateduid" value="" size="60"></td>
+  </tr>
+  <!--
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" class="pwgen" id="generate_psst_login" value="1">Generate student portal login</td></tr>
+  <tr class="staffonly"><td colspan="3">
+  <input type="checkbox" id="psst_web_access" name="[01]Student_AllowWebAccess" value="">Student Web Access
+  </td></tr>
+  <tr class="staffonly">
+  	<td>User Name</td>
+  	<td>Password</td>
+  	<td>&nbsp;</td>
+  </tr>
+  <tr class="staffonly">
+  	<td><input type="text" id="psst_login" name="[01]Student_Web_ID" value="" size="20"></td>
+  	<td><input type="text" id="psst_password" name="[01]Student_Web_Password" value="" size="20"></td>
+  	<td>&nbsp;</td>
+  </tr>
+  -->
+  <tr class="staffonly"><td colspan="3" class="bold">Primary Family Account</td></tr>
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" class="pwgen" id="generate_h1_login" value="1">Generate family login</td></tr>
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" id="h1_web_access" name="[01]AllowWebAccess" value="">Parent Web Access</td></tr>
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" name="[01]wm_status" value="">Deny Parent Modifications</td></tr>
+  <tr class="staffonly">
+  	<td>User Name</td>
+  	<td>Password</td>
+  	<td>Family Number</td>
+  </tr>
+  <tr class="staffonly">
+  	<td><input type="text" id="h1_login" name="[01]Web_ID" value="" size="20"></td>
+  	<td><input type="text" id="h1_password" name="[01]Web_Password" value="" size="20"></td>
+  	<td><input type="text" id="h1_id" name="[01]Home_ID" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2">Mother Last, First</td>
+  	<td>Mother Teacher Number</td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2"><b>~([01]Mother), ~([01]Mother_First)</b></td>
+  	<td><input type="text" name="[01]Mother_Staff_ID" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2">Father Last, First</td>
+  	<td>Father Teacher Number</td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2"><b>~([01]Father), ~([01]Father_First)</b></td>
+  	<td><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly"><td colspan="3" class="bold">Second Family Account</td></tr>
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" class="pwgen" id="generate_h2_number" value="1">Generate family number</td></tr>
+  <tr class="staffonly">
+    <td colspan="2">&nbsp;</td>
+  	<td>Family Number</td>
+  </tr>
+  <tr class="staffonly">
+    <td colspan="2">&nbsp;</td>
+  	<td><input type="text" id="h2_id" name="[01]Home2_ID" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2">Mother Last, First</td>
+  	<td>Mother Teacher Number</td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2"><b>~([01]Mother2_Last), ~([01]Mother2_First)</b></td>
+  	<td><input type="text" name="[01]Mother2_Staff_ID" value="" size="20"></td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2">Father Last, First</td>
+  	<td>Father Teacher Number</td>
+  </tr>
+  <tr class="staffonly">
+  	<td colspan="2"><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
+  	<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
+  </tr>
+
+  <tr class="headerrow"><td colspan="3" class="bold">Enrollment Information</td></tr>
+  <tr class="staffonly"><td class="bold">School Year</td>  
+  <td colspan="2"><select id="reg_year" name="[01]reg_year">
+  <option value="">Choose:</option>
+  <option value="2013-2014">2013-2014</option>
+  <option value="2014-2015">2014-2015</option>
+  </select></td></tr>
+
+  <tr class="staffonly"><td class="bold">Proof of Residency Verifier</td>
+  <td colspan="2"><input id="reg_residencyproofby" type="text" name="[01]reg_residencyproofby" value="" size="10"></td>
+  </tr>
+
+  <tr class="staffonly"><td class="bold">Proof of Residency Date<br>(YYYY-MM-DD)</td>
+  <td colspan="2"><input id="reg_residencyproofdate" type="text" name="[01]reg_residencyproofdate" value="" size="10"></td>
+  </tr>
+
+  <tr class="headerrow"><td colspan="3" class="bold">1. Enrollment Information</td></tr>
+
+  <tr><td width="50%">School year you are registering this student for:</td><td><select id="reg_school_year" name="[01]reg_year">
+  <option value="">Choose:</option>
+  <option value="2014-2015">2014-2015 (Next year)</option>
+  <option value="2013-2014">2013-2014 (Current year)</option>
+  </select></td></tr>
+
+  <tr><td width="50%">Status <span class="for_reg_year" id="rys">for 2014-2015 School Year</span></td><td><select id="reg_enroll" name="[01]reg_will_attend">
+  <option value="">Choose:</option>
+  <option value="attending">Student will be attending Bacich or Kent</option>
+  <option value="nr-graduated">Student will have graduated</option>
+  <option value="nr-permanent">Student will not be attending Bacich or Kent</option>
+  <option value="nr-temporary">Student is temporarily leaving the District, but may return later</option>
+  <option value="unknown">Not sure if student will attend; don't know at this time</option>
+  </select></td></tr>
+
+  <tr class="enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2014-2015 School Year</span></td><td><select id="reg_grade_level" name="[01]reg_grade_level">
+  <option value="">Choose:</option>
+  <option value="TK">Transitional Kindergarten - Bacich Elementary School</option>
+  <option value="K">Regular Kindergarten - Bacich Elementary School</option>
+  <option value="1">1st Grade - Bacich Elementary School</option>
+  <option value="2">2nd Grade - Bacich Elementary School</option>
+  <option value="3">3rd Grade - Bacich Elementary School</option>
+  <option value="4">4th Grade - Bacich Elementary School</option>
+  <option value="5">5th Grade - Kent Middle School</option>
+  <option value="6">6th Grade - Kent Middle School</option>
+  <option value="7">7th Grade - Kent Middle School</option>
+  <option value="8">8th Grade - Kent Middle School</option>
+  <option value="-1">Student will not be attending</option>
+  </select></td></tr>
+
+  <tr class="not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td><select id="reg_exitcode" name="[01]ExitCode">
+  <option value="">Choose:</option>
+  <option value="160">Student will attend another public school in California</option>
+  <option value="180">Student will attend a private school in California</option>
+  <option value="200">Student will attend a US school outside California</option>
+  <option value="460">Student will be home schooled</option>
+  <option value="240">Student is moving to another country</option>
+  <option value="140">Other reason for not attending, or don't know</option>
+  </select></td></tr>
+
+  <tr class="not_enrolling"><td>Name and phone number of next school</td>
+  <td><input name="[01]ExitComment" type="text" id="reg_exitcomment" value="" size="50"></td></tr>
+
+  <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">2c. Personal locker combination</td>
+  <td colspan="2"><input type="text" name="[01]locker_combination" value=""></input></td></tr>
+  <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">2d. PE locker combination</td>
+  <td colspan="2"><input type="text" name="[01]pe_locker_combination" value=""></input></td></tr>
+
+  </table><br><br>
+  </td></tr>
+
+  <tr class="staffonly"><td class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
+  <tr class="staffonly"><td class="bold">Last updated at 
+  <input type="text" id="upd_at" class="disabled" name="[01]form1_updated_at" value=""> by 
+  <input type="text" id="upd_by" class="disabled" name="[01]form1_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
+  </tr>
+  <tr><td align="right"><input type="hidden" name="ac" value="prim" />~[submitbutton]</td></tr>
+  </table>
+  </div>
+  </div>
+  </form>
+</div>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame_css]
+</body>
+</html><!-- end right frame -->
