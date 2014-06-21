@@ -107,37 +107,59 @@ class KikExporter
   ].map { |f| f.to_sym }
 
 
-  SIB_FIELDS = [
+  STU_FIELDS = [
     'student_number',
     'web_id',
+    'family_id',
+    'surname',
     'first_name',
     'last_name',
-    'kikdir_unlisted',
-    'kikdir_approved',
-    'kikdir_at',
     'reg_will_attend',
     'reg_grade_level',
-    'grade_level'
+    'grade_level',
+    'kikdir_unlisted',
+    'kikdir_approved',
+    'kikdir_at'
   ].map { |f| f.to_sym }
 
+  EXITED_FIELDS = [
+    'student_number',
+    'web_id',
+    'family_id',
+    'surname',
+    'first_name',
+    'last_name',
+    'reg_will_attend'
+  ].map { |f| f.to_sym }
+
+
   def initialize
-    @families = { }
-    @students = { }
+    @surnames = [ ]
+    @families_by_surname = { }
+    @student_by_sid = { }
+    @students_by_fid = { }
+    @listings = [ ]
+    @unlisted = [ ]
+    @exited = [ ]
   end
 
-  def get_sibling_data(fid)
+  def get_sibling_data(lfid)
+    surname, fid = lfid.split(':')
+
+    # filter on surname
     sibs = [ ]
     sib_names = [ ]
     sib_data = { }
-    family_students = @families[fid]
-    family_students.each do |sid|
-      if !sib_data.key?(sid)
-        sibs << sid
-        sib_data[sid] = { }
-      end
-      s = @students[sid]
-      SIB_FIELDS.each do |f|
-        sib_data[sid][f] = s[f]
+    @students_by_fid[fid].each do |sid|
+      s = @student_by_sid[sid]
+      if surname == s[:surname]
+        if !sib_data.key?(sid)
+          sibs << sid
+          sib_data[sid] = { }
+        end
+        STU_FIELDS.each do |f|
+          sib_data[sid][f] = s[f]
+        end
       end
     end
   
@@ -150,10 +172,8 @@ class KikExporter
   
     sibs.each_with_index do |sid, i|
       the_sib = sib_data[sid]
-      if !(the_sib[:reg_will_attend] =~ /^nr-/)
-        grade = the_sib[:reg_grade_level]
-        sib_data[sid][:preview_name] = "#{the_sib[:first_name]} (#{the_sib[:reg_grade_level]})"
-      end
+      grade = the_sib[:reg_grade_level]
+      sib_data[sid][:preview_name] = "#{the_sib[:first_name]} (#{the_sib[:reg_grade_level]})"
     end
     return [ sibs, sib_data ]
   end
@@ -177,7 +197,7 @@ class KikExporter
     mcell    = ''
     fcell    = ''
   
-    s = @students[sid]
+    s = @student_by_sid[sid]
     if !s[PARENT_FIELDS[i+0]]
       street = s[PARENT_FIELDS[i+1]] || ''
       city   = s[PARENT_FIELDS[i+2]] || ''
@@ -323,34 +343,33 @@ class KikExporter
     result
   end
 
-  def get_preview(fid)
-
+  def get_preview(lfid)
+    surname, fid = lfid.split(':')
+    
     preview = { }
+    preview[:surname] = surname
     preview[:family_id] = fid
     
-    family_students = @families[fid]
-
     preview_student = nil
+    any_approved = false
     last_approved = nil
-    last_name = nil
+    last_names = [ ]
     
     # no preview if any unlisted
-    family_students.each do |sid|
-      s = @students[sid]
+    @students_by_fid[fid].each do |sid|
+      s = @student_by_sid[sid]
       if s[:kikdir_unlisted]
         $stderr.puts "student #{s[:student_number]} is unlisted"
-        preview[:unlisted_sid] = sid
+        preview[:unlisted_student] = s
         preview_student = nil
         break
       end
       if s[:kikdir_at]
+        any_approved = true
         if !last_approved || s[:kikdir_at] > last_approved
           last_approved = s[:kikdir_at]
           preview_student = sid
         end
-      end
-      if !last_name
-        last_name = s[:last_name].upcase
       end
     end
     
@@ -359,9 +378,9 @@ class KikExporter
       return preview
     end
   
-    
-    sibs, sib_data = get_sibling_data(fid)
-    preview[:student_last_name] = last_name
+    sibs, sib_data = get_sibling_data(lfid)
+    preview[:surname] = surname
+    preview[:approved] = any_approved
     preview[:approved_student] = preview_student
     preview[:approval_date] = last_approved
     preview[:siblings] = [ ]
@@ -373,7 +392,7 @@ class KikExporter
       preview[:siblings] << the_sib
     end
   
-    a1 = last_name + ' ' + sib_names.join(', ')
+    a1 = surname + ' ' + sib_names.join(', ')
     
     home_p = { }
     home  = get_parents(home_p, preview_student, PRIMARY_PARENTS)
@@ -402,46 +421,82 @@ class KikExporter
     return preview
   end
 
-  # import all @students from csv
-  def load(fname)
+  # import all @student_by_sid from csv
+  def parse(fname)
     CSV.foreach(fname, :col_sep => "\t", :row_sep => "\n", :headers => true,
       :header_converters => :symbol) do |row|
       s = row.to_hash
+      
       sid = s[:student_number]
-      fid = s[:web_id]
-      m = fid.match(/^([A-Z0-9]{8})\.[0-9]{6}$/)
-      raise "bad web_id #{fid} for student #{sid}" unless m
+      wid = s[:web_id]
+      m = wid.match(/^([A-Z0-9]{8})\.[0-9]{6}$/)
+      raise "bad web_id #{wid} for student #{sid}" unless m
       fid = m[1]
+      s[:family_id] = fid
       
       # set 'first_name' to nickname if nickname is given
       if s[:nickname]
         s[:first_name] = s[:nickname]
       end
 
-      # set 'grade_level' to integer of 'reg_grade_level' with TK and K = 0
-      if s[:reg_grade_level] =~ /^[1-8]$/
-        s[:grade_level] = s[:reg_grade_level].to_i
+      surname = s[:last_name].upcase
+      s[:surname] = surname
+
+      # skip non-returning students
+      status = s[:reg_will_attend]
+      if status && status.match(/^nr-/)
+        stu_data = { }
+        EXITED_FIELDS.each do |f|
+          stu_data[f] = s[f]
+        end
+        @exited << stu_data
       else
-        s[:grade_level] = 0
-      end
+        # set 'grade_level' to integer of 'reg_grade_level' with TK and K = 0
+        if s[:reg_grade_level] =~ /^[1-8]$/
+          s[:grade_level] = s[:reg_grade_level].to_i
+        else
+          s[:grade_level] = 0
+        end
       
-      @students[sid] = s
-      if !@families.key?(fid)
-        @families[fid] = [ ]
+        @student_by_sid[sid] = s
+        if !@students_by_fid.key?(fid)
+          @students_by_fid[fid] = [ ]
+        end
+        @students_by_fid[fid] << sid
+    
+        if !@families_by_surname.key?(surname)
+          @families_by_surname[surname] = [ ]
+        end
+        lfid = "#{surname}:#{fid}"
+        if !@families_by_surname[surname].include?(lfid)
+          @families_by_surname[surname] << lfid
+        end
       end
-      @families[fid] << sid
     end
+    
+    @exited.sort! do |a,b| 
+      a[:surname] <=> b[:surname]
+    end
+    
+    @surnames = @families_by_surname.keys.sort
+    @surnames.each do |surname|
+      @families_by_surname[surname].sort.each do |lfid|
+        p = get_preview(lfid)
+        if p.key?(:unlisted_student)
+          @unlisted << p
+        else
+          @listings << p
+        end
+      end
+    end
+  end
   
-    if !@families.empty?
-      fid = @families.keys.first
-      fam_p = get_preview(fid)
-      preview = { :families => [ fam_p ] }
-      puts JSON.pretty_generate(preview)
-    end
+  def output
+    puts JSON.pretty_generate({ :exited => @exited, :unlisted => @unlisted, :listings => @listings })
   end
 end
 
 ke = KikExporter.new
-ke.load('/Users/pz/Desktop/students.txt')
-
+ke.parse('/Users/pz/Desktop/students.txt')
+ke.output
 
