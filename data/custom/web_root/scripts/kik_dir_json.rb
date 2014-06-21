@@ -257,8 +257,8 @@ class KikExporter
     home_p[:father_abbr] = fabbr
     home_p[:parent_line] = parents
     
-    result << parents
-    result << street
+    result << [ parents ]
+    result << [ street ]
   
     if !s[PARENT_FIELDS[i+11]]
       mmail = s[PARENT_FIELDS[i+12]] || ''
@@ -269,6 +269,7 @@ class KikExporter
     home_p[:mother_email] = mmail
     home_p[:father_email] = fmail
     
+    all_mails = [ ]
     if mmail != ''
       if mmail == fmail
         fmail = ''
@@ -283,15 +284,12 @@ class KikExporter
       if fabbr != ''
         fmail += ' (' + fabbr + ')'
       end
-      if mmail != ''
-        mmail += '<br>' + fmail
-      else
-        mmail = fmail
-      end
     end
     home_p[:father_email_line] = fmail
-    home_p[:all_emails] = mmail
-    result << mmail
+    all_mails << mmail if mmail != ''
+    all_mails << fmail if fmail != ''
+    home_p[:all_emails] = all_mails
+    result << all_mails
   
     if !s[PARENT_FIELDS[i+15]]
       hphone = s[PARENT_FIELDS[i+16]] || ''
@@ -306,6 +304,7 @@ class KikExporter
     home_p[:mother_cell] = mcell
     home_p[:father_cell] = fcell
     
+    all_phones = [ ]
     if mcell != ''
       if mcell == hphone
         mcell = ''
@@ -325,21 +324,16 @@ class KikExporter
         if fabbr != ''
           fcell += ' (' + fabbr + ')'
         end
-        if mcell != ''
-          mcell += '<br>' + fcell
-        else
-          mcell = fcell
-        end
       end
     end
+    all_phones << mcell if mcell != ''
+    all_phones << fcell if fcell != ''
     home_p[:father_cell_line] = fcell
     if hphone != ''
-      if mcell != ''
-        hphone += '<br>' + mcell
-      end
+      all_phones = [ hphone ] + all_phones
     end
-    home_p[:all_phones] = hphone
-    result << hphone
+    home_p[:all_phones] = all_phones
+    result << all_phones
     result
   end
 
@@ -392,28 +386,25 @@ class KikExporter
       preview[:siblings] << the_sib
     end
   
-    a1 = surname + ' ' + sib_names.join(', ')
-    
+    a1 = [ surname + ' ' + sib_names.join(', ') ]
+    b1 = [ ]
     home_p = { }
     home  = get_parents(home_p, preview_student, PRIMARY_PARENTS)
     0.upto(2) do |i|
-      if home[i] != ''
-        a1 += '<br>' + home[i]
-      end
+      a1 += home[i] if !home[i].empty?
     end
-    b1 = home[3]
+    b1 += home[3] if !home[3].empty?
     preview[:a1] = a1
     preview[:b1] = b1
   
-    a2 = ''
+    a2 = [ ]
+    b2 = [ ]
     home2_p = { }
     home2 = get_parents(home2_p, preview_student, SECONDARY_PARENTS)
     0.upto(2) do |i|
-      if home2[i] != ''
-        a2 += '<br>' + home2[i]
-      end
+      a2 += home2[i] if !home2[i].empty?
     end
-    b2 = home2[3]
+    b2 += home2[3] if !home2[3].empty?
     preview[:a2] = a2
     preview[:b2] = b2
     
