@@ -106,6 +106,15 @@ class KikExporter
     'father2_cell'
   ].map { |f| f.to_sym }
 
+  EXITED_FIELDS = [
+    'student_number',
+    'web_id',
+    'family_id',
+    'surname',
+    'first_name',
+    'last_name',
+    'reg_will_attend'
+  ].map { |f| f.to_sym }
 
   STU_FIELDS = [
     'student_number',
@@ -122,17 +131,6 @@ class KikExporter
     'kikdir_at'
   ].map { |f| f.to_sym }
 
-  EXITED_FIELDS = [
-    'student_number',
-    'web_id',
-    'family_id',
-    'surname',
-    'first_name',
-    'last_name',
-    'reg_will_attend'
-  ].map { |f| f.to_sym }
-
-
   def initialize
     @surnames = [ ]
     @families_by_surname = { }
@@ -141,6 +139,11 @@ class KikExporter
     @listings = [ ]
     @unlisted = [ ]
     @exited = [ ]
+  end
+  
+  def copy_fields(s, fields)
+    data = fields.inject({}) { |h, f| h[f] = s[f]; h }
+    data
   end
 
   def get_sibling_data(lfid)
@@ -155,10 +158,7 @@ class KikExporter
       if surname == s[:surname]
         if !sib_data.key?(sid)
           sibs << sid
-          sib_data[sid] = { }
-        end
-        STU_FIELDS.each do |f|
-          sib_data[sid][f] = s[f]
+          sib_data[sid] = copy_fields(s, STU_FIELDS)
         end
       end
     end
@@ -354,7 +354,7 @@ class KikExporter
       s = @student_by_sid[sid]
       if s[:kikdir_unlisted]
         $stderr.puts "student #{s[:student_number]} is unlisted"
-        preview[:unlisted_student] = s
+        preview[:unlisted_student] = copy_fields(s, STU_FIELDS)
         preview_student = nil
         break
       end
@@ -436,11 +436,7 @@ class KikExporter
       # skip non-returning students
       status = s[:reg_will_attend]
       if status && status.match(/^nr-/)
-        stu_data = { }
-        EXITED_FIELDS.each do |f|
-          stu_data[f] = s[f]
-        end
-        @exited << stu_data
+        @exited << copy_fields(s, EXITED_FIELDS)
       else
         # set 'grade_level' to integer of 'reg_grade_level' with TK and K = 0
         if s[:reg_grade_level] =~ /^[1-8]$/
