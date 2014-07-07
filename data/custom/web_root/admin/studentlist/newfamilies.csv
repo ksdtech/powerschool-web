@@ -1,0 +1,55 @@
+Student_Number,Web_ID,Last_Name,First_Name,Grade_Level,EntryCode,Enroll_Status,Street,City,State,Zip,Home_Phone,Mother_Last,Mother_First,Mother_Cell,Mother_Work,Mother_Email,Father_Last,Father_First,Father_Cell,Father_Work,Father_Email,Home2_Street,Home2_City,Home2_State,Home2_Zip,Home2_Phone,Mother2_Last,Mother2_First,Mother2_Cell,Mother2_Work,Mother2_Email,Father2_Last,Father2_First,Father2_Cell,Father2_Work,Father2_Email
+~[tlist_sql;SELECT Student_Number AS SN,
+  Web_ID,
+  Last_Name,
+  First_Name,
+  Grade_Level,
+  EntryCode,
+  Enroll_Status,
+  Street,
+  City,
+  State,
+  Zip,
+  Home_Phone,
+  Mother AS Mother_Last,
+  ps_customfields.getcf('students', id, 'mother_first') AS Mother_First,
+  ps_customfields.getcf('students', id, 'mother_cell') AS Mother_Cell,
+  ps_customfields.getcf('students', id, 'mother_work_phone') AS Mother_Work,
+  ps_customfields.getcf('students', id, 'mother_email') AS Mother_Email,
+  Father AS Father_Last,
+  ps_customfields.getcf('students', id, 'father_first') AS Father_First,
+  ps_customfields.getcf('students', id, 'father_cell') AS Father_Cell,
+  ps_customfields.getcf('students', id, 'father_work_phone') AS Father_Work,
+  ps_customfields.getcf('students', id, 'father_email') AS Father_Email,
+  ps_customfields.getcf('students', id, 'home2_street') AS Home2_Street,
+  ps_customfields.getcf('students', id, 'home2_city') AS Home2_City,
+  ps_customfields.getcf('students', id, 'home2_state') AS Home2_State,
+  ps_customfields.getcf('students', id, 'home2_zip') AS Home2_Zip,
+  ps_customfields.getcf('students', id, 'home2_phone') AS Home2_Phone,
+  ps_customfields.getcf('students', id, 'mother2_last') AS Mother2_Last,
+  ps_customfields.getcf('students', id, 'mother2_first') AS Mother2_First,
+  ps_customfields.getcf('students', id, 'mother2_cell') AS Mother2_Cell,
+  ps_customfields.getcf('students', id, 'mother2_work_phone') AS Mother2_Work,
+  ps_customfields.getcf('students', id, 'mother2_email') AS Mother2_Email,
+  ps_customfields.getcf('students', id, 'father2_last') AS Father2_Last,
+  ps_customfields.getcf('students', id, 'father2_first') AS Father2_First,
+  ps_customfields.getcf('students', id, 'father2_cell') AS Father2_Cell,
+  ps_customfields.getcf('students', id, 'father2_work_phone') AS Father2_Work,
+  ps_customfields.getcf('students', id, 'father2_email') AS Father2_Email
+FROM STUDENTS
+WHERE Enroll_Status               <=0
+AND SUBSTR(TO_CHAR(Web_ID), 1, 9) IN
+  ( SELECT DISTINCT SUBSTR(TO_CHAR(Web_ID), 1, 9)
+  FROM STUDENTS
+  WHERE ENROLL_STATUS<=0
+  AND GRADE_LEVEL    IN (~[gpv:grades])
+  AND ENTRYCODE      IN ('ND','RD')
+  )
+AND SUBSTR(TO_CHAR(Web_ID), 1, 9) NOT IN
+  ( SELECT DISTINCT SUBSTR(TO_CHAR(Web_ID), 1, 9)
+  FROM STUDENTS
+  WHERE ENROLL_STATUS<=0
+  AND ENTRYCODE      NOT IN ('ND','RD')
+  )
+ORDER BY Last_Name, Grade_Level]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)","~(f12)","~(f13)","~(f14)","~(f15)","~(f16)","~(f17)","~(f18)","~(f19)","~(f20)","~(f21)","~(f22)","~(f23)","~(f24)","~(f25)","~(f26)","~(f27)","~(f28)","~(f29)","~(f30)","~(f31)","~(f32)","~(f33)","~(f34)","~(f35)","~(f36)","~(f37)"
+[/tlist_sql]

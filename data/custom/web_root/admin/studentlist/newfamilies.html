@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Families</title>
+<!-- required scripts -->
+	~[wc:commonscripts] 
+<!-- Required style sheets: screen.css, and print.css --> 
+	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+	<link href="/images/css/print.css" rel="stylesheet" media="print">
+</head> 
+<body> 
+	~[wc:admin_header_css] 
+    <div id="breadcrumbs"> 
+		<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/functions.html" target="_top">Special Functions</a> &gt; New Families<!-- breadcrumb end --> 
+    </div> 
+<!-- start of main menu and content --> 
+	~[wc:admin_navigation_css] 
+<!-- Start of Page --> 
+	<h1>New Families</h1> 
+<!-- start of content area --> 
+	<div class="box-round"> 
+		<p>Click the appropriate button to export either kinder-only or all new families.
+		</p> 
+		<div class="button-row">
+			<a class="button" href="/admin/studentlist/newfamilies.csv?grades=0">Kinder New Families</a>
+			<a class="button" href="/admin/studentlist/newfamilies.csv?grades=0,1,2,3,4,5,6,7,8">All New Families</a>
+		</div>
+	</div> 
+<!-- end of content area --> 
+	~[wc:admin_footer_css] 
+</body> 
+</html>
