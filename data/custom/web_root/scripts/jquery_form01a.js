@@ -1,24 +1,22 @@
-
+// scripts for usernames, etc
 
 function generate_h1_login() {
-  var sn = $j("#st_id").val();
-  if ($j("#h1_id").val() == '') {
-    $j("#h1_id").val(sn);
-  }
-  if ($j("#h1_login").val() == '') {
-    $j("#h1_login").val(new_ps_username($j("#st_last").val(), 0, sn));
+  var new_ident = false;
+  var fam_ident = $j("#h1_id").val();
+  if (fam_ident == '' || fam_ident.length != 8) {
+    var last_name = $j("#st_last").val();
+    var fam_ident = new_ps_fam_ident(last_name, false);
+    new_ident = true;
+    $j("#h1_id").val(fam_ident);
+  } 
+  if (new_ident || $j("#h1_login").val() == '') {
+    var sn = $j("#st_id").val();
+    $j("#h1_login").val(fam_ident + "." + sn);
   }
   if ($j("#h1_password").val() == '') {
     $j("#h1_password").val(new_ps_password());
   }
   $j("#h1_web_access").prop('checked', true);
-}
-
-function generate_h2_number() {
-  if ($j("#h2_id").val() == '') {
-    var st_id = $j("#st_id").val();
-    if (st_id != '') { $j("#h2_id").val(parseInt(st_id) + 100000); }
-  }
 }
 
 function generate_psst_login() {
@@ -45,7 +43,6 @@ function generate_st_login() {
 // lame function table
 var genpass_fptrs = new Array();
 genpass_fptrs['generate_h1_login'] = generate_h1_login;
-genpass_fptrs['generate_h2_number'] = generate_h2_number;
 genpass_fptrs['generate_psst_login'] = generate_psst_login;
 genpass_fptrs['generate_st_login'] = generate_st_login;
 

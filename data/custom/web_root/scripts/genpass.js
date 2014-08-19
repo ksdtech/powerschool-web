@@ -10,24 +10,29 @@ function rand_chars(str, len) {
 var PSU_LAST_LEN = 2;
 var PSU_NUM_LEN = 4;
 
-function new_ps_username(last_name, secondary_family, student_number) {
+function new_ps_fam_ident(last_name, secondary_family) {
   var temp_prefix = secondary_family ? '9T' : '8T'
   var letters = 'ABCDEFGHJKMNPQRSTUVWXYZ';
 	var last = last_name.toUpperCase().replace(/[^ABCDEFGHJKMNPQRSTUVWXYZ]/g, '');
 	var len = last.length;
 	if (len > PSU_LAST_LEN) { last = last.substring(0, PSU_LAST_LEN); }
 	if (len < PSU_LAST_LEN) { last = last + rand_chars(letters, PSU_LAST_LEN-len); }
-	var username = null;
+	var fam_ident = null;
 	var numbers = '23456789ABCDEF';
 	for (var i=0; i < 100; i++) {
-		username = temp_prefix + last + rand_chars(numbers, PSU_NUM_LEN);
+		fam_ident = temp_prefix + last + rand_chars(numbers, PSU_NUM_LEN);
 		// todo: check uniqueness
 		break;
 	}
-	if (username && student_number) {
-	  username += ('.' + student_number);
+	return fam_ident;
+}
+
+function new_ps_username(last_name, secondary_family, student_number) {
+  var fam_ident = new_ps_fam_ident(last_name, secondary_family);
+	if (fam_ident && student_number) {
+	  return fam_ident + '.' + student_number;
 	}
-	return username; 
+	return ''; 
 }
 
 function new_ps_password() {
