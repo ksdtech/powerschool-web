@@ -89,26 +89,26 @@
                 </tr>
                 <tr>
                     <td class="bold">~[text:psx.html.admin_students.newstudent.dob]</td>
-                    <td><input type="text" ~[getValidation:students.dob] name="DOB" value="" size="10"></td>
+                    <td><input type="text" ~[getValidation:students.dob] id="fieldDOB" name="DOB" value="" size="10"></td>
                 </tr>
                 <tr bgcolor="#edf3fe">
 					<td class="bold">~[text:psx.html.admin_students.newstudent.gender]</td>
-					<td><select name="gender" ~[getValidation:students.gender]>
+					<td><select id="selectGender" name="gender" ~[getValidation:students.gender]>
 						<option value="">
 						<option value="M">~[text:psx.html.admin_students.newstudent.male]<option value="F">~[text:psx.html.admin_students.newstudent.female]</select></td>
 				</tr>
                 <tr>
                     <td class="bold">~[text:psx.html.admin_students.newstudent.student_number]</td>
-                    <td><input type="text" name="student_number" ~[getValidation:students.student_number] value="" size="12"> ~[text:psx.html.admin_students.newstudent.if_this_field_is_left_blank_the_system_will_assign_the_stude]
+                    <td><input type="text" id="fieldStuNum" name="student_number" ~[getValidation:students.student_number] value="" size="12"> ~[text:psx.html.admin_students.newstudent.if_this_field_is_left_blank_the_system_will_assign_the_stude]
                     </td>
                 </tr>
                 <tr bgcolor="#edf3fe">
                     <td class="bold">~[text:psx.html.admin_students.newstudent.social_security_number]</td>
-                    <td><input type="text" name="SSN" ~[getValidation:students.ssn] value="" size="17"></td>
+                    <td><input type="text" id="fieldSSN" name="SSN" ~[getValidation:students.ssn] value="" size="17"></td>
                 </tr>
                 <tr>
                     <td class="bold">~[text:psx.html.admin_students.newstudent.phone_number]</td>
-                    <td><input type="text" ~[getValidation:students.home_phone] name="Phone" value="" size="17"></td>                    
+                    <td><input type="text" id="fieldHomePhone" ~[getValidation:students.home_phone] name="Phone" value="" size="17"></td>                    
                 </tr>
                 <tr bgcolor="#edf3fe">
                     <td class="bold">~[text:psx.html.admin_students.newstudent.enrollment_date]</td>
@@ -125,15 +125,15 @@
                 </tr>
                 <tr>
                     <td class="bold">~[text:psx.html.admin_students.newstudent.entry_code]</td>
-                    <td>~[custompopup.entrycodes.lists.entrycodes]</td>
+                    <td>~[custompopup name="entrycodes" list="lists.entrycodes" validation="students.entrycode"]</td>
                 </tr>
                 <tr bgcolor="#edf3fe">
                     <td class="bold">~[text:psx.html.admin_students.newstudent.track]</td>
-                    <td>~[custompopup;name=track;list=tracks.blank]</td>
+                    <td>~[custompopup;name=track;list=tracks.blank;validation=students.track]</td>
                 </tr>
                 <tr>
                     <td class="bold"><a href="/admin/districts/" target="_top">~[text:psx.html.admin_students.newstudent.district_of_residence]</a></td>
-                    <td>~[custompopup;name=districtofresidence;list=lists.districts]</td>
+                    <td>~[custompopup;name=districtofresidence;list=lists.districts;validation=students.districtofresidence]</td>
 
 
                     <!-- TODO: marsmc start-->
@@ -156,7 +156,7 @@
                 </tr>
                 <tr bgcolor="#edf3fe">
                     <td class="bold">~[text:psx.html.admin_students.newstudent.fee_exemption_status]</td>
-                    <td><select name="Fee_Exemption_Status">
+                    <td><select id="selectFeeExemptStatus" name="Fee_Exemption_Status">
                         <option value="0">~[text:psx.html.admin_students.newstudent.student_not_exempted]<option value="1">~[text:psx.html.admin_students.newstudent.student_exempted_from_course_fees]<option value="2">~[text:psx.html.admin_students.newstudent.student_exempted_from_school_fees]<option value="3">~[text:psx.html.admin_students.newstudent.student_exempted_from_all_fees]</select></td>
                 </tr>
                 <tr>
