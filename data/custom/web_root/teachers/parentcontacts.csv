@@ -1,0 +1,51 @@
+"First Name","Last Name","Notes","E-mail Address","Home Phone"
+~[tlist_sql;
+ SELECT
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'mother_first')) AS First,
+ ASCIISTR(st.Mother) AS Last,
+ ASCIISTR('Mother of '||st.First_Name||' '||st.Last_Name) as Notes,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'mother_email')) AS Email,
+ ASCIISTR(st.Home_Phone) AS Phone,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ WHERE ps_customfields.getstudentscf(st.id, 'mother_first') IS NOT NULL 
+ AND ps_customfields.getstudentscf(st.id, 'mother_email') IS NOT NULL
+ UNION ALL
+ SELECT
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'father_first')) AS First,
+ ASCIISTR(st.Father) AS Last,
+ ASCIISTR('Father of '||st.First_Name||' '||st.Last_Name) AS Notes,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'father_email')) AS Email,
+ ASCIISTR(st.Home_Phone) AS Phone,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ WHERE ps_customfields.getstudentscf(st.id, 'father_first') IS NOT NULL 
+ AND ps_customfields.getstudentscf(st.id, 'father_email') IS NOT NULL
+ UNION ALL
+ SELECT
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'mother2_first')) AS First,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'mother2_last')) AS Last,
+ ASCIISTR('NC Mother of '||st.First_Name||' '||st.Last_Name) AS Notes,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'mother2_email')) AS Email,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'home2_phone')) AS Phone,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ WHERE ps_customfields.getstudentscf(st.id, 'mother2_first') IS NOT NULL 
+ AND ps_customfields.getstudentscf(st.id, 'mother2_email') IS NOT NULL
+ UNION ALL
+ SELECT 
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'father2_first')) AS First,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'father2_last')) AS Last,
+ ASCIISTR('NC Father of '||st.First_Name||' '||st.Last_Name) AS Notes,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'father2_email')) AS Email,
+ ASCIISTR(ps_customfields.getstudentscf(st.id, 'home2_phone')) AS Phone,
+ st.Last_Name, st.First_Name
+ FROM Students st
+ JOIN cc ON (cc.StudentID=st.ID AND cc.SectionID=~[gpv:sectionid])
+ WHERE ps_customfields.getstudentscf(st.id, 'father2_first') IS NOT NULL 
+ AND ps_customfields.getstudentscf(st.id, 'father2_email') IS NOT NULL
+ ORDER BY 6, 7, 3]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)"
+[/tlist_sql]
