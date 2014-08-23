@@ -211,13 +211,11 @@ function get_parents(i) {
     zip    = $j(pfields[i+4]).val();
   }
   
-  // invalid or excluded residence - punt
-  if (street == '' || city == '' || state == '' || zip == '') {
-    return [ '', '', '', '' ];
+  // excluded residence
+  if (!(street == '' || city == '' || state == '' || zip == '')) {
+    // html-ize it
+    street += (', ' + city + ', ' + state + ' ' + zip);
   }
-  
-  // html-ize it
-  street += (', ' + city + ', ' + state + ' ' + zip);
   
   // parents
   if (!$j(pfields[i+5]).prop('checked')) {

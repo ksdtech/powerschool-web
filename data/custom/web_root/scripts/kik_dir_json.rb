@@ -204,18 +204,18 @@ class KikExporter
       state  = s[PARENT_FIELDS[i+3]] || ''
       zip    = s[PARENT_FIELDS[i+4]] || ''
     end
-  
-    # invalid or excluded residence - punt
-    if (street == '' || city == '' || state == '' || zip == '')
-      return [ '', '', '', '' ]
-    end
+
     home_p[:street] = street
     home_p[:city]   = city
     home_p[:state]  = state
     home_p[:zip]    = zip
+    
+    # must have all parameters to show
+    if !(street == '' || city == '' || state == '' || zip == '')
+      # html-ize it
+      street += (', ' + city + ', ' + state + ' ' + zip)
+    end
   
-    # html-ize it
-    street += (', ' + city + ', ' + state + ' ' + zip)
     home_p[:address_line] = street
   
     # parents
