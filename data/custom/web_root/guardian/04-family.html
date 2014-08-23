@@ -29,12 +29,12 @@
 ~[tlist_sql;
 SELECT Student_Number AS SN, 
 Web_ID, First_Name, Last_Name,
-ps_customfields.getcf('students', id, 'kikdir_unlisted') AS Unl, 
-ps_customfields.getcf('students', id, 'kikdir_approved') AS PrAppr,
-ps_customfields.getcf('students', id, 'kikdir_at') AS PrAt,
-ps_customfields.getcf('students', id, 'reg_will_attend') AS RegStatus,
-ps_customfields.getcf('students', id, 'reg_grade_level') AS RegGrade,
-ps_customfields.getcf('students', id, 'nickname') AS Nick
+ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unl, 
+ps_customfields.getstudentscf(id, 'kikdir_approved') AS PrAppr,
+ps_customfields.getstudentscf(id, 'kikdir_at') AS PrAt,
+ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus,
+ps_customfields.getstudentscf(id, 'reg_grade_level') AS RegGrade,
+ps_customfields.getstudentscf(id, 'nickname') AS Nick
 FROM STUDENTS
 WHERE Enroll_Status<=0 AND Web_ID LIKE (
 SELECT CONCAT(SUBSTR(TO_CHAR(Web_ID), 1, 9), '%') FROM STUDENTS 
