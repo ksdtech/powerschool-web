@@ -386,9 +386,11 @@ class KikExporter
     mcell = home_p[:mother_cell] || ''
     fcell = home_p[:father_cell] || ''
     if mcell != ''
-      if mcell == hphone
-        mcell = ''
-      elsif mcell == fcell
+      # removed per Laurie decision 9/10/2014
+      # if mcell == hphone
+      #   mcell = ''
+      # elsif mcell == fcell
+      if mcell == fcell
         fcell = ''
       else
         if mabbr != ''
@@ -398,12 +400,12 @@ class KikExporter
     end
     home_p[:mother_cell_line] = mcell
     if fcell != ''
-      if fcell == hphone
-        fcell = ''
-      else
-        if fabbr != ''
-          fcell += ' (' + fabbr + ')'
-        end
+      # removed per Laurie decision 9/10/2014
+      # if fcell == hphone
+      #   fcell = ''
+      # else
+      if fabbr != ''
+        fcell += ' (' + fabbr + ')'
       end
     end
     all_phones << mcell if mcell != ''
