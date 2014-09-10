@@ -140,6 +140,7 @@ class KikExporter
     @unapproved = [ ]
     @listings = [ ]
     @exited = [ ]
+    @conflicts = [ ]
     
     # flag to export unlisted families
     @export_unlisted = false
@@ -289,16 +290,19 @@ class KikExporter
       all[sid][:home_phone] = hphone
       all[sid][:mother_cell] = mcell
       all[sid][:father_cell] = fcell
-      
     end
     
     if sid_list.size == 0
       # empty result
       $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} no students - empty result")
       return result
-    elsif sid_list.size == 1
+    end
+    
+    conflicts = [ ]
+    high_student = nil
+    if sid_list.size == 1
       # simple case
-      home_p.update(all[sid_list[0]])
+      high_student = sid_list[0]
     else
       cmp_keys = [
         :address_line, :home_phone,
@@ -306,39 +310,50 @@ class KikExporter
         :mother_email, :mother_cell, 
         :father_first, :father_last, :father_part, :father_abbr,
         :father_email, :father_cell ]
-      test = { } 
+        
+      test = { }
       cmp_keys.each do |key|
-        test[key] = [ ]
-        sid_list.each do |sid|
-          val = all[sid][key]
-          test[key] << val unless val.nil? || val.empty? || test[key].include?(val)
-        end
+        test[key] = []
       end
       
-      has_conflict = false
-      cmp_keys.each do |key|
-        if test[key].size == 0
-          home_p[key] = ''
-        elsif test[key].size == 1
-          home_p[key] = test[key][0]
-        else
-          home_p[key] = 'CONFLICT: ' + test[key].join('; ')
-          has_conflict = true
+      high_score = -1
+      sid_list.each do |sid|
+        score = 0
+        cmp_keys.each do |key|
+          val = all[sid][key] || ''
+          unless val.nil? || val.empty?
+            score += 1
+            test[key] << val unless test[key].include?(val)
+          end
+        end
+        if score > high_score
+          high_score = score
+          high_student = sid
         end
       end
-      
-      if has_conflict
-        $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} has conflicts")
+      cmp_keys.each do |key|
+        if test[key].size > 1
+          conflicts << "#{i == 0 ? 'primary' : 'secondary'} #{key.to_s}: #{test[key].join('; ')}"
+        end
       end
     end
     
-    if home_p[:mother_part] && home_p[:father_part]
-      home_p[:parent_line] = home_p[:mother_part] + ' and ' + home_p[:father_part]
-    elsif home_p[:mother_part]
-      home_p[:parent_line] = home_p[:mother_part]
-    else 
-      home_p[:parent_line] = home_p[:father_part]
+    home_p.update(all[high_student])
+    
+    unless conflicts.empty?
+      $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} has conflicts")
+      home_p[:conflicts] = conflicts
     end
+    
+    parents = ''
+    if home_p[:mother_part] && home_p[:father_part]
+      parents = home_p[:mother_part] + ' and ' + home_p[:father_part]
+    elsif home_p[:mother_part]
+      parents = home_p[:mother_part]
+    else 
+      parents = home_p[:father_part]
+    end
+    home_p[:parent_line] = parents || ''
 
     mabbr = home_p[:mother_abbr] || ''
     fabbr = home_p[:father_abbr] || ''
@@ -399,8 +414,8 @@ class KikExporter
     end
     home_p[:all_phones] = all_phones
     
-    result << [ home_p[:parent_line] ]
-    result << [ home_p[:address_line] ]
+    result << (home_p[:parent_line].empty? ? [] : [ home_p[:parent_line] ])
+    result << (home_p[:address_line].empty? ? [] : [ home_p[:address_line] ])
     result << home_p[:all_emails]
     result << home_p[:all_phones]
     result
@@ -494,6 +509,11 @@ class KikExporter
     preview[:b2] = b2
     
     preview[:homes] = [ home_p, home2_p ]
+    if home_p[:conflicts] || home2_p[:conflicts]
+      preview[:conflicts] = []
+      preview[:conflicts] += home_p[:conflicts] if home_p[:conflicts]
+      preview[:conflicts] += home2_p[:conflicts] if home2_p[:conflicts]
+    end
     return preview
   end
 
@@ -564,6 +584,9 @@ class KikExporter
           if p[:approved_student]
             @listings << p
           end
+          if p[:conflicts]
+            @conflicts << p
+          end
         end
       end
     end
@@ -574,7 +597,8 @@ class KikExporter
       :exited => @exited, 
       :unlisted => @export_unlisted ? @unlisted : [ ],
       :unapproved => @unapproved, 
-      :listings => @listings
+      :listings => @listings,
+      :conflicting => @conflicts
     }
     puts JSON.pretty_generate(json_object)
 
@@ -582,6 +606,7 @@ class KikExporter
     $stderr.puts("#{@unlisted.size} unlisted")
     $stderr.puts("#{@unapproved.size} unapproved")
     $stderr.puts("#{@listings.size} listings")
+    $stderr.puts("#{@conflicts.size} with conflicts")
     $stderr.puts("#{@exited.size+@unlisted.size+@unapproved.size+@listings.size} total")
   end
 end
