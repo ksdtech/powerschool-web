@@ -136,9 +136,17 @@ class KikExporter
     @families_by_surname = { }
     @student_by_sid = { }
     @students_by_fid = { }
-    @listings = [ ]
     @unlisted = [ ]
+    @unapproved = [ ]
+    @listings = [ ]
     @exited = [ ]
+    
+    # flag to export unlisted families
+    @export_unlisted = false
+    # flag to reject or export unapproved families
+    @export_unapproved = true
+    # flag to use all contacts for unapproved students
+    @merge_unapproved = true
   end
   
   def copy_fields(s, fields)
@@ -178,7 +186,7 @@ class KikExporter
     return [ sibs, sib_data ]
   end
 
-  def get_parents(home_p, sid, i)
+  def get_parents(lfid, home_p, sid_list, i)
     result   = [ ]
     street   = ''
     city     = ''
@@ -197,79 +205,147 @@ class KikExporter
     mcell    = ''
     fcell    = ''
   
-    s = @student_by_sid[sid]
-    if !s[PARENT_FIELDS[i+0]]
-      street = s[PARENT_FIELDS[i+1]] || ''
-      city   = s[PARENT_FIELDS[i+2]] || ''
-      state  = s[PARENT_FIELDS[i+3]] || ''
-      zip    = s[PARENT_FIELDS[i+4]] || ''
+    all = { }
+    sid_list.each do |sid|
+      s = @student_by_sid[sid]
+      all[sid] = { }
+      
+      if s[PARENT_FIELDS[i+0]]
+        $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} address not listed")
+      else
+        street = s[PARENT_FIELDS[i+1]] || ''
+        city   = s[PARENT_FIELDS[i+2]] || ''
+        state  = s[PARENT_FIELDS[i+3]] || ''
+        zip    = s[PARENT_FIELDS[i+4]] || ''
+      end
+
+      all[sid][:street] = street
+      all[sid][:city]   = city
+      all[sid][:state]  = state
+      all[sid][:zip]    = zip
+    
+      # must have all parameters to show
+      if !(street == '' || city == '' || state == '' || zip == '')
+        # html-ize it
+        street += (', ' + city + ', ' + state + ' ' + zip)
+      end
+      all[sid][:address_line] = street
+  
+      # parents
+      if !s[PARENT_FIELDS[i+5]]
+        mfirst = s[PARENT_FIELDS[i+6]] || ''
+        mlast = s[PARENT_FIELDS[i+7]] || ''
+      end
+      if !s[PARENT_FIELDS[i+8]]
+        ffirst = s[PARENT_FIELDS[i+9]] || ''
+        flast = s[PARENT_FIELDS[i+10]] || ''
+      end
+      all[sid][:mother_first] = mfirst
+      all[sid][:mother_last]  = mlast
+      all[sid][:father_first] = ffirst
+      all[sid][:father_last]  = flast
+    
+      if mlast != '' && flast != ''
+        if mlast != flast
+          parents = mfirst + ' ' + mlast + ' and ' + ffirst + ' ' + flast
+          all[sid][:mother_part] = mfirst + ' ' + mlast
+          all[sid][:father_part] = ffirst + ' ' + flast
+        else
+          all[sid][:mother_part] = mfirst
+          all[sid][:father_part] = ffirst + ' ' + flast
+        end
+        mabbr = mfirst[0, 1] + '.'
+        fabbr = ffirst[0, 1] + '.'
+        if mabbr == fabbr
+          mabbr = mfirst
+          fabbr = ffirst
+        end
+      elsif mlast != ''
+        all[sid][:mother_part] = mfirst + ' ' + mlast
+      elsif flast != ''
+        all[sid][:father_part] = ffirst + ' ' + flast
+      end
+      all[sid][:mother_abbr] = mabbr
+      all[sid][:father_abbr] = fabbr
+    
+      if !s[PARENT_FIELDS[i+11]]
+        mmail = s[PARENT_FIELDS[i+12]] || ''
+      end
+      if !s[PARENT_FIELDS[i+13]]
+        fmail = s[PARENT_FIELDS[i+14]] || ''
+      end
+      all[sid][:mother_email] = mmail
+      all[sid][:father_email] = fmail
+  
+      if !s[PARENT_FIELDS[i+15]]
+        hphone = s[PARENT_FIELDS[i+16]] || ''
+      end
+      if !s[PARENT_FIELDS[i+17]]
+        mcell = s[PARENT_FIELDS[i+18]] || ''
+      end
+      if !s[PARENT_FIELDS[i+19]]
+        fcell = s[PARENT_FIELDS[i+20]] || ''
+      end
+      all[sid][:home_phone] = hphone
+      all[sid][:mother_cell] = mcell
+      all[sid][:father_cell] = fcell
+      
+    end
+    
+    if sid_list.size == 0
+      # empty result
+      $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} no students - empty result")
+      return result
+    elsif sid_list.size == 1
+      # simple case
+      home_p.update(all[sid_list[0]])
+    else
+      cmp_keys = [
+        :address_line, :home_phone,
+        :mother_first, :mother_last, :mother_part, :mother_abbr,
+        :mother_email, :mother_cell, 
+        :father_first, :father_last, :father_part, :father_abbr,
+        :father_email, :father_cell ]
+      test = { } 
+      cmp_keys.each do |key|
+        test[key] = [ ]
+        sid_list.each do |sid|
+          val = all[sid][key]
+          test[key] << val unless val.nil? || val.empty? || test[key].include?(val)
+        end
+      end
+      
+      has_conflict = false
+      cmp_keys.each do |key|
+        if test[key].size == 0
+          home_p[key] = ''
+        elsif test[key].size == 1
+          home_p[key] = test[key][0]
+        else
+          home_p[key] = 'CONFLICT: ' + test[key].join('; ')
+          has_conflict = true
+        end
+      end
+      
+      if has_conflict
+        $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} has conflicts")
+      end
+    end
+    
+    if home_p[:mother_part] && home_p[:father_part]
+      home_p[:parent_line] = home_p[:mother_part] + ' and ' + home_p[:father_part]
+    elsif home_p[:mother_part]
+      home_p[:parent_line] = home_p[:mother_part]
+    else 
+      home_p[:parent_line] = home_p[:father_part]
     end
 
-    home_p[:street] = street
-    home_p[:city]   = city
-    home_p[:state]  = state
-    home_p[:zip]    = zip
-    
-    # must have all parameters to show
-    if !(street == '' || city == '' || state == '' || zip == '')
-      # html-ize it
-      street += (', ' + city + ', ' + state + ' ' + zip)
-    end
-  
-    home_p[:address_line] = street
-  
-    # parents
-    if !s[PARENT_FIELDS[i+5]]
-      mfirst = s[PARENT_FIELDS[i+6]] || ''
-      mlast = s[PARENT_FIELDS[i+7]] || ''
-    end
-    if !s[PARENT_FIELDS[i+8]]
-      ffirst = s[PARENT_FIELDS[i+9]] || ''
-      flast = s[PARENT_FIELDS[i+10]] || ''
-    end
-    home_p[:mother_first] = mfirst
-    home_p[:mother_last]  = mlast
-    home_p[:father_first] = ffirst
-    home_p[:father_last]  = flast
-    
-    if mlast != '' && flast != ''
-      if mlast != flast
-        parents = mfirst + ' ' + mlast + ' and ' + ffirst + ' ' + flast
-        home_p[:mother_part] = mfirst + ' ' + mlast
-        home_p[:father_part] = ffirst + ' ' + flast
-      else
-        parents = mfirst + ' and ' + ffirst + ' ' + flast
-        home_p[:mother_part] = mfirst
-        home_p[:father_part] = ffirst + ' ' + flast
-      end
-      mabbr = mfirst[0, 1] + '.'
-      fabbr = ffirst[0, 1] + '.'
-      if mabbr == fabbr
-        mabbr = mfirst
-        fabbr = ffirst
-      end
-    elsif mlast != ''
-      parents = mfirst + ' ' + mlast
-    elsif flast != ''
-      parents = ffirst + ' ' + flast
-    end
-    home_p[:mother_abbr] = mabbr
-    home_p[:father_abbr] = fabbr
-    home_p[:parent_line] = parents
-    
-    result << [ parents ]
-    result << [ street ]
-  
-    if !s[PARENT_FIELDS[i+11]]
-      mmail = s[PARENT_FIELDS[i+12]] || ''
-    end
-    if !s[PARENT_FIELDS[i+13]]
-      fmail = s[PARENT_FIELDS[i+14]] || ''
-    end
-    home_p[:mother_email] = mmail
-    home_p[:father_email] = fmail
+    mabbr = home_p[:mother_abbr] || ''
+    fabbr = home_p[:father_abbr] || ''
     
     all_mails = [ ]
+    mmail = home_p[:mother_email] || ''
+    fmail = home_p[:father_email] || ''
     if mmail != ''
       if mmail == fmail
         fmail = ''
@@ -289,22 +365,11 @@ class KikExporter
     all_mails << mmail if mmail != ''
     all_mails << fmail if fmail != ''
     home_p[:all_emails] = all_mails
-    result << all_mails
-  
-    if !s[PARENT_FIELDS[i+15]]
-      hphone = s[PARENT_FIELDS[i+16]] || ''
-    end
-    if !s[PARENT_FIELDS[i+17]]
-      mcell = s[PARENT_FIELDS[i+18]] || ''
-    end
-    if !s[PARENT_FIELDS[i+19]]
-      fcell = s[PARENT_FIELDS[i+20]] || ''
-    end
-    home_p[:home_phone] = hphone
-    home_p[:mother_cell] = mcell
-    home_p[:father_cell] = fcell
     
     all_phones = [ ]
+    hphone = home_p[:home_phone] || ''
+    mcell = home_p[:mother_cell] || ''
+    fcell = home_p[:father_cell] || ''
     if mcell != ''
       if mcell == hphone
         mcell = ''
@@ -333,7 +398,11 @@ class KikExporter
       all_phones = [ hphone ] + all_phones
     end
     home_p[:all_phones] = all_phones
-    result << all_phones
+    
+    result << [ home_p[:parent_line] ]
+    result << [ home_p[:address_line] ]
+    result << home_p[:all_emails]
+    result << home_p[:all_phones]
     result
   end
 
@@ -344,38 +413,45 @@ class KikExporter
     preview[:surname] = surname
     preview[:family_id] = fid
     
-    preview_student = nil
     any_approved = false
+    oldest_grade_level = -1
     last_approved = nil
+    approved_student = nil
+    oldest_student = nil
+    all_students = [ ]
     last_names = [ ]
     
     # no preview if any unlisted
     @students_by_fid[fid].each do |sid|
       s = @student_by_sid[sid]
       if s[:kikdir_unlisted]
-        $stderr.puts "student #{s[:student_number]} is unlisted"
         preview[:unlisted_student] = copy_fields(s, STU_FIELDS)
-        preview_student = nil
-        break
+        $stderr.puts "#{lfid} student #{preview[:unlisted_student][:student_number]} is unlisted"
+        return preview
+      end
+      all_students << sid
+      grade_level = s[:grade_level].to_i
+      if grade_level > oldest_grade_level
+        oldest_grade_level = grade_level
+        oldest_student = sid
       end
       if s[:kikdir_at]
         any_approved = true
         if !last_approved || s[:kikdir_at] > last_approved
           last_approved = s[:kikdir_at]
-          preview_student = sid
+          approved_student = sid
         end
       end
     end
     
-    if !preview_student
-      $stderr.puts "unlisted - no preview"
-      return preview
-    end
-  
+    preview_students = approved_student ? [approved_student] : 
+      (@merge_unapproved ? all_students : [oldest_student])
+    
     sibs, sib_data = get_sibling_data(lfid)
     preview[:surname] = surname
     preview[:approved] = any_approved
-    preview[:approved_student] = preview_student
+    preview[:approved_student] = approved_student
+    preview[:preview_students] = preview_students.join(',')
     preview[:approval_date] = last_approved
     preview[:siblings] = [ ]
     
@@ -385,12 +461,21 @@ class KikExporter
       sib_names << the_sib[:preview_name]
       preview[:siblings] << the_sib
     end
+
+    if !approved_student
+      preview[:approved] = false
+      $stderr.puts "#{lfid} no approved student"
+      unless @export_unapproved
+        return preview
+      end
+    end
   
     a1 = [ surname + ' ' + sib_names.join(', ') ]
     b1 = [ ]
     home_p = { }
-    home  = get_parents(home_p, preview_student, PRIMARY_PARENTS)
+    home = get_parents(lfid, home_p, preview_students, PRIMARY_PARENTS)
     0.upto(2) do |i|
+      $stderr.puts("home[#{i}] = #{home[i].inspect}") if !home[i].is_a? Array      
       a1 += home[i] if !home[i].empty?
     end
     b1 += home[3] if !home[3].empty?
@@ -400,7 +485,7 @@ class KikExporter
     a2 = [ ]
     b2 = [ ]
     home2_p = { }
-    home2 = get_parents(home2_p, preview_student, SECONDARY_PARENTS)
+    home2 = get_parents(lfid, home2_p, preview_students, SECONDARY_PARENTS)
     0.upto(2) do |i|
       a2 += home2[i] if !home2[i].empty?
     end
@@ -472,14 +557,32 @@ class KikExporter
         if p.key?(:unlisted_student)
           @unlisted << p
         else
-          @listings << p
+          # family can be unapproved, but still listed!
+          if !p[:approved]
+            @unapproved << p
+          end
+          if p[:approved_student]
+            @listings << p
+          end
         end
       end
     end
   end
   
   def output
-    puts JSON.pretty_generate({ :exited => @exited, :unlisted => @unlisted, :listings => @listings })
+    json_object = { 
+      :exited => @exited, 
+      :unlisted => @export_unlisted ? @unlisted : [ ],
+      :unapproved => @unapproved, 
+      :listings => @listings
+    }
+    puts JSON.pretty_generate(json_object)
+
+    $stderr.puts("#{@exited.size} exited")
+    $stderr.puts("#{@unlisted.size} unlisted")
+    $stderr.puts("#{@unapproved.size} unapproved")
+    $stderr.puts("#{@listings.size} listings")
+    $stderr.puts("#{@exited.size+@unlisted.size+@unapproved.size+@listings.size} total")
   end
 end
 
