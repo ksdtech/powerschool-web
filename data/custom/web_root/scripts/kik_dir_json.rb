@@ -54,6 +54,7 @@ kikdir_mother2_cell
 mother2_cell
 kikdir_father2_cell
 father2_cell
+form4_updated_at
 "
 
 class KikExporter
@@ -143,11 +144,13 @@ class KikExporter
     @conflicts = [ ]
     
     # flag to export unlisted families
-    @export_unlisted = false
+    @export_unlisted = true
     # flag to reject or export unapproved families
     @export_unapproved = true
     # flag to use all contacts for unapproved students
     @merge_unapproved = true
+    # flag to use the last updated student instead of merging
+    @use_last_updated = false
   end
   
   def copy_fields(s, fields)
@@ -337,7 +340,7 @@ class KikExporter
         end
       end
     end
-    
+
     home_p.update(all[high_student])
     
     unless conflicts.empty?
@@ -431,9 +434,11 @@ class KikExporter
     preview[:family_id] = fid
     
     any_approved = false
-    oldest_grade_level = -1
     last_approved = nil
+    last_updated = nil
+    oldest_grade_level = -1
     approved_student = nil
+    last_updated_student = nil
     oldest_student = nil
     all_students = [ ]
     last_names = [ ]
@@ -447,11 +452,21 @@ class KikExporter
         return preview
       end
       all_students << sid
+      
+      # test: use last updated student
+      updated_at = s[:form4_updated_at]
+      if updated_at && (last_updated.nil? || updated_at > last_updated)
+        last_updated = updated_at
+        last_updated_student = sid
+      end
+
+      # test: use oldest student
       grade_level = s[:grade_level].to_i
       if grade_level > oldest_grade_level
         oldest_grade_level = grade_level
         oldest_student = sid
       end
+      
       if s[:kikdir_at]
         any_approved = true
         if !last_approved || s[:kikdir_at] > last_approved
@@ -461,8 +476,19 @@ class KikExporter
       end
     end
     
-    preview_students = approved_student ? [approved_student] : 
-      (@merge_unapproved ? all_students : [oldest_student])
+    preview_students = nil
+    if approved_student 
+      preview_students = [approved_student]
+    elsif @use_last_updated && last_updated_student
+      $stderr.puts("#{lfid}: unapproved, using student #{last_updated_student} updated #{last_updated}")
+      preview_students = [last_updated_student]
+    elsif @merge_unapproved
+      $stderr.puts("#{lfid}: unapproved, merging all students")
+      preview_students = all_students
+    else
+      $stderr.puts("#{lfid}: unapproved, using student #{oldest_student} from grade #{oldest_grade_level}")
+      preview_students = [oldest_student]
+    end
     
     sibs, sib_data = get_sibling_data(lfid)
     preview[:surname] = surname
@@ -481,7 +507,6 @@ class KikExporter
 
     if !approved_student
       preview[:approved] = false
-      $stderr.puts "#{lfid} no approved student"
       unless @export_unapproved
         return preview
       end
@@ -580,11 +605,11 @@ class KikExporter
           @unlisted << p
         else
           # family can be unapproved, but still listed!
+          if @export_unapproved || p[:approved]
+            @listings << p
+          end
           if !p[:approved]
             @unapproved << p
-          end
-          if p[:approved_student]
-            @listings << p
           end
           if p[:conflicts]
             @conflicts << p
@@ -598,7 +623,7 @@ class KikExporter
     json_object = { 
       :exited => @exited, 
       :unlisted => @export_unlisted ? @unlisted : [ ],
-      :unapproved => @unapproved, 
+      :unapproved => @export_unapproved ? [ ] : @unapproved, 
       :listings => @listings,
       :conflicting => @conflicts
     }
@@ -609,7 +634,9 @@ class KikExporter
     $stderr.puts("#{@unapproved.size} unapproved")
     $stderr.puts("#{@listings.size} listings")
     $stderr.puts("#{@conflicts.size} with conflicts")
-    $stderr.puts("#{@exited.size+@unlisted.size+@unapproved.size+@listings.size} total")
+    total = @exited.size + @unlisted.size + @listings.size
+    total += @unapproved.size unless @export_unapproved
+    $stderr.puts("#{total} total")
   end
 end
 
