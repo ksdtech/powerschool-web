@@ -213,6 +213,8 @@ class KikExporter
     sid_list.each do |sid|
       s = @student_by_sid[sid]
       all[sid] = { }
+      all[sid][:unlisted_phones] = [ ]
+      all[sid][:unlisted_emails] = [ ]
       
       if s[PARENT_FIELDS[i+0]]
         $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} address not listed")
@@ -281,14 +283,29 @@ class KikExporter
       all[sid][:mother_email] = mmail
       all[sid][:father_email] = fmail
   
-      if !s[PARENT_FIELDS[i+15]]
-        hphone = s[PARENT_FIELDS[i+16]] || ''
+      ph = s[PARENT_FIELDS[i+16]]
+      if ph
+        if s[PARENT_FIELDS[i+15]]
+          all[sid][:unlisted_phones] << ph unless all[sid][:unlisted_phones].include?(ph)
+        else
+          hphone = ph
+        end
       end
-      if !s[PARENT_FIELDS[i+17]]
-        mcell = s[PARENT_FIELDS[i+18]] || ''
+      ph = s[PARENT_FIELDS[i+18]]
+      if ph
+        if s[PARENT_FIELDS[i+17]]
+          all[sid][:unlisted_phones] << ph unless all[sid][:unlisted_phones].include?(ph)
+        else
+          mcell = ph
+        end
       end
-      if !s[PARENT_FIELDS[i+19]]
-        fcell = s[PARENT_FIELDS[i+20]] || ''
+      ph = s[PARENT_FIELDS[i+20]]
+      if ph
+        if s[PARENT_FIELDS[i+19]]
+          all[sid][:unlisted_phones] << ph unless all[sid][:unlisted_phones].include?(ph)
+        else
+          fcell = ph
+        end
       end
       all[sid][:home_phone] = hphone
       all[sid][:mother_cell] = mcell
@@ -512,12 +529,14 @@ class KikExporter
       end
     end
   
+    # TODO: combine primary and secondary home info 
+    # TODO: hide any phone that's marked unlisted by either primary or secondary
+    # TODO: produce unique parent abbreviations (primary and secondary)
     a1 = [ surname + ' ' + sib_names.join(', ') ]
     b1 = [ ]
     home_p = { }
     home = get_parents(lfid, home_p, preview_students, PRIMARY_PARENTS)
     0.upto(2) do |i|
-      $stderr.puts("home[#{i}] = #{home[i].inspect}") if !home[i].is_a? Array      
       a1 += home[i] if !home[i].empty?
     end
     b1 += home[3] if !home[3].empty?
@@ -535,7 +554,18 @@ class KikExporter
     preview[:a2] = a2
     preview[:b2] = b2
     
+    
     preview[:homes] = [ home_p, home2_p ]
+    unlisted_phones = (home_p[:unlisted_phones] + home2_p[:unlisted_phones]).uniq
+    preview[:homes].each_with_index do |home, i|
+      [:home_phone, :mother_cell, :father_cell].each do |key|
+        ph = home.fetch(key)
+        if ph && unlisted_phones.include?(ph)
+          $stderr.puts("#{lfid}: phone problem: #{ph} home[#{i}][#{key.to_s}] was also marked unlisted")
+        end
+      end
+    end
+    
     if home_p[:conflicts] || home2_p[:conflicts]
       preview[:conflicts] = []
       preview[:conflicts] += home_p[:conflicts] if home_p[:conflicts]

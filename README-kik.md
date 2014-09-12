@@ -13,3 +13,7 @@ Don't need "a1" and "b2" cells in
 If cell and home phone same, show cell
 
 What if parent A says hide number and parent B says show same number?
+
+What if parent specifies same number for home cell and says show one
+and hide the other?
+
