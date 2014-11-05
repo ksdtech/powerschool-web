@@ -58,8 +58,8 @@ function onForm04Submit() {
   onRegFormSubmit();
 }
 
-// Sibling data filled in by tlist_sql based on Web_ID matches
-// <input type="hidden" class="sibdata" id="sib_webid_113960" value="REDLD3FE.113960" />
+// Sibling data filled in by tlist_sql based on Family_Ident matches
+// <input type="hidden" class="sibdata" id="sib_famid_113960" value="REDLD3FE" />
 // <input type="hidden" class="sibdata" id="sib_first_113960" value="Ethan" />
 // <input type="hidden" class="sibdata" id="sib_last_113960" value="Redlin" />
 // <input type="hidden" class="sibdata" id="sib_grade_113960" value="0" />

@@ -28,7 +28,7 @@
 <!-- gathering family information -->
 ~[tlist_sql;
 SELECT Student_Number AS SN, 
-Web_ID, First_Name, Last_Name,
+Family_Ident, First_Name, Last_Name,
 ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unl, 
 ps_customfields.getstudentscf(id, 'kikdir_approved') AS PrAppr,
 ps_customfields.getstudentscf(id, 'kikdir_at') AS PrAt,
@@ -36,12 +36,12 @@ ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus,
 ps_customfields.getstudentscf(id, 'reg_grade_level') AS RegGrade,
 ps_customfields.getstudentscf(id, 'nickname') AS Nick
 FROM STUDENTS
-WHERE Enroll_Status<=0 AND Web_ID LIKE (
-SELECT CONCAT(SUBSTR(TO_CHAR(Web_ID), 1, 9), '%') FROM STUDENTS 
+WHERE Enroll_Status<=0 AND Family_Ident=(
+SELECT Family_Ident FROM STUDENTS
 WHERE ID=~(curstudid))
 ORDER BY Grade_Level, First_Name;
 ]
-<input type="hidden" class="sibdata" id="sib_webid_~(SN)" value="~(Web_ID)" />
+<input type="hidden" class="sibdata" id="sib_famid_~(SN)" value="~(Family_Ident)" />
 <input type="hidden" class="sibdata" id="sib_first_~(SN)" value="~(First_Name)" />
 <input type="hidden" class="sibdata" id="sib_last_~(SN)" value="~(Last_Name)" />
 <input type="hidden" class="sibdata" id="sib_unlisted_~(SN)" value="~(Unl)" />
@@ -60,9 +60,8 @@ ORDER BY Grade_Level, First_Name;
 <div id="form4-setup" class="box-round group" style="width: 720px">
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="headerrow"><td colspan="4" class="bold">1. Qualifying District Residence Information</td></tr>
-
-<tr><td colspan="4">Instructions:  Information submitted in Sections 1-3 on this page refers <em>only to those adults</em> who reside 
+<tr class="headerrow"><td class="bold">1. Qualifying District Residence Information</td></tr>
+<tr><td>Instructions:  Information submitted in Sections 1-3 on this page refers <em>only to those adults</em> who reside 
   at the Qualifying District Residence.  Also fill out Sections 4-6 if there are 
   parents/guardians of this student living at another residence. below.</td></tr>
 <tr><td><strong>Email Address:</strong> It is critical that parent email addresses be kept current, 
