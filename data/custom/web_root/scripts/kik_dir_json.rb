@@ -3,7 +3,7 @@ require 'json'
 
 "
 student_number
-web_id
+family_ident
 first_name
 last_name
 kikdir_unlisted
@@ -109,7 +109,6 @@ class KikExporter
 
   EXITED_FIELDS = [
     'student_number',
-    'web_id',
     'family_id',
     'surname',
     'first_name',
@@ -119,7 +118,6 @@ class KikExporter
 
   STU_FIELDS = [
     'student_number',
-    'web_id',
     'family_id',
     'surname',
     'first_name',
@@ -581,10 +579,9 @@ class KikExporter
       s = row.to_hash
       
       sid = s[:student_number]
-      wid = s[:web_id]
-      m = wid.match(/^([A-Z0-9]{8})\.[0-9]{6}$/)
-      raise "bad web_id #{wid} for student #{sid}" unless m
-      fid = m[1]
+      fid = s[:family_ident]
+      m = fid.match(/^([A-Z0-9]{8})$/)
+      raise "bad family_ident #{fid} for student #{sid}" unless m
       s[:family_id] = fid
       
       # set 'first_name' to nickname if nickname is given
