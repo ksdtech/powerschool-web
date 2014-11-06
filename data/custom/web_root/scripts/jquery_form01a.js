@@ -1,17 +1,19 @@
 // scripts for usernames, etc
 
-function generate_h1_login() {
-  var new_ident = false;
+function generate_h1_id() {
   var fam_ident = $j("#h1_id").val();
   if (fam_ident == '' || fam_ident.length != 8) {
     var last_name = $j("#st_last").val();
     var fam_ident = new_ps_fam_ident(last_name, false);
-    new_ident = true;
     $j("#h1_id").val(fam_ident);
   } 
-  if (new_ident || $j("#h1_login").val() == '') {
+}
+  
+function generate_h1_login() {
+  if ($j("#h1_login").val() == '') {
     var sn = $j("#st_id").val();
-    $j("#h1_login").val(fam_ident + "." + sn);
+    var last_name = $j("#st_last").val();
+    $j("#h1_login").val(new_ps_username(last_name, false, sn));
   }
   if ($j("#h1_password").val() == '') {
     $j("#h1_password").val(new_ps_password());
@@ -20,9 +22,10 @@ function generate_h1_login() {
 }
 
 function generate_psst_login() {
-  var sn = $j("#st_id").val();
   if ($j("#psst_login").val() == '') {
-    $j("#psst_login").val(new_ps_username($j("#st_last").val(), 1, sn));
+    var sn = $j("#st_id").val();
+    var last_name = $j("#st_last").val();
+    $j("#psst_login").val(new_ps_username(last_name, true, sn));
   }
   if ($j("#psst_password").val() == '') {
     $j("#psst_password").val(new_ps_password());
@@ -33,7 +36,9 @@ function generate_psst_login() {
 function generate_st_login() {
   var middle_school = ($j("#st_school").val() == '104');
   if ($j("#st_login").val() == '') {
-    $j("#st_login").val(new_student_username($j("#st_last").val(), $j("#st_first").val(), middle_school));
+    var last_name = $j("#st_last").val();
+    var first_name = $j("#st_first").val();
+    $j("#st_login").val(new_student_username(last_name, first_name, middle_school));
   }
   if ($j("#st_password").val() == '') {
     $j("#st_password").val(new_student_password(middle_school));
@@ -42,6 +47,7 @@ function generate_st_login() {
 
 // lame function table
 var genpass_fptrs = new Array();
+genpass_fptrs['generate_h1_id'] = generate_h1_id;
 genpass_fptrs['generate_h1_login'] = generate_h1_login;
 genpass_fptrs['generate_psst_login'] = generate_psst_login;
 genpass_fptrs['generate_st_login'] = generate_st_login;

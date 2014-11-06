@@ -106,52 +106,74 @@
   	<td>&nbsp;</td>
   </tr>
   -->
-  <tr class="staffonly"><td colspan="3" class="bold">Primary Family Account</td></tr>
-  <tr class="staffonly"><td colspan="3"><input type="checkbox" class="pwgen" id="generate_h1_login" value="1">Generate family login</td></tr>
-  <tr class="staffonly"><td colspan="3"><input type="checkbox" id="h1_web_access" name="[01]AllowWebAccess" value="">Parent Web Access</td></tr>
+  <tr class="staffonly"><td colspan="3" class="bold">Primary Family Account/Match</td></tr>
+  <tr class="staffonly"><td>Family ID Candidates</td><td colspan="2">Match Info</td></tr>
+~[tlist_sql;
+SELECT FAMILY_IDENT,
+  FIRST_NAME,
+  LAST_NAME,
+  GRADE_LEVEL,
+  STREET,
+  ZIP
+FROM STUDENTS
+WHERE Enroll_Status<=0
+AND (
+  LAST_NAME LIKE (SELECT LAST_NAME FROM STUDENTS WHERE ID=~(curstudid))
+  OR SUBSTR(STREET,1,6) LIKE
+  (SELECT SUBSTR(STREET,1,6) FROM STUDENTS WHERE ID=~(curstudid))
+) 
+ORDER BY Grade_Level, First_Name;
+]
+<tr class="staffonly"><td><b>~(FAMILY_IDENT)</b></td>
+  <td colspan="2">~(FIRST_NAME) ~(LAST_NAME) (~(GRADE_LEVEL)), ~(STREET), ~(ZIP)</td></tr>
+[/tlist_sql]
+  <tr class="staffonly">
+  	<td><input type="text" id="h1_id" name="[01]Family_Ident" value="" size="20"></td>
+  	<td colspan="2"><input type="checkbox" class="pwgen" id="generate_h1_id" value="1">Generate New Family ID</td>
+  </tr>
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" class="pwgen" id="generate_h1_login" value="">Generate Portal Access ID</td></tr>
+  <tr class="staffonly"><td colspan="3"><input type="checkbox" id="h1_web_access" name="[01]AllowWebAccess" value="">Parent Portal Access</td></tr>
   <tr class="staffonly"><td colspan="3"><input type="checkbox" name="[01]wm_status" value="">Deny Parent Modifications</td></tr>
   <tr class="staffonly">
-  	<td>User Name</td>
-  	<td>Password</td>
-  	<td>Family Number</td>
+    <td>Parent Portal Access ID</td>
+  	<td colspan="2">Access Password</td>
   </tr>
   <tr class="staffonly">
   	<td><input type="text" id="h1_login" name="[01]Web_ID" value="" size="20"></td>
-  	<td><input type="text" id="h1_password" name="[01]Web_Password" value="" size="20"></td>
-  	<td><input type="text" id="h1_id" name="[01]Family_Ident" value="" size="20"></td>
+  	<td colspan="2"><input type="text" id="h1_password" name="[01]Web_Password" value="" size="20"></td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="2">Mother Last, First</td>
-  	<td>Mother Teacher Number</td>
+  	<td>Mother Last, First</td>
+  	<td colspan="2">Mother Teacher Number</td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="2"><b>~([01]Mother), ~([01]Mother_First)</b></td>
-  	<td><input type="text" name="[01]Mother_Staff_ID" value="" size="20"></td>
+  	<td><b>~([01]Mother), ~([01]Mother_First)</b></td>
+  	<td colspan="2"><input type="text" name="[01]Mother_Staff_ID" value="" size="20"></td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="2">Father Last, First</td>
-  	<td>Father Teacher Number</td>
+  	<td>Father Last, First</td>
+  	<td colspan="2">Father Teacher Number</td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="2"><b>~([01]Father), ~([01]Father_First)</b></td>
-  	<td><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
+  	<td><b>~([01]Father), ~([01]Father_First)</b></td>
+  	<td colspan="2"><input type="text" name="[01]Father_Staff_ID" value="" size="20"></td>
   </tr>
   <tr class="staffonly"><td colspan="3" class="bold">Secondary Family</td></tr>
   <tr class="staffonly">
-  	<td colspan="2">Mother Last, First</td>
-  	<td>Mother Teacher Number</td>
+  	<td>Mother Last, First</td>
+  	<td colspan="2">Mother Teacher Number</td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="2"><b>~([01]Mother2_Last), ~([01]Mother2_First)</b></td>
-  	<td><input type="text" name="[01]Mother2_Staff_ID" value="" size="20"></td>
+  	<td><b>~([01]Mother2_Last), ~([01]Mother2_First)</b></td>
+  	<td colspan="2"><input type="text" name="[01]Mother2_Staff_ID" value="" size="20"></td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="2">Father Last, First</td>
-  	<td>Father Teacher Number</td>
+  	<td>Father Last, First</td>
+  	<td colspan="2">Father Teacher Number</td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="2"><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
-  	<td><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
+  	<td><b>~([01]Father2_Last), ~([01]Father2_First)</b></td>
+  	<td colspan="2"><input type="text" name="[01]Father2_Staff_ID" value="" size="20"></td>
   </tr>
 
   <tr class="headerrow"><td colspan="3" class="bold">Enrollment Information</td></tr>
