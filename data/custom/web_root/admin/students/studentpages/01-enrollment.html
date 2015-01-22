@@ -194,8 +194,8 @@ ORDER BY Grade_Level, First_Name;
 
   <tr><td width="50%">School year you are registering this student for:</td><td colspan="2"><select id="reg_school_year" name="[01]reg_year">
   <option value="">Choose:</option>
-  <option value="2014-2015">2014-2015 (Next year)</option>
-  <option value="2013-2014">2013-2014 (Current year)</option>
+  <option value="2015-2016">2015-2016 (Next year)</option>
+  <option value="2014-2015">2014-2015 (Current year)</option>
   </select></td></tr>
 
   <tr><td width="50%">Status <span class="for_reg_year" id="rys">for 2014-2015 School Year</span></td><td colspan="2"><select id="reg_enroll" name="[01]reg_will_attend">
@@ -205,6 +205,7 @@ ORDER BY Grade_Level, First_Name;
   <option value="nr-permanent">Student will not be attending Bacich or Kent</option>
   <option value="nr-temporary">Student is temporarily leaving the District, but may return later</option>
   <option value="unknown">Not sure if student will attend; don't know at this time</option>
+	<option value="nr-locked">Registration locked; not open at this time.</option>
   </select></td></tr>
 
   <tr class="enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2014-2015 School Year</span></td><td colspan="2"><select id="reg_grade_level" name="[01]reg_grade_level">
@@ -222,7 +223,7 @@ ORDER BY Grade_Level, First_Name;
   <option value="-1">Student will not be attending</option>
   </select></td></tr>
 
-  <tr class="not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td colspan="2"><select id="reg_exitcode" name="[01]ExitCode">
+  <tr class="unlocked not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td colspan="2"><select id="reg_exitcode" name="[01]ExitCode">
   <option value="">Choose:</option>
   <option value="160">Student will attend another public school in California</option>
   <option value="180">Student will attend a private school in California</option>
@@ -232,10 +233,10 @@ ORDER BY Grade_Level, First_Name;
   <option value="140">Other reason for not attending, or don't know</option>
   </select></td></tr>
 
-  <tr class="not_enrolling"><td>Name and phone number of next school</td>
+  <tr class="unlocked not_enrolling"><td>Name and phone number of next school</td>
   <td colspan="2"><input name="[01]ExitComment" type="text" id="reg_exitcomment" value="" size="50"></td></tr>
 
-  <tr class="enrolling by_grade grade_6 grade_7 grade_8 staffonly"><td>Personal locker number</td>
+  <tr class="by_grade grade_6 grade_7 grade_8 staffonly"><td>Personal locker number</td>
   <td colspan="2"><input type="text" name="[01]locker_number" value=""></input></td></tr>
   <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td>Personal locker combination</td>
   <td colspan="2"><input type="text" name="[01]locker_combination" value=""></input></td></tr>

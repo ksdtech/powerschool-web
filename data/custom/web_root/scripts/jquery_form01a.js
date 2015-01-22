@@ -139,6 +139,7 @@ function check_reg_updated_at(dt) {
 
 function on_enrollment_change() {
   var enrollment = $j("#reg_enroll option:selected").val();
+  
   var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   if (not_enrolling) { 
     $j("tr.enrolling").hide();
@@ -158,6 +159,14 @@ function on_enrollment_change() {
       }
     });
   }
+  
+  var locked = (enrollment == 'nr-locked');
+  if (locked) {
+    $j("tr.unlocked").hide();
+  } else {
+    $j("tr.locked").hide();
+  }
+
   return true;
 }
 

@@ -39,11 +39,11 @@
 <!-- end form action -->
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="private"><td colspan="3" class="bold">Registration Year
+<tr class="private"><td colspan="2" class="bold">Registration Year
 <input type="text" id="reg_year" class="reg_year" name="[01]reg_year" value="" />
 </td></tr>
   
-<tr class="headerrow"><td colspan="3" class="bold">General Instructions</td></tr>
+<tr class="headerrow"><td colspan="2" class="bold">General Instructions</td></tr>
 <tr><td colspan="3">Complete all the information on this page and click the <strong>Submit</strong> button.
 Then make sure to complete information on all other pages linked from this page.
 As you complete and submit them, a green checkmark will appear to the left of each
@@ -55,24 +55,32 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <tr><td colspan="3">For detailed instructions on filling out the registration pages, 
 <a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">click here.</a></td></tr>
   
-<tr class="headerrow"><td colspan="3" class="bold">1. Enrollment Information</td></tr>
+<tr class="headerrow"><td colspan="2" class="bold">1. Enrollment Information</td></tr>
 
-<tr><td width="50%">School year you are registering this student for:</td><td><select id="reg_school_year" name="[01]reg_year">
+<tr class="unlocked"><td width="50%">School year you are registering this student for:</td><td><select id="reg_school_year" name="[01]reg_year">
 <option value="">Choose:</option>
-<option value="2014-2015">2014-2015 (Next year)</option>
-<option value="2013-2014">2013-2014 (Current year)</option>
+<option value="2015-2016">2015-2016 (Next year)</option>
+<option value="2014-2015">2014-2015 (Current year)</option>
 </select></td></tr>
 
-<tr><td width="50%">Status <span class="for_reg_year" id="rys">for 2014-2015 School Year</span></td><td><select id="reg_enroll" name="[01]reg_will_attend">
+<tr class="unlocked"><td width="50%">Status <span class="for_reg_year" id="rys">for 2014-2015 School Year</span></td><td><select id="reg_enroll" name="[01]reg_will_attend">
 <option value="">Choose:</option>
 <option value="attending">Student will be attending Bacich or Kent</option>
 <option value="nr-graduated">Student will have graduated</option>
 <option value="nr-permanent">Student will not be attending Bacich or Kent</option>
 <option value="nr-temporary">Student is temporarily leaving the District, but may return later</option>
 <option value="unknown">Not sure if student will attend; don't know at this time</option>
+<option value="nr-locked">Registration locked; not open at this time.</option>
 </select></td></tr>
 
-<tr class="enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2014-2015 School Year</span></td><td><select id="reg_grade_level" name="[01]reg_grade_level">
+<tr class="locked"><td colspan="2"><strong>Registration for current
+	students returning to District schools next fall is not open yet.</strong>
+	You may continue to update your contact,
+	medical and other information to keep your records current. Parents
+	will be notified by email and through district weekly communications
+	when the window for re-registering your students is open.</td></tr>
+
+<tr class="unlocked enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2014-2015 School Year</span></td><td><select id="reg_grade_level" name="[01]reg_grade_level">
 <option value="">Choose:</option>
 <option value="TK">Transitional Kindergarten - Bacich Elementary School</option>
 <option value="K">Regular Kindergarten - Bacich Elementary School</option>
@@ -87,7 +95,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <option value="-1">Student will not be attending</option>
 </select></td></tr>
 
-<tr class="not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td><select id="reg_exitcode" name="[01]ExitCode">
+<tr class="unlocked not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td><select id="reg_exitcode" name="[01]ExitCode">
 <option value="">Choose:</option>
 <option value="160">Student will attend another public school in California</option>
 <option value="180">Student will attend a private school in California</option>
@@ -97,10 +105,10 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <option value="140">Other reason for not attending, or don't know</option>
 </select></td></tr>
 
-<tr class="not_enrolling"><td>Name and phone number of next school</td>
+<tr class="unlocked not_enrolling"><td>Name and phone number of next school</td>
 <td><input name="[01]ExitComment" type="text" id="reg_exitcomment" value="" size="50"></td></tr>
 
-<tr class="headerrow enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2" class="bold">Personal Locker Information (Grades 6-8 Only)</td></tr>
+<tr class="headerrow unlocked enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2" class="bold">Personal Locker Information (Grades 6-8 Only)</td></tr>
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2">
   All sixth, seventh and eighth students will be assigned a numbered 
   personal locker at the start of each school year. Students must provide a 
@@ -119,7 +127,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">Personal locker combination (if applicable)</td>
 <td><input type="text" name="[01]locker_combination" value="" /></input></td></tr>
 
-<tr class="headerrow enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2" class="bold">PE Locker Information (Grades 6-8 Only)</td></tr>
+<tr class="headerrow unlocked enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2" class="bold">PE Locker Information (Grades 6-8 Only)</td></tr>
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2">
   Kent Middle School students in sixth, seventh, and eighth grades will use the 
   locker rooms to change for Physical Education class, and will be assigned 
@@ -138,7 +146,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
   Enter a letter combination like this: "P-A-S-S"<br/>
   Enter a numeric combination like this: "32-20-45"<br/>
   If the lock is a key lock, enter the word "key"</td></tr> 
-<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">PE locker combination (if applicable)</td>
+<tr class="unlocked enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">PE locker combination (if applicable)</td>
 <td><input type="text" name="[01]pe_locker_combination" value="" /></input></td></tr>
 
 <tr class="private"><td class="bold">Last updated at 
@@ -146,7 +154,7 @@ and click the <strong>Submit</strong> button again.</td></tr>
 <input type="text" id="form01_upd_by" name="[01]form1_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
-<tr><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
+<tr class="unlocked"><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
 </table>
 </form>
 
@@ -162,12 +170,12 @@ and click the <strong>Submit</strong> button again.</td></tr>
 	<a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">detailed instructions</a> for more information.</td></tr>
 <tr><td colspan="2"><strong>Links to Registration Pages</strong></td></tr>
 
-<tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form3_status"><a href="03-student.html?actpage=01-registration">Student Information</a></div></td></tr>
-<tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form4_status"><a href="04-family.html?actpage=01-registration">Family Information</a></div></td></tr>
-<tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form6_status"><a href="06-emergency.html?actpage=01-registration">Emergency Procedures and Contacts</a></div></td></tr>
-<tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form9_status"><a href="09-medical.html?actpage=01-registration">Medical Information</a></div></td></tr>
-<tr class="enrolling"><td colspan="2"><div class="feedback-alert chk_status" id="form10_status"><a href="10-permissions.html?actpage=01-registration">Authorizations and Permissions</a></div></td></tr>
-<tr class="enrolling by_grade grade_5 grade_6 grade_7 grade_8"><td colspan="2"><div class="feedback-alert chk_status" id="form15_status"><a href="15-electives.html?actpage=01-registration">Electives (Kent Middle School Only)</a></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form3_status"><a href="03-student.html?actpage=01-registration">Student Information</a></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form4_status"><a href="04-family.html?actpage=01-registration">Family Information</a></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form6_status"><a href="06-emergency.html?actpage=01-registration">Emergency Procedures and Contacts</a></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form9_status"><a href="09-medical.html?actpage=01-registration">Medical Information</a></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form10_status"><a href="10-permissions.html?actpage=01-registration">Authorizations and Permissions</a></div></td></tr>
+<tr class="by_grade grade_5 grade_6 grade_7 grade_8"><td colspan="2"><div class="feedback-alert chk_status" id="form15_status"><a href="15-electives.html?actpage=01-registration">Electives (Kent Middle School Only)</a></div></td></tr>
 </table>
 
 <!-- begin form action -->
