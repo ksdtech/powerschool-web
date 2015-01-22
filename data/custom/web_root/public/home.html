@@ -1,168 +1,131 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-<title>~[text:psx.html.public.home.parent_sign_in_]</title>
-<meta http-equiv="X-UA-Compatible" content="IE=8"/>
-<meta name="robots" content="noindex" />
-<link href="/images/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<meta name="viewport" content="width=device-width" />
-<script src="/scripts/jquery-1.9.1.min.js"></script> 
-<script language="JavaScript" src="/admin/javascript/md5.js" type="text/javascript"></script>
-<script language="JavaScript" type="text/javascript"><!--
-var pskey = "~[x:pskey]";
-//-->
-</script>
-<script language="JavaScript" type="text/javascript">
-function deleteCookie(cookieName){
-	var cookieDate = new Date();
-	cookieDate.setTime(cookieDate.getTime()-1);
-	document.cookie = cookieName + "=; expires='" + cookieDate.toGMTString()+"'; path=/";
-}
-deleteCookie("InformAuthToken");
+	<head>
+		<title>
+			~[if.samlsp.enabled]
+				~[if#1.samlsp.enabled.student]
+					~[text:psx.html.public.home.parent_sign_in]
+				[else#1]
+					~[text:psx.html.public.home.parent_and_student_sign_in]
+				[/if#1]
+			[else]
+				~[text:psx.html.public.home.parent_and_student_sign_in]
+			[/if.samlsp.enabled]
+		</title>
+		<meta name="robots" content="noindex" />
+		<link href="/images/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+		<meta name="viewport" content="width=device-width" />
+	</head>
+	<body class="pslogin" id="palogin">
+		<div id="container">
+            <div id="branding-district"></div>
+			<div id="content" class="group">
+                <div id="branding-powerschool"></div>
+                <div ~[if.prefSSOEnabled]class="tabs"[/if]>
+                    ~[if.prefSSOEnabled]
+                    <ul>
+                        <li id="sign-in-tab"><a href="#sign-in-content">Sign In</a></li>
+                        <li id="create-account-tab"><a href="#create-account-content">Create Account</a></li>
+                    </ul>[/if]
+                    <div id="sign-in-content">
+                        <form action="/guardian/home.html" method="post" name="LoginForm" target="_top" id="LoginForm" onsubmit="doPCASLogin(this);">
+                            ~[if.~[gpv:loginTarget]=][else]
+                            <input type="hidden" name="loginTarget" value="~[gpv:loginTarget;;encodehtml]"/>
+                            [/if]
+                            ~[if.~[gpv:popup]=][else]
+                            <input type="hidden" name="popup" value="~[gpv:popup;;encodehtml]"/>
+                            [/if]
 
-function getURLParameter(name) {
-    return unescape(
-        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-    );
-}
+                            <input type="hidden" name="pstoken" value="~[x:pstoken]" />
+                            <input type="hidden" name="contextData" id="contextData" value="~[x:pskey]" />
+                            <input type="hidden" name="dbpw" value="" />
+                            <input type="hidden" name="translator_username" value="" />
+                            <input type="hidden" name="translator_password" value="" />
+                            <input type="hidden" name="translator_ldappassword" value="" />
+                            ~[brij_publicrender:public-parentaccess-pkg;:renderLoginFormElements]
+                            ~[x:ldapguardianpassword]
 
-var $j = jQuery.noConflict();
-$j(document).ready(function() {
-    // Hide or show the translator login input field
-    // if the URL parameter "translator" is present
-	var translator = getURLParameter("translator");
-	if (translator == "null") {
-		$j('#translatorInput').hide();
-	} else {
-	    if (translator == "true") {
-			$j('#translatorInput').show();
-		} else {
-			$j('#translatorInput').hide();
-		}
-	}
-	$j('a.popWin').click(function(){
-		var winURL = $j(this).attr('href');
-		window.open(winURL);
-		return false;
-	});
-});
-</script>
-</head>
-<body class="pslogin" id="palogin">
-<div id="container">
-     <div id="branding-powerschool"><img src="/images/img/ps7-logo-lrg.png" alt="PowerSchool"  width="280" height="41" /></div>
-  <div id="content" class="group">
-<form action="/guardian/home.html" method="post" name="LoginForm" target="_top" id="LoginForm" onsubmit="doPCASLogin(this);">
-  ~[if.~[gpv:loginTarget]=][else]
-  <input type="hidden" name="loginTarget" value="~(gpv.loginTarget;encodehtml)"/>
-  [/if]
-  ~[if.~[gpv:popup]=][else]
-  <input type="hidden" name="popup" value="~(gpv.popup;encodehtml)"/>
-  [/if]
+                            ~[brij_publicrender:public-parentaccess-pkg;:RenderNewAccountLoginInfo]
 
-  <input type="hidden" name="pstoken" value="~[x:pstoken]" />
-  <input type="hidden" name="contextData" value="~[x:pskey]" />
-  <input type="hidden" name="dbpw" value="" />
-  <input type="hidden" name="translator_username" value="" />
-  <input type="hidden" name="translator_password" value="" />
-  <input type="hidden" name="translator_ldappassword" value="" />
-   ~[brij_publicrender:public-parentaccess-pkg;:renderLoginFormElements]
-  ~[x:ldapguardianpassword]
-
-      
- 
-    ~[brij_publicrender:public-parentaccess-pkg;:RenderNewAccountLoginInfo]
-    
-			  <h2>~[text:psx.html.public.home.parent_sign_in]</h2>
+                            <h2>
+								~[if.samlsp.enabled]
+									~[if#1.samlsp.enabled.student]
+                                        ~[text:psx.html.public.home.parent_sign_in]
+                                    [else#1]
+                                        ~[text:psx.html.public.home.parent_and_student_sign_in]
+                                    [/if#1]
+                                [else]
+                                    ~[text:psx.html.public.home.parent_and_student_sign_in]
+                                [/if.samlsp.enabled]
+                            </h2>
       <!--box content-->
     ~[loginerror]
 	<div id="noscript" class="feedback-alert">~[text:psx.html.public.home.to_sign_in_to_powerschool_you_must_use_a_browser_that_support]</div>
-    <p id="ksd-warn"><strong>Please note</strong> that parent access to PowerSchool may be removed during final grading periods, usually during the last three weeks of each trimester.
-</p>
-    <fieldset id="login-inputs" class="hide">
-	    ~[brij_publicrender_insert:i18n_svc:getLocaleLoginDiv]
-        <div>
-			  <label>~[text:psx.html.public.home.username]</label>
-			  <input type="text" id="fieldAccount" name="account" value="" size="39"  />
-        </div>
-        <div>
-			  <label>~[text:psx.html.public.home.password]</label>
-			  <input type="password" name="pw" value="" size="39"  /><div id="login-help"><a href="~[if.prefSSOEnabled]/public/account_recovery_begin.html[else]/public/logonhelp.html[/if]">~[text:psx.html.public.home.having_trouble_signing_in]</a></div>
-        </div>
-        <div id="translatorInput">
-			  <label>~[text:psx.html.public.home.translator_sign_in]</label>
-			  <input type="password" name="translatorpw" value="" size="39"  />
-        </div>
-		<div class="button-row">
-		<button type="submit" id="btn-enter" title="~[text:psx.html.public.home.sign_in_to_powerschool_parent_access]" value="Enter" border="0" >~[text:psx.html.public.home.sign_in]</button>
+    <p id="ksd-warn"><strong>Please note</strong> that parent access to 
+    PowerSchool may be removed during final grading periods, usually during the last three weeks of each trimester.</p>
+                            <fieldset id="login-inputs" class="hide">
+                                ~[brij_publicrender_insert:i18n_svc:getLocaleLoginDiv]
+                                <div>
+                                    <label>~[text:psx.html.public.home.username]</label>
+                                    <input type="text" id="fieldAccount" name="account" value="" size="39"  />
+                                </div>
+                                <div>
+                                    <label>~[text:psx.html.public.home.password]</label>
+                                    <input type="password" name="pw" value="" size="39"  />
+                                    <div id="login-help">
+                                        <a href="~[if.prefSSOEnabled]/public/account_recovery_begin.html[else]/public/logonhelp.html[/if]">~[text:psx.html.public.home.having_trouble_signing_in]</a>
+                                    </div>
+                                </div>
+                                <div id="translatorInput">
+                                    <label>~[text:psx.html.public.home.translator_sign_in]</label>
+                                    <input type="password" name="translatorpw" value="" size="39"  />
+                                </div>
+                                <div class="button-row">
+                                    <button type="submit" id="btn-enter" title="~[text:psx.html.public.home.sign_in_to_powerschool_parent_access]" value="Enter" border="0" >
+                                        ~[text:psx.html.public.home.sign_in]
+                                    </button>
+                                </div>
+                            </fieldset>
+							
+							~[if.samlsp.enabled]~[if#2.samlsp.enabled.student]
+                            <h2>~[text:psx.html.public.home.student_sign_in]</h2>
+                            <div class="box-round">
+                                <p>~[text:psx.html.public.home.student_sign_in.notes]</p>
+                                <div class="button-row">
+                                    <a href="/student" class="button">~[text:psx.html.public.home.student_sign_in]</a>
+                                </div>
+                            </div>
+                            [/if#2.samlsp.enabled.student][/if.samlsp.enabled]
+							
+                            <!-- box content-->
+                        </form>
+                    </div>
+                    <div id="create-account-content">
+                        ~[brij_publicrender:public-parentaccess-pkg;:RenderCreateAccountLoginInfo]
+                    </div>
+                </div>
+			</div>
+			<div id="footer" class="group">
+				<div id="legal">
+					<p>
+						~[text:psx.common.copyright]
+					</p>
+				</div>
+				<p id="pearsoncorplink">
+					
+				</p>
+			</div>
 		</div>
-	</fieldset> 
-		  
-      <!-- box content-->
-		 
-
-</form>
-	
-   ~[brij_publicrender:public-parentaccess-pkg;:RenderCreateAccountLoginInfo]
- </div>
- <div id="footer" class="group">
-    <p>~[text:psx.common.copyright]</p>
-    <p id="pearsoncorplink"><a href="http://www.facebook.com/powerschool" class="popWin fb" title="~[text:psx.html.public.home.join_us_on_facebook]">~[text:psx.html.public.home.join_us_on_facebook]</a></p>
-</div>
-
-</div>
-<div id="branding-pearson">
-    <div id="logo-pearson"></div>
-	<div id="tagline-pearson"></div>
-</div>
-<script type="text/javascript">
-	/**
-	 * Set the page's locale via a request_locale URL parameter. If there is already a URL parameter by
-	 * this name, then substitute it with the passed-in locale. NOTE: This function will actually cause the page
-	 * to be re-submitted with the new locale, so it really should not be used with pages submitted via POST
-	 * requests (if there are any, which I hope there are not).
-	 * @param locale the locale to set (e.g. en_US)
-	 */
-	function setPageLocale (locale) {
-	  var c=String (window.location);
-	  var rlpos = c.indexOf("request_locale=");
-	  var afterPart = "";
-	  if (rlpos > 0) {
-	    var afterBegin = c.indexOf("&", rlpos);
-	    if (afterBegin > 0) {
-	      afterPart = c.substring(afterBegin);
-	    }
-	    c = c.substring(0, rlpos-1);
-	  }
-	  var s=(c.indexOf('?') > 0 ? '&' : '?');
-	  var np = c + s + 'request_locale=' + locale + afterPart;
-	  window.location = np;
-	}
-
-	function jsCheck() {
-			document.getElementById("login-inputs").className = 'group';
-			
-	}
- jsCheck();
-</script>
-
-<script>
-$j('#noscript').hide();
-function jsEnabled() {
-	if(typeof $j != 'function'){
-		alert('Developer: This page is missing key components required for functionality!\n\nPossible causes include:\n - Commonscripts might be missing.\n - Page customization might enabled, and incomplete.');
-		//document.write('<script...');
-		} else {
-		$j('#login-inputs').removeClass('hide');
-	    $j("#fieldAccount").focus();
-	}
-}
-$j(document).ready(function(){
-	jsEnabled();
-});
-
-</script>
-</body>
+		
+		
+		<div id="branding-pearson">
+			<div id="logo-pearson"></div>
+			<div id="tagline-pearson"></div>
+		</div>
+		
+		<script src="/scripts/jquery-1.9.1.min.js"></script>
+        <script src="/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="/admin/javascript/md5.js"></script>
+		<script src="/scripts/signin-scripts.js"></script>
+	</body>
 </html>

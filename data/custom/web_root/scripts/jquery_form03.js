@@ -7,9 +7,15 @@ function required_if_north_american(val) {
 	return !error;
 }
 
-
 // happy.js validations
 $j(document).ready(function () {
+  // copied from generaldemographics.html
+  // If they don't select any of the visible options for ethnicity, choose "-1" for them ...
+  var defaultEthnicity = document.getElementById("defaultEthnicity");
+  if ( defaultEthnicity ) {
+	  defaultEthnicity.value = "-1";
+  }
+  
   $j('#form03').isHappy({
     // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
