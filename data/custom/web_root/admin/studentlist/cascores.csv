@@ -1,10 +1,10 @@
-Score_ID,Course_Title,Course_Code,Section_Number,Teacher,Section_Term,Asmt_Term,Asmt_ID,Asmt_Name,Asmt_Date,Asmt_Points,Score_Points,Student_Number,SSID,First_Name,Last_Name,Grade_Level
-~[tlist_sql;SELECT score.ID, 
-scrs.SCHOOLCOURSETITLE, scrs.COURSECODE, sec.SECTIONIDENTIFIER, 
-tch.LASTNAME AS TEACHERLASTNAME, strm.TERMCODE, rtrm.NAME,
-asmt.ID, asmt.NAME, TO_CHAR(sa.DATEASSIGNMENTDUE, 'MM/DD/YYYY') AS ASSIGNMENTDATE, asmt.POINTSPOSSIBLE,
+Course_Title,Course_Code,Section_Number,Section_Term,Section_Teacher,Asmt_ID,Asmt_Term,Asmt_Date,Asmt_Name,Asmt_Points,Score_Points,Student_Number,SSID,First_Name,Last_Name,Grade_Level,Score_ID
+~[tlist_sql;SELECT scrs.SCHOOLCOURSETITLE, scrs.COURSECODE, sec.SECTIONIDENTIFIER, strm.TERMCODE,
+tch.LASTNAME AS TEACHERLASTNAME, 
+asmt.ID, rtrm.NAME, TO_CHAR(sa.DATEASSIGNMENTDUE, 'MM/DD/YYYY') AS ASSIGNMENTDATE, 
+asmt.NAME, asmt.POINTSPOSSIBLE,
 score.SCORE, stu.STUDENTIDENTIFIER, pstu.STATE_STUDENTNUMBER, 
-stu.FIRSTNAME, stu.LASTNAME, stu.GRADELEVEL
+stu.FIRSTNAME, stu.LASTNAME, stu.GRADELEVEL, score.ID
 FROM PSM_ASSIGNMENTSCORE score
 INNER JOIN PSM_SECTIONASSIGNMENT sa ON sa.ID=score.SECTIONASSIGNMENTID
 INNER JOIN PSM_ASSIGNMENT asmt on asmt.ID=sa.ASSIGNMENTID
@@ -17,7 +17,7 @@ INNER JOIN PSM_SECTIONTEACHER stch ON stch.SECTIONID=sec.ID
 INNER JOIN PSM_TEACHER tch ON tch.ID=stch.TEACHERID
 INNER JOIN PSM_STUDENT stu ON stu.ID=se.STUDENTID
 INNER JOIN STUDENTS pstu ON pstu.STUDENT_NUMBER=stu.STUDENTIDENTIFIER
-WHERE strm.SCHOOLYEAR=2015 AND scrs.COURSECODE='8600' 
-AND asmt.NAME LIKE 'Final-Final (Short Story Essay)'
+WHERE strm.SCHOOLYEAR=2015
+AND asmt.NAME LIKE 'CA_%'
 ORDER BY scrs.COURSECODE, sec.SECTIONIDENTIFIER, asmt.NAME, stu.LASTNAME]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)","~(f12)","~(f13)","~(f14)","~(f15)","~(f16)","~(f17)"
 [/tlist_sql]

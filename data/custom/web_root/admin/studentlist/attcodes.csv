@@ -1,0 +1,9 @@
+Date,Att_Mode,Att_Code_ID,Att_Code,Att_Code_Year,Student_Number,SchoolID,Grade_Level,First_Name,Last_Name
+~[tlist_sql;SELECT att.Att_Date, att.Att_Mode_Code, ac.ID, ac.Att_Code, ac.YearID,
+stu.Student_Number, stu.SchoolID, stu.Grade_Level, stu.First_Name, stu.Last_Name
+FROM ATTENDANCE att
+INNER JOIN ATTENDANCE_CODE ac ON ac.ID=att.Attendance_CodeID
+INNER JOIN STUDENTS stu ON stu.ID=att.StudentID
+WHERE stu.Last_Name LIKE 'Choi'
+ORDER BY stu.Last_Name, stu.First_Name, att.Att_Date]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)",~(f9)",~(f10)"
+[/tlist_sql]
