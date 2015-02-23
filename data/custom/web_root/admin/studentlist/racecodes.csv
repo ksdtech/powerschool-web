@@ -1,0 +1,6 @@
+Student_Number,xSchoolID,xEnroll_Status,xFirst_Name,xLast_Name,xRace
+~[tlist_sql;
+SELECT s.STUDENT_NUMBER, s.SCHOOLID, s.ENROLL_STATUS, s.FIRST_NAME, s.LAST_NAME, r.RACECD FROM STUDENTS s 
+LEFT OUTER JOIN STUDENTRACE r ON r.STUDENTID=s.ID
+WHERE s.ENROLL_STATUS<=0]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)"
+[/tlist_sql]

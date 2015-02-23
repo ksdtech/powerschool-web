@@ -1,5 +1,5 @@
 ~[frame_type:none]
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
 <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
 <link href="/images/css/screen.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="/images/css/print.css" rel="stylesheet" type="text/css" media="print" />
@@ -42,22 +42,6 @@
 	[else]
 		<div id="students-list" style="width:75%">&nbsp;</div>
 	[/if]
-		<!-- PA-448: A form to hold a hidden input html value to indicate the currently selected student id. 
-	    Submitting a form with currently selected student id as a hidden input will prevent clear display of student id in the url -->
-	    <form id="switch_student_form" action="/~[self]" method="post">
-	        <input type="hidden" name="selected_student_id"/>
-	    </form>
-
-
-	<!-- Script to set the selected_student_id and submit the form to retrieve data belonging to the currently selected student
-	    Consolidating all the logic related to switching the student into this ftl will improve code readability" -->
-	<script type="text/javascript">
-	    function switchStudent(studentId){
-	       var switchStudentForm = document.getElementById('switch_student_form');
-	       switchStudentForm.selected_student_id.value=studentId;
-	       switchStudentForm.submit();
-	    }  
-	</script>  
 
 	<ul id="tools2">
 
@@ -73,8 +57,6 @@
 		    [/if#ssl]
 		[/if#guard]
 		
-		<li class="icon-btn-download"><a title="~[text:psx.common.alleyoop_data_title]" href="studentdata.xml?ac=download">&nbsp;</a></li>
-
 		~[if.isI18nMessageTracking]
 		<li id="icon-btn-translate"><a title="~[text:psx.common.translate_page_title]" href="/guardian/viewBatchTranslation.action?pageType=interactive&interactiveid=none" class="dialogM" id="interactive_l10n">&nbsp;</a></li>
 		[/if]
@@ -104,6 +86,7 @@
 		    <li id="btn-balance"><a href="/guardian/lunchbal.html">~[text:psx.txt.wildcards.guardian_header_yui.balance]</a></li>
 		[/if.pref.nolunchdisplay=1]
 		<li id="btn-myCalendars"><a href="/guardian/mycalendars.html">~[text:psx.txt.wildcards.guardian_header_yui.my_calendars]</a></li>
+		<li id="btn-mySchedule"><a href="/guardian/myschedule.html">~[text:psx.txt.wildcards.guardian_header_yui.my_schedule]</a></li>
 		<li id="btn-schoolInformation"><a href="/guardian/schoolinformation.html">~[text:psx.txt.wildcards.guardian_header_yui.school_information]</a></li>		
 		~[if.isstudentAndManagementEnabled]
 			<li id="btn-accountPreferences"><a href="/guardian/accountmanagement_student_password.html">~[text:psx.txt.wildcards.guardian_header_yui.account_preferences1]</a></li>
