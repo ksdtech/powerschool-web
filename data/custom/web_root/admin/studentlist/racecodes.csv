@@ -1,4 +1,4 @@
-Student_Number,xSchoolID,xEnroll_Status,xFirst_Name,xLast_Name,xRace
+Student_Number,xSchoolID,xEnroll_Status,xFirst_Name,xLast_Name,RaceCd
 ~[tlist_sql;
 SELECT s.STUDENT_NUMBER, s.SCHOOLID, s.ENROLL_STATUS, s.FIRST_NAME, s.LAST_NAME, r.RACECD FROM STUDENTS s 
 LEFT OUTER JOIN STUDENTRACE r ON r.STUDENTID=s.ID
