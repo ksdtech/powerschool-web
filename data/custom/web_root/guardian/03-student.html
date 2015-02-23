@@ -791,7 +791,101 @@ by adults in the home?<br/>
 	<td colspan="3">
 		<input type="hidden" id="hiddenFieldSaveRace" name="SaveRace" value="1">
 		<input type="hidden" id="r_none_storage" name="[01]FedRaceDecline" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
-~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
+
+<!-- begin STUDENTRACE bugfix -->
+<!-- was PowerSchool brij_renderform:federalrace;:GetStudentRaceSelectionBlock -->
+		<label>What is the student&#39;s race?</label>
+		<div class="box-round nested">
+            <br/>
+		<p><input id="race_100" type="checkbox" class="chk_race" name="[01]race_100" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_100");'>(100) American Indian or Alaska Native</span></p>
+		<p><input id="race_600" type="checkbox" class="chk_race" name="[01]race_600" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_600");'>(600) Black or African American</span></p>
+		<p><input id="race_700" type="checkbox" class="chk_race" name="[01]race_700" value="1" ><span class="clickable" onclick='toggleCheckbox("race_700");'>(700) White</span></p>
+<input type="hidden" name ="forcepresavetrigger" value="1"/>
+		<p class="choicefloat"><input type="checkbox" id="r_none" name="[01]race_declined"  value="1" onchange="decline_race(this);"><span class="clickable declined" onclick='toggleCheckbox("r_none");'>Race Missing</span> (Note that no other selections will be saved when selected)</p>
+
+	<div class="box-round">
+	<h3>(200) Asian</h3>
+			
+			<p><input id="race_201" type="checkbox" class="chk_race" name="[01]race_201" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_201");'>(201) Chinese</span></p>
+			<p><input id="race_202" type="checkbox" class="chk_race" name="[01]race_202" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_202");'>(202) Japanese</span></p>
+			<p><input id="race_203" type="checkbox" class="chk_race" name="[01]race_203" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_203");'>(203) Korean</span></p>
+			<p><input id="race_204" type="checkbox" class="chk_race" name="[01]race_204" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_204");'>(204) Vietnamese</span></p>
+			<p><input id="race_205" type="checkbox" class="chk_race" name="[01]race_205" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_205");'>(205) Asian Indian</span></p>
+			<p><input id="race_206" type="checkbox" class="chk_race" name="[01]race_206" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_206");'>(206) Laotian</span></p>
+			<p><input id="race_207" type="checkbox" class="chk_race" name="[01]race_207" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_207");'>(207) Cambodian</span></p>
+			<p><input id="race_208" type="checkbox" class="chk_race" name="[01]race_208" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_208");'>(208) Hmong</span></p>
+			<p><input id="race_299" type="checkbox" class="chk_race" name="[01]race_299" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_299");'>(299) Other Asian</span></p>
+			<p><input id="race_400" type="checkbox" class="chk_race" name="[01]race_400" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_400");'>(400) Filipino</span></p>
+				
+	</div>
+	<div class="box-round">
+	<h3>(300) Native Hawaiian/Other Pac Islander</h3>
+			
+			<p><input id="race_301" type="checkbox" class="chk_race" name="[01]race_301" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_301");'>(301) Hawaiian</span></p>
+			<p><input id="race_302" type="checkbox" class="chk_race" name="[01]race_302" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_302");'>(302) Guamanian</span></p>
+			<p><input id="race_303" type="checkbox" class="chk_race" name="[01]race_303" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_303");'>(303) Samoan</span></p>
+			<p><input id="race_304" type="checkbox" class="chk_race" name="[01]race_304" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_304");'>(304) Tahitian</span></p>
+			<p><input id="race_399" type="checkbox" class="chk_race" name="[01]race_399" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_399");'>(399) Other Pac Islander</span></p>
+				
+	</div>
+			
+		</div>
+<script>
+	function decline_race ( declineel ) {
+		var disable = declineel.checked;
+		var raceels = document.getElementsByClassName("chk_race");
+		for ( var elidx=0; elidx < raceels.length; elidx++ ) {
+			var el = raceels[elidx];
+			if ( el != declineel ) {
+				el.disabled = disable;
+			}
+		}
+		// Set the field that actually gets stored ...
+		var storageel = document.getElementById("r_none_storage");
+		if ( storageel ) {
+			storageel.value = ( declineel.checked? "1" : "0" );
+		}
+	}
+	function toggleCheckbox(id) {
+		var el = document.getElementById(id);
+		if ( el && !el.disabled ) {
+			el.checked = !(el.checked);
+			if ( el.onchange ) {
+				el.onchange(window.event);
+			}
+		}
+	}
+	function setCheckbox(id, checked) {
+		var el = document.getElementById(id);
+		if ( el && !el.disabled ) {
+			el.checked = checked;
+			if ( el.onchange ) {
+				el.onchange(window.event);
+			}
+		}
+	}
+
+	$j(document).ready( function() {
+		// If they don't select any of the visible options for ethnicity, choose "-1" for them ...
+		var defaultEthnicity = document.getElementById("defaultEthnicity");
+		if ( defaultEthnicity ) {
+			defaultEthnicity.value = "-1";
+		}
+		var storageel = document.getElementById("r_none_storage");
+		if ( storageel && storageel.value != "0" ) {
+			setCheckbox('r_none',true);
+		}
+		if (document.getElementById('r_none') == null) {
+			// Set the field to "not declined" ...
+			var storageel = document.getElementById("r_none_storage");
+			if ( storageel ) {
+				storageel.value = "0";
+			}
+		}
+	} );
+</script>
+<!-- end STUDENTRACE bugfix -->
+
 	</td>
 </tr>
 

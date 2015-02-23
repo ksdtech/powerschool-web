@@ -30,10 +30,11 @@ CSV.foreach('/Users/pz/Desktop/racecodes.csv',
   end
 end
 
-CSV.open('/Users/pz/Desktop/race_import.csv', 'wb', force_quotes: true) do |csv|
+CSV.open('/Users/pz/Desktop/race_import.tsv', 'wb', col_sep: "\t") do |csv|
   csv << ALL_HEADER
   data.keys.sort.each do |sn|
-    row = ALL_HEADER.map { |key| data[sn].fetch(key, nil) }
+    row = STUDENT_HEADER.map { |key| data[sn].fetch(key, nil) } + 
+      RACE_HEADER.map { |key| data[sn].fetch(key, 0) }
     csv << row
   end
 end
