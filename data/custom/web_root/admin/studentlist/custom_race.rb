@@ -20,8 +20,12 @@ CSV.foreach('/Users/pz/Desktop/racecodes.csv',
       data[sn][key] = row[key]
     end
     racecd = row[:racecd]
-    if racecd
-      data[sn]["race_#{racecd}".to_sym] = 1
+    if racecd && !racecd.strip.empty?
+      custom_sym = "race_#{racecd}".to_sym
+      if !RACE_HEADER.include?(custom_sym)
+        $stderr.puts "Student #{sn} -> unknown race code #{racecd}"
+      end
+      data[sn][custom_sym] = 1
     end
   end
 end
