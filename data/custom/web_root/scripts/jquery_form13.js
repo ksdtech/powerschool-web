@@ -17,7 +17,7 @@ function plotPrimaryResidence() {
 // happy.js validations
 $j(document).ready(function () {
   // check 'N' for opt out if nothing was checked
-  var radios = $j("input:radio[ends-with(@name,'srs_opt_out']");
+  var radios = $j(".srs_opt_out");
   if (radios.is(':checked') === false) {
     radios.filter('[value=N]').prop('checked', true);
   }
