@@ -28,6 +28,7 @@
 <!-- gathering family information -->
 ~[tlist_sql;
 SELECT Student_Number AS SN, 
+ID AS SID, 
 Family_Ident, First_Name, Last_Name,
 ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unl, 
 ps_customfields.getstudentscf(id, 'kikdir_approved') AS PrAppr,
@@ -35,14 +36,14 @@ ps_customfields.getstudentscf(id, 'kikdir_at') AS PrAt,
 ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus,
 ps_customfields.getstudentscf(id, 'reg_grade_level') AS RegGrade,
 ps_customfields.getstudentscf(id, 'nickname') AS Nick
-DCID
 FROM STUDENTS
-WHERE Enroll_Status<=0 AND Family_Ident<>'' AND Family_Ident=(
+WHERE Enroll_Status<=0 AND Family_Ident=(
 SELECT Family_Ident FROM STUDENTS
 WHERE ID=~(curstudid))
 ORDER BY Grade_Level, First_Name;
 ]
-<input type="hidden" class="sibdata" id="sib_famid_~(SN)" value="~(Family_Ident)" />
+<input type="hidden" class="sibdata" id="sib_stuid_~(SN)" value="~(SID)" />
+<input type="hidden" class="sibdata sibfamid" id="sib_famid_~(SN)" value="~(Family_Ident)" />
 <input type="hidden" class="sibdata" id="sib_first_~(SN)" value="~(First_Name)" />
 <input type="hidden" class="sibdata" id="sib_last_~(SN)" value="~(Last_Name)" />
 <input type="hidden" class="sibdata" id="sib_unlisted_~(SN)" value="~(Unl)" />
@@ -51,7 +52,6 @@ ORDER BY Grade_Level, First_Name;
 <input type="hidden" class="sibdata" id="sib_status_~(SN)" value="~(RegStatus)" />
 <input type="hidden" class="sibdata" id="sib_grade_~(SN)" value="~(RegGrade)" />
 <input type="hidden" class="sibdata" id="sib_nick_~(SN)" value="~(Nick)" />
-<input type="hidden" class="sibdata" id="sib_dcid_~(SN)" value="~(DCID)" />
 [/tlist_sql]
 
 <input type="hidden" id="my_id" value="~(Student_Number)" />
@@ -425,7 +425,8 @@ in the appropriate "Exclude" boxes in the above sections.</strong></td></tr>
   these student(s): <ul id="unlisted_siblings"></ul></div>
 <div id="other_approved" class="kpreview_off" style="color:red;">No preview.
   You have marked the directory preview as approved for another student in your family.
-  If you want to see the approved preview, please go to the Family Information page for
+  If you want to see the approved preview, first press Submit to save your work on this 
+  student, and then go to the Family Information page for
   this student: <ul id="approved_siblings"></ul></div>
 <table id="preview_table" class="kpreview_on" border="0" cellpadding="0" cellspacing="0" style="width: 100%">
 <tr><td valign="top" width="60%" id="preview_a1">(Student Names, Primary Parent Names, Address and Emails)</td>

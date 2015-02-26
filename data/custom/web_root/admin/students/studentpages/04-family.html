@@ -35,6 +35,7 @@
 <!-- gathering family information -->
 ~[tlist_sql;
 SELECT Student_Number AS SN, 
+ID AS SID, 
 Family_Ident, First_Name, Last_Name,
 ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unl, 
 ps_customfields.getstudentscf(id, 'kikdir_approved') AS PrAppr,
@@ -43,12 +44,13 @@ ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus,
 ps_customfields.getstudentscf(id, 'reg_grade_level') AS RegGrade,
 ps_customfields.getstudentscf(id, 'nickname') AS Nick
 FROM STUDENTS
-WHERE Enroll_Status<=0 AND Family_Ident<>'' AND Family_Ident=(
+WHERE Enroll_Status<=0 AND Family_Ident=(
 SELECT Family_Ident FROM STUDENTS
 WHERE ID=~(curstudid))
 ORDER BY Grade_Level, First_Name;
 ]
-<input type="hidden" class="sibdata" id="sib_famid_~(SN)" value="~(Family_Ident)" />
+<input type="hidden" class="sibdata" id="sib_stuid_~(SN)" value="~(SID)" />
+<input type="hidden" class="sibdata sibfamid" id="sib_famid_~(SN)" value="~(Family_Ident)" />
 <input type="hidden" class="sibdata" id="sib_first_~(SN)" value="~(First_Name)" />
 <input type="hidden" class="sibdata" id="sib_last_~(SN)" value="~(Last_Name)" />
 <input type="hidden" class="sibdata" id="sib_unlisted_~(SN)" value="~(Unl)" />

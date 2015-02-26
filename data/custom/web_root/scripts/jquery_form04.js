@@ -59,12 +59,12 @@ function onForm04Submit() {
 }
 
 // Sibling data filled in by tlist_sql based on Family_Ident matches
+// <input type="hidden" class="sibdata" id="sib_stuid_113960" value="17660" />
 // <input type="hidden" class="sibdata" id="sib_famid_113960" value="REDLD3FE" />
 // <input type="hidden" class="sibdata" id="sib_first_113960" value="Ethan" />
 // <input type="hidden" class="sibdata" id="sib_last_113960" value="Redlin" />
 // <input type="hidden" class="sibdata" id="sib_grade_113960" value="0" />
 // <input type="hidden" class="sibdata" id="sib_nick_113960" value="" />
-// <input type="hidden" class="sibdata" id="sib_dcid_113960" value="" />
 // <input type="hidden" class="sibdata" id="sib_unlisted_113960" value="" />
 // <input type="hidden" class="sibdata" id="sib_approved_113960" value="" />
 // <input type="hidden" class="sibdata" id="sib_approval_113960" value="" />
@@ -77,22 +77,31 @@ var last_approval = null;
 var sib_names = [ ];
 
 function get_sibling_data() {
+  var my_sid = 'S' + $j('#my_id').val();
+  var fam_id = null;
+  $j('.sibfamid').each(function(i, el)) {
+    var val = el.value;
+    if (val != '') { fam_id = val; }
+    break;
+  });
+
   $j('.sibdata').each(function(i, el) {
     var m = el.id.match(/sib_([a-z]+)_([0-9]+)/);
     if (m) {
       var attr = m[1];
       var sid = 'S' + m[2];
-      if (!(sid in sib_data)) {
-        sibs.push(sid);
-        sib_data[sid] = { }
-      };
-      sib_data[sid][attr] = el.value;
+      if (fam_id || my_sid == sid) {
+        if (!(sid in sib_data)) {
+          sibs.push(sid);
+          sib_data[sid] = { }
+        };
+        sib_data[sid][attr] = el.value;
+      }
     }
   });
   
   // Pick nickname if they have one
   // See if other sibs have approved a preview or asked to be unlisted
-  var my_sid = 'S' + $j('#my_id').val();
   for (var i = 0; i < sibs.length; i++) {
     var sid = sibs[i];
     var the_sib = sib_data[sid];
@@ -127,7 +136,7 @@ function get_sibling_data() {
           if (last_approval == null || the_sib.approval.localCompare(last_approval)) {
             last_sib_approved = sid;
             last_approval = the_sib.approval;
-            approved_ul.append('<li>' + the_sib.first + ' ' + the_sib.last + ' (' + the_sib.dcid + ')</li>');
+            approved_ul.append('<li><a href="javascript:switchStudent(' + the_sib.stuid + ');">' + the_sib.first + ' ' + the_sib.last + '</a></li>');
           }
         }
       }
