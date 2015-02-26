@@ -35,8 +35,9 @@ ps_customfields.getstudentscf(id, 'kikdir_at') AS PrAt,
 ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus,
 ps_customfields.getstudentscf(id, 'reg_grade_level') AS RegGrade,
 ps_customfields.getstudentscf(id, 'nickname') AS Nick
+DCID
 FROM STUDENTS
-WHERE Enroll_Status<=0 AND Family_Ident=(
+WHERE Enroll_Status<=0 AND Family_Ident<>'' AND Family_Ident=(
 SELECT Family_Ident FROM STUDENTS
 WHERE ID=~(curstudid))
 ORDER BY Grade_Level, First_Name;
@@ -50,6 +51,7 @@ ORDER BY Grade_Level, First_Name;
 <input type="hidden" class="sibdata" id="sib_status_~(SN)" value="~(RegStatus)" />
 <input type="hidden" class="sibdata" id="sib_grade_~(SN)" value="~(RegGrade)" />
 <input type="hidden" class="sibdata" id="sib_nick_~(SN)" value="~(Nick)" />
+<input type="hidden" class="sibdata" id="sib_dcid_~(SN)" value="~(DCID)" />
 [/tlist_sql]
 
 <input type="hidden" id="my_id" value="~(Student_Number)" />
@@ -60,6 +62,21 @@ ORDER BY Grade_Level, First_Name;
 <div id="form4-setup" class="box-round group" style="width: 720px">
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<tr class="headerrow"><td class="bold">Family and kik School Directory Information</td></tr>
+<tr><td>In order for the District to be able to contact parents, it is essential that you correct 
+and complete all the appropriate fields on this page. The information on this page will also be used 
+as the source for the <strong>kik</strong> School Directory.</td></tr>
+<tr><td>It is important that you correctly check or uncheck the fields that control whether your 
+names, home addresses, phones and email addresses will be printed in, or omitted from, 
+the <strong>kik</strong> School Directory. 
+ This is the <strong>only</strong> data that will be used to create the <strong>kik</strong> 
+ School Directory.</td></tr>
+<tr><td>After you have entered the data, carefully verify that the preview for your 
+family shown at the bottom of the page is correct and mark it as approved, then make sure to 
+press the <strong>Submit</strong> button.</td></tr>
+<tr><td><strong>If you do not check the approval box at the bottom of this page, your family WILL NOT be
+ included in kik School Directory.</strong></td></tr>
+
 <tr class="headerrow"><td class="bold">1. Qualifying District Residence Information</td></tr>
 <tr><td>Instructions:  Information submitted in Sections 1-3 on this page refers <em>only to those adults</em> who reside 
   at the Qualifying District Residence.  Also fill out Sections 4-6 if there are 
@@ -87,31 +104,31 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]Zip" type="text" id="zip" class="ksource" value="" size="10" /></td></tr>
 
 <tr><td colspan="5">
-  <input name="[01]kikdir_home_addr" type="checkbox" id="kikdir_home_addr" class="ksource" value="1" />Exclude this address from the kik directory?</td></tr>
+  <input name="[01]kikdir_home_addr" type="checkbox" id="kikdir_home_addr" class="ksource" value="1" />Exclude this address from the <strong>kik</strong> School Directory?</td></tr>
 </table>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr><td>Home Phone</td>
-<td>
-  <input name="[01]Home_Phone" type="text" id="home_phone" class="ksource" value="" size="20" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_home_phone" type="checkbox" id="kikdir_home_phone" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]Home_Phone" type="text" id="home_phone" class="ksource" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_home_phone" type="checkbox" id="kikdir_home_phone" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr><td colspan="4">The Kentfield School District uses email and website
   communications wherever possible.</td></tr>
 
-<tr><td colspan="3">Do you have internet access at this residence?</td>
-<td>
+<tr><td colspan="2">Do you have internet access at this residence?</td>
+<td colspan="2">
   <input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" id="inet_yes" value="" />Yes&nbsp;&nbsp;
   <input name="[01]Home_No_Inet_Access" type="radio" class="inet_access" value="1" />No</td></tr>
   
-<tr><td colspan="3">Do you require printed copies of school communications?</td>
-<td>
+<tr><td colspan="2">Do you require printed copies of school communications?</td>
+<td colspan="2">
   <input name="[01]Home_Printed_Material" type="radio" class="printed_material" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home_Printed_Material" type="radio" class="printed_material" id="printed_no" value="" />No</td></tr>
 
-<tr><td colspan="3">Do you require communications in Spanish?</td>
-<td>
+<tr><td colspan="2">Do you require communications in Spanish?</td>
+<td colspan="2">
   <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" value="1" />Yes&nbsp;&nbsp;
   <input name="[01]Home_Spanish_Material" type="radio" class="spanish_material" id="spanish_no" value="" />No&nbsp;&nbsp;</td></tr>
 
@@ -121,10 +138,10 @@ as the District uses email as its primary means of communication with families.
 
 <tr><td>
   <input name="[01]Mother" type="text" id="mother_last" class="guardian_name ksource" value="" size="20" maxlength="30" /></td>
-<td>
-  <input name="[01]Mother_First" type="text" id="mother_first" class="guardian_name ksource" value="" size="20" maxlength="30" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_mother_name" type="checkbox" id="kikdir_mother_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
+<td colspan="3">
+  <input name="[01]Mother_First" type="text" id="mother_first" class="guardian_name ksource" value="" size="20" maxlength="30" /></td></tr>
+<tr><td colspan="4">
+  <input name="[01]kikdir_mother_name" type="checkbox" id="kikdir_mother_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
   
 <tr><td>Relationship</td>
 <td><select id="mother_rel" name="[01]Mother_Rel">
@@ -150,21 +167,22 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]Mother_IsGuardian" type="radio" class="mother_guardian" value="-1" />No</td></tr>
 
 <tr><td>Cell Phone</td>
-<td>
-  <input name="[01]mother_Cell" type="text" id="mother_cell" class="ksource" value="" size="20" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_mother_cell" type="checkbox" id="kikdir_mother_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]mother_Cell" type="text" id="mother_cell" class="ksource" value="" size="20" /></td><tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_mother_cell" type="checkbox" id="kikdir_mother_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
   
 <tr><td>Work Phone</td>
-<td>
-  <input name="[01]mother_Work_Phone" type="text" id="mother_work_phone" value="" size="20" /></td>
-<td colspan="2">(Work phones are never published)</td></tr>
+<td colspan="3"><input name="[01]mother_Work_Phone" type="text" id="mother_work_phone" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory)</td></tr>
 
 <tr><td>Email Address</td>
-<td>
-  <input name="[01]Mother_Email" type="text" id="mother_email" class="ksource" value="" size="40" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_mother_email" type="checkbox" id="kikdir_mother_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
+<td colspan="3">
+  <input name="[01]Mother_Email" type="text" id="mother_email" class="ksource" value="" size="40" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_mother_email" type="checkbox" id="kikdir_mother_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr class="headerrow"><td colspan="4" class="bold">3. Father/Parent/Guardian at Qualifying District Residence</td></tr>
 
@@ -172,10 +190,10 @@ as the District uses email as its primary means of communication with families.
 
 <tr><td>
   <input name="[01]father" type="text" id="father_last" class="guardian_name ksource" value="" size="20" maxlength="30" /></td>
-<td>
-  <input name="[01]father_First" type="text" id="father_first" class="guardian_name ksource" value="" size="20" maxlength="30" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_father_name" type="checkbox" id="kikdir_father_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
+<td colspan="3">
+  <input name="[01]father_First" type="text" id="father_first" class="guardian_name ksource" value="" size="20" maxlength="30" /></td></tr>
+<tr><td colspan="4">
+  <input name="[01]kikdir_father_name" type="checkbox" id="kikdir_father_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
   
 <tr><td>Relationship</td>
 <td><select id="father_rel" name="[01]Father_Rel">
@@ -201,21 +219,21 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]father_IsGuardian" type="radio" class="father_guardian" value="-1" />No</td></tr>
 
 <tr><td>Cell Phone</td>
-<td>
-  <input name="[01]father_Cell" type="text" id="father_cell" class="ksource" value="" size="20" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_father_cell" type="checkbox" id="kikdir_father_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]father_Cell" type="text" id="father_cell" class="ksource" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_father_cell" type="checkbox" id="kikdir_father_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr><td>Work Phone</td>
-<td>
-  <input name="[01]father_Work_Phone" type="text" id="father_work_phone" value="" size="20" /></td>
-<td colspan="2">(Work phones are never published)</td></tr>
+<td colspan="3"><input name="[01]father_Work_Phone" type="text" id="father_work_phone" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory)</td></tr>
 
 <tr><td>Email Address</td>
-<td>
-  <input name="[01]Father_Email" type="text" id="father_email" class="ksource" value="" size="40" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_father_email" type="checkbox" id="kikdir_father_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]Father_Email" type="text" id="father_email" class="ksource" value="" size="40" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_father_email" type="checkbox" id="kikdir_father_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr class="private"><td colspan="4">
   <input name="[01]mailing_street" type="text" id="mailing_street" class="copy_address" value="" /> 
@@ -243,15 +261,15 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]Home2_Zip" type="text" id="home2_zip" class="ksource" value="" size="10" /></td></tr>
   
 <tr><td colspan="5">
-  <input name="[01]kikdir_home2_addr" type="checkbox" id="kikdir_home2_addr" class="ksource" value="1" />Exclude this address from the kik directory?</td></tr>
+  <input name="[01]kikdir_home2_addr" type="checkbox" id="kikdir_home2_addr" class="ksource" value="1" />Exclude this address from the <strong>kik</strong> School Directory?</td></tr>
 </table>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr><td>Home Phone</td>
-<td>
-  <input name="[01]Home2_Phone" type="text" id="home2_phone" class="ksource" value="" size="20" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_home2_phone" type="checkbox" id="kikdir_home2_phone" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]Home2_Phone" type="text" id="home2_phone" class="ksource" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_home2_phone" type="checkbox" id="kikdir_home2_phone" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr><td colspan="2">Do you have internet access at this residence?</td>
 <td colspan="2">
@@ -273,10 +291,10 @@ as the District uses email as its primary means of communication with families.
 
 <tr><td>
   <input name="[01]Mother2_Last" type="text" id="mother2_last" class="family2_test guardian2_name ksource" value="" size="20" maxlength="30" /></td>
-<td>
-  <input name="[01]Mother2_First" type="text" id="mother2_first" class="family2_test guardian2_name ksource" value="" size="20" maxlength="30" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_mother2_name" type="checkbox" id="kikdir_mother2_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
+<td colspan="3">
+  <input name="[01]Mother2_First" type="text" id="mother2_first" class="family2_test guardian2_name ksource" value="" size="20" maxlength="30" /></td></tr>
+<tr><td colspan="4">
+  <input name="[01]kikdir_mother2_name" type="checkbox" id="kikdir_mother2_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
   
 <tr><td>Relationship</td>
 <td><select id="mother2_rel" name="[01]Mother2_Rel">
@@ -302,31 +320,31 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]Mother2_IsGuardian" type="radio" class="mother2_guardian" value="-1" />No</td></tr>
 
 <tr><td>Cell Phone</td>
-<td>
-  <input name="[01]Mother2_Cell" type="text" id="mother2_cell" class="ksource" value="" size="20" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_mother2_cell" type="checkbox" id="kikdir_mother2_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]Mother2_Cell" type="text" id="mother2_cell" class="ksource" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_mother2_cell" type="checkbox" id="kikdir_mother2_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
   
 <tr><td>Work Phone</td>
-<td>
-  <input name="[01]Mother2_Work_Phone" type="text" id="mother2_work_phone" value="" size="20" /></td>
-<td colspan="2">(Work phones are never published)</td></tr>
+<td colspan="3"><input name="[01]Mother2_Work_Phone" type="text" id="mother2_work_phone" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory)</td></tr>
 
 <tr><td>Email Address</td>
-<td>
-  <input name="[01]Mother2_Email" type="text" id="mother2_email" class="ksource" value="" size="40" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_mother2_email" type="checkbox" id="kikdir_mother2_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]Mother2_Email" type="text" id="mother2_email" class="ksource" value="" size="40" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_mother2_email" type="checkbox" id="kikdir_mother2_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr class="headerrow"><td colspan="4" class="bold">6. Father/Parent/Guardian at Additional Residence</td></tr>
 
 <tr><td>Last</td><td>First</td><td colspan="2">&nbsp;</td></tr>
 <tr><td>
   <input name="[01]Father2_Last" type="text" id="father2_last" class="family2_test guardian2_name ksource" value="" size="20" maxlength="30" /></td>
-<td>
-  <input name="[01]Father2_First" type="text" id="father2_first" class="family2_test guardian2_name ksource" value="" size="20" maxlength="30" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_father2_name" type="checkbox" id="kikdir_father2_name" class="ksource" value="1" />Exclude this person's name from the kik directory?</td></tr>
+<td colspan="3">
+  <input name="[01]Father2_First" type="text" id="father2_first" class="family2_test guardian2_name ksource" value="" size="20" maxlength="30" /></td></tr>
+<tr><td colspan="4">
+  <input name="[01]kikdir_father2_name" type="checkbox" id="kikdir_father2_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr><td>Relationship</td>
 <td><select id="father2_rel" name="[01]Father2_Rel">
@@ -352,21 +370,21 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]Father2_IsGuardian" type="radio" class="father2_guardian" value="-1" />No</td></tr>
 
 <tr><td>Cell Phone</td>
-<td>
-  <input name="[01]father2_Cell" type="text" id="father2_cell" class="ksource" value="" size="20" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_father2_cell" type="checkbox" id="kikdir_father2_cell" class="ksource" value="1" />Exclude this phone number from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]father2_Cell" type="text" id="father2_cell" class="ksource" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_father2_cell" type="checkbox" id="kikdir_father2_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
   
 <tr><td>Work Phone</td>
-<td>
-  <input name="[01]father2_Work_Phone" type="text" id="father2_work_phone" value="" size="20" /></td>
-<td colspan="2">(Work phones are never published)</td></tr>
+<td colspan="3"><input name="[01]father2_Work_Phone" type="text" id="father2_work_phone" value="" size="20" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory)</td></tr>
 
 <tr><td>Email Address</td>
-<td>
-  <input name="[01]father2_Email" type="text" id="father2_email" class="ksource" value="" size="40" /></td>
-<td colspan="2">
-  <input name="[01]kikdir_father2_email" type="checkbox" id="kikdir_father2_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
+<td colspan="3"><input name="[01]father2_Email" type="text" id="father2_email" class="ksource" value="" size="40" /></td></tr>
+<tr><td>&nbsp;</td>
+<td colspan="3">
+  <input name="[01]kikdir_father2_email" type="checkbox" id="kikdir_father2_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
 
 <tr class="private"><td colspan="4">
   <input name="[01]mailing2_street" type="text" id="mailing2_street" class="copy_address2" value="" /> 
@@ -374,16 +392,24 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]mailing2_state" type="text" id="mailing2_state" class="copy_address2" value="" /> 
   <input name="[01]mailing2_zip" type="text" id="mailing2_zip" class="copy_address2" value="" /></td></tr>
 
-<tr class="headerrow"><td colspan="4" class="bold">7. kik Directory Opt-Out</td></tr>
+<tr class="headerrow"><td colspan="4" class="bold">7. <strong>kik</strong> School Directory Opt-In</td></tr>
+<tr><td colspan="4"><strong>VERY IMPORTANT: If you do not want any family information listed in the 
+<strong>kik</strong> School Directory, this is the only place to opt-out completely. To omit 
+specific fields (names, addresses, phone numbers, emails, etc.) you must place a check mark 
+in the appropriate "Exclude" boxes in the above sections.</strong></td></tr>
 
 <tr><td colspan="4">
-  <input name="[01]kikdir_unlisted" type="checkbox" id="kikdir_unlisted" class="ksource" value="1" />Check here if you <b>DO NOT</b> want your family listed in the kik directory</td></tr>
+  <input type="radio" name="[01]kikdir_unlisted" id="kikdir_unlisted_n" class="kikdir_unlisted ksource" value="N"/>
+  Check here if you <strong>DO</strong> want your family listed in the <strong>kik</strong> School Directory</td></tr>
+<tr><td colspan="4">
+  <input type="radio" name="[01]kikdir_unlisted" id="kikdir_unlisted_y" class="kikdir_unlisted ksource" value="Y"/>
+  Check here if you <strong>DO NOT</strong> want your family listed in the <strong>kik</strong> School Directory</td></tr>
   
-<tr><td colspan="4">If you checked this box for <b>any</b> of your current 
-  students, <b>none</b> of your students or other family information 
-  will appear in the directory.</td></tr>
+<tr><td colspan="4">If you checked the <strong>DO NOT</strong> box for <strong>any</strong> of your current 
+  students, <strong>NONE</strong> of your students or other family information 
+  will appear in the <strong>kik</strong> School Directory.</td></tr>
   
-<tr class="headerrow"><td colspan="4">8. kik Directory Preview Approval</td></tr>
+<tr class="headerrow"><td colspan="4">8. <strong>kik</strong> School Directory Preview Approval</td></tr>
 <tr><td colspan="4">Here is what your family's listing will look like, based on the data you entered on this page, 
   and on the data for your students' legal name(s) or nickname(s) as entered on the Student Information page.  To change
   the student names shown, click the Submit button on this page first, then go to the Student Information page for
@@ -410,9 +436,15 @@ as the District uses email as its primary means of communication with families.
 </td></tr>
 
 <tr class="kpreview_on"><td colspan="4">
-  <input name="[01]kikdir_approved" type="checkbox" id="preview_approved" value="1" />Check here if the preview is correct.</td></tr>
+  <input name="[01]kikdir_approved" type="checkbox" id="preview_approved" value="1" /><strong>I (we) have
+  carefully reviewed this preview and it is correct. Please include our family in the <strong>kik</strong>
+  School Directory.</strong></td></tr>
   
-<tr class="kpreview_on"><td colspan="4">Note: by checking the box above, you authorize the Kentfield Schools Foundation to print your family's information as shown. If the preview is not correct, revise the entries on this page. Please contact the District Office if there are missing or incorrect sibling names and grade levels shown in the preview.</td></tr>
+<tr class="kpreview_on"><td colspan="4">Note: by checking the box above, you authorize the Kentfield Schools 
+Foundation (<strong>kik</strong>) to print your family's information as shown. If the preview is not 
+correct, revise the entries on this page. Please contact the District Office if there are missing or
+incorrect sibling names and grade levels shown in the preview.  If you have any other questions or
+issues about the <strong>kik</strong> School Directory, please contact Laurie Treganowen at (415) 458-5140.</td></tr>
 
 <tr class="private"><td colspan="4" class="bold">Preview approved at
 <input type="text" id="preview_approved_at" name="[01]kikdir_at" value="" /> 

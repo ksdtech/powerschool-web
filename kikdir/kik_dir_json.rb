@@ -461,7 +461,7 @@ class KikExporter
     # no preview if any unlisted
     @students_by_fid[fid].each do |sid|
       s = @student_by_sid[sid]
-      if s[:kikdir_unlisted]
+      if s[:kikdir_unlisted] == 'Y'
         preview[:unlisted_student] = copy_fields(s, STU_FIELDS)
         $stderr.puts "#{lfid} student #{preview[:unlisted_student][:student_number]} is unlisted"
         return preview

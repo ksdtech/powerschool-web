@@ -64,6 +64,7 @@ function onForm04Submit() {
 // <input type="hidden" class="sibdata" id="sib_last_113960" value="Redlin" />
 // <input type="hidden" class="sibdata" id="sib_grade_113960" value="0" />
 // <input type="hidden" class="sibdata" id="sib_nick_113960" value="" />
+// <input type="hidden" class="sibdata" id="sib_dcid_113960" value="" />
 // <input type="hidden" class="sibdata" id="sib_unlisted_113960" value="" />
 // <input type="hidden" class="sibdata" id="sib_approved_113960" value="" />
 // <input type="hidden" class="sibdata" id="sib_approval_113960" value="" />
@@ -118,7 +119,7 @@ function get_sibling_data() {
       sib_names.push(the_sib.first + ' (' + grade + ')');
     }
     if (sid != my_sid) {
-      if (the_sib.unlisted == '1') {
+      if (the_sib.unlisted == 'Y') {
         sibs_unlisted.push(sid);
         unlisted_ul.append('<li>' + the_sib.first + ' ' + the_sib.last + '</li>');
       } else {
@@ -126,7 +127,7 @@ function get_sibling_data() {
           if (last_approval == null || the_sib.approval.localCompare(last_approval)) {
             last_sib_approved = sid;
             last_approval = the_sib.approval;
-            approved_ul.append('<li>' + the_sib.first + ' ' + the_sib.last + '</li>');
+            approved_ul.append('<li>' + the_sib.first + ' ' + the_sib.last + ' (' + the_sib.dcid + ')</li>');
           }
         }
       }
@@ -320,7 +321,7 @@ function get_parents(i) {
 function update_preview() {
   $j('.kpreview_off').hide();
  
-  var this_unlisted = $j('#kikdir_unlisted').prop('checked');
+  var this_unlisted = $j('#kikdir_unlisted_y').prop('checked');
   var other_unlisted = sibs_unlisted.length > 0;
   var no_preview = this_unlisted || other_unlisted || last_sib_approved;
   if (no_preview) {
