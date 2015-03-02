@@ -336,18 +336,18 @@ function update_preview() {
   if (no_preview) {
     $j('.kpreview_on').hide();
     $j('#preview_approved').prop('checked', false).prop('disabled', true)
-    if (no_decision) {
-      $j('#no_decision').show();
-    }
-    else if (this_unlisted) {
+    if (this_unlisted) {
       $j('#this_unlisted').show();
     }
     else if (other_unlisted) {
       $j('#other_unlisted').show();
     }
-    if (last_sib_approved && !(no_decision || this_unlisted || other_unlisted)) {
+    else if (last_sib_approved) {
       var the_sib = sib_data[last_sib_approved];
       $j('#other_approved').show();
+    }
+    else if (no_decision) {
+      $j('#no_decision').show();
     }
     return;
   }
