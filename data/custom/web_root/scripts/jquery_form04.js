@@ -79,10 +79,9 @@ var sib_names = [ ];
 function get_sibling_data() {
   var my_sid = 'S' + $j('#my_id').val();
   var fam_id = null;
-  $j('.sibfamid').each(function(i, el)) {
+  $j('.sibfamid').each(function(i, el) {
     var val = el.value;
-    if (val != '') { fam_id = val; }
-    break;
+    if (!fam_id && val != '') { fam_id = val; }
   });
 
   $j('.sibdata').each(function(i, el) {
@@ -130,7 +129,7 @@ function get_sibling_data() {
     if (sid != my_sid) {
       if (the_sib.unlisted == 'Y') {
         sibs_unlisted.push(sid);
-        unlisted_ul.append('<li>' + the_sib.first + ' ' + the_sib.last + '</li>');
+        unlisted_ul.append('<li><a href="javascript:switchStudent(' + the_sib.stuid + ');">' + the_sib.first + ' ' + the_sib.last + '</a></li>');
       } else {
         if (the_sib.approved == '1' && the_sib.approval != '') {
           if (last_approval == null || the_sib.approval.localCompare(last_approval)) {
@@ -330,19 +329,23 @@ function get_parents(i) {
 function update_preview() {
   $j('.kpreview_off').hide();
  
-  var this_unlisted = $j('#kikdir_unlisted_y').prop('checked');
   var other_unlisted = sibs_unlisted.length > 0;
-  var no_preview = this_unlisted || other_unlisted || last_sib_approved;
+  var this_unlisted  = $j('#kikdir_unlisted_y').prop('checked');
+  var no_decision    = !this_unlisted && !$j('#kikdir_unlisted_n').prop('checked');
+  var no_preview = no_decision || this_unlisted || other_unlisted || last_sib_approved;
   if (no_preview) {
     $j('.kpreview_on').hide();
     $j('#preview_approved').prop('checked', false).prop('disabled', true)
-    if (this_unlisted) {
+    if (no_decision) {
+      $j('#no_decision').show();
+    }
+    else if (this_unlisted) {
       $j('#this_unlisted').show();
     }
-    if (other_unlisted) {
+    else if (other_unlisted) {
       $j('#other_unlisted').show();
     }
-    if (last_sib_approved && !this_unlisted && !other_unlisted) {
+    if (last_sib_approved && !(no_decision || this_unlisted || other_unlisted)) {
       var the_sib = sib_data[last_sib_approved];
       $j('#other_approved').show();
     }
