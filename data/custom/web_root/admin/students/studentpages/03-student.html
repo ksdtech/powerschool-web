@@ -806,7 +806,7 @@
 
   <tr class="headerrow"><td colspan="3" class="bold">5. Previous School Enrollment</td></tr>
   <tr><td colspan="2">Name of Previous School (if applicable)</td>
-    <td><input type="text" name="[01]Previous_School_Name" value="" size="30" maxlength="30" /></td></tr>
+    <td><input type="text" name="[01]Previous_School_Name" value="" size="25" maxlength="30" /></td></tr>
   <tr><td>Number &amp; Street</td>
   <td>City</td>
   <td>Phone (with area code)</td></tr>
@@ -858,7 +858,49 @@
 	</tr>
   <tr class="headerrow"><td colspan="3" class="bold">9. State Required Demographics: Race</td></tr>
   <tr><td colspan="3">The previous question was about <b>ethnicity</b>, not race.  No matter what you selected above, please continue to answer the following by marking one or more boxes to indicate what you consider your child's racial makeup to be.<br/><br/>What is your child's <b>race?</b> Please check up to five categories from the list below:</td></tr>
-	<tr>
+  <tr class="staffonly">
+    <td colspan="3">Parent Data - As Submitted</td></tr>
+  <tr>
+    <td colspan="3">
+    <!-- begin STUDENTRACE bugfix -->
+<!-- was PowerSchool brij_renderform:federalrace;:GetStudentRaceSelectionBlock -->
+    <label>What is the student&#39;s race?</label>
+    <div class="box-round nested">
+    <p><input id="race_100" type="checkbox" class="chk_race" name="[01]race_100" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_100");'>(100) American Indian or Alaska Native</span></p>
+    <p><input id="race_600" type="checkbox" class="chk_race" name="[01]race_600" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_600");'>(600) Black or African American</span></p>
+    <p><input id="race_700" type="checkbox" class="chk_race" name="[01]race_700" value="1" ><span class="clickable" onclick='toggleCheckbox("race_700");'>(700) White</span></p>
+
+  <div class="box-round">
+  <h3>(200) Asian</h3>
+      
+      <p><input id="race_201" type="checkbox" class="chk_race" name="[01]race_201" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_201");'>(201) Chinese</span></p>
+      <p><input id="race_202" type="checkbox" class="chk_race" name="[01]race_202" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_202");'>(202) Japanese</span></p>
+      <p><input id="race_203" type="checkbox" class="chk_race" name="[01]race_203" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_203");'>(203) Korean</span></p>
+      <p><input id="race_204" type="checkbox" class="chk_race" name="[01]race_204" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_204");'>(204) Vietnamese</span></p>
+      <p><input id="race_205" type="checkbox" class="chk_race" name="[01]race_205" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_205");'>(205) Asian Indian</span></p>
+      <p><input id="race_206" type="checkbox" class="chk_race" name="[01]race_206" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_206");'>(206) Laotian</span></p>
+      <p><input id="race_207" type="checkbox" class="chk_race" name="[01]race_207" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_207");'>(207) Cambodian</span></p>
+      <p><input id="race_208" type="checkbox" class="chk_race" name="[01]race_208" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_208");'>(208) Hmong</span></p>
+      <p><input id="race_299" type="checkbox" class="chk_race" name="[01]race_299" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_299");'>(299) Other Asian</span></p>
+      <p><input id="race_400" type="checkbox" class="chk_race" name="[01]race_400" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_400");'>(400) Filipino</span></p>
+        
+  </div>
+  <div class="box-round">
+  <h3>(300) Native Hawaiian/Other Pac Islander</h3>
+      
+      <p><input id="race_301" type="checkbox" class="chk_race" name="[01]race_301" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_301");'>(301) Hawaiian</span></p>
+      <p><input id="race_302" type="checkbox" class="chk_race" name="[01]race_302" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_302");'>(302) Guamanian</span></p>
+      <p><input id="race_303" type="checkbox" class="chk_race" name="[01]race_303" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_303");'>(303) Samoan</span></p>
+      <p><input id="race_304" type="checkbox" class="chk_race" name="[01]race_304" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_304");'>(304) Tahitian</span></p>
+      <p><input id="race_399" type="checkbox" class="chk_race" name="[01]race_399" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_399");'>(399) Other Pac Islander</span></p>
+        
+  </div>
+    </div>
+  </td></tr>
+
+  <tr class="staffonly">
+    <td colspan="3">Official Data - For CALPADS and CRDC</td></tr>
+	<tr class="staffonly">
 		<td colspan="3">
 			<input type="hidden" id="hiddenFieldSaveRace" name="SaveRace" value="1">
 			<input type="hidden" id="r_none_storage" name="[01]FedRaceDecline" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
