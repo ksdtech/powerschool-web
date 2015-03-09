@@ -14,11 +14,18 @@ function setup_nexturl() {
   }
 }
 
+function setup_reg_year() {
+  var reg_year = $j('#orig_reg_year').val();
+  if (reg_year) {
+    $j('.reg_year').text(reg_year); // span 
+  }
+}
 
 // happy.js validations
 $j(document).ready(function () {
   setup_nexturl();
-  
+  setup_reg_year();
+
   $j('#form10').isHappy({
     // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
