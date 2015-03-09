@@ -780,7 +780,6 @@ by adults in the home?<br/>
 			<input id="defaultEthnicity" type="hidden" name="[01]FedEthnicity" value="-1">~[Comment:Note that the onload javascript will revert this back to -1 after it's been changed to whatever is currently in the DB.]
 			<div class="choicefloat"><input type="radio" id="radioFedEthYes" name="[01]FedEthnicity" value="1">~[text:psx.html.admin_students.generaldemographics.yes]</div>
 			<div class="choicefloat"><input type="radio" id="radioFedEthNo" name="[01]FedEthnicity" value="0">~[text:psx.html.admin_students.generaldemographics.no]</div>
-			~[if.pref.FRE_AllowDeclineEthnicity=1]<div class="choicefloat"><span class="declined"><input type="radio" id="radioFedEthDecline" name="[01]FedEthnicity" value="2">~[pref:FRE_DeclineEthnicityText]</span></div>[/if]
 			<div class=clearit><!-- --></div>
 		</div>
 	</td>
@@ -796,12 +795,9 @@ by adults in the home?<br/>
 <!-- was PowerSchool brij_renderform:federalrace;:GetStudentRaceSelectionBlock -->
 		<label>What is the student&#39;s race?</label>
 		<div class="box-round nested">
-            <br/>
 		<p><input id="race_100" type="checkbox" class="chk_race" name="[01]race_100" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_100");'>(100) American Indian or Alaska Native</span></p>
 		<p><input id="race_600" type="checkbox" class="chk_race" name="[01]race_600" value="1"  ><span class="clickable" onclick='toggleCheckbox("race_600");'>(600) Black or African American</span></p>
 		<p><input id="race_700" type="checkbox" class="chk_race" name="[01]race_700" value="1" ><span class="clickable" onclick='toggleCheckbox("race_700");'>(700) White</span></p>
-<input type="hidden" name ="forcepresavetrigger" value="1"/>
-		<p class="choicefloat"><input type="checkbox" id="r_none" name="[01]race_declined"  value="1" onchange="decline_race(this);"><span class="clickable declined" onclick='toggleCheckbox("r_none");'>Race Missing</span> (Note that no other selections will be saved when selected)</p>
 
 	<div class="box-round">
 	<h3>(200) Asian</h3>
