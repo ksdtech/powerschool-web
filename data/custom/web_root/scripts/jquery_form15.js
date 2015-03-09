@@ -57,7 +57,7 @@ $j(document).ready(function () {
     // submitButton: $j('#attSubmitButton'),
     onSubmit: onRegFormSubmit,
     fields: {
-      '.electives_6_pa': {
+      '.electives_6_music': {
         required: 'sometimes',
         test: required_if_6,
         message: 'Please choose Band or Chorus' },
