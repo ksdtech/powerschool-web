@@ -65,7 +65,7 @@ $j(document).ready(function () {
         required: 'sometimes',
         test: required_if_7,
         message: 'Please choose Yes or No' },
-      '.electives_7_choir': {
+      '.electives_7_chorus': {
         required: 'sometimes',
         test: required_if_7,
         message: 'Please choose Yes or No' },
@@ -73,7 +73,7 @@ $j(document).ready(function () {
         required: 'sometimes',
         test: required_if_8,
         message: 'Please choose Yes or No' },
-      '.electives_8_choir': {
+      '.electives_8_chorus': {
         required: 'sometimes',
         test: required_if_8,
         message: 'Please choose Yes or No' }
