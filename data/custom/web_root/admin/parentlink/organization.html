@@ -1,0 +1,9 @@
+organizationid,name,address1,city,zip,state,phoneNumber1,faxNumber,type
+~[tlist_sql;
+SELECT school_number, name, schooladdress, schoolcity, schoolzip, schoolstate, schoolphone,schoolfax,CASE 
+          WHEN high_grade=12 THEN 'HIGH'
+          WHEN high_grade between 7 AND 9 THEN 'MIDDLE'
+          WHEN high_grade between 4 AND 6 THEN 'ELEMENTARY'
+          ELSE 'OTHER'
+      END AS type FROM Schools]"~(School_Number)","~(Name)","~(schooladdress)","~(schoolcity)","~(schoolzip)","~(schoolstate)","~(schoolphone)","~(schoolfax)","~(type)"
+[/tlist_sql]

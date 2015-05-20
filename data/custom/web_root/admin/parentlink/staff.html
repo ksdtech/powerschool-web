@@ -1,0 +1,27 @@
+organizationid,teacherinternalID,teacherid,lastName,firstName,phoneNumber,workphoneNumber,emailAddress,webLoginID,address1,city,zip,state,roleid,title
+  ~[tlist_sql;
+SELECT 
+    Schools.school_number AS "organizationid"
+    , Teachers.id AS "teacherinternalID"
+    , Teachers.teachernumber AS "teacherid"
+    , Teachers.last_name AS "lastName"
+    , Teachers.first_name AS "firstName"
+    , Teachers.home_phone AS "phoneNumber"
+    , Teachers.school_phone AS "workphoneNumber"
+    , Teachers.email_addr AS "emailAddress"
+    , Teachers.teacherloginid AS "webLoginID"
+    , Teachers.street AS "address1"
+    , Teachers.city AS "city"
+    , Teachers.zip AS "zip"
+    , Teachers.state AS "state"
+    , CASE 
+         WHEN Teachers.staffstatus = 1 THEN '8'
+         ELSE '10'
+      END AS "roleid"
+    , Teachers.title AS "title"
+FROM 
+    Teachers 
+    JOIN Schools ON Teachers.schoolid = Schools.school_number
+WHERE 1=1 
+    AND Teachers.status = 1]"~(school_number)","~(teacherinternalID)","~(teacherid)","~(lastName)","~(firstName)","~(phoneNumber)","~(workphoneNumber)","~(emailAddress)","~(webLoginID)","~(address1)","~(city)","~(zip)","~(state)","~(roleid)","~(title)"
+[/tlist_sql]
