@@ -1,13 +1,13 @@
 organizationid,teacherinternalID,teacherid,lastName,firstName,phoneNumber,workphoneNumber,emailAddress,webLoginID,address1,city,zip,state,roleid,title
-  ~[tlist_sql;
+~[tlist_sql;
 SELECT 
     Schools.school_number AS "organizationid"
     , Teachers.id AS "teacherinternalID"
     , Teachers.teachernumber AS "teacherid"
     , Teachers.last_name AS "lastName"
-    , Teachers.first_name AS "firstName"
+    , Teachers.PreferredName AS "firstName"
     , Teachers.home_phone AS "phoneNumber"
-    , Teachers.school_phone AS "workphoneNumber"
+    , Teachers.school_phone || ' x' || ps_customfields.getcf('Teachers',Teachers.id,'school_phone_ext') AS "workphoneNumber"
     , Teachers.email_addr AS "emailAddress"
     , Teachers.teacherloginid AS "webLoginID"
     , Teachers.street AS "address1"
