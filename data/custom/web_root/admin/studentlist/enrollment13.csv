@@ -1,0 +1,33 @@
+Student_Number,xEnroll_Status,xSchoolID,xGrade,xFirst_Name,xLast_Name,xGender,xEth,xELA,xELADate
+~[tlist_sql;
+SELECT 
+  s.STUDENT_NUMBER,
+  s.ENROLL_STATUS, 
+  s.SCHOOLID, 
+  s.GRADE_LEVEL,
+  s.FIRST_NAME, 
+  s.LAST_NAME,
+  s.GENDER,
+  s.FEDETHNICITY, 
+  ps_customfields.getstudentscf(s.ID, 'CA_ELAStatus') AS ELAStatus,
+  ps_customfields.getstudentscf(s.ID, 'CA_DateELAStatus') AS DateELAStatus
+FROM STUDENTS s
+WHERE s.ENTRYDATE<=to_date('2013-10-03','YYYY-MM-DD') 
+AND s.EXITDATE>to_date('2013-10-03','YYYY-MM-DD')]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)"
+[/tlist_sql]~[tlist_sql;
+SELECT 
+  s.STUDENT_NUMBER, 
+  s.ENROLL_STATUS, 
+  re.SCHOOLID, 
+  re.GRADE_LEVEL,
+  s.FIRST_NAME, 
+  s.LAST_NAME,
+  s.GENDER,
+  s.FEDETHNICITY, 
+  ps_customfields.getstudentscf(s.ID, 'CA_ELAStatus') AS ELAStatus,
+  ps_customfields.getstudentscf(s.ID, 'CA_DateELAStatus') AS DateELAStatus
+FROM REENROLLMENTS re
+INNER JOIN STUDENTS s ON s.ID=re.STUDENTID
+WHERE re.ENTRYDATE<=to_date('2013-10-03','YYYY-MM-DD') 
+AND re.EXITDATE>to_date('2013-10-03','YYYY-MM-DD')]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)"
+[/tlist_sql]

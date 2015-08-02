@@ -1,0 +1,25 @@
+~[tlist_sql;
+SELECT s.DCID sdcid,
+ sch.Abbreviation school,
+ s.Grade_Level, 
+ UPPER(s.Gender) Gender,
+  CASE 
+    WHEN FedEthnicity = 1 THEN 'Hispanic or Latino'
+    ELSE NVL(r.racevalue, 'No Race/Ethnicity filled in')
+  END Ethnicity
+FROM 
+  (SELECT DISTINCT studentid, schoolid FROM 
+    (SELECT s.id AS studentid, s.schoolid AS schoolid FROM students s WHERE to_date('~[gpv:ckDt]','~[gpv:dateformat]') BETWEEN s.EntryDate AND s.ExitDate-1 AND s.enrollment_schoolid LIKE CASE WHEN ~(curschoolid) = 0 THEN '%' ELSE to_char(~(curschoolid)) END
+      UNION
+      SELECT re.studentid, re.schoolid FROM reenrollments re WHERE to_date('~[gpv:ckDt]','~[gpv:dateformat]') BETWEEN re.EntryDate AND re.ExitDate-1 AND re.SchoolID LIKE CASE WHEN ~(curschoolid) = 0 THEN '%' ELSE to_char(~(curschoolid)) END
+    )
+  ) x 
+  INNER JOIN students s ON s.id = x.studentid
+  INNER JOIN Schools sch ON sch.School_Number = x.schoolid
+  LEFT JOIN (SELECT  sr.studentid AS studentid,  CASE WHEN COUNT(*)=1 THEN MAX(trim(to_char(gen.valuet))) ELSE 'Multi-Racial' END AS racevalue
+    FROM studentrace sr
+    INNER JOIN gen ON sr.racecd = gen.value
+    WHERE gen.cat = 'race'
+    GROUP BY sr.studentid
+    ) r ON r.studentid = x.studentid
+ORDER BY sch.SortOrder, Grade_Level, Ethnicity, Gender desc]{"sdcid":"~(sdcid;l)","Sch":"~(sch;t)","Gr":"~(Gr;l)","Gen":"~(Gen;t)","Eth":"~(Eth;t)"},[/tlist_sql]

@@ -7,8 +7,10 @@ tmp/**/*
 config/app_config.rb
 config/app_config.yml
 config/database.yml
+data/custom/web_root/admin/studentlist/data
 doc/api
 doc/app
 log/*.log
+system/web_root
 .loadpath
 *.tmproj

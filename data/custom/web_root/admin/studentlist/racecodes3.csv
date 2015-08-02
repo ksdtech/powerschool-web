@@ -1,0 +1,19 @@
+Student_Number,xSSID,xGender,xDOB,xFirst,xLast,xSchool,xGrade,xEnroll
+~[tlist_sql;
+SELECT
+s.STUDENT_NUMBER,
+s.STATE_STUDENTNUMBER,
+s.GENDER,
+s.DOB,
+s.FIRST_NAME,
+s.LAST_NAME,
+s.SCHOOLID,
+s.GRADE_LEVEL,
+s.ENROLL_STATUS
+FROM STUDENTS s
+LEFT OUTER JOIN STUDENTRACE sr
+ON sr.STUDENTID=s.ID
+WHERE s.ENROLL_STATUS<=0 AND sr.RACECD IS NULL
+ORDER BY s.GRADE_LEVEL,s.LAST_NAME,s.FIRST_NAME
+]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)"
+[/tlist_sql]
