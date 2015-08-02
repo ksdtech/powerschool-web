@@ -1,1 +1,5 @@
-<p id="student_detail_header">~(studentname) &nbsp; ~([01]grade_level) &nbsp; ~([01]student_number) &nbsp; &nbsp; ~([01]track) &nbsp; &nbsp; ~(studschoolabbr;usestudschool) &nbsp; &nbsp; ~[enrollmentstatus]</p>
+<p id="student_detail_header">~(studentname) &nbsp; ~([01]grade_level) &nbsp;
+Local ID:&nbsp;~([01]student_number) &nbsp;
+Family ID:&nbsp;~([01]Family_Ident) &nbsp;
+SSID:&nbsp;~([01]state_studentnumber) &nbsp;
+~(studschoolabbr;usestudschool) &nbsp; ~[enrollmentstatus]</p>

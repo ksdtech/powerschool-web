@@ -1,0 +1,4 @@
+<!-- custom insertion point student.alert on title_student_end_css.txt wildcard -->
+~[if.~([01]alert_iep)#]<a class="dialogM" title="IEP Alert" href="/admin/alerts/iepalert.html?frn=~(studentfrn)"><img src="/images/alert_iep.gif"></a>&nbsp;&nbsp;[/if]
+~[if.~([01]alert_hearing)#]<a class="dialogM" title="Hearing Alert" href="/admin/alerts/hearingalert.html?frn=~(studentfrn)"><img src="/images/alert_hearing.gif"></a>&nbsp;&nbsp;[/if]
+~[if.~([01]alert_vision)#]<a class="dialogM" title="Vision Alert" href="/admin/alerts/visionalert.html?frn=~(studentfrn)"><img src="/images/alert_vision.gif"></a>&nbsp;&nbsp;[/if]
