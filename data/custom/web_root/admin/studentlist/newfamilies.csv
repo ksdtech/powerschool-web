@@ -1,11 +1,11 @@
-Student_Number,Family_Ident,Last_Name,First_Name,Grade_Level,EntryCode,Enroll_Status,Street,City,State,Zip,Home_Phone,Mother_Last,Mother_First,Mother_Cell,Mother_Work,Mother_Email,Father_Last,Father_First,Father_Cell,Father_Work,Father_Email,Home2_Street,Home2_City,Home2_State,Home2_Zip,Home2_Phone,Mother2_Last,Mother2_First,Mother2_Cell,Mother2_Work,Mother2_Email,Father2_Last,Father2_First,Father2_Cell,Father2_Work,Father2_Email
+Student_Number,Family_Ident,Last_Name,First_Name,Enroll_Status,EntryCode,Grade_Level_Current,Grade_Level_Next,Street,City,State,Zip,Home_Phone,Mother_Last,Mother_First,Mother_Cell,Mother_Work,Mother_Email,Father_Last,Father_First,Father_Cell,Father_Work,Father_Email,Home2_Street,Home2_City,Home2_State,Home2_Zip,Home2_Phone,Mother2_Last,Mother2_First,Mother2_Cell,Mother2_Work,Mother2_Email,Father2_Last,Father2_First,Father2_Cell,Father2_Work,Father2_Email
 ~[tlist_sql;SELECT Student_Number AS SN,
   Family_Ident,
   Last_Name,
   First_Name,
-  Grade_Level,
-  EntryCode,
   Enroll_Status,
+  EntryCode,
+  Grade_Level,
   Street,
   City,
   State,

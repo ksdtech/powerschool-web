@@ -1,6 +1,13 @@
-Student_Number,xSchoolID,xEnroll_Status,xFirst_Name,xLast_Name,RaceCd
+Student_Number,xSchoolID,xFirst_Name,xLast_Name,xRaceCd
 ~[tlist_sql;
-SELECT s.STUDENT_NUMBER, s.SCHOOLID, s.ENROLL_STATUS, s.FIRST_NAME, s.LAST_NAME, r.RACECD FROM STUDENTS s 
-LEFT OUTER JOIN STUDENTRACE r ON r.STUDENTID=s.ID
-WHERE s.ENROLL_STATUS<=0]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)"
+SELECT 
+  s.STUDENT_NUMBER,
+  s.SCHOOLID, 
+  s.FIRST_NAME, 
+  s.LAST_NAME,
+  r.RACECD
+FROM STUDENTRACE r
+LEFT OUTER JOIN STUDENTS s ON r.STUDENTID=s.ID 
+WHERE s.Student_Number IS NOT NULL AND r.RACECD IS NOT NULL
+ORDER BY s.Last_Name, s.First_Name, r.RACECD]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)"
 [/tlist_sql]
