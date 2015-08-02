@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-~[wc:UI_js_includes]
-~[wc:guardian_header]
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>~[text:psx.html.guardian.home.grades_and_attendance__powerschool_parent_access]</title> 
+  ~[wc:guardian_header]
 
-<h1>Page Title ~(studentname)</h1>
-<!-- title -->
-~[if.isstudent]
-<!-- don't allow students to change guardian email settings. -->
-<!-- start of content and bounding box -->
-<p>Your account does not allow access to this page</p>
-<!-- end of content of bounding box -->
-[else]
-<form action="changesrecorded.html" method="POST" id="formid">
-<div class="box-round group">
-<table>
+<!-- The next section of this page is the left navigation. This tag renders the left navigation, and the tags that define the start of the content area. -->
 
-</table>
-<br>
+~[SetPostValue:selectedTab=GradesAndAttendance] 
+~[if.prefschool.sgshowpa=1]~[SetPostValue:showSGFGradebook=false][else]~[SetPostValue:showSGFGradebook=true][/if.prefschool.sgshowpa=1] 
+~[brij_render:common-ps;:GuardianHomeTabs]
 
-<div class="button-row"><button type="submit" value="Submit">Submit</button></div>
+<!-- The content portion of this page is next. All PowerSchool pages have an in-page title ( <h1> ), 
+and a box surrounding the content of the page ( <div class="box-round"></div> ). 
+Optionally the content can be divided into one or more subsections  using <h2> tags for each section 
+heading. Most customization would be in this section of the page. -->
+
+<h1>The In Page Title</h1>
+<div class="box-round"> 
+<h2>Section Title</h2>
+<p>A paragraph of text.</p>
 </div>
 
-</form>
-[/if]
-<!-- end of title and student content -->
+<!-- The last section of this page is the footer. Here are the tags that render the footer -->
 
-<input id="activeNav" type="hidden" value="#btn-emailNotification"/>
-~[wc:guardian_footer]
-</body>
+~[wc:guardian_footer] 
+</body> 
 </html>

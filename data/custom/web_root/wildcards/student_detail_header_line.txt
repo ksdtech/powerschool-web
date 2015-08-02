@@ -1,0 +1,1 @@
+<p id="student_detail_header">~(studentname) &nbsp; ~([01]grade_level) &nbsp; ~([01]student_number) &nbsp; &nbsp; ~([01]track) &nbsp; &nbsp; ~(studschoolabbr;usestudschool) &nbsp; &nbsp; ~[enrollmentstatus]</p>

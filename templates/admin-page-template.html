@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html>
-<!-- start right frame -->
+<!-- non framed -->
 <head>
-<title>Page Title ~(lastfirst), ~(teachernumber)</title>
-~[wc:commonscripts]
+<title>Admin Page Breakdown</title>
 <link href="/images/css/screen.css" rel="stylesheet" media="screen">
 <link href="/images/css/print.css" rel="stylesheet" media="print">
+˜[wc:commonscripts]
 </head>
-
 <body>
+˜[wc:admin_header_css]
+<!-- breadcrumb start -->
+<a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/ui_examples/home.html" target="_top">UI Examples</a> &gt; Admin Pages
+<!-- breadcrumb end -->
 
-~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_faculty.functions.start_page]</a> &gt; <a href="/admin/faculty/search.html" target="_top">~[text:psx.html.admin_faculty.functions.staff]</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">~[text:psx.html.admin_faculty.functions.select_a_staff_member]</a> 
-&gt; Page Title ~(lastfirst), ~(teachernumber)<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+<!-- The next section of this page is the left navigation. This tag renders the left navigation, 
+and the tags that define the start of the content area. -->
 
-<span class="account-photo">~[facultytitlephoto]</span>
-<h1>Page Title ~(lastfirst), ~(teachernumber)</h1>
+˜[wc:admin_navigation_css]
 
+<!-- The content portion of this page is next. All PowerSchool pages have an in-page title ( <h1> ), 
+and a box surrounding the content of the page ( <div class="box-round"></div> ). 
+Optionally the content can be divided into one or more subsections  using <h2> tags for each section 
+heading. Most customization would be in this section of the page. -->
 
-<!-- start of content and bounding box -->
-<div class="box-round">
-
-<table border="0" cellspacing="0" cellpadding="4" class="fourDTable">
-<tr bgcolor="#edf3fe">
-
-</tr>
-</table>
-<br>
-
-<div class="button-row"></div>
+<h1>The In Page Title</h1>
+<div class="box-round"> 
+<h2>Section Title</h2>
+<p>A paragraph of text.</p>
 </div>
-<br>
-<!-- end of content of bounding box -->
 
-~[wc:admin_footer_frame_css]
+<!-- The last section of this page is the footer. Here are the tags that render the footer -->
 
+˜[wc:admin_footer_css]
 </body>
-</html><!-- end right frame -->
+</html>

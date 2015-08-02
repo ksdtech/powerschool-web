@@ -1,17 +1,19 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>~[text:psx.html.guardian.home.grades_and_attendance_]</title>
 ~[wc:guardian_header]
 ~[SetPostValue:selectedTab=GradesAndAttendance]
+~[SetPostValue:psportal=guardian]
 ~[if.prefschool.sgshowpa=1]~[SetPostValue:showSGFGradebook=false][else]~[SetPostValue:showSGFGradebook=true][/if.prefschool.sgshowpa=1]
-~[brij_render:common-ps;:GuardianHomeTabs]
 
 <h1>~[text:psx.html.guardian.home.grades_and_attendance] ~(studentname)</h1>
+    ~[brij_render:common-ps;:GuardianHomeTabs]
+<div class="box-round">
+<!-- start student content -->
 
-<div>
 <h2>Quick Links</h2>
+<div>
 <p>External links will open in new tab or window.</p>
 <ul>
 <li><a target="ksorg" href="http://www.kentfieldschools.org">Kentfield
@@ -43,7 +45,6 @@ WHERE ID=~(curstudid))
   only at the end of each school year.</p>
 </div>
 
-<!-- start student content -->
 <div id="quickLookup">
 ~[if.prefschool.sgshowpa=1]
 [else]
@@ -52,17 +53,17 @@ WHERE ID=~(curstudid))
 ~[SetPostValue:skipDontPrintFilter=1]
 
 ~[if#G.isguardian]
-	~[if.pref.ATT_QuickLookupHide-100=1]
-		~[SetPostValue:att_quicklookuphide_t=1]
-	[else]
-		~[SetPostValue:att_quicklookuphide_t=]
-	[/if.pref.ATT_QuickLookupHide-100=1]
+  ~[if.prefyear.ATT_QuickLookupHide-100=1]
+    ~[SetPostValue:att_quicklookuphide_t=1]
+  [else]
+    ~[SetPostValue:att_quicklookuphide_t=]
+  [/if.prefyear.ATT_QuickLookupHide-100=1]
 [else#G]
-	~[if.pref.ATT_QuickLookupHide-110=1]
-		~[SetPostValue:att_quicklookuphide_t=1]
-	[else]
-		~[SetPostValue:att_quicklookuphide_t=]
-	[/if.pref.ATT_QuickLookupHide-110=1]
+  ~[if.prefyear.ATT_QuickLookupHide-110=1]
+    ~[SetPostValue:att_quicklookuphide_t=1]
+  [else]
+    ~[SetPostValue:att_quicklookuphide_t=]
+  [/if.prefyear.ATT_QuickLookupHide-110=1]
 [/if#G]
 
 ~[wc:att_quicklookmeet_guardian]
@@ -70,14 +71,23 @@ WHERE ID=~(curstudid))
 ~[wc:att_quicklookupprogram]
 </div>
 <!-- end student content -->
+</div>
 <!-- legend-->
-<div id="legend" class="group">
+<div id="legend">
 <h3>~[text:psx.html.guardian.home.legend]</h3>
-	<p><strong>~[text:psx.html.guardian.home.attendance_codes]</strong>&nbsp;~[x:att_code_legend;if.blank.then=Blank]</p>
-	<p><strong>~[text:psx.html.guardian.home.citizenship_codes]</strong>&nbsp;~[x:CitizenshipCodeLegend]</p>
+  <p><strong>~[text:psx.html.guardian.home.attendance_codes]</strong>&nbsp;~[x:att_code_legend;if.blank.then=Blank]</p>
+  <p><strong>~[text:psx.html.guardian.home.citizenship_codes]</strong>&nbsp;~[x:CitizenshipCodeLegend]</p>
 </div>
 
-<input id="activeNav" type="hidden" value="#btn-gradesAttendance"/ />
+<input id="activeNav" type="hidden" value="#btn-gradesAttendance"/>
 ~[wc:guardian_footer]
+~[if.~[gpv:samlTarget]=][else]
+<script>
+    $j(function() {
+        var url = '~[gpv:samlTarget]';
+        window.open(url, '_blank');
+    });
+</script>
+[/if]
 </body>
 </html>
