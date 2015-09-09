@@ -3,6 +3,7 @@ require 'json'
 
 "
 student_number
+schoolid
 family_ident
 first_name
 last_name
@@ -11,6 +12,7 @@ kikdir_approved
 kikdir_at
 reg_will_attend
 reg_grade_level
+grade_level
 nickname
 kikdir_home_addr
 street
@@ -130,7 +132,7 @@ class KikExporter
     'kikdir_at'
   ].map { |f| f.to_sym }
 
-  def initialize
+  def initialize(next_year=false)
     @surnames = [ ]
     @families_by_surname = { }
     @student_by_sid = { }
@@ -140,15 +142,22 @@ class KikExporter
     @listings = [ ]
     @exited = [ ]
     @conflicts = [ ]
+    @next_year = next_year
     
-    # flag to export unlisted families
-    @export_unlisted = true
-    # flag to reject or export unapproved families
-    @export_unapproved = true
     # flag to use all contacts for unapproved students
     @merge_unapproved = true
     # flag to use the last updated student instead of merging
+
     @use_last_updated = false
+    # flag to export unlisted families
+    @export_unlisted = true
+    # flag to reject or export unapproved families
+    @export_unapproved = false
+    # flag to dump tab-formatted previews for those whd did not respond
+    @preview_unapproved = false
+
+    # dependency
+    @export_unapproved = true if @preview_unapproved
   end
   
   def copy_fields(s, fields)
@@ -272,11 +281,12 @@ class KikExporter
       all[sid][:mother_abbr] = mabbr
       all[sid][:father_abbr] = fabbr
     
+      # emails
       if !s[PARENT_FIELDS[i+11]]
-        mmail = s[PARENT_FIELDS[i+12]] || ''
+        mmail = (s[PARENT_FIELDS[i+12]] || '').strip
       end
       if !s[PARENT_FIELDS[i+13]]
-        fmail = s[PARENT_FIELDS[i+14]] || ''
+        fmail = (s[PARENT_FIELDS[i+14]] || '').strip
       end
       all[sid][:mother_email] = mmail
       all[sid][:father_email] = fmail
@@ -459,6 +469,7 @@ class KikExporter
     last_names = [ ]
     
     # no preview if any unlisted
+    contacts = [ ]
     @students_by_fid[fid].each do |sid|
       s = @student_by_sid[sid]
       if s[:kikdir_unlisted] == 'Y'
@@ -467,6 +478,10 @@ class KikExporter
         return preview
       end
       all_students << sid
+      contacts << (s[:mother_email] || '').strip.downcase
+      contacts << (s[:father_email] || '').strip.downcase
+      contacts << (s[:mother2_email] || '').strip.downcase
+      contacts << (s[:father2_email] || '').strip.downcase
       
       # test: use last updated student
       updated_at = s[:form4_updated_at]
@@ -523,6 +538,7 @@ class KikExporter
     if !approved_student
       preview[:approved] = false
       unless @export_unapproved
+        preview[:contacts] = contacts.delete_if { |s| s == '' }.uniq
         return preview
       end
     end
@@ -577,6 +593,7 @@ class KikExporter
     CSV.foreach(fname, :col_sep => "\t", :row_sep => "\n", :headers => true,
       :header_converters => :symbol) do |row|
       s = row.to_hash
+      next unless s[:schoolid] == '103' || s[:schoolid] = '104'
       
       sid = s[:student_number]
       fid = s[:family_ident]
@@ -592,14 +609,21 @@ class KikExporter
       surname = s[:last_name].upcase
       s[:surname] = surname
 
+      # if running in current year, override these
+      if !@next_year
+        s[:reg_will_attend] = 'attending'
+        s[:reg_grade_level] = s[:grade_level]
+      end
+
       # skip non-returning students
       status = s[:reg_will_attend]
       if status && status.match(/^nr-/)
         @exited << copy_fields(s, EXITED_FIELDS)
       else
         # set 'grade_level' to integer of 'reg_grade_level' with TK and K = 0
-        if s[:reg_grade_level] =~ /^[1-8]$/
-          s[:grade_level] = s[:reg_grade_level].to_i
+        grade = s[:reg_grade_level]
+        if grade =~ /^[1-8]$/
+          s[:grade_level] = grade.to_i
         else
           s[:grade_level] = 0
         end
@@ -650,7 +674,7 @@ class KikExporter
     json_object = { 
       :exited => @exited, 
       :unlisted => @export_unlisted ? @unlisted : [ ],
-      :unapproved => @export_unapproved ? [ ] : @unapproved, 
+      :unapproved => @export_unapproved ? @unapproved : [ ], 
       :listings => @listings,
       :conflicting => @conflicts
     }
@@ -664,6 +688,25 @@ class KikExporter
     total = @exited.size + @unlisted.size + @listings.size
     total += @unapproved.size unless @export_unapproved
     $stderr.puts("#{total} total")
+
+    unapproved_contacts = @unapproved.map { |p| p[:contacts] }.flatten.uniq.sort
+    $stderr.puts("unapproved contact list")
+    $stderr.puts(unapproved_contacts.join("\n"))
+
+    unapproved_families = @unapproved.map { |p| p[:family_id] }
+    $stderr.puts("unapproved family ids")
+    $stderr.puts(unapproved_families.join(","))
+
+    if @preview_unapproved
+      @unapproved.each do |p|
+        $stderr.puts '--------'
+        $stderr.puts p[:a1]
+        $stderr.puts p[:b1]
+        $stderr.puts ''
+        $stderr.puts p[:a2]
+        $stderr.puts p[:b2]
+      end
+    end
   end
 end
 
