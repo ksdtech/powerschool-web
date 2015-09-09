@@ -1,0 +1,33 @@
+Student_Number,FEDETHNICITY,FIRST_NAME,LAST_NAME,SCHOOLID,GRADE_LEVEL,ENROLL_STATUS,R100_NA,R201_CH,R202_JP,R203_KR,R204_VN,R205_AI,R206_LA,R207_CA,R208_HM,R299_OA,R301_HA,R302_GU,R303_SA,R304_TA,R399_OP,R400_FI,R600_BL,R700_WH,C700_WH
+~[tlist_sql;
+SELECT
+s.STUDENT_NUMBER,
+s.FEDETHNICITY,
+s.FIRST_NAME,
+s.LAST_NAME,
+s.SCHOOLID,
+s.GRADE_LEVEL,
+s.ENROLL_STATUS
+ps_customfields.getstudentscf(s.ID, 'race_100') AS R100_NA,
+ps_customfields.getstudentscf(s.ID, 'race_201') AS R201_CH,
+ps_customfields.getstudentscf(s.ID, 'race_202') AS R202_JP,
+ps_customfields.getstudentscf(s.ID, 'race_203') AS R203_KR,
+ps_customfields.getstudentscf(s.ID, 'race_204') AS R204_VN,
+ps_customfields.getstudentscf(s.ID, 'race_205') AS R205_AI,
+ps_customfields.getstudentscf(s.ID, 'race_206') AS R206_LA,
+ps_customfields.getstudentscf(s.ID, 'race_207') AS R207_CA,
+ps_customfields.getstudentscf(s.ID, 'race_208') AS R208_HM,
+ps_customfields.getstudentscf(s.ID, 'race_299') AS R299_OA,
+ps_customfields.getstudentscf(s.ID, 'race_301') AS R301_HA,
+ps_customfields.getstudentscf(s.ID, 'race_302') AS R302_GU,
+ps_customfields.getstudentscf(s.ID, 'race_303') AS R303_SA,
+ps_customfields.getstudentscf(s.ID, 'race_304') AS R304_TA,
+ps_customfields.getstudentscf(s.ID, 'race_399') AS R399_OP,
+ps_customfields.getstudentscf(s.ID, 'race_400') AS R400_FI,
+ps_customfields.getstudentscf(s.ID, 'race_600') AS R600_BL,
+ps_customfields.getstudentscf(s.ID, 'race_700') AS R700_WH
+FROM STUDENTS s
+WHERE s.ENROLL_STATUS<=0
+ORDER BY s.STUDENT_NUMBER
+]"~(Student_Number)","~(FEDETHNICITY)","~(FIRST_NAME)","~(LAST_NAME)","~(SCHOOLID)","~(GRADE_LEVEL)","~(ENROLL_STATUS)","~(R100_NA)","~(R201_CH)","~(R202_JP)","~(R203_KR)","~(R204_VN)","~(R205_AI)","~(R206_LA)","~(R207_CA)","~(R208_HM)","~(R299_OA)","~(R301_HA)","~(R302_GU)","~(R303_SA)","~(R304_TA)","~(R399_OP)","~(R400_FI)","~(R600_BL)","~(R700_WH)"
+[/tlist_sql]
