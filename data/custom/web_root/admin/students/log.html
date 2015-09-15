@@ -24,7 +24,7 @@
 </tr>
 <tr>
 <td colspan="2" align="center">
-~[if.~(schoolid)=104]
+~[if.~(curschoolid)=104]
 <a href="log_letter_kent_all.html?frn=~(studentfrn)">Create Summary Letter</a>
 [else]
 <a href="log_letter_bacich_all.html?frn=~(studentfrn)">Create Summary Letter</a>
@@ -32,21 +32,29 @@
 </td>
 </tr>
 <tr>
-<td colspan="2" align="center"><a href="customlogentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">~[text:psx.html.admin_students.log.new]</a></td>
+<td colspan="2" align="center"><a href="customlogentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">~[text:psx.html.admin_students.log.new]</a><a href="https://ksd-progressreports.appspot.com/reportLister/~([01]Student_Number)" target="_blank" class="button">View Progress Reports</a><a href="https://ksd-progressreports.appspot.com/createNewProgressReport?teacher_name=~[x:username]&grade_level=~(grade_level)&student_number=~([01]Student_Number)&first_name=~([01]First_Name)&last_name=~([01]Last_Name)&emailGuardian=~([01]GuardianEmail)&emailMother1=~([01]Mother_email)&emailMother2=~([01]Mother2_email)&emailFather1=~([01]Father_email)&emailFather2=~([01]Father2_email)" target="_blank" class="button" id="createNewProgressReport">Create New Progress Report</a></td>
+<!-- <td colspan="2" align="center"><a href="customlogentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">~[text:psx.html.admin_students.log.new]</a><a href="/admin/students/progressreports/progressreportentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">Create Progress Report</a></td> -->
 </tr>
+
 <tr bgcolor="#f6f6f6">
 <td class="bold">~[text:psx.html.admin_students.log.date]</td>
 <td class="bold">~[text:psx.html.admin_students.log.description]</td>
 </tr>
 <tr bgcolor="#edf3fe">~[tlist;log;alternatecolor;nonemessage=~[text:psx.html.admin_students.log.no_log_entries_were_found_for_this_student];sortcmd;entry_date,&lt;]
 <td><a href="customlogentry.html?frn=~(frn)&studentfrn=~(studentfrn)">~([08]entry_date)</a><br>
-~[if.~(schoolid)=104]
-<a href="log_letter_kent_single.html?frn=~(frn)">Create Letter</a>
+~[if.~(curschoolid)=104]
+<a href="log_letter_kent_single.html?frn=~(frn)" class="~([08]subtype)_LetterLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">Create Letter</a>
 [else]
-<a href="log_letter_bacich_single.html?frn=~(frn)">Create Letter</a>
-[/if]
+<a href="log_letter_bacich_single.html?frn=~(frn)" class="~([08]subtype)_LetterLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">Create Letter</a>
+[/if]<ol class="text">
+</ol>
+
 </td>
-<td>~([08]entry_author) - <span class="bold">~([08]subject) - ~([08]consequence)</span><br>~([08]entry)</td>
+<td>
+  ~([08]entry_author) - <span class="bold"><span class="~([08]subtype)_EntryLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">~([08]subject)</span> - ~([08]consequence)</span>
+  <br>
+  ~([08]entry)
+</td>
 </tr>
 </table>
 <br>
@@ -57,6 +65,17 @@
 <!-- end of content of bounding box -->
 
 ~[wc:admin_footer_frame_css]
+
+
+<script type="text/javascript">
+// This will append &hasIEPAlert=1 to the Progress Report creation link
+// if the student has an IEP alert at the top of the page.
+var frameDocument = $j('#frameContent', top.document)[0].contentDocument;
+if ($j(frameDocument).find('a.dialogM[title="IEP Alert"]').length > 0) {
+  var _href = $j("#createNewProgressReport").attr("href");
+  $j("#createNewProgressReport").attr("href", _href + '&hasIEPAlert=1');
+}
+</script>
 
 </body>
 </html><!-- end right frame -->
