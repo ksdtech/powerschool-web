@@ -1,0 +1,18 @@
+Home Room Report
+Min Grade Level,~(gpv.grade_level_min)
+Max Grade Level,~(gpv.grade_level_max)
+Course Number,~(gpv.course_number)
+Term IDs,"~(gpv.term_ids)"
+Student Number,SchoolID,First Name,Last Name,Grade Level,Course Number,Section Number,Expression,TeacherNumber,Teacher First,Teacher Last,Home Room
+~[tlist_sql;SELECT s.student_number,s.schoolid,s.first_name,s.last_name,s.grade_level,
+sec.course_number,sec.section_number,sec.expression,
+t.teachernumber,t.first_name,t.last_name,sec.room
+FROM cc 
+INNER JOIN students s ON s.id=cc.studentid
+INNER JOIN sections sec ON sec.id=cc.sectionid
+INNER JOIN teachers t ON t.id=cc.teacherid
+WHERE s.grade_level>=~(gpv.grade_level_min)
+AND s.grade_level<=~(gpv.grade_level_max)
+AND cc.course_number=~(gpv.course_number)
+AND cc.termid in (~(gpv.term_ids))]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)","~(f12)"
+[/tlist_sql]

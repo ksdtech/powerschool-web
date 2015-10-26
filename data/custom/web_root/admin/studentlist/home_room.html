@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Export Home Room Data</title>
+<!-- required scripts -->
+  ~[wc:commonscripts] 
+<!-- Required style sheets: screen.css, and print.css --> 
+  <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+  <link href="/images/css/print.css" rel="stylesheet" media="print">
+</head> 
+<body> 
+  ~[wc:admin_header_css] 
+    <!-- breadcrumb start -->Export Home Room Data<!-- breadcrumb end --> 
+<!-- start of main menu and content --> 
+  ~[wc:admin_navigation_css] 
+<!-- Start of Page --> 
+  <h1>Export Home Room Data</h1> 
+<!-- start of content area --> 
+  <div class="box-round"> 
+<form action="home_room.csv" method="POST">
+<table>
+<tr>
+<td>Minimum Grade Level</td>
+<td><select name="grade_level_min">
+~[if.~(curschoolid)=103]
+<option value="0">K
+<option value="1">1
+<option value="2">2
+<option value="3">3
+<option value="4">4
+[else]
+<option value="5">5
+<option value="6">6
+<option value="7">7
+<option value="8">8
+[/if]
+</select></td>
+</tr>
+<tr>
+<td>Maximum Grade Level</td>
+<td><select name="grade_level_max">
+~[if.~(curschoolid)=103]
+<option value="0">K
+<option value="1">1
+<option value="2">2
+<option value="3">3
+<option value="4">4
+[else]
+<option value="5">5
+<option value="6">6
+<option value="7">7
+<option value="8">8
+[/if]
+</select></td>
+</tr>
+<tr>
+<td>Course Number</td>
+<td><select name="course_number">
+~[tlist_sql;SELECT DISTINCT c.course_number,c.course_name FROM courses c
+INNER JOIN sections s ON s.course_number=c.course_number
+WHERE s.schoolid=~(curschoolid) AND s.termid>=2500 and s.termid<=2503 
+ORDER BY c.course_number
+]<option value="~(f1)">~(f1) ~(f2)
+[/tlist_sql]
+</select></td>
+</tr>
+<tr>
+<td>Term ID(s)</td>
+<td><select name="term_ids" multiple>
+<option value="2500">2500 FY
+~[if.~(curschoolid)=104]
+<option value="2501">2501 T1
+<option value="2502">2502 T2
+<option value="2503">2503 T3
+[/if]
+</select></td>
+</tr>
+</table>
+<input type="submit" name="submit" value="Submit">
+</form>
+  </div> 
+<!-- end of content area --> 
+  ~[wc:admin_footer_css] 
+</body> 
+</html>
