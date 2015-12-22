@@ -130,7 +130,7 @@ function timestamp_now() {
 }
 
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function {
+  $j("#" + form_id).submit(function() {
     $j("#" + form_id + "upd_by").val($j("#userid").val()); 
     $j("#" + form_id + "upd_at").val(timestamp_now()); 
   });
@@ -141,7 +141,7 @@ function bind_form_updated(form_id) {
 ~[wc:guardian_header]
 
 <script>
-$j(document).ready(function () {
+$j(document).ready(function() {
   bind_form_updated("form02");
   $j(".private").hide();
   

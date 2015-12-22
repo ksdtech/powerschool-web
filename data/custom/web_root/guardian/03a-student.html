@@ -51,7 +51,7 @@ function timestamp_now() {
 }
 
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function {
+  $j("#" + form_id).submit(function() {
     $j("#" + form_id + "upd_by").val($j("#userid").val()); 
     $j("#" + form_id + "upd_at").val(timestamp_now()); 
   });
@@ -808,7 +808,7 @@ by adults in the home?<br/>
 <tr><td><input type="text" name="[01]Previous_School_Address" value="" size="30" maxlength="50" /></td>
 <td><input type="text" name="[01]Previous_School_City" value="" size="20" /></td>
 <td><input type="text" name="[01]Previous_School_Phone" value="" size="17" 
-data-validation='{"textMask":"Pearson_common_phonenumber","maxlength":"30","type":"text","key":"students.previous_school_phone"}'/></td></tr>
+data-validation='{"textMask":"Pearson_common_phonenumber","maxlength":"30","type":"text","key":"students.previous_school_phone"}' /></td></tr>
 
 <tr><td colspan="2">Last grade level in this school</td>
 <td><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10" /></td></tr>
