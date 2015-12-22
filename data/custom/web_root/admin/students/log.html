@@ -15,49 +15,67 @@
 ~[wc:title_student_begin_css]~[text:psx.html.admin_students.log.log_entries2]~[wc:title_student_end_css]
 
 <!-- start of content and bounding box -->
+<script>
+function setlogids() {
+  var logids = "";
+  $("input.log_ids:checked").each(function(index, element) {
+    if (logids != "") {
+      logids += ",";
+    }
+    logids += $(this).val();
+  });
+  $("#logids").val(logids);
+}
+</script>
+
 <div class="box-round">
+~[if.~(curschoolid)=104]
+<form action="log_letter_kent_all.html?frn=~(studentfrn)" method="POST" onsubmit="setlogids()">
+[else]
+<form action="log_letter_bacich_all.html?frn=~(studentfrn)" method="POST" onsubmit="setlogids()">
+[/if]
+<input type="hidden" name="logids" id="logids" value="">
 
 ~[x:selectlogentries]
 <table border="0" cellspacing="0" cellpadding="4">
 <tr>
-<td colspan="2" align="center"><a href="disciplinealert.html?frn=~(studentfrn)">~[text:psx.html.admin_students.log.edit_discipline_alert]</a></td>
+<td colspan="3" align="center"><a href="disciplinealert.html?frn=~(studentfrn)">~[text:psx.html.admin_students.log.edit_discipline_alert]</a></td>
 </tr>
 <tr>
-<td colspan="2" align="center">
-~[if.~(curschoolid)=104]
-<a href="log_letter_kent_all.html?frn=~(studentfrn)">Create Summary Letter</a>
-[else]
-<a href="log_letter_bacich_all.html?frn=~(studentfrn)">Create Summary Letter</a>
-[/if]
+<td colspan="3" align="center">
+<input type="submit" name="submit" value="Create Summary Letter">
 </td>
 </tr>
 <tr>
-<td colspan="2" align="center"><a href="customlogentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">~[text:psx.html.admin_students.log.new]</a><a href="https://ksd-progressreports.appspot.com/reportLister/~([01]Student_Number)" target="_blank" class="button">View Progress Reports</a><a href="https://ksd-progressreports.appspot.com/createNewProgressReport?teacher_name=~[x:username]&grade_level=~(grade_level)&student_number=~([01]Student_Number)&first_name=~([01]First_Name)&last_name=~([01]Last_Name)&emailGuardian=~([01]GuardianEmail)&emailMother1=~([01]Mother_email)&emailMother2=~([01]Mother2_email)&emailFather1=~([01]Father_email)&emailFather2=~([01]Father2_email)" target="_blank" class="button" id="createNewProgressReport">Create New Progress Report</a></td>
+<td colspan="3" align="center"><a href="customlogentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">~[text:psx.html.admin_students.log.new]</a><a href="https://ksd-progressreports.appspot.com/reportLister/~([STUDENTS]Student_Number)" target="_blank" class="button">View Progress Reports</a><a href="https://ksd-progressreports.appspot.com/createNewProgressReport?teacher_name=~[x:username]&grade_level=~(grade_level)&student_number=~([STUDENTS]Student_Number)&first_name=~([STUDENTS]First_Name)&last_name=~([STUDENTS]Last_Name)&emailGuardian=~([STUDENTS]GuardianEmail)&emailMother1=~([STUDENTS]Mother_email)&emailMother2=~([STUDENTS]Mother2_email)&emailFather1=~([STUDENTS]Father_email)&emailFather2=~([STUDENTS]Father2_email)" target="_blank" class="button" id="createNewProgressReport">Create New Progress Report</a></td>
 <!-- <td colspan="2" align="center"><a href="customlogentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">~[text:psx.html.admin_students.log.new]</a><a href="/admin/students/progressreports/progressreportentry.html?frn=008-1&studentfrn=~(studentfrn)" id="btnNew" name="btnNew" class="button">Create Progress Report</a></td> -->
 </tr>
 
 <tr bgcolor="#f6f6f6">
+<td>Select</td>
 <td class="bold">~[text:psx.html.admin_students.log.date]</td>
 <td class="bold">~[text:psx.html.admin_students.log.description]</td>
 </tr>
 <tr bgcolor="#edf3fe">~[tlist;log;alternatecolor;nonemessage=~[text:psx.html.admin_students.log.no_log_entries_were_found_for_this_student];sortcmd;entry_date,&lt;]
-<td><a href="customlogentry.html?frn=~(frn)&studentfrn=~(studentfrn)">~([08]entry_date)</a><br>
+<td><input class="log_id" id="log_~([LOG]id)" name="log_~([LOG]id)" type="checkbox" value="~([LOG]id)"></td>
+<td><a href="customlogentry.html?frn=~(frn)&studentfrn=~(studentfrn)">~([LOG]entry_date)</a><br>
 ~[if.~(curschoolid)=104]
-<a href="log_letter_kent_single.html?frn=~(frn)" class="~([08]subtype)_LetterLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">Create Letter</a>
+<a href="log_letter_kent_single.html?frn=~(frn)" class="~([LOG]subtype)_LetterLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">Create Letter</a>
 [else]
-<a href="log_letter_bacich_single.html?frn=~(frn)" class="~([08]subtype)_LetterLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">Create Letter</a>
+<a href="log_letter_bacich_single.html?frn=~(frn)" class="~([LOG]subtype)_LetterLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">Create Letter</a>
 [/if]
 </td>
 <td>
-  ~([08]entry_author) - <span class="bold"><span class="~([08]subtype)_EntryLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">~([08]subject)</span> - ~([08]consequence)</span>
+  ~([LOG]entry_author) - <span class="bold"><span class="~([LOG]subtype)_EntryLink" data-frn="~(frn)" data-studentfrn="~(studentfrn)">~([LOG]subject)</span> - ~([LOG]consequence)</span>
   <br>
-  ~([08]entry)
+  ~([LOG]entry)
 </td>
 </tr>
 </table>
 <br>
 
 <div class="button-row"></div>
+</form>
 </div>
 <br>
 <!-- end of content of bounding box -->

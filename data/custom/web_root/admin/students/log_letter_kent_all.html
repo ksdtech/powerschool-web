@@ -35,11 +35,15 @@
 	<th><font face="times" size="-1">Entered by</font></th>
 	<th><font face="times" size="-1">Entry text</font></th>
 </tr>
-<tr valign="top" bgcolor="#FFFFFF">~[tlist;log;nonemessage=No log entries were found for this student.;sortcmd;entry_date,&lt;]
+<tr valign="top" bgcolor="#FFFFFF">
+~[tlist_sql;SELECT entry_date,entry_time,entry_author,entry FROM log
+WHERE id IN (~(gpv.log_ids))
+ORDER_BY entry_date DESC]
 <td><font face=times>~(entry_date)<br>
   ~(entry_time)</font></td>
 <td><font face=times>~(entry_author)</font></td>
 <td><font face=times>~(entry)</font></td>
+[/tlist_sql]
 </tr>
 </table></center>
 <p>Please feel free to contact me if you have any questions regarding this matter. 

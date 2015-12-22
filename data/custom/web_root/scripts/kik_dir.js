@@ -1,12 +1,64 @@
 
-function get_sib_names(sibs) {
-  // assume sibs array has all the info about siblings:
-  // .status
-  // .grade
-  // .first
-  // .last
-  // right now, we don't filter on last name, but we could
-  var sib_names = [ ];
+// Sibling data filled in by tlist_sql based on Family_Ident matches
+// <input type="hidden" class="sibdata" id="sib_stuid_113960" value="17660" />
+// <input type="hidden" class="sibdata" id="sib_famid_113960" value="REDLD3FE" />
+// <input type="hidden" class="sibdata" id="sib_first_113960" value="Ethan" />
+// <input type="hidden" class="sibdata" id="sib_last_113960" value="Redlin" />
+// <input type="hidden" class="sibdata" id="sib_grade_113960" value="0" />
+// <input type="hidden" class="sibdata" id="sib_nick_113960" value="" />
+// <input type="hidden" class="sibdata" id="sib_unlisted_113960" value="" />
+// <input type="hidden" class="sibdata" id="sib_approved_113960" value="" />
+// <input type="hidden" class="sibdata" id="sib_approval_113960" value="" />
+
+var sibs = [ ]
+var sib_data = { }
+var sibs_unlisted = [ ]
+var last_sib_approved = null;
+var last_approval = null;
+var sib_names = [ ];
+
+function get_sibling_data() {
+  var my_sid = 'S' + $j('#my_id').val();
+  var fam_id = null;
+  $j('.sibfamid').each(function(i, el) {
+    var val = el.value;
+    if (!fam_id && val != '') { fam_id = val; }
+  });
+
+  $j('.sibdata').each(function(i, el) {
+    var m = el.id.match(/sib_([a-z]+)_([0-9]+)/);
+    if (m) {
+      var attr = m[1];
+      var sid = 'S' + m[2];
+      if (fam_id || my_sid == sid) {
+        if (!(sid in sib_data)) {
+          sibs.push(sid);
+          sib_data[sid] = { }
+        };
+        sib_data[sid][attr] = el.value;
+      }
+    }
+  });
+  
+  // Pick nickname if they have one
+  // See if other sibs have approved a preview or asked to be unlisted
+  for (var i = 0; i < sibs.length; i++) {
+    var sid = sibs[i];
+    var the_sib = sib_data[sid];
+    if (the_sib.nick != '') {
+      the_sib.first = the_sib.nick;
+    }
+  }
+
+  // Sort by grade and name
+  sibs.sort(function(a, b) {
+    var by_grade = parseInt(sib_data[a].grade) - parseInt(sib_data[b].grade);
+    if (by_grade != 0) { return by_grade; }
+    return sib_data[a].first.localeCompare(sib_data[b].first);
+  });
+  
+  var unlisted_ul = $j('#unlisted_siblings');
+  var approved_ul = $j('#approved_siblings');
   for (var i = 0; i < sibs.length; i++) {
     var sid = sibs[i];
     var the_sib = sib_data[sid];
@@ -15,8 +67,23 @@ function get_sib_names(sibs) {
       if (grade == '0') { grade = 'K' }
       sib_names.push(the_sib.first + ' (' + grade + ')');
     }
-  }
-  return sib_names;
+    if (sid != my_sid) {
+      if (the_sib.unlisted == 'Y') {
+        sibs_unlisted.push(sid);
+        unlisted_ul.append('<li><a href="javascript:switchStudent(' + the_sib.stuid + ');">' + the_sib.first + ' ' + the_sib.last + '</a></li>');
+      } else {
+        if (the_sib.approved == '1' && the_sib.approval != '') {
+          if (last_approval == null || the_sib.approval.localCompare(last_approval)) {
+            last_sib_approved = sid;
+            last_approval = the_sib.approval;
+            approved_ul.append('<li><a href="javascript:switchStudent(' + the_sib.stuid + ');">' + the_sib.first + ' ' + the_sib.last + '</a></li>');
+          }
+        }
+      }
+    }
+  }  
+  
+  
 }
 
 var PRIMARY_PARENTS = 0;
@@ -67,10 +134,7 @@ var pfields = [
   '#father2_cell'
 ]
 
-
 function get_parents(i) {
-  // i = index into array of parent fields
-  
   var result = [ ];
   var street   = '';
   var city     = '';
@@ -203,47 +267,58 @@ function get_parents(i) {
   return result;
 }
 
-
-// build 4 table cells: a1, b1, a2, b2
-//
-// +----+----+
-// | a1 | b1 |
-// +----+----+
-// | a2 | b2 |
-// +----+----+
-//
-// a1 contains sibling names, parent names, street address and emails
-// b1 contains phone numbers
-// a2 contains parent names, street address and emails for 2nd home
-// b2 contains phone numbers for 2nd home
-
-var i;
-var sib_names = get_sib_names(sibs);
-var a1 = $j('#my_last').val().toUpperCase() + ' ' + sib_names.join(', ');
-var home  = get_parents(PRIMARY_PARENTS);
-// home array contains 4 elements (possibly empty):
-// 0 - parent names (one line)
-// 1 - home street address (one line)
-// 2 - email addresses ('<br>' separated lines)
-// 3 - phone numbers ('<br>' separated lines)
-for (i = 0; i < 3; i++) {
-  if (home[i] != '') {
-    a1 += ('<br>' + home[i]);
+function update_preview() {
+  $j('.kpreview_off').hide();
+ 
+  var other_unlisted = sibs_unlisted.length > 0;
+  var this_unlisted  = $j('#kikdir_unlisted_y').prop('checked');
+  var no_decision    = !this_unlisted && !$j('#kikdir_unlisted_n').prop('checked');
+  var no_preview = no_decision || this_unlisted || other_unlisted || last_sib_approved;
+  if (no_preview) {
+    $j('.kpreview_on').hide();
+    $j('#preview_approved').prop('checked', false).prop('disabled', true)
+    if (this_unlisted) {
+      $j('#this_unlisted').show();
+    }
+    else if (other_unlisted) {
+      $j('#other_unlisted').show();
+    }
+    else if (last_sib_approved) {
+      var the_sib = sib_data[last_sib_approved];
+      $j('#other_approved').show();
+    }
+    else if (no_decision) {
+      $j('#no_decision').show();
+    }
+    return;
   }
-}
-$j('#preview_a1').html(a1);
-$j('#preview_b1').html(home[3]);
 
-var a2 = '';
-var home2 = get_parents(SECONDARY_PARENTS);
-for (i = 0; i < 3; i++) {
-  if (home2[i] != '') {
-    if (a2 == '') {
-      a2 = home2[i];
-    } else {
-      a2 += ('<br>' + home2[i]);
+  $j('#preview_approved').prop('disabled', false);
+  $j('.kpreview_on').show();
+  
+  var i;
+  var a1 = $j('#my_last').val().toUpperCase() + ' ' + sib_names.join(', ');
+  var home  = get_parents(PRIMARY_PARENTS);
+  for (i = 0; i < 3; i++) {
+    if (home[i] != '') {
+      a1 += ('<br>' + home[i]);
     }
   }
+  $j('#preview_a1').html(a1);
+  $j('#preview_b1').html(home[3]);
+  
+  var a2 = '';
+  var home2 = get_parents(SECONDARY_PARENTS);
+  for (i = 0; i < 3; i++) {
+    if (home2[i] != '') {
+      if (a2 == '') {
+        a2 = home2[i];
+      } else {
+        a2 += ('<br>' + home2[i]);
+      }
+    }
+  }
+  $j('#preview_a2').html(a2);
+  $j('#preview_b2').html(home2[3]);
+  return true;
 }
-$j('#preview_a2').html(a2);
-$j('#preview_b2').html(home2[3]);
