@@ -18,6 +18,7 @@ function bind_form_updated(form_id) {
       !validate_required_check('#annual_notice') ||
       !validate_required_check('.release_directory_info') ||
       !validate_required_check('.previous_school_contact') ||
+      !validate_required_check('.pta_contact') ||
       !validate_required_check('.emergency_care') ||
       !validate_required_check('.ipm_notifications') ||
       !validate_required_check('.off_campus_walks') ||
@@ -49,6 +50,7 @@ $j(document).ready(function() {
   checkbox_required('#annual_notice');
   checkbox_required('.release_directory_info');
   checkbox_required('.previous_school_contact');
+  checkbox_required('.pta_contact');
   checkbox_required('.emergency_care');
   checkbox_required('.ipm_notifications');
   checkbox_required('.off_campus_walks');
@@ -82,11 +84,11 @@ $j(document).ready(function() {
 <div id="form10-contents" align="center" style="width: 98%">
 <div id="form10-setup" class="box-round group" style="width: 720px">
 <table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
-<tr class="headerrow"><td colspan="4" class="bold">Authorizations and Permissions</td></tr>
+<tr class="headerrow"><td colspan="4">Authorizations and Permissions</td></tr>
 <tr><td colspan="4">Please answer all of the sections below and answer affirmatively
 to rquired acknowledgments.</td></tr>
 
-<tr class="headerrow"><td class="bold" colspan="4">1. Acknowledgement of Notice of Rights of Parent or Guardian</td></tr>
+<tr class="headerrow"><td colspan="4">1. Acknowledgement of Notice of Rights of Parent or Guardian</td></tr>
 <tr><td colspan="4">Please click the link below to download or view the 
   Annual Notice of your parent or guardian rights under California
   State law. The Notice is available in English or Spanish.  After reading
@@ -99,7 +101,7 @@ to rquired acknowledgments.</td></tr>
     Yo he (nosotros hemos) leido el Notificacion Anual a Los Padres y yo acuso recibo de la informacion sobre mis (nosotros) derechos, responsibilidades y protecciones.
 </td></tr>   
   
-<tr class="headerrow"><td class="bold" colspan="4">2. Release of Pupil Directory Information</td></tr>
+<tr class="headerrow"><td colspan="4">2. Release of Pupil Directory Information</td></tr>
 <tr><td colspan="4">The District may release Pupil Directory Information to non-profit
   organizations and the news media in accordance with California law. As explained
   in the Annual Notice, parents of students aged 17 or younger have the right 
@@ -114,7 +116,7 @@ to rquired acknowledgments.</td></tr>
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="release_directory_info" name="[01]release_directory_info" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to release directory information regarding ~(first_name) ~(last_name)</td></tr>  
 
-<tr class="headerrow"><td class="bold" colspan="4">3. Contacting Student's Previous School</td></tr>
+<tr class="headerrow"><td colspan="4">3. Contacting Student's Previous School</td></tr>
 <tr><td colspan="4">Please indicate whether you grant permission to the Kentfield School District 
   to contact your student's
   previous school regarding recommendations for placement.</td></tr>
@@ -124,7 +126,20 @@ to rquired acknowledgments.</td></tr>
   <td colspan="3"><input type="radio" class="previous_school_contact" name="[01]previous_school_contact" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to contact previous school</td></tr>
 
 <!-- table -->
-<tr class="headerrow"><td class="bold" colspan="4">4. Emergency Treatment Authorization</td></tr>
+<tr class="headerrow"><td colspan="4">4. Kentfield PTA Contacts</td></tr>
+<tr><td colspan="4">Do you give permission to the Kentfield School District to share the 
+ contact information you listed during the registration process with the Kentfield Schools PTA 
+ so you can receive email with school and classroom news, curriculum updates, and PTA program 
+ information from Kent Grade Level Coordinators, Bacich Room Parents and/or KSPTA? 
+ Please select one of the following answers.</td></tr>
+<tr><td width="10">&nbsp;</td>
+  <td colspan="3"><input type="radio" name="[01]pta_contact" class="pta_contact" value="Yes" />YES, I (we) ALLOW the District to share my (our) contact information with the Kentfield Schools PTA.
+    </td></tr>
+<tr><td width="10">&nbsp;</td>
+  <td colspan="3"><input type="radio" name="[01]pta_contact" class="pta_contact" value="No" />NO, I (we) DO NOT ALLOW the District to share my (our) contact information with the Kentfield Schools PTA.</td></tr>
+
+<!-- table -->
+<tr class="headerrow"><td colspan="4">5. Emergency Treatment Authorization</td></tr>
 <tr><td colspan="4">I (we), the undersigned parent(s) or legal guardian(s) of 
 <strong>~([01]First_Name) ~([01]Middle_Name) ~([01]Last_Name)</strong>, a minor, do hereby give 
   authorization and consent to the school to obtain emergency medical care and 
@@ -148,7 +163,7 @@ I (we) understand that the school district does not provide accident/medical
 <td colspan="3"><input type="radio" class="emergency_care" name="[01]emergency_care" value="No" />&nbsp;NO I (we) DO NOT GIVE AUTHORIZATION for emergency treatment</td>
 
 
-<tr class="headerrow"><td class="bold" colspan="4">5. Notification of Pesticide Application</td></tr>
+<tr class="headerrow"><td colspan="4">6. Notification of Pesticide Application</td></tr>
 <tr><td colspan="4">The Healthy Schools Act of 2000 requires that
   all schools provide parents or guardians annual written notice
   of expected pesticide use on school sites. While the District does
@@ -165,7 +180,7 @@ I (we) understand that the school district does not provide accident/medical
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="ipm_notifications" name="[01]ipm_notifications" value="No" />&nbsp;No, I (we) DO NOT WISH TO BE NOTIFIED before each pesticide application at this school</td></tr>  
 
-<tr class="headerrow"><td class="bold" colspan="4">6. Walking Off-Campus Permission Form</td></tr>
+<tr class="headerrow"><td colspan="4">7. Walking Off-Campus Permission Form</td></tr>
 <tr><td colspan="4">During the school year the District may conduct
   emergency evacuation drills which require students and teachers to 
   walk to a local off-campus staging area near the school site.
@@ -186,7 +201,7 @@ I (we) understand that the school district does not provide accident/medical
   <td colspan="3"><input type="radio" class="off_campus_walks" name="[01]off_campus_walks" value="No" />&nbsp;No, I (we) DO NOT GIVE PERMISSION for my child to participate in staff-supervised neighborhood walks during the <span class="reg_year"></span> school year</td></tr>   
 
 <!-- table -->
-<tr class="headerrow"><td class="bold" colspan="4">7. Technology - Acceptable Use Agreement</td></tr>
+<tr class="headerrow"><td colspan="4">8. Technology - Acceptable Use Agreement</td></tr>
 <tr><td colspan="4">Part of your student's learning experience includes
    the use of technology integrated into the curriculum to help advance 
    students' 21st Century skills. In order for your student to participate 
@@ -204,7 +219,7 @@ I (we) understand that the school district does not provide accident/medical
   <td colspan="3"><input type="radio" class="acceptable_use" name="[01]acceptable_use" value="No" />&nbsp;NO, I (we) DO NOT AGREE to all the terms and conditions of the Student Acceptable Use Agreement. This student will not be able to participate in any Internet-related activities</td></tr>  
 
 <!-- table -->
-<tr class="headerrow"><td class="bold" colspan="4">8. Technology - Computer Use Agreement</td></tr>
+<tr class="headerrow"><td colspan="4">9. Technology - Computer Use Agreement</td></tr>
 <tr><td colspan="4">Each school has established specific rules concerning 
   the use of computers and other electronic equipment at school. Failure to 
   comply with these rules may result in the temporary or permanent loss of 
@@ -218,7 +233,7 @@ I (we) understand that the school district does not provide accident/medical
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="computer_use" name="[01]computer_use" value="No" />&nbsp;NO, I (we) DO NOT AGREE to all the terms and conditions of the Computer Use Agreement. This student will not be able to participate in any computer-related activities</td></tr>  
 
-<tr class="headerrow"><td class="bold" colspan="4">9. Publication Permissions</td></tr>
+<tr class="headerrow"><td colspan="4">10. Publication Permissions</td></tr>
 <tr><td colspan="4">The Kentfield School District promotes the goals of 
   student expression and creativity and communication with parents. 
   In order to protect the privacy of our students, the District has
@@ -230,7 +245,7 @@ I (we) understand that the school district does not provide accident/medical
 </td></tr>
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Administration/Technology">Publication Guidelines</a></td></tr>
-<tr><td class="bold" colspan="4">Authorization to Publish Images</td></tr>
+<tr><td class="bold" colspan="4">10a. Authorization to Publish Images</td></tr>
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="publish_images" name="[01]publish_images" value="Yes" />&nbsp;YES, 
     I (we) ALLOW the publication of photo or video images of this student with 
@@ -246,7 +261,7 @@ I (we) understand that the school district does not provide accident/medical
 </td></tr>  
 -->
 
-<tr><td class="bold" colspan="4">Authorization to Publish Articles About This Student</td></tr>
+<tr><td class="bold" colspan="4">10b. Authorization to Publish Articles About This Student</td></tr>
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="publish_articles" name="[01]publish_articles" value="Yes" />&nbsp;YES, 
     I (we) ALLOW the publication of stories or articles about this student with 
@@ -254,7 +269,7 @@ I (we) understand that the school district does not provide accident/medical
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="publish_articles" name="[01]publish_articles" value="No" />&nbsp;NO, 
     I (we) DO NOT ALLOW the publication of any stories or articles about this student</td></tr>
-<tr><td class="bold" colspan="4">Authorization to Publish Student Work</td></tr>
+<tr><td class="bold" colspan="4">10c. Authorization to Publish Student Work</td></tr>
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="publish_works" name="[01]publish_works" value="Yes" />&nbsp;YES, 
     I (we) ALLOW the publication of works created by this student with no name 
@@ -263,7 +278,7 @@ I (we) understand that the school district does not provide accident/medical
   <td colspan="3"><input type="radio" class="publish_works" name="[01]publish_works" value="No" />&nbsp;NO, 
     I (we) DO NOT ALLOW the publication of any works created by this student</td></tr>
 
-<tr class="headerrow"><td class="bold" colspan="4">10. Technology - Google Apps</td></tr>
+<tr class="headerrow"><td class="bold" colspan="4">11. Technology - Google Apps</td></tr>
 <tr><td colspan="4">The Kentfield School District uses Google Apps for 
   Education as a fundamental platform for student learning. Students create 
   and share work and communicate with teachers and each other using Google 
@@ -284,7 +299,7 @@ I (we) understand that the school district does not provide accident/medical
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="google_apps" name="[01]google_apps" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to set up a Google Apps account for this student. I understand that this student may have to forego some technology-related activities</td></tr>
 
-<tr class="headerrow"><td class="bold" colspan="4">11. Technology - Other Social Learning Applications</td></tr>
+<tr class="headerrow"><td colspan="4">12. Technology - Other Social Learning Applications</td></tr>
 <tr><td colspan="4">The Kentfield School District also uses other "social
   learning" web applications such as Edmodo.com or VoiceThread.com,
   to foster important communication and collaboration between students, 
