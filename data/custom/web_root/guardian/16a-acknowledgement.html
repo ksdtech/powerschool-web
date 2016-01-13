@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Acknowledgement of Responsibility - PowerSchool Parent Access</title>
+<!-- pscustom_begin -->
+<link href="/images/css/regforms.css" rel="stylesheet">
+<script src="/scripts/ksd_validations.js"></script>
+<script>
+function check_reg_updated_at(dt) {
+  dt = dt.match(/^\s*(\d\d\d\d-\d\d-\d\d)/);
+  return dt && dt[1] /* && dt[1].localeCompare('2013-03-25') >= 0 */;
+}
+
+function incomplete_page_status() {
+  var unchecked = null;
+  $j('.page_status').each(function() {
+    if (!unchecked && !check_reg_updated_at($j(this).val())) {
+      unchecked = $j(this).attr('data-description');
+    }
+  });
+  if (unchecked) {
+    return 'At least one registration component has not been fully submitted (' + 
+      unchecked + '). ' +
+    'You must complete all other components and return to this page again.';
+  }
+  return null;
+}
+
+function validateResp(jqel) {
+  if (!$j('#acknowledgement').prop('checked')) {
+    return 'Parent must acknowledge responsibility';
+  }
+  return '';
+}
+
+function validateSig(jqel) {
+  var unchecked = incomplete_page_status();
+  if (unchecked) {
+    return unchecked;
+  }
+  if (jqel.val() == '') {
+    return 'Signature is required';
+  }
+  return '';
+}
+
+function bind_form_updated(form_id) {
+  var jqform = $j("#" + form_id);
+  jqform.addClass('validatedForm');
+}
+</script>
+~[wc:UI_js_includes]
+~[wc:guardian_header]
+<script>
+$j(document).ready(function() {
+  bind_form_updated("form16");
+  $j(".private").hide();
+
+  var unchecked = incomplete_page_status();
+  if (unchecked) {
+    $j('#reg_incomplete').text(unchecked);
+    $j('.unlocked').hide();
+  } else {
+    $j('.locked').hide();
+  }
+});
+</script>
+
+<h1>Acknowledgement of Responsibility</h1>
+
+<div id="changes-saved-container">
+</div>
+
+<!-- begin form action -->
+<form class="noSubmitLoading" id="form16" action="changesrecorded.html" method="post">
+<input type="hidden" class="page_status" id="residencyproof_updated_at" value="~([01]reg_residencyproofok)" />
+<input type="hidden" class="page_status" id="immunizations_updated_at" value="~([01]reg_immunizationsok)" />
+<input type="hidden" class="page_status" id="form1_updated_at" data-description="Enrollment" 
+value="~([01]form1_updated_at)" />
+<input type="hidden" class="page_status" id="form3_updated_at" data-description="Student Information" value="~([01]form3_updated_at)" />
+<input type="hidden" class="page_status" id="form4_updated_at" data-description="Family Information" value="~([01]form4_updated_at)" />
+<input type="hidden" class="page_status" id="form6_updated_at" data-description="Emergency Contacts" value="~([01]form6_updated_at)" />
+<input type="hidden" class="page_status" id="form9_updated_at" data-description="Medical Information" value="~([01]form9_updated_at)" />
+<input type="hidden" class="page_status" id="form10_updated_at" data-description="Authorizations" value="~([01]form10_updated_at)" />
+<input type="hidden" class="page_status" id="form13_updated_at" data-description="Safe Routes" 
+value="~([01]form13_updated_at)" />
+<input type="hidden" class="page_status" id="form15_updated_at" data-description="School-Specific" value="~([01]form15_updated_at)">
+
+<div id="form16-contents" align="center" style="width: 98%">
+<div id="form16-setup" class="box-round group" style="width: 720px">
+
+<div class="locked" style="width: 700px"><span id="reg_incomplete"></span>
+<a href="/guardian/01-registration.html"><strong>Click here</strong></a> to return to the 
+main Registration page.</div>
+
+<table class="unlocked" border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<tr class="headerrow"><td class="bold" colspan="2">Electronic Signature Acknowledgement and Responsibility for Student</td></tr>
+
+<tr><td colspan="2">I (we) have thoroughly reviewed and filled out all of the 
+  registration pages for this student and the pages are marked with check marks above. 
+  To the best of my (our) knowledge, all the information reported on all of 
+  the registration pages is true and correct.<br/> 
+  I (we) assume full responsibility for my (our) student in all school matters. 
+  If there is a change in any of this information, I (we) will update it promptly.</td></tr>
+<tr><td>&nbsp;</td>
+<td><input type="radio" name="[01]responsibility_for_student" class="psSpecialValidate resp_for_student" id="acknowledgement" value="Yes" data-specialfunction="validateResp">&nbsp;YES&nbsp;
+<input type="radio" name="[01]responsibility_for_student" class="resp_for_student" value="No">&nbsp;NO&nbsp;</td></tr>
+<tr><td colspan="2">By selecting <strong>Yes</strong>, I (we) agree to the previous statements.</td></tr>
+<tr><td>Signature of parent (typed)</td>
+<td><input type="text" name="[01]responsibility_sig_1" id="responsibility_sig_1" class="psSpecialValidate"
+  value="" size="30" maxlength="60" data-specialfunction="validateSig"></td></tr>
+<tr><td>Date</td>
+<td><input type="text" name="[01]responsibility_date" id="responsibility_date" 
+  value="" size="15" data-validation='{"type":"date","key":"students.responsibility_date","required":"true"}'></td></tr>
+<tr><td>Signature of 2nd parent</td>
+<td><input type="text" name="[01]responsibility_sig_2" id="responsibility_sig_2" 
+  value="" size="30" maxlength="60"></td></tr>
+<tr><td>Date</td>
+<td><input type="text" name="[01]responsibility_date_2" id="responsibility_date_2" value="" size="15"></td></tr>
+
+<tr class="private"><td colspan="2" class="bold">Last updated at 
+<input type="text" id="form16_upd_at" name="[01]form16_updated_at" value="" /> by 
+<input type="text" id="form16_upd_by" name="[01]form16_updated_by" value="" /><!-- userid is in form01 --></td>
+</tr>
+
+<tr><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
+
+</table>
+</div>
+</div>
+
+</form>
+<div>
+
+<input id="activeNav" type="hidden" value="#btn-classRegistration"/>

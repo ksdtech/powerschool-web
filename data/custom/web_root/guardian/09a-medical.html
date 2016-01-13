@@ -4,14 +4,49 @@
 <title>Medical Information - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="/images/css/regforms.css" rel="stylesheet">
+<script src="/scripts/ksd_validations.js"></script>
+<script>
+// TODO: attach listeners to all the checkboxes and textareas
+// to update these on blur
+function set_summary_checkboxes() {
+  var names = [ 
+    'eyeglasses', 'allergies', 'asthma', 'seizures', 'diabetes',
+    'behavior', 'movement', 'med_other', 'illness', 'med_accom'
+  ];
+  for (i = 0; i < names.length; i++) {
+    var name = names[i];
+    var any_checkbox = $j('input[type="checkbox"].' + name + '_chk');
+    var any_textarea = $j('textarea.' + name + '_chk');
+    if (any_checkbox.is(':checked') || any_textarea.val() != '') {
+      $j('input[type="radio"].' + name).prop('checked', false);
+      $j('#' + name + '_yes').prop('checked', true);
+    }
+  }
+}
+
+function bind_form_updated(form_id) {
+  $j("#" + form_id).submit(function(event) {
+    set_summary_checkboxes();
+
+    var ts = timestamp_now();
+    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
+    $j("#" + form_id + "upd_at").val(ts);
+  });
+}
+</script>
 ~[wc:UI_js_includes]
 ~[wc:guardian_header]
-<script src="/scripts/fmt_date.js" type="text/javascript"></script>
-<script src="/scripts/formatters.js" type="text/javascript"></script>
-<script src="/scripts/happy.js" type="text/javascript"></script>
-<script src="/scripts/happy.methods.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form09.js" type="text/javascript"></script>
+<script>
+$j(document).ready(function() {
+  bind_form_updated("form09");
+
+  set_default_radio('.requires_meds',   '#requires_meds_no');
+  set_default_radio('.school_meds',     '#school_meds_no');
+  set_default_radio('.emergency_meds',  '#emergency_meds_no');
+
+  $j(".private").hide();
+});
+</script>
 
 <h1>Medical Information</h1>
 
@@ -27,7 +62,7 @@
 <!-- end form action -->
 <div id="form9-contents" align="center" style="width: 98%">
 <div id="form9-setup" class="box-round group" style="width: 720px">
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
 <tr class="headerrow"><td colspan="3" class="bold">Medical Information</td></tr>
 <tr><td colspan="3"><b>Important Note:</b>: Any medical information changes must
   be completed here and also emailed directly to the District nurse,
@@ -53,36 +88,36 @@ contact the District nurse, Becky Gayman, at
 
 <tr><td class="bold">Does the student take medication at home or at school?</td>
 <td width="75"><input type="radio" class="requires_meds" name="[01]Requires_Meds" value="1" />Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="requires_meds" name="[01]Requires_Meds" value="" />No&nbsp;&nbsp;</td>
+<td><input type="radio" class="requires_meds" name="[01]Requires_Meds" id="requires_meds_no" value="" />No&nbsp;&nbsp;</td>
 </tr>
 <tr><td class="bold">Will you be providing medication for the student to take at school?</td>
 <td width="75"><input type="radio" class="school_meds" name="[01]School_Meds" value="1" />Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="school_meds" name="[01]School_Meds" value="" />No&nbsp;&nbsp;</td>
+<td><input type="radio" class="school_meds" name="[01]School_Meds" id="school_meds_no" value="" />No&nbsp;&nbsp;</td>
 </tr>
 <tr><td class="bold">Will you be providing 72-hour medication to be used in an emergency?</td>
 <td width="75"><input type="radio" class="emergency_meds" name="[01]Emergency_Meds" value="1" />Yes&nbsp;&nbsp;</td>
-<td><input type="radio" class="emergency_meds" name="[01]Emergency_Meds" value="" />No&nbsp;&nbsp;</td>
+<td><input type="radio" class="emergency_meds" name="[01]Emergency_Meds" id="emergency_meds_no" value="" />No&nbsp;&nbsp;</td>
 </tr>
 </table>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="headerrow"><td colspan="4" class="bold">2. Health Insurance and Providers</td></tr>
 <tr><td colspan="4"><b>Important Notice:</b> The Children's Health
-	Initiative of Marin County (Marin CHI) can assist families in applying
-	for many options for free and low-cost health insurance for children from
-	birth to age 19. Health plan options available include:
-	<ul>
-		<li>Healthy Kids</li>
-		<li>Kaiser Child Health Plan</li>
-		<li>Healthy Families</li>
-		<li>Medi-Cal</li>
-		<li>AIM</li>
-		<li>CalFresh</li>
-	</ul>
-	For more information, please call (415) 473-3434, or download the
+  Initiative of Marin County (Marin CHI) can assist families in applying
+  for many options for free and low-cost health insurance for children from
+  birth to age 19. Health plan options available include:
+  <ul>
+    <li>Healthy Kids</li>
+    <li>Kaiser Child Health Plan</li>
+    <li>Healthy Families</li>
+    <li>Medi-Cal</li>
+    <li>AIM</li>
+    <li>CalFresh</li>
+  </ul>
+  For more information, please call (415) 473-3434, or download the
 <a href="http://www.kentfieldschools.org/files/_AOATq_/549fe34e975919303745a49013852ec4/CHI_Health_Insurance_2015_complete.pdf">CHI Health Insurance</a>
  flyer from the <a href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Programs/Health">District's Health and Safety</a> page.</td></tr>
 <tr><td width="150" class="bold">Health Insurance Type</td>
-<td width="260"><select id="health_ins" name="[01]Health_Ins_Type">
+<td width="260"><select id="health_ins" name="[01]Health_Ins_Type" data-validation='{"type":"text","key":"students.health_ins_type","required":"true"}' >
   <option value="">Choose...</option>
   <option value="private">Private Health Insurance</option>
   <option value="hkids">Healthy Kids</option>
@@ -97,7 +132,7 @@ contact the District nurse, Becky Gayman, at
 <td width="162"><input type="text" id="medi_cal_num" name="[01]Medi_Cal_Num" value="" size="16" /></td>
 </tr>
 <tr><td class="bold">Preferred Hospital</td>
-<td><input type="text" id="emergency_hospital" name="[01]Emergency_Hospital" value="" size="30" /></td>
+<td><input type="text" id="emergency_hospital" name="[01]Emergency_Hospital" value="" size="30" data-validation='{"type":"text","key":"students.emergency_hospital","required":"true"}' /></td>
 <td colspan="2">&nbsp;</td>
 </tr>
 <tr><td class="bold">Primary Physician Name</td>
@@ -145,7 +180,7 @@ contact the District nurse, Becky Gayman, at
 <td colspan="2"><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Always" value="1" />All the time&nbsp;</td>
 </tr>
 <tr><td class="bold">Date of last eye exam?</td>
-<td colspan="4"><input type="text" id="last_eye_exam" name="[01]h_Last_Eye_Exam" value="" size="16" /></td>
+<td colspan="4"><input type="text" id="last_eye_exam" name="[01]h_Last_Eye_Exam" value="" size="10" data-validation='{"type":"date","key":"students.h_last_eye_exam"}' /></td>
 </tr>
 <tr><td class="bold">Does the student wear a hearing aid?</td>
 <td>&nbsp;</td>

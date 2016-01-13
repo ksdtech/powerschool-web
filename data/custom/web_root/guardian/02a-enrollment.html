@@ -4,6 +4,7 @@
 <title>Enrollment - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="/images/css/regforms.css" rel="stylesheet">
+<script src="/scripts/ksd_validations.js"></script>
 <script>
 function get_school_year(mo, yr) {
   if (mo <= 6) {
@@ -70,6 +71,7 @@ function update_reg_year() {
 }
 
 function on_enrollment_change() {
+  var window_not_open = $j("#reg_windownotopen").val();
   var enrollment = $j("#reg_enroll option:selected").val();
   var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
   if (not_enrolling) { 
@@ -94,11 +96,11 @@ function on_enrollment_change() {
     validateElement($j('#reg_grade_level'));
   }
   
-  var locked = (enrollment == 'nr-locked');
+  var locked = (window_not_open != "" || enrollment == 'nr-locked');
   if (locked) {
-    $j("tr.unlocked").hide();
+    $j(".unlocked").hide();
   } else {
-    $j("tr.locked").hide();
+    $j(".locked").hide();
   }
   return true;
 }
@@ -125,21 +127,15 @@ function validate_exit(jqel) {
   return '';
 }
 
-function timestamp_now() {
-  return (new Date()).dateFormat("Y-m-d H:i:s");
-}
-
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function() {
+  $j("#" + form_id).submit(function(event) {
     $j("#" + form_id + "upd_by").val($j("#userid").val()); 
     $j("#" + form_id + "upd_at").val(timestamp_now()); 
   });
 }
 </script>
-
 ~[wc:UI_js_includes]
 ~[wc:guardian_header]
-
 <script>
 $j(document).ready(function() {
   bind_form_updated("form02");
@@ -167,17 +163,28 @@ $j(document).ready(function() {
 <input type="hidden" name="backtitle" id="backtitle" value="Main Registration Page" />
 <input type="hidden" name="nexturl" id="nexturl" value="03-student.html" />
 <input type="hidden" name="nexttitle" id="nexttitle" value="Student Information Page" />
+<input type="hidden" id="reg_windownotopen" value="~([01]rreg_windownotopen)" />
 <input type="hidden" id="orig_reg_year" name="orig_reg_year" value="~([01]reg_year)" />
 <input type="hidden" id="orig_entrydate" name="orig_entrydate" value="~([01]entrydate)" />
 <input type="hidden" id="enroll_status" name="enroll_status" value="~([01]enroll_status)" />
 <!-- end form action -->
 
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
 <tr class="private"><td colspan="2" class="bold">Registration Year
 <input type="text" id="reg_year" class="reg_year" name="[01]reg_year" value="" />
 </td></tr>
   
-<tr class="headerrow"><td colspan="2" class="bold">1. Enrollment Information</td></tr>
+<tr class="locked headerrow"><td colspan="2">Re-Registration Window Is Not Open Yet</td></tr>
+<tr class="locked"><td colspan="2"><strong>Registration for current
+  students returning to District schools next fall is not open yet.</strong>
+  You may continue to update your contact,
+  medical and other information to keep your records current. Parents
+  will be notified by email and through District weekly communications
+  when the window for re-registering your students is open.
+  <a href="/guardian/01-registration.html"><strong>Please click here</strong></a> to return to 
+  the main Registration page.</td></tr>
+
+<tr class="unlocked headerrow"><td colspan="2" class="bold">1. Enrollment Information</td></tr>
 
 <tr class="unlocked"><td width="50%">School year you are registering this student for:</td><td><select id="reg_school_year" name="[01]reg_year" data-validation='{"type":"text","key":"students.reg_year","required":"true"}'>
 <option value="">Choose:</option>
@@ -195,13 +202,6 @@ data-validation='{"type":"text","key":"students.reg_will_attend","required":"tru
 <option value="unknown">Not sure if student will attend; don't know at this time</option>
 <option value="nr-locked">Registration locked; not open at this time.</option>
 </select></td></tr>
-
-<tr class="locked"><td colspan="2"><strong>Registration for current
-  students returning to District schools next fall is not open yet.</strong>
-  You may continue to update your contact,
-  medical and other information to keep your records current. Parents
-  will be notified by email and through district weekly communications
-  when the window for re-registering your students is open.</td></tr>
 
 <tr class="unlocked enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2015-2016 School Year</span></td><td><select class="psSpecialValidate" id="reg_grade_level" name="[01]reg_grade_level"
 data-specialfunction="validate_grade">
@@ -234,8 +234,8 @@ data-specialfunction="validate_exit">
 <td><input class="psSpecialValidate" name="[01]ExitComment" type="text" id="reg_exitcomment" value="" size="50" data-specialfunction="validate_exit"></td></tr>
 
 <tr class="private"><td class="bold">Last updated at 
-<input type="text" id="form02_upd_at" name="[01]form2_updated_at" value="" /> by 
-<input type="text" id="form02_upd_by" name="[01]form2_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="form02_upd_at" name="[01]form1_updated_at" value="" /> by 
+<input type="text" id="form02_upd_by" name="[01]form1_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 <tr class="unlocked"><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>

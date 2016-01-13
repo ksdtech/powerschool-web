@@ -3,9 +3,8 @@
 <head>
 <title>Student Information - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
-<link rel="stylesheet" type="text/css" href="/images/boxing.css">
 <link href="/images/css/regforms.css" rel="stylesheet">
-
+<script src="/scripts/ksd_validations.js"></script>
 <script>
 function requiredIfNorthAmerican(jqel) {
   if (jqel.val() == '' && $j('#birth_country').val() !== '') {
@@ -46,21 +45,15 @@ function toggleCheckbox(id) {
   jqel.prop('checked', !jqel.prop('checked'));
 }
 
-function timestamp_now() {
-  return (new Date()).dateFormat("Y-m-d H:i:s");
-}
-
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function() {
+  $j("#" + form_id).submit(function(event) {
     $j("#" + form_id + "upd_by").val($j("#userid").val()); 
     $j("#" + form_id + "upd_at").val(timestamp_now()); 
   });
 }
 </script>
-
 ~[wc:UI_js_includes]
 ~[wc:guardian_header]
-
 <script>
 $j(document).ready(function() {
   bind_form_updated("form03");
@@ -87,8 +80,8 @@ $j(document).ready(function() {
 
 <!-- end form action -->
 <div id="form3-contents" align="center" style="width: 98%">
-<div id="form3-setup" class="box-round group" style="width: 720px">
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<div id="form3-setup" class="box-round group" style="width: 800px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
 <tr class="headerrow"><td colspan="3" class="bold">1. Student's Legal Name</td></tr>
 <tr><td colspan="3"><strong>Note:</strong>  The Student's Legal Name must match the
   name on the student's legal documentation (birth certificate or passport).</td></tr>
@@ -807,8 +800,8 @@ by adults in the home?<br/>
 <td>Phone (with area code)</td></tr>
 <tr><td><input type="text" name="[01]Previous_School_Address" value="" size="30" maxlength="50" /></td>
 <td><input type="text" name="[01]Previous_School_City" value="" size="20" /></td>
-<td><input type="text" name="[01]Previous_School_Phone" value="" size="17" 
-data-validation='{"textMask":"Pearson_common_phonenumber","maxlength":"30","type":"text","key":"students.previous_school_phone"}' /></td></tr>
+<td><input type="text" name="[01]Previous_School_Phone" value="" size="20" 
+data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.previous_school_phone"}' /></td></tr>
 
 <tr><td colspan="2">Last grade level in this school</td>
 <td><input type="text" name="[01]Previous_School_Grade_Level" value="" size="10" /></td></tr>
@@ -837,7 +830,8 @@ data-validation='{"type":"date", "key":"students.ca_firstusaschooling"}' /></td>
 </tr>
 <tr>
 <td><input type="checkbox" name="[01]Reg_Prog_504" value="1" />8d. Section 504&nbsp;&nbsp;</td>
-<td><input type="checkbox" name="[01]Reg_Prog_GATE" value="1" />8e. Gifted (GATE)&nbsp;&nbsp;</td></tr>
+<td><input type="checkbox" name="[01]Reg_Prog_GATE" value="1" />8e. Gifted (GATE)&nbsp;&nbsp;</td>
+<td>&nbsp</td></tr>
 <tr><td>8m. Other (please describe):</td>
 <td colspan="2"><input type="text" name="[01]Reg_Prog_Other" value="" size="30" /></td></tr>
 

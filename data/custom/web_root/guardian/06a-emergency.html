@@ -4,14 +4,24 @@
 <title>Emergency Information - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="/images/css/regforms.css" rel="stylesheet">
+<script src="/scripts/ksd_validations.js"></script>
+<script>
+function bind_form_updated(form_id) {
+  $j("#" + form_id).submit(function(event) {
+    var ts = timestamp_now();
+    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
+    $j("#" + form_id + "upd_at").val(ts);
+  });
+}
+</script>
 ~[wc:UI_js_includes]
 ~[wc:guardian_header]
-<script src="/scripts/fmt_date.js" type="text/javascript"></script>
-<script src="/scripts/formatters.js" type="text/javascript"></script>
-<script src="/scripts/happy.js" type="text/javascript"></script>
-<script src="/scripts/happy.methods.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form06.js" type="text/javascript"></script>
+<script>
+$j(document).ready(function() {
+  bind_form_updated("form06");
+  $j(".private").hide();
+});
+</script>
 
 <h1>Emergency Information</h1>
 
@@ -27,19 +37,24 @@
 <!-- end form action -->
 <div id="form6-contents" align="center" style="width: 98%">
 <div id="form6-setup" class="box-round group" style="width: 720px">
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
 <tr class="headerrow"><td colspan="4" class="bold">Authorized Adults to Pick up Your Child in Case of Emergency</td></tr>
-<tr><td colspan="4">The contact information you provide on this page 
+<tr><td>Release information: In case of emergency, students 
+may only be released to parents, legal guardians, or emergency contacts designated 
+by a parent or legal guardian and submitted on this page.
+For the definition of legal guardianship, <a class="dialogM" title="About Guardianship" 
+href="/public/ksdp_guardianship.html">click here.</a></td></tr>
+<tr><td>The contact information you provide on this page 
 determines who is authorized to pick up your children in case of illness, 
 injury, or emergency.  No student will be released to anyone other than the 
 parents, guardians, or the adults listed below.  Please make sure that you 
 have an emergency family plan and that your contacts are aware of it. 
 It is extremely important that these questions be answered accurately and 
-that the contact information be kept current. 
-<br/><br/>List the names of up to three relatives, neighbors, or friends in 
+that the contact information be kept current.</td></tr>
+<tr><td>List the names of up to three relatives, neighbors, or friends in 
 close proximity to the school to whom the school may release your child or 
-contact if the student's parents or guardians cannot be reached. 
-<br/><br/>In selecting someone to whom you authorize the release of your 
+contact if the student's parents or guardians cannot be reached.</td></tr>
+<tr><td>In selecting someone to whom you authorize the release of your 
 child, consider:
 <ol>
 <li>Would your child feel safe and comfortable with this person or family?</li>
@@ -54,8 +69,8 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <tr class="headerrow"><td colspan="4" class="bold">1. Authorized Adult No. 1</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
 <tr><td colspan="3"><input type="text" id="emerg1_last" name="[01]Emerg_Contact_1" value="" size="20" />, 
-<input type="text" id="emerg1_first" name="[01]Emerg_1_First" value="" size="20" /></td>
-<td><select id="emerg1_rel" name="[01]Emerg_1_Rel">
+<input type="text" id="emerg1_first" name="[01]Emerg_1_First" value="" size="20" data-validation='{"maxlength":"30","type":"text","key":"students.emerg_1_first","required":"true"}' /></td>
+<td><select id="emerg1_rel" name="[01]Emerg_1_Rel" data-validation='{"type":"text","key":"students.emerg_1_rel","required":"true"}'>
 <option value="">Choose:</option>
 <option value="Friend">Friend</option>
 <option value="Neighbor">Neighbor</option>
@@ -74,14 +89,14 @@ enter the names and phone numbers as separate contacts.</td></tr>
 </select></td></tr>
 <tr><td>Primary Phone</td>
 <td><input type="text" id="emerg1_phone" name="[01]Emerg_Phone_1" value="" size="20" /></td>
-<td colspan="2">Phone Type<br/><select id="emerg1_ptype" name="[01]Emerg_1_Ptype">
+<td colspan="2">Phone Type<br/><select id="emerg1_ptype" name="[01]Emerg_1_Ptype" data-validation='{"type":"text","key":"students.emerg_1_ptype","required":"true"}'>
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
 <option value="Home">Home</option>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" id="emerg1_phone2" name="[01]Emerg_1_Alt_Phone" value="" size="20" /></td>
+<td><input type="text" id="emerg1_phone2" name="[01]Emerg_1_Alt_Phone" value="" size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.emerg_1_alt_phone"}' /></td>
 <td colspan="2">Phone Type<br/><select id="emerg1_ptype2" name="[01]Emerg_1_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -120,7 +135,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" id="emerg2_phone2" name="[01]Emerg_2_Alt_Phone" value="" size="20" /></td>
+<td><input type="text" id="emerg2_phone2" name="[01]Emerg_2_Alt_Phone" value="" size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.emerg_2_alt_phone"}' /></td>
 <td colspan="2">Phone Type<br/><select id="emerg2_ptype2" name="[01]Emerg_2_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -151,7 +166,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" id="emerg3_phone" name="[01]Emerg_3_Phone" value="" size="20" /></td>
+<td><input type="text" id="emerg3_phone" name="[01]Emerg_3_Phone" value="" size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.emerg_3_phone"}' /></td>
 <td colspan="2">Phone Type<br/><select id="emerg3_ptype" name="[01]Emerg_3_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -159,7 +174,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr><td>Alternate Phone</td>
-<td><input type="text" id="emerg3_phone2" name="[01]Emerg_3_Alt_Phone" value="" size="20" /></td>
+<td><input type="text" id="emerg3_phone2" name="[01]Emerg_3_Alt_Phone" value="" size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.emerg_3_alt_phone"}' /></td>
 <td colspan="2">Phone Type<br/><select id="emerg3_ptype2" name="[01]Emerg_3_Alt_Ptype">
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
