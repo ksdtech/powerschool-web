@@ -7,36 +7,42 @@
 <script src="/scripts/ksd_validations.js"></script>
 <script>
 function bind_form_updated(form_id) {
-  var jqform = $j("#" + form_id);
+  var jqform = $j('#' + form_id);
   jqform.addClass('validatedForm');
   jqform.submit(function(event) {
 
     // Not smart enough yet to have the checkbox_required function
     // also handle the onsubmit case, so we have to copy the
     // validate_required_check function here also.
-    var invalid = 
-      !validate_required_check('#annual_notice') ||
-      !validate_required_check('.release_directory_info') ||
-      !validate_required_check('.previous_school_contact') ||
-      !validate_required_check('.pta_contact') ||
-      !validate_required_check('.emergency_care') ||
-      !validate_required_check('.ipm_notifications') ||
-      !validate_required_check('.off_campus_walks') ||
-      !validate_required_check('.acceptable_use') ||
-      !validate_required_check('.computer_use') ||
-      !validate_required_check('.google_apps') ||
-      !validate_required_check('.social_learning') ||
-      !validate_required_check('.publish_images') ||
-      !validate_required_check('.publish_articles') ||
-      !validate_required_check('.publish_works');
-    if (invalid) {
+    var valid = true;
+    var sels = [
+      '#annual_notice',
+      '.release_directory_info',
+      '.previous_school_contact',
+      '.pta_contact',
+      '.emergency_care',
+      '.ipm_notifications',
+      '.off_campus_walks',
+      '.acceptable_use',
+      '.computer_use',
+      '.google_apps',
+      '.social_learning',
+      '.publish_images',
+      '.publish_articles',
+      '.publish_works'
+    ];
+    for (var i = 0; i < sels.length; i++) {
+      var sel = sels[i];
+      if (!validate_required_check(sel)) { valid = false; }
+    }
+    if (!valid) {
       event.preventDefault();
       return false;
     }
 
     var ts = timestamp_now();
-    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
-    $j("#" + form_id + "upd_at").val(ts);
+    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_at').val(ts);
   });
 }
 </script>
@@ -44,8 +50,8 @@ function bind_form_updated(form_id) {
 ~[wc:guardian_header]
 <script>
 $j(document).ready(function() {
-  bind_form_updated("form10");
-  $j(".private").hide();
+  bind_form_updated('form10');
+  $j('.private').hide();
 
   checkbox_required('#annual_notice');
   checkbox_required('.release_directory_info');
@@ -97,8 +103,8 @@ to rquired acknowledgments.</td></tr>
   <td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/About_Us/Parent_Rights">Annual Notice to Parents (English and Español)</a></td></tr>
 <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="checkbox" id="annual_notice" 
-  name="[01]annual_notice" value="Yes" />&nbsp;I (we) have read the Annual Notice to Parents and hereby acknowledge receipt of information regarding my (our) rights, responsibilities, and protections.<br/>
-    Yo he (nosotros hemos) leido el Notificacion Anual a Los Padres y yo acuso recibo de la informacion sobre mis (nosotros) derechos, responsibilidades y protecciones.
+  name="[01]annual_notice" value="Yes" />&nbsp;YES, I (we) have read the Annual Notice to Parents and hereby acknowledge receipt of information regarding my (our) rights, responsibilities, and protections.<br/>
+    SI, Yo he (nosotros hemos) leido el Notificacion Anual a Los Padres y yo acuso recibo de la informacion sobre mis (nosotros) derechos, responsibilidades y protecciones.
 </td></tr>   
   
 <tr class="headerrow"><td colspan="4">2. Release of Pupil Directory Information</td></tr>
@@ -324,8 +330,8 @@ I (we) understand that the school district does not provide accident/medical
   <td colspan="3"><input type="radio" class="social_learning" name="[01]social_learning" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to set up accounts for this student with social learning applications. I understand that this student may have to forego some technology-related activities</td></tr>
 
 <tr class="private"><td colspan="4" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form10_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form10_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="form10_upd_at" name="[01]form10_updated_at" value="" /> by 
+<input type="text" id="form10_upd_by" name="[01]form10_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 <tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>

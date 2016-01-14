@@ -7,10 +7,10 @@
 <script src="/scripts/ksd_validations.js"></script>
 <script>
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function(event) {
+  $j('#' + form_id).submit(function(event) {
     var ts = timestamp_now();
-    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
-    $j("#" + form_id + "upd_at").val(ts);
+    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_at').val(ts);
   });
 }
 </script>
@@ -18,8 +18,8 @@ function bind_form_updated(form_id) {
 ~[wc:guardian_header]
 <script>
 $j(document).ready(function() {
-  bind_form_updated("form06");
-  $j(".private").hide();
+  bind_form_updated('form06');
+  $j('.private').hide();
 });
 </script>
 
@@ -68,7 +68,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="headerrow"><td colspan="4" class="bold">1. Authorized Adult No. 1</td></tr>
 <tr><td colspan="3">Last, First</td><td>Relationship</td></tr>
-<tr><td colspan="3"><input type="text" id="emerg1_last" name="[01]Emerg_Contact_1" value="" size="20" />, 
+<tr><td colspan="3"><input type="text" id="emerg1_last" name="[01]Emerg_Contact_1" value="" size="20" data-validation='{"maxlength":"30","type":"text","key":"students.emerg_contact_1","required":"true"}'/>, 
 <input type="text" id="emerg1_first" name="[01]Emerg_1_First" value="" size="20" data-validation='{"maxlength":"30","type":"text","key":"students.emerg_1_first","required":"true"}' /></td>
 <td><select id="emerg1_rel" name="[01]Emerg_1_Rel" data-validation='{"type":"text","key":"students.emerg_1_rel","required":"true"}'>
 <option value="">Choose:</option>
@@ -88,7 +88,7 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Other">Other</option>
 </select></td></tr>
 <tr><td>Primary Phone</td>
-<td><input type="text" id="emerg1_phone" name="[01]Emerg_Phone_1" value="" size="20" /></td>
+<td><input type="text" id="emerg1_phone" name="[01]Emerg_Phone_1" value="" size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.emerg_phone_1","required":"true"}' /></td>
 <td colspan="2">Phone Type<br/><select id="emerg1_ptype" name="[01]Emerg_1_Ptype" data-validation='{"type":"text","key":"students.emerg_1_ptype","required":"true"}'>
 <option value="">Choose:</option>
 <option value="Cell">Cell</option>
@@ -182,8 +182,8 @@ enter the names and phone numbers as separate contacts.</td></tr>
 <option value="Work">Work</option>
 </select></td></tr>
 <tr class="private"><td colspan="4" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form6_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form6_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="form06_upd_at" name="[01]form6_updated_at" value="" /> by 
+<input type="text" id="form06_upd_by" name="[01]form6_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 <tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>

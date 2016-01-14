@@ -62,9 +62,20 @@ function bind_form_updated(form_id) {
   var jqform = $j('#' + form_id);
   jqform.addClass('validatedForm');
   jqform.submit(function(event) {
-    var invalid = 
-      !validate_required_check('.por_confirmation');
-     if (invalid) {
+
+        // Not smart enough yet to have the checkbox_required function
+    // also handle the onsubmit case, so we have to copy the
+    // validate_required_check function here also.
+    var valid = true;
+    var sels = [
+      '.kikdir_opt_out',
+      '.por_confirmation'
+    ];
+    for (var i = 0; i < sels.length; i++) {
+      var sel = sels[i];
+      if (!validate_required_check(sel)) { valid = false; }
+    }
+    if (!valid) {
       event.preventDefault();
       return false;
     }
@@ -99,6 +110,7 @@ $j(document).ready(function() {
   bind_form_updated('form04');
   $j('.private').hide();
 
+  checkbox_required('.kikdir_opt_out');
   checkbox_required('.por_confirmation');
   set_default_radio('.inet_access',       '#inet_yes');
   set_default_radio('.printed_material',  '#printed_no');
@@ -210,9 +222,15 @@ contact information you wish to exclude from the <strong>kik</strong> School Dir
 <strong>kik</strong> mobile app in the sections below.</td></tr>
 
 <tr><td>
-  <input type="checkbox" name="[01]kikdir_unlisted" id="kikdir_unlisted_y" class="ksource" 
+  <input type="radio" name="[01]kikdir_unlisted" id="kikdir_unlisted_n" class="kikdir_opt_out ksource" 
+  value="N"/>
+  Check here if you <strong>DO</strong> want your family listed in the 
+  <strong>kik</strong> School Directory and <strong>kik</strong> mobile app</td></tr>
+<tr><td>
+  <input type="radio" name="[01]kikdir_unlisted" id="kikdir_unlisted_y" class="kikdir_opt_out ksource" 
   value="Y"/>
-  Check here if you <strong>DO NOT</strong> want your family listed in the <strong>kik</strong> School Directory</td></tr>
+  Check here if you <strong>DO NOT</strong> want your family listed in the 
+  <strong>kik</strong> School Directory and <strong>kik</strong> mobile app</td></tr>
   
 <tr><td>Note: If you checked the <strong>DO NOT</strong> box for <strong>any</strong> of
 your current students, <strong>NONE</strong> of your students or other family information 
@@ -634,12 +652,12 @@ will not publish your family in the <strong>kik</strong> School Directory or in 
 
 <div id="this_unlisted" class="kpreview_off" style="color:red;">Your family will not be 
 published in the <strong>kik</strong> School Directory or <strong>kik</strong> mobile app, 
-because you selected that you <strong>DO NOT</strong> want your family listed 
-in Section 1 above. If you do want to be listed, please uncheck the "<strong>DO NOT</strong> 
-want your family listed" box, and make sure to confirm this by clicking the 
-<strong>Submit</strong> buttonbelow.</div>
+because you have not selected that you <strong>DO</strong> want your family listed 
+in Section 1 above. If you do want to be listed, please check the "<strong>DO</strong> 
+want your family listed" box, and make sure to save this choice by clicking the 
+<strong>Submit</strong> button below.</div>
 
-<div id="other_unlisted" class="kpreview_off" style="color:red;">NYour family will not be 
+<div id="other_unlisted" class="kpreview_off" style="color:red;">Your family will not be 
 published in the <strong>kik</strong> School Directory or <strong>kik</strong> mobile app,
 because have selected "<strong>DO NOT</strong> list" for another student.
 If you want to be listed, first press <strong>Submit</strong> to save your work for this 

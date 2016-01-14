@@ -6,9 +6,16 @@
 <link href="/images/css/regforms.css" rel="stylesheet">
 <script src="/scripts/ksd_validations.js"></script>
 <script>
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return false;
+}
+
 function returning_to_grade(gl) {
   var enrollment = $j('#reg_enroll').val();
-  var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
+  var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
   if (not_enrolling) {
     return false;
   }
@@ -17,20 +24,20 @@ function returning_to_grade(gl) {
 }
 
 function filter_by_enrollment() {
-  var enrollment = $j("#reg_enroll").val();
-  var not_enrolling = (enrollment  && /^nr-/.test(enrollment));
+  var enrollment = $j('#reg_enroll').val();
+  var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
   if (not_enrolling) { 
-    $j("tr.enrolling").hide(); 
+    $j('tr.enrolling').hide(); 
   } else { 
-    $j("tr.not_enrolling").hide();
-    var grade = $j("#reg_grade_level").val();
-    if (grade != null && grade != "" && grade != "-1") {
-      grade = "grade_" + grade;
+    $j('tr.not_enrolling').hide();
+    var grade = $j('#reg_grade_level').val();
+    if (!val_is_empty(grade) && grade != '-1') {
+      grade = 'grade_' + grade;
     } else {
       grade = null;
     }
-    $j("tr.enrolling").each(function(i, el) {
-      if ($j(this).hasClass("by_grade") && (!grade || !$j(this).hasClass(grade))) {
+    $j('tr.enrolling').each(function(i, el) {
+      if ($j(this).hasClass('by_grade') && (val_is_empty(grade) || !$j(this).hasClass(grade))) {
         $j(this).hide();
       }
     });
@@ -38,27 +45,33 @@ function filter_by_enrollment() {
 }
 
 function bind_form_updated(form_id) {
-  var jqform = $j("#" + form_id);
+  var jqform = $j('#' + form_id);
   jqform.addClass('validatedForm');
   jqform.submit(function(event) {
 
     // Not smart enough yet to have the checkbox_required function
     // also handle the onsubmit case, so we have to copy the
     // validate_required_check function here also.
-    var invalid = 
-      (returning_to_grade('6') && !validate_required_check('.electives_6_music')) ||
-      (returning_to_grade('7') && !validate_required_check('.electives_7_band')) ||
-      (returning_to_grade('7') && !validate_required_check('.electives_7_chorus')) ||
-      (returning_to_grade('8') && !validate_required_check('.electives_8_band')) ||
-      (returning_to_grade('8') && !validate_required_check('.electives_8_chorus'));
-    if (invalid) {
+    var valid = true;
+    if (returning_to_grade('6')) {
+      if (!validate_required_check('.electives_6_music')) { valid = false; }
+    }
+    if (returning_to_grade('7')) {
+      if (!validate_required_check('.electives_7_band')) { valid = false; }
+      if (!validate_required_check('.electives_7_chorus')) { valid = false; }
+    }
+    if (returning_to_grade('8')) {
+      if (!validate_required_check('.electives_8_band')) { valid = false; }
+      if (!validate_required_check('.electives_8_chorus')) { valid = false; }
+    }
+    if (!valid) {
       event.preventDefault();
       return false;
     }
 
     var ts = timestamp_now();
-    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
-    $j("#" + form_id + "upd_at").val(ts);
+    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_at').val(ts);
   });
 }
 </script>
@@ -66,8 +79,8 @@ function bind_form_updated(form_id) {
 ~[wc:guardian_header]
 <script>
 $j(document).ready(function() {
-  bind_form_updated("form15");
-  $j(".private").hide();
+  bind_form_updated('form15');
+  $j('.private').hide();
   filter_by_enrollment();
 
   if (returning_to_grade('6')) {
@@ -91,9 +104,9 @@ $j(document).ready(function() {
 <form class="noSubmitLoading" id="form15" action="changesrecorded.html" method="post">
 <input type="hidden" name="backurl" id="backurl" value="13-transportation" />
 <input type="hidden" name="backtitle" id="backtitle" value="Safe Routes to School" />
-<input type="hidden" name="nexturl" value="01-registration.html#acknowledgement" />
+<input type="hidden" name="nexturl" value="16-acknowledgement.html" />
 <input type="hidden" name="nexttitle" value="Acknowledgement and Signature" />
-<input type="hidden" name="nextdesc" value="This is the last registration form. After returning to main registration page, scroll down to the Acknowledgement and Responsibility for Student section, sign, date and click the Submit button." />
+<input type="hidden" name="nextdesc" id="nextdesc" value="" />
 <input type="hidden" name="reg_enroll" id="reg_enroll" value="~([01]reg_will_attend)" />
 <input type="hidden" name="reg_grade_level" id="reg_grade_level"  value="~([01]reg_grade_level)" />
 
@@ -102,12 +115,22 @@ $j(document).ready(function() {
 <div id="form15-setup" class="box-round group" style="width: 720px">
 <table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
 
-<tr class="headerrow not_enrolling"><td colspan="3">Non-Returning Student</td></tr>
+<tr class="headerrow not_enrolling">
+  <td colspan="3">Non-Returning Student</td></tr>
 <tr class="not_enrolling"><td colspan="3">
   You do not need to fill out this form for students who will not be
-  enrolling. Please click the Submit button below to continue.</td></tr>
+  enrolling. Please click the <strong>Submit</strong> button below to mark that 
+  you have completed this page.</td></tr>
 
-<tr class="headerrow enrolling by_grade grade_5 grade_6 grade_7 grade_8"><td colspan="3">Kent School Music Programs: Descriptions</td></tr>
+<tr class="headerrow enrolling by_grade grade_TK grade_K grade_1 grade_2 grade_3 grade_4">
+  <td colspan="3">Bacich Student</td></tr>
+<tr class="enrolling by_grade grade_TK grade_K grade_1 grade_2 grade_3 grade_4"><td colspan="3">
+  There is no information needed for students who will be enrolling at Bacich.
+  Please click the  <strong>Submit</strong> button below to mark that 
+  you have completed this page.</td></tr>
+
+<tr class="headerrow enrolling by_grade grade_5 grade_6 grade_7 grade_8">
+  <td colspan="3">Kent School Music Programs: Descriptions</td></tr>
 
 <tr class="enrolling by_grade grade_5"><td colspan="3" class="bold">Fifth Grade Music Program</td></tr>
 <tr class="enrolling by_grade grade_5"><td colspan="3">All fifth graders will be enrolled in 5th Grade Band and other enrichment classes, but there are no enrichment choices to be made. Please click the Submit button below to continue.
@@ -184,8 +207,8 @@ entered; it is <strong>a full-year commitment.</strong> If you have difficulty o
 <td><input type="radio" name="[01]electives_8_chorus" class="electives_8_chorus" value="No" />No Zero-Period Chorus</td></tr>
 
 <tr class="private"><td colspan="3" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form15_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form15_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" />
+<input type="text" id="form15_upd_at" name="[01]form15_updated_at" value="" /> by 
+<input type="text" id="form15_upd_by" name="[01]form15_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" />
 </td></tr>
 
 <tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>

@@ -180,7 +180,7 @@ function validate_required_check(sel) {
     if (input_type == 'checkbox') {
       setError(jqel, 'This field is required. You must check the box to continue.');
     } else {
-      setError(jqel, 'This field is required. You must choose an answer to continue.');
+      setError(jqel, 'This field is required. You must choose an answer (yes or no) to continue.');
     }
     return false;
   } 

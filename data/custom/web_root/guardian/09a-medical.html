@@ -6,6 +6,13 @@
 <link href="/images/css/regforms.css" rel="stylesheet">
 <script src="/scripts/ksd_validations.js"></script>
 <script>
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return false;
+}
+
 // TODO: attach listeners to all the checkboxes and textareas
 // to update these on blur
 function set_summary_checkboxes() {
@@ -17,7 +24,7 @@ function set_summary_checkboxes() {
     var name = names[i];
     var any_checkbox = $j('input[type="checkbox"].' + name + '_chk');
     var any_textarea = $j('textarea.' + name + '_chk');
-    if (any_checkbox.is(':checked') || any_textarea.val() != '') {
+    if (any_checkbox.is(':checked') || !val_is_empty(any_textarea.val())) {
       $j('input[type="radio"].' + name).prop('checked', false);
       $j('#' + name + '_yes').prop('checked', true);
     }
@@ -25,12 +32,12 @@ function set_summary_checkboxes() {
 }
 
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function(event) {
+  $j('#' + form_id).submit(function(event) {
     set_summary_checkboxes();
 
     var ts = timestamp_now();
-    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
-    $j("#" + form_id + "upd_at").val(ts);
+    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_at').val(ts);
   });
 }
 </script>
@@ -38,13 +45,13 @@ function bind_form_updated(form_id) {
 ~[wc:guardian_header]
 <script>
 $j(document).ready(function() {
-  bind_form_updated("form09");
+  bind_form_updated('form09');
 
   set_default_radio('.requires_meds',   '#requires_meds_no');
   set_default_radio('.school_meds',     '#school_meds_no');
   set_default_radio('.emergency_meds',  '#emergency_meds_no');
 
-  $j(".private").hide();
+  $j('.private').hide();
 });
 </script>
 
@@ -273,8 +280,8 @@ contact the District nurse, Becky Gayman, at
 <td colspan="5"><textarea name="[01]Medical_Accom_Desc" class="med_accom_chk" id="med_accom_txt" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
 <tr class="private"><td colspan="7" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form9_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form9_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="form09_upd_at" name="[01]form9_updated_at" value="" /> by 
+<input type="text" id="form09_upd_by" name="[01]form9_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 <tr><td colspan="7" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
