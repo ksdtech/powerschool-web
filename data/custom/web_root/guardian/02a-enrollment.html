@@ -6,6 +6,13 @@
 <link href="/images/css/regforms.css" rel="stylesheet">
 <script src="/scripts/ksd_validations.js"></script>
 <script>
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return false;
+}
+
 function get_school_year(mo, yr) {
   if (mo <= 6) {
     yr = yr - 1;
@@ -31,7 +38,7 @@ function setup_reg_year() {
     var entrydate = $j('#orig_entrydate').val();
     var enroll_status = parseInt($j('#enroll_status').val())
     if (!entrydate) {
-      entrydate = tmo + "/" + tda + "/" + tyr;
+      entrydate = tmo + '/' + tda + '/' + tyr;
     }
     var mdy = entrydate.match(/(\d+)\/\d+\/(\d+)/);
     if (mdy) {
@@ -71,44 +78,44 @@ function update_reg_year() {
 }
 
 function on_enrollment_change() {
-  var window_not_open = $j("#reg_windownotopen").val();
-  var enrollment = $j("#reg_enroll option:selected").val();
-  var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
+  var window_not_open = $j('#reg_windownotopen').val();
+  var enrollment = $j('#reg_enroll option:selected').val();
+  var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
   if (not_enrolling) { 
-    $j("tr.enrolling").hide();
-    $j("tr.not_enrolling").show();
+    $j('tr.enrolling').hide();
+    $j('tr.not_enrolling').show();
     validateElement($j('#reg_exitcode'));
     validateElement($j('#reg_exitcomment'));
   } else { 
-    $j("tr.enrolling").show(); 
-    $j("tr.not_enrolling").hide();
-    var grade = $j("#reg_grade_level").val();
-    if (grade != null && grade != "" && grade != "-1") {
-      grade = "grade_" + grade;
+    $j('tr.enrolling').show(); 
+    $j('tr.not_enrolling').hide();
+    var grade = $j('#reg_grade_level').val();
+    if (!val_is_empty(grade) && grade != '-1') {
+      grade = 'grade_' + grade;
     } else {
       grade = null;
     }
-    $j("tr.enrolling").each(function(i, el) {
-      if ($j(this).hasClass("by_grade") && (!grade || !$j(this).hasClass(grade))) {
+    $j('tr.enrolling').each(function(i, el) {
+      if ($j(this).hasClass('by_grade') && (val_is_empty(grade) || !$j(this).hasClass(grade))) {
         $j(this).hide();
       }
     });
     validateElement($j('#reg_grade_level'));
   }
   
-  var locked = (window_not_open != "" || enrollment == 'nr-locked');
+  var locked = (!val_is_empty(window_not_open) || enrollment == 'nr-locked');
   if (locked) {
-    $j(".unlocked").hide();
+    $j('.unlocked').hide();
   } else {
-    $j(".locked").hide();
+    $j('.locked').hide();
   }
   return true;
 }
 
 function validate_grade(jqel) {
-  if (jqel.val() == '') {
-    var enrollment = $j("#reg_enroll option:selected").val();
-    var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
+  if (val_is_empty(jqel.val())) {
+    var enrollment = $j('#reg_enroll option:selected').val();
+    var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
     if (!not_enrolling) {
       return 'Grade level is required unless student is not enrolling'
     }
@@ -117,9 +124,9 @@ function validate_grade(jqel) {
 }
 
 function validate_exit(jqel) {
-  if (jqel.val() == '') {
-    var enrollment = $j("#reg_enroll option:selected").val();
-    var not_enrolling = (enrollment != null && /^nr-/.test(enrollment));
+  if (val_is_empty(jqel.val())) {
+    var enrollment = $j('#reg_enroll option:selected').val();
+    var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
     if (not_enrolling) {
       return 'Exit information is required if student is not enrolling'
     }
@@ -128,9 +135,9 @@ function validate_exit(jqel) {
 }
 
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function(event) {
-    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
-    $j("#" + form_id + "upd_at").val(timestamp_now()); 
+  $j('#' + form_id).submit(function(event) {
+    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_at').val(timestamp_now()); 
   });
 }
 </script>
@@ -138,12 +145,12 @@ function bind_form_updated(form_id) {
 ~[wc:guardian_header]
 <script>
 $j(document).ready(function() {
-  bind_form_updated("form02");
-  $j(".private").hide();
+  bind_form_updated('form02');
+  $j('.private').hide();
   
   setup_reg_year();
-  $j("#reg_enroll").bind("change", function() { on_enrollment_change(); });
-  $j("#reg_grade_level").bind("change", function() { on_enrollment_change(); });
+  $j('#reg_enroll').bind('change', function() { on_enrollment_change(); });
+  $j('#reg_grade_level').bind('change', function() { on_enrollment_change(); });
 
   on_enrollment_change();
 });

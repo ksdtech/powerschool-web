@@ -6,8 +6,23 @@
 <link href="/images/css/regforms.css" rel="stylesheet">
 <script src="/scripts/ksd_validations.js"></script>
 <script>
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return false;
+}
+
+function is_north_america(s) {
+  if (s) {
+    s = s.toString().trim();
+    return s == 'US' || s == 'MX' || s == 'CA';
+  }
+  return false;
+}
+
 function requiredIfNorthAmerican(jqel) {
-  if (jqel.val() == '' && $j('#birth_country').val() !== '') {
+  if (val_is_empty(jqel.val()) && is_north_america($j('#birth_country').val())) {
     return 'This field is required for US, Canada and Mexico birth places';
   }
   return '';
@@ -46,9 +61,9 @@ function toggleCheckbox(id) {
 }
 
 function bind_form_updated(form_id) {
-  $j("#" + form_id).submit(function(event) {
-    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
-    $j("#" + form_id + "upd_at").val(timestamp_now()); 
+  $j('#' + form_id).submit(function(event) {
+    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_at').val(timestamp_now()); 
   });
 }
 </script>
@@ -56,10 +71,10 @@ function bind_form_updated(form_id) {
 ~[wc:guardian_header]
 <script>
 $j(document).ready(function() {
-  bind_form_updated("form03");
-  $j(".private").hide();
+  bind_form_updated('form03');
+  $j('.private').hide();
   
-  if ($j('#ethnicity').val() == '') {
+  if (val_is_empty($j('#ethnicity').val())) {
     $j('#fedEthDecline').prop('checked', true);
   }
 });
@@ -99,7 +114,7 @@ $j(document).ready(function() {
 <tr class="headerrow"><td colspan="3" class="bold">3. Birth Information</td></tr>
 <tr><td>Date of Birth</td>
 <td colspan="2">Gender</td></tr>
-<tr><td><input type="text" id="dob" name="[01]DOB" value="" size="15" /></td>
+<tr><td><input type="text" id="dob" name="[01]DOB" value="" size="15" data-validation='{"type":"date","key":"students.dob","required":"true"}' /></td>
 <td colspan="2"><select id="gender" name="[01]Gender" data-validation='{"type":"text","key":"students.gender","required":"true"}'>
 <option value="M">M</option>
 <option value="F">F</option>
@@ -907,8 +922,8 @@ data-validation='{"type":"date", "key":"students.ca_firstusaschooling"}' /></td>
 </select></td></tr>
 
 <tr class="private"><td colspan="3" class="bold">Last updated at 
-<input type="text" id="upd_at" name="[01]form3_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form3_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="form03_upd_at" name="[01]form3_updated_at" value="" /> by 
+<input type="text" id="form03_upd_by" name="[01]form3_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 <tr><td colspan="3" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>

@@ -6,6 +6,13 @@
 <link href="/images/css/regforms.css" rel="stylesheet">
 <script src="/scripts/ksd_validations.js"></script>
 <script>
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return false;
+}
+
 // Check the value of this field:
 // It's required if any of the any_vals elements are not empty.
 // Note: msg parameter must not be an empty string!
@@ -13,11 +20,11 @@ function required_if_any_val(val, any_vals, msg) {
   // Not working yet
   return '';
 
-  if (val == '') {
+  if (val_is_empty(val)) {
     // See if any of the other fields are not blank
     // If so, then this field is required and it's an error
     var jqnames = $j(any_vals).filter(function(index) {
-      return $j(this).val() != '';
+      return !val_is_empty($j(this).val());
     });
     if (jqnames.length > 0) {
       return msg;
@@ -52,7 +59,7 @@ function validateFather2(jqel) {
 }
 
 function bind_form_updated(form_id) {
-  var jqform = $j("#" + form_id);
+  var jqform = $j('#' + form_id);
   jqform.addClass('validatedForm');
   jqform.submit(function(event) {
     var invalid = 
@@ -79,8 +86,8 @@ function bind_form_updated(form_id) {
       $j('#preview_approved_at').val('');
     }
 
-    $j("#" + form_id + "upd_by").val($j("#userid").val()); 
-    $j("#" + form_id + "upd_at").val(ts);
+    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_at').val(ts);
   });
 }
 </script>
@@ -89,8 +96,8 @@ function bind_form_updated(form_id) {
 <script src="/scripts/kik_dir_new.js"></script>
 <script>
 $j(document).ready(function() {
-  bind_form_updated("form04");
-  $j(".private").hide();
+  bind_form_updated('form04');
+  $j('.private').hide();
 
   checkbox_required('.por_confirmation');
   set_default_radio('.inet_access',       '#inet_yes');
@@ -196,9 +203,9 @@ approved, then press the <strong>Submit</strong> button.</td></tr>
 app which provide contact information for the private use of District families. If you do 
 not want any family information listed in the <strong>kik</strong> School Directory and 
 <strong>kik</strong> mobile app, this is the <strong>only place to opt-out completely<strong>. 
-You may also choose to selectively include and/or exclude specific family contact information 
+You may also choose to selectively include or exclude specific family contact information 
 such as names, addresses, phone numbers and email addresses. Should you choose to exclude 
-certain contact information, simply <strong>uncheck</strong> the boxes next to the specific 
+certain contact information, simply <strong>check</strong> the boxes next to the specific 
 contact information you wish to exclude from the <strong>kik</strong> School Directory and 
 <strong>kik</strong> mobile app in the sections below.</td></tr>
 
@@ -268,15 +275,17 @@ the following:</td></tr>
   <input name="[01]Zip" type="text" id="zip" class="ksource" value="" size="10" data-validation='{"type":"text","key":"students.zip","required":"true"}' /></td></tr>
 
 <tr><td colspan="5">
-  <input name="[01]kikdir_home_addr" type="checkbox" id="kikdir_home_addr" class="ksource" value="1" />Exclude this address from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_home_addr" type="checkbox" id="kikdir_home_addr" class="ksource" value="1" />Exclude this address from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 </table>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr><td>Home Phone</td>
-<td colspan="3"><input name="[01]Home_Phone" type="text" id="home_phone" class="ksource" value="" size="20" /></td></tr>
+<td colspan="3"><input name="[01]Home_Phone" type="text" id="home_phone" class="ksource" value="" size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.home_phone","required":"true"}'/></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_home_phone" type="checkbox" id="kikdir_home_phone" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_home_phone" type="checkbox" id="kikdir_home_phone" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr><td colspan="2">Do you have internet access at this residence?</td>
 <td colspan="2">
@@ -302,7 +311,8 @@ the following:</td></tr>
 <td colspan="3">
   <input name="[01]Mother_First" type="text" id="mother_first" class="guardian_name mother_any ksource" value="" size="20" maxlength="30" /></td></tr>
 <tr><td colspan="4">
-  <input name="[01]kikdir_mother_name" type="checkbox" id="kikdir_mother_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_mother_name" type="checkbox" id="kikdir_mother_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
   
 <tr><td>Relationship</td>
 <td><select id="mother_rel" name="[01]Mother_Rel" 
@@ -333,13 +343,15 @@ class="psSpecialValidate" data-specialfunction="validateMother">
 size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.mother_cell"}' /></td><tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_mother_cell" type="checkbox" id="kikdir_mother_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_mother_cell" type="checkbox" id="kikdir_mother_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
   
 <tr><td>Work Phone</td>
 <td colspan="3"><input name="[01]mother_Work_Phone" type="text" id="mother_work_phone" value=""
 size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.mother_work_phone"}' /></td></tr>
 <tr><td>&nbsp;</td>
-<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory)</td></tr>
+<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app)</td></tr>
 
 <tr><td>Email Address</td>
 <td colspan="3">
@@ -347,7 +359,8 @@ size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"3
   data-validation='{"textMask":"Pearson_email","type":"text","key":"students.mother_email"}' /></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_mother_email" type="checkbox" id="kikdir_mother_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_mother_email" type="checkbox" id="kikdir_mother_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr class="headerrow"><td colspan="4" class="bold">4. Father/Parent/Guardian at Qualifying District Residence</td></tr>
 
@@ -358,7 +371,8 @@ size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"3
 <td colspan="3">
   <input name="[01]father_First" type="text" id="father_first" class="guardian_name father_any ksource" value="" size="20" maxlength="30" /></td></tr>
 <tr><td colspan="4">
-  <input name="[01]kikdir_father_name" type="checkbox" id="kikdir_father_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_father_name" type="checkbox" id="kikdir_father_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
   
 <tr><td>Relationship</td>
 <td><select id="father_rel" name="[01]Father_Rel"
@@ -389,7 +403,8 @@ class="psSpecialValidate" data-specialfunction="validateFather">
 size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.father_cell"}' /></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_father_cell" type="checkbox" id="kikdir_father_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_father_cell" type="checkbox" id="kikdir_father_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr><td>Work Phone</td>
 <td colspan="3"><input name="[01]father_Work_Phone" type="text" id="father_work_phone" value="" 
@@ -402,7 +417,8 @@ size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"3
 data-validation='{"textMask":"Pearson_email","type":"text","key":"students.father_email"}' /></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_father_email" type="checkbox" id="kikdir_father_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_father_email" type="checkbox" id="kikdir_father_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr class="private"><td colspan="4">
   <input name="[01]mailing_street" type="text" id="mailing_street" class="copy_address" value="" /> 
@@ -438,7 +454,8 @@ data-validation='{"textMask":"Pearson_email","type":"text","key":"students.fathe
     data-specialfunction="validateHome2" /></td></tr>
   
 <tr><td colspan="5">
-  <input name="[01]kikdir_home2_addr" type="checkbox" id="kikdir_home2_addr" class="ksource" value="1" />Exclude this address from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_home2_addr" type="checkbox" id="kikdir_home2_addr" class="ksource" value="1" />Exclude this address from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 </table>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
@@ -449,7 +466,8 @@ data-validation='{"textMask":"Pearson_email","type":"text","key":"students.fathe
   data-specialfunction="validateHome2" /></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_home2_phone" type="checkbox" id="kikdir_home2_phone" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_home2_phone" type="checkbox" id="kikdir_home2_phone" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr><td colspan="2">Do you have internet access at this residence?</td>
 <td colspan="2">
@@ -480,7 +498,8 @@ data-validation='{"textMask":"Pearson_email","type":"text","key":"students.fathe
   <input name="[01]Mother2_First" type="text" id="mother2_first" class="family2_any mother2_any ksource psSpecialValidate" value="" size="20" maxlength="30" 
   data-specialfunction="validateMother2" /></td></tr>
 <tr><td colspan="4">
-  <input name="[01]kikdir_mother2_name" type="checkbox" id="kikdir_mother2_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_mother2_name" type="checkbox" id="kikdir_mother2_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
   
 <tr><td>Relationship</td>
 <td><select id="mother2_rel" name="[01]Mother2_Rel" class="mother2_any psSpecialValidate" 
@@ -515,14 +534,16 @@ data-validation='{"textMask":"Pearson_email","type":"text","key":"students.fathe
 <tr><td>&nbsp;</td>
 <td colspan="3">
   <input name="[01]kikdir_mother2_cell" type="checkbox" id="kikdir_mother2_cell" 
-  class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
+  class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
   
 <tr><td>Work Phone</td>
 <td colspan="3"><input name="[01]Mother2_Work_Phone" type="text" id="mother2_work_phone" 
  class="mother2_any" value="" size="20" 
  data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.mother2_work_phone"}' /></td></tr>
 <tr><td>&nbsp;</td>
-<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory)</td></tr>
+<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app)</td></tr>
 
 <tr><td>Email Address</td>
 <td colspan="3"><input name="[01]Mother2_Email" type="text" id="mother2_email" 
@@ -530,7 +551,8 @@ data-validation='{"textMask":"Pearson_email","type":"text","key":"students.fathe
  data-validation='{"textMask":"Pearson_email","type":"text","key":"students.mother2_email"}' /></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_mother2_email" type="checkbox" id="kikdir_mother2_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_mother2_email" type="checkbox" id="kikdir_mother2_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr class="headerrow"><td colspan="4" class="bold">7. Father/Parent/Guardian at Additional Residence</td></tr>
 
@@ -540,7 +562,8 @@ data-validation='{"textMask":"Pearson_email","type":"text","key":"students.fathe
 <td colspan="3">
   <input name="[01]Father2_First" type="text" id="father2_first" class="family2_test father2_any ksource" value="" size="20" maxlength="30" /></td></tr>
 <tr><td colspan="4">
-  <input name="[01]kikdir_father2_name" type="checkbox" id="kikdir_father2_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_father2_name" type="checkbox" id="kikdir_father2_name" class="ksource" value="1" />Exclude this person's name from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr><td>Relationship</td>
 <td><select id="father2_rel" name="[01]Father2_Rel"
@@ -571,19 +594,22 @@ class="psSpecialValidate" data-specialfunction="validateFather2">
 size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.father2_cell"}' /></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_father2_cell" type="checkbox" id="kikdir_father2_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_father2_cell" type="checkbox" id="kikdir_father2_cell" class="ksource" value="1" />Exclude this phone number from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
   
 <tr><td>Work Phone</td>
 <td colspan="3"><input name="[01]father2_Work_Phone" type="text" id="father2_work_phone" value="" 
 size="20" data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":"text","key":"students.father2_work_phone"}' /></td></tr>
 <tr><td>&nbsp;</td>
-<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory)</td></tr>
+<td colspan="3">(Work phones are never published in the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app)</td></tr>
 
 <tr><td>Email Address</td>
 <td colspan="3"><input name="[01]father2_Email" type="text" id="father2_email" class="ksource" value="" size="40" data-validation='{"textMask":"Pearson_email","type":"text","key":"students.father2_email"}' /></td></tr>
 <tr><td>&nbsp;</td>
 <td colspan="3">
-  <input name="[01]kikdir_father2_email" type="checkbox" id="kikdir_father2_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory?</td></tr>
+  <input name="[01]kikdir_father2_email" type="checkbox" id="kikdir_father2_email" class="ksource" value="1" />Exclude this email address from the <strong>kik</strong> School Directory and 
+<strong>kik</strong> mobile app?</td></tr>
 
 <tr class="private"><td colspan="4">
   <input name="[01]mailing2_street" type="text" id="mailing2_street" class="copy_address2" value="" /> 
@@ -663,8 +689,8 @@ missing or incorrect sibling names and grade levels shown in the preview.</td></
 <tr class="private"><td colspan="4" class="bold">Preview approved at
 <input type="text" id="preview_approved_at" name="[01]kikdir_at" value="" /> 
 , Form last updated at
-<input type="text" id="upd_at" name="[01]form4_updated_at" value="" /> by 
-<input type="text" id="upd_by" name="[01]form4_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
+<input type="text" id="form04_upd_at" name="[01]form4_updated_at" value="" /> by 
+<input type="text" id="form04_upd_by" name="[01]form4_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
 <tr><td colspan="4" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
