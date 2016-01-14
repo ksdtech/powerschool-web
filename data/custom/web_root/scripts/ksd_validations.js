@@ -1,134 +1,174 @@
-/*
- * Date Format 1.2.3
- * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
- * MIT license
- *
- * Includes enhancements by Scott Trenda <scott.trenda.net>
- * and Kris Kowal <cixar.com/~kris.kowal/>
- *
- * Accepts a date, a mask, or a date and a mask.
- * Returns a formatted version of the given date.
- * The date defaults to the current date/time.
- * The mask defaults to dateFormat.masks.default.
- */
+// ksd_validations.js
+// Date formatting and common functions
 
-var ksdDateFormat = function () {
-  var token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
-    timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
-    timezoneClip = /[^-+\dA-Z]/g,
-    pad = function (val, len) {
-      val = String(val);
-      len = len || 2;
-      while (val.length < len) val = "0" + val;
-      return val;
-    };
+String.escape = function(string) {
+    return string.replace(/('|\\)/g, "\\$1");
+}
 
-  // Regexes and supporting functions are cached through closure
-  return function (date, mask, utc) {
-    var dF = ksdDateFormat;
-
-    // You can't provide utc if you skip other args (use the "UTC:" mask prefix)
-    if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
-      mask = date;
-      date = undefined;
+String.leftPad = function (val, size, ch) {
+    var result = new String(val);
+    if (ch == null) {
+        ch = " ";
     }
-
-    // Passing date through Date applies Date.parse, if necessary
-    date = date ? new Date(date) : new Date;
-    if (isNaN(date)) throw SyntaxError("invalid date");
-
-    mask = String(dF.masks[mask] || mask || dF.masks["default"]);
-
-    // Allow setting the utc argument via the mask
-    if (mask.slice(0, 4) == "UTC:") {
-      mask = mask.slice(4);
-      utc = true;
+    while (result.length < size) {
+        result = ch + result;
     }
+    return result;
+}
 
-    var _ = utc ? "getUTC" : "get",
-      d = date[_ + "Date"](),
-      D = date[_ + "Day"](),
-      m = date[_ + "Month"](),
-      y = date[_ + "FullYear"](),
-      H = date[_ + "Hours"](),
-      M = date[_ + "Minutes"](),
-      s = date[_ + "Seconds"](),
-      L = date[_ + "Milliseconds"](),
-      o = utc ? 0 : date.getTimezoneOffset(),
-      flags = {
-        d:    d,
-        dd:   pad(d),
-        ddd:  dF.i18n.dayNames[D],
-        dddd: dF.i18n.dayNames[D + 7],
-        m:    m + 1,
-        mm:   pad(m + 1),
-        mmm:  dF.i18n.monthNames[m],
-        mmmm: dF.i18n.monthNames[m + 12],
-        yy:   String(y).slice(2),
-        yyyy: y,
-        h:    H % 12 || 12,
-        hh:   pad(H % 12 || 12),
-        H:    H,
-        HH:   pad(H),
-        M:    M,
-        MM:   pad(M),
-        s:    s,
-        ss:   pad(s),
-        l:    pad(L, 3),
-        L:    pad(L > 99 ? Math.round(L / 10) : L),
-        t:    H < 12 ? "a"  : "p",
-        tt:   H < 12 ? "am" : "pm",
-        T:    H < 12 ? "A"  : "P",
-        TT:   H < 12 ? "AM" : "PM",
-        Z:    utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
-        o:    (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
-        S:    ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
-      };
+Date.daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
 
-    return mask.replace(token, function ($0) {
-      return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1);
-    });
-  };
-}();
+Date.monthNames =
+   ["January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"];
 
+Date.dayNames =
+   ["Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"];
 
-// Some common format strings
-ksdDateFormat.masks = {
-  "default":      "ddd mmm dd yyyy HH:MM:ss",
-  shortDate:      "m/d/yy",
-  mediumDate:     "mmm d, yyyy",
-  longDate:       "mmmm d, yyyy",
-  fullDate:       "dddd, mmmm d, yyyy",
-  shortTime:      "h:MM TT",
-  mediumTime:     "h:MM:ss TT",
-  longTime:       "h:MM:ss TT Z",
-  isoDate:        "yyyy-mm-dd",
-  isoTime:        "HH:MM:ss",
-  isoDateTime:    "yyyy-mm-dd'T'HH:MM:ss",
-  isoUtcDateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"
-};
+Date.y2kYear = 50;
 
-// Internationalization strings
-ksdDateFormat.i18n = {
-  dayNames: [
-    "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
-    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-  ],
-  monthNames: [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-  ]
-};
+Date.monthNumbers = {
+    Jan:0,
+    Feb:1,
+    Mar:2,
+    Apr:3,
+    May:4,
+    Jun:5,
+    Jul:6,
+    Aug:7,
+    Sep:8,
+    Oct:9,
+    Nov:10,
+    Dec:11};
+  
+Date.patterns = {
+    ISO8601LongPattern:"Y-m-d H:i:s",
+    ISO8601ShortPattern:"Y-m-d",
+    ShortDatePattern: "n/j/Y",
+    LongDatePattern: "l, F d, Y",
+    FullDateTimePattern: "l, F d, Y g:i:s A",
+    MonthDayPattern: "F d",
+    ShortTimePattern: "g:i A",
+    LongTimePattern: "g:i:s A",
+    SortableDateTimePattern: "Y-m-d\\TH:i:s",
+    UniversalSortableDateTimePattern: "Y-m-d H:i:sO",
+    YearMonthPattern: "F, Y"};
 
-/*
-For convenience...
-Date.prototype.format = function (mask, utc) {
-  return ksdDateFormat(this, mask, utc);
-};
-*/
+Date.formatFunctions = {count:0};
+
+Date.prototype.dateFormat = function(format) {
+    if (Date.formatFunctions[format] == null) {
+        Date.createNewFormat(format);
+    }
+    var func = Date.formatFunctions[format];
+    return this[func]();
+}
+
+Date.createNewFormat = function(format) {
+    var funcName = "format" + Date.formatFunctions.count++;
+    Date.formatFunctions[format] = funcName;
+    var code = "Date.prototype." + funcName + " = function(){return ";
+    var special = false;
+    var ch = '';
+    for (var i = 0; i < format.length; ++i) {
+        ch = format.charAt(i);
+        if (!special && ch == "\\") {
+            special = true;
+        }
+        else if (special) {
+            special = false;
+            code += "'" + String.escape(ch) + "' + ";
+        }
+        else {
+            code += Date.getFormatCode(ch);
+        }
+    }
+    eval(code.substring(0, code.length - 3) + ";}");
+}
+
+Date.getFormatCode = function(character) {
+    switch (character) {
+    case "d":
+        return "String.leftPad(this.getDate(), 2, '0') + ";
+    case "D":
+        return "Date.dayNames[this.getDay()].substring(0, 3) + ";
+    case "j":
+        return "this.getDate() + ";
+    case "l":
+        return "Date.dayNames[this.getDay()] + ";
+    case "S":
+        return "this.getSuffix() + ";
+    case "w":
+        return "this.getDay() + ";
+    case "z":
+        return "this.getDayOfYear() + ";
+    case "W":
+        return "this.getWeekOfYear() + ";
+    case "F":
+        return "Date.monthNames[this.getMonth()] + ";
+    case "m":
+        return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
+    case "M":
+        return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
+    case "n":
+        return "(this.getMonth() + 1) + ";
+    case "t":
+        return "this.getDaysInMonth() + ";
+    case "L":
+        return "(this.isLeapYear() ? 1 : 0) + ";
+    case "Y":
+        return "this.getFullYear() + ";
+    case "y":
+        return "('' + this.getFullYear()).substring(2, 4) + ";
+    case "a":
+        return "(this.getHours() < 12 ? 'am' : 'pm') + ";
+    case "A":
+        return "(this.getHours() < 12 ? 'AM' : 'PM') + ";
+    case "g":
+        return "((this.getHours() %12) ? this.getHours() % 12 : 12) + ";
+    case "G":
+        return "this.getHours() + ";
+    case "h":
+        return "String.leftPad((this.getHours() %12) ? this.getHours() % 12 : 12, 2, '0') + ";
+    case "H":
+        return "String.leftPad(this.getHours(), 2, '0') + ";
+    case "i":
+        return "String.leftPad(this.getMinutes(), 2, '0') + ";
+    case "s":
+        return "String.leftPad(this.getSeconds(), 2, '0') + ";
+    case "O":
+        return "this.getGMTOffset() + ";
+    case "T":
+        return "this.getTimezone() + ";
+    case "Z":
+        return "(this.getTimezoneOffset() * -60) + ";
+    default:
+        return "'" + String.escape(character) + "' + ";
+    }
+}
 
 function timestamp_now() {
-  return ksdDateFormat(new Date(), 'Y-m-d H:i:s', false);
+  return (new Date()).dateFormat("Y-m-d H:i:s");
+}
+
+function today_mdy() {
+  return (new Date()).dateFormat('n/w/Y');
 }
 
 // sel is either a CSS single checkbox or group radio selector
