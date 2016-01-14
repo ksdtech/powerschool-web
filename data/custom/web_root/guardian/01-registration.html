@@ -4,218 +4,169 @@
 <title>Online Registration Forms - PowerSchool Parent Access</title>
 <!-- pscustom_begin -->
 <link href="/images/css/regforms.css" rel="stylesheet">
+<script src="/scripts/ksd_validations.js"></script>
+<script>
+function val_is_date_stamp(dt) {
+  if (dt) {
+    dt = dt.toString().match(/^\s*(\d\d\d\d-\d\d-\d\d)/);
+    return dt && dt[1] /* && dt[1].localeCompare('2013-03-25') >= 0 */;
+  }
+  return false;
+}
+
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return false;
+}
+
+function validateResp(jqel) {
+  if (!$j('#acknowledgement').prop('checked')) {
+    return 'Parent must acknowledge responsibility';
+  }
+  return '';
+}
+
+function validateSig(jqel) {
+  var unchecked = null;
+  $j('.page_status').each(function() {
+    if (!unchecked && !val_is_date_stamp($j(this).val())) {
+      unchecked = $j(this).attr('data-description');
+    }
+  });
+  if (unchecked) {
+    return 'At least one registration page has not been fully submitted (' + unchecked + '). ' +
+    'Please click the link in the "Links to Registration Pages" section above';
+  }
+  if (val_is_empty(jqel.val())) {
+    return 'Signature is required';
+  }
+  return '';
+}
+
+
+function check_registration_allowed() {
+  var window_not_open = $j('#reg_windownotopen').val();
+  var enrollment = $j('#reg_will_attend').val();
+  var locked = (!val_is_empty(window_not_open) || enrollment == 'nr-locked');
+  if (locked) {
+    $j('.unlocked').hide();
+  } else {
+    $j('.locked').hide();
+  }
+}
+
+function update_registration_status() {
+  $j('.chk_status').each(function() {
+    var src = '#' + $j(this).attr('id').replace('_status', '_updated_at');
+    var dt = $j(src).val();
+    if (val_is_date_stamp(dt)) { 
+      $j(this).removeClass('feedback-alert').addClass('feedback-confirm');
+    }
+  });
+}
+</script>
 ~[wc:UI_js_includes]
 ~[wc:guardian_header]
-<script src="/scripts/fmt_date.js" type="text/javascript"></script>
-<script src="/scripts/formatters.js" type="text/javascript"></script>
-<script src="/scripts/happy.js" type="text/javascript"></script>
-<script src="/scripts/happy.methods.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form.js" type="text/javascript"></script>
-<script src="/scripts/jquery_form01.js" type="text/javascript"></script>
+<script>
+$j(document).ready(function() {
+  $j('.private').hide();
+  check_registration_allowed();
+  update_registration_status();
+
+});
+</script>
 
 <h1>Online Registration Forms</h1>
 
 <div id="changes-saved-container">
 </div>
 
-<div id="form01-contents" align="center" style="width: 98%">
-<div id="form01-setup" class="box-round group" style="width: 720px">
+<div id="page1_contents" align="center" style="width: 98%">
+<div id="page1_setup" class="box-round group" style="width: 720px">
 
 <!-- begin form action -->
-<form class="noSubmitLoading" id="form01" action="changesrecorded.html" method="post">
 <input type="hidden" name="backurl" id="backurl" value="01-registration.html" />
 <input type="hidden" name="backtitle" id="backtitle" value="Main Registration Page" />
-<input type="hidden" name="nexturl" id="nexturl" value="03-student.html" />
-<input type="hidden" name="nexttitle" id="nexttitle" value="Student Information Page" />
-<input type="hidden" id="orig_reg_year" name="orig_reg_year" value="~([01]reg_year)" />
-<input type="hidden" id="orig_entrydate" name="orig_entrydate" value="~([01]entrydate)" />
-<input type="hidden" id="enroll_status" name="enroll_status" value="~([01]enroll_status)" />
-<input type="hidden" id="form3_updated_at" name="[01]form3_updated_at" value="">
-<input type="hidden" id="form4_updated_at" name="[01]form4_updated_at" value="">
-<input type="hidden" id="form6_updated_at" name="[01]form6_updated_at" value="">
-<input type="hidden" id="form9_updated_at" name="[01]form9_updated_at" value="">
-<input type="hidden" id="form10_updated_at" name="[01]form10_updated_at" value="">
-<input type="hidden" id="form13_updated_at" name="[01]form13_updated_at" value="">
-<input type="hidden" id="form15_updated_at" name="[01]form15_updated_at" value="">
+<input type="hidden" name="nexturl" id="nexturl" value="02-enrollment.html" />
+<input type="hidden" name="nexttitle" id="nexttitle" value="Enrollment Page" />
+<input type="hidden" id="reg_will_attend" value="~([01]reg_will_attend)" />
+<input type="hidden" id="reg_windownotopen" value="~([01]reg_windownotopen)" />
+<input type="hidden" class="page_status" id="residencyproof_updated_at" value="~([01]reg_residencyproofok)" />
+<input type="hidden" class="page_status" id="immunizations_updated_at" value="~([01]reg_immunizationsok)" />
+<input type="hidden" class="page_status" id="form1_updated_at" data-description="Enrollment" 
+value="~([01]form1_updated_at)" />
+<input type="hidden" class="page_status" id="form3_updated_at" data-description="Student Information" value="~([01]form3_updated_at)" />
+<input type="hidden" class="page_status" id="form4_updated_at" data-description="Family Information" value="~([01]form4_updated_at)" />
+<input type="hidden" class="page_status" id="form6_updated_at" data-description="Emergency Contacts" value="~([01]form6_updated_at)" />
+<input type="hidden" class="page_status" id="form9_updated_at" data-description="Medical Information" value="~([01]form9_updated_at)" />
+<input type="hidden" class="page_status" id="form10_updated_at" data-description="Authorizations" value="~([01]form10_updated_at)" />
+<input type="hidden" class="page_status" id="form13_updated_at" data-description="Safe Routes" 
+value="~([01]form13_updated_at)" />
+<input type="hidden" class="page_status" id="form15_updated_at" data-description="School-Specific" value="~([01]form15_updated_at)">
+<input type="hidden" class="page_status" id="form16_updated_at" data-description="Acknowledgement of Responsibility" value="~([01]form16_updated_at)" />
 <!-- end form action -->
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="private"><td colspan="2" class="bold">Registration Year
-<input type="text" id="reg_year" class="reg_year" name="[01]reg_year" value="" />
-</td></tr>
-  
-<tr class="headerrow"><td colspan="2" class="bold">General Instructions</td></tr>
-<tr><td colspan="3">Complete all the information on this page and click the <strong>Submit</strong> button.
-Then make sure to complete information on all other pages linked from this page.
-As you complete and submit them, a green checkmark will appear to the left of each
-page name. Finally, fill out the electronic signature acknowledgement area
-and click the <strong>Submit</strong> button again.</td></tr>
-
-<tr><td colspan="3">For information about the registration process and requirements, 
-<a class="dialogM" title="Registration Information and Requirements" href="/public/ksdp_registration.html">click here.</a></td></tr>
-<tr><td colspan="3">For detailed instructions on filling out the registration pages, 
-<a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">click here.</a></td></tr>
-  
-<tr class="headerrow"><td colspan="2" class="bold">1. Enrollment Information</td></tr>
-
-<tr class="unlocked"><td width="50%">School year you are registering this student for:</td><td><select id="reg_school_year" name="[01]reg_year">
-<option value="">Choose:</option>
-<option value="2015-2016">2015-2016 (Next year)</option>
-<option value="2014-2015">2014-2015 (Current year)</option>
-</select></td></tr>
-
-<tr class="unlocked"><td width="50%">Status <span class="for_reg_year" id="rys">for 2014-2015 School Year</span></td><td><select id="reg_enroll" name="[01]reg_will_attend">
-<option value="">Choose:</option>
-<option value="attending">Student will be attending Bacich or Kent</option>
-<option value="nr-graduated">Student will have graduated</option>
-<option value="nr-permanent">Student will not be attending Bacich or Kent</option>
-<option value="nr-temporary">Student is temporarily leaving the District, but may return later</option>
-<option value="unknown">Not sure if student will attend; don't know at this time</option>
-<option value="nr-locked">Registration locked; not open at this time.</option>
-</select></td></tr>
-
+<tr class="locked headerrow"><td colspan="2">Re-Registration Window Is Not Open Yet</td></tr>
 <tr class="locked"><td colspan="2"><strong>Registration for current
-	students returning to District schools next fall is not open yet.</strong>
-	You may continue to update your contact,
-	medical and other information to keep your records current. Parents
-	will be notified by email and through district weekly communications
-	when the window for re-registering your students is open.</td></tr>
+  students returning to District schools next fall is not open yet.</strong>
+  You may continue to update your contact,
+  medical and other information to keep your records current. Parents
+  will be notified by email and through district weekly communications
+  when the window for re-registering your students is open.</td></tr>
 
-<tr class="unlocked enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2014-2015 School Year</span></td><td><select id="reg_grade_level" name="[01]reg_grade_level">
-<option value="">Choose:</option>
-<option value="TK">Transitional Kindergarten - Bacich Elementary School</option>
-<option value="K">Regular Kindergarten - Bacich Elementary School</option>
-<option value="1">1st Grade - Bacich Elementary School</option>
-<option value="2">2nd Grade - Bacich Elementary School</option>
-<option value="3">3rd Grade - Bacich Elementary School</option>
-<option value="4">4th Grade - Bacich Elementary School</option>
-<option value="5">5th Grade - Kent Middle School</option>
-<option value="6">6th Grade - Kent Middle School</option>
-<option value="7">7th Grade - Kent Middle School</option>
-<option value="8">8th Grade - Kent Middle School</option>
-<option value="-1">Student will not be attending</option>
-</select></td></tr>
-
-<tr class="unlocked not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td><select id="reg_exitcode" name="[01]ExitCode">
-<option value="">Choose:</option>
-<option value="160">Student will attend another public school in California</option>
-<option value="180">Student will attend a private school in California</option>
-<option value="200">Student will attend a US school outside California</option>
-<option value="460">Student will be home schooled</option>
-<option value="240">Student is moving to another country</option>
-<option value="140">Other reason for not attending, or don't know</option>
-</select></td></tr>
-
-<tr class="unlocked not_enrolling"><td>Name and phone number of next school</td>
-<td><input name="[01]ExitComment" type="text" id="reg_exitcomment" value="" size="50"></td></tr>
-
-<tr class="headerrow unlocked enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2" class="bold">Personal Locker Information (Grades 6-8 Only)</td></tr>
-<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2">
-  All sixth, seventh and eighth students will be assigned a numbered 
-  personal locker at the start of each school year. Students must provide a 
-  combination or key lock for the locker. When you know the combination or if 
-  your student will be using a key lock, please provide the 
-  combination or let us know that it is a key lock in the space below.
-  If you change locks, please update the information on this page.<br/>
-  The student is responsible for memorizing his or her lock combination.  
-  Please be aware that if a key lock is purchased, the student is solely 
-  responsible for knowing the location of the key to that lock.<br/>
-  Enter a letter combination like this: "P-A-S-S"<br/>
-  Enter a numeric combination like this: "32-20-45"<br/>
-  If the lock is a key lock, enter the word "key"</td></tr> 
-<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">Personal locker number</td>
-<td>~(locker_number;if.blank.then=TBD)</td></tr>
-<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">Personal locker combination (if applicable)</td>
-<td><input type="text" name="[01]locker_combination" value="" /></input></td></tr>
-
-<tr class="headerrow unlocked enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2" class="bold">PE Locker Information (Grades 6-8 Only)</td></tr>
-<tr class="enrolling by_grade grade_6 grade_7 grade_8"><td colspan="2">
-  Kent Middle School students in sixth, seventh, and eighth grades will use the 
-  locker rooms to change for Physical Education class, and will be assigned 
-  a locker during the first week of school during their physical education 
-  class period.  Each student is 
-  required to provide their own combination lock for use before and after 
-  each class period in order to keep their personal items safe.  
-  If you change locks, please update the information on this page.
-  <br/>
-  The student is responsible for memorizing his or her lock combination.  
-  If there exist special circumstances where a student is unable to use a 
-  combination lock, they may purchase a key lock and write "key" in the 
-  required field.  Please be aware that if a key lock is purchased, 
-  the student is solely responsible for knowing the location of the key 
-  to that lock.<br/>
-  Enter a letter combination like this: "P-A-S-S"<br/>
-  Enter a numeric combination like this: "32-20-45"<br/>
-  If the lock is a key lock, enter the word "key"</td></tr> 
-<tr class="unlocked enrolling by_grade grade_6 grade_7 grade_8"><td class="bold">PE locker combination (if applicable)</td>
-<td><input type="text" name="[01]pe_locker_combination" value="" /></input></td></tr>
-
-<tr class="private"><td class="bold">Last updated at 
-<input type="text" id="form01_upd_at" name="[01]form1_updated_at" value="" /> by 
-<input type="text" id="form01_upd_by" name="[01]form1_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
-</tr>
-
-<tr class="unlocked"><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
-</table>
-</form>
-
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">	
-<tr class="headerrow"><td colspan="2" class="bold">2. Status and Links to Registration Pages</td></tr>
-<tr><td colspan="2">Click the blue links in the list below to go to each 
-	of the pages of the registration system. Check marks and a green background indicate the 
-	pages that have been submitted and validated for the current
-	registration cycle.</td></tr>
-<tr><td colspan="2">Please make sure you complete all pages listed below. As you complete a page, 
-	remember to click the <strong>Submit</strong> button at the bottom of the page.
+<tr class="unlocked headerrow"><td colspan="2" class="bold">General Instructions</td></tr>
+<tr class="unlocked"><td colspan="2">
 <strong>First Time Users:</strong> Please read the 
-	<a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">detailed instructions</a> for more information.</td></tr>
-<tr><td colspan="2"><strong>Links to Registration Pages</strong></td></tr>
+  <a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">detailed instructions</a> for detailed information.<br/><br/>
+Make sure to visit any registration pages that do not have the green checkmark
+next to them by following the links in the boxes below. Make any corrections on those pages, 
+as necessary and make sure to click the <strong>Submit</strong> button 
+<strong>on every page</strong>, whether you have made changes or not.  
+Please note that pages with required fields will not allow submission unless those fields
+are properly entered. As you complete and successfully submit each page, 
+the green checkmark will appear to the left of each page name.<br/><br/>
+If either of the boxes titled "Proof of Residency" or "Immunization" below 
+show that these items have not been confirmed or submitted, 
+and you believe otherwise, please contact the school office to confirm whether these 
+paper items have been received and processed.<br/><br/>
+When all pages are checked off, and both the "Proof of Residency" and "Immunization" boxes 
+are marked as confirmed or not required, make sure to fill out and <strong>Submit</strong> the 
+Acknowledgement of Responsibility page.</td></tr>
 
+<tr class="unlocked"><td colspan="2">For information about the registration process and requirements, 
+<a class="dialogM" title="Registration Information and Requirements" href="/public/ksdp_registration.html">click here.</a></td></tr>
+<tr class="unlocked"><td colspan="2">For detailed instructions on filling out the registration pages, 
+<a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">click here.</a>
+</td></tr>
+
+<tr class="headerrow"><td colspan="2" class="bold">1. Status and Links to Registration Pages</td></tr>
+<tr><td colspan="2">Click the blue links in the list below to go to each 
+  of the pages of the registration system. Check mark icons and a green background indicate 
+  that the corresponding residency proof, immunization records and registration pages have 
+  been submitted and validated for the current registration cycle; exclamation point icons 
+  and an orange backround indicate that these items are incomplete.</td></tr>
+<tr><td colspan="2">Please make sure you complete all pages listed below. As you complete a page, 
+  remember to click the <strong>Submit</strong> button at the bottom of the page.
+</td></tr>
+<tr><td colspan="2"><strong>Registration Status and Links to Pages</strong></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="residencyproof_status">Proof of Residency
+<strong>Not Confirmed</strong></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="immunizations_status">Required Immunizations
+<strong>Not Submitted</strong>
+</div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form1_status"><a href="02-enrollment.html?actpage=01-registration">Enrollment</a></div></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="form3_status"><a href="03-student.html?actpage=01-registration">Student Information</a></div></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="form4_status"><a href="04-family.html?actpage=01-registration">Family and kik School Directory Information</a></div></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="form6_status"><a href="06-emergency.html?actpage=01-registration">Emergency Procedures and Contacts</a></div></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="form9_status"><a href="09-medical.html?actpage=01-registration">Medical Information</a></div></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="form10_status"><a href="10-permissions.html?actpage=01-registration">Authorizations and Permissions</a></div></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="form13_status"><a href="13-transportation.html?actpage=01-registration">Safe Routes to School</a></div></td></tr>
-<tr class="by_grade grade_5 grade_6 grade_7 grade_8"><td colspan="2"><div class="feedback-alert chk_status" id="form15_status"><a href="15-electives.html?actpage=01-registration">Electives (Kent Middle School Only)</a></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form15_status"><a href="15-electives.html?actpage=01-registration">School-Specific Information</a></div></td></tr>
+<tr><td colspan="2"><div class="feedback-alert chk_status" id="form16_status"><a href="16-acknowledgement.html?actpage=01-registration">Acknowledgement of Responsibility</a></div></td></tr>
 </table>
-
-<!-- begin form action -->
-<form class="noSubmitLoading" id="form16" action="changesrecorded.html" method="post">
-
-<table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="headerrow"><td class="bold" colspan="2">3. Acknowledgement and Responsibility for Student</td></tr>
-<tr><td colspan="2">I (we) have thoroughly reviewed and filled out all of the 
-  registration pages for this student and the pages are marked with check marks above. 
-  To the best of my (our) knowledge, all the information reported on all of 
-  the registration pages is true and correct.<br/> 
-  I (we) assume full responsibility for my (our) student in all school matters. 
-  If there is a change in any of this information, I (we) will update it promptly.</td></tr>
-<tr><td>&nbsp;</td>
-<td><input type="radio" name="[01]responsibility_for_student" class="resp_for_student" id="acknowledgement" value="Yes">&nbsp;YES&nbsp;
-<input type="radio" name="[01]responsibility_for_student" class="resp_for_student" value="No">&nbsp;NO&nbsp;</td></tr>
-<tr><td colspan="2">By selecting <strong>Yes</strong>, I (we) agree to the previous statements.</td></tr>
-<tr><td>Signature of parent (typed)</td>
-<td><input type="text" name="[01]responsibility_sig_1" id="responsibility_sig_1" 
-  value="" size="30" maxlength="60"></td></tr>
-<tr><td>Date</td>
-<td><input type="text" name="[01]responsibility_date" id="responsibility_date" 
-  value="" size="15"></td></tr>
-<tr><td>Signature of 2nd parent</td>
-<td><input type="text" name="[01]responsibility_sig_2" id="responsibility_sig_2" 
-  value="" size="30" maxlength="60"></td></tr>
-<tr><td>Date</td>
-<td><input type="text" name="[01]responsibility_date_2" id="responsibility_date_2" value="" size="15"></td></tr>
-
-<tr class="private"><td colspan="2" class="bold">Last updated at 
-<input type="text" id="form16_upd_at" name="[01]form16_updated_at" value="" /> by 
-<input type="text" id="form16_upd_by" name="[01]form16_updated_by" value="" /><!-- userid is in form01 --></td>
-</tr>
-
-<tr><td colspan="2" align="right"><input type="hidden" name="ac" value="autosendupdate" />~[submitbutton]</td></tr>
-
-</table>
-</form>
 
 </div>
 </div>
