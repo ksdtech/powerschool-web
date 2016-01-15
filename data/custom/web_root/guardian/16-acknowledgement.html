@@ -6,17 +6,17 @@
 <link href="/images/css/regforms.css" rel="stylesheet">
 <script src="/scripts/ksd_validations.js"></script>
 <script>
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return true;
+}
+
 function val_is_date_stamp(dt) {
   if (dt) {
     dt = dt.toString().match(/^\s*(\d\d\d\d-\d\d-\d\d)/);
     return dt && dt[1] /* && dt[1].localeCompare('2013-03-25') >= 0 */;
-  }
-  return false;
-}
-
-function val_is_empty(s) {
-  if (s) {
-    return s.toString().trim() == '';
   }
   return false;
 }

@@ -257,8 +257,10 @@ function get_parents(i) {
       }
     }
   }
-  if (hphone != '') {
-    if (mcell != '') {
+  if (mcell != '') {
+    if (hphone == '') {
+      hphone = mcell;
+    } else {
       hphone += ('<br>' + mcell);
     }
   }
