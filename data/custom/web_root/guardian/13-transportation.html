@@ -9,12 +9,19 @@
 <script src="/scripts/basemap.js"></script>
 <script src="/scripts/ksd_validations.js"></script>
 <script>
+function val_is_empty(s) {
+  if (s) {
+    return s.toString().trim() == '';
+  }
+  return true;
+}
+
 // callback when address has been geocoded
 function ksdSetNeighborhood(rc) {
   if (rc.status == 'OK') {
     var neighborhood = (rc.neighborhood == 'Unknown') ? 'Off-District' : rc.neighborhood;
     var currentHood = $j('#neighborhood').val();
-    if (currentHood == '') {
+    if (val_is_empty(currentHood)) {
       $j('#neighborhood').val(neighborhood);
     }
   }

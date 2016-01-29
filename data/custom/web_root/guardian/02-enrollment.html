@@ -30,13 +30,13 @@ function setup_reg_year() {
   var cur_year  = get_school_year(tmo, tyr);
   var next_year = get_school_year(tmo, tyr+1);
 
-  var reg_year = $j('#orig_reg_year').val();
+  var reg_year = $j('#orig_reg_year').val().trim();
   if (reg_year) {
     reg_year = $j.trim(reg_year);
   }
   if (!reg_year) {
-    var entrydate = $j('#orig_entrydate').val();
-    var enroll_status = parseInt($j('#enroll_status').val())
+    var entrydate = $j('#orig_entrydate').val().trim();
+    var enroll_status = parseInt($j('#enroll_status').val().trim())
     if (!entrydate) {
       entrydate = tmo + '/' + tda + '/' + tyr;
     }
@@ -72,13 +72,13 @@ function setup_reg_year() {
 }
 
 function update_reg_year() {
- var reg_year = $j('#reg_school_year').val(); 
+ var reg_year = $j('#reg_school_year').val().trim(); 
  $j('.reg_year').val(reg_year);
  $j('.for_reg_year').text('for ' + reg_year + ' School Year');
 }
 
 function on_enrollment_change() {
-  var window_not_open = $j('#reg_windownotopen').val();
+  var window_not_open = $j('#reg_windownotopen').val().trim();
   var enrollment = $j('#reg_enroll option:selected').val();
   var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
   if (not_enrolling) { 
@@ -171,9 +171,9 @@ $j(document).ready(function() {
 <input type="hidden" name="nexturl" id="nexturl" value="03-student.html" />
 <input type="hidden" name="nexttitle" id="nexttitle" value="Student Information Page" />
 <input type="hidden" id="reg_windownotopen" value="~([01]rreg_windownotopen)" />
-<input type="hidden" id="orig_reg_year" name="orig_reg_year" value="~([01]reg_year)" />
-<input type="hidden" id="orig_entrydate" name="orig_entrydate" value="~([01]entrydate)" />
-<input type="hidden" id="enroll_status" name="enroll_status" value="~([01]enroll_status)" />
+<input type="hidden" id="enroll_status" value="~([01]enroll_status)" />
+<input type="hidden" id="orig_reg_year" value="~([01]reg_year)" />
+<input type="hidden" id="orig_entrydate" value="~([01]entrydate)" />
 <!-- end form action -->
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
