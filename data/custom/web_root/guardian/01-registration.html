@@ -62,10 +62,13 @@ function check_registration_allowed() {
 
 function update_registration_status() {
   $j('.chk_status').each(function() {
-    var src = '#' + $j(this).attr('id').replace('_status', '_updated_at');
+    var this_id = $j(this).attr('id');
+    var src = '#' + this_id.replace('_status', '_updated_at');
     var dt = $j(src).val();
     if (val_is_date_stamp(dt)) { 
       $j(this).removeClass('feedback-alert').addClass('feedback-confirm');
+      var span = '#' + this_id.replace('_status', '_span');
+      $j(span).text('Up to Date');
     }
   });
 }
@@ -77,7 +80,6 @@ $j(document).ready(function() {
   $j('.private').hide();
   check_registration_allowed();
   update_registration_status();
-
 });
 </script>
 
@@ -174,9 +176,9 @@ Acknowledgement of Responsibility page.</td></tr>
 </td></tr>
 <tr><td colspan="2"><strong>Registration Status and Links to Pages</strong></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="residencyproof_status">Proof of Residency
-<strong>Not Confirmed</strong></div></td></tr>
+<strong id="residencyproof_span">Not Confirmed</strong></div></td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="immunizations_status">Required Immunizations
-<strong>Not Submitted</strong>
+<strong id="immunizations_span">Not Submitted</strong>
 </div></td></tr>
 <tr class="locked"><td colspan="2">Links to registration pages are not available for this student. 
 Please check with the school office if you believe you have submitted all
