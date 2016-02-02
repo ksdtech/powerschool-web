@@ -1,0 +1,79 @@
+~[frame_type:none]<!DOCTYPE html>
+<html>
+<!-- non framed -->
+<head>
+<title>~[text:psx.html.admin_faculty.search.start_page]</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+~[if.prefuser.smartsearch_enable=1]
+~[wc:smartsearch_header]
+[/if]
+</head>
+
+<body onload="document.forms[0].selectteacher.focus()" id="teacherSearchPage">
+
+~[wc:admin_header_css]
+~[wc:admin_navigation_css]
+
+<!-- start of search menu -->
+<h1>~[text:psx.html.admin_faculty.search.start_page]</h1>
+    <ul class="tabs">
+        <li><a href="/admin/home.html">~[text:psx.html.admin_faculty.search.students]</a></li>
+        <li class="selected"><a href="/admin/faculty/search.html">~[text:psx.html.admin_faculty.search.staff]</a></li>
+        <li><a href="/admin/guardians/search.html">~[text:psx.html.admin_faculty.search.parents]</a></li>
+    </ul>
+<div class="hide" id="feedback-message" ></div>
+<form action="home.html" method="POST" id="ssForm">
+    <fieldset>
+        <div>
+            <div id="ssAutoComplete">
+              <select name="teachersonly" id="staffType">
+                <option selected value=All>~[text:psx.html.admin_faculty.search.all]</option>
+                <option value="1">~[text:psx.html.admin_faculty.search.teachers]</option>
+                <option value="2">~[text:psx.html.admin_faculty.search.staff]</option>
+                <option value="3">~[text:psx.html.admin_faculty.search.lunch_staff]</option>
+                <option value="4">~[text:psx.html.admin_faculty.search.substitutes]</option>
+              </select>
+               <input type="text" name="selectteacher" id="teacherSearchInput" size="50">
+             </div>
+             <button type="submit" id="btnSearch" class="search"><em>&nbsp;</em></button>
+            <input type="hidden" value="ac" name="defaultpage">
+            ~[if.prefuser.smartsearch_enable=1]
+                <input type="hidden" name="searchContext" id="searchContext" value="staff">
+                <input type="hidden" id="noLunchStatus" value="~[displaypref:nolunchstatus]">
+                <input type="hidden" id="pageResults" value="~[displayprefuser:smartsearch_pageresults]">
+                <input type="hidden" id="inactiveResults" value="~[displayprefuser:smartsearch_inactiveresults]">
+            [/if]
+            <span class="searchButtons">
+                <a href="/admin/fields/tchrfieldlist_yui.html?inf=teacherSearchInput&op=1&search=y" class="dialogR" title="~[text:psx.html.admin_fields.tchrfieldlist_yui.field_list]:">~[text:psx.html.admin_faculty.search.view_field_list]</a> <a href="/admin/faculty/searchtipsfaculty.html">[?]</a>
+            </span>
+        </div> 
+        
+    
+        <div class="searchButtons">
+                ~[brij_render_insert:i18n_svc:staffFrontPageNameLetters]
+        </div>
+        <div class="searchButtons">
+          <a href="home.html?selectteacher=&teachersonly=1">~[text:psx.html.admin_faculty.search.teachers1]</a>
+          <a href="home.html?selectteacher=&teachersonly=2">~[text:psx.html.admin_faculty.search.staff1]</a>
+          <a href="home.html?selectteacher=&teachersonly=3">~[text:psx.html.admin_faculty.search.lunch_staff1]</a>
+          <a href="home.html?selectteacher=&teachersonly=4">~[text:psx.html.admin_faculty.search.substitutes1]</a>
+          <a href="home.html?selectteacher=gender=m&teachersonly=0">~[text:psx.html.admin_faculty.search.m1]</a>
+          <a href="home.html?selectteacher=gender=f&teachersonly=0">~[text:psx.html.admin_faculty.search.f1]</a>
+           ~[if.~[x:tchrsinset]>0]
+            <a href="/admin/faculty/home.html?selectteacher=nosearch">~[text]psx.html.admin_faculty.search.current_selection_,param:~[x:tchrsinset][/text]</a>
+          [/if]
+        </div>
+        <div class="searchButtons">
+          <a href="/admin/faculty/facultydirectory.html">~[text:psx.html.admin_faculty.search.staff_directory]</a>
+          <a href="/admin/faculty/storedsearches/">~[text:psx.html.admin_faculty.search.stored_searches]</a>
+        </div>
+        <!-- end of search menu -->
+    </fieldset>
+</form>
+~[wc:admin_startpage_whats_new]
+~[wc:admin_footer_css]
+
+</body>
+</html><!-- non framed -->
