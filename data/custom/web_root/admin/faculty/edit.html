@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+  <title>~[text:psx.html.admin_faculty.edit.edit_information___nbsp,param:~(lastfirst),param:~(teachernumber)]</title>
+  ~[wc:UI_js_includes]
+  ~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+  
+  <style>
+      td:first-child {
+         vertical-align:top;
+      }
+    .clickable {
+      cursor:pointer; 
+    }
+    #infoTable col:first-child {
+      width: 20%;
+    }
+  </style>
+  <script>
+    $j(document).ready(function() {
+      // If they don't select any of the visible options for ethnicity, choose "-1" for them ...
+      var defaultEthnicity = document.getElementById("defaultEthnicity");
+      if ( defaultEthnicity ) {
+        defaultEthnicity.value = "-1";
+      }
+      if ($j('#homeschoolSelect option:selected').text() === "*****")
+        $j('#homeschool').html("<font size='-1' face='Verdana,Geneva,Arial,Helvetica,sans-serif'>*****</font>");
+      else
+        $j('#homeschool').html($j('#homeschoolSelect option:selected').text());
+      
+      var statusColumnValue = document.getElementById("statusColumn");
+      
+      switch (statusColumnValue.value){
+        case "*": $j('#statusCheckbox').hide();//Read only and true
+          $j('#statusColumn').replaceWith("(X)");
+          break;
+        case "**": $j('#statusCheckbox').hide();//Read only and false
+          $j('#statusColumn').replaceWith("( )");
+          break;
+        case "***": $j('#statusCheckbox').hide();//No access
+          $j('#statusColumn').replaceWith("(*)");
+          break;
+        case "1": $j('#statusCheckbox').prop('checked', true);
+          break;
+        default: $j('#statusCheckbox').prop('checked', false);
+      }
+    });
+    //SR pages may provide 'onload' functionality - this is here to not cause js errors
+    function onload(){}
+  </script>
+</head>
+
+<body onload="onload();">
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+<input type="hidden" name="frn" value="~(frn)">
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_faculty.edit.start_page]</a> &gt; <a href="/admin/faculty/search.html" target="_top">~[text:psx.html.admin_faculty.edit.staff]</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">~[text:psx.html.admin_faculty.edit.select_a_staff_member]</a> &gt;~[text:psx.html.admin_faculty.edit.edit_information___nbsp1,param:~(lastfirst),param:~(teachernumber)]<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+<span class="account-photo">~[facultytitlephoto]</span>
+<h1>~[text:psx.html.admin_faculty.edit.edit_information___nbsp2,param:~(lastfirst),param:~(teachernumber)]</h1>
+
+
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+<table id="infoTable" border="0" cellspacing="0" cellpadding="4">
+<colgroup><col><col></colgroup>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.name,param:(Last, First MI)]</td>
+<td><input type="text" name="[05]Last_Name" value="" size="15" maxlength="20">, <input type="text" name="[05]First_Name" value="" size="15" maxlength="20"> <input type="text" name="[05]middle_name" value="" size="10" maxlength="15"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.preferred_name]</td>
+<td><input type="text" name="[05]preferredname" value="" size="15" maxlength="20"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.email_address]</td>
+<td><input type="text" name="[05]email_addr" value="" size="42"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.title]</td>
+<td><input type="text" name="[05]title" value="" size="42"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.gender]</td>
+<td><select name="[05]gender"><option><option value="m">~[text:psx.html.admin_faculty.edit.male]<option value="f">~[text:psx.html.admin_faculty.edit.female]</select></td>
+</tr>
+<tr class="headerrow">
+    <td colspan="2" class="bold">~[text:psx.html.admin_faculty.edit.federal_ethnicity_and_race]</td>
+</tr>
+<tr class="~[evenoddrow]">
+  <td class="subhead">~[text:psx.html.admin_faculty.edit.ethnicity]</td>
+  <td>
+    <div>
+      <label>~[text:psx.html.admin_faculty.edit.is_the_staff_member_hispanic_or_latino]</label>
+      <input id="defaultEthnicity" type="hidden" name="[05]FedEthnicity" value="-1">~[Comment:Note that the onload javascript will revert this back to -1 after it's been changed to whatever is currently in the DB.]
+      <div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="1">Yes</div>
+      <div class="choicefloat"><input type="radio" name="[05]FedEthnicity" value="0">No</div>
+      ~[if.pref.FRE_AllowDeclineEthnicity=1]<div class="choicefloat"><span class="declined"><input type="radio" name="[05]FedEthnicity" value="2">~[pref:FRE_DeclineEthnicityText]</span></div>[/if]
+      <div class=clearit><!-- --></div>
+    </div>
+  </td>
+</tr>
+<tr class="~[evenoddrow]">
+  <td class="subhead">~[text:psx.html.admin_faculty.edit.race]</td>
+  <td>
+    <input type="hidden" name="SaveRace" value="1">
+    <input type="hidden" name="[05]FedRaceDecline" id="r_none_storage" value="0"><!-- See 'decline_race' function in raceselection_block.ftl -->
+    ~[SetPostValue:subjectid=~([05]id)]
+~[brij_renderform:federalrace;:GetTeacherRaceSelectionBlock]
+  </td>
+</tr>
+<tr class="~[evenoddrow]">
+    <td class="subhead">~[text:psx.html.admin_faculty.edit.reporting_ethnicity]</td>
+    <td>
+      <select id="primaryethnicity" name="[05]ethnicity" special="lists.ethnicity">
+          <option>
+      </select>
+  </td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.id]</td>
+<td><input type="text" name="[05]teachernumber" value="" size="9"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.stateprid]</td>
+<td><input type="text" name="[05]SIF_StatePrId" value="" size="32"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.homeroom]</td>
+<td><input type="text" name="[05]homeroom" value="" size="9"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.school]</td>
+<td id="homeschool"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.lunch_id]</td>
+<td><input type="text" name="[05]lunch_id" value="" size="12"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.home_phone_]</td>
+<td><input type="text" name="[05]home_phone" value="" size="18"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.school_phone_]</td>
+<td><input type="text" name="[05]school_phone" value="" size="18"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.street]</td>
+<td><input type="text" name="[05]street" value="" size="42"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.city_state_zip]</td>
+<td><input type="text" name="[05]city" value="" size="26"> <input type="text" name="[05]state" value="" size="2"> <input type="text" name="[05]zip" value="" size="10"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.ssn]</td>
+<td><input type="text" name="[05]ssn" value="" size="11"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.dob]</td>
+<td><input type="text" class="psDateWidget" name="[05]dob" value="" size="10" maxlength="10"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.staff_type]</td>
+<td><select name="[05]StaffStatus"><option value="0">~[text:psx.html.admin_faculty.edit.not_assigned]<option value="1">~[text:psx.html.admin_faculty.edit.teacher]<option value="2">~[text:psx.html.admin_faculty.edit.staff1]<option value="3">~[text:psx.html.admin_faculty.edit.lunch_staff]<option value="4">~[text:psx.html.admin_faculty.edit.substitute]</select></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">~[text:psx.html.admin_faculty.edit.active]</td>
+<td>
+  <input type="checkbox" name="statusCheckbox" id="statusCheckbox" value="" onclick="setStatusColumnValue()"/>
+  <input type="hidden" name="[05]status" id="statusColumn" value="" />
+</td>
+</tr>
+
+<!-- Start insert state specific staff information -->
+~[x:insertfile;state/faculty~[displaypref:districtstate].html]
+<!-- End insert state specific staff information -->
+</table>
+<br>
+
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+</div>
+<br>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame_css]
+</form>
+
+<div class="hidden">
+  <select id="homeschoolSelect" type="hidden" name="[05]homeSchoolId" special="schoolswithdistrict"><option value=Item>~[text:psx.html.admin_faculty.edit.item]</select>
+  
+</div>
+
+<script>
+function setStatusColumnValue() {
+
+  if ($j("#statusCheckbox").is(":checked")) {
+    $j("#statusColumn").val("1");
+  } else {
+    $j("#statusColumn").val("2");
+  }
+}
+</script>
+
+</body>
+</html><!-- end right frame -->

@@ -1,0 +1,48 @@
+~[frame_type:menu]
+<!DOCTYPE html>
+<html>
+<head><base target="content">
+<title>~[text:psx.html.admin_faculty.more2.staff_menu]</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+
+<body class="frameMenu">
+
+<div id="container-frame-menu">
+
+<!-- start of links -->
+<div id="nav-main-frame-secondary">
+    <p><a href="search.html" target="_top">~[text:psx.html.admin_faculty.more2.search_staff]</a></p>
+    <p class="navPrevNext"><a href="home.html?ac=jumpteacher-1&rn=~(rn)" target="_top" class="button prev"></a><a class="studentSearchList" href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">~[text:psx.html.admin_faculty.more2.list,param:(~[x:tchrsinset])]</a> <a href="home.html?ac=jumpteacher1&rn=~(rn)" target="_top" class="button next"></a></p>
+</div>
+<div id="nav-main-frame">
+    <h3>~[text:psx.html.admin_faculty.more2.functions]</h3>
+<ul id="tchr_information">
+  ~[brij_render:inform-ps;:inform-teacher-link]
+  <li><a href="/admin/teacherschedules/sched.html?frn=~(frn)&dispic=1">~[text:psx.html.admin_faculty.more2.current_schedule]</a></li>
+  <li><a href="edit.html?frn=~(frn)">~[text:psx.html.admin_faculty.more2.edit_information]</a></li>
+  <li><a href="printformletter.html?frn=~(frn)&tchrdothisfor=single&filterformletters=teachers">~[text:psx.html.admin_faculty.more2.print_a_report]</a></li>
+  
+  <li><a href="photo.html?frn=~(frn)">~[text:psx.html.admin_faculty.more2.photo]</a></li>
+  <li><a href="scheduleedit.html?frn=~(frn)">~[text:psx.html.admin_faculty.more2.schedule_setup]</a></li>
+  <li><a href="schedulematrix.html?frn=~(frn)">~[text:psx.html.admin_faculty.more2.schedule_matrix]</a></li>
+  <li><a href="editpw.html?frn=~(frn)">~[text:psx.html.admin_faculty.more2.security_settings]</a></li>
+  <li><a href="transactions.html?frn=~(frn)">~[text:psx.html.admin_faculty.more2.transactions]</a></li>
+~[if.pref.credostatuscode=1]
+  <li><a href="/admin/state/credo/credo_facultyinfo.html?frn=~(frn)&dispic=1">~[text:psx.html.admin_faculty.more2.credo_faculty_info]</a></li>
+[/if]
+</ul>
+<h3>~[text:psx.html.admin_faculty.more2.custom_screens]</h3>
+<ul id="tchr_custom_pages">
+  ~[custtchrpagelinks]
+</ul>
+<div id="cust-leftnav-footer">~[cust.insertion_point:leftnav.footer]</div>
+<!-- end of links -->
+
+</div>
+</div>
+
+</body>
+</html>
