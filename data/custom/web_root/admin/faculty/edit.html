@@ -29,7 +29,7 @@
       if ($j('#homeschoolSelect option:selected').text() === "*****")
         $j('#homeschool').html("<font size='-1' face='Verdana,Geneva,Arial,Helvetica,sans-serif'>*****</font>");
       else
-        $j('#homeschool').html($j('#homeschoolSelect option:selected').text());
+      $j('#homeschool').html($j('#homeschoolSelect option:selected').text());
       
       var statusColumnValue = document.getElementById("statusColumn");
       
@@ -167,7 +167,18 @@
 </tr>
 <tr class="~[evenoddrow]">
 <td class="bold">~[text:psx.html.admin_faculty.edit.staff_type]</td>
-<td><select name="[05]StaffStatus"><option value="0">~[text:psx.html.admin_faculty.edit.not_assigned]<option value="1">~[text:psx.html.admin_faculty.edit.teacher]<option value="2">~[text:psx.html.admin_faculty.edit.staff1]<option value="3">~[text:psx.html.admin_faculty.edit.lunch_staff]<option value="4">~[text:psx.html.admin_faculty.edit.substitute]</select></td>
+<td><select name="[05]StaffStatus">
+  <option value="0">~[text:psx.html.admin_faculty.edit.not_assigned]
+  <option value="1">Certificated, Teacher
+  <option value="5">Certificated, Not Teacher
+  <option value="2">Classified Staff
+  <option value="6">Contracted Staff
+  <option value="7">Intern
+  <option value="8">Volunteer
+  <option value="9">Trustee
+  <option value="3">~[text:psx.html.admin_faculty.edit.lunch_staff]
+  <option value="4">~[text:psx.html.admin_faculty.edit.substitute]
+</select></td>
 </tr>
 <tr class="~[evenoddrow]">
 <td class="bold">~[text:psx.html.admin_faculty.edit.active]</td>

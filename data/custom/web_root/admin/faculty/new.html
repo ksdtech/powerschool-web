@@ -18,7 +18,7 @@
 
 <table border="0" cellspacing="0" cellpadding="4">
 <tr bgcolor="#edf3fe">
-<td class="bold">~[text:psx.html.admin_faculty.new.name,param:(Last, First MI)]</td>
+<td class="bold">~[text:psx.html.admin_faculty.new.name]&nbsp;~[text:psx.html.admin_faculty.new.name.last_first_mi]</td>
 <td><input type="text" ~[getValidation:teachers.last_name] name="Last_Name" value="" size="15">, <input type="text" ~[getValidation:teachers.first_name] name="First_Name" value="" size="15"> <input type="text" ~[getValidation:teachers.middle_name] name="middle_name" value="" size="10"></td>
 </tr>
 <tr>
@@ -113,11 +113,16 @@ WHERE TEACHERNUMBER<>'PowerSchool' AND TEACHERNUMBER>='104000' AND TEACHERNUMBER
 <tr bgcolor="#edf3fe">
 <td class="bold">~[text:psx.html.admin_faculty.new.staff_type]</td>
 <td><select name="StaffStatus">
-<option value="0">~[text:psx.html.admin_faculty.new.not_assigned]
-<option value="1">~[text:psx.html.admin_faculty.new.teacher]
-<option value="2">~[text:psx.html.admin_faculty.new.staff1]
-<option value="3">~[text:psx.html.admin_faculty.new.lunch_staff]
-<option value="4">~[text:psx.html.admin_faculty.new.substitute]
+  <option value="0">~[text:psx.html.admin_faculty.new.not_assigned]
+  <option value="1">Certificated, Teacher
+  <option value="5">Certificated, Not Teacher
+  <option value="2">Classified Staff
+  <option value="6">Contracted Staff
+  <option value="7">Intern
+  <option value="8">Volunteer
+  <option value="9">Trustee
+  <option value="3">~[text:psx.html.admin_faculty.new.lunch_staff]
+  <option value="4">~[text:psx.html.admin_faculty.new.substitute]
 </select></td>
 </tr>
 </table>

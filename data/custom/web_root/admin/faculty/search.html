@@ -30,8 +30,13 @@
             <div id="ssAutoComplete">
               <select name="teachersonly" id="staffType">
                 <option selected value=All>~[text:psx.html.admin_faculty.search.all]</option>
-                <option value="1">~[text:psx.html.admin_faculty.search.teachers]</option>
-                <option value="2">~[text:psx.html.admin_faculty.search.staff]</option>
+                <option value="1">Certificated, Teacher
+                <option value="5">Certificated, Not Teacher
+                <option value="2">Classified Staff
+                <option value="6">Contracted Staff
+                <option value="7">Intern
+                <option value="8">Volunteer
+                <option value="9">Trustee
                 <option value="3">~[text:psx.html.admin_faculty.search.lunch_staff]</option>
                 <option value="4">~[text:psx.html.admin_faculty.search.substitutes]</option>
               </select>
@@ -55,9 +60,12 @@
                 ~[brij_render_insert:i18n_svc:staffFrontPageNameLetters]
         </div>
         <div class="searchButtons">
-          <a href="home.html?selectteacher=&teachersonly=1">~[text:psx.html.admin_faculty.search.teachers1]</a>
-          <a href="home.html?selectteacher=&teachersonly=2">~[text:psx.html.admin_faculty.search.staff1]</a>
-          <a href="home.html?selectteacher=&teachersonly=3">~[text:psx.html.admin_faculty.search.lunch_staff1]</a>
+          <a href="home.html?selectteacher=&teachersonly=1">Cert. Teachers</a>
+          <a href="home.html?selectteacher=&teachersonly=5">Cert. Not Teachers</a>
+          <a href="home.html?selectteacher=&teachersonly=2">Classified</a>
+          <a href="home.html?selectteacher=&teachersonly=6">Contracted</a>
+          <a href="home.html?selectteacher=&teachersonly=7">Interns</a>
+          <a href="home.html?selectteacher=&teachersonly=8">Volunteers</a>
           <a href="home.html?selectteacher=&teachersonly=4">~[text:psx.html.admin_faculty.search.substitutes1]</a>
           <a href="home.html?selectteacher=gender=m&teachersonly=0">~[text:psx.html.admin_faculty.search.m1]</a>
           <a href="home.html?selectteacher=gender=f&teachersonly=0">~[text:psx.html.admin_faculty.search.f1]</a>
