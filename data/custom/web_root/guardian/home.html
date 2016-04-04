@@ -29,9 +29,11 @@ TRUNC(86400*(CAST(SYS_EXTRACT_UTC(SYSTIMESTAMP) AS DATE)-TO_DATE('19700101','YYY
 TO_NUMBER(SUBSTR(STUDENTPERS_GUID,26,7),'XXXXXXXX') AS PERSON
 FROM STUDENTS
 WHERE ID=~(curstudid))
-]
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/psweb/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Online Report Cards</a></li>
-<li><a target="ksorg" href="http://kentweb.kentfieldschools.org/ptc/schedules/students/~(Students.sn)?ctime=~(Students.ts)&token=~(Students.token)">Reserve Parent-Teacher Conferences</a></li>
+]<li><a target="ksorg" href="http://52.11.161.134:3000/students/~(Students.sn)?ctime=~(Students.ts)&amp;token=~(Students.token)&amp;userid=G~[x:userid]">Online Report Cards</a></li>
+<!--
+<li><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Help/Conferences">Intake Conferences with Bacich Teachers</a></li>
+<li><a target="ksorg"  href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Help/Conferences">Intake Conferences with Kent Teachers - Week of September 14, 2015</a></li>
+-->
 [/tlist_sql]
 </ul>
 <p style="color:#cc0000;"><strong>Note:</strong> Bacich Parents will be able to make appointments for "intake"
