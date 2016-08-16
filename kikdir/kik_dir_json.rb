@@ -9,6 +9,8 @@ last_name
 kikdir_unlisted
 kikdir_approved
 kikdir_at
+enroll_status
+grade_level
 reg_will_attend
 reg_grade_level
 nickname
@@ -122,6 +124,7 @@ class KikExporter
     'surname',
     'first_name',
     'last_name',
+    'enroll_status',
     'reg_will_attend',
     'reg_grade_level',
     'grade_level',
@@ -130,7 +133,7 @@ class KikExporter
     'kikdir_at'
   ].map { |f| f.to_sym }
 
-  def initialize
+  def initialize(options = { })
     @surnames = [ ]
     @families_by_surname = { }
     @student_by_sid = { }
@@ -141,14 +144,16 @@ class KikExporter
     @exited = [ ]
     @conflicts = [ ]
     
+    # flag to use current year (after end-of-year process)
+    @for_current_year = options.fetch(:for_current_year, true)
     # flag to export unlisted families
-    @export_unlisted = true
+    @export_unlisted = options.fetch(:export_unlisted, false)
     # flag to reject or export unapproved families
-    @export_unapproved = true
+    @export_unapproved = options.fetch(:export_unapproved, false)
     # flag to use all contacts for unapproved students
-    @merge_unapproved = true
+    @merge_unapproved = options.fetch(:merge_unapproved, true)
     # flag to use the last updated student instead of merging
-    @use_last_updated = false
+    @use_last_updated = options.fetch(:use_last_updated, false)
   end
   
   def copy_fields(s, fields)
@@ -593,15 +598,21 @@ class KikExporter
       s[:surname] = surname
 
       # skip non-returning students
-      status = s[:reg_will_attend]
-      if status && status.match(/^nr-/)
+      active = @for_current_year ? 
+        (s[:enroll_status].to_i == 0) :
+        !s[:reg_will_attend].match(/^nr-/)
+      if !active
         @exited << copy_fields(s, EXITED_FIELDS)
       else
-        # set 'grade_level' to integer of 'reg_grade_level' with TK and K = 0
-        if s[:reg_grade_level] =~ /^[1-8]$/
-          s[:grade_level] = s[:reg_grade_level].to_i
+        if @for_current_year
+          s[:grade_level] = s[:grade_level].to_i
         else
-          s[:grade_level] = 0
+          # set 'grade_level' to integer of 'reg_grade_level' with TK and K = 0
+          if s[:reg_grade_level] =~ /^[1-8]$/
+            s[:grade_level] = s[:reg_grade_level].to_i
+          else
+            s[:grade_level] = 0
+          end
         end
       
         @student_by_sid[sid] = s
@@ -656,18 +667,30 @@ class KikExporter
     }
     puts JSON.pretty_generate(json_object)
 
+    $stderr.puts("#{@listings.size} listings (#{@conflicts.size} with conflicts)")
     $stderr.puts("#{@exited.size} exited")
     $stderr.puts("#{@unlisted.size} unlisted")
     $stderr.puts("#{@unapproved.size} unapproved")
-    $stderr.puts("#{@listings.size} listings")
-    $stderr.puts("#{@conflicts.size} with conflicts")
-    total = @exited.size + @unlisted.size + @listings.size
-    total += @unapproved.size unless @export_unapproved
+    total = @listings.size + @exited.size + @unlisted.size + @unapproved.size
     $stderr.puts("#{total} total")
+    
+    unapproved_family_ids = [ ]
+    unapproved_student_ids = [ ]
+    @unapproved.each do |f|
+      unapproved_family_ids << f[:family_id]
+      f[:siblings].each do |s|
+        unapproved_student_ids << s[:student_number]
+      end
+    end
+    
+    $stderr.puts("\nunapproved family search:")
+    $stderr.puts("family_ident in #{unapproved_family_ids.join(',')}")
+    $stderr.puts("\nunapproved student search:")
+    $stderr.puts("student_number in #{unapproved_student_ids.join(',')}")
   end
 end
 
 ke = KikExporter.new
-ke.parse('/Users/pz/Desktop/students.txt')
+ke.parse('./students.txt')
 ke.output
 
