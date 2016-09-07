@@ -48,8 +48,8 @@ Family_Ident, First_Name, Last_Name,
 ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unl, 
 ps_customfields.getstudentscf(id, 'kikdir_approved') AS PrAppr,
 ps_customfields.getstudentscf(id, 'kikdir_at') AS PrAt,
-  ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus, 
-  ps_customfields.getstudentscf(id, 'reg_grade_level') AS RegGrade,
+  'attending' AS RegStatus, 
+  Grade_Level AS RegGrade,
 ps_customfields.getstudentscf(id, 'nickname') AS Nick
 FROM STUDENTS
 WHERE Enroll_Status<=0 AND Family_Ident=(
