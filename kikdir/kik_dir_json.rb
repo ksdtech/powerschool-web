@@ -487,7 +487,7 @@ class KikExporter
         oldest_student = sid
       end
       
-      if s[:kikdir_at]
+      if s[:kikdir_at] && s[:kikdir_approved] == '1'
         any_approved = true
         if !last_approved || s[:kikdir_at] > last_approved
           last_approved = s[:kikdir_at]
