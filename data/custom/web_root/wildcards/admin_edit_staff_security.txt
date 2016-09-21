@@ -1,0 +1,320 @@
+<style>
+	table.linkDescList col:first-child {
+		width:20%;
+	}
+	a.helpText {
+		padding-left: 5px;
+	}
+	.middle {
+		vertical-align: middle !important;
+	}
+	button.disabledButton {
+		box-shadow: none;
+		opacity: 0.5;
+	}
+	
+	.scrollableDisplay {
+		width: calc(100% - 20px);
+		width: -webkit-calc(100% - 20px);
+		margin: 0 10px 10px 10px;
+	}
+	
+	::selection{
+		background: transparent;
+	}
+
+	::-moz-selection {
+		background: transparent;
+	}
+
+</style>
+
+<div class="box-round">
+	<table class="linkDescList">
+		<colgroup><col><col></colgroup>
+		<tbody>
+			<!-- locked account message for teacher portal - NOTE: For NCF-7, this will remain in the same relative position that it was in, which is right before the state reporting content -->
+			~[SetPostValue:ifDisplay_prefix=<tr><td colspan=2 class="feedback-alert">]
+			~[SetPostValue:ifDisplay_suffix=</td></tr>]
+			~[SetPostValue:serviceName=PS Teacher Portal]
+			~[brij_render:admin-commonaccess-pkg;:notifyLockedAccount]
+			<tr>
+				<td class="bold">~[text:psx.html.admin_faculty.editpw.sign_in_to_powerteacher]</td>
+				<td><input type="checkbox" id="ptaccess" name="[05]ptaccess" value=""/></td>
+			</tr>
+			<tr>
+				<td class="bold">~[text:psx.html.admin_faculty.editpw.teacher_login_id]</td>
+				<td class="middle">
+					<input type="text" name="[05]teacherloginid" id="teacherloginid" value="" size=12 maxlength=20>
+					~[if.~[ldapisenabledteacher]=True]
+						~[text:psx.html.admin_faculty.editpw.nbspldap_enabled1]<input type=checkbox value="0" name="[05]TeacherLDAPEnabled" id="teacherldapenabled">
+					[else]
+					[/if]
+					&nbsp;
+					~[if#canmodify_teacherldapenabled.security.canModifyField=users.TeacherLDAPEnabled]
+						~[if#canmodify_teacherloginid.security.canModifyField=users.TeacherLoginID]
+							~[x:ldapstaffteacherlookupbutton_teacherloginid]
+						[/if#canmodify_teacherloginid]
+					[/if#canmodify_teacherldapenabled]
+				</td>
+			</tr>
+			<tr>
+			<td class="bold">~[text:psx.html.admin_faculty.editpw.teacher_password]</td>
+			<td><input type="password" name="[05]teacherloginpw" id="teacherLoginPw" value="" size=12 maxlength=48></td>
+			</tr>
+			<!-- NCF-11 Begin -->
+			<tr>
+				<td class="bold">
+					~[text:psx.html.admin_faculty.editpw.school_affiliations]
+					<a href="#" id="helpMembershipText" class="helpText">[?]</a>
+				<!-- For returning jqGrid rows -->
+					<input type="hidden" id="teacherAccessSchoolsAsJSON" name="teacherAccessSchoolsAsJSON" value="" />
+				</td>
+				<td>
+					<div id="gridFeedback"></div>
+					<div class="coteachGridBorder" >
+						<div class="button-row">
+							<button id="addOwnerRowButton" type="button" onclick="teacherAccessGridController.openAddSchoolsDialog()">~[text:psx.html.admin_faculty.editpw.button_add]</button>
+						</div>
+						<div id="GridLoadingImageDiv" style="height:100%; padding:100px;">
+							<img src="/images/img/jquery/ui-anim_basic_16x16.gif" /> 
+							<strong> ~[text:psx.common.loading]</strong> 
+						</div>
+						<div id="teacherAccessSchoolsGridContainer" style="display:none;" class="jqgridx" class="widegrid" >
+							<table id="teacherAccessSchoolsTable"></table>                
+						</div>
+					</div>
+				</td>
+			</tr>
+			<!-- Start insert state specific staff security information -->
+			~[x:insertfile;state/security~[displaypref:districtstate].html]
+			<!-- End insert state specific staff security information -->
+			
+		</tbody>
+	</table>
+
+<br>
+
+<div class="button-row">
+	<input type="hidden" name="ac" value="prim">
+	<input type="hidden" name="TeacherID" value="~([Teachers]ID)">
+	<input type="hidden" name="autoAddHome" value="true">
+	<input type="hidden" name="ac" value="GetSchoolSwitch">
+	<input type="hidden" name="frn" value="~[GPV:frn]">
+	<input type="hidden" name="forcepresavetrigger" value="true">
+	
+	~[submitbutton]</div>
+</div>
+<br>
+
+
+<!-- Hidden data for admin access -->
+<div class="hidden">
+    <input id="homeSchoolId" type="text" value="~([05]homeSchoolId)" size=12>
+
+    <div id="helpDialogMembership">
+    	<span>~[text:psx.html.admin_faculty.editpw.school_membership_help]</span>
+    </div>
+
+    <div id="confirmDelete" style="padding:6px">
+    	~[text:psx.js.admin_faculty.editpw.confirm_message]
+    </div>
+    
+    <div id="deleteLeadMessage">
+    	<span>~[text:psx.js.admin_faculty.editpw.lead_message]</span>
+    </div>
+	
+	<div id="deleteCoTeachMessage">
+    	<span>~[text:psx.js.admin_faculty.editpw.coteach_message]</span>
+    </div>
+
+    
+    <input type="checkbox" id="submitForTeacherAndAdmin"/>
+    
+    <input type="text" name="[05]loginid" id="adminloginid" value=""/>
+    <input type="checkbox" name="[05]AdminLDAPEnabled" id="adminldapenabled" value=""/>
+
+</div>
+<!-- End hidden data for admin access -->
+	
+<script type="text/javascript" src="/scripts/commonscripts.js"></script>		
+<script type="text/javascript" src="/scripts/coteach/JqGridCustomDateWidget.js"></script>
+<script type="text/javascript" src="/scripts/teachers/TeacherAccessSchoolsJqGrid.js"></script>
+<script language="JavaScript" type="text/javascript" src="/scripts/jquery.jqGrid.min.js"></script>
+
+<script>
+
+	var teacherAccessGridController = new TeacherAccessJqGridController('teacherAccessSchoolsTable');	
+	var teacherAccessSchoolsList = ~[x:GetTeacherAccessNotInSchoolsJSArray;~([Teachers]ID)];
+    var staffStatusDropdownData = {
+        '0':'~[text:psx.js.admin_faculty.editpw.not_assigned]',
+        '1':'Certificated, Teacher',
+        '5':'Certificated, Not Teacher',
+        '2':'Classified Staff',
+        '6':'Contracted Staff',
+        '7':'Intern',
+        '8':'Volunteer',
+        '9':'Trustee',
+        '3':'~[text:psx.js.admin_faculty.editpw.lunch_staff]',
+        '4':'~[text:psx.js.admin_faculty.editpw.substitute]'
+    };
+	
+	$j(document).ready(function() {
+	
+		//load the js message keys
+		pss_get_texts('psx.js.admin_faculty.editpw.');
+    
+		$j('#helpMembershipText').click(function(event) {
+			helpwindow('/admin/help/how_to/fa_06_security_settings.html#inline_school_affiliations');
+			event.preventDefault(); //don't let the clicking of the anchor tag do anything
+		});
+	   
+		// Set up the data
+	 	teacherAccessGridController.initGrid({
+            name:'teacherAccessGridController',
+            data:~[x:getTeacherAccessSchoolsJSArray;~([Teachers]ID)],//main set of data for grid.
+            gridLocale:{
+                homeSchoolColumnHeader:"~[text:psx.js.admin_faculty.editpw.home_school_name]",
+                activeColumnHeader:"~[text:psx.js.admin_faculty.editpw.active]",
+                schoolColumnHeader:"~[text:psx.js.admin_faculty.editpw.school]",
+                staffStatusColumnHeader:"~[text:psx.js.admin_faculty.editpw.staff_type]",
+                //entryDateColumnHeader:"~[text:psx.js.admin_faculty.editpw.entry_date]",
+                //exitDateColumnHeader:"~[text:psx.js.admin_faculty.editpw.exit_date]",
+                actionsColumnHeader:"~[text:psx.js.admin_faculty.editpw.actions]",
+                noteDialogTitle:"~[text:psx.js.admin_faculty.editpw.title_notes]",
+                noteDialogOkButton:"~[text:psx.js.admin_faculty.editpw.ok]",
+                noteDialogCancelButton:"~[text:psx.js.admin_faculty.editpw.cancel]",
+                schoolPickerDialogNoOptionsLeft:"~[text:psx.js.admin_faculty.editpw.no_options_left]",
+                addSchools:"~[text:psx.js.admin_faculty.editpw.add_schools]",
+                dialogYes:"~[text:psx.js.admin_faculty.editpw.yes]",
+                dialogNo:"~[text:psx.js.admin_faculty.editpw.no]",
+                coTeachWarning:"~[text:psx.js.admin_faculty.editpw.school_confirm]"
+            }
+        });
+
+		$j('#btnSubmit').click(function() {
+			if (teacherAccessGridController.getHasRowsMarkedForDelete()) {
+				var dialogContent = $j('<div/>').append($j('#confirmDelete').html());
+    			dialogContent.css('padding','2px 6px 8px');
+				
+				psDialog({
+				    dialogClass: 'confirmDeleteDialog',
+				    width: 700,
+                    type: 'dialogM',
+                    resizable: false,
+                    title: '~[text:psx.js.admin_faculty.editpw.confirm]',
+                    content: dialogContent,
+                    buttons: [{
+                        text: '~[text:psx.js.admin_faculty.editpw.no]',
+                        id:'confirm_delete_no',
+                        click: function(){
+                            psDialogClose();
+                        }
+                    },{
+                        text: '~[text:psx.js.admin_faculty.editpw.yes]',
+                        id:'confirm_delete_yes',
+                        click: submitForm
+                    }]
+				});
+				
+				return false;
+			} else {
+				submitForm();
+				return false;
+			}
+		});
+		
+		$j('#teacherloginidClearButton').on('click',function(){
+		  clearLdap($j('#teacherloginid'),$j('#teacherldapenabled'));
+		});
+	});
+	
+	function openMembershipDialog(){
+		//build the dialog
+		pss_get_texts('psx.js.admin_faculty.editpw.');
+		var dialogContent = $j('<div/>').append($j('#helpDialogMembership').html());
+		dialogContent.css('padding','2px 6px 8px');
+		var buttons = [{
+            text: pss_text('psx.js.admin_faculty.editpw.ok'),
+            id: 'AddAdminAccessOkButton',
+            click: function(){
+                psDialogClose();
+            }
+        }];
+    
+		psDialog({
+			dialogClass: 'helpTextDialog',
+			type: 'dialogM',
+			resizable: false,
+			title: pss_text('psx.js.admin_faculty.editpw.help_dialog_title_affiliations'),
+			content: dialogContent,
+			buttons: buttons,
+			width: 700
+		});
+	
+	}
+	   
+	/**
+     * @param username - a JQueryObject that represents an input
+     * @param checkbox - a JQueryObject that represents a checkbox
+     */
+    function clearLdap(username,checkbox){
+
+          var dst = $j('html').data('dirty_state_controller');
+          
+          //Save initial dirty states
+          if(dst){
+            dst.ensureInitialValueSaved(username);
+            dst.ensureInitialCheckValueSaved(checkbox);
+          }
+          
+          //Clear the fields
+          checkbox.prop('checked',false);
+          username.val('');
+          
+          //Check for change to dirty/clean
+          if(dst){
+             dst.handleValueChanged(username);
+             dst.handleCheckedChanged(checkbox);
+          }
+    }
+
+	function ldapSaveAdminIfNecessary(){
+	   
+	   //If the box is checked, then new inputs must be added to the page before submit
+	   
+	   if($j('#submitForTeacherAndAdmin').prop('checked')){
+	       //copy the data to the hidden values
+	       $j('#adminloginid').val($j('#teacherloginid').val());
+	       $j('#adminldapenabled').prop('checked',$j('#teacherldapenabled').prop('checked'));
+	   }
+	   else{
+    	   $j('#adminloginid').remove();
+    	   $j('[name='+$j('#adminldapenabled').attr('name')+']').remove(); //Removes both inupts created for check boxes
+	   }
+	}
+	
+	function submitForm() {
+		scroll();
+
+		var valid = teacherAccessGridController.validate();
+		if (valid) {
+            teacherAccessGridController.prepareForSubmit('teacherAccessSchoolsAsJSON');
+            ldapSaveAdminIfNecessary();
+            $j('form').submit();
+		} else {
+			closeLoading();
+			$j('#psDialog').dialog('close');
+    	}
+	}
+	
+	function scroll(selector) {
+		if ( selector == undefined ) {
+			window.scrollTo(0,0);
+		} else {
+			var offset = $j(selector).offset(); 
+			window.scrollTo(0,offset.top);
+		}
+	}
+	
+</script>
