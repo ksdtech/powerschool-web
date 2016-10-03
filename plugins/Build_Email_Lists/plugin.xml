@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin xmlns="http://plugin.powerschool.pearson.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" description="Admin, Teacher and PTPro - Build Email Lists based on a class, for teachers, or for a selection of students, for admins" name="Extended Build Email Lists" version="5.1.11" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd">
+<publisher name="Steve Deibert">
+<contact email="steve.deibert@powerschool.com"/>
+</publisher>
+</plugin>

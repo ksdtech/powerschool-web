@@ -1,0 +1,20 @@
+<!--Build Email Lists Link Begin-->
+	<script>
+
+		$j(document).ready(function()
+			{
+				var table = $j("h2:contains('~[text:psx.html.admin_studentlist.functions.functions]')").next("table").find("tbody");
+				table.append("<tr><td><a href='buildemaillists.html'>Build Email Lists</a></td><td>Build email mailing lists for a selection of students and their parents.</td></tr>");
+								
+				table.find("tr").sort(function(a,b)
+					{
+						if($j(a).find("td:first").text() < $j(b).find("td:first").text()) return -1;
+						if($j(a).find("td:first").text() > $j(b).find("td:first").text()) return 1;
+						return 0;
+					}
+				).appendTo(table);				
+			}
+		);
+
+	</script>
+<!--Build Email Lists Link End-->

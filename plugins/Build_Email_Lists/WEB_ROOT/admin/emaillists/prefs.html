@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Build Email Lists Preferences</title>
+<!-- required scripts -->
+	~[wc:commonscripts] 
+<!-- Required style sheets: screen.css, and print.css --> 
+	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+	<link href="/images/css/print.css" rel="stylesheet" media="print">
+  <script>
+    $j(document).ready(function(){
+      if($j('#stuFieldPref').val()==1) {
+          $j('#stuAltTablePref').prop('disabled', true);
+          $j('#stuAltFieldPref').prop('disabled', false);
+          $j('.fieldnames').each(function(){
+            $j(this).show();
+            if($j(this).attr("data-id")!=='legacy')
+            {$j(this).hide();}
+          });
+        }
+        else if($j('#stuFieldPref').val()==2) {
+          $j('#stuAltTablePref').prop('disabled', false);
+          $j('#stuAltFieldPref').prop('disabled', false);
+          $j('.fieldnames').each(function(){
+            $j(this).show();
+            if($j(this).attr("data-id")!==$j('#stuAltTablePref').val())
+            {$j(this).hide();}
+          });
+        }
+        else {
+          $j('#stuAltTablePref').prop('disabled', true);
+          $j('#stuAltFieldPref').prop('disabled', true);
+          }
+      //Initial values set in fields dropdown
+      
+      $j('#stuFieldPref').change(function(){
+        if($j('#stuFieldPref').val()==1) {
+          $j('#stuAltTablePref').prop('disabled', true);
+          $j('#stuAltFieldPref').prop('disabled', false);
+          $j('.fieldnames').each(function(){
+            $j(this).show();
+            if($j(this).attr("data-id")!=='legacy')
+            {$j(this).hide();}
+          });
+        }
+        else if($j('#stuFieldPref').val()==2) {
+          $j('#stuAltTablePref').prop('disabled', false);
+          $j('#stuAltFieldPref').prop('disabled', false);
+          $j('.fieldnames').each(function(){
+            $j(this).show();
+            if($j(this).attr("data-id")!==$j('#stuAltTablePref').val())
+            {$j(this).hide();}
+          });
+        }
+        else {
+          $j('#stuAltTablePref').prop('disabled', true);
+          $j('#stuAltFieldPref').prop('disabled', true);
+          }
+      });
+      $j('#stuAltTablePref').change(function(){
+        $j('.fieldnames').each(function(){
+          $j(this).show();
+          if($j(this).attr("data-id")!==$j('#stuAltTablePref').val())
+          {
+            $j(this).hide();
+          }
+        });
+      });
+    });
+  </script>
+</head> 
+<body> 
+	~[wc:admin_header_css] 
+    <!-- breadcrumb start -->
+<a href="/admin/home.html" target="_top">~[text:psx.html.admin_district.home.start_page]</a> ~[if.district.office]&gt; <a href="/admin/district/home.html" target="_top">~[text:psx.html.admin_district.home.district_setup1]</a> [else]  &gt; <a href="/admin/schoolsetup/home.html" target="_top">~[text:psx.html.admin_schoolsetup.home.school_setup1]</a> [/if] &gt; Build Email Lists Preferences
+
+<!-- breadcrumb end --> 
+<!-- start of main menu and content --> 
+	~[wc:admin_navigation_css] 
+<!-- Start of Page --> 
+	<h1>Build Email Lists Preferences</h1> 
+
+<form action="/~[self.page]?changesSaved=true" method="POST">
+<!-- start of content area -->
+~[if.~(gpv.changesSaved)=true]<div class="feedback-confirm">~[text:psx.common.changes_recorded]</div>[/if]
+	<div class="box-round">
+      <table class="linkDescList">
+        <tr>
+          <td class="bold">Hide Student Email column</td>
+          <td><input type="checkbox" name="[prefschool]emailListstuMailCol" value="1" id="stuPref"></td>
+        </tr>
+        <tr>
+          <td class="bold">Student Email Field (District-wide options)</td>
+          <td>
+            <select name="[pref]emailListstuMailUseField" id="stuFieldPref">
+              <option value="">Select Field</option>
+              <option value="0">Use PowerSchool Email Field</option>
+              <option value="1">Use Legacy Custom Field</option>
+              <option value="2">Use Database Extension Field</option>
+            </select>
+            <br />Table 
+            <select name="[pref]emailListstuMailAltTable" id="stuAltTablePref" disabled>
+              <option value="">Table</option>
+              ~[tlist_sql;
+              SELECT dbtablename,
+              CASE WHEN dbtablename = '~[displaypref:emailListstuMailAltTable]'
+              THEN 'selected' END issel
+              FROM extschemadeftable
+              WHERE coretable = 'STUDENTS'
+              ORDER BY dbtablename]
+              <option value="~(tablename)" ~(issel)>~(tablename)</option>
+              [/tlist_sql]
+            </select>
+            Field
+            <select name="[pref]emailListstuMailAltField" id="stuAltFieldPref" disabled>
+              <option value="">Field</option>
+              ~[tlist_sql;
+              SELECT * FROM (
+              (SELECT xtab.dbtablename, xfield.name,
+              CASE WHEN lower(xfield.name) = lower('~[displaypref:emailListstuMailAltField]')
+              THEN 'selected' END issel
+              FROM extschemadeftable xtab
+              INNER JOIN extschemadeffield xfield
+              ON xtab.id = xfield.extschematable_id
+              WHERE coretable = 'STUDENTS')
+              UNION
+              (SELECT 'legacy' dbtablename, name,
+              CASE
+              WHEN name = '~[displaypref:emailListstuMailAltField]'
+              THEN 'selected'
+              END issel
+              FROM fieldstable
+              WHERE fileno = 100))
+              ORDER BY name]
+              <option class="fieldnames" data-id="~(tablename)" value="~(fieldname)" ~(issel)>~(fieldname)</option>
+              [/tlist_sql]
+            </select>
+            <br />(Leave blank if using PowerSchool default field)
+          </td>
+        </tr>
+        <tr>
+          <td class="bold">Hide Guardian Email column</td>
+          <td><input type="checkbox" name="[prefschool]emailListparMailCol" value="1" id="parPref"></td>
+        </tr>
+        <tr>
+          <td class="bold">Hide Parent Portal Email column</td>
+          <td><input type="checkbox" name="[prefschool]emailListportalMailCol" value="1" id="portalPref"></td>
+        </tr>
+      </table>
+	</div> 
+
+<div class="button-row"><input type="hidden" name="ac" value="prim">~[submitbutton]</div>
+
+</form>
+<!-- end of content area --> 
+	~[wc:admin_footer_css] 
+</body> 
+</html>

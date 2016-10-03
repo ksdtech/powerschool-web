@@ -1,0 +1,17 @@
+<script>
+	$j(document).ready(function(){
+		var addEmailLink = $j('#emailLink').html();
+		$j('#nav-main-frame').prepend(addEmailLink);
+		$j('#insertedContentEmailLink').empty();
+	});
+</script>
+
+
+<div id="insertedContentEmailLink" style="display:none">
+	<div id="emailLink">
+            <h3>Class Information</h3>
+              <ul>
+                <li><a href="email_info.html?sectionid=~[gpv:sectionid]">Email Addresses</a></li>
+              </ul>
+	</div>
+</div>

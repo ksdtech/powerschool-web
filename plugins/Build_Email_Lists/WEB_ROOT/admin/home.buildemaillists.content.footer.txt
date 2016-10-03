@@ -1,0 +1,15 @@
+		<script>
+			$j(document).ready(function()
+				{
+					for(var i=0; i<studentFunctions.length; i++)
+					{
+						if (studentFunctions[i]['name'] == pss_text('psx.html.admin.home.functions.functions') && studentFunctions[i]['type'] == 'category')
+						{
+							studentFunctions.splice(i+1, 0, {name:('Build Email Lists'), address:'studentlist/buildemaillists.html'});
+							break;
+						}
+					}
+				}
+			);
+
+		</script>

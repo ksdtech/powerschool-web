@@ -88,10 +88,12 @@
   	<td><input type="text" id="st_id" name="[01]Student_Number" value="" size="20"></td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="3">Apple GUID</td>
+    <td colspan="2">Student Email (kentfieldschools.org)</td>
+  	<td>Apple GUID</td>
   </tr>
   <tr class="staffonly">
-  	<td colspan="3"><input type="text" id="apple_generateduid" name="[01]apple_generateduid" value="" size="60"></td>
+    <td colspan="2"><input type="text" id="st_email" name="[01]Student_Email" value="" size="40"></td>
+  	<td><input type="text" id="apple_generateduid" name="[01]apple_generateduid" value="" size="40"></td>
   </tr>
   <!--
   <tr class="staffonly"><td colspan="3"><input type="checkbox" class="pwgen" id="generate_psst_login" value="1">Generate student portal login</td></tr>
@@ -124,7 +126,7 @@ AND (
   LAST_NAME LIKE (SELECT LAST_NAME FROM STUDENTS WHERE ID=~(curstudid))
   OR SUBSTR(STREET,1,6) LIKE
   (SELECT SUBSTR(STREET,1,6) FROM STUDENTS WHERE ID=~(curstudid))
-) 
+)
 ORDER BY Grade_Level, First_Name;
 ]
 <tr class="staffonly"><td><b>~(FAMILY_IDENT)</b></td>
@@ -251,8 +253,8 @@ ORDER BY Grade_Level, First_Name;
   </td></tr>
 
   <tr class="staffonly"><td class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
-  <tr class="staffonly"><td class="bold">Last updated at 
-  <input type="text" id="upd_at" class="disabled" name="[01]form1_updated_at" value=""> by 
+  <tr class="staffonly"><td class="bold">Last updated at
+  <input type="text" id="upd_at" class="disabled" name="[01]form1_updated_at" value=""> by
   <input type="text" id="upd_by" class="disabled" name="[01]form1_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
   </tr>
   <tr><td align="right"><input type="hidden" name="ac" value="prim" />~[submitbutton]</td></tr>

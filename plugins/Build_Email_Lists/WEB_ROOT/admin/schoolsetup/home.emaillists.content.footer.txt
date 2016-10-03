@@ -1,0 +1,23 @@
+<script>
+	$j(document).ready(function(){
+		var addEmailPrefLink = $j('#emailPrefLink').html();
+		$j('h2:contains("General") + table:first tbody tr:nth-child(3)').after(addEmailPrefLink);
+		//$j('#insertedContentEmailPrefLink').empty();
+	});
+</script>
+
+
+<div id="insertedContentEmailPrefLink" style="display:none">
+	<div>
+      <table>
+      <tbody id="emailPrefLink">
+        <tr>
+          <td>
+            <a href="/admin/emaillists/prefs.html">Email Lists Preferences</a>
+          </td>
+          <td>Preferences for controlling Build Email Lists pages <br />(in PowerSchool Admin, PowerTeacher and PowerTeacher Pro)</td>
+        </tr>
+        </tbody>
+      </table>
+	</div>
+</div>

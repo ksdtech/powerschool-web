@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Addresses & Lists</title>
+~[wc:commonscripts]
+
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+    <script>
+      $j(function(){
+        //Master Checkbox functions
+        $j("#stuMailColMaster").change(function(){
+          if($j('#stuMailColMaster').is(':checked')) {
+          $j('.stuMailCol:enabled').prop('checked', true);
+          } else 
+          {$j('.stuMailCol:enabled').prop('checked', false);
+          }
+        });
+        $j("#parMailColMaster").change(function(){
+          if($j('#parMailColMaster').is(':checked')) {
+          $j('.parMailCol:enabled').prop('checked', true);
+          } else 
+          {$j('.parMailCol:enabled').prop('checked', false);
+          }
+        });
+        $j("#portalMailColMaster").change(function(){
+          if($j('#portalMailColMaster').is(':checked')) {
+          $j('.portalMailCol:enabled').prop('checked', true);
+          } else 
+          {$j('.portalMailCol:enabled').prop('checked', false);
+          }
+        });
+        //Function for copying emails
+        $j("#openDialogLink").click(function(){
+          var emailList = '';
+          $j('.stuMailCol:checked').each(function() {
+              emailList += $j(this).attr("data-data") + ';';
+            });//End stu each
+          $j('.parMailCol:checked').each(function() {
+              emailList += $j(this).attr("data-data") + ';';
+            });//End par each
+          $j('.portalMailCol:checked').each(function() {
+              emailList += $j(this).attr("data-data") + ';';
+            });//End portal each
+        //Clean up multiple commas
+          emailList = emailList.replace(/,+/g, ',');
+        //Clean up multiple semicolons
+          emailList = emailList.replace(/;+/g, ';');
+        //Remove final semicolon
+          emailList = emailList.slice(0,-1);
+        //Put list in textarea
+          $j('#copyEmailBox').val(emailList);
+        //Handle changes in delimiter choice
+          if($j('#myDelimit').val()=='cma') {
+          $j('#copyEmailBox').val($j('#copyEmailBox').val().split(';').join(','));
+          } else if ($j('#myDelimit').val()=='semi') {
+          $j('#copyEmailBox').val($j('#copyEmailBox').val().split(',').join(';'));
+          }
+          //$j('#copyDivDialog').removeClass('hide');
+          $j('#copyEmailBox').focus();
+          $j('#copyEmailBox').select();
+          return false;
+        }); //End openDialogLink function
+      });//End whole function
+    </script>
+  
+    <style>
+      .checkTD {
+        border-right:0 !important;
+      }
+      .mailTD {
+        border-left:0 !important;
+      }
+    </style>
+</head>
+<!--NoLink-->
+<body>
+~[wc:teachers_header_fr_css]
+
+<!-- Beginning of title of page -->
+  <h1>Email Addresses & Lists</h1>
+
+<!-- Ending of title of page -->
+<!-- Start of shaded content table -->
+  <div class="box-round">
+  <span class="center">
+    <h4>Select student, guardian and/or parent portal emails to copy, and scroll to the bottom</h4>
+    </span>
+    <table class="grid" data-pstablefilter="">
+      <thead>
+      <tr>
+        <th>Student Name</th>
+        ~[if.prefschool.emailListstuMailCol=1][else]
+          <th colspan="2"><span style="float:left;"><input type='checkbox' value="1" id="stuMailColMaster" title="Select/Deselect All" /></span>Student Email</th>
+        [/if]
+        ~[if.prefschool.emailListparMailCol=1][else]
+        <th colspan="2"><span style="float:left;"><input type='checkbox' value="1" id="parMailColMaster" title="Select/Deselect All" /></span>Parent/Guardian Email</th>
+        [/if]
+        ~[if.prefschool.emailListportalMailCol=1][else]
+        <th colspan="2"><span style="float:left;"><input type='checkbox' value="1" id="portalMailColMaster" title="Select/Deselect All" /></span>Parent Portal Email</th>
+        [/if]
+      </tr>
+      </thead>
+      <tbody>
+~[tlist_sql;
+SELECT s.lastfirst,
+  CASE WHEN stuemail.email IS NULL THEN 'disabled="disabled"' ELSE ' ' END disstumail,
+  stuemail.email,
+  CASE WHEN s.guardianemail IS NULL THEN 'disabled="disabled"' ELSE ' ' END disparmail,
+  s.guardianemail,
+  CASE WHEN ppemail.addresses IS NULL THEN 'disabled="disabled"' ELSE ' ' END disportalmail,
+  ppemail.addresses,
+  ppemail.addressesbr
+FROM Students s
+LEFT OUTER JOIN
+  ~[if.pref.emailListstuMailUseField=0]
+  (SELECT s.id,
+    psc.email
+  FROM PSM_Studentcontact psc
+  INNER JOIN sync_studentmap ssm
+  ON psc.studentid=ssm.studentid
+  INNER JOIN students s
+  ON ssm.studentsdcid=s.dcid
+  INNER JOIN psm_studentcontacttype psct
+  ON psc.studentcontacttypeid=psct.id
+  AND psct.name              ='Self'
+  WHERE psc.email           IS NOT NULL
+  )[/if]
+  ~[if.pref.emailListstuMailUseField=1]
+  (SELECT 
+    ps_customfields.getcf('Students',id,'~[displaypref:emailListstuMailAltField]') email,
+    id
+   FROM students
+  )[/if]
+  ~[if.pref.emailListstuMailUseField=2]
+  (SELECT ~[displaypref:emailListstuMailAltField] email, s.id
+  FROM ~[displaypref:emailListstuMailAltTable]
+  INNER JOIN students s
+  ON s.dcid = ~[displaypref:emailListstuMailAltTable].studentsdcid
+  )[/if]
+        stuemail ON stuemail.id  =s.id
+LEFT OUTER JOIN
+  (SELECT s.dcid,
+    LISTAGG(pe.emailaddress, chr(59)) WITHIN GROUP (
+  ORDER BY s.dcid DESC) addresses,
+  LISTAGG(pe.emailaddress, '<br />') WITHIN GROUP (
+  ORDER BY s.dcid DESC) addressesbr
+  FROM students s
+  LEFT JOIN GuardianStudent G2
+  ON s.DcId = G2.StudentsDcid
+  LEFT JOIN Guardian G1
+  ON G2.GuardianId = G1.GuardianId
+  LEFT JOIN PCAS_Account Pa
+  ON G1.AccountIdentifier = Pa.PCAS_AccountToken
+  AND Pa.PCAS_ServiceId   =10000
+  JOIN PCAS_Service Ps
+  ON Ps.PCAS_ServiceId = Pa.PCAS_ServiceId
+  LEFT JOIN PCAS_EmailContact Pe
+  ON Pe.PCAS_AccountId = Pa.PCAS_AccountId
+  GROUP BY s.dcid
+  ) ppemail ON ppemail.dcid=s.dcid
+        INNER JOIN cc ON cc.studentid=s.id
+
+WHERE cc.sectionid=~(gpv.sectionid)
+ORDER BY s.lastfirst]
+      <tr>
+        <td>~(lastfirst)</td>
+        ~[if.prefschool.emailListstuMailCol=1][else]       
+          <td class="checkTD stuchk"><input type='checkbox' value="1" class="stuMailCol" ~(disstumail) data-data="~(email.value)" /></td>
+        <td class="mailTD stumail">
+          <a href="mailto:~(email.value)">~(email.value)</a>
+        </td>
+        [/if]
+        ~[if.prefschool.emailListparMailCol=1][else]
+        <td class="checkTD"><input type='checkbox' value="1" class="parMailCol" ~(disparmail) data-data="~(guardianemail)" /></td>
+        <td class="mailTD">
+          <a href="mailto:~(guardianemail)">~(guardianemail)</a>
+        </td>
+        [/if]
+        ~[if.prefschool.emailListportalMailCol=1][else]
+        <td class="checkTD"><input type='checkbox' value="1" class="portalMailCol" ~(disportalmail) data-data="~(portalemail)" /></td>
+        <td class="mailTD">
+          <a href="mailto:~(portalemail)">~(portalemailbr)</a>
+        </td>
+        [/if]
+      </tr>
+[/tlist_sql]
+      </tbody>
+    </table>
+
+    <div class="box-round" style="width:720px;margin-left:auto;margin-right:auto;">
+      <span class="center">
+    <h4>Build Email List</h4>
+        <p>Select the delimiter required by your email program and click Build List</p>
+      <p title="Different email applications use different characters between email addresses. Choose the one that works with your email.">Delimiter type: 
+    <select id="myDelimit" class="emailTypes">
+      <option value="">Existing</option>
+      <option value="cma">Comma</option>
+      <option value="semi">Semicolon</option>
+    </select>
+    </p>
+    
+    <div class="button-row"><a class="button" title="Build Email List" href="#copyDivDialog" id="openDialogLink">Build List</a></div>
+    </span>
+    <div id="copyDivDialog">
+	<p class="center">
+      <textarea cols="100" rows="9" id="copyEmailBox"></textarea>
+    </p>
+    <p>Copy highlighted text, and paste into the BCC (blind carbon copy) field of a new email. This will prevent parents from seeing each others' email addresses, which should be kept confidential.</p>
+
+  </div>
+  </div><!-- end of content of bounding box -->
+  </div><!-- End of shaded content table -->
+
+~[wc:teachers_footer_fr_css]
+  
+  </body>
+</html>
