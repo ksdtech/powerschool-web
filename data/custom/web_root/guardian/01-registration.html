@@ -49,10 +49,8 @@ function validateSig(jqel) {
 function check_registration_allowed() {
   var window_not_open = $j('#reg_windownotopen').val().trim();
   var enroll_status = parseInt($j('#enroll_status').val().trim());
-  var immunizations_ok = $j('#reg_immunizationsok').val().trim();
   var enrollment = $j('#reg_will_attend').val().trim();
-  var locked = (enroll_status == 0 && val_is_empty(immunizations_ok)) || 
-    !val_is_empty(window_not_open) || enrollment == 'nr-locked';
+  var locked = !val_is_empty(window_not_open) || enrollment == 'nr-locked';
   if (locked) {
     $j('.unlocked').hide();
   } else {
@@ -65,7 +63,7 @@ function update_registration_status() {
     var this_id = $j(this).attr('id');
     var src = '#' + this_id.replace('_status', '_updated_at');
     var dt = $j(src).val();
-    if (val_is_date_stamp(dt)) { 
+    if (val_is_date_stamp(dt)) {
       $j(this).removeClass('feedback-alert').addClass('feedback-confirm');
       var span = '#' + this_id.replace('_status', '_span');
       $j(span).text('Up to Date');
@@ -99,17 +97,16 @@ $j(document).ready(function() {
 <input type="hidden" id="enroll_status" value="~([01]enroll_status)" />
 <input type="hidden" id="reg_will_attend" value="~([01]reg_will_attend)" />
 <input type="hidden" id="reg_windownotopen" value="~([01]reg_windownotopen)" />
-<input type="hidden" id="reg_immunizationsok" value="~([01]reg_immunizationsok)" />
 <input type="hidden" class="page_status" id="residencyproof_updated_at" value="~([01]reg_residencyproofok)" />
 <input type="hidden" class="page_status" id="immunizations_updated_at" value="~([01]reg_immunizationsok)" />
-<input type="hidden" class="page_status" id="form1_updated_at" data-description="Enrollment" 
+<input type="hidden" class="page_status" id="form1_updated_at" data-description="Enrollment"
 value="~([01]form1_updated_at)" />
 <input type="hidden" class="page_status" id="form3_updated_at" data-description="Student Information" value="~([01]form3_updated_at)" />
 <input type="hidden" class="page_status" id="form4_updated_at" data-description="Family Information" value="~([01]form4_updated_at)" />
 <input type="hidden" class="page_status" id="form6_updated_at" data-description="Emergency Contacts" value="~([01]form6_updated_at)" />
 <input type="hidden" class="page_status" id="form9_updated_at" data-description="Medical Information" value="~([01]form9_updated_at)" />
 <input type="hidden" class="page_status" id="form10_updated_at" data-description="Authorizations" value="~([01]form10_updated_at)" />
-<input type="hidden" class="page_status" id="form13_updated_at" data-description="Safe Routes" 
+<input type="hidden" class="page_status" id="form13_updated_at" data-description="Safe Routes"
 value="~([01]form13_updated_at)" />
 <input type="hidden" class="page_status" id="form15_updated_at" data-description="School-Specific" value="~([01]form15_updated_at)">
 <input type="hidden" class="page_status" id="form16_updated_at" data-description="Acknowledgement of Responsibility" value="~([01]form16_updated_at)" />
@@ -125,53 +122,53 @@ value="~([01]form13_updated_at)" />
 
 <tr class="unlocked headerrow"><td colspan="2" class="bold">General Instructions</td></tr>
 <tr class="unlocked"><td colspan="2">
-<strong>Note on Proof of Residency:</strong> 
-Per District policy, as part of the registration process, an Affidavit of 
-Proof of Residency and supporting documents must be filed by the family of any student 
+<strong>Note on Proof of Residency:</strong>
+Per District policy, as part of the registration process, an Affidavit of
+Proof of Residency and supporting documents must be filed by the family of any student
 who is either:
 <ol>
-<li>entering the District (kindergarten or any other grade) either for the first time, 
+<li>entering the District (kindergarten or any other grade) either for the first time,
 or after a leave from the District, or</li>
-<li>entering the 5th grade at Kent Middle School (<strong>including those students graduating 
+<li>entering the 5th grade at Kent Middle School (<strong>including those students graduating
 from Bacich 4th grade to Kent 5th grade</strong>)</li>
 </ol>
 For these families, registration is a <strong>TWO step process:</strong><br/><br/>
 Once you have finished completing the online registration forms for your student on the PowerSchool
 Parent Portal, please be aware that you must turn in an Affidavit of Proof of Residency and supporting
 documents. The affidavit, which explains the detailed requirements, was mailed home to parents
-of this year's 4th grade students on January 29, 2016. Additional copies may be downloaded from the 
+of this year's 4th grade students on January 29, 2016. Additional copies may be downloaded from the
 District's <a target="_blank" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/About_Us/Registering">Proof of Residency page.</a><br/><br/>
-If your student will be entering the 5th grade at Kent next fall, 
-please bring the signed affidavit and required paperwork to the 
-Kent Middle School Multi-Purpose Room on either Wednesday, February 10, 2016 from 1:30 to 3:30 pm, 
+If your student will be entering the 5th grade at Kent next fall,
+please bring the signed affidavit and required paperwork to the
+Kent Middle School Multi-Purpose Room on either Wednesday, February 10, 2016 from 1:30 to 3:30 pm,
 or Wednesday, February 24, 2016 from 1:30 to 3:30 pm.<br/><br/>
-<strong>First Time Users:</strong> Please read the 
+<strong>First Time Users:</strong> Please read the
   <a class="dialogM" title="Registration Instructions" href="/public/ksdp_instructions.html">detailed instructions</a> for detailed information.<br/><br/>
 Make sure to visit any registration pages that do not have the green checkmark
-next to them by following the links in the boxes below. Make any corrections on those pages, 
-as necessary and make sure to click the <strong>Submit</strong> button 
-<strong>on every page</strong>, whether you have made changes or not.  
+next to them by following the links in the boxes below. Make any corrections on those pages,
+as necessary and make sure to click the <strong>Submit</strong> button
+<strong>on every page</strong>, whether you have made changes or not.
 Please note that pages with required fields will not allow submission unless those fields
-are properly entered. As you complete and successfully submit each page, 
+are properly entered. As you complete and successfully submit each page,
 the green checkmark will appear to the left of each page name.<br/><br/>
-If either of the boxes titled "Proof of Residency" or "Immunization" below 
-show that these items have not been confirmed or submitted, 
-and you believe otherwise, please contact the school office to confirm whether these 
+If either of the boxes titled "Proof of Residency" or "Immunization" below
+show that these items have not been confirmed or submitted,
+and you believe otherwise, please contact the school office to confirm whether these
 paper items have been received and processed.<br/><br/>
-When all pages are checked off, and both the "Proof of Residency" and "Immunization" boxes 
-are marked as confirmed or not required, make sure to fill out and <strong>Submit</strong> the 
+When all pages are checked off, and both the "Proof of Residency" and "Immunization" boxes
+are marked as confirmed or not required, make sure to fill out and <strong>Submit</strong> the
 Acknowledgement of Responsibility page.</td></tr>
 
-<tr class="unlocked"><td colspan="2">For information about the registration process and requirements, 
+<tr class="unlocked"><td colspan="2">For information about the registration process and requirements,
 <a class="dialogM" title="Registration Information and Requirements" href="/public/ksdp_registration.html">click here.</a></td></tr>
 
 <tr class="headerrow"><td colspan="2" class="bold">1. Status and Links to Registration Pages</td></tr>
-<tr><td colspan="2">Click the blue links in the list below to go to each 
-  of the pages of the registration system. Check mark icons and a green background indicate 
-  that the corresponding residency proof, immunization records and registration pages have 
-  been submitted and validated for the current registration cycle; exclamation point icons 
+<tr><td colspan="2">Click the blue links in the list below to go to each
+  of the pages of the registration system. Check mark icons and a green background indicate
+  that the corresponding residency proof, immunization records and registration pages have
+  been submitted and validated for the current registration cycle; exclamation point icons
   and an orange backround indicate that these items are incomplete.</td></tr>
-<tr><td colspan="2">Please make sure you complete all pages listed below. As you complete a page, 
+<tr><td colspan="2">Please make sure you complete all pages listed below. As you complete a page,
   remember to click the <strong>Submit</strong> button at the bottom of the page.
 </td></tr>
 <tr><td colspan="2"><strong>Registration Status and Links to Pages</strong></td></tr>
@@ -180,7 +177,7 @@ Acknowledgement of Responsibility page.</td></tr>
 <tr><td colspan="2"><div class="feedback-alert chk_status" id="immunizations_status">Required Immunizations
 <strong id="immunizations_span">Not Submitted</strong>
 </div></td></tr>
-<tr class="locked"><td colspan="2">Links to registration pages are not available for this student. 
+<tr class="locked"><td colspan="2">Links to registration pages are not available for this student.
 Please check with the school office if you believe you have submitted all
 necessary immunization forms.</td></tr>
 <tr class="unlocked"><td colspan="2"><div class="feedback-alert chk_status" id="form1_status"><a href="02-enrollment.html?actpage=01-registration">Enrollment</a></div></td></tr>
