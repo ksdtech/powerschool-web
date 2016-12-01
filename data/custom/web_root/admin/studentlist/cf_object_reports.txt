@@ -1,0 +1,27 @@
+Custom fields on object reports:
+field_name,parent_table,type,title,label,school
+~[tlist_sql;select ft.name fieldname
+    , case ft.fileno
+        when 100 then 'STUDENTS'
+        when 200 then 'STAFF'
+        when 300 then 'COURSES'
+        when 400 then 'SECTIONS'
+        else to_char(ft.fileno)
+        end as parent_table
+   , decode(r.type,80,'Mailing Labels',100,'Form Letters',110,'Report Card',500,'Object Report',to_char(r.type)) System_Report_Setup_Function
+   , r.name Title_or_Name
+   , ro.label
+   , case
+	  when sc.name is null then 'District Office (only)'
+	  else sc.name
+     end School_Name
+from fieldstable ft
+inner join robj ro on lower(ro.text) like '%' || chr(93) || lower(ft.name) || '%' or
+                                lower(ro.text) like '%' || chr(91) || lower(ft.name) || '%' or
+                                lower(ro.text) like '%(' || lower(ft.name) || '%'
+inner join reports r on r.id = ro.reportid
+left outer join schools sc on sc.school_number = r.schoolid
+where fileno in (100,200,300,400)
+and lower(ft.name) like '%father_email%'
+order by parent_table, fieldname, Title_or_Name]~(f0),~(f1),~(f2),~(f3),~(f4),~(f5)
+[/tlist_sql]

@@ -1,0 +1,12 @@
+Student_Number,First_Name,Last_Name,Grade_Level,ELA_Status,PrimaryLanguage,StartDate,EndDate
+~[tlist_sql;SELECT stu.STUDENT_NUMBER, stu.FIRST_NAME, stu.LAST_NAME, stu.GRADE_LEVEL,
+hist.ELAStatus, hist.PrimaryLanguage,
+TO_CHAR(hist.ELAStatusStartDate, 'MM/DD/YYYY'),
+TO_CHAR(hist.ELAStatusEndDate, 'MM/DD/YYYY')
+FROM STUDENTS stu
+JOIN S_CA_STU_ELA_C hist ON
+(stu.DCID = hist.studentsDCID AND stu.ENROLL_STATUS<=0)
+LEFT OUTER JOIN S_CA_STU_ELA_C hist2 ON
+(stu.DCID = hist2.studentsDCID AND hist.ELAStatusStartDate < hist2.ELAStatusStartDate)
+WHERE hist2.ID IS NULL;]~(SN),"~(FN)","~(LN)",~(GL),~(ELS),~(PL),~(Start),~(End)
+[/tlist_sql]

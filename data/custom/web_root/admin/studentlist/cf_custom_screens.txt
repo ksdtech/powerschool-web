@@ -1,0 +1,25 @@
+Custom fields on custom screens:
+field_name,parent_table,screen_type,screen_name,label,type,width
+~[tlist_sql;select ft.name fieldname
+      , case ft.fileno
+        when 100 then 'STUDENTS'
+        when 200 then 'STAFF'
+        when 300 then 'COURSES'
+        when 400 then 'SECTIONS'
+        else to_char(ft.fileno)
+        end as parent_table
+     , cs.type
+     , cs.customscreen
+     , cs.label
+     , cs.coltype
+     , cs.width
+from fieldstable ft
+left outer join (
+   select ut.name customscreen, to_char(uc.title) as colname, uc.contents as coltype, uc.width, uc.sortorder, ut.type, uc.label, ut.data, ut.DCID, ut.id screenid, uc.dcid as col_DCID
+   from utable ut
+   left outer join ucols uc on uc.utableid = ut.id
+) cs on (cs.colname = ft.name or (cs.data is not null and lower(cs.data) like '%'||lower(ft.name)||'%'))
+where fileno in (100,200)
+and cs.customscreen is not null and cs.type <> 'importtemplate'
+order by fieldname, cs.type, cs.customscreen]~(f0),~(f1),~(f2),~(f3),~(f4),~(f5),~(f6)
+[/tlist_sql]

@@ -1,0 +1,52 @@
+Columns in EXTSCHEMACUSTOMREMAP table:
+~[tlist_sql;SELECT column_name
+FROM user_tab_cols
+WHERE table_name = 'EXTSCHEMACUSTOMREMAP']~(f0)
+[/tlist_sql]
+
+Migrated and remapped fields:
+parent_table,id,fieldno,fieldname,description,extension,exttable,extcolumn,coretable,alternatekey,alternatetable
+~[tlist_sql;select case ft.fileno
+        when 100 then 'STUDENTS'
+        when 200 then 'STAFF'
+        when 300 then 'COURSES'
+        when 400 then 'SECTIONS'
+        else to_char(ft.fileno)
+        end as parent_table
+      , ft.id
+      , ft.fieldno
+      , ft.name  fieldname
+      , ft.description
+      , ex.EXTENSION
+      , ex.EXTTABLE
+      , ex.EXTCOLUMN
+      , ex.CORETABLE
+      , ex.ALTERNATEKEY
+      , ex.ALTERNATECORETABLE
+from fieldstable ft
+inner join EXTSCHEMACUSTOMREMAP ex
+on ex.CUSTNAME = upper(ft.name)
+where ft.fileno in (100,200,300,400)
+order by ft.fileno, fieldname]~(f0),~(f1),~(f2),~(f3),~(f4),~(f5),~(f6),~(f7),~(f8),~(f9),~(f10)
+[/tlist_sql]
+
+Unmigrated fields:
+parent_table,id,fieldno,fieldname,description
+~[tlist_sql;select case ft.fileno
+        when 100 then 'STUDENTS'
+        when 200 then 'STAFF'
+        when 300 then 'COURSES'
+        when 400 then 'SECTIONS'
+        else to_char(ft.fileno)
+        end as parent_table
+      , ft.id
+      , ft.fieldno
+      , ft.name  fieldname
+      , ft.description
+from fieldstable ft
+left outer join EXTSCHEMACUSTOMREMAP ex
+on ex.CUSTNAME = upper(ft.name)
+where ft.fileno in (100,200,300,400)
+and ex.CUSTNAME is NULL
+order by ft.fileno, fieldname]~(f0),~(f1),~(f2),~(f3),~(f4)
+[/tlist_sql]

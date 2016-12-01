@@ -1,0 +1,36 @@
+Custom fields in AutoComm and AutoSend:
+fieldname,core_table,schoolid,job_type,job_name,source_path
+~[tlist_sql;select distinct
+  ft.name fieldname
+, acas.core_table
+, acas.school
+, acas.job_type
+, acas.job_name
+, acas.source_path
+from fieldstable ft
+left outer join (
+  select case
+          when ac.filenum < 0 then 'AutoComm'
+          when ac.filenum < 0 then 'AutoSend'
+          else to_char(ac.filenum)
+         end as Job_Type
+       , case abs(ac.filenum)
+          when 1 then 'Students'
+          when 2 then 'Courses'
+          when 3 then 'Sections'
+          when 4 then 'CC'
+          when 5 then 'Teachers'
+          when 100 then 'Attendance'
+          else case when abs(ac.filenum) > 100 then 'Students' else to_char(filenum) end
+         end Core_Table
+       , ac.name as Job_Name
+       , ac.schoolid school
+       , to_char(ac.path) as Source_Path
+       , to_char(ac.fieldsvalue) fieldsvalue
+       , ac.DCID
+  from autocomm ac
+  left outer join schools sc on sc.school_number = ac.schoolid
+) acas on lower(acas.fieldsvalue) like '%'|| lower(ft.name) ||'%'
+where acas.DCID is not null
+order by acas.core_table, ft.name, acas.school, acas.job_type, acas.job_name]~(f0),~(f1),~(f2),~(f3),~(f4),~(f5)
+[/tlist_sql]

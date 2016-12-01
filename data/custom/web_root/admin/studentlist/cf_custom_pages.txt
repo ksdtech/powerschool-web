@@ -1,0 +1,23 @@
+Custom fields on custom pages:
+field_name,parent_table,folder,custompage
+~[tlist_sql;select distinct ft.name fieldname
+, case ft.fileno
+        when 100 then 'STUDENTS'
+        when 200 then 'STAFF'
+        when 300 then 'COURSES'
+        when 400 then 'SECTIONS'
+        else to_char(ft.fileno)
+        end as parent_table
+, psmaf.NAME folder
+, psma.NAME custompage
+from fieldstable ft
+inner join psm_assetcontent ac on
+  lower(ac.clob_content) like '%' || chr(93) || lower(ft.name) || '%' or
+  lower(ac.clob_content) like '%' || chr(39) || lower(ft.name) || '%' or
+  lower(ac.clob_content) like '%(' || lower(ft.name) || '%'
+inner join psm_asset psma on psma.id = ac.asset_id
+inner join psm_assetfolder psmaf on psmaf.id = psma.assetfolder_id
+where ft.fileno in (100,200,300,400)
+and lower(ft.name) like '%father_email%'
+order by parent_table, fieldname, custompage]~(f0),~(f1),~(f2),~(f3)
+[/tlist_sql]

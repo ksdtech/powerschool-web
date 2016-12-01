@@ -1,0 +1,11 @@
+Custom fields in stored searches:
+school,search_name,field_name
+~[tlist_sql;select distinct nvl(sc.name,'District Office') school
+  , g.Name src
+  , f.name
+from Gen g
+left outer join schools sc on sc.school_number = g.schoolid
+inner join fieldstable f on lower(g.valueT) like '%'|| lower(f.name) ||'%'
+where g.Cat = 'storedsearch' and f.name is not null
+order by school, g.name, f.name]~(f0),~(f1),~(f2)
+[/tlist_sql]
