@@ -15,8 +15,8 @@ function val_is_empty(s) {
 
 function val_is_date_stamp(dt) {
   if (dt) {
-    dt = dt.toString().match(/^\s*(\d\d\d\d-\d\d-\d\d)/);
-    return dt && dt[1] /* && dt[1].localeCompare('2013-03-25') >= 0 */;
+    dt = dt.toString().match(/^\s*(\d\d\d\d-\d\d-\d\d)|(\d{1,2}\/\d{1,2}\/\d\d\d\d)/);
+    return dt;
   }
   return false;
 }
@@ -97,8 +97,8 @@ $j(document).ready(function() {
 <input type="hidden" id="enroll_status" value="~([01]enroll_status)" />
 <input type="hidden" id="reg_will_attend" value="~([01]reg_will_attend)" />
 <input type="hidden" id="reg_windownotopen" value="~([01]reg_windownotopen)" />
-<input type="hidden" class="page_status" id="residencyproof_updated_at" value="~([01]reg_residencyproofok)" />
-<input type="hidden" class="page_status" id="immunizations_updated_at" value="~([01]reg_immunizationsok)" />
+<input type="hidden" class="page_status" id="residencyproof_updated_at" value="~([01]reg_residencyproofdate)" />
+<input type="hidden" class="page_status" id="immunizations_updated_at" value="~([01]reg_immunizationsdate)" />
 <input type="hidden" class="page_status" id="form1_updated_at" data-description="Enrollment"
 value="~([01]form1_updated_at)" />
 <input type="hidden" class="page_status" id="form3_updated_at" data-description="Student Information" value="~([01]form3_updated_at)" />

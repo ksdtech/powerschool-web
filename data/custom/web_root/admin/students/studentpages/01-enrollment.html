@@ -2,7 +2,7 @@
 <html>
 <!-- start right frame -->
 <head>
-<title>01 - Logins and Enrollment</title>
+<title>01 - Enrollment</title>
 ~[wc:commonscripts]
 <script src="/scripts/genpass.js" type="text/javascript"></script>
 <script src="/scripts/fmt_date.js" type="text/javascript"></script>
@@ -19,7 +19,7 @@
 <body>
 ~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Logins and Enrollment<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
-~[wc:title_student_begin_css]Logins and Enrollment~[wc:title_student_end_css]
+~[wc:title_student_begin_css]Enrollment~[wc:title_student_end_css]
 
 <!-- start of content and bounding box -->
 <div class="box-round">
@@ -194,10 +194,6 @@ ORDER BY Grade_Level, First_Name;
 
   <tr class="staffonly"><td>Proof of Residency Date<br>(MM/DD/YYYY)</td>
   <td colspan="2"><input id="reg_residencyproofdate" type="text" name="[01]reg_residencyproofdate" value="" size="10"></td>
-  </tr>
-
-  <tr class="staffonly"><td>Parent Portal Proof of Residency Date<br>(YYYY-MM-DD)</td>
-  <td colspan="2"><input id="reg_residencyproofok" type="text" name="[01]reg_residencyproofok" value="" size="10"></td>
   </tr>
 
   <tr class="staffonly"><td>Parent Portal Immunization Complete Date<br>(YYYY-MM-DD)</td>

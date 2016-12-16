@@ -1,0 +1,272 @@
+Custom fields on custom screens:
+field_name,parent_table,screen_type,screen_name,label,type,width
+acceptable_use,STUDENTS,customstudentscreens,Parent Permissions,Acceptable use agreement signed?,text,20
+allergies,STUDENTS,customstudentscreens,Medical Summary,Severe Allergies Requiring Medication,textarea,60
+Allergies_Benadryl,STUDENTS,exportformat,All Medical Conditions,,Allergies_Benadryl,0
+Allergies_Drugs,STUDENTS,exportformat,All Medical Conditions,,Allergies_Drugs,0
+Allergies_Epi_Pen,STUDENTS,exportformat,All Medical Conditions,,Allergies_Epi_Pen,0
+Allergies_Food,STUDENTS,exportformat,All Medical Conditions,,Allergies_Food,0
+Allergies_Insects,STUDENTS,exportformat,All Medical Conditions,,Allergies_Insects,0
+Allergies_Other,STUDENTS,exportformat,All Medical Conditions,,Allergies_Other,0
+Allergies_Severe,STUDENTS,exportformat,All Medical Conditions,,Allergies_Severe,0
+Asthma,STUDENTS,exportformat,All Medical Conditions,,Asthma,0
+Asthma_Inhaler,STUDENTS,exportformat,All Medical Conditions,,Asthma_Inhaler,0
+Asthma_Medication,STUDENTS,exportformat,All Medical Conditions,,Asthma_Medication,0
+Behavior_Issues,STUDENTS,exportformat,All Medical Conditions,,Behavior_Issues,0
+Behavior_Problems,STUDENTS,exportformat,All Medical Conditions,,Behavior_Problems,0
+CA_BirthPlace_City,STUDENTS,exportformat,CSIS Demographics,,CA_BirthPlace_City,0
+CA_BirthPlace_Country,STUDENTS,exportformat,CSIS Demographics,,CA_BirthPlace_Country,0
+CA_BirthPlace_State,STUDENTS,exportformat,CSIS Demographics,,CA_BirthPlace_State,0
+CA_ClassDesig,STAFF,customteacherscreens,EEO-5 and CBEDS Information,Classified Category (19=Clerical, 23=Para, 24=Other),popup,0
+CA_ClassDesig,STAFF,exportformat,CALPADS Fall 2,,CA_ClassDesig,0
+CA_DateELAStatus,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,Date ELA Status (Our Records-Obsolete!),text,20
+CA_DateELAStatus,STUDENTS,exportformat,CRDC Data,,CA_DateELAStatus,0
+CA_DateOfHire,STAFF,customteacherscreens,EEO-5 and CBEDS Information,Date of Hire,text,20
+CA_DateOfHire,STAFF,exportformat,CALPADS Fall 2,,CA_DateOfHire,0
+CA_ELAStatus,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,ELA Status (Our Records-Obsolete!),text,20
+CA_ELAStatus,STUDENTS,exportformat,CRDC Data,,CA_ELAStatus,0
+CA_EndDate,STAFF,exportformat,CALPADS Fall 2,,CA_EndDate,0
+CA_EthnicityMissing,STAFF,exportformat,CALPADS Fall 2,,CA_EthnicityMissing,0
+CA_HighestDegree,STAFF,exportformat,CALPADS Fall 2,,CA_HighestDegree,0
+CA_HispanicEthnicity,STAFF,exportformat,CALPADS Fall 2,,CA_HispanicEthnicity,0
+CA_PAIF_District_ID,STAFF,customteacherscreens,EEO-5 and CBEDS Information,PAIF District ID (Key field),text,12
+CA_Parttime,STAFF,exportformat,CALPADS Fall 2,,CA_Parttime,0
+CA_PositionStatus,STAFF,exportformat,CALPADS Fall 2,,CA_PositionStatus,0
+CA_PrimaryLanguage,STUDENTS,exportformat,CRDC Data,,CA_PrimaryLanguage,0
+CA_PrimDisability,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,Primary Disability Code. If non-blank, RSP checked on report card,text,3
+CA_PrimDisability,STUDENTS,exportformat,CRDC Data,,CA_PrimDisability,0
+CA_SEID,STAFF,customteacherscreens,EEO-5 and CBEDS Information,SEID,text,20
+CA_SEID,STAFF,exportformat,CALPADS Fall 2,,CA_SEID,0
+CA_SpEd504,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,504 Program?,checkbox,0
+CA_YearsInDistrict,STAFF,customteacherscreens,EEO-5 and CBEDS Information,Years in District,text,5
+CA_YearsInDistrict,STAFF,exportformat,CALPADS Fall 2,,CA_YearsInDistrict,0
+CA_YearsOfService,STAFF,exportformat,CALPADS Fall 2,,CA_YearsOfService,0
+CALPADS_DateELAStatus,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,Date ELA Status (ODS Snapshot),static,0
+CALPADS_DirectCertDate,STUDENTS,customstudentscreens,CALPADS Direct Cert and NSLP,Cert Date (YYYYMMDD),text,20
+CALPADS_DirectCertType,STUDENTS,customstudentscreens,CALPADS Direct Cert and NSLP,Cert Code (S=SNAP, T=TANF, B=Both),popup,0
+CALPADS_ELAStatus,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,ELA Status (ODS Snapshot),static,0
+computer_use,STUDENTS,customstudentscreens,Parent Permissions,Computer use agreement signed?,text,20
+crdc_algebra_i,STUDENTS,exportformat,CRDC Data,,crdc_algebra_i,0
+Day1_Room,STUDENTS,customstudentscreens,House Teacher and Locker Info,Kent Opp Room (Day1_Room),text,20
+Day1_Room,STUDENTS,exportformat,First day email,,Day1_Room,0
+Day1_Teacher,STUDENTS,customstudentscreens,House Teacher and Locker Info,Kent Opp Teacher Last Name (Day1_Teacher),text,20
+Day1_Teacher,STUDENTS,exportformat,First day email,,Day1_Teacher,0
+Diabetes,STUDENTS,exportformat,All Medical Conditions,,Diabetes,0
+Diabetes_Insulin,STUDENTS,exportformat,All Medical Conditions,,Diabetes_Insulin,0
+doctor_name,STAFF,customstudentscreens,Medical Summary,Doctor,text,30
+doctor_phone,STAFF,customstudentscreens,Medical Summary,Doctor Phone,text,20
+EEO_FullTime_Category,STAFF,customteacherscreens,EEO-5 and CBEDS Information,EEO FullTime Category,popup,0
+EEO_NewHire_Category,STAFF,customteacherscreens,EEO-5 and CBEDS Information,EEO NewHire Category,popup,0
+EEO_PartTime_Category,STAFF,customteacherscreens,EEO-5 and CBEDS Information,EEO PartTime Category,popup,0
+electives_6_music,STUDENTS,customstudentscreens,Registration Status,electives_6_music,static,0
+electives_6_music,STUDENTS,exportformat,*Reg - Kent Music Choices,,electives_6_music,0
+electives_7_band,STUDENTS,customstudentscreens,Registration Status,electives_7_band,static,20
+electives_7_band,STUDENTS,exportformat,*Reg - Kent Music Choices,,electives_7_band,0
+electives_7_chorus,STUDENTS,customstudentscreens,Registration Status,electives_7_chorus,static,20
+electives_7_chorus,STUDENTS,exportformat,*Reg - Kent Music Choices,,electives_7_chorus,0
+electives_8_band,STUDENTS,customstudentscreens,Registration Status,electives_8_band,static,20
+electives_8_band,STUDENTS,exportformat,*Reg - Kent Music Choices,,electives_8_band,0
+electives_8_chorus,STUDENTS,customstudentscreens,Registration Status,electives_8_chorus,static,20
+electives_8_chorus,STUDENTS,exportformat,*Reg - Kent Music Choices,,electives_8_chorus,0
+Eyeglasses,STUDENTS,exportformat,All Medical Conditions,,Eyeglasses,0
+Eyeglasses_Always,STUDENTS,exportformat,All Medical Conditions,,Eyeglasses_Always,0
+Eyeglasses_Board,STUDENTS,exportformat,All Medical Conditions,,Eyeglasses_Board,0
+Eyeglasses_Reading,STUDENTS,exportformat,All Medical Conditions,,Eyeglasses_Reading,0
+family2,STUDENTS,exportformat,Reg Status with Emails,,family2,0
+Father2_Email2,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father2_Email2,0
+Father2_First,STUDENTS,customstudentscreens,Email Addresses and Distribution,Father2 First,static,0
+Father2_First,STUDENTS,exportformat,kik Family Info,,Father2_First,0
+Father2_First,STUDENTS,exportformat,Mailing Addresses (NC),,Father2_First,0
+Father2_First,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father2_First,0
+Father2_First,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Father2_First,0
+Father2_Last,STUDENTS,customstudentscreens,Email Addresses and Distribution,Father2 Last,static,0
+Father2_Last,STUDENTS,exportformat,kik Family Info,,Father2_Last,0
+Father2_Last,STUDENTS,exportformat,Mailing Addresses (NC),,Father2_Last,0
+Father2_Last,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father2_Last,0
+Father2_Last,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Father2_Last,0
+Father2_Work_Phone,STUDENTS,exportformat,kik Family Info,,Father2_Work_Phone,0
+Father2_Work_Phone,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father2_Work_Phone,0
+Father_Cell,STUDENTS,exportformat,kik Family Info,,Father_Cell,0
+Father_Cell,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father_Cell,0
+Father_Email,STUDENTS,customstudentscreens,Email Addresses and Distribution,Father Email,text,50
+Father_Email,STUDENTS,exportformat,First day email,,Father_Email,0
+Father_Email,STUDENTS,exportformat,kik Family Info,,Father_Email,0
+Father_Email,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father_Email,0
+Father_Email,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Father_Email,0
+Father_Email2,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father_Email2,0
+Father_First,STUDENTS,customstudentscreens,Email Addresses and Distribution,Father First,static,0
+Father_First,STUDENTS,exportformat,kik Family Info,,Father_First,0
+Father_First,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father_First,0
+Father_First,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Father_First,0
+Father_Last,STUDENTS,exportformat,kik Family Info,,Father,0
+Father_Work_Phone,STUDENTS,exportformat,kik Family Info,,Father_Work_Phone,0
+Father_Work_Phone,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Father_Work_Phone,0
+FGComments_T1,STUDENTS,customstudentscreens,Final Grade Comments,T1,textarea,80
+FGComments_T2,STUDENTS,customstudentscreens,Final Grade Comments,T2,textarea,80
+FGComments_T3,STUDENTS,customstudentscreens,Final Grade Comments,T3,textarea,80
+form10_updated_at,STUDENTS,customstudentscreens,Registration Status,form10_updated_at,static,0
+form10_updated_at,STUDENTS,exportformat,Reg Status with Emails,,form10_updated_at,0
+form13_updated_at,STUDENTS,customstudentscreens,Registration Status,form13_updated_at,static,20
+form13_updated_at,STUDENTS,exportformat,Reg Status with Emails,,form13_updated_at,0
+form15_updated_at,STUDENTS,customstudentscreens,Registration Status,form15_updated_at,static,0
+form15_updated_at,STUDENTS,exportformat,*Reg - Kent Music Choices,,form15_updated_at,0
+form16_updated_at,STUDENTS,customstudentscreens,Registration Status,form16_updated_at,static,0
+form1_updated_at,STUDENTS,customstudentscreens,Registration Status,form1_updated_at (YYYY-MM-DD HH:MM:SS),text,30
+form1_updated_at,STAFF,customstudentscreens,Registration Status,form1_updated_at (YYYY-MM-DD HH:MM:SS),text,30
+form1_updated_at,STUDENTS,exportformat,*Reg - Kent Music Choices,,form1_updated_at,0
+form1_updated_at,STAFF,exportformat,*Reg - Kent Music Choices,,form1_updated_at,0
+form1_updated_by,STUDENTS,customstudentscreens,Registration Status,form1_updated_by,text,10
+form1_updated_by,STAFF,customstudentscreens,Registration Status,form1_updated_by,text,10
+form3_updated_at,STUDENTS,customstudentscreens,Registration Status,Student Information Page Updated At,static,20
+form3_updated_at,STUDENTS,exportformat,Reg Status with Emails,,form3_updated_at,0
+form4_updated_at,STUDENTS,customstudentscreens,Registration Status,form4_updated_at,static,0
+form4_updated_at,STUDENTS,exportformat,Reg Status with Emails,,form4_updated_at,0
+form6_updated_at,STUDENTS,customstudentscreens,Registration Status,form6_updated_at,static,0
+form6_updated_at,STUDENTS,exportformat,Reg Status with Emails,,form6_updated_at,0
+form9_updated_at,STUDENTS,customstudentscreens,Registration Status,form9_updated_at,static,0
+form9_updated_at,STUDENTS,exportformat,Reg Status with Emails,,form9_updated_at,0
+FTE,STAFF,customteacherscreens,EEO-5 and CBEDS Information,FTE (Blank=100%, otherwise 1-120),text,5
+gender,STAFF,exportformat,RCM6 Student Rosters,,[01]Gender,0
+gender,STAFF,exportformat,Safe Routes,,gender,0
+geo_house,STUDENTS,exportformat,Safe Routes,,geo_house,0
+geo_postal,STUDENTS,exportformat,Safe Routes,,geo_postal,0
+geo_quality,STUDENTS,exportformat,Safe Routes,,geo_quality,0
+geo_street,STUDENTS,exportformat,Safe Routes,,geo_street,0
+google_apps,STUDENTS,customstudentscreens,Parent Permissions,Permission for Google Apps use,text,20
+h_Hearing_Aid,STUDENTS,exportformat,All Medical Conditions,,h_Hearing_Aid,0
+Halloween_Number,STUDENTS,customstudentscreens,House Teacher and Locker Info,Kent Halloween Number,text,20
+Halloween_Teacher,STUDENTS,customstudentscreens,House Teacher and Locker Info,Kent Halloween Teacher,text,20
+Home2_Phone,STUDENTS,exportformat,CSIS Demographics,,Home2_Phone,0
+Home2_Phone,STUDENTS,exportformat,kik Family Info,,Home2_Phone,0
+Home2_Phone,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Home2_Phone,0
+HomeRoom_Teacher,STUDENTS,customstudentscreens,House Teacher and Locker Info,Bacich Homeroom / Kent ELA Teacher Last Name (HomeRoom_Teacher),text,20
+HomeRoom_Teacher,STUDENTS,customstudentscreens,Library Patron Info,LA Teacher,static,0
+HomeRoom_Teacher,STUDENTS,customstudentscreens,RCM Fields,Home Room Teacher,text,20
+HomeRoom_Teacher,STUDENTS,exportformat,All Medical Conditions,,HomeRoom_Teacher,0
+HomeRoom_Teacher,STUDENTS,exportformat,kik Family Info,,HomeRoom_Teacher,0
+HomeRoom_Teacher,STUDENTS,exportformat,Names-Families-All-Contact-Info,,HomeRoom_Teacher,0
+HomeRoom_Teacher,STUDENTS,exportformat,Names-Families-Passwords-Emails,,HomeRoom_Teacher,0
+HomeRoom_TeacherFirst,STUDENTS,customstudentscreens,House Teacher and Locker Info,Bacich Homeroom / Kent ELA Teacher First Name (HomeRoom_TeacherFirst),text,20
+Illness_Desc,STUDENTS,exportformat,All Medical Conditions,,Illness_Desc,0
+Illness_Recent,STUDENTS,exportformat,All Medical Conditions,,Illness_Recent,0
+KSD_NSLP_Code,STUDENTS,customstudentscreens,CALPADS Direct Cert and NSLP,NSLP Code (181=Free, 182=Reduced),text,20
+KSD_ScheduledByHand,STUDENTS,customstudentscreens,Registration Status,Scheduled By Hand,checkbox,0
+KSD_Speech,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,Receiving speech services? Use 'X' to show on report card,text,2
+KSD_SST,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,SST?,checkbox,0
+KSD_SST_Watch,STUDENTS,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,On SST Watch List?,checkbox,0
+MCFL_Card_Number,STUDENTS,customstudentscreens,Library Patron Info,Public Lib Card #,text,20
+MCFL_Date,STUDENTS,customstudentscreens,Library Patron Info,Public Lib Date,text,15
+MCFL_PIN_Number,STUDENTS,customstudentscreens,Library Patron Info,Public Lib PIN,text,20
+Med1_Dosage,STUDENTS,exportformat,All Medical Conditions,,Med1_Dosage,0
+Med1_Hours,STUDENTS,exportformat,All Medical Conditions,,Med1_Hours,0
+Med1_Name,STUDENTS,exportformat,All Medical Conditions,,Med1_Name,0
+Med2_Dosage,STUDENTS,exportformat,All Medical Conditions,,Med2_Dosage,0
+Med2_Hours,STUDENTS,exportformat,All Medical Conditions,,Med2_Hours,0
+Med2_Name,STUDENTS,exportformat,All Medical Conditions,,Med2_Name,0
+Med3_Dosage,STUDENTS,exportformat,All Medical Conditions,,Med3_Dosage,0
+Med3_Hours,STUDENTS,exportformat,All Medical Conditions,,Med3_Hours,0
+Med3_Name,STUDENTS,exportformat,All Medical Conditions,,Med3_Name,0
+Medical_Accom,STUDENTS,exportformat,All Medical Conditions,,Medical_Accom,0
+Medical_Accom_Desc,STUDENTS,exportformat,All Medical Conditions,,Medical_Accom_Desc,0
+medical_carrier,STAFF,customstudentscreens,Medical Summary,Insurance Company,text,30
+Medical_Considerations,STUDENTS,exportformat,All Medical Conditions,,Medical_Considerations,0
+Medical_Other,STUDENTS,exportformat,All Medical Conditions,,Medical_Other,0
+medical_policy,STAFF,customstudentscreens,Medical Summary,Insurance Policy #,text,20
+medical_prosthesis,STUDENTS,customstudentscreens,Medical Summary,Prosthesis,checkbox,0
+Medical_Summary,STUDENTS,customstudentscreens,Medical Summary,Medical Summary,textarea,60
+mother2_email,STUDENTS,exportformat,Directory Contact Info,,mother2_email,0
+mother2_email,STUDENTS,exportformat,Reg Status with Emails,,mother2_email,0
+Mother2_Email2,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother2_Email2,0
+Mother2_First,STUDENTS,customstudentscreens,Email Addresses and Distribution,Mother2 First,static,0
+Mother2_First,STUDENTS,exportformat,kik Family Info,,Mother2_First,0
+Mother2_First,STUDENTS,exportformat,Mailing Addresses (NC),,Mother2_First,0
+Mother2_First,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother2_First,0
+Mother2_First,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Mother2_First,0
+Mother2_Last,STUDENTS,customstudentscreens,Email Addresses and Distribution,Mother2 Last,static,0
+Mother2_Last,STUDENTS,exportformat,kik Family Info,,Mother2_Last,0
+Mother2_Last,STUDENTS,exportformat,Mailing Addresses (NC),,Mother2_Last,0
+Mother2_Last,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother2_Last,0
+Mother2_Last,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Mother2_Last,0
+Mother2_Work_Phone,STUDENTS,exportformat,kik Family Info,,Mother2_Work_Phone,0
+Mother2_Work_Phone,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother2_Work_Phone,0
+Mother_Cell,STUDENTS,exportformat,kik Family Info,,Mother_Cell,0
+Mother_Cell,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother_Cell,0
+Mother_Email,STUDENTS,customstudentscreens,Email Addresses and Distribution,Mother Email,text,50
+Mother_Email,STUDENTS,customstudentscreens,Library Patron Info,Email,static,0
+Mother_Email,STUDENTS,exportformat,First day email,,Mother_Email,0
+Mother_Email,STUDENTS,exportformat,kik Family Info,,Mother_Email,0
+Mother_Email,STUDENTS,exportformat,Mother Emails,,Mother_Email,0
+Mother_Email,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother_Email,0
+Mother_Email,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Mother_Email,0
+Mother_Email2,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother_Email2,0
+Mother_First,STUDENTS,customstudentscreens,Email Addresses and Distribution,Mother First,static,0
+Mother_First,STUDENTS,customstudentscreens,Library Patron Info,Parent/Guardian (First),static,0
+Mother_First,STUDENTS,exportformat,kik Family Info,,Mother_First,0
+Mother_First,STUDENTS,exportformat,Mother Emails,,Mother_First,0
+Mother_First,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother_First,0
+Mother_First,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Mother_First,0
+Mother_Last,STUDENTS,exportformat,kik Family Info,,Mother,0
+Mother_Last,STUDENTS,exportformat,Mother Emails,,Mother_Last,0
+Mother_Work_Phone,STUDENTS,exportformat,kik Family Info,,Mother_Work_Phone,0
+Mother_Work_Phone,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Mother_Work_Phone,0
+Movement_Limits,STUDENTS,exportformat,All Medical Conditions,,Movement_Limits,0
+Movement_Limits_Desc,STUDENTS,exportformat,All Medical Conditions,,Movement_Limits_Desc,0
+Network_ID,STUDENTS,customstudentscreens,Library Patron Info,Username,static,0
+Network_ID,STUDENTS,customstudentscreens,Library Patron Info,User ID,static,0
+Network_ID,STUDENTS,exportformat,Bacich Student Logins,,Network_ID,0
+Network_ID,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Network_ID,0
+Network_ID,STUDENTS,exportformat,Rails Passwords Only,,Network_ID,0
+Network_Password,STUDENTS,customstudentscreens,Library Patron Info,Password,static,0
+Network_Password,STUDENTS,exportformat,Bacich Student Logins,,Network_Password,0
+Network_Password,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Network_Password,0
+Network_Password,STUDENTS,exportformat,Rails Passwords Only,,Network_Password,0
+Nickname,STUDENTS,exportformat,Bacich Student Logins,,Nickname,0
+Nickname,STUDENTS,exportformat,kik Family Info,,Nickname,0
+Nickname,STUDENTS,exportformat,Names-Families-All-Contact-Info,,Nickname,0
+Nickname,STUDENTS,exportformat,Names-Families-Passwords-Emails,,Nickname,0
+off_campus_walks,STUDENTS,customstudentscreens,Parent Permissions,Walking Field Trip Permission,text,20
+PictureDay_Teacher,STUDENTS,customstudentscreens,House Teacher and Locker Info,Picture Day Teacher (PictureDay_Teacher),text,20
+Pinkies_Math_Teacher,STUDENTS,customstudentscreens,House Teacher and Locker Info,Kent Pinkies Math Teacher,text,20
+Pinkies_Spanish_Teacher,STUDENTS,customstudentscreens,House Teacher and Locker Info,Kent Pinkies Spanish Teacher,text,20
+Prescriptions,STUDENTS,exportformat,All Medical Conditions,,Prescriptions,0
+Previous_School_Grade_Level,STUDENTS,exportformat,CSIS Demographics,,Previous_School_Grade_Level,0
+Previous_School_Name,STUDENTS,exportformat,CSIS Demographics,,Previous_School_Name,0
+publish_articles,STUDENTS,customstudentscreens,Parent Permissions,Permission to publish articles,text,20
+publish_images,STUDENTS,customstudentscreens,Parent Permissions,Permission to publish images,text,20
+publish_works,STUDENTS,customstudentscreens,Parent Permissions,Permission to publish works,text,20
+Reg_Grade_Level,STUDENTS,exportformat,*Reg - Kent Music Choices,,Reg_Grade_Level,0
+Reg_ImmunizationsOK,STUDENTS,customstudentscreens,Registration Status,Immunizations OK (YYYY-MM-DD),text,10
+Reg_Notes,STUDENTS,customstudentscreens,Registration Status,Reg Notes,textarea,60
+Reg_ResidencyProofBy,STUDENTS,customstudentscreens,Registration Status,Proof of Residency Verifier,text,10
+Reg_ResidencyProofDate,STUDENTS,customstudentscreens,Registration Status,Proof of Residency Date (MM/DD/YYYY),text,10
+Reg_ResidencyProofOK,STUDENTS,customstudentscreens,Registration Status,Proof of Residency OK (YYYY-MM-DD),text,10
+Reg_Sibling,STUDENTS,customstudentscreens,Registration Status,Is a Sibling,text,20
+reg_will_attend,STUDENTS,customstudentscreens,Registration Status,Attending?,popup,0
+reg_will_attend,STUDENTS,exportformat,Reg Status with Emails,,reg_will_attend,0
+Reg_WindowNotOpen,STUDENTS,customstudentscreens,Registration Status,Registration Blocked (YYYY-MM-DD),text,10
+Reg_Year,STUDENTS,customstudentscreens,Registration Status,Reg Year,radio,0
+Requires_Meds,STUDENTS,exportformat,All Medical Conditions,,Requires_Meds,0
+responsibility_date,STUDENTS,customstudentscreens,Registration Status,responsibility_date,text,15
+responsibility_date,STUDENTS,exportformat,Reg Status with Emails,,responsibility_date,0
+responsibility_for_student,STUDENTS,customstudentscreens,Registration Status,responsibility_for_student,text,5
+responsibility_for_student,STUDENTS,exportformat,Reg Status with Emails,,responsibility_for_student,0
+responsibility_sig_1,STUDENTS,customstudentscreens,Registration Status,responsibility_sig_1,text,30
+responsibility_sig_1,STUDENTS,exportformat,Reg Status with Emails,,responsibility_sig_1,0
+responsibility_sig_2,STUDENTS,customstudentscreens,Registration Status,responsibility_sig_2,text,30
+Seizures,STUDENTS,exportformat,All Medical Conditions,,Seizures,0
+Seizures_Medication,STUDENTS,exportformat,All Medical Conditions,,Seizures_Medication,0
+SIMON_Grade_Level,STUDENTS,customstudentscreens,RCM Fields,SIMON_Grade_Level,popup,0
+SIMON_Language,STUDENTS,customstudentscreens,RCM Fields,SIMON_Language,popup,0
+SIMON_Middle_Initial,STUDENTS,customstudentscreens,RCM Fields,SIMON_Middle_Initial,text,3
+social_learning,STUDENTS,customstudentscreens,Parent Permissions,Permission for Social Learning (Edmodo, VoiceThread, etc),text,20
+srs_neighborhood,STUDENTS,customstudentscreens,Safe Routes to School,Neighborhood,popup,0
+srs_opt_out,STUDENTS,customstudentscreens,Safe Routes to School,Opt-Out,popup,0
+State_ExcludeFromReporting,STAFF,customstudentscreens,CALPADS, RSP, 504, SST, Speech, EL Info,Exclude from State reporting?,checkbox,0
+State_ExcludeFromReporting,STAFF,customteacherscreens,EEO-5 and CBEDS Information,Exclude from State Reporting,checkbox,0
+State_ExcludeFromReporting,STAFF,exportformat,CALPADS Fall 2,,State_ExcludeFromReporting,0
+Student_Email,STUDENTS,exportformat,kik Family Info,,Student_Email,0
+TK_Current_Year,STUDENTS,customstudentscreens,Registration Status,TK_Current_Year,checkbox,0
+TK_Current_Year,STUDENTS,exportformat,kik Family Info,,TK_Current_Year,0
+TK_Next_Year,STUDENTS,customstudentscreens,Registration Status,TK_Next_Year,checkbox,0
+TK_Next_Year,STUDENTS,exportformat,kik Family Info,,TK_Next_Year,0
+
