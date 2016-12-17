@@ -16,7 +16,7 @@ function val_is_empty(s) {
 // TODO: attach listeners to all the checkboxes and textareas
 // to update these on blur
 function set_summary_checkboxes() {
-  var names = [ 
+  var names = [
     'eyeglasses', 'allergies', 'asthma', 'seizures', 'diabetes',
     'behavior', 'movement', 'med_other', 'illness', 'med_accom'
   ];
@@ -36,7 +36,7 @@ function bind_form_updated(form_id) {
     set_summary_checkboxes();
 
     var ts = timestamp_now();
-    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_by').val($j('#userid').val());
     $j('#' + form_id + '_upd_at').val(ts);
   });
 }
@@ -73,24 +73,24 @@ $j(document).ready(function() {
 <tr class="headerrow"><td colspan="3" class="bold">Medical Information</td></tr>
 <tr><td colspan="3"><b>Important Note:</b>: Any medical information changes must
   be completed here and also emailed directly to the District nurse,
-  Cammi Bell, at 
+  Cammi Bell, at
   <a href="mailto:cbell@kentfieldschools.org">cbell@kentfieldschools.org</a></td></tr>
-  
+
 <tr class="headerrow"><td colspan="3" class="bold">1. Medication - Daily and 72 hour Supply</td></tr>
-<tr><td colspan="3">In order to administer prescription or over-the-counter medication at school, 
-the District requires a medication form, signed by a doctor. The forms for daily medication 
+<tr><td colspan="3">In order to administer prescription or over-the-counter medication at school,
+the District requires a medication form, signed by a doctor. The forms for daily medication
   ("Authorization to Administer Medication" / "Autorización de administrar medicaciones")
-  and for 72 hour emergency medication 
-  ("72 Hour Disaster Medications" / "Medicaciones del desastre de 72 horas") can be downloaded from 
-  from the 
+  and for 72 hour emergency medication
+  ("72 Hour Disaster Medications" / "Medicaciones del desastre de 72 horas") can be downloaded from
+  from the
   Marin County Office of Education
   <a target="ksorg" href="http://jade.marinschools.org/Health-Wellness/manual/Pages/default.aspx">School Health Manual page</a>, or picked up in one of the school offices.<br/><br/>
 Please complete all appropriate form(s) and return them to the school office
 with the necessary medication. You must bring the required medication in the original
-container, labeled with the student's name, on the first day of school or as soon as new 
-medication is dispensed. Full school participation, safety and wellness are dependent on 
+container, labeled with the student's name, on the first day of school or as soon as new
+medication is dispensed. Full school participation, safety and wellness are dependent on
 complete information along with medication as needed. If you need additional help, please
-contact the District nurse, Cammi Bell, at 
+contact the District nurse, Cammi Bell, at
 <a href="mailto:cbell@kentfieldschools.org">cbell@kentfieldschools.org</a></td></tr>
 
 <tr><td class="bold">Does the student take medication at home or at school?</td>
@@ -129,7 +129,7 @@ contact the District nurse, Cammi Bell, at
   <option value="calkids">California Kids</option>
   <option value="other">Other Public Health Insurance Program</option>
   <option value="none">No Health Insurance</option>
-</select></td>  
+</select></td>
 <td width="102" class="bold">Medi-Cal #<br/>
   (if Applicable)</td>
 <td width="162"><input type="text" id="medi_cal_num" name="[01]Medi_Cal_Num" value="" size="16" /></td>
@@ -183,7 +183,7 @@ contact the District nurse, Cammi Bell, at
 <td colspan="2"><input type="checkbox" class="eyeglasses_chk" name="[01]Eyeglasses_Always" value="1" />All the time&nbsp;</td>
 </tr>
 <tr><td class="bold">Date of last eye exam?</td>
-<td colspan="4"><input type="text" id="last_eye_exam" name="[01]h_Last_Eye_Exam" value="" size="10" data-validation='{"type":"date","key":"students.h_last_eye_exam"}' /></td>
+<td colspan="4"><input type="text" id="last_eye_exam" name="[01]h_Last_Eye_Exam" value="" size="10"/></td>
 </tr>
 <tr><td class="bold">Does the student wear a hearing aid?</td>
 <td>&nbsp;</td>
@@ -275,8 +275,8 @@ contact the District nurse, Cammi Bell, at
 <tr valign="top"><td colspan="2" class="bold">Description and Accommodations:</td>
 <td colspan="5"><textarea name="[01]Medical_Accom_Desc" class="med_accom_chk" id="med_accom_txt" wrap="soft" cols="40" rows="3"></textarea></td>
 </tr>
-<tr class="private"><td colspan="7" class="bold">Last updated at 
-<input type="text" id="form09_upd_at" name="[01]form9_updated_at" value="" /> by 
+<tr class="private"><td colspan="7" class="bold">Last updated at
+<input type="text" id="form09_upd_at" name="[01]form9_updated_at" value="" /> by
 <input type="text" id="form09_upd_by" name="[01]form9_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
