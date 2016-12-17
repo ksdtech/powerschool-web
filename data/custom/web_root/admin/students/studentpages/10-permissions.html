@@ -2,7 +2,7 @@
 <html>
 <!-- start right frame -->
 <head>
-<title>10 - Authorizations and Permission</title>
+<title>10 - Authorizations and Permissions</title>
 ~[wc:commonscripts]
 <script src="/scripts/fmt_date.js" type="text/javascript"></script>
 <script src="/scripts/formatters.js" type="text/javascript"></script>
@@ -42,7 +42,7 @@
   <tr><td colspan="4">Please answer all of the sections below.</td></tr>
 
   <tr class="headerrow"><td class="bold" colspan="4">1. Acknowledgement of Notice of Rights of Parent or Guardian</td></tr>
-  <tr><td colspan="4">Please click the link below to download or view the 
+  <tr><td colspan="4">Please click the link below to download or view the
   	Annual Notice of your parent or guardian rights under California
   	State law. The Notice is available in English or Spanish.	 After reading
   	the Notice, please check the acknowledgement statement below.</td></tr>
@@ -51,25 +51,25 @@
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><input type="radio" class="annual_notice" name="[01]annual_notice" value="Yes" />&nbsp;I (we) have read the Annual Notice to Parents and hereby acknowledge receipt of information regarding my (our) rights, responsibilities, and protections.<br/>
   	  Yo he (nosotros hemos) leido el Notificacion Anual a Los Padres y yo acuso recibo de la informacion sobre mis (nosotros) derechos, responsibilidades y protecciones.
-  </td></tr>	 
+  </td></tr>
 
   <tr class="headerrow"><td class="bold" colspan="4">2. Release of Pupil Directory Information</td></tr>
   <tr><td colspan="4">The District may release Pupil Directory Information to non-profit
   	organizations and the news media in accordance with California law. As explained
-  	in the Annual Notice, parents of students aged 17 or younger have the right 
+  	in the Annual Notice, parents of students aged 17 or younger have the right
   	to withhold the release of this information.
-  	If you do not wish directory information about your student released (page 1), 
-  	please check the box indicated below.<br/> 
-  	Note that this will prohibit the district from providing the student's 
-  	name and other information to the news media, interested schools, 
+  	If you do not wish directory information about your student released (page 1),
+  	please check the box indicated below.<br/>
+  	Note that this will prohibit the district from providing the student's
+  	name and other information to the news media, interested schools,
   	parent-teacher associations, interested employers, and similar parties.</td></tr>
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><input type="radio" class="release_directory_info" name="[01]release_directory_info" value="Yes" />&nbsp;YES, I (we) ALLOW the District to release directory information regarding ~(first_name) ~(last_name)</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="release_directory_info" name="[01]release_directory_info" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to release directory information regarding ~(first_name) ~(last_name)</td></tr>	
+  	<td colspan="3"><input type="radio" class="release_directory_info" name="[01]release_directory_info" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to release directory information regarding ~(first_name) ~(last_name)</td></tr>
 
   <tr class="headerrow"><td class="bold" colspan="4">3. Contacting Student's Previous School</td></tr>
-  <tr><td colspan="4">Please indicate whether you grant permission to the Kentfield School District 
+  <tr><td colspan="4">Please indicate whether you grant permission to the Kentfield School District
   	to contact your student's
   	previous school regarding recommendations for placement.</td></tr>
   <tr><td width="10">&nbsp;</td>
@@ -77,24 +77,37 @@
   <tr><td width="10">&nbsp;</td>
   	<td><input type="radio" class="previous_school_contact" name="[01]previous_school_contact" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to contact previous school</td></tr>
 
+    <!-- table -->
+    <tr class="headerrow"><td colspan="4">4. Kentfield PTA Contacts</td></tr>
+    <tr><td colspan="4">Do you give permission to the Kentfield School District to share the
+     contact information you listed during the registration process with the Kentfield Schools PTA
+     so you can receive email with school and classroom news, curriculum updates, and PTA program
+     information from Kent Grade Level Coordinators, Bacich Room Parents and/or KSPTA?
+     Please select one of the following answers.</td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><input type="radio" name="[01]pta_contact" class="pta_contact" value="Yes" />YES, I (we) ALLOW the District to share my (our) contact information with the Kentfield Schools PTA.
+        </td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><input type="radio" name="[01]pta_contact" class="pta_contact" value="No" />NO, I (we) DO NOT ALLOW the District to share my (our) contact information with the Kentfield Schools PTA.</td></tr>
+
   <!-- table -->
-  <tr class="headerrow"><td class="bold" colspan="4">4. Emergency Treatment Authorization</td></tr>
-  <tr><td colspan="4">I (we), the undersigned parent(s) or legal guardian(s) of 
-  <b>~([01]First_Name) ~([01]Middle_Name) ~([01]Last_Name)</b>, a minor, do hereby give 
-  	authorization and consent to the school to obtain emergency medical care and 
-  	necessary transportation, including x-ray examination, anesthetic, medical or 
-  	surgical diagnosis and emergency hospital which is deemed advisable by and is 
-  	to be rendered under the general or specific supervision of medical and 
-  	emergency room staff licensed under the provisions of the medicine practice 
+  <tr class="headerrow"><td class="bold" colspan="4">5. Emergency Treatment Authorization</td></tr>
+  <tr><td colspan="4">I (we), the undersigned parent(s) or legal guardian(s) of
+  <b>~([01]First_Name) ~([01]Middle_Name) ~([01]Last_Name)</b>, a minor, do hereby give
+  	authorization and consent to the school to obtain emergency medical care and
+  	necessary transportation, including x-ray examination, anesthetic, medical or
+  	surgical diagnosis and emergency hospital which is deemed advisable by and is
+  	to be rendered under the general or specific supervision of medical and
+  	emergency room staff licensed under the provisions of the medicine practice
   	act and the State of California Department of Public Health.<br/><br/>
-  It is understood that effort shall be made to contact the undersigned prior to 
-  	rendering treatment to the student, but that any of the above treatment will 
+  It is understood that effort shall be made to contact the undersigned prior to
+  	rendering treatment to the student, but that any of the above treatment will
   	not be withheld if the undersigned or authorized adults cannot be reached.<br/><br/>
-  <input type="text" id="emergency_hospital" name="[01]emergency_hospital" value="" size="30" /> is the 
+  <input type="text" id="emergency_hospital" name="[01]emergency_hospital" value="" size="30" /> is the
   	hospital I (we) prefer for emergency medical treatment of my (our) child.<br/><br/>
-  I (we) understand that the school district does not provide accident/medical 
-  	insurance for students, and I (we) further understand that all costs related 
-  	to medical treatment shall be my (our) responsibility and not that of the school 
+  I (we) understand that the school district does not provide accident/medical
+  	insurance for students, and I (we) further understand that all costs related
+  	to medical treatment shall be my (our) responsibility and not that of the school
   	district.</td></tr>
   <tr><td width="10">&nbsp;</td>
   <td colspan="3"><input type="radio" class="emergency_care" name="[01]emergency_care" value="Yes" />&nbsp;YES, I (we) GIVE AUTHORIZATION for emergency treatment</td>
@@ -102,7 +115,7 @@
   <td colspan="3"><input type="radio" class="emergency_care" name="[01]emergency_care" value="No" />&nbsp;NO I (we) DO NOT GIVE AUTHORIZATION for emergency treatment</td>
 
 
-  <tr class="headerrow"><td class="bold" colspan="4">5. Notification of Pesticide Application</td></tr>
+  <tr class="headerrow"><td class="bold" colspan="4">6. Notification of Pesticide Application</td></tr>
   <tr><td colspan="4">The Healthy Schools Act of 2000 requires that
   	all schools provide parents or guardians annual written notice
   	of expected pesticide use on school sites. While the District does
@@ -115,159 +128,143 @@
 	<tr><td width="10">&nbsp;</td>
 		<td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/About_Us/Parent_Rights">Request for Notification of Pesticide Application</a></td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="ipm_notifications" name="[01]ipm_notifications" value="Yes" />&nbsp;YES, I (we) WOULD LIKE TO BE NOTIFIED before each pesticide application at this school</td></tr>	 
+  	<td colspan="3"><input type="radio" class="ipm_notifications" name="[01]ipm_notifications" value="Yes" />&nbsp;YES, I (we) WOULD LIKE TO BE NOTIFIED before each pesticide application at this school</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="ipm_notifications" name="[01]ipm_notifications" value="No" />&nbsp;No, I (we) DO NOT WISH TO BE NOTIFIED before each pesticide application at this school</td></tr>	
+  	<td colspan="3"><input type="radio" class="ipm_notifications" name="[01]ipm_notifications" value="No" />&nbsp;No, I (we) DO NOT WISH TO BE NOTIFIED before each pesticide application at this school</td></tr>
 
-  <tr class="headerrow"><td class="bold" colspan="4">6. Walking Off-Campus Permission Form</td></tr>
+  <tr class="headerrow"><td class="bold" colspan="4">7. Walking Off-Campus Permission Form</td></tr>
   <tr><td colspan="4">During the school year the District may conduct
-  	emergency evacuation drills which require students and teachers to 
+  	emergency evacuation drills which require students and teachers to
   	walk to a local off-campus staging area near the school site.
-  	Also, teachers may take their classes 
-  	on walking field trips in the school community. The purpose of such walks 
-  	is for the students to visit neighborhood sites and educational places 
-  	in our community such as local parks, the Kentfield Post Office, 
-  	Woodlands Market, and the fire department.	Teachers will always notify 
-  	parents when any off-campus field trips take place. Separate permission 
+  	Also, teachers may take their classes
+  	on walking field trips in the school community. The purpose of such walks
+  	is for the students to visit neighborhood sites and educational places
+  	in our community such as local parks, the Kentfield Post Office,
+  	Woodlands Market, and the fire department.	Teachers will always notify
+  	parents when any off-campus field trips take place. Separate permission
   	forms will always be used when any form of transportation is involved.
   	Please click the link below for more information, then check the box
   	to grant permission for your child to participate in these activities.</td></tr>
 		<tr><td width="10">&nbsp;</td>
 			<td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/About_Us/Parent_Rights">Off-Campus Permission Form</a></td></tr>
   <tr><td width="10">&nbsp;</td>
-    <td colspan="3"><input type="radio" class="off_campus_walks" name="[01]off_campus_walks" value="Yes" />&nbsp;YES, I (we) GIVE PERMISSION for my child to participate in staff-supervised neighborhood walks during the <span class="reg_year"></span> school year</td></tr> 
+    <td colspan="3"><input type="radio" class="off_campus_walks" name="[01]off_campus_walks" value="Yes" />&nbsp;YES, I (we) GIVE PERMISSION for my child to participate in staff-supervised neighborhood walks during the <span class="reg_year"></span> school year</td></tr>
   <tr><td width="10">&nbsp;</td>
-    <td colspan="3"><input type="radio" class="off_campus_walks" name="[01]off_campus_walks" value="No" />&nbsp;No, I (we) DO NOT GIVE PERMISSION for my child to participate in staff-supervised neighborhood walks during the <span class="reg_year"></span> school year</td></tr>   
+    <td colspan="3"><input type="radio" class="off_campus_walks" name="[01]off_campus_walks" value="No" />&nbsp;No, I (we) DO NOT GIVE PERMISSION for my child to participate in staff-supervised neighborhood walks during the <span class="reg_year"></span> school year</td></tr>
 
-  <!-- table -->
-  <tr class="headerrow"><td class="bold" colspan="4">7. Technology - Acceptable Use Agreement</td></tr>
-  <tr><td colspan="4">Part of your student's learning experience includes
-  	 the use of technology integrated into the curriculum to help advance 
-  	 students' 21st Century skills. In order for your student to participate 
-  	 in any use of technology, both you and your student must understand and 
-  	 agree to the Kentfield School District's Acceptable Use Agreement.	 
-  	 Please click the link to download and read this agreement with your 
-  	 student and then check the box to indicate your agreement and approval.</td></tr>
-		<tr><td width="10">&nbsp;</td>
-			<td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Administration/Technology">Student Acceptable Use Agreement (Internet)</a></td></tr>
-  <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="acceptable_use" name="[01]acceptable_use" value="Yes" />&nbsp;YES, I (we) AGREE to all the terms and conditions of the Student Acceptable Use Agreement. As specified in
-  		the agreement, I (we) AGREE TO INDEMNIFY AND HOLD HARMLESS the District, MCOE, or any District or MCOE employee for any damages or costs incurred by
-  		this student's internet use</td></tr>		 
-  <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="acceptable_use" name="[01]acceptable_use" value="No" />&nbsp;NO, I (we) DO NOT AGREE to all the terms and conditions of the Student Acceptable Use Agreement. This student will not be able to participate in any Internet-related activities</td></tr>	
+    <!-- table -->
+    <tr class="headerrow"><td colspan="4">8. Technology - Acceptable Use Agreement</td></tr>
+    <tr><td colspan="4">Part of your student's learning experience includes
+       the use of technology integrated into the curriculum to help advance
+       students' 21st Century skills. In order for your student to participate
+       in any use of technology, both you and your student must understand and
+       agree to the Kentfield School District's Acceptable Use Agreement.
+       Please click the link to download and read this agreement with your
+       student and then check the box to indicate your agreement and approval.</td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Administration/Technology">Acceptable Use Agreement (Students)</a></td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><input type="radio" class="acceptable_use" name="[01]acceptable_use" value="Yes" />&nbsp;YES, I (we) AGREE to all the terms and conditions of the Student Acceptable Use Agreement. As specified in
+        the agreement, I (we) AGREE TO INDEMNIFY AND HOLD HARMLESS the District, MCOE, or any District or MCOE employee for any damages or costs incurred by
+        this student's internet use</td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><input type="radio" class="acceptable_use" name="[01]acceptable_use" value="No" />&nbsp;NO, I (we) DO NOT AGREE to all the terms and conditions of the Student Acceptable Use Agreement. This student will not be able to participate in any Internet-related activities</td></tr>
 
-  <!-- table -->
-  <tr class="headerrow"><td class="bold" colspan="4">8. Technology - Computer Use Agreement</td></tr>
-  <tr><td colspan="4">Each school has established specific rules concerning 
-  	the use of computers and other electronic equipment at school. Failure to 
-  	comply with these rules may result in the temporary or permanent loss of 
-  	some or all computer privileges.	Please click the link to download and read 
-  	the Computer Use Agreement with your student and 
-  	then check the box to indicate your agreement and approval.</td></tr>
-		<tr><td width="10">&nbsp;</td>
-			<td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Administration/Technology">Student Acceptable Use Agreement (Internet)</a></td></tr>
-		<tr><td width="10">&nbsp;</td>
-			<td colspan="3"><input type="radio" class="acceptable_use" name="[01]acceptable_use" value="Yes" />&nbsp;YES, I (we) AGREE to all the terms and conditions of the Student Acceptable Use Agreement. As specified in
-				the agreement, I (we) AGREE TO INDEMNIFY AND HOLD HARMLESS the District, MCOE, or any District or MCOE employee for any damages or costs incurred by
-				this student's internet use</td></tr>		 
-		<tr><td width="10">&nbsp;</td>
-			<td colspan="3"><input type="radio" class="acceptable_use" name="[01]acceptable_use" value="No" />&nbsp;NO, I (we) DO NOT AGREE to all the terms and conditions of the Student Acceptable Use Agreement. This student will not be able to participate in any Internet-related activities</td></tr>	
+    <!-- table -->
+    <tr class="headerrow"><td colspan="4">9. Technology - Computer Use Agreement</td></tr>
+    <tr><td colspan="4">Each school has established specific rules concerning
+      the use of computers and other electronic equipment at school. Failure to
+      comply with these rules may result in the temporary or permanent loss of
+      some or all computer privileges.  Please click the link to download and read
+      the Computer Use Agreement with your student and
+      then check the box to indicate your agreement and approval.</td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Administration/Technology">Computer Use Agreement</a></td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><input type="radio" class="computer_use" name="[01]computer_use" value="Yes" />&nbsp;YES, I (we) AGREE to all the terms and conditions of the Computer Use Agreement</td></tr>
+    <tr><td width="10">&nbsp;</td>
+      <td colspan="3"><input type="radio" class="computer_use" name="[01]computer_use" value="No" />&nbsp;NO, I (we) DO NOT AGREE to all the terms and conditions of the Computer Use Agreement. This student will not be able to participate in any computer-related activities</td></tr>
 
-		<!-- table -->
-		<tr class="headerrow"><td class="bold" colspan="4">8. Technology - Computer Use Agreement</td></tr>
-		<tr><td colspan="4">Each school has established specific rules concerning 
-			the use of computers and other electronic equipment at school. Failure to 
-			comply with these rules may result in the temporary or permanent loss of 
-			some or all computer privileges.	Please click the link to download and read 
-			the Computer Use Agreement with your student and 
-			then check the box to indicate your agreement and approval.</td></tr>
-		<tr><td width="10">&nbsp;</td>
-			<td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Administration/Technology">Computer Use Agreement</a></td></tr>
-  <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="computer_use" name="[01]computer_use" value="Yes" />&nbsp;YES, I (we) AGREE to all the terms and conditions of the Computer Use Agreement</td></tr>	
-  <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="computer_use" name="[01]computer_use" value="No" />&nbsp;NO, I (we) DO NOT AGREE to all the terms and conditions of the Computer Use Agreement. This student will not be able to participate in any computer-related activities</td></tr>	
-
-  <tr class="headerrow"><td class="bold" colspan="4">9. Publication Permissions</td></tr>
-  <tr><td colspan="4">The Kentfield School District promotes the goals of 
-  	student expression and creativity and communication with parents. 
+  <tr class="headerrow"><td class="bold" colspan="4">10. Publication Permissions</td></tr>
+  <tr><td colspan="4">The Kentfield School District promotes the goals of
+  	student expression and creativity and communication with parents.
   	In order to protect the privacy of our students, the District has
   	established Publication Guidelines to be followed by staff and students,
   	which establish the responsibilities of both District staff <b>and parents</b>.<br/>
   	Please click the link to download and read these guidelines, and then
-  	check the appropriate options to be used for this student. Parents may 
+  	check the appropriate options to be used for this student. Parents may
   	change these authorizations at any time by notifying the school in writing.
   </td></tr>
 	<tr><td width="10">&nbsp;</td>
 		<td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/Administration/Technology">Publication Guidelines</a></td></tr>
-  <tr><td class="bold" colspan="4">Authorization to Publish Images</td></tr>
+  <tr><td class="bold" colspan="4">10a. Authorization to Publish Images</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="publish_images" name="[01]publish_images" value="Yes" />&nbsp;YES, 
-  		I (we) ALLOW the publication of photo or video images of this student with 
-  		no name or only the first name associated with the published image</td></tr>	
+  	<td colspan="3"><input type="radio" class="publish_images" name="[01]publish_images" value="Yes" />&nbsp;YES,
+  		I (we) ALLOW the publication of photo or video images of this student with
+  		no name or only the first name associated with the published image</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="publish_images" name="[01]publish_images" value="No" />&nbsp;NO, 
+  	<td colspan="3"><input type="radio" class="publish_images" name="[01]publish_images" value="No" />&nbsp;NO,
   		I (we) DO NOT ALLOW the publication of any photo or video images of this student</td></tr>
 
   <!--
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3">Have I (we) ALLOWED the publication of photo or video images of this student?
   	<b>~[if.~(publish_images)=]Not Answered[else]~(publish_images)[/if]</b>
-  </td></tr>	
+  </td></tr>
   -->
 
-  <tr><td class="bold" colspan="4">Authorization to Publish Articles About This Student</td></tr>
+  <tr><td class="bold" colspan="4">10b. Authorization to Publish Articles About This Student</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="publish_articles" name="[01]publish_articles" value="Yes" />&nbsp;YES, 
-  		I (we) ALLOW the publication of stories or articles about this student with 
-  		no name or only the first name associated with the published story or article</td></tr>	
+  	<td colspan="3"><input type="radio" class="publish_articles" name="[01]publish_articles" value="Yes" />&nbsp;YES,
+  		I (we) ALLOW the publication of stories or articles about this student with
+  		no name or only the first name associated with the published story or article</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="publish_articles" name="[01]publish_articles" value="No" />&nbsp;NO, 
+  	<td colspan="3"><input type="radio" class="publish_articles" name="[01]publish_articles" value="No" />&nbsp;NO,
   		I (we) DO NOT ALLOW the publication of any stories or articles about this student</td></tr>
-  <tr><td class="bold" colspan="4">Authorization to Publish Student Work</td></tr>
+  <tr><td class="bold" colspan="4">10c. Authorization to Publish Student Work</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="publish_works" name="[01]publish_works" value="Yes" />&nbsp;YES, 
-  		I (we) ALLOW the publication of works created by this student with no name 
-  		or only the first name associated with the published works</td></tr>	 
+  	<td colspan="3"><input type="radio" class="publish_works" name="[01]publish_works" value="Yes" />&nbsp;YES,
+  		I (we) ALLOW the publication of works created by this student with no name
+  		or only the first name associated with the published works</td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="publish_works" name="[01]publish_works" value="No" />&nbsp;NO, 
+  	<td colspan="3"><input type="radio" class="publish_works" name="[01]publish_works" value="No" />&nbsp;NO,
   		I (we) DO NOT ALLOW the publication of any works created by this student</td></tr>
 
-  <tr class="headerrow"><td class="bold" colspan="4">10. Technology - Google Apps</td></tr>
-  <tr><td colspan="4">The Kentfield School District uses Google Apps for 
-  	Education as a fundamental platform for student learning. Students create 
-  	and share work and communicate with teachers and each other using Google 
-  	Apps. According to Google's Terms of Service, any user of Google Apps 
-  	under the age of 13 must obtain the consent of his or her parents.
-  	Please click the links below to obtain more information and the
-  	then check the box to give your permission for the District to set up
-  	a Google Apps for Education account for this student.<br/>
-  	If you change your approval or disapproval of a Google Apps account during
-  	the school year, please submit your change in writing to the school office
-  	so that the student's Google Apps account can be enabled or disabled.</td></tr>
+  <tr class="headerrow"><td class="bold" colspan="4">11. Technology - Google G Suite</td></tr>
+  <tr><td colspan="4">The Kentfield School District uses G Suite for Education
+    (formerly named "Google Apps for Education")
+    as a fundamental platform for student learning. Students create
+    and share work and communicate with teachers and each other using Google
+    Apps. According to Google's Terms of Service, any user of Google Apps
+    under the age of 13 must obtain the consent of his or her parents.
+    Please click the links below to obtain more information and the
+    then check the box to give your permission for the District to set up
+    a Google Apps for Education account for this student.<br/>
+    If you change your approval or disapproval of a Google Apps account during
+    the school year, please submit your change in writing to the school office
+    so that the student's Google Apps account can be enabled or disabled.</td></tr>
 		<tr><td width="10">&nbsp;</td>
 			<td colspan="3"><a target="ksorg" href="https://support.google.com/a/answer/60762">Google Apps Help: Your security &amp; privacy</a></td></tr>
 		<tr><td width="10">&nbsp;</td>
 			<td colspan="3"><a target="ksorg" href="http://www.google.com/apps/intl/en-in/terms/education_terms.html">Google Apps for Education Agreement</a></td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="google_apps" name="[01]google_apps" value="Yes" />&nbsp;YES, I (we) ALLOW the District to set up a Google Apps account for this student</td></tr>	
+  	<td colspan="3"><input type="radio" class="google_apps" name="[01]google_apps" value="Yes" />&nbsp;YES, I (we) ALLOW the District to set up a Google Apps account for this student</td></tr>
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><input type="radio" class="google_apps" name="[01]google_apps" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to set up a Google Apps account for this student. I understand that this student may have to forego some technology-related activities</td></tr>
 
-  <tr class="headerrow"><td class="bold" colspan="4">11. Technology - Other Social Learning Applications</td></tr>
+  <tr class="headerrow"><td class="bold" colspan="4">12. Technology - Other Social Learning Applications</td></tr>
   <tr><td colspan="4">The Kentfield School District also uses other "social
-  	learning" web applications such as Edmodo.com or VoiceThread.com,
-  	to foster important communication and collaboration between students, 
-  	teachers and each other as an essential part of the learning environment.
-  	These applications are designed for use by schools, and all use in
-  	school is moderated by District staff to protect the privacy of our
-  	students. For the district to be able to establish student accounts 
-  	in these services, parents must grant
-  	permission for under-age students (under the age of 18 or 13).	
-  	Please click the links below to review the terms and conditions for these 
-  	services and then check the box to give your permission for the District to 
-  	maintain accounts for your students as necessary.</td></tr>
+    learning" web applications such as Edmodo.com or VoiceThread.com,
+    to foster important communication and collaboration between students,
+    teachers and each other as an essential part of the learning environment.
+    These applications are designed for use by schools, and all use in
+    school is moderated by District staff to protect the privacy of our
+    students. For the district to be able to establish student accounts
+    in these services, parents must grant
+    permission for under-age students (under the age of 18 or 13).
+    Please click the links below to review the terms and conditions for these
+    services and then check the box to give your permission for the District to
+    maintain accounts for your students as necessary.</td></tr>
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><a target="ksorg" href="http://www.edmodo.com/corporate/terms-of-service">Edmodo Terms of Service</a></td></tr>
   <tr><td width="10">&nbsp;</td>
@@ -275,28 +272,28 @@
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><a target="ksorg" href="http://voicethread.com/termsofuse">VoiceThread Terms of Use and Privacy Policy</a></td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="social_learning" name="[01]social_learning" value="Yes" />&nbsp;YES, I (we) ALLOW the District to set up accounts for this student with social learning applications</td></tr>	 
+  	<td colspan="3"><input type="radio" class="social_learning" name="[01]social_learning" value="Yes" />&nbsp;YES, I (we) ALLOW the District to set up accounts for this student with social learning applications</td></tr>
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><input type="radio" class="social_learning" name="[01]social_learning" value="No" />&nbsp;NO, I (we) DO NOT ALLOW the District to set up accounts for this student with social learning applications. I understand that this student may have to forego some technology-related activities</td></tr>
 
   <!--
   <tr class="headerrow"><td class="bold" colspan="4">12. (Kent Middle School Only) BYOD Pilot Program</td></tr>
-  <tr><td colspan="4">Under current Kentfield School District rules, the use of 
-  	personal electronic devices not owned by the District has been forbidden 
-  	during the school day. With many students owning personal electronic devices 
-  	and frequently using these devices for their school work while at home, 
-  	teachers and administrators in our District recognize that allowing students 
-  	to utilize their own technology in a more seamless way at school could lead 
+  <tr><td colspan="4">Under current Kentfield School District rules, the use of
+  	personal electronic devices not owned by the District has been forbidden
+  	during the school day. With many students owning personal electronic devices
+  	and frequently using these devices for their school work while at home,
+  	teachers and administrators in our District recognize that allowing students
+  	to utilize their own technology in a more seamless way at school could lead
   	to a better learning environment.<br>
-  	In the Fall of 2013, individual teachers at Kent Middle School and their 
-  	students will be allowed to participate in a pilot "Bring Your Own Device" 
+  	In the Fall of 2013, individual teachers at Kent Middle School and their
+  	students will be allowed to participate in a pilot "Bring Your Own Device"
   	(BYOD) program. Please click the link below to review the guidelines
   	for this pilot program and then check the appropriate box to indicate
   	your willingness to participate in this program, or not.</td></tr>
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><a target="ksorg" href="http://www.kentfieldschools.org/cms/lib05/CA01001012/Centricity/Shared/reg1314/BYODGuidelines1314.pdf"><img src="http://www.kentfieldschools.org/cms/lib05/CA01001012/Centricity/Shared/pdficon_large.png">&nbsp;KSD BYOD Pilot Program Guidelines</a></td></tr>
   <tr><td width="10">&nbsp;</td>
-  	<td colspan="3"><input type="radio" class="byod" name="[01]byod" value="Yes" />&nbsp;YES, I (we) GRANT PERMISSION for this student to participate in the BYOD Pilot Program at Kent for the school year</td></tr>	 
+  	<td colspan="3"><input type="radio" class="byod" name="[01]byod" value="Yes" />&nbsp;YES, I (we) GRANT PERMISSION for this student to participate in the BYOD Pilot Program at Kent for the school year</td></tr>
   <tr><td width="10">&nbsp;</td>
   	<td colspan="3"><input type="radio" class="byod" name="[01]byod" value="No" />&nbsp;NO, I (we) DO NOT GRANT PERMISSION for this student to participate in the BYOD Pilot Program at Kent for the school year</td></tr>
   <tr><td width="10">&nbsp;</td>
@@ -304,8 +301,8 @@
   -->
 
   <tr class="staffonly"><td colspan="4" class="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
-  <tr class="staffonly"><td colspan="4" class="bold">Last updated at 
-  <input type="text" id="upd_at" name="[01]form10_updated_at" value="" /> by 
+  <tr class="staffonly"><td colspan="4" class="bold">Last updated at
+  <input type="text" id="upd_at" name="[01]form10_updated_at" value="" /> by
   <input type="text" id="upd_by" name="[01]form10_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
   </tr>
 

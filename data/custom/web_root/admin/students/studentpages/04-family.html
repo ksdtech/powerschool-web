@@ -34,7 +34,7 @@
 
 <!-- gathering family information
 before school year rollover, use:
-  ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus, 
+  ps_customfields.getstudentscf(id, 'reg_will_attend') AS RegStatus,
   ps_customfields.getstudentscf(id, 'reg_grade_level') AS RegGrade,
 
 after school year rollover, use:
@@ -42,13 +42,13 @@ after school year rollover, use:
   Grade_Level as RegGrade,
  -->
 ~[tlist_sql;
-SELECT Student_Number AS SN, 
-ID AS SID, 
+SELECT Student_Number AS SN,
+ID AS SID,
 Family_Ident, First_Name, Last_Name,
-ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unl, 
+ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unl,
 ps_customfields.getstudentscf(id, 'kikdir_approved') AS PrAppr,
 ps_customfields.getstudentscf(id, 'kikdir_at') AS PrAt,
-  'attending' AS RegStatus, 
+  'attending' AS RegStatus,
   Grade_Level AS RegGrade,
 ps_customfields.getstudentscf(id, 'nickname') AS Nick
 FROM STUDENTS
@@ -77,22 +77,53 @@ ORDER BY Grade_Level, First_Name;
 <div id="form4-setup" class="box-round group" style="width: 720px">
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
-<tr class="headerrow"><td class="bold">1. Qualifying District Residence Information</td></tr>
-<tr><td>Instructions:  Information submitted in Sections 1-3 on this page refers <em>only to those adults</em> who reside 
-  at the Qualifying District Residence.  Also fill out Sections 4-6 if there are 
-  parents/guardians of this student living at another residence. below.</td></tr>
-<tr><td><strong>Email Address:</strong> It is critical that parent email addresses be kept current, 
-as the District uses email as its primary means of communication with families.
-</td></tr>
-<tr><td>For information about how registration information is used, 
-<a class="dialogM" title="About the Information You Provide during Registration" href="/public/ksdp_contacts.html">click here.</a></td></tr>
-<tr><td>For Proof of Residency and other legal requirements, 
-<a class="dialogM" title="About Proof of Residency" href="/public/ksdp_family.html">click here.</a></td></tr>
+
+    <tr class="headerrow"><td class="bold">2. Proof of Residency and Qualifying District Residence Information</td></tr>
+
+    <tr><td>The Kentfield School District requires all families to submit proof of residency
+    documents for an address that establishes a Qualifying District Residence within District
+    boundaries. New families must provide proof of residency when registering. Families of
+    students graduating from 4th to 5th grade, and families of students who are re-enrolling,
+    will also be required to submit current proof of residency documents before students will
+    be admitted to the Kentfield School District. In addition the District requires parents
+    and legal guardians with whom the child resides, under penalty of perjury, to confirm
+    <strong>each year</strong> that they continue to reside within the boundaries of the
+    District, by checking the confirmation check box below.</td></tr>
+
+    <tr><td>To read the official information about proof of residency and to download the
+    Affidavit of Proof of Residency, please visit the
+    <a target="_blank" href="http://www.kentfieldschools.org/pages/Kentfield_School_District/About_Us/Registering">Proof of Residency page</a>
+    on the Kentfield School District website, or contact the District Office at
+    (415) 458-5130.</td></tr>
+
+    <tr><td>Information submitted in Sections 2-4 on this page refers <em>only to those
+    adults</em> who reside at the Qualifying District Residence. Also fill out Sections 5-7
+    if there are parents or guardians of this student living at another residence.</td></tr>
+
+    <tr class="headerrow"><td class="bold">2a. Confirmation of Continuing Residence within District Boundaries</td></tr>
+
+    <tr><td>Under penalty of perjury, I / we, the parents or legal guardians of this student,
+    hereby state that either I / we continue to reside at the address given below, which is within
+    the boundaries of the Kentfield School District, <strong>OR</strong> that an Inter-District
+    Transfer has been granted for this student by the Board of Trustees. Please choose one of
+    the following:</td></tr>
+     <tr><td>
+      <input type="radio" name="[01]reg_residency_confirmation" class="por_confirmation"
+      id="por_confirmation_y" value="Yes"/>I / we continue to live within the District
+      boundaries, and the address of the Qualifying District Residence is correctly
+      listed below.</td></tr>
+    <tr><td>
+      <input type="radio" name="[01]reg_residency_confirmation" class="por_confirmation"
+      id="por_confirmation_idt" value="IDT"/>The residency requirements do not apply to this
+      student for the current year, because an Inter-District Transfer granted by an official
+      action of the Board of Trustees.</td></tr>
+
+    <tr class="headerrow"><td class="bold">2b. Qualifying District Residence Information</td></tr>
 </table>
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 700px">
 <tr class="staffonly"><td width="40%"><b>Primary Residence Status:</b></td>
-<td colspan="3"><select name="[01]CA_PrimaryResidence">  
+<td colspan="3"><select name="[01]CA_PrimaryResidence">
 <option value="200">(200) Permanent Housing</option>
 <option value="100">(100) Temporary Shelters</option>
 <option value="110">(110) Hotels/Motels</option>
@@ -262,7 +293,7 @@ as the District uses email as its primary means of communication with families.
   <input name="[01]kikdir_father_email" type="checkbox" id="kikdir_father_email" class="ksource" value="1" />Exclude this email address from the kik directory?</td></tr>
 
 <tr class="headerrow"><td colspan="4" class="bold">4. Additional Residence</td></tr>
-<tr><td colspan="4">Instructions: Fill out Sections 4-6 if there are 
+<tr><td colspan="4">Instructions: Fill out Sections 4-6 if there are
   parents/guardians of this student living at another residence.</td></tr>
 </table>
 
@@ -421,21 +452,21 @@ as the District uses email as its primary means of communication with families.
   <input type="radio" name="[01]kikdir_unlisted" id="kikdir_unlisted_y" class="kikdir_unlisted ksource" value="Y"/>
   Check here if you <strong>DO NOT</strong> want your family listed in the <strong>kik</strong> School Directory</td></tr>
 
-<tr><td colspan="4">If you checked this box for <b>any</b> of your current 
-  students, <b>none</b> of your students or other family information 
+<tr><td colspan="4">If you checked this box for <b>any</b> of your current
+  students, <b>none</b> of your students or other family information
   will appear in the directory.</td></tr>
 
 <tr class="headerrow"><td colspan="4">8. kik Directory Preview Approval</td></tr>
-<tr><td colspan="4">Here is what your family's listing will look like, based on the data you entered on this page, 
+<tr><td colspan="4">Here is what your family's listing will look like, based on the data you entered on this page,
   and on the data for your students' legal name(s) or nickname(s) as entered on the Student Information page.  To change
   the student names shown, click the Submit button on this page first, then go to the Student Information page for
   the relevant student(s) and enter the desired name in the Nickname field.</td></tr>
 
 <tr><td colspan="4" style="border:1px solid">
-<div id="this_unlisted" class="kpreview_off" style="color:red;">No preview. 
-  You have marked this family as <b>Unlisted</b>. If you want to be listed, 
+<div id="this_unlisted" class="kpreview_off" style="color:red;">No preview.
+  You have marked this family as <b>Unlisted</b>. If you want to be listed,
   please uncheck the box above.</div>
-<div id="other_unlisted" class="kpreview_off" style="color:red;">No preview. 
+<div id="other_unlisted" class="kpreview_off" style="color:red;">No preview.
   You have marked your family as <b>Unlisted</b> for another student.
   If you want to be listed, please uncheck the box on the Family Information page for
   these student(s): <ul id="unlisted_siblings"></ul></div>
@@ -459,8 +490,8 @@ as the District uses email as its primary means of communication with families.
 <tr class="staffonly"><td colspan="4" class="bold">Preview approved at
 <input type="text" id="preview_approved_at" name="[01]kikdir_at" value="" /></td></tr>
 <tr class="staffonly"><td colspan="4" lass="bold"><input type="checkbox" id="admin_update" value="1">Mark as submitted by parent</td></tr>
-<tr class="staffonly"><td colspan="4" class="bold">Last updated at 
-<input type="text" id="upd_at" class="disabled" name="[01]form4_updated_at" value=""> by 
+<tr class="staffonly"><td colspan="4" class="bold">Last updated at
+<input type="text" id="upd_at" class="disabled" name="[01]form4_updated_at" value=""> by
 <input type="text" id="upd_by" class="disabled" name="[01]form4_updated_by" value=""><input type="hidden" id="userid" value="~[x:userid]"></td>
 </tr>
 
