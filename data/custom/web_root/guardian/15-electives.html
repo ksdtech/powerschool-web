@@ -26,9 +26,9 @@ function returning_to_grade(gl) {
 function filter_by_enrollment() {
   var enrollment = $j('#reg_enroll').val();
   var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
-  if (not_enrolling) { 
-    $j('tr.enrolling').hide(); 
-  } else { 
+  if (not_enrolling) {
+    $j('tr.enrolling').hide();
+  } else {
     $j('tr.not_enrolling').hide();
     var grade = $j('#reg_grade_level').val();
     if (!val_is_empty(grade) && grade != '-1') {
@@ -70,7 +70,7 @@ function bind_form_updated(form_id) {
     }
 
     var ts = timestamp_now();
-    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
+    $j('#' + form_id + '_upd_by').val($j('#userid').val());
     $j('#' + form_id + '_upd_at').val(ts);
   });
 }
@@ -119,51 +119,51 @@ $j(document).ready(function() {
   <td colspan="3">Non-Returning Student</td></tr>
 <tr class="not_enrolling"><td colspan="3">
   You do not need to fill out this form for students who will not be
-  enrolling. Please click the <strong>Submit</strong> button below to mark that 
+  enrolling. Please click the <strong>Submit</strong> button below to mark that
   you have completed this page.</td></tr>
 
 <tr class="headerrow enrolling by_grade grade_TK grade_K grade_1 grade_2 grade_3 grade_4">
   <td colspan="3">Bacich Student</td></tr>
 <tr class="enrolling by_grade grade_TK grade_K grade_1 grade_2 grade_3 grade_4"><td colspan="3">
   There is no information needed for students who will be enrolling at Bacich.
-  Please click the  <strong>Submit</strong> button below to mark that 
+  Please click the  <strong>Submit</strong> button below to mark that
   you have completed this page.</td></tr>
 
 <tr class="headerrow enrolling by_grade grade_5 grade_6 grade_7 grade_8">
   <td colspan="3">14. Kent School Music Programs</td></tr>
 
 <tr class="enrolling by_grade grade_5"><td colspan="3" class="bold">14a. Fifth Grade Music Program</td></tr>
-<tr class="enrolling by_grade grade_5"><td colspan="3">All fifth graders will be enrolled 
-  in 5th Grade Band and other enrichment classes, but there are no enrichment choices to 
+<tr class="enrolling by_grade grade_5"><td colspan="3">All fifth graders will be enrolled
+  in 5th Grade Band and other enrichment classes, but there are no enrichment choices to
   be made. Please click the Submit button below to continue.
 <br />
-  You may email Mr. Martinez at <a 
+  You may email Mr. Martinez at <a
   href="mailto:mmartinez@kentfieldschools.org">mmartinez@kentfieldschools.org</a>
   for more information about the music program at Kent.</td></tr>
 
 <tr class="enrolling by_grade grade_6"><td colspan="3" class="bold">14b. Required Sixth Grade Music Options</td></tr>
-<tr class="enrolling by_grade grade_6"><td colspan="3">All sixth graders must select a 
-  performing arts class (either 6th Grade  Band or 6th Grade Chorus) that occurs during 
+<tr class="enrolling by_grade grade_6"><td colspan="3">All sixth graders must select a
+  performing arts class (either 6th Grade  Band or 6th Grade Chorus) that occurs during
   the regular school day.</td></tr>
 
 <tr class="enrolling by_grade grade_6"><td colspan="3" class="bold">Sixth Grade Music: 6th Grade Band</td></tr>
 <tr class="enrolling by_grade grade_6"><td colspan="3">The prerequisite for 6th Grade
-  Band is completion of 5th Grade Band or by audition. The second year of instrumental 
-  music improves upon the musical and ensemble skills learned in 5th Grade Band and adds 
+  Band is completion of 5th Grade Band or by audition. The second year of instrumental
+  music improves upon the musical and ensemble skills learned in 5th Grade Band and adds
   multi-part sheet music, syncopation, and major and minor scales.</td></tr>
 
 <tr class="enrolling by_grade grade_6"><td colspan="3" class="bold">Sixth Grade Music: 6th Grade Chorus</td></tr>
-<tr class="enrolling by_grade grade_6"><td colspan="3">Students who choose to participate 
-  in 6th Grade Chorus will learn musical and vocal techniques through interval training, 
+<tr class="enrolling by_grade grade_6"><td colspan="3">Students who choose to participate
+  in 6th Grade Chorus will learn musical and vocal techniques through interval training,
   scale studies and part singing. Song selections will range from popular to classical.</td></tr>
 
-<tr class="enrolling by_grade grade_6"><td colspan="3">Please note: Discuss the choice of 6th Grade Band 
-  or 6th Grade Chorus with your rising sixth grade student before entering your 
-  selection; due to the complexity of scheduling all students at Kent, your selection 
-  cannot be changed once entered; it is <strong>a full-year commitment.</strong> 
-  If you have difficulty or have questions in selecting a music program for your student, 
-  please contact Mr. Martinez at 
-  <a href="mailto:mmartinez@kentfieldschools.org">mmartinez@kentfieldschools.org</a> 
+<tr class="enrolling by_grade grade_6"><td colspan="3">Please note: Discuss the choice of 6th Grade Band
+  or 6th Grade Chorus with your rising sixth grade student before entering your
+  selection; due to the complexity of scheduling all students at Kent, your selection
+  cannot be changed once entered; it is <strong>a full-year commitment.</strong>
+  If you have difficulty or have questions in selecting a music program for your student,
+  please contact Mr. Martinez at
+  <a href="mailto:mmartinez@kentfieldschools.org">mmartinez@kentfieldschools.org</a>
   (preferred) or at (415) 257-0733, ext. 13 #.</td></tr>
 
 <tr class="headerrow enrolling by_grade grade_6"><td colspan="3">Required Music Options for Sixth Grade Students</td></tr>
@@ -176,59 +176,59 @@ $j(document).ready(function() {
 <tr class="enrolling by_grade grade_7 grade_8"><td colspan="3" class="bold">Zero-Period Advanced Band</td></tr>
 <tr class="enrolling by_grade grade_7 grade_8"><td colspan="3">The Zero-Period Advanced Band
   meets during zero period, which begins at 7:45 A.M. on Monday,
-  Wednesday, and Friday of each week. Advanced Band students must have 
-  had two to three years of previous playing experience. Emphasis is placed 
+  Wednesday, and Friday of each week. Advanced Band students must have
+  had two to three years of previous playing experience. Emphasis is placed
   on gaining musical independence through more extensive scale studies,
-  technical exercises, and more advanced sheet music. Students work on 
+  technical exercises, and more advanced sheet music. Students work on
   music from a wide range of musical styles, including jazz and
   classical.</td></tr>
 
 <tr class="enrolling by_grade grade_7 grade_8"><td colspan="3" class="bold">Zero-Period Chorus</td></tr>
 <tr class="enrolling by_grade grade_7 grade_8"><td colspan="3">All sixth,
-  seventh, and eighth grade students are eligible to participate in Zero-Period 
+  seventh, and eighth grade students are eligible to participate in Zero-Period
   Chorus which meets during zero period at 7:45 A.M. on Tuesday and Thursday
   of each week. Continued emphasis is placed on reading music as well as two,
   three, and even four part a&nbsp;cappella, as well as accompanied singing.</td></tr>
-<tr class="enrolling by_grade grade_7 grade_8"><td colspan="3">Both the advanced band and 
+<tr class="enrolling by_grade grade_7 grade_8"><td colspan="3">Both the advanced band and
   chorus perform at least twice during the school year.</td></tr>
-<tr class="enrolling by_grade grade_7 grade_8"><td colspan="3">Please note: enrollment in 
-  any band or choral ensemble is <strong>a full-year commitment.</strong> If you have 
-  difficulty or have questions in selecting a music program for your student, please 
-  contact Mr. Martinez at 
-  <a href="mailto:mmartinez@kentfieldschools.org">mmartinez@kentfieldschools.org</a> 
+<tr class="enrolling by_grade grade_7 grade_8"><td colspan="3">Please note: enrollment in
+  any band or choral ensemble is <strong>a full-year commitment.</strong> If you have
+  difficulty or have questions in selecting a music program for your student, please
+  contact Mr. Martinez at
+  <a href="mailto:mmartinez@kentfieldschools.org">mmartinez@kentfieldschools.org</a>
   (preferred) or at (415) 257-0733, ext. 13 #.</td></tr>
 
 <tr class="headerrow enrolling by_grade grade_7"><td colspan="3" class="bold">Zero-Period Music Options for Seventh Grade Students</td></tr>
 <tr class="enrolling by_grade grade_7"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_7_band" class="electives_7_band" value="Yes" />Zero-Period Advanced Band M/W/F</td>
-<td><input type="radio" name="[01]electives_7_band" class="electives_7_band" value="No" />No Zero-Period Advanced Band</td></tr>
+<td><input type="radio" name="[01]electives_7_band" class="electives_7_band" value="Y" />Zero-Period Advanced Band M/W/F</td>
+<td><input type="radio" name="[01]electives_7_band" class="electives_7_band" value="N" />No Zero-Period Advanced Band</td></tr>
 <tr class="enrolling by_grade grade_7"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_7_chorus" class="electives_7_chorus" value="Yes" />Zero-Period Chorus T/Th</td>
-<td><input type="radio" name="[01]electives_7_chorus" class="electives_7_chorus" value="No" />No Zero-Period Chorus</td></tr>
+<td><input type="radio" name="[01]electives_7_chorus" class="electives_7_chorus" value="Y" />Zero-Period Chorus T/Th</td>
+<td><input type="radio" name="[01]electives_7_chorus" class="electives_7_chorus" value="N" />No Zero-Period Chorus</td></tr>
 
 <tr class="headerrow enrolling by_grade grade_8"><td colspan="3" class="bold">Zero-Period Music Options for Eighth Grade Students</td></tr>
 <tr class="enrolling by_grade grade_8"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_8_band" class="electives_8_band" value="Yes" />Zero-Period Advanced Band M/W/F</td>
-<td><input type="radio" name="[01]electives_8_band" class="electives_8_band" value="No" />No Zero-Period Advanced Band</td></tr>
+<td><input type="radio" name="[01]electives_8_band" class="electives_8_band" value="Y" />Zero-Period Advanced Band M/W/F</td>
+<td><input type="radio" name="[01]electives_8_band" class="electives_8_band" value="N" />No Zero-Period Advanced Band</td></tr>
 <tr class="enrolling by_grade grade_8"><td>&nbsp;</td>
-<td><input type="radio" name="[01]electives_8_chorus" class="electives_8_chorus" value="Yes" />Zero-Period Chorus T/Th</td>
-<td><input type="radio" name="[01]electives_8_chorus" class="electives_8_chorus" value="No" />No Zero-Period Chorus</td></tr>
+<td><input type="radio" name="[01]electives_8_chorus" class="electives_8_chorus" value="Y" />Zero-Period Chorus T/Th</td>
+<td><input type="radio" name="[01]electives_8_chorus" class="electives_8_chorus" value="N" />No Zero-Period Chorus</td></tr>
 
 <tr class="headerrow unlocked enrolling by_grade grade_6 grade_7 grade_8">
   <td colspan="3" class="bold">15a. Personal Locker Information (Grades 6-8 Only)</td></tr>
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td colspan="3">
-  All sixth, seventh and eighth students will be assigned a numbered 
-  personal locker at the start of each school year. Students must provide a 
-  combination or key lock for the locker. When you know the combination or if 
-  your student will be using a key lock, please provide the 
+  All sixth, seventh and eighth students will be assigned a numbered
+  personal locker at the start of each school year. Students must provide a
+  combination or key lock for the locker. When you know the combination or if
+  your student will be using a key lock, please provide the
   combination or let us know that it is a key lock in the space below.
   If you change locks, please update the information on this page.<br/>
-  The student is responsible for memorizing his or her lock combination.  
-  Please be aware that if a key lock is purchased, the student is solely 
+  The student is responsible for memorizing his or her lock combination.
+  Please be aware that if a key lock is purchased, the student is solely
   responsible for knowing the location of the key to that lock.<br/>
   Enter a letter combination like this: "P-A-S-S"<br/>
   Enter a numeric combination like this: "32-20-45"<br/>
-  If the lock is a key lock, enter the word "key"</td></tr> 
+  If the lock is a key lock, enter the word "key"</td></tr>
 <tr class="enrolling by_grade grade_6 grade_7 grade_8">
   <td>&nbsp;</td><td class="bold">Personal locker number</td>
   <td>~(locker_number;if.blank.then=TBD)</td></tr>
@@ -239,29 +239,29 @@ $j(document).ready(function() {
 <tr class="headerrow unlocked enrolling by_grade grade_6 grade_7 grade_8">
   <td colspan="3" class="bold">15b. PE Locker Information (Grades 6-8 Only)</td></tr>
 <tr class="enrolling by_grade grade_6 grade_7 grade_8"><td colspan="3">
-  Kent Middle School students in sixth, seventh, and eighth grades will use the 
-  locker rooms to change for Physical Education class, and will be assigned 
-  a locker during the first week of school during their physical education 
-  class period.  Each student is 
-  required to provide their own combination lock for use before and after 
-  each class period in order to keep their personal items safe.  
+  Kent Middle School students in sixth, seventh, and eighth grades will use the
+  locker rooms to change for Physical Education class, and will be assigned
+  a locker during the first week of school during their physical education
+  class period.  Each student is
+  required to provide their own combination lock for use before and after
+  each class period in order to keep their personal items safe.
   If you change locks, please update the information on this page.
   <br/>
-  The student is responsible for memorizing his or her lock combination.  
-  If there exist special circumstances where a student is unable to use a 
-  combination lock, they may purchase a key lock and write "key" in the 
-  required field.  Please be aware that if a key lock is purchased, 
-  the student is solely responsible for knowing the location of the key 
+  The student is responsible for memorizing his or her lock combination.
+  If there exist special circumstances where a student is unable to use a
+  combination lock, they may purchase a key lock and write "key" in the
+  required field.  Please be aware that if a key lock is purchased,
+  the student is solely responsible for knowing the location of the key
   to that lock.<br/>
   Enter a letter combination like this: "P-A-S-S"<br/>
   Enter a numeric combination like this: "32-20-45"<br/>
-  If the lock is a key lock, enter the word "key"</td></tr> 
+  If the lock is a key lock, enter the word "key"</td></tr>
 <tr class="unlocked enrolling by_grade grade_6 grade_7 grade_8">
   <td>&nbsp;</td><td class="bold">PE locker combination (if applicable)</td>
   <td><input type="text" name="[01]pe_locker_combination" value="" /></input></td></tr>
 
-<tr class="private"><td colspan="3" class="bold">Last updated at 
-<input type="text" id="form15_upd_at" name="[01]form15_updated_at" value="" /> by 
+<tr class="private"><td colspan="3" class="bold">Last updated at
+<input type="text" id="form15_upd_at" name="[01]form15_updated_at" value="" /> by
 <input type="text" id="form15_upd_by" name="[01]form15_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" />
 </td></tr>
 
