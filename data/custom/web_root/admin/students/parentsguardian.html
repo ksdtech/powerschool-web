@@ -135,7 +135,6 @@
 <tr>
 <td colspan="2">&nbsp;</td>
 </tr>
-~[if.prefSSOEnabled]
 <tr bgcolor="#f6f6f6">
 <td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.parentsguardian_email]</td>
 </tr>
@@ -146,30 +145,6 @@
 <tr>
 <td colspan="2">&nbsp;</td>
 </tr>
-[else]
-<tr bgcolor="#f6f6f6">
-<td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.parentsguardian_automatic_email_reports]</td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">~[text:psx.html.admin_students.parentsguardian.guardian_is_registered_to_receive]</td>
-<td><input type="checkbox" name="[01]autosend_summary" value="yes">~[text:psx.html.admin_students.parentsguardian.summary_of_current_grades_and_attendance]<br><input type="checkbox" name="[01]Autosend_attendancedetail" value="yes">~[text:psx.html.admin_students.parentsguardian.detailed_report_of_attendance]<br><input type="checkbox" name="[01]Autosend_gradedetail" value="yes">~[text:psx.html.admin_students.parentsguardian.detailed_report_showing_all_assignment_scores_for_each_class]<br><input type="checkbox" name="[01]Autosend_schoolannouncements" value="yes">~[text:psx.html.admin_students.parentsguardian.school_announcements]<br><input type="checkbox" name="[01]Autosend_balancealert" value="yes">~[text:psx.html.admin_students.parentsguardian.balance_alert_note_will_only_be_sent_when_a_student_is_low_o]</td>
-</tr>
-<tr>
-<td class="bold">~[text:psx.html.admin_students.parentsguardian.how_often]</td>
-<td><select name="[01]Autosend_howoften"><option value="0" selected>~[text:psx.html.admin_students.parentsguardian.never]<option value="7">~[text:psx.html.admin_students.parentsguardian.once_a_week]<option value="14">~[text:psx.html.admin_students.parentsguardian.once_every_two_weeks]<option value="30">~[text:psx.html.admin_students.parentsguardian.once_a_month]<option value="1">~[text:psx.html.admin_students.parentsguardian.daily]</select></td>
-</tr>
-<tr bgcolor="#edf3fe">
-<td class="bold">~[text:psx.html.admin_students.parentsguardian.send_now]</td>
-<td><input type="checkbox" name="sendNow" value="checked"></td>
-</tr>
-<tr>
-<td class="bold">~[text:psx.html.admin_students.parentsguardian.guardians_email_address1]</td>
-<td><input type="text" name="[01]GuardianEmail" value="" size="33"></td>
-</tr>
-<tr>
-<td colspan="2">&nbsp;</td>
-</tr>
-[/if]
 <tr bgcolor="#f6f6f6">
 <td colspan="2" class="bold">~[text:psx.html.admin_students.parentsguardian.guardian_alert]</td>
 </tr>
