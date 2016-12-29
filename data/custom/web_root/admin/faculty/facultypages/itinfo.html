@@ -13,7 +13,7 @@
 
 <form action="/admin/changesrecorded.white.html" method="POST">
 
-~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_faculty.functions.start_page]</a> &gt; <a href="/admin/faculty/search.html" target="_top">~[text:psx.html.admin_faculty.functions.staff]</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">~[text:psx.html.admin_faculty.functions.select_a_staff_member]</a> 
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_faculty.functions.start_page]</a> &gt; <a href="/admin/faculty/search.html" target="_top">~[text:psx.html.admin_faculty.functions.staff]</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">~[text:psx.html.admin_faculty.functions.select_a_staff_member]</a>
 &gt; IT Information - ~(lastfirst), ~(teachernumber)<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
 
 <span class="account-photo">~[facultytitlephoto]</span>
@@ -32,7 +32,7 @@
 <td><input class="last" type="text" name="[05]last_name" value="" size="20">,
 <input class="first" type="text" name="[05]first_name" value="" size="20">
 <input class="first" type="text" name="[05]middle_name" value="" size="20">
-</td> 
+</td>
 </tr>
 <td class="bold">Preferred Name</td>
 <td><input class="last" type="text" name="[05]preferredname" value="" size="20">
@@ -53,24 +53,8 @@
 <td><input type="text" name="[05]network_password" value="" size="20"></td>
 </tr>
 <tr>
-<td class="bold">Home Dir Hostname</td>
-<td><input type="text" name="[05]home_directory_hostname" value="" size="20"></td>
-</tr>
-<tr>
-<td class="bold">Apple GUID</td>
-<td><input type="text" name="[05]apple_generateduid" value="" size="60"></td>
-</tr>
-<tr>
-<td class="bold">Exclude from Open Directory</td>
-<td><input type="checkbox" value="1" name="[05]exclude_from_opendirectory"></td>
-</tr>
-<tr>
 <td class="bold">Exclude from Gmail</td>
 <td><input type="checkbox" value="1" name="[05]exclude_from_gmail"></td>
-</tr>
-<tr>
-<td class="bold">Exclude from Schoolwires</td>
-<td><input type="checkbox" value="1" name="[05]exclude_from_schoolwires"></td>
 </tr>
 <tr class="headerrow">
 <td class="bold" colspan="2" align="center">Group Info</td>
@@ -80,31 +64,16 @@
 <td><textarea name="[05]group_membership" cols="60" rows="6"></textarea></td>
 </tr>
 <tr>
-<td class="bold">District Mini-Base Group #</td>
+<td class="bold">District Directory Group #</td>
 <td><input type="text" name="[05]dir_group_district" value="" size="4"></td>
 </tr>
 <tr>
-<td class="bold">Bacich Mini-Base Group #</td>
+<td class="bold">Bacich Directory Group #</td>
 <td><input type="text" name="[05]dir_group_bacich" value="" size="4"></td>
 </tr>
 <tr>
-<td class="bold">Kent Mini-Base Group #</td>
+<td class="bold">Kent Directory Group #</td>
 <td><input type="text" name="[05]dir_group_kent" value="" size="4"></td>
-</tr>
-<tr class="headerrow">
-<td class="bold" colspan="2" align="center">Website Info</td>
-</tr>
-<tr>
-<td class="bold">Website Type</td>
-<td><select name="[05]website_type">
-  <option value="">Choose...</option> 
-  <option value="Classroom">Classroom</option> 
-  <option value="Library">Library</option> 
-  <option value="Grade">Grade Level</option> 
-  <option value="Subject">Subject Area</option> 
-  <option value="Administration">Administration</option> 
-  <option value="Other">Other</option> 
-</select></td>
 </tr>
 <tr>
 <td class="bold">Website URL</td>
@@ -114,12 +83,12 @@
 <td class="bold" colspan="2" align="center">Laptop Info</td>
 </tr>
 <tr>
-<td class="bold">Laptop Info</td>
-<td><input type="text" name="[05]laptop_info" value="" size="40"></td>
-</tr>
-<tr>
 <td class="bold">Laptop Tag</td>
 <td><input type="text" name="[05]laptop_tag" value="" size="10"></td>
+</tr>
+<tr>
+<td class="bold">Laptop Serial Number</td>
+<td><input type="text" name="[05]laptop_serialnumber" value="" size="30"></td>
 </tr>
 <tr>
 <td class="bold">Last updated at</td>
