@@ -18,7 +18,7 @@ function get_school_year(mo, yr) {
     yr = yr - 1;
   }
   var reg_year = yr + '-' + (yr + 1);
-  return reg_year;  
+  return reg_year;
 }
 
 // regform status page
@@ -47,7 +47,7 @@ function setup_reg_year() {
       reg_year = get_school_year(mo, yr)
     }
   }
-  
+
   // Set up select list
   // Add this year and next year
   var sel = $j('#reg_school_year');
@@ -63,16 +63,16 @@ function setup_reg_year() {
   if (reg_year && reg_year != cur_year && reg_year != next_year) {
     sel.append('<option value="' + reg_year + '">' + reg_year + '</option>');
   }
-  
+
   if (reg_year) {
     sel.val(reg_year); // select input
-    $j('.reg_year').val(reg_year); // text 
+    $j('.reg_year').val(reg_year); // text
     $j('.for_reg_year').text('for ' + reg_year + ' School Year'); // text
   }
 }
 
 function update_reg_year() {
- var reg_year = $j('#reg_school_year').val().trim(); 
+ var reg_year = $j('#reg_school_year').val().trim();
  $j('.reg_year').val(reg_year);
  $j('.for_reg_year').text('for ' + reg_year + ' School Year');
 }
@@ -81,13 +81,13 @@ function on_enrollment_change() {
   var window_not_open = $j('#reg_windownotopen').val().trim();
   var enrollment = $j('#reg_enroll option:selected').val();
   var not_enrolling = (!val_is_empty(enrollment) && /^nr-/.test(enrollment));
-  if (not_enrolling) { 
+  if (not_enrolling) {
     $j('tr.enrolling').hide();
     $j('tr.not_enrolling').show();
     validateElement($j('#reg_exitcode'));
     validateElement($j('#reg_exitcomment'));
-  } else { 
-    $j('tr.enrolling').show(); 
+  } else {
+    $j('tr.enrolling').show();
     $j('tr.not_enrolling').hide();
     var grade = $j('#reg_grade_level').val();
     if (!val_is_empty(grade) && grade != '-1') {
@@ -102,7 +102,7 @@ function on_enrollment_change() {
     });
     validateElement($j('#reg_grade_level'));
   }
-  
+
   var locked = (!val_is_empty(window_not_open) || enrollment == 'nr-locked');
   if (locked) {
     $j('.unlocked').hide();
@@ -136,8 +136,8 @@ function validate_exit(jqel) {
 
 function bind_form_updated(form_id) {
   $j('#' + form_id).submit(function(event) {
-    $j('#' + form_id + '_upd_by').val($j('#userid').val()); 
-    $j('#' + form_id + '_upd_at').val(timestamp_now()); 
+    $j('#' + form_id + '_upd_by').val($j('#userid').val());
+    $j('#' + form_id + '_upd_at').val(timestamp_now());
   });
 }
 </script>
@@ -147,7 +147,7 @@ function bind_form_updated(form_id) {
 $j(document).ready(function() {
   bind_form_updated('form02');
   $j('.private').hide();
-  
+
   setup_reg_year();
   $j('#reg_enroll').bind('change', function() { on_enrollment_change(); });
   $j('#reg_grade_level').bind('change', function() { on_enrollment_change(); });
@@ -177,10 +177,7 @@ $j(document).ready(function() {
 <!-- end form action -->
 
 <table border="0" cellpadding="0" cellspacing="0" style="width: 98%">
-<tr class="private"><td colspan="2" class="bold">Registration Year
-<input type="text" id="reg_year" class="reg_year" name="[01]reg_year" value="" />
-</td></tr>
-  
+
 <tr class="locked headerrow"><td colspan="2">Re-Registration Window Is Not Open Yet</td></tr>
 <tr class="locked"><td colspan="2"><strong>Registration for current
   students returning to District schools next fall is not open yet.</strong>
@@ -188,7 +185,7 @@ $j(document).ready(function() {
   medical and other information to keep your records current. Parents
   will be notified by email and through District weekly communications
   when the window for re-registering your students is open.
-  <a href="/guardian/01-registration.html"><strong>Please click here</strong></a> to return to 
+  <a href="/guardian/01-registration.html"><strong>Please click here</strong></a> to return to
   the main Registration page.</td></tr>
 
 <tr class="unlocked headerrow"><td colspan="2" class="bold">1. Enrollment Information</td></tr>
@@ -199,7 +196,7 @@ $j(document).ready(function() {
 <option value="2015-2016">2015-2016 (Current year)</option>
 </select></td></tr>
 
-<tr class="unlocked"><td width="50%">Status <span class="for_reg_year" id="rys">for 2015-2016 School Year</span></td><td><select class="enrollment" id="reg_enroll" name="[01]reg_will_attend"
+<tr class="unlocked"><td width="50%">Status <span class="for_reg_year" id="rys">for 2017-2018 School Year</span></td><td><select class="enrollment" id="reg_enroll" name="[01]reg_will_attend"
 data-validation='{"type":"text","key":"students.reg_will_attend","required":"true"}'>
 <option value="">Choose:</option>
 <option value="attending">Student will be attending Bacich or Kent</option>
@@ -210,7 +207,7 @@ data-validation='{"type":"text","key":"students.reg_will_attend","required":"tru
 <option value="nr-locked">Registration locked; not open at this time.</option>
 </select></td></tr>
 
-<tr class="unlocked enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2015-2016 School Year</span></td><td><select class="psSpecialValidate" id="reg_grade_level" name="[01]reg_grade_level"
+<tr class="unlocked enrolling"><td>Grade Level <span class="for_reg_year" id="rygl">for 2017-2018 School Year</span></td><td><select class="psSpecialValidate" id="reg_grade_level" name="[01]reg_grade_level"
 data-specialfunction="validate_grade">
 <option value="">Choose:</option>
 <option value="TK">Transitional Kindergarten - Bacich Elementary School</option>
@@ -226,7 +223,7 @@ data-specialfunction="validate_grade">
 <option value="-1">Student will not be attending</option>
 </select></td></tr>
 
-<tr class="unlocked not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td><select class="psSpecialValidate" id="reg_exitcode" name="[01]ExitCode" 
+<tr class="unlocked not_enrolling"><td>If your student will not be attending, please choose a response from this list:</td><td><select class="psSpecialValidate" id="reg_exitcode" name="[01]ExitCode"
 data-specialfunction="validate_exit">
 <option value="">Choose:</option>
 <option value="160">Student will attend another public school in California</option>
@@ -240,8 +237,8 @@ data-specialfunction="validate_exit">
 <tr class="unlocked not_enrolling"><td>Name and phone number of next school</td>
 <td><input class="psSpecialValidate" name="[01]ExitComment" type="text" id="reg_exitcomment" value="" size="50" data-specialfunction="validate_exit"></td></tr>
 
-<tr class="private"><td class="bold">Last updated at 
-<input type="text" id="form02_upd_at" name="[01]form1_updated_at" value="" /> by 
+<tr class="private"><td class="bold">Last updated at
+<input type="text" id="form02_upd_at" name="[01]form1_updated_at" value="" /> by
 <input type="text" id="form02_upd_by" name="[01]form1_updated_by" value="" /><input type="hidden" id="userid" value="G~[x:userid]" /></td>
 </tr>
 
