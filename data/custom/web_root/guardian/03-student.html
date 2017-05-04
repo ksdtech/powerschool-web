@@ -146,8 +146,8 @@ $j(document).ready(function() {
 <tr><td><input type="text" id="birth_city" name="[01]CA_BirthPlace_City" value="" size="20" maxlength="30"
 data-validation='{"type":"text","key":"students.ca_birthplace_city","required":"true"}'/></td>
 
-<td><select id="birth_state" name="[01]CA_BirthPlace_StateProvince" class="birthplace psSpecialValidate"
-data-specialfunction="requiredIfNorthAmerican">
+<!-- class="birthplace psSpecialValidate" data-specialfunction="requiredIfNorthAmerican" may not work on select elements -->
+<td><select id="birth_state" name="[01]CA_BirthPlace_StateProvince">
 <option value="">State (US, Canada or Mexico):</option>
 <option value="US-AL">Alabama</option>
 <option value="US-AK">Alaska</option>
