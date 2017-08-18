@@ -17,62 +17,21 @@
   <h1>Export Home Room Data</h1>
 <!-- start of content area -->
   <div class="box-round">
-<form action="home_room.csv" method="POST">
+<form class="noSubmitLoading" action="home_room.csv" method="POST">
 <table>
 <tr>
-<td>Minimum Grade Level</td>
+<td>School Year</td>
+<td><select name="year_id">
+<option value="26">2016-17
+<option value="27" selected>2017-18
+</select></td>
+</tr>
+<tr>
+<td>Grade Levels</td>
 <td><select name="grade_level_min">
-~[if.~(curschoolid)=103]
-<option value="0">K
-<option value="1">1
-<option value="2">2
-<option value="3">3
-<option value="4">4
-[else]
+<option value="0">K-4
 <option value="5">5
-<option value="6">6
-<option value="7">7
-<option value="8">8
-[/if]
-</select></td>
-</tr>
-<tr>
-<td>Maximum Grade Level</td>
-<td><select name="grade_level_max">
-~[if.~(curschoolid)=103]
-<option value="0">K
-<option value="1">1
-<option value="2">2
-<option value="3">3
-<option value="4">4
-[else]
-<option value="5">5
-<option value="6">6
-<option value="7">7
-<option value="8">8
-[/if]
-</select></td>
-</tr>
-<tr>
-<td>Course Number</td>
-<td><select name="course_number">
-~[tlist_sql;SELECT DISTINCT c.course_number,c.course_name FROM courses c
-INNER JOIN sections s ON s.course_number=c.course_number
-WHERE s.schoolid=~(curschoolid) AND s.termid>=2700 and s.termid<=2703
-ORDER BY c.course_number
-]<option value="~(f1)">~(f1) ~(f2)
-[/tlist_sql]
-</select></td>
-</tr>
-<tr>
-<td>Term ID(s)</td>
-<td><select name="term_ids" multiple>
-<option value="2700">17-18 FY
-~[if.~(curschoolid)=104]
-<option value="2701">17-18 T1
-<option value="2702">17-18 T2
-<option value="2703">17-18 T3
-[/if]
+<option value="6">6-8
 </select></td>
 </tr>
 </table>
