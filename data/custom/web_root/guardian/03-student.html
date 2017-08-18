@@ -96,6 +96,12 @@ $j(document).ready(function() {
 
   checkbox_required('.active_duty');
 
+  // If they don't select any of the visible options for ethnicity, choose "-1" for them ...
+  var defaultEthnicity = document.getElementById("defaultEthnicity");
+  if ( defaultEthnicity ) {
+      defaultEthnicity.value = "-1";
+  }
+
   if (val_is_empty($j('#ethnicity').val())) {
     $j('#fedEthDecline').prop('checked', true);
   }
@@ -875,12 +881,11 @@ data-validation='{"textMask":"ksd_phone_with_area_code","maxlength":"30","type":
 <tr>
   <td colspan="3">
     <div><label>~[text:psx.html.admin_students.generaldemographics.is_the_student_hispanic_or_latino]</label></div>
-    <div class="choicefloat"><input type="radio" id="fedEthYes" name="[01]FedEthnicity" value="1"
-    class="ethnicity psSpecialValidate" data-specialfunction="validateEthnicity">~[text:psx.html.admin_students.generaldemographics.yes]</div>
-    <div class="choicefloat"><input type="radio" id="fedEthNo" name="[01]FedEthnicity" value="0"
-    class="ethnicity psSpecialValidate" data-specialfunction="validateEthnicity">~[text:psx.html.admin_students.generaldemographics.no]</div>
-    <div class="choicefloat"><input type="radio" id="fedEthDecline" name="[01]FedEthnicity" value="-1"
-    class="ethnicity psSpecialValidate" data-specialfunction="validateEthnicity">Decline to state student's ethnicity</div>
+    <input id="defaultEthnicity" type="hidden" name="[01]FedEthnicity" value="-1">~[Comment:Note that the onload javascript will revert this back to -1 after it's been changed to whatever is currently in the DB.]
+    <div class="choicefloat"><input type="radio" id="radioFedEthYes" name="[01]FedEthnicity" value="1" class="ethnicity psSpecialValidate" data-specialfunction="validateEthnicity">~[text:psx.html.admin_students.generaldemographics.yes]</div>
+    <div class="choicefloat"><input type="radio" id="radioFedEthNo" name="[01]FedEthnicity" value="0" class="ethnicity psSpecialValidate" data-specialfunction="validateEthnicity">~[text:psx.html.admin_students.generaldemographics.no]</div>
+    ~[if.pref.FRE_AllowDeclineEthnicity=1]<div class="choicefloat"><span class="declined"><input type="radio" id="radioFedEthDecline" name="[01]FedEthnicity" value="2" class="ethnicity psSpecialValidate" data-specialfunction="validateEthnicity">~[pref:FRE_DeclineEthnicityText]</span></div>[/if]
+    <div class=clearit><!-- --></div>
   </td>
 </tr>
 <tr class="headerrow"><td colspan="3" class="bold">9. State Required Demographics: Race</td></tr>
