@@ -2,11 +2,11 @@
 ~[tlist_sql;SELECT s.student_number,s.schoolid,s.first_name,s.last_name,
 sec.course_number,sec.section_number,sec.expression,
 t.teachernumber,t.first_name,t.last_name,sec.room
-FROM cc
+FROM cc /* This selects Homeroom sections only, TK - 4th grade */
 INNER JOIN students s ON s.id=cc.studentid
 INNER JOIN sections sec ON sec.id=cc.sectionid
 INNER JOIN teachers t ON t.id=cc.teacherid
-WHERE cc.course_number IN ('0210', '0200', '1200', '2200', '3200')
+WHERE cc.course_number IN ('0210', '0200', '1200', '2200', '3200', '4200')
 AND cc.termid=CONCAT('~(gpv.year_id)', '00')]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)"
 [/tlist_sql]
 [/if]
@@ -14,19 +14,19 @@ AND cc.termid=CONCAT('~(gpv.year_id)', '00')]"~(f1)","~(f2)","~(f3)","~(f4)","~(
 ~[tlist_sql;SELECT s.student_number,s.schoolid,s.first_name,s.last_name,
 sec.course_number,sec.section_number,sec.expression,
 t.teachernumber,t.first_name,t.last_name,sec.room,t.first_name,t.last_name,sec.room,t.last_name
-FROM cc
+FROM cc /* This selects ADV/Nest 5th grade sections only */
 INNER JOIN students s ON s.id=cc.studentid
 INNER JOIN sections sec ON sec.id=cc.sectionid
 INNER JOIN teachers t ON t.id=cc.teacherid
 WHERE cc.course_number='9991'
-AND cc.termid=CONCAT('~(gpv.year_id)', '00')]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)","~(f12),"~(f13)","~(f14)","~(f15)"
+AND cc.termid=CONCAT('~(gpv.year_id)', '00')]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)","~(f12)","~(f13)","~(f14)","~(f15)"
 [/tlist_sql]
 [/if]
 ~[if.~(gpv.grade_level_min)=6]student_number,x_schoolid,x_first_name,x_last_name,x_course_number,x_section_number,x_expression,x_teachernumber,homeroom_teacherfirst,homeroom_teacher,home_room
 ~[tlist_sql;SELECT s.student_number,s.schoolid,s.first_name,s.last_name,
 sec.course_number,sec.section_number,sec.expression,
 t.teachernumber,t.first_name,t.last_name,sec.room
-FROM cc
+FROM cc /* This selects Language Arts 6th - 8th sections only */
 INNER JOIN students s ON s.id=cc.studentid
 INNER JOIN sections sec ON sec.id=cc.sectionid
 INNER JOIN teachers t ON t.id=cc.teacherid
@@ -38,11 +38,11 @@ student_number,x_schoolid,x_first_name,x_last_name,x_course_number,x_section_num
 ~[tlist_sql;SELECT s.student_number,s.schoolid,s.first_name,s.last_name,
 sec.course_number,sec.section_number,sec.expression,
 t.teachernumber,t.first_name,t.last_name,sec.room
-FROM cc
+FROM cc /* This selects Opportunities 6th - 8th sections only */
 INNER JOIN students s ON s.id=cc.studentid
 INNER JOIN sections sec ON sec.id=cc.sectionid
 INNER JOIN teachers t ON t.id=cc.teacherid
-WHERE cc.course_number='9995'
+WHERE cc.course_number IN ('6995', '7995', '8995', '9995')
 AND cc.termid IN (CONCAT('~(gpv.year_id)', '00'), CONCAT('~(gpv.year_id)', '01'))]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)"
 [/tlist_sql]
 
@@ -50,7 +50,7 @@ student_number,x_schoolid,x_first_name,x_last_name,x_course_number,x_section_num
 ~[tlist_sql;SELECT s.student_number,s.schoolid,s.first_name,s.last_name,
 sec.course_number,sec.section_number,sec.expression,
 t.teachernumber,t.last_name||' - P'||SUBSTR(sec.expression, 1, 1)
-FROM cc
+FROM cc /* This selects PE 6th - 8th only, and we concatenate the period for the section to the teacher's last name */
 INNER JOIN students s ON s.id=cc.studentid
 INNER JOIN sections sec ON sec.id=cc.sectionid
 INNER JOIN teachers t ON t.id=cc.teacherid

@@ -60,11 +60,11 @@ form4_updated_at
 "
 
 class KikExporter
-  
+
   PRIMARY_PARENTS = 0
   SECONDARY_PARENTS = 21
 
-  PARENT_FIELDS = [ 
+  PARENT_FIELDS = [
     'kikdir_home_addr',
     'street',
     'city',
@@ -143,7 +143,7 @@ class KikExporter
     @listings = [ ]
     @exited = [ ]
     @conflicts = [ ]
-    
+
     # flag to use current year (after end-of-year process)
     @for_current_year = options.fetch(:for_current_year, true)
     # flag to export unlisted families
@@ -155,7 +155,7 @@ class KikExporter
     # flag to use the last updated student instead of merging
     @use_last_updated = options.fetch(:use_last_updated, false)
   end
-  
+
   def copy_fields(s, fields)
     data = fields.inject({}) { |h, f| h[f] = s[f]; h }
     data
@@ -177,14 +177,14 @@ class KikExporter
         end
       end
     end
-  
+
     # Sort by grade and name
-    sibs.sort! do |a, b| 
+    sibs.sort! do |a, b|
       cmp = sib_data[a][:grade_level] <=> sib_data[b][:grade_level]
       cmp = sib_data[a][:first_name] <=> sib_data[b][:first_name] if cmp == 0
       cmp
     end
-  
+
     sibs.each_with_index do |sid, i|
       the_sib = sib_data[sid]
       grade = the_sib[:reg_grade_level]
@@ -211,14 +211,14 @@ class KikExporter
     hphone   = ''
     mcell    = ''
     fcell    = ''
-  
+
     all = { }
     sid_list.each do |sid|
       s = @student_by_sid[sid]
       all[sid] = { }
       all[sid][:unlisted_phones] = [ ]
       all[sid][:unlisted_emails] = [ ]
-      
+
       if s[PARENT_FIELDS[i+0]]
         $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} address not listed")
       else
@@ -232,14 +232,14 @@ class KikExporter
       all[sid][:city]   = city
       all[sid][:state]  = state
       all[sid][:zip]    = zip
-    
+
       # must have all parameters to show
       if !(street == '' || city == '' || state == '' || zip == '')
         # html-ize it
         street += (', ' + city + ', ' + state + ' ' + zip)
       end
       all[sid][:address_line] = street
-  
+
       # parents
       if !s[PARENT_FIELDS[i+5]]
         mfirst = s[PARENT_FIELDS[i+6]] || ''
@@ -253,7 +253,7 @@ class KikExporter
       all[sid][:mother_last]  = mlast
       all[sid][:father_first] = ffirst
       all[sid][:father_last]  = flast
-    
+
       if mlast != '' && flast != ''
         if mlast != flast
           parents = mfirst + ' ' + mlast + ' and ' + ffirst + ' ' + flast
@@ -276,7 +276,7 @@ class KikExporter
       end
       all[sid][:mother_abbr] = mabbr
       all[sid][:father_abbr] = fabbr
-    
+
       if !s[PARENT_FIELDS[i+11]]
         mmail = s[PARENT_FIELDS[i+12]] || ''
       end
@@ -285,7 +285,7 @@ class KikExporter
       end
       all[sid][:mother_email] = mmail
       all[sid][:father_email] = fmail
-  
+
       ph = s[PARENT_FIELDS[i+16]]
       if ph
         if s[PARENT_FIELDS[i+15]]
@@ -314,13 +314,13 @@ class KikExporter
       all[sid][:mother_cell] = mcell
       all[sid][:father_cell] = fcell
     end
-    
+
     if sid_list.size == 0
       # empty result
       $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} no students - empty result")
       return result
     end
-    
+
     conflicts = [ ]
     high_student = nil
     if sid_list.size == 1
@@ -330,15 +330,15 @@ class KikExporter
       cmp_keys = [
         :address_line, :home_phone,
         :mother_first, :mother_last, :mother_part, :mother_abbr,
-        :mother_email, :mother_cell, 
+        :mother_email, :mother_cell,
         :father_first, :father_last, :father_part, :father_abbr,
         :father_email, :father_cell ]
-        
+
       test = { }
       cmp_keys.each do |key|
         test[key] = []
       end
-      
+
       high_score = -1
       sid_list.each do |sid|
         score = 0
@@ -362,25 +362,25 @@ class KikExporter
     end
 
     home_p.update(all[high_student])
-    
+
     unless conflicts.empty?
       $stderr.puts("#{lfid} #{i == 0 ? 'primary' : 'secondary'} has conflicts")
       home_p[:conflicts] = conflicts
     end
-    
+
     parents = ''
     if home_p[:mother_part] && home_p[:father_part]
       parents = home_p[:mother_part] + ' and ' + home_p[:father_part]
     elsif home_p[:mother_part]
       parents = home_p[:mother_part]
-    else 
+    else
       parents = home_p[:father_part]
     end
     home_p[:parent_line] = parents || ''
 
     mabbr = home_p[:mother_abbr] || ''
     fabbr = home_p[:father_abbr] || ''
-    
+
     all_mails = [ ]
     mmail = home_p[:mother_email] || ''
     fmail = home_p[:father_email] || ''
@@ -403,7 +403,7 @@ class KikExporter
     all_mails << mmail if mmail != ''
     all_mails << fmail if fmail != ''
     home_p[:all_emails] = all_mails
-    
+
     all_phones = [ ]
     hphone = home_p[:home_phone] || ''
     mcell = home_p[:mother_cell] || ''
@@ -438,7 +438,7 @@ class KikExporter
       all_phones = [ hphone ] + all_phones
     end
     home_p[:all_phones] = all_phones
-    
+
     result << (home_p[:parent_line].empty? ? [] : [ home_p[:parent_line] ])
     result << (home_p[:address_line].empty? ? [] : [ home_p[:address_line] ])
     result << home_p[:all_emails]
@@ -448,11 +448,11 @@ class KikExporter
 
   def get_preview(lfid)
     surname, fid = lfid.split(':')
-    
+
     preview = { }
     preview[:surname] = surname
     preview[:family_id] = fid
-    
+
     any_approved = false
     last_approved = nil
     last_updated = nil
@@ -462,7 +462,7 @@ class KikExporter
     oldest_student = nil
     all_students = [ ]
     last_names = [ ]
-    
+
     # no preview if any unlisted
     @students_by_fid[fid].each do |sid|
       s = @student_by_sid[sid]
@@ -472,7 +472,7 @@ class KikExporter
         return preview
       end
       all_students << sid
-      
+
       # test: use last updated student
       updated_at = s[:form4_updated_at]
       if updated_at && (last_updated.nil? || updated_at > last_updated)
@@ -486,7 +486,7 @@ class KikExporter
         oldest_grade_level = grade_level
         oldest_student = sid
       end
-      
+
       if s[:kikdir_at] && s[:kikdir_approved] == '1'
         any_approved = true
         if !last_approved || s[:kikdir_at] > last_approved
@@ -495,9 +495,9 @@ class KikExporter
         end
       end
     end
-    
+
     preview_students = nil
-    if approved_student 
+    if approved_student
       preview_students = [approved_student]
     elsif @use_last_updated && last_updated_student
       $stderr.puts("#{lfid}: unapproved, using student #{last_updated_student} updated #{last_updated}")
@@ -509,7 +509,7 @@ class KikExporter
       $stderr.puts("#{lfid}: unapproved, using student #{oldest_student} from grade #{oldest_grade_level}")
       preview_students = [oldest_student]
     end
-    
+
     sibs, sib_data = get_sibling_data(lfid)
     preview[:surname] = surname
     preview[:approved] = any_approved
@@ -517,7 +517,7 @@ class KikExporter
     preview[:preview_students] = preview_students.join(',')
     preview[:approval_date] = last_approved
     preview[:siblings] = [ ]
-    
+
     sib_names = [ ]
     sibs.each_with_index do |sid, i|
       the_sib = sib_data[sid]
@@ -531,8 +531,8 @@ class KikExporter
         return preview
       end
     end
-  
-    # TODO: combine primary and secondary home info 
+
+    # TODO: combine primary and secondary home info
     # TODO: hide any phone that's marked unlisted by either primary or secondary
     # TODO: produce unique parent abbreviations (primary and secondary)
     a1 = [ surname + ' ' + sib_names.join(', ') ]
@@ -545,7 +545,7 @@ class KikExporter
     b1 += home[3] if !home[3].empty?
     preview[:a1] = a1
     preview[:b1] = b1
-  
+
     a2 = [ ]
     b2 = [ ]
     home2_p = { }
@@ -556,8 +556,8 @@ class KikExporter
     b2 += home2[3] if !home2[3].empty?
     preview[:a2] = a2
     preview[:b2] = b2
-    
-    
+
+
     preview[:homes] = [ home_p, home2_p ]
     unlisted_phones = (home_p[:unlisted_phones] + home2_p[:unlisted_phones]).uniq
     preview[:homes].each_with_index do |home, i|
@@ -568,7 +568,7 @@ class KikExporter
         end
       end
     end
-    
+
     if home_p[:conflicts] || home2_p[:conflicts]
       preview[:conflicts] = []
       preview[:conflicts] += home_p[:conflicts] if home_p[:conflicts]
@@ -582,13 +582,15 @@ class KikExporter
     CSV.foreach(fname, :col_sep => "\t", :row_sep => "\n", :headers => true,
       :header_converters => :symbol) do |row|
       s = row.to_hash
-      
+
       sid = s[:student_number]
       fid = s[:family_ident]
+      next unless fid
+      raise "no family_ident #{fid} for student #{sid}" unless fid
       m = fid.match(/^([A-Z0-9]{8})$/)
       raise "bad family_ident #{fid} for student #{sid}" unless m
       s[:family_id] = fid
-      
+
       # set 'first_name' to nickname if nickname is given
       if s[:nickname]
         s[:first_name] = s[:nickname]
@@ -598,7 +600,7 @@ class KikExporter
       s[:surname] = surname
 
       # skip non-returning students
-      active = @for_current_year ? 
+      active = @for_current_year ?
         (s[:enroll_status].to_i == 0) :
         !s[:reg_will_attend].match(/^nr-/)
       if !active
@@ -614,13 +616,13 @@ class KikExporter
             s[:grade_level] = 0
           end
         end
-      
+
         @student_by_sid[sid] = s
         if !@students_by_fid.key?(fid)
           @students_by_fid[fid] = [ ]
         end
         @students_by_fid[fid] << sid
-    
+
         if !@families_by_surname.key?(surname)
           @families_by_surname[surname] = [ ]
         end
@@ -630,11 +632,11 @@ class KikExporter
         end
       end
     end
-    
-    @exited.sort! do |a,b| 
+
+    @exited.sort! do |a,b|
       a[:surname] <=> b[:surname]
     end
-    
+
     @surnames = @families_by_surname.keys.sort
     @surnames.each do |surname|
       @families_by_surname[surname].sort.each do |lfid|
@@ -656,12 +658,12 @@ class KikExporter
       end
     end
   end
-  
+
   def output
-    json_object = { 
-      :exited => @exited, 
+    json_object = {
+      :exited => @exited,
       :unlisted => @export_unlisted ? @unlisted : [ ],
-      :unapproved => @export_unapproved ? [ ] : @unapproved, 
+      :unapproved => @export_unapproved ? [ ] : @unapproved,
       :listings => @listings,
       :conflicting => @conflicts
     }
@@ -673,7 +675,7 @@ class KikExporter
     $stderr.puts("#{@unapproved.size} unapproved")
     total = @listings.size + @exited.size + @unlisted.size + @unapproved.size
     $stderr.puts("#{total} total")
-    
+
     unapproved_family_ids = [ ]
     unapproved_student_ids = [ ]
     @unapproved.each do |f|
@@ -682,7 +684,7 @@ class KikExporter
         unapproved_student_ids << s[:student_number]
       end
     end
-    
+
     $stderr.puts("\nunapproved family search:")
     $stderr.puts("family_ident in #{unapproved_family_ids.join(',')}")
     $stderr.puts("\nunapproved student search:")
@@ -690,7 +692,6 @@ class KikExporter
   end
 end
 
-ke = KikExporter.new
+ke = KikExporter.new(export_unapproved: true)
 ke.parse('./students.txt')
 ke.output
-
