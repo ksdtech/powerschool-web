@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Race and Ethnicity</title>
+<!-- required scripts -->
+	~[wc:commonscripts]
+<!-- Required style sheets: screen.css, and print.css -->
+	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+	<link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+<body>
+	~[wc:admin_header_css]
+    <div id="breadcrumbs">
+		<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/functions.html" target="_top">Special Functions</a> &gt; New Families<!-- breadcrumb end -->
+    </div>
+<!-- start of main menu and content -->
+	~[wc:admin_navigation_css]
+<!-- Start of Page -->
+	<h1>Race and Ethnicity</h1>
+<!-- start of content area -->
+	<div class="box-round">
+		<p>Click the appropriate button to export race and ethnicity data
+		</p>
+		<div class="button-row">
+			<a class="button" href="/admin/studentlist/racecodes.csv">STUDENTRACE rows</a>
+        </div>
+        <div class="button-row">
+            <a class="button" href="/admin/studentlist/race_null.csv">List students with no STUDENTRACE rows</a>
+		</div>
+        <div class="button-row">
+			<a class="button" href="/admin/studentlist/race_sheet.csv">Race code spreadsheet from STUDENTRACE table (1s and 0s for each race)</a>
+        </div>
+        <div class="button-row">
+            <a class="button" href="/admin/studentlist/race_custom.csv">Race code spreadsheet from STUDENTS table custom fields (1s and 0s for each race)</a>
+        </div>
+	</div>
+<!-- end of content area -->
+	~[wc:admin_footer_css]
+</body>
+</html>

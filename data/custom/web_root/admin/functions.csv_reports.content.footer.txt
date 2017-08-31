@@ -1,0 +1,42 @@
+<!-- inserted into <hi><div><table> on admin/functions.html page -->
+<!-- Start KSD custom reports -->
+<br>
+<table border="0" cellspacing="0" cellpadding="4">
+    <tr class="headerRow">
+        <td class="bold" colspan="2">
+            CSV Reports
+        </td>
+    </tr>
+    <tr class="~[evenoddrow]">
+        <td>
+            <a href="/admin/studentlist/newfamilies.html">Download New Families File</a>
+        </td>
+        <td>
+            Download a CSV file of new family information (used by kik and PTA)
+        </td>
+    </tr>
+    <tr class="~[evenoddrow]">
+        <td>
+            <a href="/admin/studentlist/buildemaillists.html">Download Emails</a>
+        </td>
+        <td>
+            Download a CSV file of email student and parent portal addresses
+        </td>
+    </tr>
+    <tr class="~[evenoddrow]">
+        <td>
+            <a href="/admin/studentlist/home_room.html">Download Home Room File</a>
+        </td>
+        <td>
+            Download a CSV file of home rooms for different grade levels
+        </td>
+    </tr>
+    <tr class="~[evenoddrow]">
+        <td>
+            <a href="/admin/studentlist/racecodes.html">Download Race and Ethnicity Files</a>
+        </td>
+        <td>
+            Download a CSV file of race codes for reconciling demographic data
+        </td>
+    </tr>
+</table>

@@ -1,21 +1,34 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>Unapproved Directory Families</title>
-<style>
-tr:nth-child(even) { background: #CCC; }
-tr:nth-child(odd) { background: #FFF; }
-table { border-collapse: collapse; }
-table, th, td { border: 1px solid black; }
-</style>
+  <title>Unapproved Directory Families</title>
+<!-- required scripts -->
+  ~[wc:commonscripts]
+<!-- Required style sheets: screen.css, and print.css -->
+  <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+  <link href="/images/css/print.css" rel="stylesheet" media="print">
+  <style>
+  tr:nth-child(even) { background: #CCC; }
+  tr:nth-child(odd) { background: #FFF; }
+  table { border-collapse: collapse; }
+  table, th, td { border: 1px solid black; }
+  </style>
 </head>
 <body>
+~[wc:admin_header_css]
+<!-- breadcrumb start --><a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/functions.html" target="_top">Special Functions</a> &gt; Unapproved Directory Families<!-- breadcrumb end -->
+<!-- start of main menu and content -->
+~[wc:admin_navigation_css]
+<!-- Start of Page -->
 <h1>Unapproved Directory Families</h1>
-<table border="">
-<tr><td>Family</td><td>SN</td><td>First</td><td>Last</td><td>Grade</td>
-<td>Mother</td><td>M.Cell</td><td>M.Email</td>
-<td>Father</td><td>F.Cell</td><td>F.Email</td><tr>
+<!-- start of content area -->
+<div class="box-round">
+    <table border="">
+        <tr><td>Family</td><td>SN</td><td>First</td><td>Last</td><td>Grade</td>
+            <td>Mother</td><td>M.Cell</td><td>M.Email</td>
+            <td>Father</td><td>F.Cell</td><td>F.Email</td><tr>
 ~[tlist_sql;
-SELECT Family_Ident, Student_Number AS SN, 
+SELECT Family_Ident, Student_Number AS SN,
 First_Name, Last_Name, Grade_Level,
 ps_customfields.getstudentscf(id, 'mother_first') AS Mother_First,
 Mother As Mother_Last,
@@ -34,9 +47,12 @@ ps_customfields.getstudentscf(id, 'kikdir_unlisted')='Y' OR
 ps_customfields.getstudentscf(id, 'kikdir_approved')='1'))
 ORDER BY Family_Ident,Grade_Level
 ]<tr><td>~(Family_Ident)</td><td>~(SN)</td><td>~(First_Name)</td><td>~(Last_Name)</td><td>~(Grade_Level)</td>
-<td>~(Mother_First)&nbsp~(Mother_Last)</td><td>~(Mother_Cell)</td><td>~(Mother_Email)</td>
-<td>~(Father_First)&nbsp~(Father_Last)</td><td>~(Father_Cell)</td><td>~(Father_Email)</td></tr>
+<td>~(Mother_First)&nbsp;~(Mother_Last)</td><td>~(Mother_Cell)</td><td>~(Mother_Email)</td>
+<td>~(Father_First)&nbsp;~(Father_Last)</td><td>~(Father_Cell)</td><td>~(Father_Email)</td></tr>
 [/tlist_sql]
 </table>
+</div>
+<!-- end of content area -->
+~[wc:admin_footer_css]
 </body>
 </html>

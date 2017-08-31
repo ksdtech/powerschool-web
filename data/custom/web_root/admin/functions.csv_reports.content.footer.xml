@@ -1,0 +1,5 @@
+<insertionMetadata xmlns="http://www.powerschool.com"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.powerschool.com insertionmetadata.xsd">
+    <inject location="table" how="after" />
+</insertionMetadata>

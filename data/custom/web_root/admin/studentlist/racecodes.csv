@@ -1,13 +1,18 @@
-Student_Number,xSchoolID,xFirst_Name,xLast_Name,xRaceCd
+Student_Number,xEnroll_Status,xSchoolID,xGrade,xFirst_Name,xLast_Name,xEth,xELA,xELADate,xRaceCd
 ~[tlist_sql;
-SELECT 
+SELECT
   s.STUDENT_NUMBER,
-  s.SCHOOLID, 
-  s.FIRST_NAME, 
+  s.ENROLL_STATUS,
+  s.SCHOOLID,
+  s.GRADE_LEVEL,
+  s.FIRST_NAME,
   s.LAST_NAME,
+  s.FEDETHNICITY,
+  ps_customfields.getstudentscf(s.ID, 'CA_ELAStatus') AS ELAStatus,
+  ps_customfields.getstudentscf(s.ID, 'CA_DateELAStatus') AS DateELAStatus,
   r.RACECD
 FROM STUDENTRACE r
-LEFT OUTER JOIN STUDENTS s ON r.STUDENTID=s.ID 
+LEFT OUTER JOIN STUDENTS s ON r.STUDENTID=s.ID
 WHERE s.Student_Number IS NOT NULL AND r.RACECD IS NOT NULL
-ORDER BY s.Last_Name, s.First_Name, r.RACECD]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)"
+ORDER BY s.Last_Name, s.First_Name, r.RACECD]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)"
 [/tlist_sql]
