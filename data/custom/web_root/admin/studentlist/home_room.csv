@@ -1,4 +1,4 @@
-~[if.~(gpv.grade_level_min)=0]student_number,x_schoolid,x_first_name,x_last_name,x_course_number,x_section_number,x_expression,x_teachernumber,homeroom_teacherfirst,homeroom_teacher,home_room
+~[if.~(gpv.grade_level_min)=0]student_number,x_schoolid,x_first_name,x_last_name,x_course_number,x_section_number,x_expression,x_teachernumber,homeroom_teacherfirst,homeroom_teacher,home_room,pictureday_teacher
 ~[tlist_sql;SELECT s.student_number,s.schoolid,s.first_name,s.last_name,
 sec.course_number,sec.section_number,sec.expression,
 t.teachernumber,t.first_name,t.last_name,sec.room
@@ -7,7 +7,7 @@ INNER JOIN students s ON s.id=cc.studentid
 INNER JOIN sections sec ON sec.id=cc.sectionid
 INNER JOIN teachers t ON t.id=cc.teacherid
 WHERE cc.course_number IN ('0210', '0200', '1200', '2200', '3200', '4200')
-AND cc.termid=CONCAT('~(gpv.year_id)', '00')]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)"
+AND cc.termid=CONCAT('~(gpv.year_id)', '00')]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)","~(f10)","~(f11)","~(f10)"
 [/tlist_sql]
 [/if]
 ~[if.~(gpv.grade_level_min)=5]student_number,x_schoolid,x_first_name,x_last_name,x_course_number,x_section_number,x_expression,x_teachernumber,homeroom_teacherfirst,homeroom_teacher,home_room,day1_teacherfirst,day1_teacher,day1_room,pictureday_teacher
@@ -54,7 +54,7 @@ FROM cc /* This selects PE 6th - 8th only, and we concatenate the period for the
 INNER JOIN students s ON s.id=cc.studentid
 INNER JOIN sections sec ON sec.id=cc.sectionid
 INNER JOIN teachers t ON t.id=cc.teacherid
-WHERE cc.course_number IN ('6700', '7700', '8700')
+WHERE cc.course_number IN ('6700', '7700', '8700', '8710')
 AND cc.termid IN (CONCAT('~(gpv.year_id)', '00'), CONCAT('~(gpv.year_id)', '01'))]"~(f1)","~(f2)","~(f3)","~(f4)","~(f5)","~(f6)","~(f7)","~(f8)","~(f9)"
 [/tlist_sql]
 [/if]
