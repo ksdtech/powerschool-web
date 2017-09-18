@@ -25,11 +25,17 @@
 <div class="box-round">
     <table border="">
         <tr><td>Family</td><td>SN</td><td>First</td><td>Last</td><td>Grade</td>
+            <td>Unlisted</td><td>Approved</td>
             <td>Mother</td><td>M.Cell</td><td>M.Email</td>
-            <td>Father</td><td>F.Cell</td><td>F.Email</td><tr>
-~[tlist_sql;
-SELECT Family_Ident, Student_Number AS SN,
-First_Name, Last_Name, Grade_Level,
+            <td>Father</td><td>F.Cell</td><td>F.Email</td></tr>
+~[tlist_sql;SELECT
+Family_Ident,
+Student_Number AS SN,
+First_Name,
+Last_Name,
+Grade_Level,
+ps_customfields.getstudentscf(id, 'kikdir_unlisted') AS Unlisted,
+ps_customfields.getstudentscf(id, 'kikdir_approved') AS Approved,
 ps_customfields.getstudentscf(id, 'mother_first') AS Mother_First,
 Mother As Mother_Last,
 ps_customfields.getstudentscf(id, 'mother_cell') AS Mother_Cell,
@@ -40,13 +46,16 @@ ps_customfields.getstudentscf(id, 'father_cell') AS Father_Cell,
 ps_customfields.getstudentscf(id, 'father_email') AS Father_Email
 FROM STUDENTS
 WHERE Enroll_Status<=0 AND Family_Ident NOT IN (
-SELECT DISTINCT Family_Ident
-FROM STUDENTS
-WHERE Enroll_Status<=0 AND (
-ps_customfields.getstudentscf(id, 'kikdir_unlisted')='Y' OR
-ps_customfields.getstudentscf(id, 'kikdir_approved')='1'))
-ORDER BY Family_Ident,Grade_Level
-]<tr><td>~(Family_Ident)</td><td>~(SN)</td><td>~(First_Name)</td><td>~(Last_Name)</td><td>~(Grade_Level)</td>
+    SELECT DISTINCT Family_Ident AS FI
+    FROM STUDENTS
+    WHERE Enroll_Status<=0 AND (
+        ps_customfields.getstudentscf(id, 'kikdir_unlisted')='Y' OR
+        ps_customfields.getstudentscf(id, 'kikdir_approved')='1'
+    )
+)
+ORDER BY Family_Ident,Grade_Level]
+<tr><td>~(Family_Ident)</td><td>~(SN)</td><td>~(First_Name)</td><td>~(Last_Name)</td><td>~(Grade_Level)</td>
+<td>~(Unlisted)</td><td>~(Approved)</td>
 <td>~(Mother_First)&nbsp;~(Mother_Last)</td><td>~(Mother_Cell)</td><td>~(Mother_Email)</td>
 <td>~(Father_First)&nbsp;~(Father_Last)</td><td>~(Father_Cell)</td><td>~(Father_Email)</td></tr>
 [/tlist_sql]

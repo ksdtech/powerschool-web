@@ -47,8 +47,8 @@ function onForm04Submit() {
     var src_id = this.id.replace(/^mailing2_/, '#home2_');
     this.value = $j(src_id).val();
   });
-  
-  
+
+
   // update if this is the 'master' record
   if ($j('#preview_approved').prop('checked')) {
     $j('#preview_approved_at').val(timestamp_now());
@@ -98,7 +98,7 @@ function get_sibling_data() {
       }
     }
   });
-  
+
   // Pick nickname if they have one
   // See if other sibs have approved a preview or asked to be unlisted
   for (var i = 0; i < sibs.length; i++) {
@@ -115,7 +115,7 @@ function get_sibling_data() {
     if (by_grade != 0) { return by_grade; }
     return sib_data[a].first.localeCompare(sib_data[b].first);
   });
-  
+
   var unlisted_ul = $j('#unlisted_siblings');
   var approved_ul = $j('#approved_siblings');
   for (var i = 0; i < sibs.length; i++) {
@@ -140,15 +140,15 @@ function get_sibling_data() {
         }
       }
     }
-  }  
-  
-  
+  }
+
+
 }
 
 var PRIMARY_PARENTS = 0;
 var SECONDARY_PARENTS = 21;
 
-var pfields = [ 
+var pfields = [
   '#kikdir_home_addr',
   '#street',
   '#city',
@@ -211,7 +211,7 @@ function get_parents(i) {
   var hphone   = '';
   var mcell    = '';
   var fcell    = '';
-  
+
   // physical address
   if (!$j(pfields[i+0]).prop('checked')) {
     street = $j(pfields[i+1]).val();
@@ -219,13 +219,13 @@ function get_parents(i) {
     state  = $j(pfields[i+3]).val();
     zip    = $j(pfields[i+4]).val();
   }
-  
+
   // excluded residence
   if (!(street == '' || city == '' || state == '' || zip == '')) {
     // html-ize it
     street += (', ' + city + ', ' + state + ' ' + zip);
   }
-  
+
   // parents
   if (!$j(pfields[i+5]).prop('checked')) {
     mfirst = $j(pfields[i+6]).val();
@@ -254,7 +254,7 @@ function get_parents(i) {
   }
   result.push(parents);
   result.push(street);
-  
+
   if (!$j(pfields[i+11]).prop('checked')) {
     mmail = $j(pfields[i+12]).val();
   }
@@ -281,7 +281,7 @@ function get_parents(i) {
     }
   }
   result.push(mmail);
-  
+
   if (!$j(pfields[i+15]).prop('checked')) {
     hphone = $j(pfields[i+16]).val();
   }
@@ -316,8 +316,10 @@ function get_parents(i) {
       }
     }
   }
-  if (hphone != '') {
-    if (mcell != '') {
+  if (mcell != '') {
+    if (hphone == '') {
+      hphone = mcell;
+    } else {
       hphone += ('<br>' + mcell);
     }
   }
@@ -328,7 +330,7 @@ function get_parents(i) {
 
 function update_preview() {
   $j('.kpreview_off').hide();
- 
+
   var other_unlisted = sibs_unlisted.length > 0;
   var this_unlisted  = $j('#kikdir_unlisted_y').prop('checked');
   var no_decision    = !this_unlisted && !$j('#kikdir_unlisted_n').prop('checked');
@@ -354,7 +356,7 @@ function update_preview() {
 
   $j('#preview_approved').prop('disabled', false);
   $j('.kpreview_on').show();
-  
+
   var i;
   var a1 = $j('#my_last').val().toUpperCase() + ' ' + sib_names.join(', ');
   var home  = get_parents(PRIMARY_PARENTS);
@@ -365,7 +367,7 @@ function update_preview() {
   }
   $j('#preview_a1').html(a1);
   $j('#preview_b1').html(home[3]);
-  
+
   var a2 = '';
   var home2 = get_parents(SECONDARY_PARENTS);
   for (i = 0; i < 3; i++) {
@@ -387,7 +389,7 @@ $j(document).ready(function () {
   get_sibling_data();
   $j('.ksource').bind('change', update_preview);
   update_preview();
-  
+
   $j('#form04').isHappy({
     // submitButton: $j('#attSubmitButton'),
     onSubmit: onForm04Submit,
@@ -395,7 +397,7 @@ $j(document).ready(function () {
      '#street': {
         required: true,
         message: 'Required field.' },
-      '#city': { 
+      '#city': {
         required: true,
         message: 'Required field.' },
       '#state': {
@@ -403,11 +405,11 @@ $j(document).ready(function () {
         clean: setCAIfBlank,
         test: happy.USState,
         message: 'Required field: format as "CA".' },
-      '#zip': { 
+      '#zip': {
         required: true,
         test: happy.USZip,
         message: 'Required field: format as "94904" or "94904-0001"' },
-      '#home_phone': { 
+      '#home_phone': {
         required: true,
         clean: reformatPhone415,
         test: happy.USPhoneWithExtension,
@@ -439,17 +441,17 @@ $j(document).ready(function () {
         test: happy.requiredIfArgNotEmpty,
         arg: '#mother_first',
         message: 'Required field.' },
-      '#mother_work_phone': { 
+      '#mother_work_phone': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#mother_cell': { 
+      '#mother_cell': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#mother_email': { 
+      '#mother_email': {
         required: 'sometimes',
         test: happy.emptyOrEmail,
         message: 'Must be a valid email address.' },
@@ -468,17 +470,17 @@ $j(document).ready(function () {
         test: happy.requiredIfArgNotEmpty,
         arg: '#father_first',
         message: 'Required field.' },
-      '#father_work_phone': { 
+      '#father_work_phone': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#father_cell': { 
+      '#father_cell': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#father_email': { 
+      '#father_email': {
         required: 'sometimes',
         test: happy.emptyOrEmail,
         message: 'Must be a valid email address.' },
@@ -487,7 +489,7 @@ $j(document).ready(function () {
         test: happy.requiredIfArgNotEmpty,
         arg: '.guardian2_name',
         message: 'Required field.' },
-      '#home2_city': { 
+      '#home2_city': {
         required: 'sometimes',
         test: happy.requiredIfArgNotEmpty,
         arg: '.guardian2_name',
@@ -496,11 +498,11 @@ $j(document).ready(function () {
         required: 'sometimes',
         test: home2_state_test,
         message: 'Required field: format as "CA".' },
-      '#home2_zip': { 
+      '#home2_zip': {
         required: 'sometimes',
         test: home2_zip_test,
         message: 'Required field: format as "94904" or "94904-0001"' },
-      '#home2_phone': { 
+      '#home2_phone': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: home2_phone_test,
@@ -538,17 +540,17 @@ $j(document).ready(function () {
         test: happy.requiredIfArgNotEmpty,
         arg: '#mother2_first',
         message: 'Required field.' },
-      '#mother2_work_phone': { 
+      '#mother2_work_phone': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#mother2_cell': { 
+      '#mother2_cell': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#mother2_email': { 
+      '#mother2_email': {
         required: 'sometimes',
         test: happy.emptyOrEmail,
         message: 'Must be a valid email address.' },
@@ -567,17 +569,17 @@ $j(document).ready(function () {
         test: happy.requiredIfArgNotEmpty,
         arg: '#father2_first',
         message: 'Required field.' },
-      '#father2_work_phone': { 
+      '#father2_work_phone': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#father2_cell': { 
+      '#father2_cell': {
         required: 'sometimes',
         clean: reformatPhone415,
         test: happy.emptyOrUSPhoneWithExtension,
         message: 'Please format as (415) 333-2222 x5555.' },
-      '#father2_email': { 
+      '#father2_email': {
         required: 'sometimes',
         test: happy.emptyOrEmail,
         message: 'Must be a valid email address.' }

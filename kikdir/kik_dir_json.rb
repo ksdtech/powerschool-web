@@ -676,19 +676,27 @@ class KikExporter
     total = @listings.size + @exited.size + @unlisted.size + @unapproved.size
     $stderr.puts("#{total} total")
 
+    conflict_family_ids = [ ]
+    @conflicts.each do |f|
+      conflict_family_ids << f[:family_id]
+    end
+
     unapproved_family_ids = [ ]
-    unapproved_student_ids = [ ]
+    change_approval_student_ids = [ ]
     @unapproved.each do |f|
       unapproved_family_ids << f[:family_id]
       f[:siblings].each do |s|
-        unapproved_student_ids << s[:student_number]
+        change_approval_student_ids << s[:student_number]
+        break
       end
     end
 
+    $stderr.puts("\nconflict family search:")
+    $stderr.puts("family_ident in #{conflict_family_ids.join(',')}")
     $stderr.puts("\nunapproved family search:")
     $stderr.puts("family_ident in #{unapproved_family_ids.join(',')}")
-    $stderr.puts("\nunapproved student search:")
-    $stderr.puts("student_number in #{unapproved_student_ids.join(',')}")
+    $stderr.puts("\nchange approval student search:")
+    $stderr.puts("student_number in #{change_approval_student_ids.join(',')}")
   end
 end
 
