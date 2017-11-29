@@ -7,13 +7,13 @@
   ~[wc:commonscripts]
 <link href="/images/css/screen.css" rel="stylesheet" media="screen">
 <link href="/images/css/print.css" rel="stylesheet" media="print">
-  
+
   <style>
       td:first-child {
          vertical-align:top;
       }
     .clickable {
-      cursor:pointer; 
+      cursor:pointer;
     }
     #infoTable col:first-child {
       width: 20%;
@@ -30,9 +30,9 @@
         $j('#homeschool').html("<font size='-1' face='Verdana,Geneva,Arial,Helvetica,sans-serif'>*****</font>");
       else
       $j('#homeschool').html($j('#homeschoolSelect option:selected').text());
-      
+
       var statusColumnValue = document.getElementById("statusColumn");
-      
+
       switch (statusColumnValue.value){
         case "*": $j('#statusCheckbox').hide();//Read only and true
           $j('#statusColumn').replaceWith("(X)");
@@ -168,16 +168,16 @@
 <tr class="~[evenoddrow]">
 <td class="bold">~[text:psx.html.admin_faculty.edit.staff_type]</td>
 <td><select name="[05]StaffStatus">
-  <option value="0">~[text:psx.html.admin_faculty.edit.not_assigned]
-  <option value="1">Certificated, Teacher
-  <option value="5">Certificated, Not Teacher
-  <option value="2">Classified Staff
-  <option value="6">Contracted Staff
-  <option value="7">Intern
-  <option value="8">Volunteer
-  <option value="9">Trustee
-  <option value="3">~[text:psx.html.admin_faculty.edit.lunch_staff]
-  <option value="4">~[text:psx.html.admin_faculty.edit.substitute]
+  <option value="0">(0) ~[text:psx.html.admin_faculty.edit.not_assigned]
+  <option value="1">(1) Certificated, Teacher
+  <option value="5">(5) Certificated, Not Teacher
+  <option value="2">(2) Classified Staff
+  <option value="6">(6) Contracted Staff
+  <option value="7">(7) Intern
+  <option value="8">(8) Volunteer
+  <option value="9">(9) Trustee
+  <option value="3">(3) ~[text:psx.html.admin_faculty.edit.lunch_staff]
+  <option value="4">(4) ~[text:psx.html.admin_faculty.edit.substitute]
 </select></td>
 </tr>
 <tr class="~[evenoddrow]">
@@ -204,7 +204,7 @@
 
 <div class="hidden">
   <select id="homeschoolSelect" type="hidden" name="[05]homeSchoolId" special="schoolswithdistrict"><option value=Item>~[text:psx.html.admin_faculty.edit.item]</select>
-  
+
 </div>
 
 <script>
